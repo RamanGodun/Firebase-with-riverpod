@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../domain/entities/custom_error.dart';
-import '../../../presentation/widgets/buttons.dart';
-import '../../../presentation/widgets/custom_app_bar.dart';
-import '../../../presentation/widgets/text_widget.dart';
-import '../../app_navigation/route_names.dart';
+import '../../core/entities/custom_error.dart';
+import '../../presentation/widgets/buttons.dart';
+import '../../presentation/widgets/custom_app_bar.dart';
+import '../../presentation/widgets/text_widget.dart';
+import '../../core/app_navigation/route_names.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
-import '../../data/repositories/auth/sources/remote/consts/firebase_constants.dart';
-import '../../utils_and_services/dialog_managing/error_dialog.dart';
-import '../../utils_and_services/helpers.dart';
-import 'application/home_provider.dart';
+import '../../data/sources/remote/consts/firebase_constants.dart';
+import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../core/utils_and_services/helpers.dart';
+import 'home_provider.dart';
 
 /// **Home Page**
 /// - Displays user profile information.

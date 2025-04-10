@@ -4,12 +4,12 @@ import '../../core/app_navigation/route_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
-import '../../domain/entities/custom_error.dart';
-import '../../domain/providers/signup_provider.dart';
-import '../widgets/buttons.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/form_fields.dart';
-import '../widgets/text_widget.dart';
+import '../../core/entities/custom_error.dart';
+import '../../presentation/widgets/buttons.dart';
+import '../../presentation/widgets/custom_app_bar.dart';
+import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/text_widget.dart';
+import 'signup_provider.dart';
 
 /// **Sign Up Page**
 /// - Allows users to create an account.

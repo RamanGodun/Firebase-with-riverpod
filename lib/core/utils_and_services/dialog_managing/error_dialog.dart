@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../domain/entities/custom_error.dart';
+import '../../entities/custom_error.dart';
 import '../../../presentation/widgets/mini_widgets.dart';
 
 class ErrorHandling {

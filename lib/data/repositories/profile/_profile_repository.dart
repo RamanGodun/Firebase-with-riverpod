@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../../domain/entities/app_user.dart';
-import '../../../utils_and_services/errors_managing/handle_exception.dart';
-import '../auth/sources/remote/consts/firebase_constants.dart';
+import '../../../core/entities/app_user.dart';
+import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
+import '../../sources/remote/consts/firebase_constants.dart';
 
 /// **Profile Repository**
 ///

@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../core/data/repositories/auth/auth_repository_provider.dart';
+import '../../data/repositories/auth/auth_repository_provider.dart';
 
 part 'change_password_provider.g.dart';
 

@@ -2,13 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../features/change_password/change_password_page.dart';
+import '../../presentation/pages/firebase_error_page.dart';
 import '../../presentation/pages/page_not_found.dart';
-import '../../presentation/pages/signin_page.dart';
-import '../../presentation/pages/signup_page.dart';
+import '../../features/reset_password/reset_password_page.dart';
+import '../../features/sign_in/signin_page.dart';
+import '../../features/sign_up/signup_page.dart';
+import '../../presentation/pages/verify_email_page.dart';
 import '../../presentation/widgets/mini_widgets.dart';
-import '../data/repositories/auth/auth_repository_provider.dart';
-import '../data/repositories/auth/sources/remote/consts/firebase_constants.dart';
-import '../features/home_page/home_page_presentation.dart';
+import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/sources/remote/consts/firebase_constants.dart';
+import '../../features/home_page/home_page.dart';
 import 'route_names.dart';
 
 part 'router_provider.g.dart';
@@ -67,11 +71,11 @@ GoRouter router(Ref ref) {
       ),
 
       /// **Firebase Error Page**
-      // GoRoute(
-      //   path: '/firebaseError',
-      //   name: RouteNames.firebaseError,
-      //   builder: (context, state) => const FirebaseErrorPage(),
-      // ),
+      GoRoute(
+        path: '/firebaseError',
+        name: RouteNames.firebaseError,
+        builder: (context, state) => const FirebaseErrorPage(),
+      ),
 
       /// **Authentication Screens**
       GoRoute(
@@ -84,30 +88,30 @@ GoRouter router(Ref ref) {
         name: RouteNames.signup,
         builder: (context, state) => const SignupPage(),
       ),
-      // GoRoute(
-      //   path: '/resetPassword',
-      //   name: RouteNames.resetPassword,
-      //   builder: (context, state) => const ResetPasswordPage(),
-      // ),
-      // GoRoute(
-      //   path: '/verifyEmail',
-      //   name: RouteNames.verifyEmail,
-      //   builder: (context, state) => const VerifyEmailPage(),
-      // ),
+      GoRoute(
+        path: '/resetPassword',
+        name: RouteNames.resetPassword,
+        builder: (context, state) => const ResetPasswordPage(),
+      ),
+      GoRoute(
+        path: '/verifyEmail',
+        name: RouteNames.verifyEmail,
+        builder: (context, state) => const VerifyEmailPage(),
+      ),
 
       /// **Home Screen & Nested Routes**
       GoRoute(
         path: '/home',
         name: RouteNames.home,
         builder: (context, state) => const HomePage(),
-        // routes: [
-        //   /// **Change Password Screen (Nested under Home)**
-        //   GoRoute(
-        //     path: 'changePassword',
-        //     name: RouteNames.changePassword,
-        //     builder: (context, state) => const ChangePasswordPage(),
-        //   ),
-        // ],
+        routes: [
+          /// **Change Password Screen (Nested under Home)**
+          GoRoute(
+            path: 'changePassword',
+            name: RouteNames.changePassword,
+            builder: (context, state) => const ChangePasswordPage(),
+          ),
+        ],
       ),
     ],
 

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import 'core/app_navigation/router_provider.dart';
 import 'core/config/loggers/observer_logger.dart';
-import 'core/data/repositories/auth/sources/remote/consts/firebase_options.dart';
+import 'data/sources/remote/consts/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

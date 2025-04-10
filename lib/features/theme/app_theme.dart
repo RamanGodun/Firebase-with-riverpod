@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../constants/app_constants.dart';
+import '../../core/constants/app_constants.dart';
 import 'text_styles.dart';
 
 /// 🎨 **[AppThemes]** - Defines light and dark themes.

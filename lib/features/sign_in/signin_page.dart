@@ -4,12 +4,12 @@ import '../../core/app_navigation/route_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
-import '../../domain/entities/custom_error.dart';
-import '../../domain/providers/signin_provider.dart';
-import '../widgets/buttons.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/form_fields.dart';
-import '../widgets/text_widget.dart';
+import '../../core/entities/custom_error.dart';
+import '../../presentation/widgets/buttons.dart';
+import '../../presentation/widgets/custom_app_bar.dart';
+import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/text_widget.dart';
+import 'signin_provider.dart';
 
 /// **Sign In Page**
 /// - Allows users to log in with their credentials.
@@ -29,12 +29,11 @@ class SigninPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
             child: ListView(
               shrinkWrap: true,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                const _SigninHeader(),
-                // ignore: prefer_const_constructors
+
+              children: const [
+                _SigninHeader(),
                 SigninFormFields(),
-                const _SigninFooter(),
+                _SigninFooter(),
               ],
             ),
           ),
@@ -80,7 +79,7 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
           CustomFormField(
             type: FormFieldType.password,
             controller: _controllers[1],
-            labelText: 'Password', // ✅ Додав labelText
+            labelText: 'Password',
           ),
           const SizedBox(height: AppSpacing.xl),
           CustomButton(
@@ -107,7 +106,7 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
   void _handleSigninError(AsyncValue<void>? _, AsyncValue<void> next) {
     next.whenOrNull(
       error: (e, st) {
-        if (!context.mounted) return; // ✅ Додав перевірку
+        if (!context.mounted) return;
         ErrorHandling.showErrorDialog(context, e as CustomError);
       },
     );

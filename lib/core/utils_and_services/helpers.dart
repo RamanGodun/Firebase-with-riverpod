@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../presentation/widgets/text_widget.dart';
+
 /*
 ? maybe should separate to different utils and name them accordingly? */
 
@@ -98,10 +100,21 @@ class Helpers {
     }
   }
 
+  /// ===========================
+  /// 🧩 FOR SNACKBAR
+  // ===========================
+
+  /// Shows a snackbar message
+  static void showSnackbar(
+    ScaffoldMessengerState scaffoldMessenger,
+    String message,
+  ) {
+    scaffoldMessenger.showSnackBar(
+      SnackBar(content: TextWidget(message, TextType.bodyMedium)),
+    );
+  }
+
   /// Add more specific helpers here if needed
-  // ===========================
-  // 🧩 OTHER helpers
-  // ===========================
 
   ///
 }

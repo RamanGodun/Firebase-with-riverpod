@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../utils_and_services/errors_managing/handle_exception.dart';
-import 'sources/remote/consts/firebase_constants.dart';
+import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
+import '../../sources/remote/consts/firebase_constants.dart';
 
 /// **Authentication Repository**
 ///
