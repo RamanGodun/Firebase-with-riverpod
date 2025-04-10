@@ -1,8 +1,9 @@
 import 'dart:io' show Platform;
-
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import '../../data/sources/remote/env_firebase_options.dart';
 import '../config/env.dart';
@@ -22,6 +23,10 @@ Future<void> bootstrapApp() async {
       );
     }
   }
+
+  /// 💾🗂 Initialize local storages
+  await GetStorage.init();
+  // final sharedPrefs = await SharedPreferences.getInstance();
 
   ///📀 Loads .env
   final envFile = switch (EnvConfig.currentEnv) {

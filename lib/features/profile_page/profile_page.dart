@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/entities/custom_error.dart';
+import '../../core/router/routes_names.dart';
+import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../core/utils_and_services/helpers.dart';
+import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/firebase_constants.dart';
 import '../../presentation/widgets/buttons.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
 import '../../presentation/widgets/text_widget.dart';
-import '../../core/router/routes_names.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
-import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
-import '../../core/utils_and_services/helpers.dart';
-import 'home_provider.dart';
+import 'profile_provider.dart';
 
-/// **Home Page**
-/// - Displays user profile information.
-/// - Allows users to refresh their profile data.
-/// - Provides a sign-out option and a link to change the password.
+class ProfilePage extends ConsumerWidget {
+  const ProfilePage({super.key});
 
-class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
-
-  // =========== Build method =========== //
+  /// ----------------- BUILD METHOD --------------------- //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,11 +23,11 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Home',
-        actionIcons: const [Icons.logout, Icons.refresh],
+        title: 'Profile page',
+        actionIcons: const [Icons.refresh, Icons.logout],
         actionCallbacks: [
-          () => _signOutUser(context, ref),
           () => ref.invalidate(profileProvider),
+          () => _signOutUser(context, ref),
         ],
       ),
 
@@ -41,16 +36,26 @@ class HomePage extends ConsumerWidget {
         skipLoadingOnRefresh: false,
         data: (appUser) => _UserProfile(appUser: appUser),
         error: (e, _) => _ErrorWidget(error: e as CustomError),
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading:
+            () => const Center(child: CircularProgressIndicator.adaptive()),
       ),
     );
   }
 }
 
-// =========== PROFILE WIDGET =========== //
+// ----------------- USED METHODS ----------------- //
 
-/// **User Profile Section**
-/// - Displays user details such as name, email, and ID.
+Future<void> _signOutUser(BuildContext context, WidgetRef ref) async {
+  try {
+    await ref.read(authRepositoryProvider).signout();
+  } on CustomError catch (e) {
+    if (!context.mounted) return;
+    ErrorHandling.showErrorDialog(context, e);
+  }
+}
+
+// ----------------- PROFILE WIDGET ----------------- //
+
 class _UserProfile extends StatelessWidget {
   final dynamic appUser;
 
@@ -81,10 +86,8 @@ class _UserProfile extends StatelessWidget {
   }
 }
 
-// =========== ERROR WIDGET =========== //
+// ----------------- ERROR WIDGET ----------------- //
 
-/// **Error Display**
-/// - Displays error details if the profile loading fails.
 class _ErrorWidget extends StatelessWidget {
   final CustomError error;
 
@@ -99,16 +102,5 @@ class _ErrorWidget extends StatelessWidget {
         alignment: TextAlign.center,
       ),
     );
-  }
-}
-
-// =========== USED METHODS =========== //
-
-Future<void> _signOutUser(BuildContext context, WidgetRef ref) async {
-  try {
-    await ref.read(authRepositoryProvider).signout();
-  } on CustomError catch (e) {
-    if (!context.mounted) return;
-    ErrorHandling.showErrorDialog(context, e);
   }
 }

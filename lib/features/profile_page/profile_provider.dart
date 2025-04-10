@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../core/entities/app_user.dart';
 import '../../../data/repositories/profile/profile_repository_provider.dart';
 
-part 'home_provider.g.dart';
+part 'profile_provider.g.dart';
 
 /// **Profile Provider**
 ///

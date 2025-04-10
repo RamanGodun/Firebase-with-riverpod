@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actionCallbacks,
     this.actionWidgets,
     this.isCenteredTitle = false,
-    this.isNeedPaddingAfterActionIcon = false,
+    this.isNeedPaddingAfterActionIcon = true,
   });
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/change_password/change_password_page.dart';
+import '../../features/profile_page/profile_page.dart';
 import '../../presentation/pages/firebase_error_page.dart';
 import '../../presentation/pages/page_not_found.dart';
 import '../../features/reset_password/reset_password_page.dart';
@@ -12,7 +13,7 @@ import '../../presentation/pages/verify_email_page.dart';
 import '../../presentation/widgets/mini_widgets.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/firebase_constants.dart';
-import '../../features/home_page/home_page.dart';
+import '../../presentation/pages/_home_page.dart';
 import 'routes_names.dart';
 
 part 'router.g.dart';
@@ -76,6 +77,11 @@ GoRouter router(Ref ref) {
             path: 'changePassword',
             name: RoutesNames.changePassword,
             builder: (context, state) => const ChangePasswordPage(),
+          ),
+          GoRoute(
+            path: 'profile',
+            name: RoutesNames.profilePage,
+            builder: (context, state) => const ProfilePage(),
           ),
         ],
       ),

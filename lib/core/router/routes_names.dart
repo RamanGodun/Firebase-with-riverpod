@@ -8,4 +8,5 @@ class RoutesNames {
   static const splash = 'splash';
   static const firebaseError = 'firebaseError';
   static const pageNotFound = 'pageNotFound';
+  static const profilePage = 'profilePage';
 }
