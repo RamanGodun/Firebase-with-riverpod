@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/firebase_options.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/config/loggers/providers_observer/_observer_logger.dart'
+import 'core/config/loggers/observer_logger.dart'
     show Logger;
 
 void main() async {
