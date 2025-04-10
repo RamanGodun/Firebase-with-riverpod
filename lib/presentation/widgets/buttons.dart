@@ -51,10 +51,7 @@ class CustomButton extends StatelessWidget {
           onPressed: onPressed,
           style: FilledButton.styleFrom(
             backgroundColor: Colors.grey.shade200.withOpacity(0.7),
-            textStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: fontWeight,
-            ),
+            textStyle: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
             padding: const EdgeInsets.symmetric(vertical: 12.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -71,13 +68,8 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: TextButton.styleFrom(
         foregroundColor: foregroundColor ?? Colors.blueAccent,
-        textStyle: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        textStyle: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       ),
       child: child,

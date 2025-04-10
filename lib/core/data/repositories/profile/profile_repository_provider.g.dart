@@ -19,14 +19,15 @@ String _$profileRepositoryHash() => r'2a010f6ed5ff032b91d9ec4959a43cafd642cf2b';
 @ProviderFor(profileRepository)
 final profileRepositoryProvider =
     AutoDisposeProvider<ProfileRepository>.internal(
-  profileRepository,
-  name: r'profileRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      profileRepository,
+      name: r'profileRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$profileRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

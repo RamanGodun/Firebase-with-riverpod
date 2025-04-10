@@ -27,10 +27,7 @@ class Signin extends _$Signin {
   /// - Sets state to **loading** before attempting authentication.
   /// - Calls [AuthRepository.signin] with provided credentials.
   /// - Uses `AsyncValue.guard()` for safe error handling.
-  Future<void> signin({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signin({required String email, required String password}) async {
     state = const AsyncLoading<void>();
 
     state = await AsyncValue.guard<void>(

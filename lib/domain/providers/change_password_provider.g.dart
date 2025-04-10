@@ -25,14 +25,15 @@ String _$changePasswordHash() => r'a7dc9a013f357c8d0f035173a411ad211a0efbc9';
 @ProviderFor(ChangePassword)
 final changePasswordProvider =
     AutoDisposeAsyncNotifierProvider<ChangePassword, void>.internal(
-  ChangePassword.new,
-  name: r'changePasswordProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$changePasswordHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ChangePassword.new,
+      name: r'changePasswordProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$changePasswordHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ChangePassword = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint

@@ -87,21 +87,13 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
   /// - A `FutureOr<AppUser>` containing the user's profile data.
   ///
   /// Copied from [profile].
-  ProfileProvider call(
-    String uid,
-  ) {
-    return ProfileProvider(
-      uid,
-    );
+  ProfileProvider call(String uid) {
+    return ProfileProvider(uid);
   }
 
   @override
-  ProfileProvider getProviderOverride(
-    covariant ProfileProvider provider,
-  ) {
-    return call(
-      provider.uid,
-    );
+  ProfileProvider getProviderOverride(covariant ProfileProvider provider) {
+    return call(provider.uid);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -146,23 +138,19 @@ class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
   /// - A `FutureOr<AppUser>` containing the user's profile data.
   ///
   /// Copied from [profile].
-  ProfileProvider(
-    String uid,
-  ) : this._internal(
-          (ref) => profile(
-            ref as ProfileRef,
-            uid,
-          ),
-          from: profileProvider,
-          name: r'profileProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$profileHash,
-          dependencies: ProfileFamily._dependencies,
-          allTransitiveDependencies: ProfileFamily._allTransitiveDependencies,
-          uid: uid,
-        );
+  ProfileProvider(String uid)
+    : this._internal(
+        (ref) => profile(ref as ProfileRef, uid),
+        from: profileProvider,
+        name: r'profileProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$profileHash,
+        dependencies: ProfileFamily._dependencies,
+        allTransitiveDependencies: ProfileFamily._allTransitiveDependencies,
+        uid: uid,
+      );
 
   ProfileProvider._internal(
     super._createNotifier, {
@@ -227,5 +215,6 @@ class _ProfileProviderElement extends AutoDisposeFutureProviderElement<AppUser>
   @override
   String get uid => (origin as ProfileProvider).uid;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

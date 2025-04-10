@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 
-enum FormFieldType {
-  confirmPassword,
-  password,
-  email,
-  name,
-}
+enum FormFieldType { confirmPassword, password, email, name }
 
 class CustomFormField extends StatelessWidget {
   final FormFieldType type;
@@ -28,11 +23,13 @@ class CustomFormField extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextFormField(
         controller: controller,
-        obscureText: type == FormFieldType.password ||
+        obscureText:
+            type == FormFieldType.password ||
             type == FormFieldType.confirmPassword,
-        keyboardType: type == FormFieldType.email
-            ? TextInputType.emailAddress
-            : TextInputType.text,
+        keyboardType:
+            type == FormFieldType.email
+                ? TextInputType.emailAddress
+                : TextInputType.text,
         autocorrect: type != FormFieldType.email,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),

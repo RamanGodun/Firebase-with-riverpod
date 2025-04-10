@@ -58,7 +58,7 @@ class SignupFormFields extends ConsumerStatefulWidget {
 class _SignupFormFieldsState extends ConsumerState<SignupFormFields> {
   final _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
-  final _controllers = Helpers.createControllers(4); 
+  final _controllers = Helpers.createControllers(4);
 
   // =========== BUILD METHOD =========== //
   @override

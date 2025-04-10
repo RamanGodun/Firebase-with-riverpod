@@ -41,15 +41,9 @@ class AuthRepository {
   /// **Sign In**
   ///
   /// Authenticates a user with the provided [email] and [password].
-  Future<void> signin({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signin({required String email, required String password}) async {
     try {
-      await fbAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      await fbAuth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
       throw handleException(e);
     }
