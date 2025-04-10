@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart' show AppConstants;
 
-
 /// 📄 Flexible text widget with theme integration & extended customization.
 class TextWidget extends StatelessWidget {
   final String? text;

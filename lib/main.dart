@@ -4,8 +4,7 @@ import 'package:firebase_with_riverpod/firebase_options.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/config/loggers/observer_logger.dart'
-    show Logger;
+import 'core/config/loggers/observer_logger.dart' show Logger;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +22,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
       home: Scaffold(body: Center(child: Text('Firebase with riverpod'))),
     );
