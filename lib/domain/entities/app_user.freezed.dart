@@ -12,7 +12,8 @@ part of 'app_user.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AppUser {
@@ -48,33 +49,36 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? email = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? id = null, Object? name = null, Object? email = null}) {
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            email:
+                null == email
+                    ? _value.email
+                    : email // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$AppUserImplCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$$AppUserImplCopyWith(
-          _$AppUserImpl value, $Res Function(_$AppUserImpl) then) =
-      __$$AppUserImplCopyWithImpl<$Res>;
+    _$AppUserImpl value,
+    $Res Function(_$AppUserImpl) then,
+  ) = __$$AppUserImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, String email});
@@ -85,32 +89,34 @@ class __$$AppUserImplCopyWithImpl<$Res>
     extends _$AppUserCopyWithImpl<$Res, _$AppUserImpl>
     implements _$$AppUserImplCopyWith<$Res> {
   __$$AppUserImplCopyWithImpl(
-      _$AppUserImpl _value, $Res Function(_$AppUserImpl) _then)
-      : super(_value, _then);
+    _$AppUserImpl _value,
+    $Res Function(_$AppUserImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AppUser
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? email = null,
-  }) {
-    return _then(_$AppUserImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? id = null, Object? name = null, Object? email = null}) {
+    return _then(
+      _$AppUserImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        email:
+            null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -167,8 +173,11 @@ class _$AppUserImpl with DiagnosticableTreeMixin implements _AppUser {
 }
 
 abstract class _AppUser implements AppUser {
-  const factory _AppUser(
-      {final String id, final String name, final String email}) = _$AppUserImpl;
+  const factory _AppUser({
+    final String id,
+    final String name,
+    final String email,
+  }) = _$AppUserImpl;
 
   @override
   String get id;
