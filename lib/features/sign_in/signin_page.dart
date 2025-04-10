@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
@@ -172,14 +172,14 @@ class _SigninFooter extends StatelessWidget {
             const TextWidget('Not a member? ', TextType.titleSmall),
             CustomButton(
               type: ButtonType.text,
-              onPressed: () => Helpers.goTo(context, RouteNames.signup),
+              onPressed: () => Helpers.goTo(context, RoutesNames.signup),
               child: const TextWidget('Sign Up!', TextType.error),
             ),
           ],
         ),
         CustomButton(
           type: ButtonType.text,
-          onPressed: () => Helpers.goTo(context, RouteNames.resetPassword),
+          onPressed: () => Helpers.goTo(context, RoutesNames.resetPassword),
           foregroundColor: Colors.red,
           child: const TextWidget('Forgot Password?', TextType.error),
         ),

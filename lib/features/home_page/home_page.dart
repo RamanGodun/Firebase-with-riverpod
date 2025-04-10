@@ -4,7 +4,7 @@ import '../../core/entities/custom_error.dart';
 import '../../presentation/widgets/buttons.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
 import '../../presentation/widgets/text_widget.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/consts/firebase_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
@@ -72,7 +72,7 @@ class _UserProfile extends StatelessWidget {
           const SizedBox(height: 40),
           CustomButton(
             type: ButtonType.filled,
-            onPressed: () => Helpers.goTo(context, RouteNames.changePassword),
+            onPressed: () => Helpers.goTo(context, RoutesNames.changePassword),
             child: const TextWidget('Change Password', TextType.button),
           ),
         ],

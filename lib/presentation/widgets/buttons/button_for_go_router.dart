@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import '../../../core/constants/app_constants.dart' show AppSpacing;
 import '../../../core/utils_and_services/helpers.dart';
-import 'text_widget.dart';
+import '../text_widget.dart';
 
 /// 🌍 [CustomButtonForGoRouter] styled full-width button,
 /// that performs either GoRouter navigation or custom action.

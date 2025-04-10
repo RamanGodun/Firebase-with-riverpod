@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/consts/firebase_constants.dart';
@@ -79,7 +79,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
       if (fbAuth.currentUser?.emailVerified ?? false) {
         _timer?.cancel();
         _timer = null;
-        goRouter.goNamed(RouteNames.home);
+        goRouter.goNamed(RoutesNames.home);
       }
     } on CustomError catch (e) {
       if (!mounted) return;

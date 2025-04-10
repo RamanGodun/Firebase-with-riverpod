@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
@@ -87,7 +87,7 @@ class _ResetPasswordPageState extends ConsumerState<ResetPasswordPage> {
         );
 
         if (!context.mounted) return;
-        Helpers.goTo(context, RouteNames.signin);
+        Helpers.goTo(context, RoutesNames.signin);
       },
     );
   }
@@ -186,7 +186,7 @@ class _ResetPasswordFooter extends StatelessWidget {
           const TextWidget('Remember password? ', TextType.bodyMedium),
           CustomButton(
             type: ButtonType.text,
-            onPressed: () => Helpers.goTo(context, RouteNames.signin),
+            onPressed: () => Helpers.goTo(context, RoutesNames.signin),
             child: const TextWidget('Sign In', TextType.button),
           ),
         ],

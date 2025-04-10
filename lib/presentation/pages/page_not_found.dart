@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/helpers.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_widget.dart';
@@ -35,7 +35,7 @@ class PageNotFound extends StatelessWidget {
               const SizedBox(height: 20),
               CustomButton(
                 type: ButtonType.filled,
-                onPressed: () => Helpers.goTo(context, RouteNames.home),
+                onPressed: () => Helpers.goTo(context, RoutesNames.home),
                 child: const TextWidget('Home', TextType.button),
               ),
             ],

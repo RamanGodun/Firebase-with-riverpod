@@ -1,4 +1,4 @@
-class RouteNames {
+class RoutesNames {
   static const home = 'home';
   static const signin = 'signin';
   static const signup = 'signup';
@@ -7,4 +7,5 @@ class RouteNames {
   static const changePassword = 'changePassword';
   static const splash = 'splash';
   static const firebaseError = 'firebaseError';
+  static const pageNotFound = 'pageNotFound';
 }

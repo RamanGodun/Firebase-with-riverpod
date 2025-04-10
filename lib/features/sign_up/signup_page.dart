@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/app_navigation/route_names.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
@@ -170,7 +170,7 @@ class _SignupFooter extends StatelessWidget {
         const TextWidget('Already a member? ', TextType.titleSmall),
         CustomButton(
           type: ButtonType.text,
-          onPressed: () => Helpers.goTo(context, RouteNames.signin),
+          onPressed: () => Helpers.goTo(context, RoutesNames.signin),
           child: const TextWidget('Sign In!', TextType.error),
         ),
       ],

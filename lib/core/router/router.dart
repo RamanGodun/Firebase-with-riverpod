@@ -13,9 +13,9 @@ import '../../presentation/widgets/mini_widgets.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/consts/firebase_constants.dart';
 import '../../features/home_page/home_page.dart';
-import 'route_names.dart';
+import 'routes_names.dart';
 
-part 'router_provider.g.dart';
+part 'router.g.dart';
 
 /// **Router Provider**
 ///
@@ -66,49 +66,49 @@ GoRouter router(Ref ref) {
       /// **Splash Screen**
       GoRoute(
         path: '/splash',
-        name: RouteNames.splash,
+        name: RoutesNames.splash,
         builder: (context, state) => const AppMiniWidgets(MWType.loading),
       ),
 
       /// **Firebase Error Page**
       GoRoute(
         path: '/firebaseError',
-        name: RouteNames.firebaseError,
+        name: RoutesNames.firebaseError,
         builder: (context, state) => const FirebaseErrorPage(),
       ),
 
       /// **Authentication Screens**
       GoRoute(
         path: '/signin',
-        name: RouteNames.signin,
+        name: RoutesNames.signin,
         builder: (context, state) => const SigninPage(),
       ),
       GoRoute(
         path: '/signup',
-        name: RouteNames.signup,
+        name: RoutesNames.signup,
         builder: (context, state) => const SignupPage(),
       ),
       GoRoute(
         path: '/resetPassword',
-        name: RouteNames.resetPassword,
+        name: RoutesNames.resetPassword,
         builder: (context, state) => const ResetPasswordPage(),
       ),
       GoRoute(
         path: '/verifyEmail',
-        name: RouteNames.verifyEmail,
+        name: RoutesNames.verifyEmail,
         builder: (context, state) => const VerifyEmailPage(),
       ),
 
       /// **Home Screen & Nested Routes**
       GoRoute(
         path: '/home',
-        name: RouteNames.home,
+        name: RoutesNames.home,
         builder: (context, state) => const HomePage(),
         routes: [
           /// **Change Password Screen (Nested under Home)**
           GoRoute(
             path: 'changePassword',
-            name: RouteNames.changePassword,
+            name: RoutesNames.changePassword,
             builder: (context, state) => const ChangePasswordPage(),
           ),
         ],
