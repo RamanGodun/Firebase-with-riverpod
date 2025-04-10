@@ -20,7 +20,10 @@ abstract class TextStyles4ThisAppThemes {
 
   /// 🔧 **Reusable text style generator**
   static TextStyle _getTextStyle(
-      bool isDarkTheme, FontWeight fontWeight, double fontSize) {
+    bool isDarkTheme,
+    FontWeight fontWeight,
+    double fontSize,
+  ) {
     return TextStyle(
       fontFamily: 'SFProText',
       fontWeight: fontWeight,

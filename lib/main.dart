@@ -1,13 +1,16 @@
 import 'package:firebase_core/firebase_core.dart' show Firebase;
-import 'package:firebase_with_riverpod/firebase_options.dart'
-    show DefaultFirebaseOptions;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'core/config/loggers/observer_logger.dart' show Logger;
+import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
+import 'core/app_navigation/router_provider.dart';
+import 'core/config/loggers/observer_logger.dart';
+import 'core/data/repositories/auth/sources/remote/consts/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// Removes the `#` from web URLs for cleaner routing.
+  setPathUrlStrategy();
 
   ///
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -16,15 +19,17 @@ void main() async {
   runApp(ProviderScope(observers: [Logger()], child: const MainApp()));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+
+    return MaterialApp.router(
       title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: Center(child: Text('Firebase with riverpod'))),
+      routerConfig: router,
     );
   }
 }

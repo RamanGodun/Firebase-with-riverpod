@@ -85,8 +85,23 @@ class Helpers {
   static void unfocus(BuildContext context) => FocusScope.of(context).unfocus();
 
   // ===========================
-  // 🧩 MISC HELPERS (add below)
+  // 🧩 Controllers helpers
   // ===========================
+  static List<TextEditingController> createControllers(int count) {
+    return List.generate(count, (index) => TextEditingController());
+  }
+
+  /// Disposes all controllers in the list
+  static void disposeControllers(List<TextEditingController> controllers) {
+    for (final controller in controllers) {
+      controller.dispose();
+    }
+  }
 
   /// Add more specific helpers here if needed
+  // ===========================
+  // 🧩 OTHER helpers
+  // ===========================
+
+  ///
 }
