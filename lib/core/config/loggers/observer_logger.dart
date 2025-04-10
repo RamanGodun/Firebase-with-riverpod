@@ -1,17 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// **Provider Logger (Observer)**
+/// 📦 [Logger] — Riverpod `ProviderObserver`
+/// Observes provider lifecycle events and logs:
+///   • Initialization (`didAddProvider`)
+///   • Updates (`didUpdateProvider`)
+///   • Disposal (`didDisposeProvider`)
 ///
-/// This class acts as an observer for Riverpod providers, enabling logging
-/// of provider lifecycle events. It logs when a provider:
-/// - **is initialized** (`didAddProvider`)
-/// - **is updated** (`didUpdateProvider`)
-/// - **is disposed** (`didDisposeProvider`)
-///
-/// ✅ Uses `debugPrint` for logging in **debug mode only** (via `kDebugMode`).
-/// ✅ Adds timestamps to logs for better traceability.
-class Logger extends ProviderObserver {
+/// ✅ Logs only in debug mode (`kDebugMode`)
+/// ✅ Includes timestamps for traceability
+final class Logger extends ProviderObserver {
   @override
   void didAddProvider(
     ProviderBase<Object?> provider,
@@ -20,12 +18,12 @@ class Logger extends ProviderObserver {
   ) {
     if (kDebugMode) {
       debugPrint('''
-      {
-        "timestamp": "${DateTime.now()}",
-        "provider": "${provider.name ?? provider.runtimeType} initialized",
-        "value exposed": "$value"
-      }
-      ''');
+{
+  "timestamp": "${DateTime.now()}",
+  "provider": "${provider.name ?? provider.runtimeType} initialized",
+  "value exposed": "$value"
+}
+''');
     }
     super.didAddProvider(provider, value, container);
   }
@@ -37,11 +35,11 @@ class Logger extends ProviderObserver {
   ) {
     if (kDebugMode) {
       debugPrint('''
-      {
-        "timestamp": "${DateTime.now()}",
-        "provider": "${provider.name ?? provider.runtimeType} disposed"
-      }
-      ''');
+{
+  "timestamp": "${DateTime.now()}",
+  "provider": "${provider.name ?? provider.runtimeType} disposed"
+}
+''');
     }
     super.didDisposeProvider(provider, container);
   }
@@ -55,13 +53,13 @@ class Logger extends ProviderObserver {
   ) {
     if (kDebugMode) {
       debugPrint('''
-      {
-        "timestamp": "${DateTime.now()}",
-        "provider": "${provider.name ?? provider.runtimeType} updated",
-        "previous value": "$previousValue",
-        "new value": "$newValue"
-      }
-      ''');
+{
+  "timestamp": "${DateTime.now()}",
+  "provider": "${provider.name ?? provider.runtimeType} updated",
+  "previous value": "$previousValue",
+  "new value": "$newValue"
+}
+''');
     }
     super.didUpdateProvider(provider, previousValue, newValue, container);
   }

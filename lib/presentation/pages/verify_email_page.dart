@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/constants/app_constants.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
-import '../../data/sources/remote/consts/firebase_constants.dart';
+import '../../data/sources/remote/firebase_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/entities/custom_error.dart';
 import '../widgets/buttons.dart';
