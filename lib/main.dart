@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// 🧰 Performs: platform checks (e.g. min Android SDK), [.env] file loading via [flutter_dotenv],
-  /// Firebase initialization (with duplicate guard), applying of web-friendly URL strategy
+  /// remote and local storages initialization, applying of web-friendly URL strategy
   await bootstrapApp();
 
   /// 🚀 Launch the app with [ProviderScope] and custom [Logger]

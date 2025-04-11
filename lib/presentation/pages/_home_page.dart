@@ -15,10 +15,13 @@ class HomePage extends StatelessWidget {
         title: '      Home page',
         actionWidgets: [
           const ThemeToggleIcon(),
-          IconButton(
-            onPressed:
-                () => Helpers.pushToNamed(context, RoutesNames.profilePage),
-            icon: const Icon(Icons.person_2),
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: IconButton(
+              onPressed:
+                  () => Helpers.pushToNamed(context, RoutesNames.profilePage),
+              icon: const Icon(Icons.person_2),
+            ),
           ),
         ],
       ),

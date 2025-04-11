@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../core/utils_and_services/helpers.dart';
 
+/// 🧩 Types of buttons available
 enum ButtonType { filled, text }
 
+/// 🍎 CustomButton - A modern iOS/macOS-style button with glass & dynamic visuals
 class CustomButton extends StatelessWidget {
   final void Function()? onPressed;
   final ButtonType type;
@@ -22,57 +25,73 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return type == ButtonType.filled
-        ? _buildMacFilledButton()
-        : _buildMacTextButton();
-  }
+    final colorScheme = Helpers.getColorScheme(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-  Widget _buildMacFilledButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(2, 2),
+    final background =
+        isDark
+            ? Colors.white.withOpacity(0.05)
+            : Colors.grey.shade100.withOpacity(0.4);
+
+    final blurShadow = [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.1),
+        blurRadius: 0.5,
+        offset: const Offset(2, 2),
+      ),
+      BoxShadow(
+        color: Colors.white.withOpacity(0.3),
+        blurRadius: 2,
+        offset: const Offset(-2, -2),
+      ),
+    ];
+
+    final borderRadius = BorderRadius.circular(12);
+
+    return type == ButtonType.filled
+        ? SizedBox(
+          width: double.infinity,
+          child: Container(
+            decoration: BoxDecoration(
+              color: background,
+              borderRadius: borderRadius,
+              boxShadow: blurShadow,
+              border: Border.all(
+                color: Colors.white.withOpacity(0.2),
+                width: 1,
+              ),
             ),
-            BoxShadow(
-              color: Colors.white.withOpacity(0.2),
-              blurRadius: 8,
-              offset: const Offset(-2, -2),
-            ),
-          ],
-        ),
-        child: FilledButton(
-          onPressed: onPressed,
-          style: FilledButton.styleFrom(
-            backgroundColor: Colors.grey.shade200.withOpacity(0.7),
-            textStyle: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+            child: FilledButton(
+              onPressed: onPressed,
+              style: FilledButton.styleFrom(
+                backgroundColor: background,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                shape: RoundedRectangleBorder(borderRadius: borderRadius),
+                textStyle: TextStyle(
+                  fontFamily: 'SFProText',
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                ),
+              ),
+              child: child,
             ),
           ),
+        )
+        : TextButton(
+          onPressed: onPressed,
+          style: TextButton.styleFrom(
+            foregroundColor: foregroundColor ?? colorScheme.primary,
+            textStyle: TextStyle(
+              fontFamily: 'SFProText',
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          ),
           child: child,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMacTextButton() {
-    return TextButton(
-      onPressed: onPressed,
-      style: TextButton.styleFrom(
-        foregroundColor: foregroundColor ?? Colors.blueAccent,
-        textStyle: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      ),
-      child: child,
-    );
+        );
   }
 }

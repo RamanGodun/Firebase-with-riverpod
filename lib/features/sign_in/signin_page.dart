@@ -173,7 +173,12 @@ class _SigninFooter extends StatelessWidget {
             CustomButton(
               type: ButtonType.text,
               onPressed: () => Helpers.goTo(context, RoutesNames.signup),
-              child: const TextWidget('Sign Up!', TextType.error),
+              child: const TextWidget(
+                'Sign Up!',
+                TextType.error,
+                color: AppConstants.errorColor,
+                isUnderlined: true,
+              ),
             ),
           ],
         ),
