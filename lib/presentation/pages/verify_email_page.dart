@@ -159,13 +159,15 @@ class _VerifyEmailCancelButton extends ConsumerWidget {
       onPressed: () async {
         try {
           await ref.read(authRepositoryProvider).signout();
-          timer?.cancel(); // ✅ Безпечне скасування таймера
+          timer?.cancel();
         } on CustomError catch (e) {
           if (!context.mounted) return;
           ErrorHandling.showErrorDialog(context, e);
         }
       },
-      child: const TextWidget('CANCEL', TextType.button),
+      label: 'CANCEL',
+      isLoading: false,
+      isEnabled: true,
     );
   }
 }

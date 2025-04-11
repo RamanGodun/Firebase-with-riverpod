@@ -224,13 +224,12 @@ class _ChangePasswordSubmitButton extends StatelessWidget {
         loading: () => null,
         orElse: () => onSubmit,
       ),
-      child: TextWidget(
-        chgPwdState.maybeWhen(
-          loading: () => 'Submitting...',
-          orElse: () => 'Change Password',
-        ),
-        TextType.button,
+      label: chgPwdState.maybeWhen(
+        loading: () => 'Submitting...',
+        orElse: () => 'Change Password',
       ),
+      isLoading: chgPwdState.isLoading,
+      isEnabled: chgPwdState.hasValue,
     );
   }
 }

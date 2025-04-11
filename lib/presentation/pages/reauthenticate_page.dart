@@ -138,10 +138,9 @@ class _ReauthenticateSubmitButton extends StatelessWidget {
     return CustomButton(
       type: ButtonType.filled,
       onPressed: submitting ? null : onSubmit,
-      child: TextWidget(
-        submitting ? 'Submitting...' : 'Reauthenticate',
-        TextType.button,
-      ),
+      label: submitting ? 'Submitting...' : 'Reauthenticate',
+      isLoading: submitting,
+      isEnabled: !submitting,
     );
   }
 }

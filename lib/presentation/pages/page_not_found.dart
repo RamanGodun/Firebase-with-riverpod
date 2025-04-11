@@ -33,7 +33,9 @@ class PageNotFound extends StatelessWidget {
               CustomButton(
                 type: ButtonType.filled,
                 onPressed: () => context.goTo(RoutesNames.home),
-                child: const TextWidget('Home', TextType.button),
+                label: 'Home',
+                isEnabled: true,
+                isLoading: false,
               ),
             ],
           ),

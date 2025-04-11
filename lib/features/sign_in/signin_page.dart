@@ -89,13 +89,12 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
               loading: () => null,
               orElse: () => _submit,
             ),
-            child: TextWidget(
-              signinState.maybeWhen(
-                loading: () => 'Submitting...',
-                orElse: () => 'Sign In',
-              ),
-              TextType.button,
+            label: signinState.maybeWhen(
+              loading: () => 'Submitting...',
+              orElse: () => 'Sign In',
             ),
+            isEnabled: !signinState.isLoading,
+            isLoading: signinState.isLoading,
           ),
         ],
       ),
@@ -174,20 +173,19 @@ class _SigninFooter extends StatelessWidget {
             CustomButton(
               type: ButtonType.text,
               onPressed: () => context.goTo(RoutesNames.signup),
-              child: const TextWidget(
-                'Sign Up!',
-                TextType.error,
-                color: AppConstants.errorColor,
-                isUnderlined: true,
-              ),
+              label: 'Sign Up!',
+              isEnabled: true,
+              isLoading: false,
             ),
           ],
         ),
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),
+          label: 'Forgot Password?',
           foregroundColor: Colors.red,
-          child: const TextWidget('Forgot Password?', TextType.error),
+          isEnabled: true,
+          isLoading: false,
         ),
       ],
     );

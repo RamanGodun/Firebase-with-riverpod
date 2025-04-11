@@ -95,13 +95,12 @@ class _SignupFormFieldsState extends ConsumerState<SignupFormFields> {
               loading: () => null,
               orElse: () => _submit,
             ),
-            child: TextWidget(
-              signupState.maybeWhen(
-                loading: () => 'Submitting...',
-                orElse: () => 'Sign Up',
-              ),
-              TextType.button,
+            label: signupState.maybeWhen(
+              loading: () => 'Submitting...',
+              orElse: () => 'Sign Up',
             ),
+            isEnabled: !signupState.isLoading,
+            isLoading: signupState.isLoading,
           ),
         ],
       ),
@@ -170,7 +169,9 @@ class _SignupFooter extends StatelessWidget {
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.signin),
-          child: const TextWidget('Sign In!', TextType.error),
+          label: 'Sign In!',
+          isEnabled: true,
+          isLoading: false,
         ),
       ],
     );

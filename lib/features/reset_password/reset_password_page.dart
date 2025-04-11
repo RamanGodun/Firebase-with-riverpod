@@ -161,13 +161,12 @@ class _ResetPasswordSubmitButton extends StatelessWidget {
         loading: () => null,
         orElse: () => onSubmit,
       ),
-      child: TextWidget(
-        resetPwdState.maybeWhen(
-          loading: () => 'Submitting...',
-          orElse: () => 'Reset Password',
-        ),
-        TextType.button,
+      label: resetPwdState.maybeWhen(
+        loading: () => 'Submitting...',
+        orElse: () => 'Reset Password',
       ),
+      isLoading: resetPwdState.isLoading,
+      isEnabled: !resetPwdState.isLoading,
     );
   }
 }
@@ -188,7 +187,9 @@ class _ResetPasswordFooter extends StatelessWidget {
           CustomButton(
             type: ButtonType.text,
             onPressed: () => context.goTo(RoutesNames.signin),
-            child: const TextWidget('Sign In', TextType.button),
+            label: 'Sign In',
+            isEnabled: true,
+            isLoading: false,
           ),
         ],
       ),

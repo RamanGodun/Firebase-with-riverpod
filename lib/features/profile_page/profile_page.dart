@@ -78,7 +78,9 @@ class _UserProfile extends StatelessWidget {
           CustomButton(
             type: ButtonType.filled,
             onPressed: () => context.goTo(RoutesNames.changePassword),
-            child: const TextWidget('Change Password', TextType.button),
+            label: 'Change Password',
+            isEnabled: true,
+            isLoading: false,
           ),
         ],
       ),

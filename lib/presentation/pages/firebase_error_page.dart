@@ -22,7 +22,9 @@ class FirebaseErrorPage extends StatelessWidget {
               CustomButton(
                 type: ButtonType.filled,
                 onPressed: () => Navigator.pop(context),
-                child: const TextWidget('Retry', TextType.button),
+                label: 'Retry',
+                isEnabled: true,
+                isLoading: false,
               ),
             ],
           ),

@@ -1,97 +1,127 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../core/utils_and_services/extensions/context_extensions.dart';
+import 'text_widget.dart';
 
-/// 🧩 Types of buttons available
 enum ButtonType { filled, text }
 
-/// 🍎 [CustomButton] a button with glass & dynamic visuals
+/// 🍎 [CustomButton] — macOS/iOS-styled button with loading and enabled states
 class CustomButton extends StatelessWidget {
-  final void Function()? onPressed;
+  final VoidCallback? onPressed;
   final ButtonType type;
+  final bool isLoading;
+  final bool isEnabled;
+  final String label;
   final Color? foregroundColor;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final Widget child;
 
   const CustomButton({
     super.key,
+    required this.label,
     required this.onPressed,
     required this.type,
+    this.isLoading = false,
+    this.isEnabled = true,
     this.foregroundColor,
     this.fontSize = 17,
     this.fontWeight = FontWeight.w600,
-    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = context.colorScheme;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final scheme = context.colorScheme;
+    final isDark = context.isDarkMode;
+    final borderRadius = BorderRadius.circular(14);
 
-    final background =
-        isDark
-            ? Colors.grey.shade100.withOpacity(0.1)
-            : context.colorScheme.primary;
+    final baseColor =
+        type == ButtonType.filled
+            ? (isDark
+                ? Colors.white.withOpacity(0.05)
+                : scheme.primary.withOpacity(0.08))
+            : Colors.transparent;
 
-    final blurShadow = [
-      BoxShadow(
-        color: Colors.black.withOpacity(0.1),
-        blurRadius: 0.5,
-        offset: const Offset(2, 2),
-      ),
-      BoxShadow(
-        color: Colors.white.withOpacity(0.3),
-        blurRadius: 2,
-        offset: const Offset(-2, -2),
-      ),
-    ];
+    final textColor =
+        type == ButtonType.filled
+            ? Colors.white
+            : foregroundColor ?? scheme.primary;
 
-    final borderRadius = BorderRadius.circular(12);
-
-    return type == ButtonType.filled
-        ? SizedBox(
-          width: double.infinity,
-          child: Container(
-            decoration: BoxDecoration(
-              color: background,
-              borderRadius: borderRadius,
-              boxShadow: blurShadow,
-              border: Border.all(
-                color: Colors.white.withOpacity(0.2),
-                width: 1,
+    final shadow =
+        type == ButtonType.filled
+            ? [
+              BoxShadow(
+                color:
+                    isDark
+                        ? Colors.black.withOpacity(0.2)
+                        : Colors.black.withOpacity(0.05),
+                blurRadius: 12,
+                offset: const Offset(0, 3),
               ),
-            ),
-            child: FilledButton(
-              onPressed: onPressed,
-              style: FilledButton.styleFrom(
-                backgroundColor: background,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: borderRadius),
-                textStyle: TextStyle(
-                  fontFamily: 'SFProText',
-                  fontSize: fontSize,
-                  fontWeight: fontWeight,
-                ),
-              ),
-              child: child,
-            ),
-          ),
-        )
-        : TextButton(
-          onPressed: onPressed,
-          style: TextButton.styleFrom(
-            foregroundColor: foregroundColor ?? colorScheme.primary,
-            textStyle: TextStyle(
-              fontFamily: 'SFProText',
-              fontSize: fontSize,
+            ]
+            : null;
+
+    final content =
+        isLoading
+            ? const CupertinoActivityIndicator(radius: 12, color: Colors.white)
+            : TextWidget(
+              label,
+              TextType.button,
               fontWeight: fontWeight,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              fontSize: fontSize,
+              color: textColor,
+            );
+
+    final safeAction = (isEnabled && !isLoading) ? onPressed : null;
+
+    final child = AnimatedSwitcher(
+      duration: const Duration(milliseconds: 300),
+      switchInCurve: Curves.easeOut,
+      switchOutCurve: Curves.easeIn,
+      child: content,
+    );
+
+    if (type == ButtonType.filled) {
+      return SizedBox(
+        width: double.infinity,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: baseColor,
+            borderRadius: borderRadius,
+            boxShadow: shadow,
+            border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
           ),
-          child: child,
-        );
+          child: FilledButton(
+            onPressed: safeAction,
+            style: FilledButton.styleFrom(
+              backgroundColor: scheme.primary.withOpacity(0.9),
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: borderRadius),
+              textStyle: TextStyle(
+                fontFamily: 'SFProText',
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+              ),
+              elevation: 0,
+            ),
+            child: child,
+          ),
+        ),
+      );
+    }
+
+    return TextButton(
+      onPressed: safeAction,
+      style: TextButton.styleFrom(
+        foregroundColor: textColor,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        shape: RoundedRectangleBorder(borderRadius: borderRadius),
+        textStyle: TextStyle(
+          fontFamily: 'SFProText',
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
+      ),
+      child: child,
+    );
   }
 }
