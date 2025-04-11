@@ -54,8 +54,49 @@ extension WidgetPaddingX on Widget {
     padding: EdgeInsets.symmetric(horizontal: h, vertical: v),
     child: this,
   );
+
+  /// Adds padding only to specified sides
+  Widget paddingOnly({
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+  }) => Padding(
+    padding: EdgeInsets.only(
+      left: left,
+      top: top,
+      right: right,
+      bottom: bottom,
+    ),
+    child: this,
+  );
+
+  /// Adds horizontal padding only
+  Widget paddingHorizontal(double value) =>
+      Padding(padding: EdgeInsets.symmetric(horizontal: value), child: this);
+
+  /// Adds vertical padding only
+  Widget paddingVertical(double value) =>
+      Padding(padding: EdgeInsets.symmetric(vertical: value), child: this);
+
+  /// Adds top padding only
+  Widget paddingTop(double value) =>
+      Padding(padding: EdgeInsets.only(top: value), child: this);
+
+  /// Adds bottom padding only
+  Widget paddingBottom(double value) =>
+      Padding(padding: EdgeInsets.only(bottom: value), child: this);
+
+  /// Adds left padding only
+  Widget paddingLeft(double value) =>
+      Padding(padding: EdgeInsets.only(left: value), child: this);
+
+  /// Adds right padding only
+  Widget paddingRight(double value) =>
+      Padding(padding: EdgeInsets.only(right: value), child: this);
 }
 
+///
 extension WidgetVisibilityX on Widget {
   /// Hides the widget if [shouldHide] is true
   Widget hide(bool shouldHide) => shouldHide ? const SizedBox.shrink() : this;

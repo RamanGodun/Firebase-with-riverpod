@@ -73,11 +73,37 @@ class CustomButton extends StatelessWidget {
 
     final safeAction = (isEnabled && !isLoading) ? onPressed : null;
 
-    final child = AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      switchInCurve: Curves.easeOut,
-      switchOutCurve: Curves.easeIn,
-      child: content,
+    // final child = AnimatedSwitcher(
+    //   duration: const Duration(milliseconds: 300),
+    //   switchInCurve: Curves.easeOut,
+    //   switchOutCurve: Curves.easeIn,
+    //   child: content,
+    // );
+
+    final child = AnimatedSize(
+      duration: const Duration(milliseconds: 250),
+      curve: Curves.easeInOut,
+      alignment: Alignment.center,
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 250),
+        switchInCurve: Curves.easeOut,
+        switchOutCurve: Curves.easeIn,
+        layoutBuilder:
+            (currentChild, previousChildren) => Stack(
+              alignment: Alignment.center,
+              children: [
+                if (currentChild != null) currentChild,
+                ...previousChildren,
+              ],
+            ),
+        transitionBuilder: (child, animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: ScaleTransition(scale: animation, child: child),
+          );
+        },
+        child: content,
+      ),
     );
 
     if (type == ButtonType.filled) {
