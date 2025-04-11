@@ -12,7 +12,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isNeedPaddingAfterActionIcon;
   final List<Widget>? actionWidgets;
 
-  /// ✅ All parameters in single `const` constructor
   const CustomAppBar({
     super.key,
     required this.title,

@@ -39,10 +39,5 @@ class Helpers {
     );
   }
 
-  /// Add more specific helpers here if needed
-  /// ⛔ Removes focus from any input fields (closes keyboard)
-  static void Function() unfocusFrom(BuildContext context) =>
-      () => FocusScope.of(context).unfocus();
-
   ///
 }

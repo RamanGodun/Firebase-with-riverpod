@@ -40,8 +40,6 @@ extension ThemeModeX on ThemeMode {
       this == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
 }
 
-
-
 // ===============================
 // 📦 Widget Extensions
 // ===============================

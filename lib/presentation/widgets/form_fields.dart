@@ -42,7 +42,7 @@ class CustomFormField extends StatelessWidget {
     );
   }
 
-  // ========== PRIVATE METHODS ========== //
+  // ------------------ PRIVATE METHODS ------------------ //
 
   String _getLabelText() {
     switch (type) {

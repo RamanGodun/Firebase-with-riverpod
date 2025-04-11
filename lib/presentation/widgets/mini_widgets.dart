@@ -17,7 +17,7 @@ class AppMiniWidgets extends StatelessWidget {
       case MWType.loading:
         return const Center(child: CircularProgressIndicator.adaptive());
       case MWType.error:
-        //! It's necessary to handle StackTrace st value (if it available)
+        // ?  It's necessary to handle StackTrace st value (if it available)
         return Center(
           child: TextWidget(
             error?.toString() ?? 'An unknown error occurred',

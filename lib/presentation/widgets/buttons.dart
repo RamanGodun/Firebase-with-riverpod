@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// 🧩 Types of buttons available
 enum ButtonType { filled, text }
 
-/// 🍎 CustomButton - A modern iOS/macOS-style button with glass & dynamic visuals
+/// 🍎 [CustomButton] a button with glass & dynamic visuals
 class CustomButton extends StatelessWidget {
   final void Function()? onPressed;
   final ButtonType type;
@@ -30,8 +30,8 @@ class CustomButton extends StatelessWidget {
 
     final background =
         isDark
-            ? Colors.white.withOpacity(0.05)
-            : Colors.grey.shade100.withOpacity(0.4);
+            ? Colors.grey.shade100.withOpacity(0.1)
+            : context.colorScheme.primary;
 
     final blurShadow = [
       BoxShadow(

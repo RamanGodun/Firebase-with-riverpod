@@ -22,7 +22,7 @@ class SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: Helpers.unfocusFrom(context),
+      onTap: context.unfocusKeyboard,
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Sign In'),
         body: Center(

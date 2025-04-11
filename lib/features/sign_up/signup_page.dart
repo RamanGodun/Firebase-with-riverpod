@@ -21,7 +21,7 @@ class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: Helpers.unfocusFrom(context),
+      onTap: context.unfocusKeyboard,
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Sign Up'),
         body: Center(
@@ -29,12 +29,10 @@ class SignupPage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
             child: ListView(
               shrinkWrap: true,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
-                const _SignupHeader(),
-                // ignore: prefer_const_constructors
-                SignupFormFields(), // ✅ Без const, бо змінний стан
-                const _SignupFooter(),
+              children: const [
+                _SignupHeader(),
+                SignupFormFields(),
+                _SignupFooter(),
               ],
             ),
           ),

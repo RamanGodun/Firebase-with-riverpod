@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
@@ -27,10 +28,9 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   /// 🔁 Toggle between light & dark mode
   void toggleTheme() {
-    final isDark = state == ThemeMode.dark;
-    final newTheme = isDark ? ThemeMode.light : ThemeMode.dark;
-
-    state = newTheme;
-    _storage.write('selectedTheme', newTheme.name);
+    state = state.toggle();
+    _storage.write('selectedTheme', state.name);
   }
+
+  ///
 }

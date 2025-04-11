@@ -3,7 +3,7 @@ import '../../core/constants/app_constants.dart' show AppConstants;
 
 /// 📄 Flexible text widget with theme integration & extended customization.
 class TextWidget extends StatelessWidget {
-  final String? text;
+  final String text;
   final TextType? textType;
   final Color? color;
   final TextAlign? alignment;
@@ -41,7 +41,7 @@ class TextWidget extends StatelessWidget {
     /// 🛠 Builds styled Text widget.
     Text buildText(TextStyle? baseStyle) {
       return Text(
-        text ?? 'No text provided',
+        text,
         textAlign: alignment ?? TextAlign.center,
         maxLines: isTextOnFewStrings == true ? null : maxLines,
         softWrap: isTextOnFewStrings == true ? true : null,

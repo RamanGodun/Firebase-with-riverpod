@@ -29,8 +29,6 @@ class MainApp extends ConsumerWidget {
       title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
       routerConfig: router,
-
-      ///
       theme: AppThemes.getLightTheme(),
       darkTheme: AppThemes.getDarkTheme(),
       themeMode: themeMode,
