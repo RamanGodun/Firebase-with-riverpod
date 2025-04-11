@@ -1,5 +1,5 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
-import '../../core/utils_and_services/helpers.dart';
 
 /// 🧩 Types of buttons available
 enum ButtonType { filled, text }
@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Helpers.getColorScheme(context);
+    final colorScheme = context.colorScheme;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final background =

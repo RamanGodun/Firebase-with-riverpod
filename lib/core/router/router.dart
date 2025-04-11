@@ -9,6 +9,7 @@ import '../../presentation/pages/page_not_found.dart';
 import '../../features/reset_password/reset_password_page.dart';
 import '../../features/sign_in/signin_page.dart';
 import '../../features/sign_up/signup_page.dart';
+import '../../presentation/pages/reauthenticate_page.dart';
 import '../../presentation/pages/verify_email_page.dart';
 import '../../presentation/widgets/mini_widgets.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
@@ -114,6 +115,12 @@ GoRouter router(Ref ref) {
         path: '/verifyEmail',
         name: RoutesNames.verifyEmail,
         builder: (context, state) => const VerifyEmailPage(),
+      ),
+
+      GoRoute(
+        path: '/reAuthenticationPage',
+        name: RoutesNames.reAuthenticationPage,
+        builder: (context, state) => const ReAuthenticationPage(),
       ),
 
       ///

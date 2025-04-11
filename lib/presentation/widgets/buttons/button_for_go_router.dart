@@ -1,6 +1,6 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../core/constants/app_constants.dart' show AppSpacing;
-import '../../../core/utils_and_services/helpers.dart';
 import '../text_widget.dart';
 
 /// 🌍 [CustomButtonForGoRouter] styled full-width button,
@@ -23,7 +23,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Helpers.getColorScheme(context);
+    final colorScheme = context.colorScheme;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -57,8 +57,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
     }
 
     if (routeName?.isNotEmpty ?? false) {
-      Helpers.goTo(
-        context,
+      context.goTo(
         routeName!,
         pathParameters: pathParameters ?? const {},
         queryParameters: queryParameters ?? const {},

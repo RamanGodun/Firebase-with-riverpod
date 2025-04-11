@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/router/routes_names.dart';
@@ -87,7 +88,7 @@ class _ResetPasswordPageState extends ConsumerState<ResetPasswordPage> {
         );
 
         if (!context.mounted) return;
-        Helpers.goTo(context, RoutesNames.signin);
+        context.goTo(RoutesNames.signin);
       },
     );
   }
@@ -186,7 +187,7 @@ class _ResetPasswordFooter extends StatelessWidget {
           const TextWidget('Remember password? ', TextType.bodyMedium),
           CustomButton(
             type: ButtonType.text,
-            onPressed: () => Helpers.goTo(context, RoutesNames.signin),
+            onPressed: () => context.goTo(RoutesNames.signin),
             child: const TextWidget('Sign In', TextType.button),
           ),
         ],

@@ -24,7 +24,7 @@ class _AnimatedOverlayWidget extends HookWidget {
       ).chain(CurveTween(curve: Curves.elasticOut)),
     );
 
-    final colorScheme = Helpers.getColorScheme(context);
+    final colorScheme = context.colorScheme;
     final isDark = colorScheme.brightness == Brightness.dark;
 
     final backgroundColor =

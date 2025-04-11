@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/router/routes_names.dart';
@@ -20,7 +21,7 @@ class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Helpers.unfocus(context),
+      onTap: Helpers.unfocusFrom(context),
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Sign Up'),
         body: Center(
@@ -170,7 +171,7 @@ class _SignupFooter extends StatelessWidget {
         const TextWidget('Already a member? ', TextType.titleSmall),
         CustomButton(
           type: ButtonType.text,
-          onPressed: () => Helpers.goTo(context, RoutesNames.signin),
+          onPressed: () => context.goTo(RoutesNames.signin),
           child: const TextWidget('Sign In!', TextType.error),
         ),
       ],

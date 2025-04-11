@@ -1,12 +1,10 @@
+import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../core/router/routes_names.dart';
-import '../../core/utils_and_services/helpers.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_widget.dart';
-
-/// **Page Not Found**
-/// - Displays an error message if the page is not found.
-/// - Provides a button to navigate back to the home page.
 
 class PageNotFound extends StatelessWidget {
   final String errorMessage;
@@ -16,14 +14,13 @@ class PageNotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const TextWidget('Page Not Found', TextType.titleMedium),
-      ),
+      appBar: const CustomAppBar(title: 'Page Not Found'),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.all(AppSpacing.l),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            spacing: AppSpacing.m,
             children: [
               TextWidget(
                 errorMessage.isNotEmpty
@@ -32,10 +29,10 @@ class PageNotFound extends StatelessWidget {
                 TextType.error,
                 alignment: TextAlign.center,
               ),
-              const SizedBox(height: 20),
+
               CustomButton(
                 type: ButtonType.filled,
-                onPressed: () => Helpers.goTo(context, RoutesNames.home),
+                onPressed: () => context.goTo(RoutesNames.home),
                 child: const TextWidget('Home', TextType.button),
               ),
             ],

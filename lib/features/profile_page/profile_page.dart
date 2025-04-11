@@ -1,9 +1,9 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/entities/custom_error.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
-import '../../core/utils_and_services/helpers.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/firebase_constants.dart';
 import '../../presentation/widgets/buttons.dart';
@@ -77,7 +77,7 @@ class _UserProfile extends StatelessWidget {
           const SizedBox(height: 40),
           CustomButton(
             type: ButtonType.filled,
-            onPressed: () => Helpers.goTo(context, RoutesNames.changePassword),
+            onPressed: () => context.goTo(RoutesNames.changePassword),
             child: const TextWidget('Change Password', TextType.button),
           ),
         ],

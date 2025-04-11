@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
@@ -102,16 +103,14 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
 
   Future<void> _processRequiresRecentLogin() async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
-    final result = await Helpers.pushTo<String>(
-      context,
-      const ReauthenticatePage(),
-    );
+    // 📦 Push ReauthenticationPage and wait for result
+    final result = await context.pushTo<String>(const ReAuthenticationPage());
 
     if (result == 'success') {
       Helpers.showSnackbar(scaffoldMessenger, 'Successfully reauthenticated');
     }
   }
-
+  //context.pushToNamed(RoutesNames.home)
   // =========== Submit method =========== //
 
   void _submit() {

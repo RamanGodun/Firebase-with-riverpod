@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
@@ -7,26 +8,26 @@ import '../widgets/custom_app_bar.dart';
 import '../widgets/form_fields.dart';
 import '../widgets/text_widget.dart';
 
-/// **Reauthentication Page**
-/// - Ensures the user has recently signed in before performing security-sensitive actions.
-class ReauthenticatePage extends ConsumerStatefulWidget {
-  const ReauthenticatePage({super.key});
+class ReAuthenticationPage extends ConsumerStatefulWidget {
+  const ReAuthenticationPage({super.key});
 
   @override
-  ConsumerState<ReauthenticatePage> createState() => _ReauthenticatePageState();
+  ConsumerState<ReAuthenticationPage> createState() =>
+      _ReauthenticatePageState();
 }
 
-class _ReauthenticatePageState extends ConsumerState<ReauthenticatePage> {
+class _ReauthenticatePageState extends ConsumerState<ReAuthenticationPage> {
+  ///
   final _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   final _controllers = Helpers.createControllers(2);
   bool _submitting = false;
 
-  // =========== BUILD METHOD =========== //
+  /// ----------------- BUILD METHOD ----------------- //
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: context.unfocusKeyboard,
       child: Scaffold(
         appBar: const CustomAppBar(title: 'Reauthenticate'),
         body: Center(
@@ -41,9 +42,7 @@ class _ReauthenticatePageState extends ConsumerState<ReauthenticatePage> {
                 children:
                     [
                       const _ReauthenticateInfo(),
-                      _ReauthenticateFormFields(
-                        controllers: _controllers,
-                      ), // ✅ Без const
+                      _ReauthenticateFormFields(controllers: _controllers),
                       _ReauthenticateSubmitButton(
                         submitting: _submitting,
                         onSubmit: _submit,
@@ -57,25 +56,20 @@ class _ReauthenticatePageState extends ConsumerState<ReauthenticatePage> {
     );
   }
 
-  // =========== SUBMIT METHOD =========== //
+  /// ----------------- SUBMIT METHOD ----------------- //
   void _submit() {
     setState(() => _autovalidateMode = AutovalidateMode.always);
     final form = _formKey.currentState;
     if (form == null || !form.validate()) return;
-
     setState(() => _submitting = true);
-
     Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
-
       setState(() => _submitting = false);
-
-      /// ✅ Якщо все ок – повертаємо "success"
       Navigator.pop(context, 'success');
     });
   }
 
-  // =========== DISPOSE METHOD =========== //
+  // ----------------- DISPOSE METHOD ----------------- //
   @override
   void dispose() {
     Helpers.disposeControllers(_controllers);

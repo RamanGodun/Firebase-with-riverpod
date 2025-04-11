@@ -9,4 +9,7 @@ class RoutesNames {
   static const firebaseError = 'firebaseError';
   static const pageNotFound = 'pageNotFound';
   static const profilePage = 'profilePage';
+  static const reAuthenticationPage = 'reAuthenticationPage';
+
+  ///
 }

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../core/constants/app_constants.dart';
 import '../widgets/buttons.dart';
 import '../widgets/text_widget.dart';
-
-/// **Firebase Error Page**
-/// - Displays an error message when Firebase connection fails.
-/// - Provides a retry button for better user experience.
 
 class FirebaseErrorPage extends StatelessWidget {
   const FirebaseErrorPage({super.key});
@@ -14,12 +11,12 @@ class FirebaseErrorPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            spacing: AppSpacing.m,
             children: [
               const TextWidget('Firebase Connection Error', TextType.error),
-              const SizedBox(height: 10.0),
               const TextWidget('Please try again later!', TextType.bodyMedium),
               const SizedBox(height: 20.0),
               CustomButton(
