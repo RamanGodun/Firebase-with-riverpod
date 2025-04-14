@@ -1,16 +1,19 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/router/routes_names.dart';
-import '../../core/constants/app_constants.dart';
-import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
-import '../../core/utils_and_services/helpers.dart';
-import '../../core/entities/custom_error.dart';
-import '../../presentation/widgets/buttons.dart';
-import '../../presentation/widgets/custom_app_bar.dart';
-import '../../presentation/widgets/form_fields.dart';
-import '../../presentation/widgets/text_widget.dart';
+import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
+import 'package:firebase_with_riverpod/core/router/routes_names.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/dialog_managing/error_dialog.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/helpers.dart';
+import 'package:firebase_with_riverpod/core/entities/custom_error.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/buttons.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/form_fields.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/text_widget.dart';
 import 'signin_provider.dart';
+
+part 'widgets_for_signin_page.dart';
 
 class SigninPage extends StatelessWidget {
   const SigninPage({super.key});
@@ -20,48 +23,39 @@ class SigninPage extends StatelessWidget {
     return GestureDetector(
       onTap: context.unfocusKeyboard,
       child: Scaffold(
-        appBar: const CustomAppBar(title: 'Sign In'),
+        appBar: const CustomAppBar(title: 'Sign In', isCenteredTitle: true),
         body: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
-            child: ListView(
-              shrinkWrap: true,
-
-              children: const [
-                _SigninHeader(),
-                SigninFormFields(),
-                _SigninFooter(),
-              ],
-            ),
-          ),
+          child: const _SigninFormWrapper().withPaddingHorizontal(AppSpacing.l),
         ),
       ),
     );
   }
 }
 
-class SigninFormFields extends ConsumerStatefulWidget {
-  const SigninFormFields({super.key});
+class _SigninFormWrapper extends ConsumerStatefulWidget {
+  const _SigninFormWrapper();
 
   @override
-  ConsumerState<SigninFormFields> createState() => _SigninFormFieldsState();
+  ConsumerState<_SigninFormWrapper> createState() => _SigninFormWrapperState();
 }
 
-class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
+class _SigninFormWrapperState extends ConsumerState<_SigninFormWrapper> {
   final _formKey = GlobalKey<FormState>();
-  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   final _controllers = Helpers.createControllers(2);
+  AutovalidateMode _autovalidateMode = AutovalidateMode.onUserInteraction;
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AsyncValue<void>>(signinProvider, _handleSigninError);
-    final signinState = ref.watch(signinProvider);
+    ref.listen(signinProvider, _handleSigninError);
+    final state = ref.watch(signinProvider);
 
     return Form(
       key: _formKey,
       autovalidateMode: _autovalidateMode,
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
         children: [
+          const _SigninHeader(),
           CustomFormField(
             type: FormFieldType.email,
             controller: _controllers[0],
@@ -69,26 +63,23 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
           CustomFormField(
             type: FormFieldType.password,
             controller: _controllers[1],
-            labelText: 'Password',
           ),
           const SizedBox(height: AppSpacing.xl),
           CustomButton(
             type: ButtonType.filled,
-            onPressed: signinState.maybeWhen(
-              loading: () => null,
-              orElse: () => _submit,
-            ),
-            label: signinState.maybeWhen(
-              loading: () => 'Submitting...',
-              orElse: () => 'Sign In',
-            ),
-            isEnabled: !signinState.isLoading,
-            isLoading: signinState.isLoading,
+            onPressed: state.isLoading ? null : _submit,
+            label: state.isLoading ? 'Submitting...' : 'Sign In',
+            isEnabled: !state.isLoading,
+            isLoading: state.isLoading,
           ),
+          const _SigninFooter(),
         ],
       ),
     );
   }
+
+  /// * USED methods
+  /// ---------------------------------------------------
 
   void _handleSigninError(AsyncValue<void>? _, AsyncValue<void> next) {
     next.whenOrNull(
@@ -101,7 +92,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
 
   void _submit() {
     setState(() => _autovalidateMode = AutovalidateMode.always);
-
     final form = _formKey.currentState;
     if (form == null || !form.validate()) return;
 
@@ -118,53 +108,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
     Helpers.disposeControllers(_controllers);
     super.dispose();
   }
-}
 
-// =========== STATIC WIDGETS =========== //
-
-class _SigninHeader extends StatelessWidget {
-  const _SigninHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [FlutterLogo(size: 150), SizedBox(height: AppSpacing.m)],
-    );
-  }
-}
-
-class _SigninFooter extends StatelessWidget {
-  const _SigninFooter();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(height: AppSpacing.l),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const TextWidget('Not a member? ', TextType.titleSmall),
-            CustomButton(
-              type: ButtonType.text,
-              onPressed: () => context.goTo(RoutesNames.signup),
-              label: 'Sign Up!',
-              isEnabled: true,
-              isLoading: false,
-            ),
-          ],
-        ),
-        CustomButton(
-          type: ButtonType.text,
-          onPressed: () => context.goTo(RoutesNames.resetPassword),
-          label: 'Forgot Password?',
-          foregroundColor: Colors.red,
-          isEnabled: true,
-          isLoading: false,
-        ),
-      ],
-    );
-  }
+  ///
 }

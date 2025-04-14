@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:validators/validators.dart';
+import 'package:form_validator/form_validator.dart';
 
 enum FormFieldType { confirmPassword, password, email, name }
 
@@ -19,6 +19,8 @@ class CustomFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveLabel = labelText ?? _getLabelText();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextFormField(
@@ -34,10 +36,10 @@ class CustomFormField extends StatelessWidget {
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           filled: true,
-          labelText: labelText ?? _getLabelText(),
+          labelText: effectiveLabel,
           prefixIcon: _getIcon(),
         ),
-        validator: _getValidator(),
+        validator: _buildValidator(),
       ),
     );
   }
@@ -69,38 +71,34 @@ class CustomFormField extends StatelessWidget {
     }
   }
 
-  String? Function(String?) _getValidator() {
-    return (String? value) {
-      if (value == null || value.trim().isEmpty) {
-        return '${_getLabelText()} required';
-      }
-
-      switch (type) {
-        case FormFieldType.password:
-          if (value.length < 6) {
-            return 'Password must be at least 6 characters';
+  String? Function(String?) _buildValidator() {
+    switch (type) {
+      case FormFieldType.email:
+        return ValidationBuilder()
+            .required('Email required')
+            .email('Enter a valid email')
+            .build();
+      case FormFieldType.password:
+        return ValidationBuilder()
+            .required('Password required')
+            .minLength(6, 'Password must be at least 6 characters')
+            .build();
+      case FormFieldType.name:
+        return ValidationBuilder()
+            .required('Name required')
+            .minLength(2, 'Minimum 2 characters')
+            .maxLength(12, 'Maximum 12 characters')
+            .build();
+      case FormFieldType.confirmPassword:
+        return (value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Confirm password required';
           }
-          break;
-        case FormFieldType.confirmPassword:
-          if (confirmController == null) {
-            return 'Confirm password controller is missing';
-          }
-          if (confirmController!.text != value) {
+          if (value.trim() != confirmController?.text.trim()) {
             return 'Passwords do not match';
           }
-          break;
-        case FormFieldType.email:
-          if (!isEmail(value.trim())) {
-            return 'Enter a valid email';
-          }
-          break;
-        case FormFieldType.name:
-          if (value.length < 2 || value.length > 12) {
-            return 'Name must be between 2 and 12 characters long';
-          }
-          break;
-      }
-      return null;
-    };
+          return null;
+        };
+    }
   }
 }

@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: isCenteredTitle,
       title: TextWidget(
         title,
-        TextType.titleSmall,
+        TextType.titleMedium,
         alignment: isCenteredTitle ? TextAlign.center : TextAlign.start,
       ),
       leading:
