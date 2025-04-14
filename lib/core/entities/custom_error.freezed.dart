@@ -12,8 +12,7 @@ part of 'custom_error.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CustomError {
@@ -31,9 +30,8 @@ mixin _$CustomError {
 /// @nodoc
 abstract class $CustomErrorCopyWith<$Res> {
   factory $CustomErrorCopyWith(
-    CustomError value,
-    $Res Function(CustomError) then,
-  ) = _$CustomErrorCopyWithImpl<$Res, CustomError>;
+          CustomError value, $Res Function(CustomError) then) =
+      _$CustomErrorCopyWithImpl<$Res, CustomError>;
   @useResult
   $Res call({String code, String message, String plugin});
 }
@@ -57,26 +55,20 @@ class _$CustomErrorCopyWithImpl<$Res, $Val extends CustomError>
     Object? message = null,
     Object? plugin = null,
   }) {
-    return _then(
-      _value.copyWith(
-            code:
-                null == code
-                    ? _value.code
-                    : code // ignore: cast_nullable_to_non_nullable
-                        as String,
-            message:
-                null == message
-                    ? _value.message
-                    : message // ignore: cast_nullable_to_non_nullable
-                        as String,
-            plugin:
-                null == plugin
-                    ? _value.plugin
-                    : plugin // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      plugin: null == plugin
+          ? _value.plugin
+          : plugin // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
@@ -84,9 +76,8 @@ class _$CustomErrorCopyWithImpl<$Res, $Val extends CustomError>
 abstract class _$$CustomErrorImplCopyWith<$Res>
     implements $CustomErrorCopyWith<$Res> {
   factory _$$CustomErrorImplCopyWith(
-    _$CustomErrorImpl value,
-    $Res Function(_$CustomErrorImpl) then,
-  ) = __$$CustomErrorImplCopyWithImpl<$Res>;
+          _$CustomErrorImpl value, $Res Function(_$CustomErrorImpl) then) =
+      __$$CustomErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String code, String message, String plugin});
@@ -97,9 +88,8 @@ class __$$CustomErrorImplCopyWithImpl<$Res>
     extends _$CustomErrorCopyWithImpl<$Res, _$CustomErrorImpl>
     implements _$$CustomErrorImplCopyWith<$Res> {
   __$$CustomErrorImplCopyWithImpl(
-    _$CustomErrorImpl _value,
-    $Res Function(_$CustomErrorImpl) _then,
-  ) : super(_value, _then);
+      _$CustomErrorImpl _value, $Res Function(_$CustomErrorImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of CustomError
   /// with the given fields replaced by the non-null parameter values.
@@ -110,45 +100,37 @@ class __$$CustomErrorImplCopyWithImpl<$Res>
     Object? message = null,
     Object? plugin = null,
   }) {
-    return _then(
-      _$CustomErrorImpl(
-        code:
-            null == code
-                ? _value.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as String,
-        message:
-            null == message
-                ? _value.message
-                : message // ignore: cast_nullable_to_non_nullable
-                    as String,
-        plugin:
-            null == plugin
-                ? _value.plugin
-                : plugin // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+    return _then(_$CustomErrorImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      plugin: null == plugin
+          ? _value.plugin
+          : plugin // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
 /// @nodoc
 
 class _$CustomErrorImpl with DiagnosticableTreeMixin implements _CustomError {
-  const _$CustomErrorImpl({
-    this.code = '',
-    this.message = '',
-    this.plugin = '',
-  });
+  const _$CustomErrorImpl(
+      {this.code = '', this.message = '', this.plugin = ''});
 
   @override
   @JsonKey()
   final String code;
-  // Unique error code
+// Unique error code
   @override
   @JsonKey()
   final String message;
-  // Error message
+// Error message
   @override
   @JsonKey()
   final String plugin;
@@ -191,11 +173,10 @@ class _$CustomErrorImpl with DiagnosticableTreeMixin implements _CustomError {
 }
 
 abstract class _CustomError implements CustomError {
-  const factory _CustomError({
-    final String code,
-    final String message,
-    final String plugin,
-  }) = _$CustomErrorImpl;
+  const factory _CustomError(
+      {final String code,
+      final String message,
+      final String plugin}) = _$CustomErrorImpl;
 
   @override
   String get code; // Unique error code

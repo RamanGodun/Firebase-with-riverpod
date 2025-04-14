@@ -9,7 +9,6 @@ part of 'auth_repository_provider.dart';
 String _$authRepositoryHash() => r'19a3485653561ac2f781b997131430c5659286d1';
 
 /// **Authentication Repository Provider**
-///
 /// Provides an instance of [AuthRepository] to manage authentication-related operations.
 ///
 /// Copied from [authRepository].

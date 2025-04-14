@@ -6,13 +6,15 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'9638a7325813f15c489ccc8d0e8942189457ac3b';
+String _$routerHash() => r'aa7684c33b0781173786ea6f738e14792d6a7bc1';
 
-/// **Router Provider**
-///
-/// This provider manages the app's navigation using [GoRouter].
-/// It listens to the authentication state and dynamically redirects users
-/// to the appropriate screens based on their authentication status and email verification state.
+/// 🧭 [router] — GoRouter provider with dynamic auth-aware redirects
+/// Listens to Firebase auth state and redirects:
+///   • `/signin` if unauthenticated
+///   • `/verifyEmail` if email is not verified
+///   • `/firebaseError` on auth stream error
+///   • `/splash` while loading
+///   • Otherwise → `/home` or matched route
 ///
 /// Copied from [router].
 @ProviderFor(router)

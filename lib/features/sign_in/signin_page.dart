@@ -100,9 +100,7 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
   }
 
   void _submit() {
-    setState(
-      () => _autovalidateMode = AutovalidateMode.always,
-    ); // ✅ Включає валідацію
+    setState(() => _autovalidateMode = AutovalidateMode.always);
 
     final form = _formKey.currentState;
     if (form == null || !form.validate()) return;
@@ -136,8 +134,6 @@ class _SigninHeader extends StatelessWidget {
   }
 }
 
-/// **Footer Section**
-/// - Provides links for sign-up and password recovery.
 class _SigninFooter extends StatelessWidget {
   const _SigninFooter();
 

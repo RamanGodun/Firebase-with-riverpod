@@ -111,7 +111,6 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
     }
   }
 
-
   // ----------------- Submit method ----------------- //
 
   void _submit() {
