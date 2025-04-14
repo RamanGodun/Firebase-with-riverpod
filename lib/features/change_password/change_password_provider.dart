@@ -4,17 +4,11 @@ import '../../data/repositories/auth/auth_repository_provider.dart';
 part 'change_password_provider.g.dart';
 
 /// **Change Password Provider**
-///
 /// A Riverpod provider responsible for handling the change password feature.
-///
 /// - **Manages state** using `AsyncValue<void>`
 /// - **Calls** [AuthRepository] to execute the password change.
 /// - **Optimized for performance** with `AsyncValue.guard()`
-///
-/// Usage:
-/// ```dart
-/// ref.read(changePasswordProvider.notifier).changePassword(newPassword);
-/// ```
+
 @riverpod
 class ChangePassword extends _$ChangePassword {
   /// **Build method**

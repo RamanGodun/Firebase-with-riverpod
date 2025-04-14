@@ -46,17 +46,17 @@ extension ThemeModeX on ThemeMode {
 
 extension WidgetPaddingX on Widget {
   /// Adds padding to all sides
-  Widget paddingAll(double value) =>
+  Widget withPaddingAll(double value) =>
       Padding(padding: EdgeInsets.all(value), child: this);
 
   /// Adds symmetric padding horizontally & vertically
-  Widget paddingSymmetric({double h = 0, double v = 0}) => Padding(
+  Widget withPaddingSymmetric({double h = 0, double v = 0}) => Padding(
     padding: EdgeInsets.symmetric(horizontal: h, vertical: v),
     child: this,
   );
 
   /// Adds padding only to specified sides
-  Widget paddingOnly({
+  Widget withPaddingOnly({
     double left = 0,
     double top = 0,
     double right = 0,
@@ -72,27 +72,27 @@ extension WidgetPaddingX on Widget {
   );
 
   /// Adds horizontal padding only
-  Widget paddingHorizontal(double value) =>
+  Widget withPaddingHorizontal(double value) =>
       Padding(padding: EdgeInsets.symmetric(horizontal: value), child: this);
 
   /// Adds vertical padding only
-  Widget paddingVertical(double value) =>
+  Widget withPaddingVertical(double value) =>
       Padding(padding: EdgeInsets.symmetric(vertical: value), child: this);
 
   /// Adds top padding only
-  Widget paddingTop(double value) =>
+  Widget withPaddingTop(double value) =>
       Padding(padding: EdgeInsets.only(top: value), child: this);
 
   /// Adds bottom padding only
-  Widget paddingBottom(double value) =>
+  Widget withPaddingBottom(double value) =>
       Padding(padding: EdgeInsets.only(bottom: value), child: this);
 
   /// Adds left padding only
-  Widget paddingLeft(double value) =>
+  Widget withPaddingLeft(double value) =>
       Padding(padding: EdgeInsets.only(left: value), child: this);
 
   /// Adds right padding only
-  Widget paddingRight(double value) =>
+  Widget withPaddingRight(double value) =>
       Padding(padding: EdgeInsets.only(right: value), child: this);
 }
 

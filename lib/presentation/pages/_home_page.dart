@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
           IconButton(
             onPressed: () => context.pushToNamed(RoutesNames.profilePage),
             icon: const Icon(Icons.person_2),
-          ).paddingRight(AppSpacing.m),
+          ).withPaddingRight(AppSpacing.m),
         ],
       ),
 
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
           'You can go to profile page and make some settings',
           TextType.bodyLarge,
           isTextOnFewStrings: true,
-        ).paddingHorizontal(AppSpacing.l),
+        ).withPaddingHorizontal(AppSpacing.l),
       ),
     );
   }

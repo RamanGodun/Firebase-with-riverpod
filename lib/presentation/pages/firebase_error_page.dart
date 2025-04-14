@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import '../widgets/buttons.dart';
@@ -10,25 +11,22 @@ class FirebaseErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: AppSpacing.m,
-            children: [
-              const TextWidget('Firebase Connection Error', TextType.error),
-              const TextWidget('Please try again later!', TextType.bodyMedium),
-              const SizedBox(height: 20.0),
-              CustomButton(
-                type: ButtonType.filled,
-                onPressed: () => Navigator.pop(context),
-                label: 'Retry',
-                isEnabled: true,
-                isLoading: false,
-              ),
-            ],
-          ),
-        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: AppSpacing.m,
+          children: [
+            const TextWidget('Firebase Connection Error', TextType.error),
+            const TextWidget('Please try again later!', TextType.bodyMedium),
+            const SizedBox(height: 20.0),
+            CustomButton(
+              type: ButtonType.filled,
+              onPressed: () => Navigator.pop(context),
+              label: 'Retry',
+              isEnabled: true,
+              isLoading: false,
+            ),
+          ],
+        ).withPaddingHorizontal(AppSpacing.l),
       ),
     );
   }

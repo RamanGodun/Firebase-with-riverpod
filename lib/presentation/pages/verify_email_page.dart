@@ -12,11 +12,6 @@ import '../widgets/buttons.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/text_widget.dart';
 
-/// **Verify Email Page**
-/// - Sends a verification email to the user.
-/// - Periodically checks if the email has been verified.
-/// - Redirects to home once verification is complete.
-
 class VerifyEmailPage extends ConsumerStatefulWidget {
   const VerifyEmailPage({super.key});
 
@@ -38,7 +33,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
     );
   }
 
-  // =========== BUILD METHOD =========== //
+  // ----------------- BUILD METHOD ----------------- //
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +55,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
     );
   }
 
-  // =========== EMAIL VERIFICATION METHODS =========== //
+  // ----------------- EMAIL VERIFICATION METHODS ----------------- //
 
   Future<void> _sendEmailVerification() async {
     try {
@@ -87,7 +82,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
     }
   }
 
-  // =========== DISPOSE METHOD =========== //
+  // ----------------- DISPOSE METHOD ----------------- //
 
   @override
   void dispose() {
@@ -97,7 +92,7 @@ class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
   }
 }
 
-// =========== STATIC WIDGETS =========== //
+// ----------------- STATIC WIDGETS ----------------- //
 
 /// **Verification Info Section**
 /// - Displays email verification instructions.
@@ -145,10 +140,8 @@ class _VerifyEmailInfo extends StatelessWidget {
   }
 }
 
-/// **Cancel Button**
-/// - Allows users to cancel email verification and log out.
 class _VerifyEmailCancelButton extends ConsumerWidget {
-  final Timer? timer; // ✅ Таймер може бути null
+  final Timer? timer;
 
   const _VerifyEmailCancelButton({required this.timer});
 

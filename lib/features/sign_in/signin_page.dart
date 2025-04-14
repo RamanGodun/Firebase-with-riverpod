@@ -12,10 +12,6 @@ import '../../presentation/widgets/form_fields.dart';
 import '../../presentation/widgets/text_widget.dart';
 import 'signin_provider.dart';
 
-/// **Sign In Page**
-/// - Allows users to log in with their credentials.
-/// - Provides links for signing up and password recovery.
-
 class SigninPage extends StatelessWidget {
   const SigninPage({super.key});
 
@@ -44,11 +40,6 @@ class SigninPage extends StatelessWidget {
   }
 }
 
-// =========== FORM FIELDS WIDGET =========== //
-
-/// **Sign-in Form**
-/// - Collects email and password for authentication.
-/// - Handles form validation and submission.
 class SigninFormFields extends ConsumerStatefulWidget {
   const SigninFormFields({super.key});
 
@@ -60,8 +51,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
   final _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   final _controllers = Helpers.createControllers(2);
-
-  // =========== BUILD METHOD =========== //
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +90,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
     );
   }
 
-  // =========== PROVIDER LISTENING =========== //
-
   void _handleSigninError(AsyncValue<void>? _, AsyncValue<void> next) {
     next.whenOrNull(
       error: (e, st) {
@@ -111,8 +98,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
       },
     );
   }
-
-  // =========== SUBMIT METHOD =========== //
 
   void _submit() {
     setState(
@@ -130,8 +115,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
         );
   }
 
-  // =========== DISPOSE METHOD =========== //
-
   @override
   void dispose() {
     Helpers.disposeControllers(_controllers);
@@ -141,8 +124,6 @@ class _SigninFormFieldsState extends ConsumerState<SigninFormFields> {
 
 // =========== STATIC WIDGETS =========== //
 
-/// **Header Section**
-/// Displays app logo and spacing.
 class _SigninHeader extends StatelessWidget {
   const _SigninHeader();
 

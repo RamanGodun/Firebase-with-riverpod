@@ -43,6 +43,7 @@ class _ReauthenticatePageState extends ConsumerState<ReAuthenticationPage> {
                     [
                       const _ReauthenticateInfo(),
                       _ReauthenticateFormFields(controllers: _controllers),
+                      const SizedBox(height: 70),
                       _ReauthenticateSubmitButton(
                         submitting: _submitting,
                         onSubmit: _submit,
@@ -77,10 +78,8 @@ class _ReauthenticatePageState extends ConsumerState<ReAuthenticationPage> {
   }
 }
 
-// =========== STATIC WIDGETS =========== //
+// ----------------- STATIC WIDGETS ----------------- //
 
-/// **Reauthentication Info Section**
-/// - Displays instructions for the user.
 class _ReauthenticateInfo extends StatelessWidget {
   const _ReauthenticateInfo();
 
@@ -90,8 +89,9 @@ class _ReauthenticateInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         TextWidget(
-          'This is a security-sensitive operation\nyou must have recently signed in!',
-          TextType.bodyMedium,
+          'This is a security-sensitive operation, you must have recently signed in!',
+          TextType.titleMedium,
+          isTextOnFewStrings: true,
         ),
         SizedBox(height: AppSpacing.m),
       ],
@@ -99,8 +99,6 @@ class _ReauthenticateInfo extends StatelessWidget {
   }
 }
 
-/// **Form Fields Section**
-/// - Collects email and password for reauthentication.
 class _ReauthenticateFormFields extends StatelessWidget {
   final List<TextEditingController> controllers;
 
@@ -122,8 +120,6 @@ class _ReauthenticateFormFields extends StatelessWidget {
   }
 }
 
-/// **Submit Button Section**
-/// - Handles form submission with state validation.
 class _ReauthenticateSubmitButton extends StatelessWidget {
   final bool submitting;
   final VoidCallback onSubmit;

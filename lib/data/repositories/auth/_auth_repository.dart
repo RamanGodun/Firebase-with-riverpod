@@ -3,17 +3,14 @@ import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../sources/remote/firebase_constants.dart';
 
 /// **Authentication Repository**
-///
-/// This repository provides methods for handling authentication-related
+/// [AuthRepository] provides methods for handling authentication-related
 /// operations, including signing up, signing in, signing out, and password management.
+
 class AuthRepository {
-  /// **Get Current User**
   ///
   /// Returns the currently authenticated user or `null` if not signed in.
   User? get currentUser => fbAuth.currentUser;
 
-  /// **Sign Up**
-  ///
   /// Creates a new user with the provided [name], [email], and [password].
   /// The user details are then stored in Firestore.
   Future<void> signup({
@@ -38,8 +35,6 @@ class AuthRepository {
     }
   }
 
-  /// **Sign In**
-  ///
   /// Authenticates a user with the provided [email] and [password].
   Future<void> signin({required String email, required String password}) async {
     try {
@@ -49,8 +44,6 @@ class AuthRepository {
     }
   }
 
-  /// **Sign Out**
-  ///
   /// Signs out the currently authenticated user.
   Future<void> signout() async {
     try {
@@ -60,8 +53,6 @@ class AuthRepository {
     }
   }
 
-  /// **Change Password**
-  ///
   /// Updates the current user's password to the new [password].
   Future<void> changePassword(String password) async {
     try {
@@ -71,8 +62,6 @@ class AuthRepository {
     }
   }
 
-  /// **Send Password Reset Email**
-  ///
   /// Sends a password reset email to the specified [email].
   Future<void> sendPasswordResetEmail(String email) async {
     try {
@@ -82,8 +71,6 @@ class AuthRepository {
     }
   }
 
-  /// **Send Email Verification**
-  ///
   /// Sends a verification email to the currently signed-in user.
   Future<void> sendEmailVerification() async {
     try {
@@ -93,8 +80,6 @@ class AuthRepository {
     }
   }
 
-  /// **Reload User**
-  ///
   /// Reloads the current user's authentication state.
   Future<void> reloadUser() async {
     try {
@@ -104,8 +89,6 @@ class AuthRepository {
     }
   }
 
-  /// **Reauthenticate with Credentials**
-  ///
   /// Reauthenticates the current user using their [email] and [password].
   /// This is required for sensitive operations, such as changing the email or password.
   Future<void> reauthenticateWithCredential(

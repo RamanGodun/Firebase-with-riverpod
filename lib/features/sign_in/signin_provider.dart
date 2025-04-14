@@ -4,17 +4,11 @@ import '../../../data/repositories/auth/auth_repository_provider.dart';
 part 'signin_provider.g.dart';
 
 /// **Signin Provider**
-///
 /// A Riverpod provider responsible for handling user sign-in.
-///
 /// - **Manages authentication state** using `AsyncValue<void>`.
 /// - **Calls** [AuthRepository] to perform user sign-in.
 /// - **Ensures error safety** with `AsyncValue.guard()`.
-///
-/// Usage:
-/// ```dart
-/// ref.read(signinProvider.notifier).signin(email: userEmail, password: userPassword);
-/// ```
+
 @riverpod
 class Signin extends _$Signin {
   /// **Build method**

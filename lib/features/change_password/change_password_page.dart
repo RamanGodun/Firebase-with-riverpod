@@ -88,7 +88,7 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
     });
   }
 
-  // =========== Success handling  =========== //
+  // ----------------- Success handling  ----------------- //
 
   Future<void> _processSuccessCase() async {
     try {
@@ -99,7 +99,7 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
     }
   }
 
-  // =========== Reauthentication prompt =========== //
+  // ----------------- Reauthentication prompt ----------------- //
 
   Future<void> _processRequiresRecentLogin() async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
@@ -110,8 +110,9 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
       Helpers.showSnackbar(scaffoldMessenger, 'Successfully reauthenticated');
     }
   }
-  //context.pushToNamed(RoutesNames.home)
-  // =========== Submit method =========== //
+
+
+  // ----------------- Submit method ----------------- //
 
   void _submit() {
     setState(() => _autovalidateMode = AutovalidateMode.always);
@@ -123,7 +124,7 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
         .changePassword(_controllers[0].text.trim());
   }
 
-  // =========== Dispose method =========== //
+  // ----------------- Dispose method ----------------- //
 
   @override
   void dispose() {
@@ -132,9 +133,9 @@ class _ChangePasswordPageState extends ConsumerState<ChangePasswordPage> {
   }
 }
 
-// =========== STATIC WIDGETS =========== //
+// ----------------- STATIC WIDGETS ----------------- //
 
-// =========== CHANGE PASSWORD WIDGETS =========== //
+// ----------------- CHANGE PASSWORD WIDGETS ----------------- //
 
 /// **Change Password Info Section**
 /// - Displays warning message that the user will be signed out.
@@ -170,7 +171,7 @@ class _ChangePasswordInfo extends StatelessWidget {
   }
 }
 
-// =========== CHANGE PASSWORD FORM FIELDs WIDGETS =========== //
+// ----------------- CHANGE PASSWORD FORM FIELDs WIDGETS ----------------- //
 
 /// **Password Form Fields Section**
 /// - Includes password and confirm password fields.
@@ -204,7 +205,7 @@ class _ChangePasswordFormFields extends StatelessWidget {
   }
 }
 
-// =========== CHANGE PASSWORD SUBMIT WIDGETS =========== //
+// ----------------- CHANGE PASSWORD SUBMIT WIDGETS ----------------- //
 /// **Submit Button Section**
 /// - Handles form submission with state validation.
 class _ChangePasswordSubmitButton extends StatelessWidget {
