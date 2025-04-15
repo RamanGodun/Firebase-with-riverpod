@@ -3,11 +3,12 @@ import 'package:form_validator/form_validator.dart';
 
 enum FormFieldType { confirmPassword, password, email, name }
 
-class CustomFormField extends StatelessWidget {
+class CustomFormField extends StatefulWidget {
   final FormFieldType type;
   final TextEditingController controller;
   final TextEditingController? confirmController;
   final String? labelText;
+  final bool showToggleVisibility;
 
   const CustomFormField({
     super.key,
@@ -15,39 +16,57 @@ class CustomFormField extends StatelessWidget {
     required this.controller,
     this.confirmController,
     this.labelText,
+    this.showToggleVisibility = false,
   });
 
   @override
+  State<CustomFormField> createState() => _CustomFormFieldState();
+}
+
+class _CustomFormFieldState extends State<CustomFormField> {
+  bool _obscureText = true;
+
+  bool get _isPasswordType =>
+      widget.type == FormFieldType.password ||
+      widget.type == FormFieldType.confirmPassword;
+
+  @override
   Widget build(BuildContext context) {
-    final effectiveLabel = labelText ?? _getLabelText();
+    final effectiveLabel = widget.labelText ?? _getLabelText();
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
       child: TextFormField(
-        controller: controller,
-        obscureText:
-            type == FormFieldType.password ||
-            type == FormFieldType.confirmPassword,
+        controller: widget.controller,
+        obscureText: _isPasswordType && _obscureText,
         keyboardType:
-            type == FormFieldType.email
+            widget.type == FormFieldType.email
                 ? TextInputType.emailAddress
                 : TextInputType.text,
-        autocorrect: type != FormFieldType.email,
+        autocorrect: widget.type != FormFieldType.email,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           filled: true,
           labelText: effectiveLabel,
           prefixIcon: _getIcon(),
+          suffixIcon:
+              _isPasswordType && widget.showToggleVisibility
+                  ? IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed:
+                        () => setState(() => _obscureText = !_obscureText),
+                  )
+                  : null,
         ),
         validator: _buildValidator(),
       ),
     );
   }
 
-  // ------------------ PRIVATE METHODS ------------------ //
-
   String _getLabelText() {
-    switch (type) {
+    switch (widget.type) {
       case FormFieldType.password:
         return 'Password';
       case FormFieldType.confirmPassword:
@@ -60,7 +79,7 @@ class CustomFormField extends StatelessWidget {
   }
 
   Icon _getIcon() {
-    switch (type) {
+    switch (widget.type) {
       case FormFieldType.password:
       case FormFieldType.confirmPassword:
         return const Icon(Icons.lock);
@@ -72,7 +91,7 @@ class CustomFormField extends StatelessWidget {
   }
 
   String? Function(String?) _buildValidator() {
-    switch (type) {
+    switch (widget.type) {
       case FormFieldType.email:
         return ValidationBuilder()
             .required('Email required')
@@ -94,7 +113,7 @@ class CustomFormField extends StatelessWidget {
           if (value == null || value.trim().isEmpty) {
             return 'Confirm password required';
           }
-          if (value.trim() != confirmController?.text.trim()) {
+          if (value.trim() != widget.confirmController?.text.trim()) {
             return 'Passwords do not match';
           }
           return null;

@@ -63,6 +63,7 @@ class _SigninFormWrapperState extends ConsumerState<_SigninFormWrapper> {
           CustomFormField(
             type: FormFieldType.password,
             controller: _controllers[1],
+            showToggleVisibility: true,
           ),
           const SizedBox(height: AppSpacing.xl),
           CustomButton(
@@ -94,7 +95,6 @@ class _SigninFormWrapperState extends ConsumerState<_SigninFormWrapper> {
     setState(() => _autovalidateMode = AutovalidateMode.always);
     final form = _formKey.currentState;
     if (form == null || !form.validate()) return;
-
     ref
         .read(signinProvider.notifier)
         .signin(
