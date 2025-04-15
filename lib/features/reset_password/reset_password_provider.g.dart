@@ -16,10 +16,6 @@ String _$resetPasswordHash() => r'3e9274b011986821202fc0b592863e686dae488f';
 /// - **Calls** [AuthRepository] to send a password reset email.
 /// - **Ensures error safety** with `AsyncValue.guard()`
 ///
-/// Usage:
-/// ```dart
-/// ref.read(resetPasswordProvider.notifier).resetPassword(email: userEmail);
-/// ```
 ///
 /// Copied from [ResetPassword].
 @ProviderFor(ResetPassword)

@@ -12,7 +12,7 @@ class AppUser extends Equatable {
 
   const AppUser({this.id = '', this.name = '', this.email = ''});
 
-  /// ✅ Factory method for Firebase snapshot
+  /// Factory method for Firebase snapshot
   factory AppUser.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>?;
     return AppUser(
@@ -22,14 +22,14 @@ class AppUser extends Equatable {
     );
   }
 
-  /// ✅ Factory method for JSON
+  /// Factory method for JSON
   factory AppUser.fromJson(Map<String, dynamic> json) =>
       _$AppUserFromJson(json);
 
-  /// ✅ Convert to JSON
+  ///  Convert to JSON
   Map<String, dynamic> toJson() => _$AppUserToJson(this);
 
-  /// ✅ CopyWith
+  /// CopyWith
   AppUser copyWith({String? id, String? name, String? email}) {
     return AppUser(
       id: id ?? this.id,

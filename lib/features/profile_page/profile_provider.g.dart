@@ -29,64 +29,16 @@ class _SystemHash {
   }
 }
 
-/// **Profile Provider**
-///
-/// - Fetches the user profile from `ProfileRepository`.
-/// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-/// - Watches the `profileRepositoryProvider` for dependency injection.
-///
-/// **Parameters:**
-/// - `uid` (String): The unique identifier of the user.
-///
-/// **Returns:**
-/// - A `FutureOr<AppUser>` containing the user's profile data.
-///
-/// Copied from [profile].
+/// See also [profile].
 @ProviderFor(profile)
 const profileProvider = ProfileFamily();
 
-/// **Profile Provider**
-///
-/// - Fetches the user profile from `ProfileRepository`.
-/// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-/// - Watches the `profileRepositoryProvider` for dependency injection.
-///
-/// **Parameters:**
-/// - `uid` (String): The unique identifier of the user.
-///
-/// **Returns:**
-/// - A `FutureOr<AppUser>` containing the user's profile data.
-///
-/// Copied from [profile].
+/// See also [profile].
 class ProfileFamily extends Family<AsyncValue<AppUser>> {
-  /// **Profile Provider**
-  ///
-  /// - Fetches the user profile from `ProfileRepository`.
-  /// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-  /// - Watches the `profileRepositoryProvider` for dependency injection.
-  ///
-  /// **Parameters:**
-  /// - `uid` (String): The unique identifier of the user.
-  ///
-  /// **Returns:**
-  /// - A `FutureOr<AppUser>` containing the user's profile data.
-  ///
-  /// Copied from [profile].
+  /// See also [profile].
   const ProfileFamily();
 
-  /// **Profile Provider**
-  ///
-  /// - Fetches the user profile from `ProfileRepository`.
-  /// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-  /// - Watches the `profileRepositoryProvider` for dependency injection.
-  ///
-  /// **Parameters:**
-  /// - `uid` (String): The unique identifier of the user.
-  ///
-  /// **Returns:**
-  /// - A `FutureOr<AppUser>` containing the user's profile data.
-  ///
-  /// Copied from [profile].
+  /// See also [profile].
   ProfileProvider call(String uid) {
     return ProfileProvider(uid);
   }
@@ -111,33 +63,9 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
   String? get name => r'profileProvider';
 }
 
-/// **Profile Provider**
-///
-/// - Fetches the user profile from `ProfileRepository`.
-/// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-/// - Watches the `profileRepositoryProvider` for dependency injection.
-///
-/// **Parameters:**
-/// - `uid` (String): The unique identifier of the user.
-///
-/// **Returns:**
-/// - A `FutureOr<AppUser>` containing the user's profile data.
-///
-/// Copied from [profile].
+/// See also [profile].
 class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
-  /// **Profile Provider**
-  ///
-  /// - Fetches the user profile from `ProfileRepository`.
-  /// - Uses `FutureOr<AppUser>` to handle both synchronous and asynchronous cases.
-  /// - Watches the `profileRepositoryProvider` for dependency injection.
-  ///
-  /// **Parameters:**
-  /// - `uid` (String): The unique identifier of the user.
-  ///
-  /// **Returns:**
-  /// - A `FutureOr<AppUser>` containing the user's profile data.
-  ///
-  /// Copied from [profile].
+  /// See also [profile].
   ProfileProvider(String uid)
     : this._internal(
         (ref) => profile(ref as ProfileRef, uid),

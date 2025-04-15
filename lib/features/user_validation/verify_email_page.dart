@@ -1,93 +1,147 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import '../../core/router/routes_names.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../core/constants/app_constants.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
-import '../../data/sources/remote/firebase_constants.dart';
+import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/entities/custom_error.dart';
-import '../../presentation/widgets/old_buttons.dart';
-import '../../presentation/widgets/custom_app_bar.dart';
+import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/sources/remote/firebase_constants.dart';
+import '../../core/router/routes_names.dart';
+import '../../presentation/widgets/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
+import 'email_verification_provider.dart';
 
-part 'widgets_for_email_validation_page.dart';
-
-class VerifyEmailPage extends ConsumerStatefulWidget {
+class VerifyEmailPage extends HookConsumerWidget {
   const VerifyEmailPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _VerifyEmailPageState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(() {
+      ref.read(emailVerificationNotifierProvider.notifier);
+      return null;
+    }, []);
+
+    ref.listen(emailVerificationNotifierProvider, (prev, next) {
+      next.whenOrNull(
+        data: (_) => context.goTo(RoutesNames.home),
+        error:
+            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+      );
+    });
+
+    return const Scaffold(body: _VerifyEmailBody());
+  }
 }
 
-class _VerifyEmailPageState extends ConsumerState<VerifyEmailPage> {
-  Timer? _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _sendEmailVerification();
-    _timer = Timer.periodic(
-      const Duration(seconds: 5),
-      (_) => _checkEmailVerified(),
-    );
-  }
+class _VerifyEmailBody extends StatelessWidget {
+  const _VerifyEmailBody();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'Email Verification'),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
+    return Center(
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(context.isDarkMode ? 0.05 : 0.9),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.07),
+              blurRadius: 20,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(AppSpacing.l),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const _VerifyEmailInfo(),
-              const SizedBox(height: AppSpacing.m),
-              _VerifyEmailCancelButton(timer: _timer),
+              TextWidget(
+                'Email Verification',
+                TextType.headlineMedium,
+                fontWeight: FontWeight.w700,
+              ),
+              SizedBox(height: AppSpacing.m),
+              _VerifyEmailInfo(),
+              SizedBox(height: AppSpacing.xxxl),
+              _VerifyEmailCancelButton(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  // ----------------- EMAIL VERIFICATION METHODS ----------------- //
-
-  Future<void> _sendEmailVerification() async {
-    try {
-      await ref.read(authRepositoryProvider).sendEmailVerification();
-    } on CustomError catch (e) {
-      if (!mounted) return;
-      ErrorHandling.showErrorDialog(context, e);
-    }
-  }
-
-  Future<void> _checkEmailVerified() async {
-    final goRouter = GoRouter.of(context);
-
-    try {
-      await ref.read(authRepositoryProvider).reloadUser();
-      if (fbAuth.currentUser?.emailVerified ?? false) {
-        _timer?.cancel();
-        _timer = null;
-        goRouter.goNamed(RoutesNames.home);
-      }
-    } on CustomError catch (e) {
-      if (!mounted) return;
-      ErrorHandling.showErrorDialog(context, e);
-    }
-  }
-
-  // ----------------- DISPOSE METHOD ----------------- //
+class _VerifyEmailInfo extends StatelessWidget {
+  const _VerifyEmailInfo();
 
   @override
-  void dispose() {
-    _timer?.cancel();
-    _timer = null;
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const TextWidget(
+          'Verification email has been sent to',
+          TextType.bodyMedium,
+        ),
+        const SizedBox(height: AppSpacing.xs),
+        TextWidget(
+          fbAuth.currentUser?.email ?? 'Unknown',
+          TextType.titleMedium,
+          fontWeight: FontWeight.bold,
+        ),
+        const SizedBox(height: AppSpacing.m),
+        const TextWidget('If you cannot find the email,', TextType.bodySmall),
+        const SizedBox(height: AppSpacing.xs),
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            text: 'Please check ',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontSize: 16,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            children: const [
+              TextSpan(
+                text: 'SPAM',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              TextSpan(text: ' folder.'),
+            ],
+          ),
+        ),
+        const SizedBox(height: AppSpacing.s),
+        const TextWidget('OR', TextType.error, color: AppConstants.errorColor),
+        const SizedBox(height: AppSpacing.xs),
+        const TextWidget('Ensure your email is correct.', TextType.bodySmall),
+      ],
+    );
+  }
+}
+
+class _VerifyEmailCancelButton extends ConsumerWidget {
+  const _VerifyEmailCancelButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return CustomButton(
+      type: ButtonType.filled,
+      onPressed: () async {
+        try {
+          await ref.read(authRepositoryProvider).signout();
+        } on CustomError catch (e) {
+          if (!context.mounted) return;
+          ErrorHandling.showErrorDialog(context, e);
+        }
+      },
+      label: 'Cancel',
+      isEnabled: true,
+      isLoading: false,
+    );
   }
 }

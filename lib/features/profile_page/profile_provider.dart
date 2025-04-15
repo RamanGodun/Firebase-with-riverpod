@@ -7,5 +7,5 @@ part 'profile_provider.g.dart';
 
 @riverpod
 FutureOr<AppUser> profile(Ref ref, String uid) {
-  return ref.watch(profileRepositoryProvider).getProfile(uid: uid);
+  return ref.watch(profileRepositoryProvider).getProfile(userID: uid);
 }
