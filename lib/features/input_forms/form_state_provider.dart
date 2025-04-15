@@ -1,10 +1,11 @@
-// 🔹 2. form_state_provider.dart
+// 🔹 form_state_provider.dart
 import 'package:form_validator/form_validator.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'form_fields_models.dart';
+import 'form_fields_model.dart';
 
 part 'form_state_provider.g.dart';
 
+/// 📦 [FormStateNotifier] — Manages reactive validation and form field values
 @riverpod
 class FormStateNotifier extends _$FormStateNotifier {
   late final List<FormFieldType> _activeFields;
@@ -15,6 +16,7 @@ class FormStateNotifier extends _$FormStateNotifier {
     return FormStateModel({for (final f in fields) f: const FieldModel()});
   }
 
+  /// 🖊 Updates a single field, revalidates it
   void updateField(FormFieldType type, String value) {
     final validator = _validatorFor(type);
     final error = validator(value);
@@ -28,6 +30,7 @@ class FormStateNotifier extends _$FormStateNotifier {
     });
   }
 
+  /// ✅ Validates all fields in form
   void validateAll() {
     for (final type in _activeFields) {
       final value = state.fields[type]!.value;
@@ -35,6 +38,7 @@ class FormStateNotifier extends _$FormStateNotifier {
     }
   }
 
+  /// 🔎 Validator rules for each field
   String? Function(String) _validatorFor(FormFieldType type) {
     switch (type) {
       case FormFieldType.email:
@@ -43,12 +47,15 @@ class FormStateNotifier extends _$FormStateNotifier {
             .email('Invalid email')
             .build();
       case FormFieldType.password:
-        return ValidationBuilder().required('Required').minLength(6).build();
+        return ValidationBuilder()
+            .required('Required')
+            .minLength(6, 'Min 6 characters')
+            .build();
       case FormFieldType.name:
         return ValidationBuilder()
             .required('Required')
-            .minLength(2)
-            .maxLength(12)
+            .minLength(2, 'Min 2 characters')
+            .maxLength(12, 'Max 12 characters')
             .build();
       case FormFieldType.confirmPassword:
         final original = state.fields[FormFieldType.password]?.value ?? '';
@@ -61,7 +68,7 @@ class FormStateNotifier extends _$FormStateNotifier {
   }
 }
 
-/// Provider to get current form validity reactively
+/// ✅ Provider for overall form validity (memoized)
 final formValidProvider = Provider.autoDispose
     .family<bool, List<FormFieldType>>(
       (ref, fields) => ref.watch(formStateNotifierProvider(fields)).isValid,

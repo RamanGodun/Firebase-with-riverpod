@@ -1,5 +1,7 @@
-import 'form_fields_models.dart';
+// 🔹 form_presets.dart
+import 'form_fields_model.dart';
 
+/// 🧩 Field combinations for various forms
 class FormTemplates {
   static const List<FormFieldType> signInFields = [
     FormFieldType.email,

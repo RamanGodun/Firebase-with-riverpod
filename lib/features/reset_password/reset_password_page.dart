@@ -8,9 +8,9 @@ import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
 import '../input_forms/form_field_widget.dart';
-import '../input_forms/form_fields_models.dart';
+import '../input_forms/form_fields_model.dart';
 import '../../../features/input_forms/form_state_provider.dart';
-import '../input_forms/form_presets.dart';
+import '../input_forms/presets_of_forms.dart';
 import 'reset_password_provider.dart';
 
 part 'widgets_for_reset_password.dart';

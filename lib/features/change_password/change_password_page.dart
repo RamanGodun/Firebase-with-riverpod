@@ -12,9 +12,9 @@ import '../input_forms/form_field_widget.dart';
 import '../user_validation/reauthenticate_page.dart';
 import '../../presentation/widgets/text_widget.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
-import '../../features/input_forms/form_fields_models.dart';
+import '../input_forms/form_fields_model.dart';
 import '../../features/input_forms/form_state_provider.dart';
-import '../../features/input_forms/form_presets.dart';
+import '../input_forms/presets_of_forms.dart';
 import 'change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';

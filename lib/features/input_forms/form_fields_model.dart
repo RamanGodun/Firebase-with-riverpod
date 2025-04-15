@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-/// Enum of supported form fields
+part 'form_state_model.dart';
+
+/// 🧾 Enum representing supported form field types
 enum FormFieldType { name, email, password, confirmPassword }
 
-/// [FieldModel] representing a single field
+/// 📦 Model representing individual field state
 @immutable
 class FieldModel extends Equatable {
   final String value;
@@ -24,19 +26,4 @@ class FieldModel extends Equatable {
 
   @override
   List<Object?> get props => [value, dirty, error];
-}
-
-/// [FormStateModel] - entire form state, holding all fields
-@immutable
-class FormStateModel extends Equatable {
-  final Map<FormFieldType, FieldModel> fields;
-
-  const FormStateModel(this.fields);
-
-  bool get isValid => fields.values.every((f) => f.isValid);
-  String? errorFor(FormFieldType type) => fields[type]?.error;
-  String valueOf(FormFieldType type) => fields[type]?.value ?? '';
-
-  @override
-  List<Object?> get props => [fields];
 }

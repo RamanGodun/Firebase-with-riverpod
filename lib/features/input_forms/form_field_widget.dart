@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
-import '../../features/input_forms/form_fields_models.dart';
+import 'form_fields_model.dart';
 import '../../features/input_forms/form_state_provider.dart';
 
 /// ✅ [AppFormField] — universal reactive form input field (Hooked + Riverpod powered)

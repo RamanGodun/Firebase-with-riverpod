@@ -66,7 +66,7 @@ abstract class AppStrings {
   static const String passwordChangeWarning = 'If you change your password,';
   static const String passwordChangePrefix = 'you will be ';
   static const String passwordChangeSignedOut = 'signed out!';
-  static const String reAuthSuccess =  'Successfully reauthenticated';
+  static const String reAuthSuccess = 'Successfully reauthenticated';
 
   ///
 }
