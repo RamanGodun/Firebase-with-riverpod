@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 /// Enum of supported form fields
 enum FormFieldType { name, email, password, confirmPassword }
 
-/// Model representing a single field
+/// [FieldModel] representing a single field
 @immutable
 class FieldModel extends Equatable {
   final String value;
@@ -26,7 +26,7 @@ class FieldModel extends Equatable {
   List<Object?> get props => [value, dirty, error];
 }
 
-/// Entire form state, holding all fields
+/// [FormStateModel] - entire form state, holding all fields
 @immutable
 class FormStateModel extends Equatable {
   final Map<FormFieldType, FieldModel> fields;

@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../input_forms/form_fields_models.dart';
@@ -28,55 +29,54 @@ class SignInPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fields));
     final signin = ref.watch(signinProvider);
 
-    ref.listen(signinProvider, (prev, next) {
-      next.whenOrNull(
-        error:
-            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
-      );
-    });
+    _listenForErrors(context, ref);
 
     return Scaffold(
-      body: GestureDetector(
-        onTap: context.unfocusKeyboard,
-        child: Center(
-          child: FocusTraversalGroup(
-            child: ListView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
-              children: [
-                const _SigninHeader(),
-                const TextWidget(
-                  'Sign in to your account',
-                  TextType.headlineSmall,
-                ),
-                const SizedBox(height: 32),
-                for (final type in fields)
-                  FormBuilderField(
-                    state: state,
-                    notifier: notifier,
-                    type: type,
-                    showToggleVisibility: type == FormFieldType.password,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: context.unfocusKeyboard,
+          child: Center(
+            child: FocusTraversalGroup(
+              child: Column(
+                spacing: AppSpacing.s,
+                children: [
+                  const _SigninHeader(),
+                  const SizedBox(height: AppSpacing.l),
+                  const TextWidget(
+                    'Sign in to your account',
+                    TextType.headlineSmall,
                   ),
-                const SizedBox(height: 24),
-                CustomButton(
-                  type: ButtonType.filled,
-                  label: signin.isLoading ? 'Submitting...' : 'Sign In',
-                  isEnabled: !signin.isLoading,
-                  isLoading: signin.isLoading,
-                  onPressed:
-                      signin.isLoading
-                          ? null
-                          : () {
-                            if (isFormValid) {
-                              _submit(ref, form);
-                            } else {
-                              notifier.validateAll();
-                            }
-                          },
-                ),
-                const SizedBox(height: 50),
-                const _SigninFooter(),
-              ],
+                  const SizedBox(height: AppSpacing.s),
+
+                  for (final type in fields)
+                    FormBuilderField(
+                      state: state,
+                      notifier: notifier,
+                      type: type,
+                      showToggleVisibility: type == FormFieldType.password,
+                    ),
+                  const SizedBox(height: AppSpacing.xxl),
+
+                  CustomButton(
+                    type: ButtonType.filled,
+                    label: signin.isLoading ? 'Submitting...' : 'Sign In',
+                    isEnabled: !signin.isLoading,
+                    isLoading: signin.isLoading,
+                    onPressed:
+                        signin.isLoading
+                            ? null
+                            : () {
+                              if (isFormValid) {
+                                _submit(ref, form);
+                              } else {
+                                notifier.validateAll();
+                              }
+                            },
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  const _SigninFooter(),
+                ],
+              ).withPaddingHorizontal(AppSpacing.m),
             ),
           ),
         ),
@@ -92,4 +92,15 @@ class SignInPage extends ConsumerWidget {
           password: form.valueOf(FormFieldType.password),
         );
   }
+
+  void _listenForErrors(BuildContext context, WidgetRef ref) {
+    ref.listen(signinProvider, (prev, next) {
+      next.whenOrNull(
+        error:
+            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+      );
+    });
+  }
+
+  ///
 }
