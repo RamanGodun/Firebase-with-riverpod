@@ -11,10 +11,7 @@ part 'reset_password_provider.g.dart';
 /// - **Calls** [AuthRepository] to send a password reset email.
 /// - **Ensures error safety** with `AsyncValue.guard()`
 ///
-/// Usage:
-/// ```dart
-/// ref.read(resetPasswordProvider.notifier).resetPassword(email: userEmail);
-/// ```
+
 @riverpod
 class ResetPassword extends _$ResetPassword {
   /// **Build method**

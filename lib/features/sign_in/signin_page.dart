@@ -24,7 +24,6 @@ class SignInPage extends ConsumerWidget {
     final fields = FormTemplates.signInFields;
     final provider = formStateNotifierProvider(fields);
     final form = ref.watch(provider);
-    // final state = ref.watch(provider);
     final notifier = ref.read(provider.notifier);
     final isFormValid = ref.watch(formValidProvider(fields));
     final signin = ref.watch(signinProvider);

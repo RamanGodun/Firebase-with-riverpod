@@ -40,15 +40,15 @@ class _SignupFooter extends StatelessWidget {
             ),
           ],
         ),
-        CustomButton(
-          type: ButtonType.text,
-          onPressed: () => context.goTo(RoutesNames.resetPassword),
-          label: 'Forgot Password?',
-          foregroundColor: Colors.redAccent,
-          fontWeight: FontWeight.w500,
-          isEnabled: true,
-          isLoading: false,
-        ),
+        // CustomButton(
+        //   type: ButtonType.text,
+        //   onPressed: () => context.goTo(RoutesNames.resetPassword),
+        //   label: 'Forgot Password?',
+        //   foregroundColor: Colors.redAccent,
+        //   fontWeight: FontWeight.w500,
+        //   isEnabled: true,
+        //   isLoading: false,
+        // ),
       ],
     );
   }

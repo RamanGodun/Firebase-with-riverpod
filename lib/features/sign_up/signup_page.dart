@@ -27,12 +27,7 @@ class SignupPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fields));
     final signupState = ref.watch(signupProvider);
 
-    ref.listen(signupProvider, (prev, next) {
-      next.whenOrNull(
-        error:
-            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
-      );
-    });
+    _listenForSignupErrors(context, ref);
 
     return GestureDetector(
       onTap: context.unfocusKeyboard,
@@ -87,4 +82,16 @@ class SignupPage extends ConsumerWidget {
       ),
     );
   }
+
+  ///
+  void _listenForSignupErrors(BuildContext context, WidgetRef ref) {
+    ref.listen(signupProvider, (prev, next) {
+      next.whenOrNull(
+        error:
+            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+      );
+    });
+  }
+
+  ///
 }

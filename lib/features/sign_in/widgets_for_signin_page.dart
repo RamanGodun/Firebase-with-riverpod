@@ -40,7 +40,7 @@ class _SigninFooter extends StatelessWidget {
             ),
           ],
         ),
-
+        const SizedBox(height: AppSpacing.xs),
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),

@@ -19,4 +19,9 @@ class FormTemplates {
     FormFieldType.password,
     FormFieldType.confirmPassword,
   ];
+
+  static const List<FormFieldType> reAuthenticationFields = [
+    FormFieldType.email,
+    FormFieldType.password,
+  ];
 }
