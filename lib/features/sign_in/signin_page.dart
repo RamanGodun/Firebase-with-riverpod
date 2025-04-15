@@ -1,9 +1,8 @@
-// ✅ Usage inside page with FocusTraversalGroup
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../input_forms/form_fields_models.dart';
 import '../../../features/input_forms/form_state_provider.dart';
-import '../../../features/input_forms/presets.dart';
+import '../input_forms/form_presets.dart';
 import '../../../presentation/widgets/custom_button.dart';
 import '../../../presentation/widgets/text_widget.dart';
 import '../../core/constants/app_constants.dart';
@@ -22,10 +21,11 @@ class SignInPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fields = FormTemplates.signInFields;
-    final formNotifierProviderInstance = formStateNotifierProvider(fields);
-    final form = ref.watch(formNotifierProviderInstance);
+    final provider = formStateNotifierProvider(fields);
+    final form = ref.watch(provider);
+    final state = ref.watch(provider);
+    final notifier = ref.read(provider.notifier);
     final isFormValid = ref.watch(formValidProvider(fields));
-    final notifier = ref.read(formNotifierProviderInstance.notifier);
     final signin = ref.watch(signinProvider);
 
     ref.listen(signinProvider, (prev, next) {
@@ -35,17 +35,16 @@ class SignInPage extends ConsumerWidget {
       );
     });
 
-    return GestureDetector(
-      onTap: context.unfocusKeyboard,
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+      body: GestureDetector(
+        onTap: context.unfocusKeyboard,
+        child: Center(
           child: FocusTraversalGroup(
             child: ListView(
               shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
               children: [
                 const _SigninHeader(),
-                const SizedBox(height: 32),
                 const TextWidget(
                   'Sign in to your account',
                   TextType.headlineSmall,
@@ -53,13 +52,17 @@ class SignInPage extends ConsumerWidget {
                 const SizedBox(height: 32),
                 for (final type in fields)
                   FormBuilderField(
-                    // provider: formNotifierProviderInstance,
+                    state: state,
+                    notifier: notifier,
                     type: type,
                     showToggleVisibility: type == FormFieldType.password,
                   ),
                 const SizedBox(height: 24),
                 CustomButton(
                   type: ButtonType.filled,
+                  label: signin.isLoading ? 'Submitting...' : 'Sign In',
+                  isEnabled: !signin.isLoading,
+                  isLoading: signin.isLoading,
                   onPressed:
                       signin.isLoading
                           ? null
@@ -70,12 +73,8 @@ class SignInPage extends ConsumerWidget {
                               notifier.validateAll();
                             }
                           },
-                  label: signin.isLoading ? 'Submitting...' : 'Sign In',
-                  isEnabled: !signin.isLoading,
-                  isLoading: signin.isLoading,
                 ),
-                const SizedBox(height: AppSpacing.xl),
-
+                const SizedBox(height: 50),
                 const _SigninFooter(),
               ],
             ),

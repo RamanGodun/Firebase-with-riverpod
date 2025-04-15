@@ -1,36 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../features/input_forms/form_fields_models.dart';
+import '../../features/input_forms/form_state_provider.dart';
 
-class FormBuilderField extends HookConsumerWidget {
+class FormBuilderField extends HookWidget {
+  final FormStateModel state;
+  final FormStateNotifier notifier;
   final FormFieldType type;
   final bool showToggleVisibility;
 
-  // final AutoDisposeNotifierProvider<FormStateNotifier, FormStateModel> provider;
-
   const FormBuilderField({
     super.key,
+    required this.state,
+    required this.notifier,
     required this.type,
-    // required this.provider,
     this.showToggleVisibility = false,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final controller = useTextEditingController();
     final obscure = useState(true);
 
-    // final state = ref.watch(provider);
-    // final notifier = ref.read(provider.notifier);
-
-    // useEffect(() {
-    // controller.text = state.valueOf(type);
-    // controller.addListener(() {
-    // notifier.updateField(type, controller.text);
-    // });
-    // return null;
-    // }, [controller]);
+    useEffect(() {
+      controller.text = state.valueOf(type);
+      controller.addListener(() {
+        notifier.updateField(type, controller.text);
+      });
+      return null;
+    }, [controller]);
 
     final isPassword =
         type == FormFieldType.password || type == FormFieldType.confirmPassword;
@@ -42,13 +40,12 @@ class FormBuilderField extends HookConsumerWidget {
         controller: controller,
         obscureText: isPassword && obscure.value,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
-        autocorrect: !isEmail,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           filled: true,
           labelText: _labelFor(type),
+          errorText: state.errorFor(type),
           prefixIcon: _iconFor(type),
-          // errorText: state.errorFor(type),
           suffixIcon:
               isPassword && showToggleVisibility
                   ? IconButton(
@@ -74,6 +71,6 @@ class FormBuilderField extends HookConsumerWidget {
     FormFieldType.email => const Icon(Icons.email),
     FormFieldType.password ||
     FormFieldType.confirmPassword => const Icon(Icons.lock),
-    FormFieldType.name => const Icon(Icons.account_box),
+    FormFieldType.name => const Icon(Icons.person),
   };
 }

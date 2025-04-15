@@ -72,10 +72,11 @@ class CustomButton extends StatelessWidget {
                 )
                 : TextWidget(
                   label,
-                  TextType.button,
+                  TextType.titleMedium,
                   fontWeight: fontWeight,
                   fontSize: fontSize,
                   color: textColor,
+                  isUnderlined: true,
                 ),
       ),
     );
@@ -96,8 +97,10 @@ class CustomButton extends StatelessWidget {
       ),
       ButtonType.text => TextButton.styleFrom(
         foregroundColor: textColor,
-        shape: RoundedRectangleBorder(borderRadius: borderRadius),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+        padding: EdgeInsets.zero,
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: VisualDensity.compact,
         textStyle: TextStyle(
           fontFamily: 'SFProText',
           fontSize: fontSize,

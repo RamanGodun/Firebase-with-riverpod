@@ -6,7 +6,7 @@ part of 'form_state_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$formStateNotifierHash() => r'231686dd74ac53e390dcbd4ea183aac32c8b7955';
+String _$formStateNotifierHash() => r'6fe413d381d30b6f5fe8a3de0d488ef1ab78e7c7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,9 +31,9 @@ class _SystemHash {
 
 abstract class _$FormStateNotifier
     extends BuildlessAutoDisposeNotifier<FormStateModel> {
-  late final List<FormFieldType> activeFields;
+  late final List<FormFieldType> fields;
 
-  FormStateModel build(List<FormFieldType> activeFields);
+  FormStateModel build(List<FormFieldType> fields);
 }
 
 /// See also [FormStateNotifier].
@@ -46,15 +46,15 @@ class FormStateNotifierFamily extends Family<FormStateModel> {
   const FormStateNotifierFamily();
 
   /// See also [FormStateNotifier].
-  FormStateNotifierProvider call(List<FormFieldType> activeFields) {
-    return FormStateNotifierProvider(activeFields);
+  FormStateNotifierProvider call(List<FormFieldType> fields) {
+    return FormStateNotifierProvider(fields);
   }
 
   @override
   FormStateNotifierProvider getProviderOverride(
     covariant FormStateNotifierProvider provider,
   ) {
-    return call(provider.activeFields);
+    return call(provider.fields);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,9 +76,9 @@ class FormStateNotifierFamily extends Family<FormStateModel> {
 class FormStateNotifierProvider
     extends AutoDisposeNotifierProviderImpl<FormStateNotifier, FormStateModel> {
   /// See also [FormStateNotifier].
-  FormStateNotifierProvider(List<FormFieldType> activeFields)
+  FormStateNotifierProvider(List<FormFieldType> fields)
     : this._internal(
-        () => FormStateNotifier()..activeFields = activeFields,
+        () => FormStateNotifier()..fields = fields,
         from: formStateNotifierProvider,
         name: r'formStateNotifierProvider',
         debugGetCreateSourceHash:
@@ -88,7 +88,7 @@ class FormStateNotifierProvider
         dependencies: FormStateNotifierFamily._dependencies,
         allTransitiveDependencies:
             FormStateNotifierFamily._allTransitiveDependencies,
-        activeFields: activeFields,
+        fields: fields,
       );
 
   FormStateNotifierProvider._internal(
@@ -98,14 +98,14 @@ class FormStateNotifierProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.activeFields,
+    required this.fields,
   }) : super.internal();
 
-  final List<FormFieldType> activeFields;
+  final List<FormFieldType> fields;
 
   @override
   FormStateModel runNotifierBuild(covariant FormStateNotifier notifier) {
-    return notifier.build(activeFields);
+    return notifier.build(fields);
   }
 
   @override
@@ -113,13 +113,13 @@ class FormStateNotifierProvider
     return ProviderOverride(
       origin: this,
       override: FormStateNotifierProvider._internal(
-        () => create()..activeFields = activeFields,
+        () => create()..fields = fields,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        activeFields: activeFields,
+        fields: fields,
       ),
     );
   }
@@ -132,14 +132,13 @@ class FormStateNotifierProvider
 
   @override
   bool operator ==(Object other) {
-    return other is FormStateNotifierProvider &&
-        other.activeFields == activeFields;
+    return other is FormStateNotifierProvider && other.fields == fields;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, activeFields.hashCode);
+    hash = _SystemHash.combine(hash, fields.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -148,8 +147,8 @@ class FormStateNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin FormStateNotifierRef on AutoDisposeNotifierProviderRef<FormStateModel> {
-  /// The parameter `activeFields` of this provider.
-  List<FormFieldType> get activeFields;
+  /// The parameter `fields` of this provider.
+  List<FormFieldType> get fields;
 }
 
 class _FormStateNotifierProviderElement
@@ -159,8 +158,8 @@ class _FormStateNotifierProviderElement
   _FormStateNotifierProviderElement(super.provider);
 
   @override
-  List<FormFieldType> get activeFields =>
-      (origin as FormStateNotifierProvider).activeFields;
+  List<FormFieldType> get fields =>
+      (origin as FormStateNotifierProvider).fields;
 }
 
 // ignore_for_file: type=lint

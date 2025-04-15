@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
-/// Типи полів, що використовуються у формах
+/// Enum of supported form fields
 enum FormFieldType { name, email, password, confirmPassword }
 
-/// Модель одного поля форми з валідацією та dirty-станом
+/// Model representing a single field
 @immutable
 class FieldModel extends Equatable {
   final String value;
@@ -13,36 +13,28 @@ class FieldModel extends Equatable {
 
   const FieldModel({this.value = '', this.dirty = false, this.error});
 
-  /// Копіює обʼєкт з новими значеннями
-  FieldModel copyWith({String? value, bool? dirty, String? error}) {
-    return FieldModel(
-      value: value ?? this.value,
-      dirty: dirty ?? this.dirty,
-      error: error,
-    );
-  }
+  FieldModel copyWith({String? value, bool? dirty, String? error}) =>
+      FieldModel(
+        value: value ?? this.value,
+        dirty: dirty ?? this.dirty,
+        error: error,
+      );
 
-  /// Перевірка валідності поля
   bool get isValid => error == null && value.trim().isNotEmpty;
 
   @override
   List<Object?> get props => [value, dirty, error];
 }
 
-/// Модель стану всієї форми
+/// Entire form state, holding all fields
 @immutable
 class FormStateModel extends Equatable {
   final Map<FormFieldType, FieldModel> fields;
 
   const FormStateModel(this.fields);
 
-  /// Чи всі поля валідні
   bool get isValid => fields.values.every((f) => f.isValid);
-
-  /// Отримати помилку по полю
   String? errorFor(FormFieldType type) => fields[type]?.error;
-
-  /// Отримати значення поля
   String valueOf(FormFieldType type) => fields[type]?.value ?? '';
 
   @override
