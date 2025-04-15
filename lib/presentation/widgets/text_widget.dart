@@ -1,7 +1,9 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart' show AppConstants;
 
-/// 📄 Flexible text widget with theme integration & extended customization.
+/// 📝 [TextWidget] — Custom Text widget with dynamic styling options.
+/// Supports all native typography variants + additional decorations.
 class TextWidget extends StatelessWidget {
   final String text;
   final TextType? textType;
@@ -36,9 +38,10 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = context.textTheme;
+    final colorScheme = context.colorScheme;
 
-    /// 🛠 Builds styled Text widget.
+    /// 🛠️ Builds the styled [Text] widget based on provided [TextStyle].
     Text buildText(TextStyle? baseStyle) {
       return Text(
         text,
@@ -50,19 +53,19 @@ class TextWidget extends StatelessWidget {
                 ? TextOverflow.visible
                 : (overflow ?? TextOverflow.ellipsis),
         style: baseStyle?.copyWith(
-          color: color ?? Theme.of(context).colorScheme.onSurface,
+          color: color ?? colorScheme.onSurface,
           fontWeight: fontWeight ?? baseStyle.fontWeight,
           fontSize: fontSize ?? baseStyle.fontSize,
           letterSpacing: letterSpacing ?? baseStyle.letterSpacing,
           height: height ?? baseStyle.height,
+          fontFamily: 'SFProText',
           decoration: switch (isUnderlined) {
             true => TextDecoration.underline,
             false => TextDecoration.none,
             null => null,
           },
-          decorationColor: color ?? Theme.of(context).colorScheme.onSurface,
+          decorationColor: color ?? colorScheme.onSurface,
           decorationThickness: 0.4,
-          fontFamily: 'SFProText',
           shadows:
               enableShadow
                   ? [
@@ -77,7 +80,7 @@ class TextWidget extends StatelessWidget {
       );
     }
 
-    /// 🎯 Select style based on [TextType].
+    /// 🎯 Map [TextType] to base styles from the current [TextTheme]
     switch (textType) {
       case TextType.displayLarge:
         return buildText(textTheme.displayLarge);
@@ -112,8 +115,8 @@ class TextWidget extends StatelessWidget {
       case TextType.button:
         return buildText(textTheme.labelLarge);
       case TextType.error:
-        final base = textTheme.bodyLarge ?? const TextStyle();
-        return buildText(base.copyWith(color: AppConstants.errorColor));
+        final errorStyle = textTheme.bodyLarge ?? const TextStyle();
+        return buildText(errorStyle.copyWith(color: AppConstants.errorColor));
       case TextType.caption:
         return buildText(
           textTheme.bodySmall?.copyWith(
@@ -128,7 +131,7 @@ class TextWidget extends StatelessWidget {
   }
 }
 
-/// 📑 Enum for text styles used in [TextWidget].
+/// 🧩 Enum for text style presets used by [TextWidget]
 enum TextType {
   displayLarge,
   displayMedium,

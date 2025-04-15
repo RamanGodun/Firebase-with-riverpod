@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../core/utils_and_services/extensions/context_extensions.dart';
-import 'text_widget.dart';
+import '../../../../core/utils_and_services/extensions/context_extensions.dart';
+import '../text_widget.dart';
 
+/// 🔘 Button types supported: [filled], [text]
 enum ButtonType { filled, text }
 
+/// ✅ [CustomButton] — animated cross-platform button with Cupertino spinner and theming
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final ButtonType type;
@@ -33,11 +35,13 @@ class CustomButton extends StatelessWidget {
     final isDark = context.isDarkMode;
     final borderRadius = BorderRadius.circular(14);
 
+    /// 🎨 Background color based on type
     final backgroundColor = switch (type) {
       ButtonType.filled => scheme.primary.withOpacity(0.9),
       ButtonType.text => Colors.transparent,
     };
 
+    /// 🎨 Text color based on type
     final textColor = switch (type) {
       ButtonType.filled => Colors.white,
       ButtonType.text => foregroundColor ?? scheme.primary,
@@ -51,6 +55,7 @@ class CustomButton extends StatelessWidget {
     //   child: content,
     // );
 
+    /// 🔁 Animated label or Cupertino spinner
     final buttonContent = AnimatedSize(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
@@ -89,19 +94,21 @@ class CustomButton extends StatelessWidget {
       ),
     );
 
+    /// ⚙️ Only enabled when not loading
     final effectiveAction = (isEnabled && !isLoading) ? onPressed : null;
 
+    /// 🧾 Button styling
     final style = switch (type) {
       ButtonType.filled => FilledButton.styleFrom(
         backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(borderRadius: borderRadius),
         padding: const EdgeInsets.symmetric(vertical: 16),
+        elevation: 0,
         textStyle: TextStyle(
           fontFamily: 'SFProText',
           fontSize: fontSize,
           fontWeight: fontWeight,
         ),
-        elevation: 0,
       ),
       ButtonType.text => TextButton.styleFrom(
         foregroundColor: textColor,
@@ -117,6 +124,7 @@ class CustomButton extends StatelessWidget {
       ),
     };
 
+    /// 🔳 Filled variant — styled container with soft glass effect
     if (type == ButtonType.filled) {
       return SizedBox(
         width: double.infinity,
@@ -127,6 +135,7 @@ class CustomButton extends StatelessWidget {
                     ? Colors.white.withOpacity(0.05)
                     : scheme.primary.withOpacity(0.08),
             borderRadius: borderRadius,
+            border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
             boxShadow: [
               BoxShadow(
                 color:
@@ -137,7 +146,6 @@ class CustomButton extends StatelessWidget {
                 offset: const Offset(0, 3),
               ),
             ],
-            border: Border.all(color: Colors.white.withOpacity(0.1), width: 1),
           ),
           child: FilledButton(
             onPressed: effectiveAction,
@@ -146,12 +154,13 @@ class CustomButton extends StatelessWidget {
           ),
         ),
       );
-    } else {
-      return TextButton(
-        onPressed: effectiveAction,
-        style: style,
-        child: buttonContent,
-      );
     }
+
+    /// 🔲 Text-only variant — minimal
+    return TextButton(
+      onPressed: effectiveAction,
+      style: style,
+      child: buttonContent,
+    );
   }
 }

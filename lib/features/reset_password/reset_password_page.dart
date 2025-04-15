@@ -5,12 +5,12 @@ import '../../core/entities/custom_error.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
-import '../../presentation/widgets/custom_buttons.dart';
+import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
+import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_models.dart';
 import '../../../features/input_forms/form_state_provider.dart';
 import '../input_forms/form_presets.dart';
-import '../../presentation/widgets/form_fields.dart';
 import 'reset_password_provider.dart';
 
 part 'widgets_for_reset_password.dart';
@@ -42,7 +42,7 @@ class ResetPasswordPage extends ConsumerWidget {
                   const _ResetPasswordHeader(),
                   const SizedBox(height: AppSpacing.l),
                   for (final type in fields)
-                    FormBuilderField(type: type, fields: fields),
+                    AppFormField(type: type, fields: fields),
                   const SizedBox(height: AppSpacing.xxl),
                   CustomButton(
                     type: ButtonType.filled,

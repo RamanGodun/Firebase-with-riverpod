@@ -59,6 +59,13 @@ abstract class AppStrings {
   static const String profileRankLabel = '🏆 Rank:';
   static const String profileErrorMessage = 'Oops!\nSomething went wrong.';
 
+  // ===============================
+  // ❌ Firebase Error Page
+  // ===============================
+  static const String firebaseErrorTitle = 'Firebase Connection Error';
+  static const String firebaseErrorMessage = 'Please try again later!';
+  static const String retryButton = 'Retry';
+
   /// ────────────────────────────────────────────────────────────────────
   /// * 🔍 OTHERS
   // ────────────────────────────────────────────────────────────────────

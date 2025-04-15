@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../core/constants/app_constants.dart';
+import '../../core/constants/app_strings.dart';
+import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../features/input_forms/form_fields_models.dart';
 import '../../features/input_forms/form_state_provider.dart';
 
-/// ✅ [ FormBuilderField] - universal reusable field builder
-class FormBuilderField extends HookConsumerWidget {
+/// ✅ [AppFormField] — universal reactive form input field (Hooked + Riverpod powered)
+class AppFormField extends HookConsumerWidget {
   final FormFieldType type;
   final List<FormFieldType> fields;
   final bool showToggleVisibility;
 
-  const FormBuilderField({
+  const AppFormField({
     super.key,
     required this.type,
     required this.fields,
@@ -19,40 +22,52 @@ class FormBuilderField extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 🔁 Controller to manage input value
     final controller = useTextEditingController();
+    // 👁️ State for obscuring password text
     final obscure = useState(true);
 
+    /// 📦 Provider to watch form state and notifier
     final provider = formStateNotifierProvider(fields);
     final state = ref.watch(provider);
     final notifier = ref.read(provider.notifier);
 
+    /// 🧠 Sync initial value + listen to controller text changes
     useEffect(() {
       controller.text = state.valueOf(type);
       controller.addListener(() => notifier.updateField(type, controller.text));
       return null;
     }, [controller]);
 
-    final isPassword =
+    /// 🔐 Field type checks
+    final isPasswordField =
         type == FormFieldType.password || type == FormFieldType.confirmPassword;
-    final isEmail = type == FormFieldType.email;
+    final isEmailField = type == FormFieldType.email;
 
+    /// 🧱 TextFormField UI
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: AppSpacing.s),
       child: TextFormField(
         controller: controller,
-        obscureText: isPassword && obscure.value,
-        keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+        obscureText: isPasswordField && obscure.value,
+        keyboardType:
+            isEmailField ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
-          border: const OutlineInputBorder(),
           filled: true,
+          border: const OutlineInputBorder(
+            borderRadius: AppConstants.commonBorderRadius,
+          ),
           labelText: _labelFor(type),
           errorText: state.errorFor(type),
           prefixIcon: _iconFor(type),
+
+          // 👁️ Show toggle visibility icon for password fields
           suffixIcon:
-              isPassword && showToggleVisibility
+              isPasswordField && showToggleVisibility
                   ? IconButton(
                     icon: Icon(
                       obscure.value ? Icons.visibility_off : Icons.visibility,
+                      color: context.colorScheme.primary,
                     ),
                     onPressed: () => obscure.value = !obscure.value,
                   )
@@ -62,13 +77,15 @@ class FormBuilderField extends HookConsumerWidget {
     );
   }
 
+  /// 🏷 Returns label text based on [FormFieldType]
   String _labelFor(FormFieldType type) => switch (type) {
-    FormFieldType.email => 'Email',
-    FormFieldType.password => 'Password',
-    FormFieldType.confirmPassword => 'Confirm Password',
-    FormFieldType.name => 'Name',
+    FormFieldType.email => AppStrings.email,
+    FormFieldType.password => AppStrings.password,
+    FormFieldType.confirmPassword => AppStrings.confirmPassword,
+    FormFieldType.name => AppStrings.name,
   };
 
+  /// 🔣 Returns prefix icon based on [FormFieldType]
   Icon _iconFor(FormFieldType type) => switch (type) {
     FormFieldType.email => const Icon(Icons.email),
     FormFieldType.password ||

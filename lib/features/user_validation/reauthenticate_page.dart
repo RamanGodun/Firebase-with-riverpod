@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
+import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_models.dart';
 import '../input_forms/form_state_provider.dart';
 import '../input_forms/form_presets.dart';
-import '../../presentation/widgets/custom_buttons.dart';
-import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
 
 part 'widget_for_re_auth_info.dart';
@@ -39,7 +39,7 @@ class ReAuthenticationPage extends ConsumerWidget {
                     const _ReauthenticateInfo(),
                     const SizedBox(height: AppSpacing.m),
                     for (final type in fields)
-                      FormBuilderField(
+                      AppFormField(
                         type: type,
                         fields: fields,
                         showToggleVisibility: type == FormFieldType.password,

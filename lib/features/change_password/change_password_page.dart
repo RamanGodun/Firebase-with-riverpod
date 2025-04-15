@@ -6,10 +6,10 @@ import '../../core/entities/custom_error.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../input_forms/form_field_widget.dart';
 import '../user_validation/reauthenticate_page.dart';
 import '../../presentation/widgets/text_widget.dart';
-import '../../presentation/widgets/custom_buttons.dart';
-import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../features/input_forms/form_fields_models.dart';
 import '../../features/input_forms/form_state_provider.dart';
 import '../../features/input_forms/form_presets.dart';
@@ -42,7 +42,7 @@ class ChangePasswordPage extends ConsumerWidget {
               const _ChangePasswordInfo(),
               const SizedBox(height: AppSpacing.m),
               for (final type in fields)
-                FormBuilderField(
+                AppFormField(
                   type: type,
                   fields: fields,
                   showToggleVisibility: true,

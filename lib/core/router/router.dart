@@ -65,7 +65,7 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: '/splash',
         name: RoutesNames.splash,
-        builder: (context, state) => const AppMiniWidgets(MWType.loading),
+        builder: (context, state) => const MiniWidgets(MWType.loading),
       ),
 
       /// *Home Screen & Nested Routes

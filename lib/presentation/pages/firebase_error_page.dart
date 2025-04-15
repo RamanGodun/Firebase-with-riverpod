@@ -1,9 +1,12 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/app_constants.dart';
-import '../widgets/custom_buttons.dart';
-import '../widgets/text_widget.dart';
+import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
+import 'package:firebase_with_riverpod/core/constants/app_strings.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/buttons/custom_buttons.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/text_widget.dart';
 
+/// 🔥 [FirebaseErrorPage] — shown when Firebase initialization fails or has a runtime error.
+/// Displays fallback UI with retry option.
 class FirebaseErrorPage extends StatelessWidget {
   const FirebaseErrorPage({super.key});
 
@@ -15,13 +18,16 @@ class FirebaseErrorPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           spacing: AppSpacing.m,
           children: [
-            const TextWidget('Firebase Connection Error', TextType.error),
-            const TextWidget('Please try again later!', TextType.bodyMedium),
+            const TextWidget(AppStrings.firebaseErrorTitle, TextType.error),
+            const TextWidget(
+              AppStrings.firebaseErrorMessage,
+              TextType.bodyMedium,
+            ),
             const SizedBox(height: 20.0),
             CustomButton(
               type: ButtonType.filled,
               onPressed: () => Navigator.pop(context),
-              label: 'Retry',
+              label: AppStrings.retryButton,
               isEnabled: true,
               isLoading: false,
             ),

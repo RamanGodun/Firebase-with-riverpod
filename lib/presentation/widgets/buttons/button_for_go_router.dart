@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import '../../../core/constants/app_constants.dart' show AppSpacing;
 import '../text_widget.dart';
 
-/// 🌍 [CustomButtonForGoRouter] styled full-width button,
-/// that performs either GoRouter navigation or custom action.
+/// 🌍 [CustomButtonForGoRouter]
+/// Styled full-width Cupertino button that triggers navigation or a custom action.
 class CustomButtonForGoRouter extends StatelessWidget {
   final String title;
   final String? routeName;
@@ -23,7 +23,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = context.colorScheme;
+    final scheme = context.colorScheme;
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -35,13 +35,13 @@ class CustomButtonForGoRouter extends StatelessWidget {
         child: CupertinoButton(
           padding: const EdgeInsets.symmetric(vertical: AppSpacing.m),
           borderRadius: BorderRadius.circular(14),
-          color: colorScheme.primary.withOpacity(0.85),
-          disabledColor: colorScheme.primary.withOpacity(0.3),
+          color: scheme.primary.withOpacity(0.85),
+          disabledColor: scheme.primary.withOpacity(0.3),
           onPressed: () => _handleButtonPress(context),
           child: TextWidget(
             title,
             TextType.titleMedium,
-            color: colorScheme.onPrimary,
+            color: scheme.onPrimary,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -49,7 +49,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
     );
   }
 
-  /// 🚀 Handles routing or fallback to onPressedCallback
+  /// 🚀 Handles either navigation via GoRouter or a fallback callback
   void _handleButtonPress(BuildContext context) {
     if (onPressedCallback != null) {
       onPressedCallback!();
