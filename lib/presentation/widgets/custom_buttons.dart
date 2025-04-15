@@ -43,6 +43,14 @@ class CustomButton extends StatelessWidget {
       ButtonType.text => foregroundColor ?? scheme.primary,
     };
 
+    ///
+    // final child = AnimatedSwitcher(
+    //   duration: const Duration(milliseconds: 300),
+    //   switchInCurve: Curves.easeOut,
+    //   switchOutCurve: Curves.easeIn,
+    //   child: content,
+    // );
+
     final buttonContent = AnimatedSize(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
@@ -76,7 +84,7 @@ class CustomButton extends StatelessWidget {
                   fontWeight: fontWeight,
                   fontSize: fontSize,
                   color: textColor,
-                  isUnderlined: true,
+                  isUnderlined: type == ButtonType.text,
                 ),
       ),
     );

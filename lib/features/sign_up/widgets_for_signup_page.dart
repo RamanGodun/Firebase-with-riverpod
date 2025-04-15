@@ -1,7 +1,7 @@
-part of 'signin_page.dart';
+part of 'signup_page.dart';
 
-class _SigninHeader extends StatelessWidget {
-  const _SigninHeader();
+class _SignupHeader extends StatelessWidget {
+  const _SignupHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -10,15 +10,15 @@ class _SigninHeader extends StatelessWidget {
       children: [
         FlutterLogo(size: 120),
         SizedBox(height: AppSpacing.m),
-        TextWidget('Welcome Back!', TextType.headlineSmall),
-        TextWidget('Please sign in to continue.', TextType.bodyMedium),
+        TextWidget('Join Us!', TextType.headlineSmall),
+        TextWidget('Create an account to get started.', TextType.bodyMedium),
       ],
     );
   }
 }
 
-class _SigninFooter extends StatelessWidget {
-  const _SigninFooter();
+class _SignupFooter extends StatelessWidget {
+  const _SignupFooter();
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,11 @@ class _SigninFooter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const TextWidget('Not a member?   ', TextType.titleSmall),
+            const TextWidget('Already have an account?  ', TextType.titleSmall),
             CustomButton(
               type: ButtonType.text,
-              onPressed: () => context.goTo(RoutesNames.signup),
-              label: 'Sign Up!',
+              onPressed: () => context.goTo(RoutesNames.signin),
+              label: 'Sign In!',
               fontWeight: FontWeight.w600,
               fontSize: 15,
               isEnabled: true,
@@ -40,7 +40,6 @@ class _SigninFooter extends StatelessWidget {
             ),
           ],
         ),
-
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),

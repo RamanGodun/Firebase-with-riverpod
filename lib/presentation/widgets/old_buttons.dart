@@ -65,10 +65,11 @@ class CustomButton extends StatelessWidget {
             ? const CupertinoActivityIndicator(radius: 12, color: Colors.white)
             : TextWidget(
               label,
-              TextType.button,
+              TextType.titleMedium,
               fontWeight: fontWeight,
               fontSize: fontSize,
               color: textColor,
+              // isUnderlined: type == ButtonType.text ? true : false,
             );
 
     final safeAction = (isEnabled && !isLoading) ? onPressed : null;
@@ -115,11 +116,6 @@ class CustomButton extends StatelessWidget {
               backgroundColor: scheme.primary.withOpacity(0.9),
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(borderRadius: borderRadius),
-              textStyle: TextStyle(
-                fontFamily: 'SFProText',
-                fontSize: fontSize,
-                fontWeight: fontWeight,
-              ),
               elevation: 0,
             ),
             child: child,

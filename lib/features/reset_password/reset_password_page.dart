@@ -6,7 +6,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/helpers.dart';
 import '../../core/entities/custom_error.dart';
-import '../../presentation/widgets/buttons.dart';
+import '../../presentation/widgets/old_buttons.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
 import '../../presentation/widgets/form_fields_old.dart';
 import '../../presentation/widgets/text_widget.dart';

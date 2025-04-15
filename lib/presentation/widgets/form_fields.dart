@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../features/input_forms/form_fields_models.dart';
 import '../../features/input_forms/form_state_provider.dart';
 
-class FormBuilderField extends HookWidget {
-  final FormStateModel state;
-  final FormStateNotifier notifier;
+/// ✅ [ FormBuilderField] - universal reusable field builder
+class FormBuilderField extends HookConsumerWidget {
   final FormFieldType type;
+  final List<FormFieldType> fields;
   final bool showToggleVisibility;
 
   const FormBuilderField({
     super.key,
-    required this.state,
-    required this.notifier,
     required this.type,
+    required this.fields,
     this.showToggleVisibility = false,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final controller = useTextEditingController();
     final obscure = useState(true);
 
+    final provider = formStateNotifierProvider(fields);
+    final state = ref.watch(provider);
+    final notifier = ref.read(provider.notifier);
+
     useEffect(() {
       controller.text = state.valueOf(type);
-      controller.addListener(() {
-        notifier.updateField(type, controller.text);
-      });
+      controller.addListener(() => notifier.updateField(type, controller.text));
       return null;
     }, [controller]);
 

@@ -55,7 +55,11 @@ class TextWidget extends StatelessWidget {
           fontSize: fontSize ?? baseStyle.fontSize,
           letterSpacing: letterSpacing ?? baseStyle.letterSpacing,
           height: height ?? baseStyle.height,
-          decoration: (isUnderlined == true) ? TextDecoration.underline : null,
+          decoration: switch (isUnderlined) {
+            true => TextDecoration.underline,
+            false => TextDecoration.none,
+            null => null,
+          },
           decorationColor: color ?? Theme.of(context).colorScheme.onSurface,
           decorationThickness: 0.4,
           fontFamily: 'SFProText',

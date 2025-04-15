@@ -6,7 +6,7 @@ import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../../data/sources/remote/firebase_constants.dart';
-import '../../presentation/widgets/buttons.dart';
+import '../../presentation/widgets/old_buttons.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
 import '../../presentation/widgets/text_widget.dart';
 import 'profile_provider.dart';

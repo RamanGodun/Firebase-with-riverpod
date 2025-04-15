@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../input_forms/form_fields_models.dart';
 import '../../../features/input_forms/form_state_provider.dart';
 import '../input_forms/form_presets.dart';
-import '../../../presentation/widgets/custom_button.dart';
+import '../../presentation/widgets/custom_buttons.dart';
 import '../../../presentation/widgets/text_widget.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/router/routes_names.dart';
@@ -24,7 +24,7 @@ class SignInPage extends ConsumerWidget {
     final fields = FormTemplates.signInFields;
     final provider = formStateNotifierProvider(fields);
     final form = ref.watch(provider);
-    final state = ref.watch(provider);
+    // final state = ref.watch(provider);
     final notifier = ref.read(provider.notifier);
     final isFormValid = ref.watch(formValidProvider(fields));
     final signin = ref.watch(signinProvider);
@@ -50,9 +50,8 @@ class SignInPage extends ConsumerWidget {
 
                   for (final type in fields)
                     FormBuilderField(
-                      state: state,
-                      notifier: notifier,
                       type: type,
+                      fields: fields,
                       showToggleVisibility: type == FormFieldType.password,
                     ),
                   const SizedBox(height: AppSpacing.xxl),
