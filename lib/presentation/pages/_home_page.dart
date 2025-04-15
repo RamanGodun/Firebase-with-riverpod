@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
+import 'package:firebase_with_riverpod/core/constants/app_strings.dart';
+import 'package:firebase_with_riverpod/core/router/routes_names.dart';
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
 import 'package:firebase_with_riverpod/presentation/widgets/text_widget.dart';
-import 'package:flutter/material.dart';
-import '../../features/theme/theme_toggle_widget.dart';
-import '../widgets/custom_app_bar.dart';
-import '../../core/router/routes_names.dart';
+import 'package:firebase_with_riverpod/features/theme/theme_toggle_widget.dart';
 
+/// 🏠 [HomePage] — the main landing screen after login.
+/// Displays a toggle for theme switching and navigates to profile/settings.
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -14,19 +17,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: '      Home page',
+        title: AppStrings.homePageAppBarTitle,
         actionWidgets: [
+          /// 🌗 Theme toggle (light/dark)
           const ThemeToggleIcon(),
+
+          /// 👤 Navigate to profile
           IconButton(
-            onPressed: () => context.pushToNamed(RoutesNames.profilePage),
             icon: const Icon(Icons.person_2),
+            onPressed: () => context.pushToNamed(RoutesNames.profilePage),
           ).withPaddingRight(AppSpacing.m),
         ],
       ),
 
       body: Center(
         child: const TextWidget(
-          'You can go to profile page and make some settings',
+          AppStrings.homePageBodyMessage,
           TextType.bodyLarge,
           isTextOnFewStrings: true,
         ).withPaddingHorizontal(AppSpacing.l),

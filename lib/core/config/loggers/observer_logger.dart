@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///   • Initialization (`didAddProvider`)
 ///   • Updates (`didUpdateProvider`)
 ///   • Disposal (`didDisposeProvider`)
-///
+
 /// ✅ Logs only in debug mode (`kDebugMode`)
 /// ✅ Includes timestamps for traceability
 final class Logger extends ProviderObserver {

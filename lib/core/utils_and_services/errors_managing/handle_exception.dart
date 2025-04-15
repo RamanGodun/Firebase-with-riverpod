@@ -2,21 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../entities/custom_error.dart';
 
 /// Handles exceptions and converts them into a structured [CustomError].
-///
-/// This function catches different types of Firebase-related exceptions
-/// and converts them into a custom error format for better error handling
-/// and debugging.
-///
-/// - [FirebaseAuthException] - Catches authentication-related errors.
-/// - [FirebaseException] - Handles general Firebase-related errors.
-/// - [Exception] - Catches any other unknown errors and provides a generic response.
-///
-/// Returns a [CustomError] containing the error details.
+/// This function catches different types of Firebase-related exceptions and converts them
+/// into a custom error format for better error handling and debugging.
+/// [Exception] - Catches any other unknown errors and provides a generic response.
 CustomError handleException(e) {
   try {
     throw e;
   }
-  // Handle authentication-specific errors
+  /// [FirebaseAuthException] handles authentication-related errors.
   on FirebaseAuthException catch (e) {
     return CustomError(
       code: e.code,
@@ -24,7 +17,7 @@ CustomError handleException(e) {
       plugin: e.plugin,
     );
   }
-  // Handle other Firebase-related exceptions
+  /// [FirebaseException] handles general Firebase-related errors.
   on FirebaseException catch (e) {
     return CustomError(
       code: e.code,
@@ -32,7 +25,7 @@ CustomError handleException(e) {
       plugin: e.plugin,
     );
   }
-  // Handle any other unexpected errors
+  /// Returns a [CustomError] containing the error details.
   catch (e) {
     return CustomError(
       code: 'Exception',

@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
-import '../widgets/old_buttons.dart';
+import '../widgets/custom_buttons.dart';
 import '../widgets/text_widget.dart';
 
 class FirebaseErrorPage extends StatelessWidget {

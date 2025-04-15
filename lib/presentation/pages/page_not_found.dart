@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others
 import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../core/router/routes_names.dart';
-import '../widgets/old_buttons.dart';
+import '../widgets/custom_buttons.dart';
 import '../widgets/text_widget.dart';
 
 class PageNotFound extends StatelessWidget {

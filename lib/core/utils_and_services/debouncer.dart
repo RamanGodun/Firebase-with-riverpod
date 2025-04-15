@@ -1,10 +1,7 @@
 import 'dart:async';
 
 /// ⏱️ [Debouncer] — utility for delaying execution after user stops typing/tapping/etc.
-/// Commonly used for:
-///   • Search fields
-///   • Input validation
-///   • Rate-limiting expensive operations
+/// Commonly used for: search fields, input validation, rate-limiting expensive operations
 class Debouncer {
   final Duration duration;
   Timer? _timer;

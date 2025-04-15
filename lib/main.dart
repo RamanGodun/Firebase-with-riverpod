@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/bootstrap.dart';
-import 'core/router/router.dart';
 import 'core/config/loggers/observer_logger.dart';
+import 'core/router/router.dart';
 import 'features/theme/app_theme.dart';
 import 'features/theme/theme_provider.dart';
 
-void main() async {
+Future<void> main() async {
+  // 📦 Ensures all necessary bindings are ready before app initialization
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// 🧰 Performs: platform checks (e.g. min Android SDK), [.env] file loading via [flutter_dotenv],
-  /// remote and local storages initialization, applying of web-friendly URL strategy
+  // 🔧 Perform all essential setup: Firebase, .env, local storage, etc.
   await bootstrapApp();
 
-  /// 🚀 Launch the app with [ProviderScope] and custom [Logger]
-  runApp(ProviderScope(observers: [Logger()], child: const MainApp()));
+  // 🚀 Start the app within Riverpod's ProviderScope and custom logger
+  runApp(ProviderScope(observers: [Logger()], child: const RootWidget()));
 }
 
-class MainApp extends ConsumerWidget {
-  const MainApp({super.key});
+/// 🌳 [RootWidget] defines the top-level widget that manages
+/// global theming and routing using Riverpod & GoRouter
+class RootWidget extends ConsumerWidget {
+  const RootWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,10 +30,12 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
+      // 📍 Dynamic routing
       routerConfig: router,
+      // 🎨 Current theme mode
+      themeMode: themeMode,
       theme: AppThemes.getLightTheme(),
       darkTheme: AppThemes.getDarkTheme(),
-      themeMode: themeMode,
     );
   }
 }
