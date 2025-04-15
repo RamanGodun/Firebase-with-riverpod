@@ -45,15 +45,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
 
       /// 🔙 Optional back or menu icon
-      leading: leadingIcon != null
-          ? IconButton(
-              icon: Icon(leadingIcon),
-              onPressed: onLeadingPressed,
-            )
-          : null,
+      leading:
+          leadingIcon != null
+              ? IconButton(icon: Icon(leadingIcon), onPressed: onLeadingPressed)
+              : null,
 
       /// 🎯 Actions - either custom widgets or icon-button pairs
-      actions: actionWidgets ??
+      actions:
+          actionWidgets ??
           [
             if (actionIcons != null && actionCallbacks != null)
               for (int i = 0; i < actionIcons!.length; i++)

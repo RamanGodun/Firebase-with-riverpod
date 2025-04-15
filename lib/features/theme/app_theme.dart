@@ -2,113 +2,93 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import 'text_styles.dart';
 
-/// 🎨 **[AppThemes]** - Defines light and dark themes.
+/// 🎨 [AppThemes] — Provides consistent light/dark themes across the app.
 abstract class AppThemes {
-  /// ☀️ **Light Theme**
+  /// ☀️ Returns the full [ThemeData] for Light Mode
   static ThemeData getLightTheme() {
-    return ThemeData(
-      brightness: Brightness.light,
-      scaffoldBackgroundColor: AppConstants.lightBackgroundColor,
-
-      /// 🎨 **Color Scheme**
+    return _buildTheme(
+      isDark: false,
+      backgroundColor: AppConstants.lightBackgroundColor,
       primaryColor: AppConstants.lightPrimaryColor,
-      colorScheme: const ColorScheme.light(
-        primary: AppConstants.lightPrimaryColor,
-        secondary: AppConstants.lightAccentColor,
-        background: AppConstants.lightBackgroundColor,
-        surface: AppConstants.lightSurface,
-        onPrimary: Colors.white,
-        onSecondary: Colors.black,
-        onBackground: Colors.black,
-        onSurface: Colors.black,
-        error: AppConstants.errorColor,
-      ),
+      accentColor: AppConstants.lightAccentColor,
+      surfaceColor: AppConstants.lightSurface,
+      overlayColor: AppConstants.lightOverlay,
+      borderColor: AppConstants.lightBorder,
+      onPrimary: Colors.white,
+      onSurface: Colors.black,
+    );
+  }
 
-      /// 📌 **App Bar Theme**
-      appBarTheme: const AppBarTheme(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.black,
-        actionsIconTheme: IconThemeData(color: AppConstants.lightPrimaryColor),
-        titleTextStyle: TextStyle(
-          fontFamily: 'SFProText',
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-        ),
-        centerTitle: false,
-      ),
-
-      /// 🔘 **Elevated Button Theme**
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppConstants.lightPrimaryColor,
-          foregroundColor: Colors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: AppConstants.commonBorderRadius,
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-          elevation: 0.5,
-        ),
-      ),
-
-      /// 🖋 **Text Theme**
-      textTheme: TextStyles4ThisAppThemes.kTextThemeData(false),
-
-      /// 🟦 **Card Theme (For glassmorphism effect)**
-      cardTheme: CardTheme(
-        color: AppConstants.lightOverlay,
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppConstants.commonBorderRadius,
-        ),
-        shadowColor: Colors.black.withOpacity(0.1),
-        elevation: 5,
-      ),
+  /// 🌙 Returns the full [ThemeData] for Dark Mode
+  static ThemeData getDarkTheme() {
+    return _buildTheme(
+      isDark: true,
+      backgroundColor: AppConstants.darkBackgroundColor,
+      primaryColor: AppConstants.darkPrimaryColor,
+      accentColor: AppConstants.lightAccentColor,
+      surfaceColor: AppConstants.darkSurface,
+      overlayColor: AppConstants.darkOverlay,
+      borderColor: AppConstants.darkBorder,
+      onPrimary: Colors.white,
+      onSurface: Colors.white,
     );
   }
 
   // ================================================================= //
 
-  /// 🌙 **Dark Theme**
-  static ThemeData getDarkTheme() {
-    return ThemeData(
-      brightness: Brightness.dark,
-      scaffoldBackgroundColor: AppConstants.darkBackgroundColor,
+  /// 🧱 Builds both light and dark themes based on parameters
+  static ThemeData _buildTheme({
+    required bool isDark,
+    required Color backgroundColor,
+    required Color primaryColor,
+    required Color accentColor,
+    required Color surfaceColor,
+    required Color overlayColor,
+    required Color borderColor,
+    required Color onPrimary,
+    required Color onSurface,
+  }) {
+    final brightness = isDark ? Brightness.dark : Brightness.light;
 
-      /// 🎨 **Color Scheme**
-      primaryColor: AppConstants.darkPrimaryColor,
-      colorScheme: const ColorScheme.dark(
-        primary: AppConstants.darkPrimaryColor,
-        secondary: AppConstants.lightAccentColor,
-        background: AppConstants.darkBackgroundColor,
-        surface: AppConstants.darkSurface,
-        onPrimary: Colors.white,
-        onSecondary: Colors.white,
-        onBackground: Colors.white,
-        onSurface: Colors.white,
+    return ThemeData(
+      brightness: brightness,
+      scaffoldBackgroundColor: backgroundColor,
+
+      // 🎨 Color scheme for the theme
+      colorScheme: ColorScheme(
+        brightness: brightness,
+        primary: primaryColor,
+        secondary: accentColor,
+        background: backgroundColor,
+        surface: surfaceColor,
+        onPrimary: onPrimary,
+        onSecondary: onSurface,
+        onBackground: onSurface,
+        onSurface: onSurface,
         error: AppConstants.errorColor,
+        onError: onPrimary,
       ),
 
-      /// 📌 **App Bar Theme**
-      appBarTheme: const AppBarTheme(
+      // 🧭 AppBar theme
+      appBarTheme: AppBarTheme(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        actionsIconTheme: IconThemeData(color: AppConstants.darkPrimaryColor),
+        foregroundColor: onSurface,
+        centerTitle: false,
+        actionsIconTheme: IconThemeData(color: primaryColor),
         titleTextStyle: TextStyle(
           fontFamily: 'SFProText',
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: onSurface,
         ),
-        centerTitle: false,
       ),
 
-      /// 🔘 **Elevated Button Theme**
+      // ⬆️ Elevated buttons styling
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppConstants.darkPrimaryColor,
-          foregroundColor: Colors.white,
+          backgroundColor: primaryColor,
+          foregroundColor: onPrimary,
           shape: const RoundedRectangleBorder(
             borderRadius: AppConstants.commonBorderRadius,
           ),
@@ -117,16 +97,16 @@ abstract class AppThemes {
         ),
       ),
 
-      /// 🖋 **Text Theme**
-      textTheme: TextStyles4ThisAppThemes.kTextThemeData(true),
+      // ✍️ Typography styles
+      textTheme: TextStyles4ThisAppThemes.materialTextTheme(isDark),
 
-      /// 🟦 **Card Theme (For glassmorphism effect)**
+      // 📦 Card styling (glassmorphism-inspired)
       cardTheme: CardTheme(
-        color: AppConstants.darkOverlay,
+        color: overlayColor,
         shape: const RoundedRectangleBorder(
           borderRadius: AppConstants.commonBorderRadius,
         ),
-        shadowColor: Colors.black.withOpacity(0.2),
+        shadowColor: Colors.black.withOpacity(isDark ? 0.2 : 0.1),
         elevation: 5,
       ),
     );
