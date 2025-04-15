@@ -8,6 +8,8 @@ class _ChangePasswordInfo extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        TextWidget('Change Password', TextType.headlineMedium),
+        SizedBox(height: AppSpacing.s),
         TextWidget('If you change your password,', TextType.bodyMedium),
         Text.rich(
           TextSpan(
@@ -26,6 +28,7 @@ class _ChangePasswordInfo extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
+        SizedBox(height: AppSpacing.s),
       ],
     );
   }

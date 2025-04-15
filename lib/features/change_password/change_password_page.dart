@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
@@ -5,7 +6,7 @@ import '../../core/entities/custom_error.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
-import '../../presentation/pages/reauthenticate_page.dart';
+import '../user_validation/reauthenticate_page.dart';
 import '../../presentation/widgets/text_widget.dart';
 import '../../presentation/widgets/custom_buttons.dart';
 import '../../presentation/widgets/form_fields.dart';
@@ -33,9 +34,8 @@ class ChangePasswordPage extends ConsumerWidget {
     return GestureDetector(
       onTap: context.unfocusKeyboard,
       child: Scaffold(
-        appBar: AppBar(title: const Text('Change Password')),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
+        appBar: AppBar(),
+        body: Center(
           child: ListView(
             shrinkWrap: true,
             children: [
@@ -47,7 +47,7 @@ class ChangePasswordPage extends ConsumerWidget {
                   fields: fields,
                   showToggleVisibility: true,
                 ),
-              const SizedBox(height: AppSpacing.l),
+              const SizedBox(height: AppSpacing.xxl),
               CustomButton(
                 type: ButtonType.filled,
                 onPressed:
@@ -68,8 +68,9 @@ class ChangePasswordPage extends ConsumerWidget {
                 isEnabled: !state.isLoading,
                 isLoading: state.isLoading,
               ),
+              const SizedBox(height: AppSpacing.huge),
             ],
-          ),
+          ).withPaddingHorizontal(AppSpacing.l),
         ),
       ),
     );

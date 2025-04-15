@@ -1,14 +1,17 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
-import '../../features/input_forms/form_fields_models.dart';
-import '../../features/input_forms/form_state_provider.dart';
-import '../../features/input_forms/form_presets.dart';
-import '../widgets/custom_buttons.dart';
-import '../widgets/form_fields.dart';
-import '../widgets/text_widget.dart';
-import '../widgets/custom_app_bar.dart';
+import '../input_forms/form_fields_models.dart';
+import '../input_forms/form_state_provider.dart';
+import '../input_forms/form_presets.dart';
+import '../../presentation/widgets/custom_buttons.dart';
+import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/text_widget.dart';
+
+part 'widget_for_re_auth_info.dart';
 
 class ReAuthenticationPage extends ConsumerWidget {
   const ReAuthenticationPage({super.key});
@@ -25,9 +28,8 @@ class ReAuthenticationPage extends ConsumerWidget {
     return GestureDetector(
       onTap: context.unfocusKeyboard,
       child: Scaffold(
-        appBar: const CustomAppBar(title: 'Reauthenticate'),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
+        appBar: AppBar(),
+        body: Center(
           child: ValueListenableBuilder<bool>(
             valueListenable: submitting,
             builder:
@@ -61,7 +63,7 @@ class ReAuthenticationPage extends ConsumerWidget {
                     ),
                   ],
                 ),
-          ),
+          ).withPaddingHorizontal(AppSpacing.l),
         ),
       ),
     );
@@ -80,33 +82,12 @@ class ReAuthenticationPage extends ConsumerWidget {
     }
 
     submitting.value = true;
-
     Future.delayed(const Duration(seconds: 2), () {
       if (!context.mounted) return;
       submitting.value = false;
-      Navigator.pop(context, 'success');
+      context.goTo(RoutesNames.home);
     });
   }
 
   ///
-}
-
-///
-///
-class _ReauthenticateInfo extends StatelessWidget {
-  const _ReauthenticateInfo();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        TextWidget(
-          'This is a security-sensitive operation, you must have recently signed in!',
-          TextType.titleMedium,
-          isTextOnFewStrings: true,
-        ),
-      ],
-    );
-  }
 }
