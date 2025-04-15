@@ -1,61 +1,49 @@
 import 'package:flutter/material.dart';
 
-// ===============================
-// 📄 String Extensions
-// ===============================
+/// ======================================================
+/// 🔤 String Extensions
+/// ======================================================
 
 extension StringX on String {
-  /// Capitalizes the first letter of a string
+  /// 🔠 Capitalizes the first letter of the string
   String capitalize() =>
       isEmpty ? this : '${this[0].toUpperCase()}${substring(1)}';
 }
 
-extension StringValidationX on String {
-  /// Validates if the string is a valid email format
-  bool get isEmail =>
-      RegExp(r"^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}\$").hasMatch(this);
-
-  /// Validates if the string is a valid URL
-  bool get isValidUrl => Uri.tryParse(this)?.hasAbsolutePath ?? false;
-
-  /// Validates if the string is a valid phone number
-  bool get isPhone => RegExp(r'^\+?[\d\s]{7,15}\$').hasMatch(this);
-}
-
-// ===============================
-// 🎨 Theme/Text/Style Extensions
-// ===============================
+/// ======================================================
+/// 🎨 TextStyle / Theme Extensions
+/// ======================================================
 
 extension TextStyleX on TextStyle {
-  /// Returns a new [TextStyle] with the specified weight
+  /// ➕ Returns a copy with modified font weight
   TextStyle withWeight(FontWeight weight) => copyWith(fontWeight: weight);
 
-  /// Returns a new [TextStyle] with the specified font size
+  /// ➕ Returns a copy with modified font size
   TextStyle withSize(double size) => copyWith(fontSize: size);
 }
 
 extension ThemeModeX on ThemeMode {
-  /// Toggles between [ThemeMode.light] and [ThemeMode.dark]
+  /// 🔁 Toggles between [ThemeMode.dark] and [ThemeMode.light]
   ThemeMode toggle() =>
       this == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
 }
 
-// ===============================
-// 📦 Widget Extensions
-// ===============================
+/// ======================================================
+/// 📦 Widget Extensions — Padding
+/// ======================================================
 
 extension WidgetPaddingX on Widget {
-  /// Adds padding to all sides
+  /// 🧱 Adds padding on all sides
   Widget withPaddingAll(double value) =>
       Padding(padding: EdgeInsets.all(value), child: this);
 
-  /// Adds symmetric padding horizontally & vertically
+  /// 🧱 Adds symmetric padding
   Widget withPaddingSymmetric({double h = 0, double v = 0}) => Padding(
     padding: EdgeInsets.symmetric(horizontal: h, vertical: v),
     child: this,
   );
 
-  /// Adds padding only to specified sides
+  /// 🧱 Adds custom padding to each side
   Widget withPaddingOnly({
     double left = 0,
     double top = 0,
@@ -71,39 +59,42 @@ extension WidgetPaddingX on Widget {
     child: this,
   );
 
-  /// Adds horizontal padding only
+  /// ↔️ Adds horizontal-only padding
   Widget withPaddingHorizontal(double value) =>
       Padding(padding: EdgeInsets.symmetric(horizontal: value), child: this);
 
-  /// Adds vertical padding only
+  /// ↕️ Adds vertical-only padding
   Widget withPaddingVertical(double value) =>
       Padding(padding: EdgeInsets.symmetric(vertical: value), child: this);
 
-  /// Adds top padding only
+  /// ⬆️ Adds only top padding
   Widget withPaddingTop(double value) =>
       Padding(padding: EdgeInsets.only(top: value), child: this);
 
-  /// Adds bottom padding only
+  /// ⬇️ Adds only bottom padding
   Widget withPaddingBottom(double value) =>
       Padding(padding: EdgeInsets.only(bottom: value), child: this);
 
-  /// Adds left padding only
+  /// ⬅️ Adds only left padding
   Widget withPaddingLeft(double value) =>
       Padding(padding: EdgeInsets.only(left: value), child: this);
 
-  /// Adds right padding only
+  /// ➡️ Adds only right padding
   Widget withPaddingRight(double value) =>
       Padding(padding: EdgeInsets.only(right: value), child: this);
 }
 
-///
+/// ======================================================
+/// 🔒 Widget Extensions — Visibility & Interactivity
+/// ======================================================
+
 extension WidgetVisibilityX on Widget {
-  /// Hides the widget if [shouldHide] is true
+  /// 👻 Hides widget completely if [shouldHide] is true
   Widget hide(bool shouldHide) => shouldHide ? const SizedBox.shrink() : this;
 }
 
 extension TapX on Widget {
-  /// Wraps the widget with a [GestureDetector] for tap
+  /// 👆 Wraps the widget in [GestureDetector] with onTap handler
   Widget onTap(VoidCallback onTap) => GestureDetector(
     onTap: onTap,
     behavior: HitTestBehavior.opaque,
@@ -112,33 +103,36 @@ extension TapX on Widget {
 }
 
 extension BorderRadiusX on Widget {
-  /// Clips the widget with a rounded border
+  /// 🟦 Applies rounded corners using [ClipRRect]
   Widget withRoundedCorners([double r = 12]) =>
       ClipRRect(borderRadius: BorderRadius.circular(r), child: this);
 }
 
+/// ======================================================
+/// 🌀 Widget Animation Extensions
+/// ======================================================
+
 extension AnimateX on Widget {
-  /// Animates opacity on the widget (fade-in effect)
-  Widget fadeIn({Duration duration = const Duration(milliseconds: 400)}) {
-    return AnimatedOpacity(opacity: 1, duration: duration, child: this);
-  }
+  /// 🫧 Fades in the widget using [AnimatedOpacity]
+  Widget fadeIn({Duration duration = const Duration(milliseconds: 400)}) =>
+      AnimatedOpacity(opacity: 1, duration: duration, child: this);
 }
 
-// ===============================
-// 🧮 Num / Format Extensions
-// ===============================
+/// ======================================================
+/// 💰 Number Formatting Extensions
+/// ======================================================
 
 extension NumFormatX on num {
-  /// Formats number as currency with optional symbol
+  /// 💸 Formats number as currency (default ₴)
   String toCurrency({String symbol = '₴'}) => '$symbol${toStringAsFixed(2)}';
 }
 
-// ===============================
-// 🕓 Duration / DateTime Extensions
-// ===============================
+/// ======================================================
+/// 🕓 Duration Extensions
+/// ======================================================
 
 extension DurationX on Duration {
-  /// Converts duration to mm:ss format string
+  /// ⏱️ Converts duration to mm:ss format (e.g. 02:45)
   String formatAsTimer() {
     final mins = inMinutes.remainder(60).toString().padLeft(2, '0');
     final secs = inSeconds.remainder(60).toString().padLeft(2, '0');
@@ -146,12 +140,12 @@ extension DurationX on Duration {
   }
 }
 
-// ========================================================= //
-// 📅 DateTime Extensions
-// ========================================================= //
+/// ======================================================
+/// 📅 DateTime Extensions
+/// ======================================================
 
 extension DateTimeX on DateTime {
-  /// Formats [DateTime] as a YYYY-MM-DD string
+  /// 📆 Formats DateTime as `yyyy-MM-dd`
   String toFormatted([String format = 'yyyy-MM-dd']) =>
       '${year.toString().padLeft(4, '0')}-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
 }

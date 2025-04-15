@@ -2,9 +2,11 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/constants/app_strings.dart';
 import '../../core/entities/custom_error.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../core/utils_and_services/snackbars.dart';
 import '../../data/repositories/auth/auth_repository_provider.dart';
 import '../input_forms/form_field_widget.dart';
 import '../user_validation/reauthenticate_page.dart';
@@ -17,6 +19,7 @@ import 'change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';
 
+/// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
 class ChangePasswordPage extends ConsumerWidget {
   const ChangePasswordPage({super.key});
 
@@ -64,7 +67,10 @@ class ChangePasswordPage extends ConsumerWidget {
                             notifier.validateAll();
                           }
                         },
-                label: state.isLoading ? 'Submitting...' : 'Change Password',
+                label:
+                    state.isLoading
+                        ? AppStrings.submitting
+                        : AppStrings.changePassword,
                 isEnabled: !state.isLoading,
                 isLoading: state.isLoading,
               ),
@@ -76,6 +82,7 @@ class ChangePasswordPage extends ConsumerWidget {
     );
   }
 
+  /// 🔁 Listens for state changes in [changePasswordProvider] to trigger error dialogs or success actions.
   void _listenToPasswordChange(BuildContext context, WidgetRef ref) {
     ref.listen(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
@@ -94,15 +101,11 @@ class ChangePasswordPage extends ConsumerWidget {
     });
   }
 
+  /// 🔐 Triggers the re-authentication flow if recent login is required
   Future<void> _processRequiresRecentLogin(BuildContext context) async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final result = await context.pushTo<String>(const ReAuthenticationPage());
-    if (result == 'success') {
-      scaffoldMessenger.showSnackBar(
-        const SnackBar(content: Text('Successfully reauthenticated')),
-      );
-    }
+    if (result == 'success')
+      CustomSnackbars.show(scaffoldMessenger, AppStrings.reAuthSuccess);
   }
-
-  ///
 }

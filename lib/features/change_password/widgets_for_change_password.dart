@@ -1,5 +1,6 @@
 part of 'change_password_page.dart';
 
+/// ℹ️ Info section for [ChangePasswordPage]
 class _ChangePasswordInfo extends StatelessWidget {
   const _ChangePasswordInfo();
 
@@ -8,16 +9,16 @@ class _ChangePasswordInfo extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        TextWidget('Change Password', TextType.headlineMedium),
+        TextWidget(AppStrings.passwordChangeTitle, TextType.headlineMedium),
         SizedBox(height: AppSpacing.s),
-        TextWidget('If you change your password,', TextType.bodyMedium),
+        TextWidget(AppStrings.passwordChangeWarning, TextType.bodyMedium),
         Text.rich(
           TextSpan(
-            text: 'you will be ',
+            text: AppStrings.passwordChangePrefix,
             style: TextStyle(fontSize: 18),
             children: [
               TextSpan(
-                text: 'signed out!',
+                text: AppStrings.passwordChangeSignedOut,
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: 18,
@@ -28,6 +29,7 @@ class _ChangePasswordInfo extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
+
         SizedBox(height: AppSpacing.s),
       ],
     );

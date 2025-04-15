@@ -3,92 +3,86 @@ import 'package:go_router/go_router.dart';
 import '../../../presentation/widgets/text_widget.dart';
 import '../../router/routes_names.dart';
 
-/// 🧠 [BuildContext] extensions for cleaner, expressive UI code
+/// 🧠 [ContextX] — Adds expressive and concise extensions to [BuildContext].
 extension ContextX on BuildContext {
-  // ===========================
-  // 🎨 THEME
-  // ===========================
+  // ===============================
+  // 🎨 THEME ACCESSORS
+  // ===============================
 
-  /// 🌙 Returns `true` if app is currently in dark mode
+  /// 🌙 Returns true if the current theme is dark.
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 
-  /// 🎨 Returns current [ThemeData]
+  /// 🎨 Shortcut for accessing [ThemeData].
   ThemeData get theme => Theme.of(this);
 
-  /// 🔤 Returns current [TextTheme]
+  /// 🧾 Shortcut for accessing [TextTheme].
   TextTheme get textTheme => theme.textTheme;
 
-  /// 🎨 Returns current [ColorScheme]
+  /// 🌈 Shortcut for accessing [ColorScheme].
   ColorScheme get colorScheme => theme.colorScheme;
 
-  // ===========================
+  // ===============================
   // ⌨️ KEYBOARD / FOCUS
-  // ===========================
+  // ===============================
 
-  /// ⛔ Removes focus from any input field (closes keyboard)
+  /// ⛔ Removes focus from current focus node (closes keyboard).
   void unfocusKeyboard() => FocusScope.of(this).unfocus();
 
-  // ===========================
-  // 📏 MEDIA QUERY
-  // ===========================
+  // ===============================
+  // 📏 MEDIAQUERY
+  // ===============================
 
-  /// 📐 Returns current [MediaQueryData]
+  /// 📐 Returns the current [MediaQueryData].
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
-  /// Returns true if screen is considered tablet-sized
-  bool get isTablet => MediaQuery.of(this).size.shortestSide >= 600;
+  /// 📱 Returns true if the device is considered tablet-sized.
+  bool get isTablet => mediaQuery.size.shortestSide >= 600;
 
-  /// 🔢 Returns screen width
+  /// 📏 Screen width.
   double get screenWidth => mediaQuery.size.width;
 
-  /// 🔢 Returns screen height
+  /// 📐 Screen height.
   double get screenHeight => mediaQuery.size.height;
 
-  /// 🔠 Returns text scale factor
+  /// 🔠 Text scale factor.
   double get textScale => mediaQuery.textScaleFactor;
 
-  /// 📱 Returns device pixel ratio
+  /// 🔬 Device pixel ratio.
   double get pixelRatio => mediaQuery.devicePixelRatio;
 
-  // ===========================
-  // 📐 PADDING & INSETS
-  // ===========================
+  // ===============================
+  // 📐 PADDING / INSETS
+  // ===============================
 
-  /// 🧱 Safe area top padding (e.g. notch)
+  /// 🧱 Top safe area padding.
   double get topPadding => mediaQuery.padding.top;
 
-  /// 🧱 Safe area bottom padding (e.g. home bar)
+  /// 🧱 Bottom safe area padding.
   double get bottomPadding => mediaQuery.padding.bottom;
 
-  /// 🧱 Horizontal padding (left + right)
+  /// 🧱 Total horizontal padding (left + right).
   double get horizontalPadding =>
       mediaQuery.padding.left + mediaQuery.padding.right;
 
-  /// 🧱 Vertical padding (top + bottom)
+  /// 🧱 Total vertical padding (top + bottom).
   double get verticalPadding =>
       mediaQuery.padding.top + mediaQuery.padding.bottom;
 
   // ===============================
-  // 📱 SNACKBARS
+  // 📢 SNACKBAR
   // ===============================
 
-  /// Shows a SnackBar with the provided message
+  /// 📣 Shows a simple [SnackBar] with custom message.
   void showSnackbar(String message) {
     ScaffoldMessenger.of(
       this,
     ).showSnackBar(SnackBar(content: TextWidget(message, TextType.bodyLarge)));
   }
-
-  ///
 }
 
-// ===============================
-// 📱 NAVIGATION & ROUTING
-// ===============================
-
-/// 🧭 [NavigationX] — Adds convenient navigation helpers to [BuildContext].
+/// 🧭 [NavigationX] — Adds convenient navigation helpers to [BuildContext] for GoRouter.
 extension NavigationX on BuildContext {
-  /// 🔁 Navigates to a named route (replaces current route).
+  /// 🔁 Navigates to a named route, replacing the current route.
   void goTo(
     String routeName, {
     Map<String, String> pathParameters = const {},
@@ -101,11 +95,12 @@ extension NavigationX on BuildContext {
         queryParameters: queryParameters,
       );
     } catch (_) {
+      // If navigation fails, fallback to not-found route.
       GoRouter.of(this).go(RoutesNames.pageNotFound);
     }
   }
 
-  /// ➕ Pushes a named route (adds to stack).
+  /// ➕ Pushes a named route onto the navigation stack.
   void pushToNamed(
     String routeName, {
     Map<String, String> pathParameters = const {},
@@ -122,10 +117,10 @@ extension NavigationX on BuildContext {
     }
   }
 
-  /// ⬅️ Pops the current route from the stack.
+  /// ⬅️ Pops the current route.
   void popView() => Navigator.of(this).pop();
 
-  /// 📦 Pushes a widget as a route using [MaterialPageRoute].
+  /// 🧳 Pushes a widget as a [MaterialPageRoute].
   Future<T?> pushTo<T>(Widget child) {
     return Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => child));
   }
