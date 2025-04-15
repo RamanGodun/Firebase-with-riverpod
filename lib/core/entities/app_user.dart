@@ -1,39 +1,43 @@
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-part 'app_user.freezed.dart';
+part 'app_user.g.dart';
 
-/// **AppUser Model**
-///
-/// Represents a user entity in the application.
-/// This model is immutable and uses the [freezed] package for enhanced
-/// performance, deep equality checks, and improved maintainability.
-@freezed
-class AppUser with _$AppUser {
-  /// **Factory Constructor**
-  ///
-  /// Creates an instance of [AppUser].
-  /// Default values ensure that properties never contain `null` values.
-  const factory AppUser({
-    @Default('') String id,
-    @Default('') String name,
-    @Default('') String email,
-  }) = _AppUser;
+@JsonSerializable(explicitToJson: true)
+class AppUser extends Equatable {
+  final String id;
+  final String name;
+  final String email;
 
-  /// **Factory Method: fromDoc**
-  ///
-  /// Creates an instance of [AppUser] from a Firestore document snapshot.
-  ///
-  /// - **[appUserDoc]** - Firestore document snapshot containing user data.
-  /// - Returns an **immutable** [AppUser] object populated with Firestore data.
-  factory AppUser.fromDoc(DocumentSnapshot appUserDoc) {
-    final appUserData = appUserDoc.data() as Map<String, dynamic>;
+  const AppUser({this.id = '', this.name = '', this.email = ''});
 
+  /// ✅ Factory method for Firebase snapshot
+  factory AppUser.fromDoc(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>?;
     return AppUser(
-      id: appUserDoc.id,
-      name: appUserData['name'] ?? '',
-      email: appUserData['email'] ?? '',
+      id: doc.id,
+      name: data?['name'] ?? '',
+      email: data?['email'] ?? '',
     );
   }
+
+  /// ✅ Factory method for JSON
+  factory AppUser.fromJson(Map<String, dynamic> json) =>
+      _$AppUserFromJson(json);
+
+  /// ✅ Convert to JSON
+  Map<String, dynamic> toJson() => _$AppUserToJson(this);
+
+  /// ✅ CopyWith
+  AppUser copyWith({String? id, String? name, String? email}) {
+    return AppUser(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+    );
+  }
+
+  @override
+  List<Object?> get props => [id, name, email];
 }

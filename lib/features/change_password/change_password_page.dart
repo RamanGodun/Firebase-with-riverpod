@@ -8,7 +8,7 @@ import '../../core/utils_and_services/helpers.dart';
 import '../../core/entities/custom_error.dart';
 import '../../presentation/widgets/buttons.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
-import '../../presentation/widgets/form_fields.dart';
+import '../../presentation/widgets/form_fields_old.dart';
 import '../../presentation/widgets/text_widget.dart';
 import '../../presentation/pages/reauthenticate_page.dart';
 import 'change_password_provider.dart';

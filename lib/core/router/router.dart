@@ -96,7 +96,7 @@ GoRouter router(Ref ref) {
       GoRoute(
         path: '/signin',
         name: RoutesNames.signin,
-        builder: (context, state) => const SigninPage(),
+        builder: (context, state) => const SignInPage(),
       ),
 
       GoRoute(

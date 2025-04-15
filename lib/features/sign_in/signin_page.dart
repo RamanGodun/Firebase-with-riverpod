@@ -1,113 +1,96 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+// ✅ Usage inside page with FocusTraversalGroup
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
-import 'package:firebase_with_riverpod/core/router/routes_names.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/dialog_managing/error_dialog.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/helpers.dart';
-import 'package:firebase_with_riverpod/core/entities/custom_error.dart';
-import 'package:firebase_with_riverpod/presentation/widgets/buttons.dart';
-import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
-import 'package:firebase_with_riverpod/presentation/widgets/form_fields.dart';
-import 'package:firebase_with_riverpod/presentation/widgets/text_widget.dart';
+import '../input_forms/form_fields_models.dart';
+import '../../../features/input_forms/form_state_provider.dart';
+import '../../../features/input_forms/presets.dart';
+import '../../../presentation/widgets/custom_button.dart';
+import '../../../presentation/widgets/text_widget.dart';
+import '../../core/constants/app_constants.dart';
+import '../../core/router/routes_names.dart';
+import '../../presentation/widgets/form_fields.dart';
 import 'signin_provider.dart';
+import '../../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../../core/entities/custom_error.dart';
+import '../../../core/utils_and_services/extensions/context_extensions.dart';
 
 part 'widgets_for_signin_page.dart';
 
-class SigninPage extends StatelessWidget {
-  const SigninPage({super.key});
+class SignInPage extends ConsumerWidget {
+  const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final fields = FormTemplates.signInFields;
+    final formNotifierProviderInstance = formStateNotifierProvider(fields);
+    final form = ref.watch(formNotifierProviderInstance);
+    final isFormValid = ref.watch(formValidProvider(fields));
+    final notifier = ref.read(formNotifierProviderInstance.notifier);
+    final signin = ref.watch(signinProvider);
+
+    ref.listen(signinProvider, (prev, next) {
+      next.whenOrNull(
+        error:
+            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+      );
+    });
+
     return GestureDetector(
       onTap: context.unfocusKeyboard,
       child: Scaffold(
-        appBar: const CustomAppBar(title: 'Sign In', isCenteredTitle: true),
         body: Center(
-          child: const _SigninFormWrapper().withPaddingHorizontal(AppSpacing.l),
+          child: FocusTraversalGroup(
+            child: ListView(
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              children: [
+                const _SigninHeader(),
+                const SizedBox(height: 32),
+                const TextWidget(
+                  'Sign in to your account',
+                  TextType.headlineSmall,
+                ),
+                const SizedBox(height: 32),
+                for (final type in fields)
+                  FormBuilderField(
+                    // provider: formNotifierProviderInstance,
+                    type: type,
+                    showToggleVisibility: type == FormFieldType.password,
+                  ),
+                const SizedBox(height: 24),
+                CustomButton(
+                  type: ButtonType.filled,
+                  onPressed:
+                      signin.isLoading
+                          ? null
+                          : () {
+                            if (isFormValid) {
+                              _submit(ref, form);
+                            } else {
+                              notifier.validateAll();
+                            }
+                          },
+                  label: signin.isLoading ? 'Submitting...' : 'Sign In',
+                  isEnabled: !signin.isLoading,
+                  isLoading: signin.isLoading,
+                ),
+                const SizedBox(height: AppSpacing.xl),
+
+                const _SigninFooter(),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
-}
 
-class _SigninFormWrapper extends ConsumerStatefulWidget {
-  const _SigninFormWrapper();
-
-  @override
-  ConsumerState<_SigninFormWrapper> createState() => _SigninFormWrapperState();
-}
-
-class _SigninFormWrapperState extends ConsumerState<_SigninFormWrapper> {
-  final _formKey = GlobalKey<FormState>();
-  final _controllers = Helpers.createControllers(2);
-  AutovalidateMode _autovalidateMode = AutovalidateMode.onUserInteraction;
-
-  @override
-  Widget build(BuildContext context) {
-    ref.listen(signinProvider, _handleSigninError);
-    final state = ref.watch(signinProvider);
-
-    return Form(
-      key: _formKey,
-      autovalidateMode: _autovalidateMode,
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          const _SigninHeader(),
-          CustomFormField(
-            type: FormFieldType.email,
-            controller: _controllers[0],
-          ),
-          CustomFormField(
-            type: FormFieldType.password,
-            controller: _controllers[1],
-            showToggleVisibility: true,
-          ),
-          const SizedBox(height: AppSpacing.xl),
-          CustomButton(
-            type: ButtonType.filled,
-            onPressed: state.isLoading ? null : _submit,
-            label: state.isLoading ? 'Submitting...' : 'Sign In',
-            isEnabled: !state.isLoading,
-            isLoading: state.isLoading,
-          ),
-          const _SigninFooter(),
-        ],
-      ),
-    );
-  }
-
-  /// * USED methods
-  /// ---------------------------------------------------
-
-  void _handleSigninError(AsyncValue<void>? _, AsyncValue<void> next) {
-    next.whenOrNull(
-      error: (e, st) {
-        if (!context.mounted) return;
-        ErrorHandling.showErrorDialog(context, e as CustomError);
-      },
-    );
-  }
-
-  void _submit() {
-    setState(() => _autovalidateMode = AutovalidateMode.always);
-    final form = _formKey.currentState;
-    if (form == null || !form.validate()) return;
+  void _submit(WidgetRef ref, FormStateModel form) {
     ref
         .read(signinProvider.notifier)
         .signin(
-          email: _controllers[0].text.trim(),
-          password: _controllers[1].text.trim(),
+          email: form.valueOf(FormFieldType.email),
+          password: form.valueOf(FormFieldType.password),
         );
   }
-
-  @override
-  void dispose() {
-    Helpers.disposeControllers(_controllers);
-    super.dispose();
-  }
-
-  ///
 }

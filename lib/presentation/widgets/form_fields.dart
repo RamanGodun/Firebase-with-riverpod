@@ -1,123 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:form_validator/form_validator.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../features/input_forms/form_fields_models.dart';
 
-enum FormFieldType { confirmPassword, password, email, name }
-
-class CustomFormField extends StatefulWidget {
+class FormBuilderField extends HookConsumerWidget {
   final FormFieldType type;
-  final TextEditingController controller;
-  final TextEditingController? confirmController;
-  final String? labelText;
   final bool showToggleVisibility;
 
-  const CustomFormField({
+  // final AutoDisposeNotifierProvider<FormStateNotifier, FormStateModel> provider;
+
+  const FormBuilderField({
     super.key,
     required this.type,
-    required this.controller,
-    this.confirmController,
-    this.labelText,
+    // required this.provider,
     this.showToggleVisibility = false,
   });
 
   @override
-  State<CustomFormField> createState() => _CustomFormFieldState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = useTextEditingController();
+    final obscure = useState(true);
 
-class _CustomFormFieldState extends State<CustomFormField> {
-  bool _obscureText = true;
+    // final state = ref.watch(provider);
+    // final notifier = ref.read(provider.notifier);
 
-  bool get _isPasswordType =>
-      widget.type == FormFieldType.password ||
-      widget.type == FormFieldType.confirmPassword;
+    // useEffect(() {
+    // controller.text = state.valueOf(type);
+    // controller.addListener(() {
+    // notifier.updateField(type, controller.text);
+    // });
+    // return null;
+    // }, [controller]);
 
-  @override
-  Widget build(BuildContext context) {
-    final effectiveLabel = widget.labelText ?? _getLabelText();
+    final isPassword =
+        type == FormFieldType.password || type == FormFieldType.confirmPassword;
+    final isEmail = type == FormFieldType.email;
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
-        controller: widget.controller,
-        obscureText: _isPasswordType && _obscureText,
-        keyboardType:
-            widget.type == FormFieldType.email
-                ? TextInputType.emailAddress
-                : TextInputType.text,
-        autocorrect: widget.type != FormFieldType.email,
+        controller: controller,
+        obscureText: isPassword && obscure.value,
+        keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+        autocorrect: !isEmail,
         decoration: InputDecoration(
           border: const OutlineInputBorder(),
           filled: true,
-          labelText: effectiveLabel,
-          prefixIcon: _getIcon(),
+          labelText: _labelFor(type),
+          prefixIcon: _iconFor(type),
+          // errorText: state.errorFor(type),
           suffixIcon:
-              _isPasswordType && widget.showToggleVisibility
+              isPassword && showToggleVisibility
                   ? IconButton(
                     icon: Icon(
-                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                      obscure.value ? Icons.visibility_off : Icons.visibility,
                     ),
-                    onPressed:
-                        () => setState(() => _obscureText = !_obscureText),
+                    onPressed: () => obscure.value = !obscure.value,
                   )
                   : null,
         ),
-        validator: _buildValidator(),
       ),
     );
   }
 
-  String _getLabelText() {
-    switch (widget.type) {
-      case FormFieldType.password:
-        return 'Password';
-      case FormFieldType.confirmPassword:
-        return 'Confirm password';
-      case FormFieldType.email:
-        return 'Email';
-      case FormFieldType.name:
-        return 'Name';
-    }
-  }
+  String _labelFor(FormFieldType type) => switch (type) {
+    FormFieldType.email => 'Email',
+    FormFieldType.password => 'Password',
+    FormFieldType.confirmPassword => 'Confirm Password',
+    FormFieldType.name => 'Name',
+  };
 
-  Icon _getIcon() {
-    switch (widget.type) {
-      case FormFieldType.password:
-      case FormFieldType.confirmPassword:
-        return const Icon(Icons.lock);
-      case FormFieldType.email:
-        return const Icon(Icons.email);
-      case FormFieldType.name:
-        return const Icon(Icons.account_box);
-    }
-  }
-
-  String? Function(String?) _buildValidator() {
-    switch (widget.type) {
-      case FormFieldType.email:
-        return ValidationBuilder()
-            .required('Email required')
-            .email('Enter a valid email')
-            .build();
-      case FormFieldType.password:
-        return ValidationBuilder()
-            .required('Password required')
-            .minLength(6, 'Password must be at least 6 characters')
-            .build();
-      case FormFieldType.name:
-        return ValidationBuilder()
-            .required('Name required')
-            .minLength(2, 'Minimum 2 characters')
-            .maxLength(12, 'Maximum 12 characters')
-            .build();
-      case FormFieldType.confirmPassword:
-        return (value) {
-          if (value == null || value.trim().isEmpty) {
-            return 'Confirm password required';
-          }
-          if (value.trim() != widget.confirmController?.text.trim()) {
-            return 'Passwords do not match';
-          }
-          return null;
-        };
-    }
-  }
+  Icon _iconFor(FormFieldType type) => switch (type) {
+    FormFieldType.email => const Icon(Icons.email),
+    FormFieldType.password ||
+    FormFieldType.confirmPassword => const Icon(Icons.lock),
+    FormFieldType.name => const Icon(Icons.account_box),
+  };
 }

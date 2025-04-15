@@ -73,13 +73,6 @@ class CustomButton extends StatelessWidget {
 
     final safeAction = (isEnabled && !isLoading) ? onPressed : null;
 
-    // final child = AnimatedSwitcher(
-    //   duration: const Duration(milliseconds: 300),
-    //   switchInCurve: Curves.easeOut,
-    //   switchOutCurve: Curves.easeIn,
-    //   child: content,
-    // );
-
     final child = AnimatedSize(
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeInOut,
@@ -151,3 +144,10 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+// final child = AnimatedSwitcher(
+//   duration: const Duration(milliseconds: 300),
+//   switchInCurve: Curves.easeOut,
+//   switchOutCurve: Curves.easeIn,
+//   child: content,
+// );

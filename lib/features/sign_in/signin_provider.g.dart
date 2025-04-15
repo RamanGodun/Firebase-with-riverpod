@@ -8,11 +8,7 @@ part of 'signin_provider.dart';
 
 String _$signinHash() => r'9fd884ed49f646083f32146cce31834df0d79b61';
 
-/// **Signin Provider**
-/// A Riverpod provider responsible for handling user sign-in.
-/// - **Manages authentication state** using `AsyncValue<void>`.
-/// - **Calls** [AuthRepository] to perform user sign-in.
-/// - **Ensures error safety** with `AsyncValue.guard()`.
+/// [Signin] Provider, responsible for handling user sign-in.
 ///
 /// Copied from [Signin].
 @ProviderFor(Signin)
