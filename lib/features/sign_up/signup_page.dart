@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
-import '../../core/entities/custom_error.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
@@ -88,7 +88,8 @@ class SignupPage extends ConsumerWidget {
     ref.listen(signupProvider, (prev, next) {
       next.whenOrNull(
         error:
-            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+            (e, _) =>
+                ErrorHandling.showErrorDialog(context, handleException(e)),
       );
     });
   }

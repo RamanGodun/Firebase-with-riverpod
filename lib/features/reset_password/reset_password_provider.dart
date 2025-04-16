@@ -3,31 +3,21 @@ import '../../data/repositories/auth/auth_repository_provider.dart';
 
 part 'reset_password_provider.g.dart';
 
-/// **Reset Password Provider**
-///
-/// A Riverpod provider responsible for handling the password reset feature.
-///
-/// - **Manages state** using `AsyncValue<void>`
-/// - **Calls** [AuthRepository] to send a password reset email.
-/// - **Ensures error safety** with `AsyncValue.guard()`
-///
+/// 🧩 [resetPasswordProvider] — async notifier for password reset logic
+/// 🧼 Incapsulates logic for triggering reset flow via [AuthRepository]
+//----------------------------------------------------------------//
 
 @riverpod
 class ResetPassword extends _$ResetPassword {
-  /// **Build method**
-  /// Required by Riverpod’s class-based generator but not utilized here.
   @override
   FutureOr<void> build() {}
 
-  /// **Reset Password Function**
-  ///
-  /// - Sets state to **loading** before sending the reset request.
-  /// - Calls [AuthRepository.sendPasswordResetEmail] to send a reset email.
-  /// - Uses `AsyncValue.guard()` for safe error handling.
+  /// 📩 Sends password reset email using [AuthRepository]
   Future<void> resetPassword({required String email}) async {
-    state = const AsyncLoading<void>();
+    state = const AsyncLoading();
 
-    state = await AsyncValue.guard<void>(
+    /// Uses [AsyncValue.guard()] for error-safe execution
+    state = await AsyncValue.guard(
       () => ref.read(authRepositoryProvider).sendPasswordResetEmail(email),
     );
   }

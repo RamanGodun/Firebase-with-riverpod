@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
-import '../../core/entities/custom_error.dart';
+import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/snackbars.dart';
@@ -87,7 +87,7 @@ class ChangePasswordPage extends ConsumerWidget {
     ref.listen(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
         error: (e, st) {
-          final err = e as CustomError;
+          final err = handleException(e);
           if (err.code == 'requires-recent-login') {
             _processRequiresRecentLogin(context);
           } else {

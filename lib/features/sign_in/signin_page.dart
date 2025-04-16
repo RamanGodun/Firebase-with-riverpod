@@ -1,6 +1,7 @@
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_model.dart';
 import '../../../features/input_forms/form_state_provider.dart';
@@ -11,7 +12,6 @@ import '../../core/constants/app_constants.dart';
 import '../../core/router/routes_names.dart';
 import 'signin_provider.dart';
 import '../../../core/utils_and_services/dialog_managing/error_dialog.dart';
-import '../../../core/entities/custom_error.dart';
 import '../../../core/utils_and_services/extensions/context_extensions.dart';
 
 part 'widgets_for_signin_page.dart';
@@ -95,7 +95,8 @@ class SignInPage extends ConsumerWidget {
     ref.listen(signinProvider, (prev, next) {
       next.whenOrNull(
         error:
-            (e, _) => ErrorHandling.showErrorDialog(context, e as CustomError),
+            (e, _) =>
+                ErrorHandling.showErrorDialog(context, handleException(e)),
       );
     });
   }

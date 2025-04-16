@@ -32,6 +32,7 @@ abstract class AppStrings {
   static const String pageNotFoundMessage =
       'Oops! The page you’re looking for does not exist.';
   static const String goToHomeButton = 'To Home Page';
+  static const String errorDialogTitle = 'Error occurs';
 
   /// ===============================
   // ✍️ FORM FIELDS
@@ -51,6 +52,7 @@ abstract class AppStrings {
   static const String profilePointsLabel = '📊 Points:';
   static const String profileRankLabel = '🏆 Rank:';
   static const String profileErrorMessage = 'Oops!\nSomething went wrong.';
+  static const String welcome = 'Welcome,';
 
   /// ===============================
   // 🔥 FIREBASE ERROR PAGE
@@ -67,6 +69,17 @@ abstract class AppStrings {
   static const String passwordChangePrefix = 'you will be ';
   static const String passwordChangeSignedOut = 'signed out!';
   static const String reAuthSuccess = 'Successfully reauthenticated';
+
+  // ===============================
+  // 🔐 Reset Password
+  // ===============================
+  static const String resetPassword = 'Reset Password';
+  static const String resetPasswordHeader = 'Reset your password';
+  static const String resetPasswordSubHeader =
+      'We will send you an email to reset it.';
+  static const String resetPasswordSuccess =
+      'Password reset email has been sent';
+  static const String rememberPasswordPrompt = 'Remember password? ';
 
   ///
 }

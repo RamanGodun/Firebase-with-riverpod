@@ -1,5 +1,6 @@
 part of 'reset_password_page.dart';
 
+/// ℹ️ [_ResetPasswordHeader] — header section with logo & instructions
 class _ResetPasswordHeader extends StatelessWidget {
   const _ResetPasswordHeader();
 
@@ -11,16 +12,14 @@ class _ResetPasswordHeader extends StatelessWidget {
         SizedBox(height: AppSpacing.huge),
         FlutterLogo(size: AppSpacing.huge),
         SizedBox(height: AppSpacing.m),
-        TextWidget('Reset your password', TextType.headlineSmall),
-        TextWidget(
-          'We will send you an email to reset it.',
-          TextType.bodyMedium,
-        ),
+        TextWidget(AppStrings.resetPasswordHeader, TextType.headlineSmall),
+        TextWidget(AppStrings.resetPasswordSubHeader, TextType.bodyMedium),
       ],
     );
   }
 }
 
+/// 🔁 [_ResetPasswordFooter] — footer with redirect to Sign In
 class _ResetPasswordFooter extends StatelessWidget {
   const _ResetPasswordFooter();
 
@@ -31,11 +30,14 @@ class _ResetPasswordFooter extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const TextWidget('Remember password? ', TextType.titleSmall),
+          const TextWidget(
+            AppStrings.rememberPasswordPrompt,
+            TextType.titleSmall,
+          ),
           CustomButton(
             type: ButtonType.text,
             onPressed: () => context.goTo(RoutesNames.signin),
-            label: 'Sign In!',
+            label: AppStrings.signInButton,
             isEnabled: true,
             isLoading: false,
           ),
