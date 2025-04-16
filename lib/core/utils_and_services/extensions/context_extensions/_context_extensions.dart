@@ -1,6 +1,7 @@
 library;
 
-import 'package:flutter/cupertino.dart' show CupertinoAlertDialog, CupertinoDialogAction;
+import 'package:flutter/cupertino.dart'
+    show CupertinoAlertDialog, CupertinoDialogAction;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
