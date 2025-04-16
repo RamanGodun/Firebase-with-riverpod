@@ -1,18 +1,20 @@
 import 'dart:io' show Platform;
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import '../../data/sources/remote/env_firebase_options.dart';
-import '../config/env.dart';
-import '../utils_and_services/firebase_util.dart';
+import '../utils_and_services/firebase_utils.dart';
 import 'app_config.dart';
-import 'package:device_info_plus/device_info_plus.dart';
+import 'env.dart';
 
-/// 🧰 Bootstrap: Loads .env, initializes Firebase
-Future<void> bootstrapApp() async {
+///
+/// 🧰 [initializeApp]: Loads .env, initializes Firebase,  local storage, etc
+/// -----------------------------------------------------------------------------
+
+Future<void> initializeApp() async {
   ///
   /// 🟡 Check is android version
   if (Platform.isAndroid) {

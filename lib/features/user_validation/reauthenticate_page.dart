@@ -1,10 +1,10 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/router/routes_names.dart';
-import '../../core/utils_and_services/extensions/context_extensions.dart';
+import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_model.dart';
 import '../input_forms/form_state_provider.dart';

@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../core/constants/app_constants.dart' show AppSpacing;
 import '../text_widget.dart';

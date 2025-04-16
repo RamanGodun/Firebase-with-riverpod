@@ -1,20 +1,21 @@
 import 'dart:async';
 
 /// ⏱️ [Debouncer] — utility for delaying execution after user stops typing/tapping/etc.
-/// Commonly used for: search fields, input validation, rate-limiting expensive operations
+/// 🧼 Commonly used for search, validation, and rate-limiting UI actions
+//----------------------------------------------------------------//
+
 class Debouncer {
   final Duration duration;
   Timer? _timer;
 
-  /// 🔧 Create a new [Debouncer] with custom duration
   Debouncer(this.duration);
 
-  /// 🚀 Run an action after a pause (previous calls cancel pending one)
+  /// 🚀 Runs the [action] after [duration]; resets if called again
   void run(void Function() action) {
     _timer?.cancel();
     _timer = Timer(duration, action);
   }
 
-  /// 🧹 Cancel any pending action (optional)
+  /// 🧹 Cancels any scheduled action
   void cancel() => _timer?.cancel();
 }

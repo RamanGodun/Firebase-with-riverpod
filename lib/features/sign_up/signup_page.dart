@@ -3,9 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/router/routes_names.dart';
-import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
-import '../../core/utils_and_services/errors_managing/handle_exception.dart';
-import '../../core/utils_and_services/extensions/context_extensions.dart';
+import '../../core/utils_and_services/handle_exception.dart';
+import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
 import '../input_forms/form_field_widget.dart';
@@ -108,9 +107,7 @@ class SignupPage extends ConsumerWidget {
   void _listenToSignup(BuildContext context, WidgetRef ref) {
     ref.listen(signupProvider, (prev, next) {
       next.whenOrNull(
-        error:
-            (e, _) =>
-                ErrorHandling.showErrorDialog(context, handleException(e)),
+        error: (e, _) => context.showErrorDialog(handleException(e)),
       );
     });
   }

@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/constants/app_strings.dart';
 import '../../core/entities/custom_error.dart';

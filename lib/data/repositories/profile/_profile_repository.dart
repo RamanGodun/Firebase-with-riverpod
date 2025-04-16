@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../core/entities/app_user.dart';
-import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
+import '../../../core/utils_and_services/handle_exception.dart';
 import '../../sources/remote/firebase_constants.dart';
 
 /// 🧩 [ProfileRepository] — abstraction for user profile fetching from Firestore

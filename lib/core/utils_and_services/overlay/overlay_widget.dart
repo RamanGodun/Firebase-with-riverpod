@@ -1,11 +1,19 @@
 part of 'overlay_service.dart';
 
-/// 🎭 [_AnimatedOverlayWidget] — fades and scales in a styled message
+/// 🎭 [_AnimatedOverlayWidget] — fading & scaling animation for overlay content
+/// 🧼 Responsive, theme-aware, adaptive presentation
+//----------------------------------------------------------------//
+
 class _AnimatedOverlayWidget extends HookWidget {
   final String message;
   final IconData icon;
+  final OverlayPosition position;
 
-  const _AnimatedOverlayWidget({required this.message, required this.icon});
+  const _AnimatedOverlayWidget({
+    required this.message,
+    required this.icon,
+    required this.position,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +32,14 @@ class _AnimatedOverlayWidget extends HookWidget {
       ).chain(CurveTween(curve: Curves.elasticOut)),
     );
 
-    final colorScheme = context.colorScheme;
-    final isDark = colorScheme.brightness == Brightness.dark;
+    final isDark = context.isDarkMode;
+    final size = MediaQuery.of(context).size;
+
+    final top = switch (position) {
+      OverlayPosition.top => size.height * 0.15,
+      OverlayPosition.center => size.height * 0.4,
+      OverlayPosition.bottom => size.height * 0.8,
+    };
 
     final backgroundColor =
         isDark
@@ -43,46 +57,49 @@ class _AnimatedOverlayWidget extends HookWidget {
     return Stack(
       children: [
         Positioned(
-          top: MediaQuery.of(context).size.height * 0.4,
-          left: MediaQuery.of(context).size.width * 0.1,
-          right: MediaQuery.of(context).size.width * 0.1,
+          top: top,
+          left: size.width * 0.1,
+          right: size.width * 0.1,
           child: FadeTransition(
             opacity: opacity,
             child: ScaleTransition(
               scale: scale,
-              child: Material(
-                color: Colors.transparent,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: borderColor, width: 1.5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 12,
-                        spreadRadius: 1,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(icon, color: textColor, size: 24),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: TextWidget(
-                          message,
-                          TextType.titleMedium,
-                          color: textColor,
+              child: GestureDetector(
+                onTap: OverlayNotificationService._removeOverlay,
+                child: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: borderColor, width: 1.5),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 12,
+                          spreadRadius: 1,
+                          offset: const Offset(0, 4),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(icon, color: textColor, size: 24),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: TextWidget(
+                            message,
+                            TextType.titleMedium,
+                            color: textColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

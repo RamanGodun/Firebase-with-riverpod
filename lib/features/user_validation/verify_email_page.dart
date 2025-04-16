@@ -1,12 +1,11 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
-import '../../core/utils_and_services/errors_managing/handle_exception.dart';
-import '../../core/utils_and_services/extensions/context_extensions.dart';
-import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
+import '../../core/utils_and_services/handle_exception.dart';
+import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../core/entities/custom_error.dart';
 import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../../data/sources/remote/firebase_constants.dart';
@@ -32,9 +31,7 @@ class VerifyEmailPage extends HookConsumerWidget {
     ref.listen(emailVerificationNotifierProvider, (prev, next) {
       next.whenOrNull(
         data: (_) => context.goTo(RoutesNames.home),
-        error:
-            (e, _) =>
-                ErrorHandling.showErrorDialog(context, handleException(e)),
+        error: (e, _) => context.showErrorDialog(handleException(e)),
       );
     });
 
@@ -156,7 +153,7 @@ class _VerifyEmailCancelButton extends ConsumerWidget {
       await ref.read(authRepositoryProvider).signout();
     } on CustomError catch (e) {
       if (!context.mounted) return;
-      ErrorHandling.showErrorDialog(context, e);
+      context.showErrorDialog(handleException(e));
     }
   }
 }

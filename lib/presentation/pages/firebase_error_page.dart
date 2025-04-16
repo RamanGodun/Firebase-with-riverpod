@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
 import 'package:firebase_with_riverpod/core/constants/app_strings.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:firebase_with_riverpod/presentation/widgets/buttons/custom_buttons.dart';
 import 'package:firebase_with_riverpod/presentation/widgets/text_widget.dart';
 

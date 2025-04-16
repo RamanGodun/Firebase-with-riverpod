@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../presentation/widgets/text_widget.dart';
 
-/// 📦 [CustomSnackbars] provides some utility methods.
-class CustomSnackbars {
-  /// ===========================
-  /// 🧩 FOR SNACKBAR
-  // ===========================
+/// 🧩 [CustomSnackbars] — utility for showing consistent snackbars
+//----------------------------------------------------------------//
 
-  /// Shows a snackbar message
-  static void show(ScaffoldMessengerState scaffoldMessenger, String message) {
-    scaffoldMessenger.showSnackBar(
+class CustomSnackbars {
+  /// 📢 Displays a snackbar with centered [TextWidget]
+  static void show(ScaffoldMessengerState messenger, String message) {
+    messenger.showSnackBar(
       SnackBar(
         content: Center(child: TextWidget(message, TextType.bodyMedium)),
       ),
     );
   }
-
-  ///
 }

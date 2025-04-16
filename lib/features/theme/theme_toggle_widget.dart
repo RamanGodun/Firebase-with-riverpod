@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/utils_and_services/overlay/overlay_service.dart';
-import '../../core/utils_and_services/extensions/context_extensions.dart';
+import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import 'theme_provider.dart';
 
 /// 🌗 [ThemeToggleIcon] — toggles light/dark mode and shows overlay notification

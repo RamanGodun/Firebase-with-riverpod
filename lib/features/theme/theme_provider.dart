@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../core/utils_and_services/extensions/others.dart'; // for .toggle()
+import '../../core/utils_and_services/extensions/general_extensions/_general_extensions.dart'; // for .toggle()
 
 // 🔐 Key for storing theme preference
 const _themeStorageKey = 'selectedTheme';

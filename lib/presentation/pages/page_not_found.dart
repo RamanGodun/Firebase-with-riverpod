@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/constants/app_constants.dart';
 import 'package:firebase_with_riverpod/core/constants/app_strings.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:firebase_with_riverpod/presentation/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import '../../core/router/routes_names.dart';

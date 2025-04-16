@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/config/bootstrap.dart';
+import 'core/config/initialize_app.dart';
 import 'core/config/loggers/observer_logger.dart';
 import 'core/router/router.dart';
 import 'features/theme/app_theme.dart';
@@ -11,14 +11,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // 🔧 Perform all essential setup: Firebase, .env, local storage, etc.
-  await bootstrapApp();
+  await initializeApp();
 
   // 🚀 Start the app within Riverpod's ProviderScope and custom logger
   runApp(ProviderScope(observers: [Logger()], child: const RootWidget()));
 }
 
-/// 🌳 [RootWidget] defines the top-level widget that manages
-/// global theming and routing using Riverpod & GoRouter
+/// 🌳 [RootWidget] defines the top-level widget that manages global theming and routing
 class RootWidget extends ConsumerWidget {
   const RootWidget({super.key});
 
@@ -30,7 +29,7 @@ class RootWidget extends ConsumerWidget {
     return MaterialApp.router(
       title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
-      // 📍 Dynamic routing
+      // 📍 Dynamic routing with help of GoRouter
       routerConfig: router,
       // 🎨 Current theme mode
       themeMode: themeMode,

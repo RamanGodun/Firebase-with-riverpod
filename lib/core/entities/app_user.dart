@@ -4,6 +4,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'app_user.g.dart';
 
+/// 👤 [AppUser] — domain entity that represents an authenticated user
+/// 🧼 Contains user id, name, and email. Supports serialization & snapshot parsing.
+//----------------------------------------------------------------//
 @JsonSerializable(explicitToJson: true)
 class AppUser extends Equatable {
   final String id;
@@ -12,9 +15,10 @@ class AppUser extends Equatable {
 
   const AppUser({this.id = '', this.name = '', this.email = ''});
 
-  /// Factory method for Firebase snapshot
+  /// 🏗 Factory: Build from Firestore document snapshot
   factory AppUser.fromDoc(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>?;
+
     return AppUser(
       id: doc.id,
       name: data?['name'] ?? '',
@@ -22,14 +26,14 @@ class AppUser extends Equatable {
     );
   }
 
-  /// Factory method for JSON
+  /// 🧩 Factory: Deserialize from JSON
   factory AppUser.fromJson(Map<String, dynamic> json) =>
       _$AppUserFromJson(json);
 
-  ///  Convert to JSON
+  /// 🔁 Convert to JSON
   Map<String, dynamic> toJson() => _$AppUserToJson(this);
 
-  /// CopyWith
+  /// 🧱 Create new copy with optional overrides
   AppUser copyWith({String? id, String? name, String? email}) {
     return AppUser(
       id: id ?? this.id,
