@@ -7,7 +7,7 @@ import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/snackbars.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../input_forms/form_field_widget.dart';
 import '../user_validation/reauthenticate_page.dart';
 import '../../presentation/widgets/text_widget.dart';

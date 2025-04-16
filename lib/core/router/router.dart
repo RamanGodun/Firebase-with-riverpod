@@ -12,7 +12,7 @@ import '../../features/sign_up/signup_page.dart';
 import '../../features/user_validation/reauthenticate_page.dart';
 import '../../features/user_validation/verify_email_page.dart';
 import '../../presentation/widgets/mini_widgets.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../../data/sources/remote/firebase_constants.dart';
 import '../../presentation/pages/_home_page.dart';
 import 'routes_names.dart';

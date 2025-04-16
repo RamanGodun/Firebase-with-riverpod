@@ -3,23 +3,22 @@ import '../../../core/entities/app_user.dart';
 import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../sources/remote/firebase_constants.dart';
 
-/// [ProfileRepository] handles user profile-related operations, such as fetching user data from Firestore.
+/// 🧩 [ProfileRepository] — abstraction for user profile fetching from Firestore
+/// 🧼 Handles retrieving user data by UID
+//----------------------------------------------------------------//
+
 class ProfileRepository {
-  ///
+  /// 🧾 Fetches user profile by [userID] from Firestore
   Future<AppUser> getProfile({required String userID}) async {
     try {
-      /// Retrieves the user profile from Firestore based on the provided [userID].
-      final DocumentSnapshot appUserDoc =
-          await usersCollection.doc(userID).get();
+      final DocumentSnapshot doc = await usersCollection.doc(userID).get();
 
-      if (appUserDoc.exists) {
-        /// Returns an instance of [AppUser] containing user details.
-        return AppUser.fromDoc(appUserDoc);
+      if (!doc.exists) {
+        throw 'User not found';
       }
 
-      throw 'User not found';
+      return AppUser.fromDoc(doc);
     } catch (e) {
-      /// Throws a custom exception if the user is not found or if an error occurs.
       throw handleException(e);
     }
   }

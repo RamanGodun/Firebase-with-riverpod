@@ -2,17 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../sources/remote/firebase_constants.dart';
 
-/// **Authentication Repository**
-/// [AuthRepository] provides methods for handling authentication-related
-/// operations, including signing up, signing in, signing out, and password management.
+/// 🧩 [AuthRepository] — abstraction for all Firebase auth logic
+/// 🧼 Wraps common operations: sign in, sign up, reset password, etc.
+//----------------------------------------------------------------//
 
 class AuthRepository {
-  ///
-  /// Returns the currently authenticated user or `null` if not signed in.
+  /// 🔎 Returns currently signed-in user
   User? get currentUser => fbAuth.currentUser;
 
-  /// Creates a new user with the provided [name], [email], and [password].
-  /// The user details are then stored in Firestore.
+  /// 🆕 Creates user with email/password and stores basic info in Firestore
   Future<void> signup({
     required String name,
     required String email,
@@ -24,18 +22,14 @@ class AuthRepository {
         password: password,
       );
 
-      final signedInUser = userCredential.user!;
-
-      await usersCollection.doc(signedInUser.uid).set({
-        'name': name,
-        'email': email,
-      });
+      final user = userCredential.user!;
+      await usersCollection.doc(user.uid).set({'name': name, 'email': email});
     } catch (e) {
       throw handleException(e);
     }
   }
 
-  /// Authenticates a user with the provided [email] and [password].
+  /// 🔐 Signs user in using email and password
   Future<void> signin({required String email, required String password}) async {
     try {
       await fbAuth.signInWithEmailAndPassword(email: email, password: password);
@@ -44,7 +38,7 @@ class AuthRepository {
     }
   }
 
-  /// Signs out the currently authenticated user.
+  /// 🔓 Signs out current user
   Future<void> signout() async {
     try {
       await fbAuth.signOut();
@@ -53,7 +47,7 @@ class AuthRepository {
     }
   }
 
-  /// Updates the current user's password to the new [password].
+  /// 🔁 Updates password for the current user
   Future<void> changePassword(String password) async {
     try {
       await currentUser!.updatePassword(password);
@@ -62,7 +56,7 @@ class AuthRepository {
     }
   }
 
-  /// Sends a password reset email to the specified [email].
+  /// 📩 Sends a reset password email
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await fbAuth.sendPasswordResetEmail(email: email);
@@ -71,7 +65,7 @@ class AuthRepository {
     }
   }
 
-  /// Sends a verification email to the currently signed-in user.
+  /// 📧 Sends a verification email to the current user
   Future<void> sendEmailVerification() async {
     try {
       await currentUser!.sendEmailVerification();
@@ -80,7 +74,7 @@ class AuthRepository {
     }
   }
 
-  /// Reloads the current user's authentication state.
+  /// 🔁 Reloads user state (to update verification status, etc.)
   Future<void> reloadUser() async {
     try {
       await currentUser!.reload();
@@ -89,16 +83,18 @@ class AuthRepository {
     }
   }
 
-  /// Reauthenticates the current user using their [email] and [password].
-  /// This is required for sensitive operations, such as changing the email or password.
+  /// ✅ Reauthenticates the user for sensitive operations (e.g. password change)
   Future<void> reauthenticateWithCredential(
     String email,
     String password,
   ) async {
     try {
-      await currentUser!.reauthenticateWithCredential(
-        EmailAuthProvider.credential(email: email, password: password),
+      final credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
       );
+
+      await currentUser!.reauthenticateWithCredential(credential);
     } catch (e) {
       throw handleException(e);
     }

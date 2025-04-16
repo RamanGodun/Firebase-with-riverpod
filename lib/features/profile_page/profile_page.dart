@@ -12,7 +12,7 @@ import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/extensions/others.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../../data/sources/remote/firebase_constants.dart';
 import '../../presentation/widgets/custom_app_bar.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';

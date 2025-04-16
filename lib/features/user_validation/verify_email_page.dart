@@ -8,7 +8,7 @@ import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../../core/utils_and_services/dialog_managing/error_dialog.dart';
 import '../../core/entities/custom_error.dart';
-import '../../data/repositories/auth/auth_repository_provider.dart';
+import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../../data/sources/remote/firebase_constants.dart';
 import '../../core/router/routes_names.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
