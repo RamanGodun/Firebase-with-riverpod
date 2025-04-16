@@ -2,6 +2,7 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/constants/app_strings.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/extensions/context_extensions.dart';
 import '../input_forms/form_field_widget.dart';
@@ -11,18 +12,17 @@ import '../input_forms/presets_of_forms.dart';
 import '../../presentation/widgets/buttons/custom_buttons.dart';
 import '../../presentation/widgets/text_widget.dart';
 
-part 'widget_for_re_auth_info.dart';
-
+/// 🔐 [ReAuthenticationPage] — screen used to re-authenticate the user before sensitive operations
 class ReAuthenticationPage extends ConsumerWidget {
   const ReAuthenticationPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fields = FormTemplates.reAuthenticationFields;
-    final provider = formStateNotifierProvider(fields);
-    final form = ref.watch(provider);
-    final notifier = ref.read(provider.notifier);
-    final isFormValid = ref.watch(formValidProvider(fields));
+    final fieldTypes = FormTemplates.reAuthenticationFields;
+    final formProvider = formStateNotifierProvider(fieldTypes);
+    final formState = ref.watch(formProvider);
+    final formNotifier = ref.read(formProvider.notifier);
+    final isFormValid = ref.watch(formValidProvider(fieldTypes));
     final submitting = ValueNotifier(false);
 
     return GestureDetector(
@@ -37,27 +37,31 @@ class ReAuthenticationPage extends ConsumerWidget {
                   shrinkWrap: true,
                   children: [
                     const _ReauthenticateInfo(),
-                    const SizedBox(height: AppSpacing.m),
-                    for (final type in fields)
+
+                    for (final type in fieldTypes)
                       AppFormField(
                         type: type,
-                        fields: fields,
+                        fields: fieldTypes,
                         showToggleVisibility: type == FormFieldType.password,
                       ),
                     const SizedBox(height: AppSpacing.l),
+
                     CustomButton(
                       type: ButtonType.filled,
-                      label: isSubmitting ? 'Submitting...' : 'Reauthenticate',
+                      label:
+                          isSubmitting
+                              ? AppStrings.submitting
+                              : AppStrings.reauthenticate,
                       isEnabled: !isSubmitting,
                       isLoading: isSubmitting,
                       onPressed:
                           isSubmitting
                               ? null
-                              : () => _submit(
+                              : () => _handleSubmit(
                                 context,
-                                form,
+                                formState,
                                 isFormValid,
-                                notifier,
+                                formNotifier,
                                 submitting,
                               ),
                     ),
@@ -69,7 +73,8 @@ class ReAuthenticationPage extends ConsumerWidget {
     );
   }
 
-  void _submit(
+  /// ✅ Handles validation & simulates reauthentication submission
+  void _handleSubmit(
     BuildContext context,
     FormStateModel form,
     bool isFormValid,
@@ -80,7 +85,6 @@ class ReAuthenticationPage extends ConsumerWidget {
       notifier.validateAll();
       return;
     }
-
     submitting.value = true;
     Future.delayed(const Duration(seconds: 2), () {
       if (!context.mounted) return;
@@ -88,6 +92,25 @@ class ReAuthenticationPage extends ConsumerWidget {
       context.goTo(RoutesNames.home);
     });
   }
+}
 
-  ///
+/// ℹ️ [_ReauthenticateInfo] — informative section about re-authentication requirement
+class _ReauthenticateInfo extends StatelessWidget {
+  const _ReauthenticateInfo();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        TextWidget(AppStrings.reauthenticateTitle, TextType.headlineMedium),
+        TextWidget(
+          AppStrings.reauthenticateDescription,
+          TextType.titleSmall,
+          isTextOnFewStrings: true,
+        ),
+        SizedBox(height: AppSpacing.m),
+      ],
+    );
+  }
 }

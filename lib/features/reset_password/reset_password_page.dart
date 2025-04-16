@@ -23,12 +23,12 @@ class ResetPasswordPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fields = FormTemplates.resetPasswordFields;
-    final provider = formStateNotifierProvider(fields);
-    final form = ref.watch(provider);
-    final notifier = ref.read(provider.notifier);
-    final isFormValid = ref.watch(formValidProvider(fields));
-    final resetState = ref.watch(resetPasswordProvider);
+    final fieldTypes = FormTemplates.resetPasswordFields;
+    final formProvider = formStateNotifierProvider(fieldTypes);
+    final formState = ref.watch(formProvider);
+    final formNotifier = ref.read(formProvider.notifier);
+    final isFormValid = ref.watch(formValidProvider(fieldTypes));
+    final resetPasswordState = ref.watch(resetPasswordProvider);
 
     _listenForResetEvents(context, ref);
 
@@ -44,26 +44,26 @@ class ResetPasswordPage extends ConsumerWidget {
                 children: [
                   const _ResetPasswordHeader(),
                   const SizedBox(height: AppSpacing.l),
-                  for (final type in fields)
-                    AppFormField(type: type, fields: fields),
+                  for (final type in fieldTypes)
+                    AppFormField(type: type, fields: fieldTypes),
                   const SizedBox(height: AppSpacing.xxl),
                   CustomButton(
                     type: ButtonType.filled,
                     onPressed:
-                        resetState.isLoading
+                        resetPasswordState.isLoading
                             ? null
                             : () => _handleResetPressed(
                               ref,
-                              form,
-                              notifier,
+                              formState,
+                              formNotifier,
                               isFormValid,
                             ),
                     label:
-                        resetState.isLoading
+                        resetPasswordState.isLoading
                             ? AppStrings.submitting
                             : AppStrings.resetPassword,
-                    isLoading: resetState.isLoading,
-                    isEnabled: !resetState.isLoading,
+                    isLoading: resetPasswordState.isLoading,
+                    isEnabled: !resetPasswordState.isLoading,
                   ),
                   const SizedBox(height: AppSpacing.xl),
                   const _ResetPasswordFooter(),

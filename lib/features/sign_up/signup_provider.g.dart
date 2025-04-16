@@ -6,23 +6,9 @@ part of 'signup_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signupHash() => r'45b357680a00daaf098fb422fa914128bb895887';
+String _$signupHash() => r'c950b887818bf5c88165674148b38d5f8d39c905';
 
-/// **Signup Provider**
-///
-/// A Riverpod provider that handles user registration.
-/// - Manages sign-up requests and state.
-/// - Ensures **safe state updates** by using `_key` to avoid race conditions.
-/// - Calls [AuthRepository] for authentication.
-///
-/// Usage:
-/// ```dart
-/// ref.read(signupProvider.notifier).signup(
-///   name: userName,
-///   email: userEmail,
-///   password: userPassword,
-/// );
-/// ```
+/// 🧩 [signupProvider] — async notifier that handles sign-up logic
 ///
 /// Copied from [Signup].
 @ProviderFor(Signup)

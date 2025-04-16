@@ -3,16 +3,18 @@ import '../../../data/repositories/auth/auth_repository_provider.dart';
 
 part 'signin_provider.g.dart';
 
-/// [Signin] Provider, responsible for handling user sign-in.
+/// 🧩 [signinProvider] — async notifier that handles sign in logic
+//----------------------------------------------------------------//
+
 @riverpod
 class Signin extends _$Signin {
   @override
   FutureOr<void> build() {}
 
-  /// Calls [AuthRepository.signin] with provided credentials.
+  /// 🚀 Signs user in using email/password credentials
   Future<void> signin({required String email, required String password}) async {
-    state = const AsyncLoading<void>();
-    state = await AsyncValue.guard<void>(
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(
       () => ref
           .read(authRepositoryProvider)
           .signin(email: email, password: password),

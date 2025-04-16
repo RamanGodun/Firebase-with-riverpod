@@ -28,14 +28,16 @@ class AppFormField extends HookConsumerWidget {
     final obscure = useState(true);
 
     /// 📦 Provider to watch form state and notifier
-    final provider = formStateNotifierProvider(fields);
-    final state = ref.watch(provider);
-    final notifier = ref.read(provider.notifier);
+    final formProvider = formStateNotifierProvider(fields);
+    final formState = ref.watch(formProvider);
+    final formNotifier = ref.read(formProvider.notifier);
 
     /// 🧠 Sync initial value + listen to controller text changes
     useEffect(() {
-      controller.text = state.valueOf(type);
-      controller.addListener(() => notifier.updateField(type, controller.text));
+      controller.text = formState.valueOf(type);
+      controller.addListener(
+        () => formNotifier.updateField(type, controller.text),
+      );
       return null;
     }, [controller]);
 
@@ -58,7 +60,7 @@ class AppFormField extends HookConsumerWidget {
             borderRadius: AppConstants.commonBorderRadius,
           ),
           labelText: _labelFor(type),
-          errorText: state.errorFor(type),
+          errorText: formState.errorFor(type),
           prefixIcon: _iconFor(type),
 
           // 👁️ Show toggle visibility icon for password fields

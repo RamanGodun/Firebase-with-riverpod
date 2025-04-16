@@ -1,6 +1,7 @@
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/others.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/constants/app_strings.dart';
 import '../../core/utils_and_services/errors_managing/handle_exception.dart';
 import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_model.dart';
@@ -16,19 +17,20 @@ import '../../../core/utils_and_services/extensions/context_extensions.dart';
 
 part 'widgets_for_signin_page.dart';
 
+/// 🔐 [SignInPage] — screen that allows user to sign in.
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fields = FormTemplates.signInFields;
-    final provider = formStateNotifierProvider(fields);
-    final form = ref.watch(provider);
-    final notifier = ref.read(provider.notifier);
-    final isFormValid = ref.watch(formValidProvider(fields));
-    final signin = ref.watch(signinProvider);
+    final fieldTypes = FormTemplates.signInFields;
+    final formProvider = formStateNotifierProvider(fieldTypes);
+    final formState = ref.watch(formProvider);
+    final formNotifier = ref.read(formProvider.notifier);
+    final isFormValid = ref.watch(formValidProvider(fieldTypes));
+    final signInState = ref.watch(signinProvider);
 
-    _listenForErrors(context, ref);
+    _listenToSignIn(context, ref);
 
     return Scaffold(
       body: SafeArea(
@@ -37,40 +39,37 @@ class SignInPage extends ConsumerWidget {
           child: Center(
             child: FocusTraversalGroup(
               child: Column(
-                spacing: AppSpacing.s,
                 children: [
                   const _SigninHeader(),
-                  const SizedBox(height: AppSpacing.l),
-                  const TextWidget(
-                    'Sign in to your account',
-                    TextType.headlineSmall,
-                  ),
-                  const SizedBox(height: AppSpacing.s),
 
-                  for (final type in fields)
+                  for (final type in fieldTypes)
                     AppFormField(
                       type: type,
-                      fields: fields,
+                      fields: fieldTypes,
                       showToggleVisibility: type == FormFieldType.password,
                     ),
+
                   const SizedBox(height: AppSpacing.xxl),
 
                   CustomButton(
                     type: ButtonType.filled,
-                    label: signin.isLoading ? 'Submitting...' : 'Sign In',
-                    isEnabled: !signin.isLoading,
-                    isLoading: signin.isLoading,
+                    label:
+                        signInState.isLoading
+                            ? AppStrings.submitting
+                            : AppStrings.signInButton,
+                    isEnabled: !signInState.isLoading,
+                    isLoading: signInState.isLoading,
                     onPressed:
-                        signin.isLoading
+                        signInState.isLoading
                             ? null
-                            : () {
-                              if (isFormValid) {
-                                _submit(ref, form);
-                              } else {
-                                notifier.validateAll();
-                              }
-                            },
+                            : () => _handleSignIn(
+                              ref,
+                              formState,
+                              formNotifier,
+                              isFormValid,
+                            ),
                   ),
+
                   const SizedBox(height: AppSpacing.xxl),
                   const _SigninFooter(),
                 ],
@@ -82,16 +81,27 @@ class SignInPage extends ConsumerWidget {
     );
   }
 
-  void _submit(WidgetRef ref, FormStateModel form) {
-    ref
-        .read(signinProvider.notifier)
-        .signin(
-          email: form.valueOf(FormFieldType.email),
-          password: form.valueOf(FormFieldType.password),
-        );
+  /// 📩 Handles form validation and submission to [signinProvider].
+  void _handleSignIn(
+    WidgetRef ref,
+    FormStateModel form,
+    FormStateNotifier notifier,
+    bool isFormValid,
+  ) {
+    if (isFormValid) {
+      ref
+          .read(signinProvider.notifier)
+          .signin(
+            email: form.valueOf(FormFieldType.email),
+            password: form.valueOf(FormFieldType.password),
+          );
+    } else {
+      notifier.validateAll();
+    }
   }
 
-  void _listenForErrors(BuildContext context, WidgetRef ref) {
+  /// ⚠️ Subscribes to [signinProvider] and handles sign-in errors.
+  void _listenToSignIn(BuildContext context, WidgetRef ref) {
     ref.listen(signinProvider, (prev, next) {
       next.whenOrNull(
         error:

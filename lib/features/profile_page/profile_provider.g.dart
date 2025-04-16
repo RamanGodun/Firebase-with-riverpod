@@ -6,7 +6,7 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileHash() => r'3f54cbfa8f4037b5a642acb82adfe6230ad950ad';
+String _$profileHash() => r'063fe7495732d3eef90810c0405500a0b7037177';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,16 +29,28 @@ class _SystemHash {
   }
 }
 
-/// See also [profile].
+/// 🧩 [profileProvider] — async provider, that returns user profile
+/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+///
+/// Copied from [profile].
 @ProviderFor(profile)
 const profileProvider = ProfileFamily();
 
-/// See also [profile].
+/// 🧩 [profileProvider] — async provider, that returns user profile
+/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+///
+/// Copied from [profile].
 class ProfileFamily extends Family<AsyncValue<AppUser>> {
-  /// See also [profile].
+  /// 🧩 [profileProvider] — async provider, that returns user profile
+  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  ///
+  /// Copied from [profile].
   const ProfileFamily();
 
-  /// See also [profile].
+  /// 🧩 [profileProvider] — async provider, that returns user profile
+  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  ///
+  /// Copied from [profile].
   ProfileProvider call(String uid) {
     return ProfileProvider(uid);
   }
@@ -63,9 +75,15 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
   String? get name => r'profileProvider';
 }
 
-/// See also [profile].
+/// 🧩 [profileProvider] — async provider, that returns user profile
+/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+///
+/// Copied from [profile].
 class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
-  /// See also [profile].
+  /// 🧩 [profileProvider] — async provider, that returns user profile
+  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  ///
+  /// Copied from [profile].
   ProfileProvider(String uid)
     : this._internal(
         (ref) => profile(ref as ProfileRef, uid),

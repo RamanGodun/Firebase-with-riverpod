@@ -6,7 +6,7 @@ part of 'form_state_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$formStateNotifierHash() => r'6fe413d381d30b6f5fe8a3de0d488ef1ab78e7c7';
+String _$formStateNotifierHash() => r'cbc964d73c8f8859c2f31537968e43f760dc1ec2';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -36,16 +36,24 @@ abstract class _$FormStateNotifier
   FormStateModel build(List<FormFieldType> fields);
 }
 
-/// See also [FormStateNotifier].
+/// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+///
+/// Copied from [FormStateNotifier].
 @ProviderFor(FormStateNotifier)
 const formStateNotifierProvider = FormStateNotifierFamily();
 
-/// See also [FormStateNotifier].
+/// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+///
+/// Copied from [FormStateNotifier].
 class FormStateNotifierFamily extends Family<FormStateModel> {
-  /// See also [FormStateNotifier].
+  /// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+  ///
+  /// Copied from [FormStateNotifier].
   const FormStateNotifierFamily();
 
-  /// See also [FormStateNotifier].
+  /// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+  ///
+  /// Copied from [FormStateNotifier].
   FormStateNotifierProvider call(List<FormFieldType> fields) {
     return FormStateNotifierProvider(fields);
   }
@@ -72,10 +80,14 @@ class FormStateNotifierFamily extends Family<FormStateModel> {
   String? get name => r'formStateNotifierProvider';
 }
 
-/// See also [FormStateNotifier].
+/// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+///
+/// Copied from [FormStateNotifier].
 class FormStateNotifierProvider
     extends AutoDisposeNotifierProviderImpl<FormStateNotifier, FormStateModel> {
-  /// See also [FormStateNotifier].
+  /// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+  ///
+  /// Copied from [FormStateNotifier].
   FormStateNotifierProvider(List<FormFieldType> fields)
     : this._internal(
         () => FormStateNotifier()..fields = fields,

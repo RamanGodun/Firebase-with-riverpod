@@ -6,7 +6,7 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'4ff13c2f44881c0d4e11ba22c22f135689cd4056';
+String _$routerHash() => r'01ff98a96aee4b21e49c896b08de568e1de32526';
 
 /// 🧭 [router] — GoRouter provider with dynamic auth-aware redirects
 /// Listens to Firebase auth state and redirects:

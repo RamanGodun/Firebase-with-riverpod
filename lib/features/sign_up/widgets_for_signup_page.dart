@@ -1,5 +1,6 @@
 part of 'signup_page.dart';
 
+/// 🧾 [_SignupHeader] — logo and welcome message
 class _SignupHeader extends StatelessWidget {
   const _SignupHeader();
 
@@ -8,15 +9,17 @@ class _SignupHeader extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        FlutterLogo(size: 120),
+        FlutterLogo(size: AppSpacing.massive),
         SizedBox(height: AppSpacing.m),
-        TextWidget('Join Us!', TextType.headlineSmall),
-        TextWidget('Create an account to get started.', TextType.bodyMedium),
+        TextWidget(AppStrings.signUpHeader, TextType.headlineSmall),
+        TextWidget(AppStrings.signUpSubHeader, TextType.bodyMedium),
+        SizedBox(height: AppSpacing.l),
       ],
     );
   }
 }
 
+/// 🔁 [_SignupFooter] — sign in redirect
 class _SignupFooter extends StatelessWidget {
   const _SignupFooter();
 
@@ -28,11 +31,11 @@ class _SignupFooter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const TextWidget('Already have an account?  ', TextType.titleSmall),
+            const TextWidget(AppStrings.redirectToSignIn, TextType.titleSmall),
             CustomButton(
               type: ButtonType.text,
               onPressed: () => context.goTo(RoutesNames.signin),
-              label: 'Sign In!',
+              label: AppStrings.signInButton,
               fontWeight: FontWeight.w600,
               fontSize: 15,
               isEnabled: true,
@@ -40,15 +43,6 @@ class _SignupFooter extends StatelessWidget {
             ),
           ],
         ),
-        // CustomButton(
-        //   type: ButtonType.text,
-        //   onPressed: () => context.goTo(RoutesNames.resetPassword),
-        //   label: 'Forgot Password?',
-        //   foregroundColor: Colors.redAccent,
-        //   fontWeight: FontWeight.w500,
-        //   isEnabled: true,
-        //   isLoading: false,
-        // ),
       ],
     );
   }

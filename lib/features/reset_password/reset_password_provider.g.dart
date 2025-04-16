@@ -6,16 +6,10 @@ part of 'reset_password_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$resetPasswordHash() => r'3e9274b011986821202fc0b592863e686dae488f';
+String _$resetPasswordHash() => r'441c57750c9b57feb9f556a3be941999c2993a5b';
 
-/// **Reset Password Provider**
-///
-/// A Riverpod provider responsible for handling the password reset feature.
-///
-/// - **Manages state** using `AsyncValue<void>`
-/// - **Calls** [AuthRepository] to send a password reset email.
-/// - **Ensures error safety** with `AsyncValue.guard()`
-///
+/// 🧩 [resetPasswordProvider] — async notifier for password reset logic
+/// 🧼 Incapsulates logic for triggering reset flow via [AuthRepository]
 ///
 /// Copied from [ResetPassword].
 @ProviderFor(ResetPassword)

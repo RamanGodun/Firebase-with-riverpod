@@ -8,12 +8,7 @@ part of 'profile_repository_provider.dart';
 
 String _$profileRepositoryHash() => r'2a010f6ed5ff032b91d9ec4959a43cafd642cf2b';
 
-/// **Profile Repository Provider**
-///
-/// A Riverpod provider that exposes an instance of [ProfileRepository].
-///
-/// - **Usage:** Provides access to user profile operations such as fetching user details.
-/// - **Scope:** Singleton instance managed by Riverpod.
+///[profileRepository] exposes an instance of [ProfileRepository]. Singleton instance managed by Riverpod
 ///
 /// Copied from [profileRepository].
 @ProviderFor(profileRepository)
