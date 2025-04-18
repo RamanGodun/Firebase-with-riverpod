@@ -31,49 +31,61 @@ class SignInPage extends ConsumerWidget {
 
     _listenToSignIn(context, ref);
 
+    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
-          child: Center(
-            child: FocusTraversalGroup(
-              child: Column(
-                children: [
-                  const _SigninHeader(),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: FocusTraversalGroup(
+                      child: Column(
+                        children: [
+                          const _SigninHeader(),
 
-                  for (final type in fieldTypes)
-                    AppFormField(
-                      type: type,
-                      fields: fieldTypes,
-                      showToggleVisibility: type == FormFieldType.password,
-                    ),
-
-                  const SizedBox(height: AppSpacing.xxl),
-
-                  CustomButton(
-                    type: ButtonType.filled,
-                    label:
-                        signInState.isLoading
-                            ? AppStrings.submitting
-                            : AppStrings.signInButton,
-                    isEnabled: !signInState.isLoading,
-                    isLoading: signInState.isLoading,
-                    onPressed:
-                        signInState.isLoading
-                            ? null
-                            : () => _handleSignIn(
-                              ref,
-                              formState,
-                              formNotifier,
-                              isFormValid,
+                          for (final type in fieldTypes)
+                            AppFormField(
+                              type: type,
+                              fields: fieldTypes,
+                              showToggleVisibility:
+                                  type == FormFieldType.password,
                             ),
-                  ),
 
-                  const SizedBox(height: AppSpacing.xxl),
-                  const _SigninFooter(),
-                ],
-              ).withPaddingHorizontal(AppSpacing.m),
-            ),
+                          const SizedBox(height: AppSpacing.xxl),
+
+                          CustomButton(
+                            type: ButtonType.filled,
+                            label:
+                                signInState.isLoading
+                                    ? AppStrings.submitting
+                                    : AppStrings.signInButton,
+                            isEnabled: !signInState.isLoading,
+                            isLoading: signInState.isLoading,
+                            onPressed:
+                                signInState.isLoading
+                                    ? null
+                                    : () => _handleSignIn(
+                                      ref,
+                                      formState,
+                                      formNotifier,
+                                      isFormValid,
+                                    ),
+                          ),
+
+                          const SizedBox(height: AppSpacing.xxl),
+                          const _SigninFooter(),
+                        ],
+                      ).withPaddingHorizontal(AppSpacing.m),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),

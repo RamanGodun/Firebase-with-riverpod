@@ -30,53 +30,62 @@ class SignupPage extends ConsumerWidget {
 
     _listenToSignup(context, ref);
 
-    return GestureDetector(
-      onTap: context.unfocusKeyboard,
-      child: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  const _SignupHeader(),
+    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
+    return Scaffold(
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: context.unfocusKeyboard,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: FocusTraversalGroup(
+                      child: Column(
+                        children: [
+                          const _SignupHeader(),
 
-                  for (final type in fieldTypes)
-                    AppFormField(
-                      type: type,
-                      fields: fieldTypes,
-                      showToggleVisibility:
-                          type == FormFieldType.password ||
-                          type == FormFieldType.confirmPassword,
-                    ),
-
-                  const SizedBox(height: AppSpacing.xxl),
-
-                  CustomButton(
-                    type: ButtonType.filled,
-                    label:
-                        signUpState.isLoading
-                            ? AppStrings.submitting
-                            : AppStrings.signUpButton,
-                    isEnabled: !signUpState.isLoading,
-                    isLoading: signUpState.isLoading,
-                    onPressed:
-                        signUpState.isLoading
-                            ? null
-                            : () => _handleSignup(
-                              ref,
-                              formState,
-                              formNotifier,
-                              isFormValid,
+                          for (final type in fieldTypes)
+                            AppFormField(
+                              type: type,
+                              fields: fieldTypes,
+                              showToggleVisibility:
+                                  type == FormFieldType.password ||
+                                  type == FormFieldType.confirmPassword,
                             ),
-                  ),
 
-                  const SizedBox(height: AppSpacing.xl),
-                  const _SignupFooter(),
-                ],
-              ),
-            ),
+                          const SizedBox(height: AppSpacing.xxl),
+
+                          CustomButton(
+                            type: ButtonType.filled,
+                            label:
+                                signUpState.isLoading
+                                    ? AppStrings.submitting
+                                    : AppStrings.signUpButton,
+                            isEnabled: !signUpState.isLoading,
+                            isLoading: signUpState.isLoading,
+                            onPressed:
+                                signUpState.isLoading
+                                    ? null
+                                    : () => _handleSignup(
+                                      ref,
+                                      formState,
+                                      formNotifier,
+                                      isFormValid,
+                                    ),
+                          ),
+
+                          const SizedBox(height: AppSpacing.xl),
+                          const _SignupFooter(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),

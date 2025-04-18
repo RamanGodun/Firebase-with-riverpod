@@ -25,49 +25,64 @@ class ReAuthenticationPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
     final submitting = ValueNotifier(false);
 
-    return GestureDetector(
-      onTap: context.unfocusKeyboard,
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: ValueListenableBuilder<bool>(
-            valueListenable: submitting,
-            builder:
-                (context, isSubmitting, _) => ListView(
-                  shrinkWrap: true,
-                  children: [
-                    const _ReauthenticateInfo(),
+    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
+    return Scaffold(
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: context.unfocusKeyboard,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: FocusTraversalGroup(
+                      child: ValueListenableBuilder<bool>(
+                        valueListenable: submitting,
+                        builder:
+                            (context, isSubmitting, _) => ListView(
+                              shrinkWrap: true,
+                              children: [
+                                const _ReauthenticateInfo(),
 
-                    for (final type in fieldTypes)
-                      AppFormField(
-                        type: type,
-                        fields: fieldTypes,
-                        showToggleVisibility: type == FormFieldType.password,
-                      ),
-                    const SizedBox(height: AppSpacing.l),
+                                for (final type in fieldTypes)
+                                  AppFormField(
+                                    type: type,
+                                    fields: fieldTypes,
+                                    showToggleVisibility:
+                                        type == FormFieldType.password,
+                                  ),
+                                const SizedBox(height: AppSpacing.l),
 
-                    CustomButton(
-                      type: ButtonType.filled,
-                      label:
-                          isSubmitting
-                              ? AppStrings.submitting
-                              : AppStrings.reauthenticate,
-                      isEnabled: !isSubmitting,
-                      isLoading: isSubmitting,
-                      onPressed:
-                          isSubmitting
-                              ? null
-                              : () => _handleSubmit(
-                                context,
-                                formState,
-                                isFormValid,
-                                formNotifier,
-                                submitting,
-                              ),
+                                CustomButton(
+                                  type: ButtonType.filled,
+                                  label:
+                                      isSubmitting
+                                          ? AppStrings.submitting
+                                          : AppStrings.reauthenticate,
+                                  isEnabled: !isSubmitting,
+                                  isLoading: isSubmitting,
+                                  onPressed:
+                                      isSubmitting
+                                          ? null
+                                          : () => _handleSubmit(
+                                            context,
+                                            formState,
+                                            isFormValid,
+                                            formNotifier,
+                                            submitting,
+                                          ),
+                                ),
+                              ],
+                            ),
+                      ).withPaddingHorizontal(AppSpacing.l),
                     ),
-                  ],
+                  ),
                 ),
-          ).withPaddingHorizontal(AppSpacing.l),
+              );
+            },
+          ),
         ),
       ),
     );

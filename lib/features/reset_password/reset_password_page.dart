@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
@@ -31,44 +32,54 @@ class ResetPasswordPage extends ConsumerWidget {
 
     _listenForResetEvents(context, ref);
 
-    return GestureDetector(
-      onTap: context.unfocusKeyboard,
-      child: Scaffold(
-        body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.l),
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  const _ResetPasswordHeader(),
-                  const SizedBox(height: AppSpacing.l),
-                  for (final type in fieldTypes)
-                    AppFormField(type: type, fields: fieldTypes),
-                  const SizedBox(height: AppSpacing.xxl),
-                  CustomButton(
-                    type: ButtonType.filled,
-                    onPressed:
-                        resetPasswordState.isLoading
-                            ? null
-                            : () => _handleResetPressed(
-                              ref,
-                              formState,
-                              formNotifier,
-                              isFormValid,
-                            ),
-                    label:
-                        resetPasswordState.isLoading
-                            ? AppStrings.submitting
-                            : AppStrings.resetPassword,
-                    isLoading: resetPasswordState.isLoading,
-                    isEnabled: !resetPasswordState.isLoading,
+    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
+    return Scaffold(
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: context.unfocusKeyboard,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: FocusTraversalGroup(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          const _ResetPasswordHeader(),
+                          const SizedBox(height: AppSpacing.l),
+                          for (final type in fieldTypes)
+                            AppFormField(type: type, fields: fieldTypes),
+                          const SizedBox(height: AppSpacing.xxl),
+                          CustomButton(
+                            type: ButtonType.filled,
+                            onPressed:
+                                resetPasswordState.isLoading
+                                    ? null
+                                    : () => _handleResetPressed(
+                                      ref,
+                                      formState,
+                                      formNotifier,
+                                      isFormValid,
+                                    ),
+                            label:
+                                resetPasswordState.isLoading
+                                    ? AppStrings.submitting
+                                    : AppStrings.resetPassword,
+                            isLoading: resetPasswordState.isLoading,
+                            isEnabled: !resetPasswordState.isLoading,
+                          ),
+                          const SizedBox(height: AppSpacing.xl),
+                          const _ResetPasswordFooter(),
+                        ],
+                      ).withPaddingHorizontal(AppSpacing.l),
+                    ),
                   ),
-                  const SizedBox(height: AppSpacing.xl),
-                  const _ResetPasswordFooter(),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),
