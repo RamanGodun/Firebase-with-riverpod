@@ -5,6 +5,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
+import '../../data/repositories/auth/auth_repository_providers.dart';
 import '../input_forms/form_field_widget.dart';
 import '../input_forms/form_fields_model.dart';
 import '../input_forms/form_state_provider.dart';
@@ -26,6 +27,7 @@ class ReAuthenticationPage extends ConsumerWidget {
     final submitting = ValueNotifier(false);
 
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
@@ -44,7 +46,7 @@ class ReAuthenticationPage extends ConsumerWidget {
                           fields: fieldTypes,
                           showToggleVisibility: type == FormFieldType.password,
                         ),
-                      const SizedBox(height: AppSpacing.l),
+                      const SizedBox(height: AppSpacing.huge),
 
                       CustomButton(
                         type: ButtonType.filled,
@@ -65,6 +67,7 @@ class ReAuthenticationPage extends ConsumerWidget {
                                   submitting,
                                 ),
                       ),
+                      const _ReAuthFooter(),
                     ],
                   ),
             ).withPaddingHorizontal(AppSpacing.l),
@@ -104,13 +107,50 @@ class _ReauthenticateInfo extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: AppSpacing.massive),
         TextWidget(AppStrings.reauthenticateTitle, TextType.headlineMedium),
         TextWidget(
           AppStrings.reauthenticateDescription,
           TextType.titleSmall,
           isTextOnFewStrings: true,
         ),
-        SizedBox(height: AppSpacing.m),
+        SizedBox(height: AppSpacing.xl),
+      ],
+    );
+  }
+}
+
+/// 🔁 [_ReAuthFooter] — sign in redirect
+class _ReAuthFooter extends ConsumerWidget {
+  const _ReAuthFooter();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      children: [
+        const SizedBox(height: AppSpacing.xl),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            const TextWidget(
+              AppStrings.redirectToSignInFromReAuthPage,
+              TextType.titleSmall,
+            ),
+            CustomButton(
+              type: ButtonType.text,
+              onPressed: () async {
+                await ref.read(authRepositoryProvider).signout();
+              },
+              label: AppStrings.signInButton,
+              fontWeight: FontWeight.w600,
+              fontSize: 15,
+              isEnabled: true,
+              isLoading: false,
+            ),
+            const TextWidget(AppStrings.page, TextType.titleSmall),
+          ],
+        ),
       ],
     );
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_strings.dart';
+import '../../core/router/routes_names.dart';
 import '../../core/utils_and_services/handle_exception.dart';
 import '../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../core/utils_and_services/snackbars.dart';
@@ -87,26 +88,39 @@ class ChangePasswordPage extends ConsumerWidget {
   void _listenToPasswordChange(BuildContext context, WidgetRef ref) {
     ref.listen(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
-        error: (e, st) {
+        error: (e, st) async {
           final err = handleException(e);
           if (err.code == 'requires-recent-login') {
-            _processRequiresRecentLogin(context);
+            await _processRequiresRecentLogin(context, ref);
           } else {
             context.showErrorDialog(err);
           }
         },
-        data: (_) async {
-          await ref.read(authRepositoryProvider).signout();
+        data: (_) {
+          CustomSnackbars.show(
+            ScaffoldMessenger.of(context),
+            AppStrings.passwordUpdated,
+          );
+          context.goTo(RoutesNames.reAuthenticationPage);
         },
       );
     });
   }
 
   /// 🔐 Triggers the re-authentication flow if recent login is required
-  Future<void> _processRequiresRecentLogin(BuildContext context) async {
+  Future<void> _processRequiresRecentLogin(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
     final scaffoldMessenger = ScaffoldMessenger.of(context);
+
     final result = await context.pushTo<String>(const ReAuthenticationPage());
-    if (result == 'success')
+
+    if (result == 'success') {
       CustomSnackbars.show(scaffoldMessenger, AppStrings.reAuthSuccess);
+      await ref.read(authRepositoryProvider).signout();
+    }
   }
+
+  ///
 }

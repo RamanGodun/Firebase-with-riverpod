@@ -104,6 +104,9 @@ abstract class AppStrings {
   static const String reauthenticateTitle = 'Reauthentication';
   static const String reauthenticateDescription =
       'This is a security-sensitive operation, you must have recently signed in!';
+  static const String passwordUpdated = 'password updating succeed';
+  static const String redirectToSignInFromReAuthPage = 'Or you can go     ';
+  static const String page = '   page';
 
   /// ===============================
   /// 🔐 EMAIL VERIFICATION PAGE
@@ -120,5 +123,7 @@ abstract class AppStrings {
   static const String unknownEmail = 'Unknown';
   static const String or = 'OR';
 
-  ///
+  /// ===============================
+  /// 🔐 Others
+  /// ===============================
 }
