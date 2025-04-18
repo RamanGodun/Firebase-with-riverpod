@@ -10,10 +10,12 @@ class _ResetPasswordHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: AppSpacing.huge),
+        SizedBox(height: AppSpacing.huge),
         FlutterLogo(size: AppSpacing.huge),
         SizedBox(height: AppSpacing.m),
         TextWidget(AppStrings.resetPasswordHeader, TextType.headlineSmall),
         TextWidget(AppStrings.resetPasswordSubHeader, TextType.bodyMedium),
+        SizedBox(height: AppSpacing.xxl),
       ],
     );
   }

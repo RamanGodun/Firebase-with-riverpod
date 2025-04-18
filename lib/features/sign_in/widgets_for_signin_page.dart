@@ -9,7 +9,7 @@ class _SigninHeader extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: AppSpacing.xxxl),
+        SizedBox(height: AppSpacing.huge),
         FlutterLogo(size: AppSpacing.massive),
         SizedBox(height: AppSpacing.xxl),
         TextWidget(AppStrings.signInHeader, TextType.headlineSmall),

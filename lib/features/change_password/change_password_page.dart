@@ -33,67 +33,50 @@ class ChangePasswordPage extends ConsumerWidget {
 
     _listenToPasswordChange(context, ref);
 
-    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                  child: IntrinsicHeight(
-                    child: FocusTraversalGroup(
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          const _ChangePasswordInfo(),
-                          const SizedBox(height: AppSpacing.m),
-                          for (final type in fieldTypes)
-                            AppFormField(
-                              type: type,
-                              fields: fieldTypes,
-                              showToggleVisibility: true,
-                            ),
-                          const SizedBox(height: AppSpacing.xxl),
-                          CustomButton(
-                            type: ButtonType.filled,
-                            onPressed:
-                                changePasswordState.isLoading
-                                    ? null
-                                    : () {
-                                      if (isFormValid) {
-                                        ref
-                                            .read(
-                                              changePasswordProvider.notifier,
-                                            )
-                                            .changePassword(
-                                              formState.valueOf(
-                                                FormFieldType.password,
-                                              ),
-                                            );
-                                      } else {
-                                        formNotifier.validateAll();
-                                      }
-                                    },
-                            label:
-                                changePasswordState.isLoading
-                                    ? AppStrings.submitting
-                                    : AppStrings.changePassword,
-                            isEnabled: !changePasswordState.isLoading,
-                            isLoading: changePasswordState.isLoading,
-                          ),
-                          const SizedBox(height: AppSpacing.huge),
-                        ],
-                      ).withPaddingHorizontal(AppSpacing.l),
-                    ),
+          child: FocusTraversalGroup(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                const _ChangePasswordInfo(),
+                const SizedBox(height: AppSpacing.m),
+                for (final type in fieldTypes)
+                  AppFormField(
+                    type: type,
+                    fields: fieldTypes,
+                    showToggleVisibility: true,
                   ),
+                const SizedBox(height: AppSpacing.massive),
+                CustomButton(
+                  type: ButtonType.filled,
+                  onPressed:
+                      changePasswordState.isLoading
+                          ? null
+                          : () {
+                            if (isFormValid) {
+                              ref
+                                  .read(changePasswordProvider.notifier)
+                                  .changePassword(
+                                    formState.valueOf(FormFieldType.password),
+                                  );
+                            } else {
+                              formNotifier.validateAll();
+                            }
+                          },
+                  label:
+                      changePasswordState.isLoading
+                          ? AppStrings.submitting
+                          : AppStrings.changePassword,
+                  isEnabled: !changePasswordState.isLoading,
+                  isLoading: changePasswordState.isLoading,
                 ),
-              );
-            },
+                const SizedBox(height: AppSpacing.huge),
+              ],
+            ).withPaddingHorizontal(AppSpacing.l),
           ),
         ),
       ),

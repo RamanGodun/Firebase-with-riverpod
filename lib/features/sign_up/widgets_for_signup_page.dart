@@ -9,6 +9,7 @@ class _SignupHeader extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: AppSpacing.xxl),
         FlutterLogo(size: AppSpacing.massive),
         SizedBox(height: AppSpacing.m),
         TextWidget(AppStrings.signUpHeader, TextType.headlineSmall),

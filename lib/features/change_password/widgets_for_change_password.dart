@@ -9,6 +9,7 @@ class _ChangePasswordInfo extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: AppSpacing.massive),
         TextWidget(AppStrings.passwordChangeTitle, TextType.headlineMedium),
         SizedBox(height: AppSpacing.s),
         TextWidget(AppStrings.passwordChangeWarning, TextType.bodyMedium),

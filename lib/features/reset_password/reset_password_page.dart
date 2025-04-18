@@ -32,54 +32,41 @@ class ResetPasswordPage extends ConsumerWidget {
 
     _listenForResetEvents(context, ref);
 
-    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                  child: IntrinsicHeight(
-                    child: FocusTraversalGroup(
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          const _ResetPasswordHeader(),
-                          const SizedBox(height: AppSpacing.l),
-                          for (final type in fieldTypes)
-                            AppFormField(type: type, fields: fieldTypes),
-                          const SizedBox(height: AppSpacing.xxl),
-                          CustomButton(
-                            type: ButtonType.filled,
-                            onPressed:
-                                resetPasswordState.isLoading
-                                    ? null
-                                    : () => _handleResetPressed(
-                                      ref,
-                                      formState,
-                                      formNotifier,
-                                      isFormValid,
-                                    ),
-                            label:
-                                resetPasswordState.isLoading
-                                    ? AppStrings.submitting
-                                    : AppStrings.resetPassword,
-                            isLoading: resetPasswordState.isLoading,
-                            isEnabled: !resetPasswordState.isLoading,
+          child: FocusTraversalGroup(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                const _ResetPasswordHeader(),
+
+                for (final type in fieldTypes)
+                  AppFormField(type: type, fields: fieldTypes),
+                const SizedBox(height: AppSpacing.huge),
+                CustomButton(
+                  type: ButtonType.filled,
+                  onPressed:
+                      resetPasswordState.isLoading
+                          ? null
+                          : () => _handleResetPressed(
+                            ref,
+                            formState,
+                            formNotifier,
+                            isFormValid,
                           ),
-                          const SizedBox(height: AppSpacing.xl),
-                          const _ResetPasswordFooter(),
-                        ],
-                      ).withPaddingHorizontal(AppSpacing.l),
-                    ),
-                  ),
+                  label:
+                      resetPasswordState.isLoading
+                          ? AppStrings.submitting
+                          : AppStrings.resetPassword,
+                  isLoading: resetPasswordState.isLoading,
+                  isEnabled: !resetPasswordState.isLoading,
                 ),
-              );
-            },
+                const SizedBox(height: AppSpacing.s),
+                const _ResetPasswordFooter(),
+              ],
+            ).withPaddingHorizontal(AppSpacing.l),
           ),
         ),
       ),
