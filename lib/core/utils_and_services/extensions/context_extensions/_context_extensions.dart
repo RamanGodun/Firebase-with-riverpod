@@ -1,15 +1,13 @@
-library;
-
 import 'package:flutter/cupertino.dart'
     show CupertinoAlertDialog, CupertinoDialogAction;
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../../presentation/widgets/text_widget.dart';
-import '../../../../presentation/widgets/mini_widgets.dart';
-import '../../../constants/app_strings.dart';
-import '../../../entities/custom_error.dart';
-import '../../../router/routes_names.dart';
+import '../../../shared_presentation/widgets/text_widget.dart';
+import '../../../shared_presentation/widgets/mini_widgets.dart';
+import '../../../shared_modules/localization/app_strings.dart';
+import '../../../shared_modules/errors_hadling/custom_error.dart';
+import '../../../shared_modules/navigation/routes_names.dart';
 
 part 'context_theme.dart';
 part 'context_media.dart';

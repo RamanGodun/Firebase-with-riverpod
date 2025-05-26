@@ -1,3 +1,5 @@
+library;
+
 /// ⚙️ [AppConfig] — Global static configuration for the application.
 /// Centralized constants for:
 ///       - App identity
@@ -5,10 +7,10 @@
 ///       - Platform requirements
 ///       - Global timeouts, flags, and feature toggles
 
-library;
-
 final class AppConfig {
-  // ═══════════════════════════════════════════════════════════════
+  AppConfig._();
+
+  /// ═══════════════════════════════════════════════════════════════
   // 🧾 App Identity & Versioning
   // ═══════════════════════════════════════════════════════════════
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/config/initialize_app.dart';
-import 'core/config/loggers/observer_logger.dart';
-import 'core/router/router.dart';
-import 'features/theme/app_theme.dart';
-import 'features/theme/theme_provider.dart';
+import 'core/config/bootstrap/initialize_app.dart';
+import 'core/shared_modules/logging/riverpod_observer.dart';
+import 'core/shared_modules/navigation/router.dart';
+import 'core/shared_modules/theme/app_theme.dart';
+import 'core/shared_modules/theme/theme_provider.dart';
 
 Future<void> main() async {
   // 📦 Ensures all necessary bindings are ready before app initialization
