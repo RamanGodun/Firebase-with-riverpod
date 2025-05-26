@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/shared_presentation/constants/app_co
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/app_strings.dart';
-import '../../shared_modules/errors_hadling/custom_error.dart';
+import '../../shared_modules/errors_handling/custom_error.dart';
 import 'text_widget.dart';
 
 /// 🔧 Enum for defining types of mini UI widgets

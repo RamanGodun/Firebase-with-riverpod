@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/bootstrap/initialize_app.dart';
+import 'core/config/bootstrap/riverpod_di_container.dart';
 import 'core/shared_modules/logging/riverpod_observer.dart';
 import 'core/shared_modules/navigation/router.dart';
 import 'core/shared_modules/theme/app_theme.dart';
@@ -14,7 +15,13 @@ Future<void> main() async {
   await initializeApp();
 
   // 🚀 Start the app within Riverpod's ProviderScope and custom logger
-  runApp(ProviderScope(observers: [Logger()], child: const RootWidget()));
+  runApp(
+    ProviderScope(
+      overrides: diContainer,
+      observers: [Logger()],
+      child: const RootWidget(),
+    ),
+  );
 }
 
 /// 🌳 [RootWidget] defines the top-level widget that manages global theming and routing

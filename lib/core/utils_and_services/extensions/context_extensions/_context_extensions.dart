@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../shared_presentation/widgets/text_widget.dart';
 import '../../../shared_presentation/widgets/mini_widgets.dart';
 import '../../../shared_modules/localization/app_strings.dart';
-import '../../../shared_modules/errors_hadling/custom_error.dart';
+import '../../../shared_modules/errors_handling/custom_error.dart';
 import '../../../shared_modules/navigation/routes_names.dart';
 
 part 'context_theme.dart';

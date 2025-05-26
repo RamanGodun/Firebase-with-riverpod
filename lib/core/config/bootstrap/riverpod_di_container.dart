@@ -1,21 +1,23 @@
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import '../features/auth/data/auth_repo_impl.dart';
-// import '../features/auth/domain/use_cases/sign_in_use_case.dart';
-// import '../features/auth/domain/auth_repo.dart';
-// import '../features/auth/data/remote_data_source_impl.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import '../../../data/auth/_auth_repository.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../features/profile/domain_data/_profile_repository.dart';
+import '../../../features/profile/domain_data/profile_repository_provider.dart';
+import '../../../features/auth/_domain_data/auth_repository_providers.dart';
 
-// final remoteDataSourceProvider = Provider((ref) => AuthRemoteDataSourceImpl(...));
-// final authRepoProvider = Provider<AuthRepo>((ref) => AuthRepoImpl(ref.read(remoteDataSourceProvider)));
-// final signInUseCaseProvider = Provider((ref) => SignInUseCase(ref.read(authRepoProvider)));
+/// 📦 [diContainer] — global list of manually maintained providers
+/// 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
+/// 🔧 Centralized registration of manual providers for Domain and Data layers
+/// Analog of GetIt DI Container for Riverpod-based apps
+//-----------------------------------------------------------
+final List<Override> diContainer = [
+  // Domain & Data layer providers
+  profileRepositoryProvider.overrideWith((ref) => ProfileRepository()),
 
-// final authRepositoryProvider = Provider<AuthRepository>((ref) {
-//   return AuthRepositoryImpl();
-// });
+  profileRepositoryProvider, // ? or when use codegeneration
+  authRepositoryProvider,
 
-// Провайдер для SignInUseCase
-// final signInUseCaseProvider = Provider<SignInUseCase>((ref) {
-//   final authRepository = ref.read(authRepositoryProvider);
-//   return SignInUseCase(authRepository);
-// });
+  // ...
+  //Add more manual providers here as needed
+  //
+
+  //
+];

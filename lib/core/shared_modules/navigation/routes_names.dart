@@ -1,9 +1,12 @@
+library;
+
 /// 🧩 [RoutesNames] — central route names used by GoRouter
 /// 🧼 Prevents hardcoded strings across the app and enables type-safe navigation
-library;
-//----------------------------------------------------------------//
+//----------------------------------------------------------------
 
 abstract final class RoutesNames {
+  RoutesNames._();
+
   static const String home = 'home';
   static const String signin = 'signin';
   static const String signup = 'signup';
@@ -15,4 +18,6 @@ abstract final class RoutesNames {
   static const String pageNotFound = 'pageNotFound';
   static const String profilePage = 'profilePage';
   static const String reAuthenticationPage = 'reAuthenticationPage';
+
+  ///
 }

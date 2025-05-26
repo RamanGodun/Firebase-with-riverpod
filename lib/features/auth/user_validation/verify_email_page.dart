@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../core/shared_modules/localization/app_strings.dart';
 import '../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
-import '../../../core/shared_modules/errors_hadling/custom_error.dart';
+import '../../../core/shared_modules/errors_handling/custom_error.dart';
 import '../../../core/config/bootstrap/firebase/firebase_constants.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
