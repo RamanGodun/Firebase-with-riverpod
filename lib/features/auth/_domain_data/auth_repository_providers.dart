@@ -21,3 +21,4 @@ AuthRepository authRepository(Ref ref) {
 Stream<User?> authStateStream(Ref ref) {
   return fbAuth.authStateChanges();
 }
+  

@@ -58,8 +58,8 @@ class ProfilePage extends HookConsumerWidget {
   /// 🔁 Triggers sign out via [authRepositoryProvider]
   Future<void> _signOutUser(BuildContext context, WidgetRef ref) async {
     try {
-     await ref.read(authRepositoryProvider).signout();
-ref.read(profileRepositoryProvider).clearCache(); 
+      await ref.read(authRepositoryProvider).signout();
+      ref.read(profileRepositoryProvider).clearCache();
     } on CustomError {
       if (!context.mounted) return;
       // context.showErrorDialog(handleException(e));
