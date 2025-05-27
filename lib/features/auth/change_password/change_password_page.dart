@@ -6,12 +6,12 @@ import '../../../core/shared_modules/localization/app_strings.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../../core/utils_and_services/snackbars.dart';
-import '../../form_fields/form_field_widget.dart';
+import '../../../core/shared_modules/form_fields/form_field_widget.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../form_fields/form_fields_model.dart';
-import '../../form_fields/form_state_provider.dart';
-import '../../form_fields/presets_of_forms.dart';
+import '../../../core/shared_modules/form_fields/form_fields_model.dart';
+import '../../../core/shared_modules/form_fields/form_state_provider.dart';
+import '../../../core/shared_modules/form_fields/presets_of_forms.dart';
 import 'change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';

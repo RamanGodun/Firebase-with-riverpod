@@ -2,10 +2,10 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/genera
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/shared_modules/localization/app_strings.dart';
-import '../../form_fields/form_field_widget.dart';
-import '../../form_fields/form_fields_model.dart';
-import '../../form_fields/form_state_provider.dart';
-import '../../form_fields/presets_of_forms.dart';
+import '../../../core/shared_modules/form_fields/form_field_widget.dart';
+import '../../../core/shared_modules/form_fields/form_fields_model.dart';
+import '../../../core/shared_modules/form_fields/form_state_provider.dart';
+import '../../../core/shared_modules/form_fields/presets_of_forms.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
 import '../../../core/shared_presentation/constants/app_constants.dart';

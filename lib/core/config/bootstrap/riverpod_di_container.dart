@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../features/profile/domain_data/_profile_repository.dart';
-import '../../../features/profile/domain_data/profile_repository_provider.dart';
-import '../../../features/auth/_domain_data/auth_repository_providers.dart';
+import '../../../features/profile/domain_and_data/profile_repository.dart';
+import '../../../features/profile/domain_and_data/remote_data_source.dart';
 
 /// 📦 [diContainer] — global list of manually maintained providers
 /// 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
@@ -10,10 +9,9 @@ import '../../../features/auth/_domain_data/auth_repository_providers.dart';
 //-----------------------------------------------------------
 final List<Override> diContainer = [
   // Domain & Data layer providers
-  profileRepositoryProvider.overrideWith((ref) => ProfileRepository()),
-
-  profileRepositoryProvider, // ? or when use codegeneration
-  authRepositoryProvider,
+  profileRepositoryProvider.overrideWith(
+    (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
+  ),
 
   // ...
   //Add more manual providers here as needed

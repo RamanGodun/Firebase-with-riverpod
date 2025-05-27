@@ -6,7 +6,7 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileHash() => r'063fe7495732d3eef90810c0405500a0b7037177';
+String _$profileHash() => r'fac12639f29871dffeb5186372130ec324190730';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,26 +29,22 @@ class _SystemHash {
   }
 }
 
-/// 🧩 [profileProvider] — async provider, that returns user profile
-/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 ///
 /// Copied from [profile].
 @ProviderFor(profile)
 const profileProvider = ProfileFamily();
 
-/// 🧩 [profileProvider] — async provider, that returns user profile
-/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 ///
 /// Copied from [profile].
 class ProfileFamily extends Family<AsyncValue<AppUser>> {
-  /// 🧩 [profileProvider] — async provider, that returns user profile
-  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
   /// Copied from [profile].
   const ProfileFamily();
 
-  /// 🧩 [profileProvider] — async provider, that returns user profile
-  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
   /// Copied from [profile].
   ProfileProvider call(String uid) {
@@ -75,13 +71,11 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
   String? get name => r'profileProvider';
 }
 
-/// 🧩 [profileProvider] — async provider, that returns user profile
-/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 ///
 /// Copied from [profile].
 class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
-  /// 🧩 [profileProvider] — async provider, that returns user profile
-  /// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
   /// Copied from [profile].
   ProfileProvider(String uid)

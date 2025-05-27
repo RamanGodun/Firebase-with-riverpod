@@ -17,12 +17,11 @@ class AppUser extends Equatable {
 
   /// 🏗 Factory: Build from Firestore document snapshot
   factory AppUser.fromDoc(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>?;
-
+    final data = doc.data() as Map<String, dynamic>;
     return AppUser(
       id: doc.id,
-      name: data?['name'] ?? '',
-      email: data?['email'] ?? '',
+      name: data['name'] ?? '',
+      email: data['email'] ?? '',
     );
   }
 

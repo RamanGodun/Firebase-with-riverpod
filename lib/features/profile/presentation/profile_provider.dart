@@ -1,15 +1,13 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_domain/entities/app_user.dart';
-import '../domain_data/profile_repository_provider.dart';
+import '../domain_and_data/_profile_use_case.dart';
 
 part 'profile_provider.g.dart';
 
-/// 🧩 [profileProvider] — async provider, that returns user profile
-/// 🧼 Incapsulates logic of getting user's data from [ProfileRepository]
+/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 //----------------------------------------------------------------//
-
 @riverpod
-FutureOr<AppUser> profile(Ref ref, String uid) {
-  return ref.watch(profileRepositoryProvider).getProfile(userID: uid);
+Future<AppUser> profile(ref, String uid) async {
+  final useCase = ref.watch(getProfileUseCaseProvider(uid));
+  return useCase.call(uid);
 }

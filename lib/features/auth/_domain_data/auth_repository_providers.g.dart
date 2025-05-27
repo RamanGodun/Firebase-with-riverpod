@@ -8,8 +8,8 @@ part of 'auth_repository_providers.dart';
 
 String _$authRepositoryHash() => r'19a3485653561ac2f781b997131430c5659286d1';
 
-/// **Authentication Repository Provider**
-/// Provides an instance of [AuthRepository] to manage authentication-related operations.
+/// 🧩 [authRepositoryProvider] — provides instance of [AuthRepository]
+/// 🧼 Used to perform all authentication logic through DI
 ///
 /// Copied from [authRepository].
 @ProviderFor(authRepository)
@@ -29,10 +29,8 @@ final authRepositoryProvider = AutoDisposeProvider<AuthRepository>.internal(
 typedef AuthRepositoryRef = AutoDisposeProviderRef<AuthRepository>;
 String _$authStateStreamHash() => r'21e813fdefad80f26d5eb53e54bf5851a3a9382d';
 
-/// **Authentication State Stream Provider**
-///
-/// Listens to the authentication state changes and provides a [Stream] of [User?].
-/// This allows the app to react to sign-in, sign-out, and user state changes.
+/// 🧩 [authStateStreamProvider] — exposes auth state as stream of [User?]
+/// 🧼 Reactively notifies when user signs in/out or changes
 ///
 /// Copied from [authStateStream].
 @ProviderFor(authStateStream)
