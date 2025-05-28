@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/genera
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/config/bootstrap/firebase/firebase_constants.dart';
+import '../../../core/config/firebase/firebase_constants.dart';
 import '../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../core/shared_modules/localization/app_strings.dart';
 import '../../../core/shared_domain/entities/app_user.dart';
@@ -14,7 +14,7 @@ import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/custom_app_bar.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
 import '../../auth/_domain_data/auth_repository_providers.dart';
-import '../domain_and_data/profile_repository.dart';
+import '../domain_and_data/profile_repo_provider.dart';
 import 'profile_provider.dart';
 
 part 'profile_widget.dart';
@@ -59,7 +59,7 @@ class ProfilePage extends HookConsumerWidget {
   Future<void> _signOutUser(BuildContext context, WidgetRef ref) async {
     try {
       await ref.read(authRepositoryProvider).signout();
-      ref.read(profileRepositoryProvider).clearCache();
+      ref.read(profileRepoProvider).clearCache();
     } on CustomError {
       if (!context.mounted) return;
       // context.showErrorDialog(handleException(e));

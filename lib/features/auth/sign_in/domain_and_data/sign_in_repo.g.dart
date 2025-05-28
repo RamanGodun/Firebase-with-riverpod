@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'signin_provider.dart';
+part of 'sign_in_repo.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signinHash() => r'11a0b11471e37d57ddfd493c27a72b93b95bb00b';
+String _$authRepoHash() => r'a090187e5fe52fa84510f5700646732d4b570a7c';
 
-/// 🧩 [signinProvider] — async notifier that handles sign in logic
-///
-/// Copied from [Signin].
-@ProviderFor(Signin)
-final signinProvider = AutoDisposeAsyncNotifierProvider<Signin, void>.internal(
-  Signin.new,
-  name: r'signinProvider',
+/// See also [authRepo].
+@ProviderFor(authRepo)
+final authRepoProvider = AutoDisposeProvider<IAuthRepo>.internal(
+  authRepo,
+  name: r'authRepoProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$signinHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$authRepoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Signin = AutoDisposeAsyncNotifier<void>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AuthRepoRef = AutoDisposeProviderRef<IAuthRepo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

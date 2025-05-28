@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../core/config/bootstrap/firebase/firebase_constants.dart';
+import '../../../core/config/firebase/firebase_constants.dart';
 
 /// 🧩 [AuthRepository] — abstraction for all Firebase auth logic
 /// 🧼 Wraps common operations: sign in, sign up, reset password, etc.

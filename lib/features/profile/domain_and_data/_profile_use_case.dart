@@ -1,22 +1,14 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_domain/entities/app_user.dart';
-import 'profile_repository.dart';
+import 'profile_repo_provider.dart';
 
 /// 🧩 [getProfileUseCaseProvider] encapsulated business logic
 // ─────────────────────────────────────────────────────────────
-final getProfileUseCaseProvider = Provider.family<GetProfileUseCase, String>((
-  ref,
-  uid,
-) {
-  final repo = ref.watch(profileRepositoryProvider);
-  return GetProfileUseCase(repo);
-});
 
 final class GetProfileUseCase {
-  final IProfileRepo profileRepo;
-  const GetProfileUseCase(this.profileRepo);
+  final IProfileRepo repo;
+  const GetProfileUseCase(this.repo);
 
-  Future<AppUser> call(String userID) {
-    return profileRepo.getProfile(userID: userID);
+  Future<AppUser> call(String uid) {
+    return repo.getProfile(userID: uid);
   }
 }

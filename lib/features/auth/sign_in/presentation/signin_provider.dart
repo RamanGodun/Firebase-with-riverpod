@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../_domain_data/auth_repository_providers.dart';
+import '../domain_and_data/sign_in_repo.dart';
+import '../domain_and_data/_sign_in_use_case.dart';
 
 part 'signin_provider.g.dart';
 
@@ -14,10 +15,12 @@ class Signin extends _$Signin {
   /// 🚀 Signs user in using email/password credentials
   Future<void> signin({required String email, required String password}) async {
     state = const AsyncLoading();
+
+    final repo = ref.read(authRepoProvider); 
+    final useCase = SignInUseCase(repo);
+
     state = await AsyncValue.guard(
-      () => ref
-          .read(authRepositoryProvider)
-          .signin(email: email, password: password),
+      () => useCase(email: email, password: password),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/config/bootstrap/firebase/firebase_constants.dart';
+import '../../../core/config/firebase/firebase_constants.dart';
 import '../_domain_data/auth_repository_providers.dart';
 
 part 'email_verification_provider.g.dart';

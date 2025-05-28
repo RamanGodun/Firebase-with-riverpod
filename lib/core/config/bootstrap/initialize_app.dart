@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
-import 'firebase/env_firebase_options.dart';
-import 'firebase/firebase_utils.dart';
+import '../firebase/env_firebase_options.dart';
+import '../firebase/firebase_utils.dart';
 import '../app_config.dart';
 import '../env.dart';
 

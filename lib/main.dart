@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/bootstrap/initialize_app.dart';
-import 'core/config/bootstrap/riverpod_di_container.dart';
+import 'core/config/bootstrap/di_container.dart';
 import 'core/shared_modules/logging/riverpod_observer.dart';
 import 'core/shared_modules/navigation/router.dart';
 import 'core/shared_modules/theme/app_theme.dart';
