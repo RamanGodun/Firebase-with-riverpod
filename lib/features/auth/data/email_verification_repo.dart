@@ -5,7 +5,8 @@ import '../../../../core/config/firebase/firebase_constants.dart';
 part 'email_verification_repo.g.dart';
 
 @riverpod
-IEmailVerificationRepo emailVerificationRepo(Ref ref) => EmailVerificationRepoImpl();
+IEmailVerificationRepo emailVerificationRepo(Ref ref) =>
+    EmailVerificationRepoImpl();
 
 abstract interface class IEmailVerificationRepo {
   Future<void> sendEmailVerification();

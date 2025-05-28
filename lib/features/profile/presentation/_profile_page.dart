@@ -49,4 +49,3 @@ class ProfilePage extends ConsumerWidget {
 
   //
 }
-
