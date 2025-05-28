@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/config/bootstrap/initialize_app.dart';
+import 'core/config/bootstrap/bootstrap.dart';
 import 'core/config/bootstrap/di_container.dart';
 import 'core/shared_modules/logging/riverpod_observer.dart';
 import 'core/shared_modules/navigation/router.dart';
@@ -12,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // 🔧 Perform all essential setup: Firebase, .env, local storage, etc.
-  await initializeApp();
+  await bootstrap();
 
   // 🚀 Start the app within Riverpod's ProviderScope and custom logger
   runApp(
