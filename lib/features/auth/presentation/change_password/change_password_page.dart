@@ -1,17 +1,22 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/shared_presentation/constants/app_constants.dart';
-import '../../../../core/shared_modules/localization/app_strings.dart';
-import '../../../../core/shared_modules/navigation/routes_names.dart';
-import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
-import '../../../../core/utils_and_services/snackbars.dart';
+
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
+import 'package:firebase_with_riverpod/features/auth/presentation/sign_out/sign_out_provider.dart';
+
+import '../../../../core/shared_modules/errors_handling/fb_exceptions.dart';
 import '../../../../core/shared_modules/form_fields/form_field_widget.dart';
-import '../../../../core/shared_presentation/widgets/text_widget.dart';
-import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../../core/shared_modules/form_fields/form_fields_model.dart';
 import '../../../../core/shared_modules/form_fields/form_state_provider.dart';
 import '../../../../core/shared_modules/form_fields/presets_of_forms.dart';
+import '../../../../core/shared_modules/localization/app_strings.dart';
+import '../../../../core/shared_modules/navigation/routes_names.dart';
+import '../../../../core/shared_presentation/constants/app_constants.dart';
+import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
+import '../../../../core/shared_presentation/widgets/text_widget.dart';
+import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
+import '../../../../core/utils_and_services/snackbars.dart';
+import '../user_validation/reauthenticate_page.dart';
 import 'change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';
@@ -85,14 +90,6 @@ class ChangePasswordPage extends ConsumerWidget {
   void _listenToPasswordChange(BuildContext context, WidgetRef ref) {
     ref.listen(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
-        // error: (e, st) async {
-        // final err = handleException(e);
-        // if (err.code == 'requires-recent-login') {
-        //   await _processRequiresRecentLogin(context, ref);
-        // } else {
-        // context.showErrorDialog(err);
-        // }
-        // },
         data: (_) {
           CustomSnackbars.show(
             ScaffoldMessenger.of(context),
@@ -100,24 +97,31 @@ class ChangePasswordPage extends ConsumerWidget {
           );
           context.goTo(RoutesNames.reAuthenticationPage);
         },
+        error: (e, st) async {
+          final error = handleException(e);
+          if (error.code == 'requires-recent-login') {
+            await _processRequiresRecentLogin(context, ref);
+          } else {
+            context.showErrorDialog(error);
+          }
+        },
       );
     });
   }
 
   /// 🔐 Triggers the re-authentication flow if recent login is required
-  // Future<void> _processRequiresRecentLogin(
-  //   BuildContext context,
-  //   WidgetRef ref,
-  // ) async {
-  //   final scaffoldMessenger = ScaffoldMessenger.of(context);
+  Future<void> _processRequiresRecentLogin(
+    BuildContext context,
+    WidgetRef ref,
+  ) async {
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final result = await context.pushTo<String>(const ReAuthenticationPage());
 
-  //   final result = await context.pushTo<String>(const ReAuthenticationPage());
-
-  //   if (result == 'success') {
-  //     CustomSnackbars.show(scaffoldMessenger, AppStrings.reAuthSuccess);
-  //     await ref.read(authRepositoryProvider).signout();
-  //   }
-  // }
+    if (result == 'success') {
+      CustomSnackbars.show(scaffoldMessenger, AppStrings.reAuthSuccess);
+      await ref.read(signOutProvider.notifier).signOut();
+    }
+  }
 
   ///
 }

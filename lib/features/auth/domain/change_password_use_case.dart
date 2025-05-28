@@ -7,7 +7,8 @@ final class ChangePasswordUseCase {
   final IChangePasswordRepo repo;
   const ChangePasswordUseCase(this.repo);
 
-  Future<void> call(String password) {
-    return repo.changePassword(password);
+  /// 🔁 Triggers password changing
+  Future<void> call(String newPassword) {
+    return repo.changePassword(newPassword);
   }
 }
