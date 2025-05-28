@@ -9,7 +9,7 @@ import '../../../core/shared_modules/form_fields/form_field_widget.dart';
 import '../../../core/shared_modules/form_fields/form_fields_model.dart';
 import '../../../core/shared_modules/form_fields/form_state_provider.dart';
 import '../../../core/shared_modules/form_fields/presets_of_forms.dart';
-import '../_domain_data/auth_repository_providers.dart';
+import '../_data/auth_repository_providers.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
 

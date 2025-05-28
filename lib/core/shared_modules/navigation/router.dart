@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../features/auth/_domain_data/auth_repository_providers.dart';
+import '../../../features/auth/_data/auth_repository_providers.dart';
 import '../../../../features/profile/presentation/profile_page.dart';
 import '../../config/firebase/firebase_constants.dart';
 import '../../../../features/auth/change_password/change_password_page.dart';
 import '../../../../features/auth/reset_password/reset_password_page.dart';
-import '../../../../features/auth/sign_in/presentation/signin_page.dart';
+import '../../../features/auth/_presentation/sign_in/signin_page.dart';
 import '../../../../features/auth/sign_up/signup_page.dart';
 import '../../../../features/auth/user_validation/reauthenticate_page.dart';
 import '../../../../features/auth/user_validation/verify_email_page.dart';

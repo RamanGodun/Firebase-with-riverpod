@@ -10,7 +10,7 @@ import '../../../core/config/firebase/firebase_constants.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
-import '../_domain_data/auth_repository_providers.dart';
+import '../_data/auth_repository_providers.dart';
 import 'email_verification_provider.dart';
 
 /// 🧼 [VerifyEmailPage] — screen that handles email verification polling

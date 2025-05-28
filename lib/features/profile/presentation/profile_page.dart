@@ -13,7 +13,7 @@ import '../../../core/shared_modules/errors_handling/custom_error.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/custom_app_bar.dart';
 import '../../../core/shared_presentation/widgets/text_widget.dart';
-import '../../auth/_domain_data/auth_repository_providers.dart';
+import '../../auth/_data/auth_repository_providers.dart';
 import '../domain_and_data/profile_repo_provider.dart';
 import 'profile_provider.dart';
 

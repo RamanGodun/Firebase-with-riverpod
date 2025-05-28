@@ -1,4 +1,4 @@
-import 'sign_in_repo.dart';
+import '../_data/sign_in_repo.dart';
 
 final class SignInUseCase {
   final IAuthRepo authRepo;
