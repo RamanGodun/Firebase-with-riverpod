@@ -1,5 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../features/auth/sign_in/domain_and_data/sign_in_repo.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../features/auth/_data/auth_repo_provider.dart';
 import '../../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../../features/profile/domain_and_data/remote_data_source.dart';
 
@@ -9,7 +10,6 @@ import '../../../features/profile/domain_and_data/remote_data_source.dart';
 /// Analog of GetIt DI Container for Riverpod-based apps
 //-----------------------------------------------------------
 final List<Override> diContainer = [
-  // Domain & Data layer providers
   profileRepoProvider.overrideWith(
     (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
   ),
@@ -17,8 +17,4 @@ final List<Override> diContainer = [
   authRepoProvider.overrideWith((ref) => AuthRepoImpl()),
 
   // ...
-  //Add more manual providers here as needed
-  //
-
-  //
 ];

@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../_data/sign_in_repo.dart';
-import '../../_domain/_sign_in_use_case.dart';
+import '../../_data/auth_repo_provider.dart';
+import '../../_domain/sign_in_use_case.dart';
 
 part 'signin_provider.g.dart';
 
@@ -12,10 +12,8 @@ class Signin extends _$Signin {
   @override
   FutureOr<void> build() {}
 
-  /// 🚀 Signs user in using email/password credentials
   Future<void> signin({required String email, required String password}) async {
     state = const AsyncLoading();
-
     final repo = ref.read(authRepoProvider);
     final useCase = SignInUseCase(repo);
 

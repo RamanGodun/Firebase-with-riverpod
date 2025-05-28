@@ -9,7 +9,7 @@ import '../../config/firebase/firebase_constants.dart';
 import '../../../../features/auth/change_password/change_password_page.dart';
 import '../../../../features/auth/reset_password/reset_password_page.dart';
 import '../../../features/auth/_presentation/sign_in/signin_page.dart';
-import '../../../../features/auth/sign_up/signup_page.dart';
+import '../../../features/auth/_presentation/sign_up/signup_page.dart';
 import '../../../../features/auth/user_validation/reauthenticate_page.dart';
 import '../../../../features/auth/user_validation/verify_email_page.dart';
 import '../../shared_presentation/pages/firebase_error_page.dart';

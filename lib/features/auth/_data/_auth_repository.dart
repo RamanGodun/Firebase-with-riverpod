@@ -10,32 +10,32 @@ class AuthRepository {
   User? get currentUser => fbAuth.currentUser;
 
   /// 🆕 Creates user with email/password and stores basic info in Firestore
-  Future<void> signup({
-    required String name,
-    required String email,
-    required String password,
-  }) async {
-    try {
-      final userCredential = await fbAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+  // Future<void> signup({
+  //   required String name,
+  //   required String email,
+  //   required String password,
+  // }) async {
+  //   try {
+  //     final userCredential = await fbAuth.createUserWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
 
-      final user = userCredential.user!;
-      await usersCollection.doc(user.uid).set({'name': name, 'email': email});
-    } catch (e) {
-      // throw handleException(e);
-    }
-  }
+  //     final user = userCredential.user!;
+  //     await usersCollection.doc(user.uid).set({'name': name, 'email': email});
+  //   } catch (e) {
+  //     // throw handleException(e);
+  //   }
+  // }
 
   /// 🔐 Signs user in using email and password
-  Future<void> signin({required String email, required String password}) async {
-    try {
-      await fbAuth.signInWithEmailAndPassword(email: email, password: password);
-    } catch (e) {
-      // throw handleException(e);
-    }
-  }
+  // Future<void> signin({required String email, required String password}) async {
+  //   try {
+  //     await fbAuth.signInWithEmailAndPassword(email: email, password: password);
+  //   } catch (e) {
+  //     // throw handleException(e);
+  //   }
+  // }
 
   /// 🔓 Signs out current user
   Future<void> signout() async {
