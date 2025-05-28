@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
 import '../../_data/sign_up_repo.dart';
 import '../../_domain/sign_up_use_case.dart';
 
@@ -18,12 +17,15 @@ class Signup extends _$Signup {
     required String email,
     required String password,
   }) async {
+    //
     state = const AsyncLoading();
+
     final repo = ref.read(signUpRepoProvider);
     final useCase = SignUpUseCase(repo);
 
     state = await AsyncValue.guard(
       () => useCase(name: name, email: email, password: password),
     );
+    //
   }
 }

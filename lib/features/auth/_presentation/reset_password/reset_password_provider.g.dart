@@ -8,8 +8,7 @@ part of 'reset_password_provider.dart';
 
 String _$resetPasswordHash() => r'441c57750c9b57feb9f556a3be941999c2993a5b';
 
-/// 🧩 [resetPasswordProvider] — async notifier for password reset logic
-/// 🧼 Incapsulates logic for triggering reset flow via [AuthRepository]
+/// 🧩 [changePasswordProvider] — async notifier that handles change password logic
 ///
 /// Copied from [ResetPassword].
 @ProviderFor(ResetPassword)

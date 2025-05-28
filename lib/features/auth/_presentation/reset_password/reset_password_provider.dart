@@ -1,11 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../_data/auth_repository_providers.dart';
+import '../../_data/auth_repository_providers.dart';
 
 part 'reset_password_provider.g.dart';
 
-/// 🧩 [resetPasswordProvider] — async notifier for password reset logic
-/// 🧼 Incapsulates logic for triggering reset flow via [AuthRepository]
-//----------------------------------------------------------------//
+/// 🧩 [changePasswordProvider] — async notifier that handles change password logic
+//----------------------------------------------------------------
 
 @riverpod
 class ResetPassword extends _$ResetPassword {

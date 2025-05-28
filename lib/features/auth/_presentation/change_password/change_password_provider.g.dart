@@ -6,10 +6,9 @@ part of 'change_password_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$changePasswordHash() => r'2a9d5be05011a6bd5edf55601d04da176d370d70';
+String _$changePasswordHash() => r'97be14e21dc41123680842fcfad50a06c4de5569';
 
-/// 🔐 [ChangePassword] — Riverpod `AsyncNotifier`
-/// Handles the "change password" flow, updates the state using [AsyncValue]
+/// 🧩 [changePasswordProvider] — async notifier that handles change password logic
 ///
 /// Copied from [ChangePassword].
 @ProviderFor(ChangePassword)
