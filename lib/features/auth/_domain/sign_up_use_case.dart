@@ -1,9 +1,7 @@
-
-
-import '../_data/auth_repo_provider.dart';
+import '../_data/sign_up_repo.dart';
 
 final class SignUpUseCase {
-  final IAuthRepo repo;
+  final ISignUpRepo repo;
   const SignUpUseCase(this.repo);
 
   Future<void> call({

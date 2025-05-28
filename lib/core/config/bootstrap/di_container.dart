@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../features/auth/_data/auth_repo_provider.dart';
+import '../../../features/auth/_data/sign_in_repo.dart';
+import '../../../features/auth/_data/sign_up_repo.dart';
 import '../../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../../features/profile/domain_and_data/remote_data_source.dart';
 
@@ -14,7 +14,8 @@ final List<Override> diContainer = [
     (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
   ),
 
-  authRepoProvider.overrideWith((ref) => AuthRepoImpl()),
+  signInRepoProvider.overrideWith((ref) => SignInRepoImpl()),
+  signUpRepoProvider.overrideWith((ref) => SignUpRepoImpl()),
 
   // ...
 ];
