@@ -1,10 +1,11 @@
+import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart'
+    show LocaleKeys;
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_presentation/constants/_app_constants.dart';
-import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/utils/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_modules/form_fields/form_field_widget.dart';
@@ -53,8 +54,8 @@ class ReAuthenticationPage extends ConsumerWidget {
                         type: ButtonType.filled,
                         label:
                             isSubmitting
-                                ? AppStrings.submitting
-                                : AppStrings.reauthenticate,
+                                ? LocaleKeys.buttons_submitting
+                                : LocaleKeys.pages_reauthentication,
                         isEnabled: !isSubmitting,
                         isLoading: isSubmitting,
                         onPressed:
@@ -109,9 +110,9 @@ class _ReauthenticateInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: AppSpacing.massive),
-        TextWidget(AppStrings.reauthenticateTitle, TextType.headlineMedium),
+        TextWidget(LocaleKeys.reauth_label, TextType.headlineMedium),
         TextWidget(
-          AppStrings.reauthenticateDescription,
+          LocaleKeys.reauth_description,
           TextType.titleSmall,
           isTextOnFewStrings: true,
         ),
@@ -134,10 +135,7 @@ class _ReAuthFooter extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            TextWidget(
-              AppStrings.redirectToSignInFromReAuthPage,
-              TextType.titleSmall,
-            ),
+            TextWidget(LocaleKeys.reauth_redirect_note, TextType.titleSmall),
             SignOutButton(),
             // CustomButton(
             //   type: ButtonType.text,
@@ -150,7 +148,7 @@ class _ReAuthFooter extends ConsumerWidget {
             //   isEnabled: true,
             //   isLoading: false,
             // ),
-            TextWidget(AppStrings.page, TextType.titleSmall),
+            TextWidget(LocaleKeys.reauth_page, TextType.titleSmall),
           ],
         ),
       ],

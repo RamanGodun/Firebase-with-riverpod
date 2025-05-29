@@ -12,8 +12,8 @@ class _SignupHeader extends StatelessWidget {
         SizedBox(height: AppSpacing.xxl),
         FlutterLogo(size: AppSpacing.massive),
         SizedBox(height: AppSpacing.m),
-        TextWidget(AppStrings.signUpHeader, TextType.headlineSmall),
-        TextWidget(AppStrings.signUpSubHeader, TextType.bodyMedium),
+        TextWidget(LocaleKeys.pages_sign_up, TextType.headlineSmall),
+        TextWidget(LocaleKeys.sign_up_sub_header, TextType.bodyMedium),
         SizedBox(height: AppSpacing.l),
       ],
     );
@@ -32,11 +32,14 @@ class _SignupFooter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const TextWidget(AppStrings.redirectToSignIn, TextType.titleSmall),
+            const TextWidget(
+              LocaleKeys.buttons_redirect_to_sign_in,
+              TextType.titleSmall,
+            ),
             CustomButton(
               type: ButtonType.text,
               onPressed: () => context.goTo(RoutesNames.signin),
-              label: AppStrings.signInButton,
+              label: LocaleKeys.buttons_sign_in,
               fontWeight: FontWeight.w600,
               fontSize: 15,
               isEnabled: true,

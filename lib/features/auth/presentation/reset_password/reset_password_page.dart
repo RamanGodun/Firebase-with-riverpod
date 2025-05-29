@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart'
+    show LocaleKeys;
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_presentation/constants/_app_constants.dart';
-import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/utils/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
@@ -58,8 +60,8 @@ class ResetPasswordPage extends ConsumerWidget {
                           ),
                   label:
                       resetPasswordState.isLoading
-                          ? AppStrings.submitting
-                          : AppStrings.resetPassword,
+                          ? LocaleKeys.buttons_submitting
+                          : LocaleKeys.buttons_reset_password,
                   isLoading: resetPasswordState.isLoading,
                   isEnabled: !resetPasswordState.isLoading,
                 ),
@@ -81,7 +83,7 @@ class ResetPasswordPage extends ConsumerWidget {
         data: (_) {
           CustomSnackbars.show(
             ScaffoldMessenger.of(context),
-            AppStrings.resetPasswordSuccess,
+            LocaleKeys.reset_password_success.tr(),
           );
           if (context.mounted) context.goTo(RoutesNames.signin);
         },

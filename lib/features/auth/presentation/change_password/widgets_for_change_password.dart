@@ -6,23 +6,29 @@ class _ChangePasswordInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: AppSpacing.massive),
-        TextWidget(AppStrings.passwordChangeTitle, TextType.headlineMedium),
-        SizedBox(height: AppSpacing.s),
-        TextWidget(AppStrings.passwordChangeWarning, TextType.bodyMedium),
+        const SizedBox(height: AppSpacing.massive),
+        const TextWidget(
+          LocaleKeys.change_password_title,
+          TextType.headlineMedium,
+        ),
+        const SizedBox(height: AppSpacing.s),
+        const TextWidget(
+          LocaleKeys.change_password_warning,
+          TextType.bodyMedium,
+        ),
         Text.rich(
           TextSpan(
-            text: AppStrings.passwordChangePrefix,
-            style: TextStyle(fontSize: 18),
+            text: LocaleKeys.change_password_prefix.tr(),
+            style: const TextStyle(fontSize: 16),
             children: [
               TextSpan(
-                text: AppStrings.passwordChangeSignedOut,
-                style: TextStyle(
+                text: LocaleKeys.change_password_signed_out.tr(),
+                style: const TextStyle(
                   color: Colors.red,
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -31,7 +37,7 @@ class _ChangePasswordInfo extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
 
-        SizedBox(height: AppSpacing.s),
+        const SizedBox(height: AppSpacing.s),
       ],
     );
   }

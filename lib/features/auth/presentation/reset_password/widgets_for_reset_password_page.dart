@@ -13,8 +13,8 @@ class _ResetPasswordHeader extends StatelessWidget {
         SizedBox(height: AppSpacing.huge),
         FlutterLogo(size: AppSpacing.huge),
         SizedBox(height: AppSpacing.m),
-        TextWidget(AppStrings.resetPasswordHeader, TextType.headlineSmall),
-        TextWidget(AppStrings.resetPasswordSubHeader, TextType.bodyMedium),
+        TextWidget(LocaleKeys.reset_password_header, TextType.headlineSmall),
+        TextWidget(LocaleKeys.reset_password_sub_header, TextType.bodyMedium),
         SizedBox(height: AppSpacing.xxl),
       ],
     );
@@ -33,13 +33,13 @@ class _ResetPasswordFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const TextWidget(
-            AppStrings.rememberPasswordPrompt,
+            LocaleKeys.reset_password_remember,
             TextType.titleSmall,
           ),
           CustomButton(
             type: ButtonType.text,
             onPressed: () => context.goTo(RoutesNames.signin),
-            label: AppStrings.signInButton,
+            label: LocaleKeys.buttons_sign_in,
             isEnabled: true,
             isLoading: false,
           ),

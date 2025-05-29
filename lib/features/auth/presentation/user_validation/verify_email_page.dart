@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
@@ -7,8 +8,8 @@ import 'package:flutter_hooks/flutter_hooks.dart' show useEffect;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/app_config/firebase/firebase_constants.dart';
-import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
+import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/shared_presentation/constants/_app_constants.dart';
 import '../sign_out/sign_out_buttons.dart';
@@ -77,51 +78,51 @@ class _VerifyEmailInfo extends StatelessWidget {
     return Column(
       children: [
         const TextWidget(
-          AppStrings.verifyEmailTitle,
-          TextType.headlineMedium,
+          LocaleKeys.pages_verify_email,
+          TextType.titleMedium,
           fontWeight: FontWeight.w700,
         ),
         const SizedBox(height: AppSpacing.m),
-        const TextWidget(AppStrings.verifyEmailSent, TextType.bodyMedium),
+        const TextWidget(LocaleKeys.verify_email_sent, TextType.bodyMedium),
         const SizedBox(height: AppSpacing.xs),
         TextWidget(
-          fbAuth.currentUser?.email ?? AppStrings.unknownEmail,
-          TextType.titleMedium,
+          fbAuth.currentUser?.email ?? LocaleKeys.verify_email_unknown,
+          TextType.titleSmall,
           fontWeight: FontWeight.bold,
         ),
         const SizedBox(height: AppSpacing.m),
-        const TextWidget(AppStrings.verifyEmailNotFound, TextType.bodySmall),
+        const TextWidget(LocaleKeys.verify_email_not_found, TextType.bodySmall),
         const SizedBox(height: AppSpacing.xs),
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            text: AppStrings.verifyEmailCheckPrefix,
+            text: LocaleKeys.verify_email_check_prefix.tr(),
             style: context.textTheme.bodyMedium?.copyWith(
               fontSize: 16,
               color: context.colorScheme.onSurface,
             ),
-            children: const [
+            children: [
               TextSpan(
-                text: AppStrings.verifyEmailSpam,
-                style: TextStyle(
+                text: LocaleKeys.verify_email_spam.tr(),
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              TextSpan(text: AppStrings.verifyEmailCheckSuffix),
+              TextSpan(text: LocaleKeys.verify_email_check_suffix.tr()),
             ],
           ),
         ),
         const SizedBox(height: AppSpacing.s),
         const TextWidget(
-          AppStrings.or,
+          LocaleKeys.verify_email_or,
           TextType.error,
           color: AppColors.errorColor,
         ),
         const SizedBox(height: AppSpacing.xs),
         const TextWidget(
-          AppStrings.verifyEmailEnsureCorrect,
+          LocaleKeys.verify_email_ensure_correct,
           TextType.bodySmall,
         ),
         const SizedBox(height: AppSpacing.xxxl),

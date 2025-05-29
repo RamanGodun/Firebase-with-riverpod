@@ -21,43 +21,17 @@ Future<void> main() async {
   debugPrint('[Main] ✅ Bootstrap completed. Launching app...');
 
   // 🚀🌐 Start the app within Riverpod's ProviderScope, custom logger and localization
-  // ignore: missing_provider_scope
   runApp(
-    AppLocalization.wrap(
-      ProviderScope(
-        overrides: diContainer,
-        observers: [Logger()],
-        child: const RootAppWidget(),
-      ),
+    ProviderScope(
+      overrides: diContainer,
+      observers: [Logger()],
+      child: AppLocalization.wrap(const RootAppWidget()),
     ),
   );
 }
 
 /*
+
 flutter pub run build_runner build --delete-conflicting-outputs
 
-
-
-/// 🌳 [RootWidget] defines the top-level widget that manages global theming and routing
-class RootWidget extends ConsumerWidget {
-  const RootWidget({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(routerProvider);
-    final themeMode = ref.watch(themeModeProvider);
-
-    return MaterialApp.router(
-      title: 'FB with Riverpod',
-      debugShowCheckedModeBanner: false,
-      // 📍 Dynamic routing with help of GoRouter
-      routerConfig: router,
-      // 🎨 Current theme mode
-      themeMode: themeMode,
-      theme: AppThemes.getLightTheme(),
-      darkTheme: AppThemes.getDarkTheme(),
-    );
-  }
-}
-
- */
+*/

@@ -12,8 +12,8 @@ class _SigninHeader extends StatelessWidget {
         SizedBox(height: AppSpacing.huge),
         FlutterLogo(size: AppSpacing.massive),
         SizedBox(height: AppSpacing.xxl),
-        TextWidget(AppStrings.signInHeader, TextType.headlineSmall),
-        TextWidget(AppStrings.signInSubHeader, TextType.bodyMedium),
+        TextWidget(LocaleKeys.sign_in_header, TextType.headlineSmall),
+        TextWidget(LocaleKeys.sign_in_sub_header, TextType.bodyMedium),
         SizedBox(height: AppSpacing.m),
       ],
     );
@@ -32,11 +32,14 @@ class _SigninFooter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const TextWidget(AppStrings.redirectToSignUp, TextType.titleSmall),
+            const TextWidget(
+              LocaleKeys.buttons_redirect_to_sign_up,
+              TextType.titleSmall,
+            ),
             CustomButton(
               type: ButtonType.text,
               onPressed: () => context.goTo(RoutesNames.signup),
-              label: AppStrings.signUpButton,
+              label: LocaleKeys.buttons_sign_up,
               fontWeight: FontWeight.w600,
               fontSize: 15,
               isEnabled: true,
@@ -48,7 +51,7 @@ class _SigninFooter extends StatelessWidget {
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),
-          label: AppStrings.forgotPassword,
+          label: LocaleKeys.sign_in_forgot_password,
           foregroundColor: AppColors.errorColor,
           fontWeight: FontWeight.w500,
           isEnabled: true,

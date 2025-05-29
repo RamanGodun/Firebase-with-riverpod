@@ -13,9 +13,11 @@
     "sign_up": "Sign Up",
     "submitting": "Submitting...",
     "retry": "Retry",
-    "redirect_to_sign_up": "Not a member?",
-    "redirect_to_sign_in": "Already a member?",
-    "cancel": "Cancel"
+    "redirect_to_sign_up": "Not a member?   ",
+    "redirect_to_sign_in": "Already a member?  ",
+    "cancel": "Cancel",
+    "go_to_home": "To Home Page",
+    "reset_password": "Reset Password" 
   },
   "errors": {
     "page_not_found_title": "Page Not Found",
@@ -31,7 +33,7 @@
     "confirm_password": "Confirm Password"
   },
   "pages": {
-    "home": "Home Page",
+    "home": "     Home Page",
     "home_message": "You can go to profile page and make some settings",
     "profile": "Profile",
     "change_password": "Change Password",
@@ -55,7 +57,7 @@
     "header": "Reset your password",
     "sub_header": "We will send you an email to reset it.",
     "success": "Password reset email has been sent",
-    "remember": "Remember password?"
+    "remember": "Remember password?    "
   },
   "change_password": {
     "title": "Change Password",

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/shared_modules/errors_handling/custom_error.dart';
-import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
+import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../profile/domain_and_data/profile_repo_provider.dart';
 import 'sign_out_provider.dart';
@@ -17,7 +17,7 @@ class SignOutButton extends ConsumerWidget {
       onPressed: () async {
         await ref.read(signOutProvider.notifier).signOut();
       },
-      label: AppStrings.signInButton,
+      label: LocaleKeys.buttons_sign_in,
       fontWeight: FontWeight.w600,
       fontSize: 15,
       isEnabled: true,
@@ -35,7 +35,7 @@ class VerifyEmailCancelButton extends ConsumerWidget {
     return CustomButton(
       type: ButtonType.filled,
       onPressed: () => _handleCancel(ref, context),
-      label: AppStrings.cancelButton,
+      label: LocaleKeys.buttons_cancel,
       isEnabled: true,
       isLoading: false,
     );

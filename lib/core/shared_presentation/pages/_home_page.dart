@@ -1,8 +1,8 @@
+import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/shared_presentation/constants/_app_constants.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/routes_names.dart';
 import 'package:firebase_with_riverpod/core/shared_presentation/widgets/custom_app_bar.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/theme_toggle_widget.dart';
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.homePageAppBarTitle,
+        title: LocaleKeys.pages_home,
         actionWidgets: [
           /// 🌗 Theme toggle (light/dark)
           const ThemeToggleIcon(),
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
 
       body: Center(
         child: const TextWidget(
-          AppStrings.homePageBodyMessage,
+          LocaleKeys.pages_home_message,
           TextType.bodyLarge,
           isTextOnFewStrings: true,
         ).withPaddingHorizontal(AppSpacing.l),

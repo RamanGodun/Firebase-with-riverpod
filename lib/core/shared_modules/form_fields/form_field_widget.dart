@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared_presentation/constants/_app_constants.dart';
-import '../localization/code_base_for_both_options/app_strings.dart';
+import '../localization/generated/locale_keys.g.dart';
 import 'form_fields_model.dart';
 import 'form_state_provider.dart';
 
@@ -81,10 +82,10 @@ class AppFormField extends HookConsumerWidget {
 
   /// 🏷 Returns label text based on [FormFieldType]
   String _labelFor(FormFieldType type) => switch (type) {
-    FormFieldType.email => AppStrings.email,
-    FormFieldType.password => AppStrings.password,
-    FormFieldType.confirmPassword => AppStrings.confirmPassword,
-    FormFieldType.name => AppStrings.name,
+    FormFieldType.name => LocaleKeys.form_name.tr(),
+    FormFieldType.email => LocaleKeys.form_email.tr(),
+    FormFieldType.password => LocaleKeys.form_password.tr(),
+    FormFieldType.confirmPassword => LocaleKeys.form_confirm_password.tr(),
   };
 
   /// 🔣 Returns prefix icon based on [FormFieldType]

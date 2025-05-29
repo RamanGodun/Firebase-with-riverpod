@@ -13,9 +13,11 @@
     "sign_up": "Zarejestruj się",
     "submitting": "Wysyłanie...",
     "retry": "Spróbuj ponownie",
-    "redirect_to_sign_up": "Nie masz konta?",
-    "redirect_to_sign_in": "Masz już konto?",
-    "cancel": "Anuluj"
+    "redirect_to_sign_up": "Nie masz konta?   ",
+    "redirect_to_sign_in": "Masz już konto?   ",
+    "cancel": "Anuluj",
+    "go_to_home": "Na stronę główną",
+    "reset_password": "Zresetuj hasło"
   },
   "errors": {
     "page_not_found_title": "Strony nie znaleziono",
@@ -31,7 +33,7 @@
     "confirm_password": "Potwierdź hasło"
   },
   "pages": {
-    "home": "Strona główna",
+    "home": "     Strona główna",
     "home_message": "Możesz przejść do profilu i zmienić ustawienia",
     "profile": "Profil",
     "change_password": "Zmień hasło",
@@ -55,7 +57,7 @@
     "header": "Zresetuj swoje hasło",
     "sub_header": "Wyślemy Ci e-mail z linkiem do resetowania.",
     "success": "E-mail resetujący hasło został wysłany",
-    "remember": "Pamiętasz hasło?"
+    "remember": "Pamiętasz hasło?   "
   },
   "change_password": {
     "title": "Zmień hasło",

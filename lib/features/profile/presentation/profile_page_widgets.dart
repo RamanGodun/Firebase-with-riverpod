@@ -30,28 +30,33 @@ class _UserProfile extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.center,
-            child: TextWidget(
-              '${AppStrings.welcome} ${user.name}',
-              TextType.headlineSmall,
+            child: KeyValueTextWidget(
+              labelKey: LocaleKeys.profile_welcome,
+              value: user.name,
+              labelTextType: TextType.headlineSmall,
+              valueTextType: TextType.headlineSmall,
             ),
           ),
           const SizedBox(height: AppSpacing.xl),
-          const TextWidget(AppStrings.profilePageTitle, TextType.titleMedium),
+          const TextWidget(LocaleKeys.profile_title, TextType.titleMedium),
           const SizedBox(height: AppSpacing.s),
-          TextWidget(
-            '${AppStrings.profileEmailLabel} ${user.email}',
-            TextType.bodyMedium,
+          KeyValueTextWidget(
+            labelKey: LocaleKeys.profile_email,
+            value: user.email,
+            labelTextType: TextType.bodyMedium,
           ),
           const SizedBox(height: AppSpacing.s),
-          TextWidget(
-            '${AppStrings.profileIdLabel} ${user.id}',
-            TextType.bodyMedium,
+          KeyValueTextWidget(
+            labelKey: LocaleKeys.profile_id,
+            value: user.id,
+            labelTextType: TextType.bodyMedium,
           ),
-          const SizedBox(height: AppSpacing.huge),
+
+          const SizedBox(height: AppSpacing.xxxl2),
           CustomButton(
             type: ButtonType.filled,
             onPressed: () => context.goTo(RoutesNames.changePassword),
-            label: AppStrings.changePassword,
+            label: LocaleKeys.change_password_title,
             isEnabled: true,
             isLoading: false,
           ),

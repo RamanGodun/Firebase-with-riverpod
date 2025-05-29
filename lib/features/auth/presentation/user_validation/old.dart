@@ -50,9 +50,6 @@
 //   }
 // }
 
-
-
-
 //   /// 📧 Sends a verification email to the current user
 //   Future<void> sendEmailVerification() async {
 //     try {

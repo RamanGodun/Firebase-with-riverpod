@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/context_extensions/_context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
@@ -9,7 +11,6 @@ import '../../../../core/shared_modules/form_fields/form_field_widget.dart';
 import '../../../../core/shared_modules/form_fields/form_fields_model.dart';
 import '../../../../core/shared_modules/form_fields/form_state_provider.dart';
 import '../../../../core/shared_modules/form_fields/presets_of_forms.dart';
-import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/shared_presentation/constants/_app_constants.dart';
@@ -71,8 +72,8 @@ class ChangePasswordPage extends ConsumerWidget {
                           },
                   label:
                       changePasswordState.isLoading
-                          ? AppStrings.submitting
-                          : AppStrings.changePassword,
+                          ? LocaleKeys.buttons_submitting
+                          : LocaleKeys.change_password_title,
                   isEnabled: !changePasswordState.isLoading,
                   isLoading: changePasswordState.isLoading,
                 ),
@@ -92,7 +93,7 @@ class ChangePasswordPage extends ConsumerWidget {
         data: (_) {
           CustomSnackbars.show(
             ScaffoldMessenger.of(context),
-            AppStrings.passwordUpdated,
+            LocaleKeys.reauth_password_updated,
           );
           context.goTo(RoutesNames.reAuthenticationPage);
         },
@@ -117,7 +118,10 @@ class ChangePasswordPage extends ConsumerWidget {
     final result = await context.pushTo<String>(const ReAuthenticationPage());
 
     if (result == 'success') {
-      CustomSnackbars.show(scaffoldMessenger, AppStrings.reAuthSuccess);
+      CustomSnackbars.show(
+        scaffoldMessenger,
+        LocaleKeys.change_password_success,
+      );
       await ref.read(signOutProvider.notifier).signOut();
     }
   }

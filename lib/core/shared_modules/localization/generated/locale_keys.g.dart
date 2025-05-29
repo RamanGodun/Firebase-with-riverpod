@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
   static const languages_switched_to_pl = 'languages.switched_to_pl';
@@ -17,6 +17,8 @@ abstract class LocaleKeys {
   static const buttons_redirect_to_sign_up = 'buttons.redirect_to_sign_up';
   static const buttons_redirect_to_sign_in = 'buttons.redirect_to_sign_in';
   static const buttons_cancel = 'buttons.cancel';
+  static const buttons_go_to_home = 'buttons.go_to_home';
+  static const buttons_reset_password = 'buttons.reset_password';
   static const buttons = 'buttons';
   static const errors_page_not_found_title = 'errors.page_not_found_title';
   static const errors_page_not_found_message = 'errors.page_not_found_message';
@@ -87,4 +89,5 @@ abstract class LocaleKeys {
   static const theme_light_enabled = 'theme.light_enabled';
   static const theme_dark_enabled = 'theme.dark_enabled';
   static const theme = 'theme';
+
 }

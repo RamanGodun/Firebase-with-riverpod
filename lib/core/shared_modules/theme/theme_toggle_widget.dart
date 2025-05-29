@@ -1,9 +1,9 @@
+import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../shared_presentation/constants/_app_constants.dart';
-import '../localization/code_base_for_both_options/app_strings.dart';
 import '../overlays/simple_overlay/overlay_service.dart';
 import 'theme_provider.dart';
 
@@ -29,7 +29,9 @@ class ThemeToggleIcon extends ConsumerWidget {
         OverlayNotificationService.showOverlay(
           context,
           message:
-              isDark ? AppStrings.lightModeEnabled : AppStrings.darkModeEnabled,
+              isDark
+                  ? LocaleKeys.theme_light_enabled
+                  : LocaleKeys.theme_dark_enabled,
           icon: isDark ? AppIcons.lightModeIcon : AppIcons.darkModeIcon,
         );
       },
