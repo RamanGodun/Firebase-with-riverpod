@@ -21,7 +21,7 @@ class VerifyEmailPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     /// 🚀 Starts the polling logic by reading the notifier
     useEffect(() {
-      ref.read(emailVerificationNotifierProvider.notifier);
+      ref.read(emailVerificationNotifierProvider.notifier).start();
       return null;
     }, []);
 

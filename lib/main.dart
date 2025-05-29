@@ -21,6 +21,7 @@ Future<void> main() async {
   debugPrint('[Main] ✅ Bootstrap completed. Launching app...');
 
   // 🚀🌐 Start the app within Riverpod's ProviderScope, custom logger and localization
+  // ignore: missing_provider_scope
   runApp(
     AppLocalization.wrap(
       ProviderScope(

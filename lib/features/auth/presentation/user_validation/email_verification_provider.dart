@@ -18,13 +18,19 @@ class EmailVerificationNotifier extends _$EmailVerificationNotifier {
   /// - Starts polling every 5s
   /// - Cleans up timer on dispose
   @override
-  Future<void> build() async {
+  Future<void> build() async {}
+
+  Future<void> start() async {
     final repo = ref.read(emailVerificationRepoProvider);
     final useCase = EmailVerificationUseCase(repo);
+    await useCase.sendVerificationEmail();
 
-    useCase.sendVerificationEmail();
     _startPolling(useCase);
-    ref.onDispose(() => _timer?.cancel());
+
+    // 📛
+    ref.onDispose(() {
+      _timer?.cancel();
+    });
   }
 
   /// 📩 Sends email verification request via [AuthRepository]
@@ -40,4 +46,6 @@ class EmailVerificationNotifier extends _$EmailVerificationNotifier {
       }
     });
   }
+
+  //
 }

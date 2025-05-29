@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../features/auth/data_providers/auth_state_stream_provider.dart';
 import '../../../app_config/firebase/firebase_constants.dart';
 
 /// 🧭 [AuthRedirectMapper] — centralized redirect logic for GoRouter
@@ -28,9 +27,11 @@ abstract final class AuthRedirectMapper {
   /// - [state] — current GoRouter state
   /// 📤 Returns:
   /// - A new path as [String] if redirection is needed, or null otherwise
-  static String? map({required Ref ref, required GoRouterState state}) {
-    final authState = ref.watch(authStateStreamProvider);
-
+  static String? map({
+    required GoRouterState state,
+    required AsyncValue<User?> authState,
+  }) {
+    //
     // ⏳ Redirect to splash while loading
     if (authState is AsyncLoading<User?>) return '/splash';
 
