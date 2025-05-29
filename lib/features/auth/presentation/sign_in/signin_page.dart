@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/app_strings.dart';
@@ -12,7 +12,7 @@ import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart
 import '../../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import 'signin_provider.dart';
-import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
+import '../../../../core/utils/extensions/context_extensions/_context_extensions.dart';
 
 part 'widgets_for_signin_page.dart';
 

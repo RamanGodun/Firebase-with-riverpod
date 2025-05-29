@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart' show DocumentSnapshot;
-import '../../../core/config/firebase/firebase_constants.dart';
+import '../../../core/app_config/firebase/firebase_constants.dart';
 
 abstract interface class IProfileRemoteDataSource {
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchUserDoc(String uid);

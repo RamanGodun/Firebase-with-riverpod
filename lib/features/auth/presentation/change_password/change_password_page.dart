@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/utils/extensions/context_extensions/_context_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_with_riverpod/features/auth/presentation/sign_out/sign_out_provider.dart';
@@ -14,7 +14,7 @@ import '../../../../core/shared_modules/localization/code_base_for_both_options/
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../../core/utils_and_services/snackbars.dart';
+import '../../../../core/utils/snackbars.dart';
 import '../user_validation/reauthenticate_page.dart';
 import 'change_password_provider.dart';
 
