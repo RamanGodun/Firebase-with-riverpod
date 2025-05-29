@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared_presentation/constants/app_constants.dart';
+import '../../shared_presentation/constants/_app_constants.dart';
 import 'text_styles.dart';
 
 /// 🎨 [AppThemes] — Provides consistent light/dark themes across the app.
@@ -90,7 +90,7 @@ abstract class AppThemes {
           backgroundColor: primaryColor,
           foregroundColor: onPrimary,
           shape: const RoundedRectangleBorder(
-            borderRadius: AppConstants.commonBorderRadius,
+            borderRadius: UIConstants.commonBorderRadius,
           ),
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
           elevation: 0.5,
@@ -104,7 +104,7 @@ abstract class AppThemes {
       cardTheme: CardTheme(
         color: overlayColor,
         shape: const RoundedRectangleBorder(
-          borderRadius: AppConstants.commonBorderRadius,
+          borderRadius: UIConstants.commonBorderRadius,
         ),
         shadowColor: Colors.black.withOpacity(isDark ? 0.2 : 0.1),
         elevation: 5,

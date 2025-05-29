@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation/constants/app_constants.dart';
+import 'package:firebase_with_riverpod/core/shared_presentation/constants/_app_constants.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/app_strings.dart';
 import 'package:firebase_with_riverpod/core/shared_presentation/widgets/buttons/custom_buttons.dart';
 

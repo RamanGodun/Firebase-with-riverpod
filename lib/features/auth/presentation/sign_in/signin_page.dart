@@ -9,7 +9,7 @@ import '../../../../core/shared_modules/form_fields/form_state_provider.dart';
 import '../../../../core/shared_modules/form_fields/presets_of_forms.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../../core/shared_presentation/constants/app_constants.dart';
+import '../../../../core/shared_presentation/constants/_app_constants.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import 'signin_provider.dart';
 import '../../../../core/utils/extensions/context_extensions/_context_extensions.dart';

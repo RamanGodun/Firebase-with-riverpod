@@ -1,4 +1,4 @@
-part of 'app_constants.dart';
+part of '_app_constants.dart';
 
 final class AppIcons {
   const AppIcons._();

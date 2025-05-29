@@ -8,7 +8,7 @@ import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import '../firebase/env_firebase_options.dart';
 import '../firebase/firebase_utils.dart';
 import '../app_config.dart';
-import '../env.dart';
+import '../firebase/env.dart';
 
 /// 🧰 [bootstrap]: Loads .env, initializes Firebase,  local storage, etc
 /// ---------------------------------------------------------------------

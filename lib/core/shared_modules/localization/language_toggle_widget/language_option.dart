@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../shared_presentation/constants/app_constants.dart';
+import '../../../shared_presentation/constants/_app_constants.dart';
 import '../code_base_for_both_options/text_widget.dart';
 import '../generated/locale_keys.g.dart';
 

@@ -12,7 +12,7 @@ import '../../../../core/shared_modules/form_fields/presets_of_forms.dart';
 import '../../../../core/shared_modules/localization/app_strings.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
-import '../../../../core/shared_presentation/constants/app_constants.dart';
+import '../../../../core/shared_presentation/constants/_app_constants.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../../core/utils/snackbars.dart';
 import '../user_validation/reauthenticate_page.dart';

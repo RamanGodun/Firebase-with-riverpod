@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared_presentation/constants/app_constants.dart';
+import '../../shared_presentation/constants/_app_constants.dart';
 import '../localization/app_strings.dart';
 import 'form_fields_model.dart';
 import 'form_state_provider.dart';
@@ -57,7 +57,7 @@ class AppFormField extends HookConsumerWidget {
         decoration: InputDecoration(
           filled: true,
           border: const OutlineInputBorder(
-            borderRadius: AppConstants.commonBorderRadius,
+            borderRadius: UIConstants.commonBorderRadius,
           ),
           labelText: _labelFor(type),
           errorText: formState.errorFor(type),
