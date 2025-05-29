@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/app_config/firebase/firebase_constants.dart';
 import '../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../core/shared_presentation/constants/_app_constants.dart';
-import '../../../core/shared_modules/localization/app_strings.dart';
+import '../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../core/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';

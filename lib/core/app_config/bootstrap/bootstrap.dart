@@ -19,17 +19,67 @@ final class AppBootstrap {
 
   /// 🎯 Entry point — must be called before [runApp]
   static Future<void> initialize() async {
+    debugPrint('[Bootstrap] 🚀 Starting initialization...');
     WidgetsFlutterBinding.ensureInitialized();
+    debugPrint('[Bootstrap] ✅ Widgets binding initialized');
 
-    await _validatePlatformSupport();
-    await _loadEnvFile();
-    await _initLocalStorage();
-    await _initializeFirebase();
-    await _initLocalization();
+    try {
+      await _initLocalization();
+      debugPrint('[Bootstrap] ✅ Localization initialized');
+    } catch (e, s) {
+      debugPrint('[Bootstrap][ERROR] ❌ Localization: $e\n$s');
+      rethrow;
+    }
+
+    try {
+      await _validatePlatformSupport();
+      debugPrint('[Bootstrap] ✅ Platform validation passed');
+    } catch (e, s) {
+      debugPrint('[Bootstrap][ERROR] ❌ Platform validation: $e\n$s');
+      rethrow;
+    }
+
+    try {
+      await _loadEnvFile();
+      debugPrint('[Bootstrap] ✅ Env file loaded');
+    } catch (e, s) {
+      debugPrint('[Bootstrap][ERROR] ❌ Env loading: $e\n$s');
+      rethrow;
+    }
+
+    try {
+      await _initLocalStorage();
+      debugPrint('[Bootstrap] ✅ Local storage initialized');
+    } catch (e, s) {
+      debugPrint('[Bootstrap][ERROR] ❌ Local storage: $e\n$s');
+      rethrow;
+    }
+
+    try {
+      await _initializeFirebase();
+      debugPrint('[Bootstrap] ✅ Firebase initialized');
+    } catch (e, s) {
+      debugPrint('[Bootstrap][ERROR] ❌ Firebase: $e\n$s');
+      rethrow;
+    }
+
     _initUrlStrategy();
+    debugPrint('[Bootstrap] ✅ URL strategy set');
+
+    debugPrint('[Bootstrap] 🎉 Initialization complete');
   }
 
   ///
+
+  /// 🌍 Ensures EasyLocalization is initialized before `runApp`
+  static Future<void> _initLocalization() async {
+    debugPrint('[Bootstrap] 🧭 Initializing localization...');
+    await EasyLocalization.ensureInitialized();
+    // ? when app with localization, use this:
+    AppLocalizer.init(resolver: (key) => key.tr());
+    // ! when app without localization, then instead previous method use next:
+    // AppLocalizer.initWithFallback();
+  }
 
   /// ✅ Checks Android SDK version compatibility
   static Future<void> _validatePlatformSupport() async {
@@ -74,15 +124,6 @@ final class AppBootstrap {
     }
 
     FirebaseUtils.logAllApps();
-  }
-
-  /// 🌍 Ensures EasyLocalization is initialized before `runApp`
-  static Future<void> _initLocalization() async {
-    await EasyLocalization.ensureInitialized();
-    // ? when app with localization, use this:
-    AppLocalizer.init(resolver: (key) => key.tr());
-    // ! when app without localization, then instead previous method use next:
-    // AppLocalizer.initWithFallback();
   }
 
   static Future<void> _initLocalStorage() async {

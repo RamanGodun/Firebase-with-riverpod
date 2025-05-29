@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/shared_modules/errors_handling/custom_error.dart';
-import '../../../../core/shared_modules/localization/app_strings.dart';
+import '../../../../core/shared_modules/localization/code_base_for_both_options/app_strings.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../profile/domain_and_data/profile_repo_provider.dart';
 import 'sign_out_provider.dart';

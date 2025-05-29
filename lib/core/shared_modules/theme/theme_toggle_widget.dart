@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../shared_presentation/constants/_app_constants.dart';
-import '../localization/app_strings.dart';
+import '../localization/code_base_for_both_options/app_strings.dart';
 import '../overlays/simple_overlay/overlay_service.dart';
 import 'theme_provider.dart';
 

@@ -6,9 +6,9 @@ import 'core/shared_modules/navigation/router_provider.dart';
 import 'core/shared_modules/theme/app_theme.dart';
 import 'core/shared_modules/theme/theme_provider.dart';
 
-/// 🌳 [RootWidget] defines the top-level widget that manages global theming and routing
-class RootWidget extends StatelessWidget {
-  const RootWidget({super.key});
+/// 🌳 [RootAppWidget] defines the top-level widget that manages global theming and routing
+class RootAppWidget extends StatelessWidget {
+  const RootAppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,29 +32,27 @@ class _AppShell extends ConsumerWidget {
 class _LocalizedMaterialApp extends StatelessWidget {
   final GoRouter router;
   final ThemeMode themeMode;
+
   const _LocalizedMaterialApp({required this.router, required this.themeMode});
 
   @override
   Widget build(BuildContext context) {
-    //
     return MaterialApp.router(
-      ///
       title: 'FB with Riverpod',
       debugShowCheckedModeBanner: false,
 
-      /// 🔁 GoRouter configuration
-      routerConfig: router,
-
-      /// 🎨 Theme configuration
-      // ! maybe cash themes?
-      themeMode: themeMode,
-      theme: AppThemes.getLightTheme(),
-      darkTheme: AppThemes.getDarkTheme(),
-
-      /// 🌐  Localization
+      /// 🌐 Localization
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
+
+      /// 🔁 Routing
+      routerConfig: router,
+
+      /// 🎨 Theming
+      themeMode: themeMode,
+      theme: AppThemes.getLightTheme(),
+      darkTheme: AppThemes.getDarkTheme(),
 
       //
     );
