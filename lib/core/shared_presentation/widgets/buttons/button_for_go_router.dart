@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../constants/app_constants.dart' show AppSpacing;
-import '../text_widget.dart';
 
 /// 🌍 [CustomButtonForGoRouter]
 /// Styled full-width Cupertino button that triggers navigation or a custom action.

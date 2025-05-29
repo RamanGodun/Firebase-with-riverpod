@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+import 'text_widget.dart';
+
+/// 🔑 [KeyValueTextWidget] — Combines a localized key with a dynamic value in a single line,
+/// with baseline alignment and columnar spacing for visual consistency.
+///----------------------------------------------------------------
+
+final class KeyValueTextWidget extends StatelessWidget {
+  final String labelKey;
+  final String value;
+
+  // 🅰️ Style for localized label
+  final TextType labelTextType;
+
+  // 🅱️ Optional style override for value
+  final TextType? valueTextType;
+
+  const KeyValueTextWidget({
+    super.key,
+    required this.labelKey,
+    required this.value,
+    required this.labelTextType,
+    this.valueTextType,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.baseline,
+        textBaseline: TextBaseline.alphabetic,
+
+        children: [
+          /// 🏷️ Localized label (intrinsic width)
+          IntrinsicWidth(
+            child: TextWidget(
+              labelKey,
+              labelTextType,
+              alignment: TextAlign.start,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+
+          const SizedBox(width: 12),
+
+          /// 🧾 Dynamic value (flexible & aligned)
+          Expanded(
+            child: TextWidget(
+              value,
+              valueTextType ?? TextType.titleSmall,
+              alignment: TextAlign.start,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

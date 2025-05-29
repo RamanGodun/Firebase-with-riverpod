@@ -43,16 +43,14 @@ class _AnimatedOverlayWidget extends HookWidget {
 
     final backgroundColor =
         isDark
-            ? AppConstants.overlayDarkBackground
-            : AppConstants.overlayLightBackground;
+            ? AppColors.overlayDarkBackground
+            : AppColors.overlayLightBackground;
     final textColor =
         isDark
-            ? AppConstants.overlayDarkTextColor
-            : AppConstants.overlayLightTextColor;
+            ? AppColors.overlayDarkTextColor
+            : AppColors.overlayLightTextColor;
     final borderColor =
-        isDark
-            ? AppConstants.overlayDarkBorder
-            : AppConstants.overlayLightBorder;
+        isDark ? AppColors.overlayDarkBorder : AppColors.overlayLightBorder;
 
     return Stack(
       children: [

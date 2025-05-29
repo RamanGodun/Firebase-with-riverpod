@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../utils_and_services/extensions/context_extensions/_context_extensions.dart';
-import '../text_widget.dart';
 
 /// 🔘 Button types supported: [filled], [text]
 enum ButtonType { filled, text }

@@ -16,8 +16,7 @@ class ThemeToggleIcon extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
     final isDark = themeMode == ThemeMode.dark;
 
-    final icon =
-        isDark ? AppConstants.darkModeIcon : AppConstants.lightModeIcon;
+    final icon = isDark ? AppIcons.darkModeIcon : AppIcons.lightModeIcon;
     final iconColor = context.colorScheme.primary;
 
     return IconButton(
@@ -31,7 +30,7 @@ class ThemeToggleIcon extends ConsumerWidget {
           context,
           message:
               isDark ? AppStrings.lightModeEnabled : AppStrings.darkModeEnabled,
-          icon: isDark ? AppConstants.lightModeIcon : AppConstants.darkModeIcon,
+          icon: isDark ? AppIcons.lightModeIcon : AppIcons.darkModeIcon,
         );
       },
     );

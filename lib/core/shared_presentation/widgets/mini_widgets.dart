@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/genera
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/app_strings.dart';
 import '../../shared_modules/errors_handling/custom_error.dart';
-import 'text_widget.dart';
+import '../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 
 /// 🔧 Enum for defining types of mini UI widgets
 enum MWType { loading, error }

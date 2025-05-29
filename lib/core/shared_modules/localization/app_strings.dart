@@ -2,6 +2,8 @@
 abstract final class AppStrings {
   AppStrings._();
 
+  static const String usersCollection = 'users';
+
   /// ===============================
   // 🏠 HOME PAGE
   // ===============================

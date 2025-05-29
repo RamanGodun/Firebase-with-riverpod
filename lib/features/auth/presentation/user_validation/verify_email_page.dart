@@ -2,12 +2,12 @@ import 'package:firebase_with_riverpod/core/utils_and_services/extensions/genera
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../../core/shared_modules/localization/app_strings.dart';
 import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/config/firebase/firebase_constants.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
-import '../../../../core/shared_presentation/widgets/text_widget.dart';
 import '../sign_out/sign_out_buttons.dart';
 import 'email_verification_provider.dart';
 
@@ -45,9 +45,7 @@ class _VerifyEmailBody extends StatelessWidget {
     return Center(
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: AppConstants.white.withOpacity(
-            context.isDarkMode ? 0.05 : 0.9,
-          ),
+          color: AppColors.white.withOpacity(context.isDarkMode ? 0.05 : 0.9),
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -117,7 +115,7 @@ class _VerifyEmailInfo extends StatelessWidget {
         const TextWidget(
           AppStrings.or,
           TextType.error,
-          color: AppConstants.errorColor,
+          color: AppColors.errorColor,
         ),
         const SizedBox(height: AppSpacing.xs),
         const TextWidget(

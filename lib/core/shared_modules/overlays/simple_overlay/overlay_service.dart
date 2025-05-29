@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../shared_presentation/constants/app_constants.dart';
 import '../../../utils_and_services/extensions/context_extensions/_context_extensions.dart';
-import '../../../shared_presentation/widgets/text_widget.dart';
+import '../../localization/code_base_for_both_options/text_widget.dart';
 
 part 'overlay_widget.dart';
 

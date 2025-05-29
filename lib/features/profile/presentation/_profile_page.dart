@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/config/firebase/firebase_constants.dart';
+import '../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../core/shared_modules/localization/app_strings.dart';
 import '../../../core/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_presentation/widgets/custom_app_bar.dart';
-import '../../../core/shared_presentation/widgets/text_widget.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
 import 'profile_provider.dart';
 

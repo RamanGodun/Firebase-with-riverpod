@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart'
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../shared_presentation/widgets/text_widget.dart';
+import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../shared_presentation/widgets/mini_widgets.dart';
 import '../../../shared_modules/localization/app_strings.dart';
 import '../../../shared_modules/errors_handling/custom_error.dart';

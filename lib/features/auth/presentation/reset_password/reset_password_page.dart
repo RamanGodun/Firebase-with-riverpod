@@ -1,12 +1,12 @@
 import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../../core/shared_modules/localization/app_strings.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../../core/shared_presentation/widgets/text_widget.dart';
 import '../../../../core/shared_modules/form_fields/form_field_widget.dart';
 import '../../../../core/shared_modules/form_fields/form_fields_model.dart';
 import '../../../../core/shared_modules/form_fields/form_state_provider.dart';

@@ -8,12 +8,12 @@ abstract class AppThemes {
   static ThemeData getLightTheme() {
     return _buildTheme(
       isDark: false,
-      backgroundColor: AppConstants.lightBackgroundColor,
-      primaryColor: AppConstants.lightPrimaryColor,
-      accentColor: AppConstants.lightAccentColor,
-      surfaceColor: AppConstants.lightSurface,
-      overlayColor: AppConstants.lightOverlay,
-      borderColor: AppConstants.lightBorder,
+      backgroundColor: AppColors.lightBackgroundColor,
+      primaryColor: AppColors.lightPrimaryColor,
+      accentColor: AppColors.lightAccentColor,
+      surfaceColor: AppColors.lightSurface,
+      overlayColor: AppColors.lightOverlay,
+      borderColor: AppColors.lightBorder,
       onPrimary: Colors.white,
       onSurface: Colors.black,
     );
@@ -23,12 +23,12 @@ abstract class AppThemes {
   static ThemeData getDarkTheme() {
     return _buildTheme(
       isDark: true,
-      backgroundColor: AppConstants.darkBackgroundColor,
-      primaryColor: AppConstants.darkPrimaryColor,
-      accentColor: AppConstants.lightAccentColor,
-      surfaceColor: AppConstants.darkSurface,
-      overlayColor: AppConstants.darkOverlay,
-      borderColor: AppConstants.darkBorder,
+      backgroundColor: AppColors.darkBackgroundColor,
+      primaryColor: AppColors.darkPrimaryColor,
+      accentColor: AppColors.lightAccentColor,
+      surfaceColor: AppColors.darkSurface,
+      overlayColor: AppColors.darkOverlay,
+      borderColor: AppColors.darkBorder,
       onPrimary: Colors.white,
       onSurface: Colors.white,
     );
@@ -65,7 +65,7 @@ abstract class AppThemes {
         onSecondary: onSurface,
         onBackground: onSurface,
         onSurface: onSurface,
-        error: AppConstants.errorColor,
+        error: AppColors.errorColor,
         onError: onPrimary,
       ),
 

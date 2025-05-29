@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../shared_presentation/widgets/text_widget.dart';
+import '../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 
 /// 🧩 [CustomSnackbars] — utility for showing consistent snackbars
 //----------------------------------------------------------------//

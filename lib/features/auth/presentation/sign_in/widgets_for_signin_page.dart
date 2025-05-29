@@ -49,7 +49,7 @@ class _SigninFooter extends StatelessWidget {
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: AppStrings.forgotPassword,
-          foregroundColor: AppConstants.errorColor,
+          foregroundColor: AppColors.errorColor,
           fontWeight: FontWeight.w500,
           isEnabled: true,
           isLoading: false,
