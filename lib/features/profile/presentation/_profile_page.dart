@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_presentation/widgets/mini_widgets.dart';
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/general_extensions/_general_extensions.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

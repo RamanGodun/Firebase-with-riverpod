@@ -1,7 +1,7 @@
+import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_mode_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
-import '../../utils_and_services/extensions/general_extensions/_general_extensions.dart'; // for .toggle()
 
 // 🔐 Key for storing theme preference
 const _themeStorageKey = 'selectedTheme';
