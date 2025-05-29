@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/bootstrap/bootstrap.dart';
 import 'core/config/bootstrap/di_container.dart';
 import 'core/shared_modules/logging/riverpod_observer.dart';
-import 'core/shared_modules/navigation/router.dart';
+import 'core/shared_modules/navigation/router_provider.dart';
 import 'core/shared_modules/theme/app_theme.dart';
 import 'core/shared_modules/theme/theme_provider.dart';
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'reset_password_repo.dart';
+part of 'reset_password_repo_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -8,7 +8,10 @@ part of 'reset_password_repo.dart';
 
 String _$resetPasswordRepoHash() => r'9fa71202be9816f174696fe798011577060c12f8';
 
-/// See also [resetPasswordRepo].
+/// 🧩 [resetPasswordRepoProvider] — provides instance of [ResetPasswordRepoImpl]
+/// 🧼 Dependency injection for password reset functionality
+///
+/// Copied from [resetPasswordRepo].
 @ProviderFor(resetPasswordRepo)
 final resetPasswordRepoProvider =
     AutoDisposeProvider<IResetPasswordRepo>.internal(

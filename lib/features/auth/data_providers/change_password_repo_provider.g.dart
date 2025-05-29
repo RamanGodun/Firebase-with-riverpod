@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'change_password_repo.dart';
+part of 'change_password_repo_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,7 +9,8 @@ part of 'change_password_repo.dart';
 String _$changePasswordRepoHash() =>
     r'd70f913b01035c09faf0dd0daf07ccace0d55ee8';
 
-/// 🧩 [changePasswordRepoProvider] — provides concrete repo impl
+/// 🧩 [changePasswordRepoProvider] — provides instance of [ChangePasswordRepoImpl]
+/// 🧼 Dependency injection for changing password functionality
 ///
 /// Copied from [changePasswordRepo].
 @ProviderFor(changePasswordRepo)

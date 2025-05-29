@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../data/sign_in_repo.dart';
-import '../../domain/sign_in_use_case.dart';
+import '../../data_providers/sign_in_repo_provider.dart';
+import '../../domain/auth_use_cases.dart';
 
 part 'signin_provider.g.dart';
 

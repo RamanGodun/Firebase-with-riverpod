@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../data/email_verification_repo.dart';
-import '../../domain/email_verification_use_case.dart';
+import '../../data_providers/email_verification_repo_provider.dart';
+import '../../domain/auth_use_cases.dart';
 
 part 'email_verification_provider.g.dart';
 

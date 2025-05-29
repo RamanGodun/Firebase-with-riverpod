@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_repository_providers.dart';
+part of 'auth_state_stream_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -8,8 +8,6 @@ part of 'auth_repository_providers.dart';
 
 String _$authStateStreamHash() => r'21e813fdefad80f26d5eb53e54bf5851a3a9382d';
 
-/// 🧩 [authRepositoryProvider] — provides instance of [AuthRepository]
-/// 🧼 Used to perform all authentication logic through DI
 /// 🧩 [authStateStreamProvider] — exposes auth state as stream of [User?]
 /// 🧼 Reactively notifies when user signs in/out or changes
 ///

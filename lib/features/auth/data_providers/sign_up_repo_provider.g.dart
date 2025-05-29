@@ -1,26 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_out_repo.dart';
+part of 'sign_up_repo_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signOutRepoHash() => r'5ed12488ced7ae447b6b4aa2f291fe00ca2ca703';
+String _$signUpRepoHash() => r'e55623f884f33a074429389fdf4e1b8567d2b6f4';
 
-/// See also [signOutRepo].
-@ProviderFor(signOutRepo)
-final signOutRepoProvider = AutoDisposeProvider<ISignOutRepo>.internal(
-  signOutRepo,
-  name: r'signOutRepoProvider',
+/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl]
+/// 🧼 Dependency injection for sign-up logic
+///
+/// Copied from [signUpRepo].
+@ProviderFor(signUpRepo)
+final signUpRepoProvider = AutoDisposeProvider<ISignUpRepo>.internal(
+  signUpRepo,
+  name: r'signUpRepoProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$signOutRepoHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$signUpRepoHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SignOutRepoRef = AutoDisposeProviderRef<ISignOutRepo>;
+typedef SignUpRepoRef = AutoDisposeProviderRef<ISignUpRepo>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

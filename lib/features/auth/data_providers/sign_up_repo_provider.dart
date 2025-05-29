@@ -1,20 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/config/firebase/firebase_constants.dart';
+import '../domain/auth_repos.dart';
 
-part 'sign_up_repo.g.dart';
+part 'sign_up_repo_provider.g.dart';
 
+/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl]
+/// 🧼 Dependency injection for sign-up logic
 @riverpod
 ISignUpRepo signUpRepo(Ref ref) => SignUpRepoImpl();
 
-abstract interface class ISignUpRepo {
-  Future<void> signup({
-    required String name,
-    required String email,
-    required String password,
-  });
-}
-
+///-----------------------------------------------------------------
+/// 🧩 [SignUpRepoImpl] — concrete implementation of [ISignUpRepo]
+/// 🧼 Wraps [FirebaseAuth.createUserWithEmailAndPassword] + Firestore
 final class SignUpRepoImpl implements ISignUpRepo {
   @override
   Future<void> signup({

@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../data/sign_out_repo.dart';
-import '../../domain/sign_out_use_case.dart';
+import '../../data_providers/sign_out_repo_provider.dart';
+import '../../domain/auth_use_cases.dart';
 
 part 'sign_out_provider.g.dart';
 

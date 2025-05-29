@@ -1,19 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/config/firebase/firebase_constants.dart';
+import '../domain/auth_repos.dart';
 
-part 'email_verification_repo.g.dart';
+part 'email_verification_repo_provider.g.dart';
 
+/// 🧩 [emailVerificationRepoProvider] — provides instance of [EmailVerificationRepoImpl]
+/// 🧼 Dependency injection for email verification functionality
 @riverpod
 IEmailVerificationRepo emailVerificationRepo(Ref ref) =>
     EmailVerificationRepoImpl();
 
-abstract interface class IEmailVerificationRepo {
-  Future<void> sendEmailVerification();
-  Future<void> reloadUser();
-  bool isEmailVerified();
-}
-
+///------------------------------------------------------------------------------------
+/// 🧩 [EmailVerificationRepoImpl] — concrete implementation of [IEmailVerificationRepo]
+/// 🧼 Handles email verification operations using FirebaseAuth
 final class EmailVerificationRepoImpl implements IEmailVerificationRepo {
   @override
   Future<void> sendEmailVerification() async {

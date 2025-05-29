@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_verification_repo.dart';
+part of 'email_verification_repo_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,7 +9,10 @@ part of 'email_verification_repo.dart';
 String _$emailVerificationRepoHash() =>
     r'382e02af9122aa68fa3214cdae7d795442c000c1';
 
-/// See also [emailVerificationRepo].
+/// 🧩 [emailVerificationRepoProvider] — provides instance of [EmailVerificationRepoImpl]
+/// 🧼 Dependency injection for email verification functionality
+///
+/// Copied from [emailVerificationRepo].
 @ProviderFor(emailVerificationRepo)
 final emailVerificationRepoProvider =
     AutoDisposeProvider<IEmailVerificationRepo>.internal(

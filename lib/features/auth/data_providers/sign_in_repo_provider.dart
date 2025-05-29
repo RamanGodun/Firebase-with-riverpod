@@ -1,19 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/config/firebase/firebase_constants.dart';
+import '../domain/auth_repos.dart';
 
-part 'sign_in_repo.g.dart';
+part 'sign_in_repo_provider.g.dart';
 
-/// 🔐 Sign in repo provider
+/// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl]
+/// 🧼 Dependency injection for user sign-in logic
 @riverpod
 ISignInRepo signInRepo(Ref ref) => SignInRepoImpl();
 
-/// 🔐 Sign in contract
-abstract interface class ISignInRepo {
-  Future<void> signIn({required String email, required String password});
-}
-
-/// 🔐 Signs user in using email and password
+///----------------------------------------------------------------
+/// 🧩 [SignInRepoImpl] — concrete implementation of [ISignInRepo]
+/// 🧼 Wraps [FirebaseAuth.signInWithEmailAndPassword]
 final class SignInRepoImpl implements ISignInRepo {
   @override
   Future<void> signIn({required String email, required String password}) async {

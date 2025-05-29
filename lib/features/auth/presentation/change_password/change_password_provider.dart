@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../data/change_password_repo.dart';
-import '../../domain/change_password_use_case.dart';
+import '../../data_providers/change_password_repo_provider.dart';
+import '../../domain/auth_use_cases.dart';
 
 part 'change_password_provider.g.dart';
 

@@ -1,10 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../features/auth/data/change_password_repo.dart';
-import '../../../features/auth/data/email_verification_repo.dart';
-import '../../../features/auth/data/sign_in_repo.dart';
-import '../../../features/auth/data/sign_out_repo.dart';
-import '../../../features/auth/data/sign_up_repo.dart';
-import '../../../features/auth/data/reset_password_repo.dart';
+import '../../../features/auth/data_providers/change_password_repo_provider.dart';
+import '../../../features/auth/data_providers/email_verification_repo_provider.dart';
+import '../../../features/auth/data_providers/sign_in_repo_provider.dart';
+import '../../../features/auth/data_providers/sign_out_repo_provider.dart';
+import '../../../features/auth/data_providers/sign_up_repo_provider.dart';
+import '../../../features/auth/data_providers/reset_password_repo_provider.dart';
 import '../../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../../features/profile/domain_and_data/remote_data_source.dart';
 
