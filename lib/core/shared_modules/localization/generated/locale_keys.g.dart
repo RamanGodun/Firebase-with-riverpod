@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
   static const buttons_ok = 'buttons.ok';
@@ -65,4 +65,5 @@ abstract class LocaleKeys {
   static const theme_dark_enabled = 'theme.dark_enabled';
   static const theme_light_enabled = 'theme.light_enabled';
   static const theme = 'theme';
+
 }
