@@ -6,9 +6,11 @@ part of 'signin_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signinHash() => r'283797e9570f1ff04faab33df51b780bd4d3ebcf';
+String _$signinHash() => r'30e71b7ed916d139be0b103bd86858f7aff0f957';
 
-/// 🧩 [signinProvider] — async notifier that handles sign in logic
+/// 🧩 [signinProvider] — async notifier that handles user sign-in
+/// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
+/// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
 ///
 /// Copied from [Signin].
 @ProviderFor(Signin)

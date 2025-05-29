@@ -13,7 +13,7 @@ part 'router_provider.g.dart';
 @riverpod
 GoRouter router(Ref ref) {
   //
-  final authState = ref.watch(authStateStreamProvider.select((a) => a));
+  final authState = ref.watch(authStateStreamProvider);
 
   ///
   return GoRouter(
