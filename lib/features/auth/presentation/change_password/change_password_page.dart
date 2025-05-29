@@ -1,3 +1,5 @@
+import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
+import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,7 +16,6 @@ import '../../../../core/shared_modules/localization/code_base_for_both_options/
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/shared_presentation/constants/app_constants.dart';
 import '../../../../core/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../../core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/utils_and_services/snackbars.dart';
 import '../user_validation/reauthenticate_page.dart';
 import 'change_password_provider.dart';
@@ -102,7 +103,7 @@ class ChangePasswordPage extends ConsumerWidget {
           if (error.code == 'requires-recent-login') {
             await _processRequiresRecentLogin(context, ref);
           } else {
-            context.showErrorDialog(error);
+            // context.showErrorDialog(error); // ! add here
           }
         },
       );

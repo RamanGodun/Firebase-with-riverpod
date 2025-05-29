@@ -1,4 +1,7 @@
-part of '_context_extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../routes_names.dart';
 
 /// 🧭 [NavigationX] — Adds convenient navigation helpers
 extension NavigationX on BuildContext {
@@ -39,6 +42,4 @@ extension NavigationX on BuildContext {
   Future<T?> pushTo<T>(Widget child) {
     return Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => child));
   }
-
-  void unfocusKeyboard() => FocusScope.of(this).unfocus();
 }

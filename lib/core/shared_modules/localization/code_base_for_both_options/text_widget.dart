@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/utils_and_services/extensions/context_extensions/_context_extensions.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import '../../../shared_presentation/constants/app_constants.dart';
 import '_app_localizer.dart';
