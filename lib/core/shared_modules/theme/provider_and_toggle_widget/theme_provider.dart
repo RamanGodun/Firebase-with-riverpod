@@ -6,22 +6,23 @@ import 'package:get_storage/get_storage.dart';
 // 🔐 Key for storing theme preference
 const _themeStorageKey = 'selectedTheme';
 
-/// 💾 Singleton instance of [GetStorage] for theme persistence
-final _storage = GetStorage();
+/// 🧩 [themeStorageProvider] — Provides the shared GetStorage instance
+final themeStorageProvider = Provider<GetStorage>((ref) => GetStorage());
 
-/// 🧩 [themeModeProvider] — Global provider for theme switching
+/// 🧩 [themeModeProvider] — StateNotifier for switching themes with injected storage
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>(
-  (ref) => ThemeModeNotifier(),
+  (ref) => ThemeModeNotifier(ref.watch(themeStorageProvider)),
 );
 
-/// 🌗 [ThemeModeNotifier] — StateNotifier that manages app theme mode
-/// It loads from local storage and updates it on change.
+/// 🌗 [ThemeModeNotifier] — Manages the ThemeMode state with persistent storage
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
-  ThemeModeNotifier() : super(_loadInitialTheme());
+  final GetStorage _storage;
 
-  /// 📦 Load saved theme mode or fallback to system
-  static ThemeMode _loadInitialTheme() {
-    final stored = _storage.read<String>(_themeStorageKey);
+  ThemeModeNotifier(this._storage) : super(_loadInitialTheme(_storage));
+
+  /// 📦 Loads saved theme or defaults to system
+  static ThemeMode _loadInitialTheme(GetStorage storage) {
+    final stored = storage.read<String>(_themeStorageKey);
     return switch (stored) {
       'dark' => ThemeMode.dark,
       'light' => ThemeMode.light,
@@ -29,7 +30,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     };
   }
 
-  /// 🔁 Toggles between light and dark modes, saves selection to local storage
+  /// 🔁 Toggles theme and persists it
   void toggleTheme() {
     state = state.toggle();
     _storage.write(_themeStorageKey, state.name);

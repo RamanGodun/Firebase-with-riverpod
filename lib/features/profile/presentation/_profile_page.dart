@@ -14,6 +14,7 @@ import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
+import '../../../core/shared_modules/theme/provider_and_toggle_widget/theme_toggle_widget.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
 import 'profile_provider.dart';
 
@@ -31,14 +32,16 @@ class ProfilePage extends ConsumerWidget {
     final profileAsync = ref.watch(profileProvider(uid));
 
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: LocaleKeys.profile_title,
         actionWidgets: [
-          const LanguageToggleButton(),
-          _RefreshButton(uid: uid),
-          const SignOutIconButton(),
+          LanguageToggleButton(),
+          ThemeToggleIcon(),
+          SignOutIconButton(),
         ],
       ),
+
+      ///
       body: profileAsync.when(
         data: (user) => _UserProfile(user),
         error:

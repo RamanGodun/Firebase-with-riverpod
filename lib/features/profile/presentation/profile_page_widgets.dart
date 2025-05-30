@@ -1,19 +1,5 @@
 part of '_profile_page.dart';
 
-/// 🔄 [_RefreshButton] — refreshes the profile data
-class _RefreshButton extends ConsumerWidget {
-  final String uid;
-  const _RefreshButton({required this.uid});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return IconButton(
-      icon: const Icon(Icons.refresh),
-      onPressed: () => ref.invalidate(profileProvider(uid)),
-    );
-  }
-}
-
 /// 📦 [_UserProfile] — displays user data and password change button
 /// 🧼 Rendered after successful response from [profileProvider]
 class _UserProfile extends StatelessWidget {

@@ -1,10 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../shared_layers/shared_presentation/constants/_app_constants.dart';
-import '../overlays/simple_overlay/overlay_service.dart';
+import '../../../shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../overlays/simple_overlay/overlay_service.dart';
 import 'theme_provider.dart';
 
 /// 🌗 [ThemeToggleIcon] — toggles light/dark mode and shows overlay notification
@@ -21,6 +22,10 @@ class ThemeToggleIcon extends ConsumerWidget {
 
     return IconButton(
       icon: Icon(icon, color: iconColor),
+      tooltip:
+          isDark
+              ? LocaleKeys.theme_light_enabled.tr()
+              : LocaleKeys.theme_dark_enabled.tr(),
       onPressed: () {
         // 🔄 Toggle the theme
         ref.read(themeModeProvider.notifier).toggleTheme();
@@ -29,9 +34,10 @@ class ThemeToggleIcon extends ConsumerWidget {
         OverlayNotificationService.showOverlay(
           context,
           message:
-              isDark
-                  ? LocaleKeys.theme_light_enabled
-                  : LocaleKeys.theme_dark_enabled,
+              (isDark
+                      ? LocaleKeys.theme_light_enabled
+                      : LocaleKeys.theme_dark_enabled)
+                  .tr(),
           icon: isDark ? AppIcons.lightModeIcon : AppIcons.darkModeIcon,
         );
       },

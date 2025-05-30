@@ -17,9 +17,28 @@ class OverlayNotificationService {
   static OverlayEntry? _overlayEntry;
   static bool _isShowing = false;
 
-  /// 📌 Shows a transient overlay with [message] and [icon]
+  /// 📌 Public method, shows a transient overlay with [message] and [icon]
   static void showOverlay(
     BuildContext context, {
+    required String message,
+    required IconData icon,
+    OverlayPosition position = OverlayPosition.center,
+    Duration duration = const Duration(seconds: 2),
+  }) {
+    final overlay = Overlay.of(context, rootOverlay: true);
+
+    showOverlayViaOverlay(
+      overlay,
+      message: message,
+      icon: icon,
+      position: position,
+      duration: duration,
+    );
+  }
+
+  /// 🔧 Technical realization, take OverlayState
+  static void showOverlayViaOverlay(
+    OverlayState overlay, {
     required String message,
     required IconData icon,
     OverlayPosition position = OverlayPosition.center,
@@ -30,7 +49,6 @@ class OverlayNotificationService {
 
     _removeOverlay();
 
-    final overlay = Overlay.of(context, rootOverlay: true);
     _overlayEntry = OverlayEntry(
       builder:
           (_) => _AnimatedOverlayWidget(
@@ -54,7 +72,7 @@ class OverlayNotificationService {
     _overlayEntry = null;
   }
 
-  /// 🎯 Convenience API methods
+  /// 🎯 Shorthands for predefined styles
   static void success(BuildContext context, String message) =>
       showOverlay(context, message: message, icon: Icons.check_circle);
 

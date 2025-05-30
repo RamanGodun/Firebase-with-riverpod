@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/constants/_app_constants.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/routes_names.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/theme/theme_toggle_widget.dart';
 import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.
@@ -19,9 +18,6 @@ class HomePage extends StatelessWidget {
       appBar: CustomAppBar(
         title: LocaleKeys.pages_home,
         actionWidgets: [
-          /// 🌗 Theme toggle (light/dark)
-          const ThemeToggleIcon(),
-
           /// 👤 Navigate to profile
           IconButton(
             icon: const Icon(Icons.person_2),

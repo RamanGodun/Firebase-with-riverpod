@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'core/shared_modules/navigation/router_provider.dart';
-import 'core/shared_modules/theme/app_theme.dart';
-import 'core/shared_modules/theme/theme_provider.dart';
+import 'core/shared_modules/theme/config/app_material_theme.dart';
+import 'core/shared_modules/theme/config/app_theme_config.dart';
+import 'core/shared_modules/theme/provider_and_toggle_widget/theme_provider.dart';
 
 /// 🌳 [RootAppWidget] defines the top-level widget that manages global theming and routing
 class RootAppWidget extends StatelessWidget {
@@ -24,22 +25,23 @@ class _AppShell extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeProvider);
-    return _LocalizedMaterialApp(router: router, themeMode: themeMode);
+    final config = AppConfig.fromMode(themeMode);
+
+    return _MaterialRootWidget(router: router, config: config);
   }
 }
 
-/// 🧩 [_LocalizedMaterialApp] —  MaterialApp wrapper
-class _LocalizedMaterialApp extends StatelessWidget {
+/// 🧩 [_MaterialRootWidget] —  MaterialApp wrapper
+class _MaterialRootWidget extends StatelessWidget {
   final GoRouter router;
-  final ThemeMode themeMode;
-
-  const _LocalizedMaterialApp({required this.router, required this.themeMode});
+  final AppThemeConfig config;
+  const _MaterialRootWidget({required this.router, required this.config});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'FB with Riverpod',
-      debugShowCheckedModeBanner: false,
+      title: config.title,
+      debugShowCheckedModeBanner: config.debugShowCheckedModeBanner,
 
       /// 🌐 Localization
       locale: context.locale,
@@ -50,9 +52,9 @@ class _LocalizedMaterialApp extends StatelessWidget {
       routerConfig: router,
 
       /// 🎨 Theming
-      themeMode: themeMode,
-      theme: AppThemes.getLightTheme(),
-      darkTheme: AppThemes.getDarkTheme(),
+      themeMode: config.themeMode,
+      theme: config.theme,
+      darkTheme: config.darkTheme,
 
       //
     );

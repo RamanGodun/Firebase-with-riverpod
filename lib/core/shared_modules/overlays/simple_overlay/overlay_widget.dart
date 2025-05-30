@@ -46,9 +46,7 @@ class _AnimatedOverlayWidget extends HookWidget {
             ? AppColors.overlayDarkBackground
             : AppColors.overlayLightBackground;
     final textColor =
-        isDark
-            ? AppColors.overlayDarkTextColor
-            : AppColors.overlayLightTextColor;
+        isDark ? AppColors.overlayDarkText : AppColors.overlayLightText;
     final borderColor =
         isDark ? AppColors.overlayDarkBorder : AppColors.overlayLightBorder;
 
@@ -92,7 +90,7 @@ class _AnimatedOverlayWidget extends HookWidget {
                         Expanded(
                           child: TextWidget(
                             message,
-                            TextType.titleMedium,
+                            TextType.titleSmall,
                             color: textColor,
                           ),
                         ),

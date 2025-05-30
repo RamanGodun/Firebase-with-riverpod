@@ -56,11 +56,7 @@ enum LanguageOption {
               ),
             ),
             if (isCurrent)
-              const Icon(
-                Icons.check,
-                size: 16,
-                color: AppColors.darkAccentColor,
-              ),
+              const Icon(Icons.check, size: 16, color: AppColors.darkAccent),
           ],
         ),
       ),
