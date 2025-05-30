@@ -1,37 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app_entry.dart';
+import 'root_widget.dart';
 import 'core/app_config/bootstrap/bootstrap.dart';
 import 'core/app_config/bootstrap/di_container.dart';
-import 'core/shared_modules/localization/localization_config.dart';
+import 'core/shared_modules/localization/app_localization.dart';
 import 'core/shared_modules/logging/riverpod_observer.dart';
 
+/// 🏁 Entry point of the application.
+/// Performs synchronous bootstrapping and launches the app.
 Future<void> main() async {
-  debugPrint('[Main] 🚀 App starting...');
-
   ///
-  // 🔧 Perform all essential setup: Firebase, .env, local storage, etc.
-  try {
-    await AppBootstrap.initialize();
-  } catch (e, s) {
-    debugPrint('[Main][ERROR] ❌ Bootstrap failed: $e\n$s');
-    rethrow;
-  }
+  // 🔧🧩 Essential services (Firebase, .env, secure storage, etc.)
+  await AppBootstrap.initialize();
 
-  debugPrint('[Main] ✅ Bootstrap completed. Launching app...');
-
-  // 🚀🌐 Start the app within Riverpod's ProviderScope, custom logger and localization
+  // 🚀 Start the app within Riverpod's ProviderScope, custom logger and localization
   runApp(
     ProviderScope(
       overrides: diContainer,
       observers: [Logger()],
-      child: AppLocalization.wrap(const RootAppWidget()),
+      child: AppLocalization.wrap(const RootAppShell()),
     ),
   );
 }
 
 /*
-
 flutter pub run build_runner build --delete-conflicting-outputs
-
 */

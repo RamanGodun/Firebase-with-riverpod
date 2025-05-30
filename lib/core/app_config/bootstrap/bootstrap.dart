@@ -10,7 +10,7 @@ import '../../../__for_each_project/firebase/env.dart';
 import '../../shared_modules/localization/code_base_for_both_options/_app_localizer.dart';
 import '../firebase/env_firebase_options.dart';
 import '../firebase/firebase_utils.dart';
-import '../app_config.dart';
+import '../configs/app_config_consts.dart';
 
 /// 🧰 [AppBootstrap]: Loads .env, initializes Firebase,  local storage, etc
 /// ---------------------------------------------------------------------
@@ -85,9 +85,9 @@ final class AppBootstrap {
   static Future<void> _validatePlatformSupport() async {
     if (Platform.isAndroid) {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
-      if (androidInfo.version.sdkInt < AppConfig.minSdkVersion) {
+      if (androidInfo.version.sdkInt < AppConfigConsts.minSdkVersion) {
         throw UnsupportedError(
-          'Android SDK ${androidInfo.version.sdkInt} is not supported. Minimum is ${AppConfig.minSdkVersion}',
+          'Android SDK ${androidInfo.version.sdkInt} is not supported. Minimum is ${AppConfigConsts.minSdkVersion}',
         );
       }
     }

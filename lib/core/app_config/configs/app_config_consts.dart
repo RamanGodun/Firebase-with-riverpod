@@ -1,14 +1,14 @@
 library;
 
-/// ⚙️ [AppConfig] — Global static configuration for the application.
+/// ⚙️ [AppConfigConsts] — Global static configuration for the application.
 /// Centralized constants for:
 ///       - App identity
 ///       - Versioning
 ///       - Platform requirements
 ///       - Global timeouts, flags, and feature toggles
 
-final class AppConfig {
-  AppConfig._();
+final class AppConfigConsts {
+  AppConfigConsts._();
 
   /// ═══════════════════════════════════════════════════════════════
   // 🧾 App Identity & Versioning
@@ -48,30 +48,11 @@ final class AppConfig {
   static const Duration debounceDuration = Duration(milliseconds: 350);
 
   // ═══════════════════════════════════════════════════════════════
-  // 🚀 Build Mode Flags
-  // ═══════════════════════════════════════════════════════════════
-
-  /// 🧪 Flag for release mode
-  static const bool isReleaseMode = bool.fromEnvironment('dart.vm.product');
-
-  /// 👀 Flag for debug mode
-  static bool get isDebugMode => !isReleaseMode;
-
-  /// 🧪 Flag for test environment (e.g. Flutter test)
-  static const bool isTestMode = bool.fromEnvironment('FLUTTER_TEST');
-
-  /// 🤖 CI/CD flag (GitHub Actions, Bitbucket Pipelines, etc.)
-  static const bool isCI = bool.fromEnvironment('CI');
-
-  // ═══════════════════════════════════════════════════════════════
   // 🧪 Feature Toggles
   // ═══════════════════════════════════════════════════════════════
 
   /// 🚧 Toggle feature flags (can be overridden in .env or injected)
   static const bool enableExperimentalUI = false;
-
-  /// 🔍 Enable detailed error logging
-  static bool get showVerboseErrors => isDebugMode || isCI;
 
   // ═══════════════════════════════════════════════════════════════
   // 📂 Files / Assets
@@ -79,4 +60,26 @@ final class AppConfig {
 
   /// 🔐 Path to .env file fallback (for unit tests or CLI runs)
   static const String defaultEnvFile = '.env';
+}
+
+///
+final class AppEnvFlags {
+  AppEnvFlags._();
+
+  ///   🧪 Flag for release mode
+  static const bool isRelease = bool.fromEnvironment('dart.vm.product');
+
+  /// 👀 Flag for debug mode
+  static bool get isDebug => !isRelease;
+
+  /// 🤖 CI/CD flag (GitHub Actions, Bitbucket Pipelines, etc.)
+  static const bool isCI = bool.fromEnvironment('CI');
+
+  /// 🧪 Flag for test environment (e.g. Flutter test)
+  static const bool isTest = bool.fromEnvironment('FLUTTER_TEST');
+
+  static const bool enableExperimentalUI = false;
+
+  /// 🔍 Enable detailed error logging
+  static bool get showVerboseErrors => isDebug || isCI;
 }
