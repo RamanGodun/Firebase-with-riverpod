@@ -12,7 +12,7 @@ import 'core/shared_modules/logging/for_riverpod/riverpod_observer.dart';
 Future<void> main() async {
   ///
   // 🔧🧩 Essential services (Firebase, .env, secure storage, etc.)
-  await StartUpHandler.run();
+  await StartUpHandler.bootstrap();
 
   /// 🌈 Enables debug painting for layout visualization (repaint regions)
   debugRepaintRainbowEnabled = false;

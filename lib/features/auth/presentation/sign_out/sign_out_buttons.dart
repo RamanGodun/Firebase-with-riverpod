@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/shared_modules/errors_handling/custom_error.dart';
+import '../../../../core/shared_modules/errors_handling/old/custom_error.dart';
 import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../profile/domain_and_data/profile_repo_provider.dart';

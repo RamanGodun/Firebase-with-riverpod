@@ -18,7 +18,7 @@ final class StartUpHandler {
   StartUpHandler._();
 
   /// 🎯 Entry point — must be called before [runApp]
-  static Future<void> run() async {
+  static Future<void> bootstrap() async {
     WidgetsFlutterBinding.ensureInitialized();
     await _initLocalization();
     await _validatePlatformSupport();
