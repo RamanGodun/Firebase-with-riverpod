@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show debugRepaintRainbowEnabled;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'root_widget.dart';
 import 'start_up_handler.dart';
@@ -14,13 +13,10 @@ Future<void> main() async {
   // 🔧🧩 Essential services (Firebase, .env, secure storage, etc.)
   await StartUpHandler.bootstrap();
 
-  /// 🌈 Enables debug painting for layout visualization (repaint regions)
-  debugRepaintRainbowEnabled = false;
-
   // 🚀 Start the app within Riverpod's ProviderScope, custom logger and localization
   runApp(
     ProviderScope(
-      overrides: diContainer,
+      parent: globalContainer,
       observers: [Logger()],
       child: AppLocalization.wrap(const AppRootShell()),
     ),
@@ -30,3 +26,4 @@ Future<void> main() async {
 /*
 flutter pub run build_runner build --delete-conflicting-outputs
 */
+ 

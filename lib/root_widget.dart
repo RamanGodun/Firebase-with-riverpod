@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/app_configs/app_root_config.dart';
+import 'core/shared_modules/overlays copy/core/global_overlay_handler.dart';
 
 /// 🌳🧩 [AppRootShell] — Provides app-wide dependencies (theme, router, locale).
 /// ✅ Now simplified using factory constructor in [AppRootConfig].
@@ -11,7 +12,7 @@ class AppRootShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //
+    // ? Theme memoization
     final config = AppRootConfig.from(ref: ref, context: context);
     return _AppRootView(config: config);
     //
@@ -43,6 +44,11 @@ class _AppRootView extends StatelessWidget {
       theme: config.theme.theme,
       darkTheme: config.theme.darkTheme,
       themeMode: config.theme.themeMode,
+
+      // 🧩 Overlay handlings
+      builder: (context, child) => GlobalOverlayHandler(child: child!),
+
+      ///
     );
   }
 }
