@@ -23,12 +23,8 @@ extension OverlayStatusX on WidgetRef {
   bool get overlayStatus => watch(overlayStatusProvider);
 }
 
-
-
 /*
 ! call :
 final isOverlayVisible = ref.watch(overlayStatusProvider);
 
  */
-
-

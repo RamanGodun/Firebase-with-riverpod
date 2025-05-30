@@ -3,7 +3,8 @@ import 'package:firebase_with_riverpod/core/shared_modules/overlays%20copy/core/
 import 'package:flutter/material.dart';
 import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
 import '../overlay_dispatcher/_overlay_dispatcher.dart';
-import '../overlay_dispatcher/dispatcher_provider.dart' show overlayDispatcherProvider;
+import '../overlay_dispatcher/dispatcher_provider.dart'
+    show overlayDispatcherProvider;
 import '../presentation/overlay_presets/overlay_presets.dart';
 import 'overlay_core_objects.dart';
 
