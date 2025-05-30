@@ -12,6 +12,7 @@ import '../../../../core/shared_modules/localization/code_base_for_both_options/
 import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../../core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../../../core/shared_modules/theme/app_colors.dart';
 import '../sign_out/sign_out_buttons.dart';
 
 /// 🧼 [VerifyEmailPage] — screen that handles email verification polling

@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/overlays%20copy/core/_context_x_for_overlays.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/context_extensions/_context_extensions.dart';
 import 'package:flutter/material.dart';
 

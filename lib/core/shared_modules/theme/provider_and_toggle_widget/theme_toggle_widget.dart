@@ -1,11 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../shared_layers/shared_presentation/constants/_app_constants.dart';
-import '../../overlays/simple_overlay/overlay_service.dart';
+import '../../localization/code_base_for_both_options/_app_localizer.dart';
 import 'theme_provider.dart';
 
 /// 🌗 [ThemeToggleIcon] — toggles light/dark mode and shows overlay notification
@@ -14,32 +14,30 @@ class ThemeToggleIcon extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final themeMode = ref.watch(themeModeProvider);
-    final isDark = themeMode == ThemeMode.dark;
+    final wasDark = themeMode == ThemeMode.dark;
 
-    final icon = isDark ? AppIcons.darkModeIcon : AppIcons.lightModeIcon;
+    final icon = wasDark ? AppIcons.darkMode : AppIcons.lightMode;
     final iconColor = context.colorScheme.primary;
 
     return IconButton(
       icon: Icon(icon, color: iconColor),
-      tooltip:
-          isDark
-              ? LocaleKeys.theme_light_enabled.tr()
-              : LocaleKeys.theme_dark_enabled.tr(),
       onPressed: () {
         // 🔄 Toggle the theme
         ref.read(themeModeProvider.notifier).toggleTheme();
 
-        // 🧃 Show feedback to user
-        OverlayNotificationService.showOverlay(
-          context,
-          message:
-              (isDark
-                      ? LocaleKeys.theme_light_enabled
-                      : LocaleKeys.theme_dark_enabled)
-                  .tr(),
-          icon: isDark ? AppIcons.lightModeIcon : AppIcons.darkModeIcon,
-        );
+        final msgKey =
+            wasDark
+                ? LocaleKeys.theme_light_enabled
+                : LocaleKeys.theme_dark_enabled;
+        final message = AppLocalizer.t(msgKey);
+        final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
+
+        // 🌟 Show overlay with correct message and icon
+        context.showUserBanner(message: message, icon: icon);
+
+        ///
       },
     );
   }

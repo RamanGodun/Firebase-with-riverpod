@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/app_configs/app_root_config.dart';
-import 'core/shared_modules/overlays copy/core/global_overlay_handler.dart';
+import 'core/shared_modules/overlays/core/global_overlay_handler.dart';
 
 /// 🌳🧩 [AppRootShell] — Provides app-wide dependencies (theme, router, locale).
 /// ✅ Now simplified using factory constructor in [AppRootConfig].

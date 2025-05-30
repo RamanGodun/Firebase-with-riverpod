@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
-import '../../../shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../theme/app_colors.dart';
 import '_app_localizer.dart';
 
 /// 📝 [TextWidget] — Custom Text widget with dynamic styling options.

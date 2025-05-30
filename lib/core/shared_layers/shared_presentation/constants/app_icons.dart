@@ -8,8 +8,8 @@ final class AppIcons {
   // ────────────────────────────────────────────────────────────────────
   // 🌤 Theme & UI
   static const IconData sunIcon = Icons.sunny;
-  static const IconData lightModeIcon = Icons.light_mode;
-  static const IconData darkModeIcon = Icons.dark_mode;
+  static const IconData lightMode = Icons.light_mode;
+  static const IconData darkMode = Icons.dark_mode;
   static const IconData syncIcon = Icons.sync;
   static const IconData changeCircleIcon = Icons.change_circle;
 

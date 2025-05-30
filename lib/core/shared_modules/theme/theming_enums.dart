@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared_layers/shared_presentation/constants/_app_constants.dart';
+import 'app_colors.dart';
 import 'text_theme/_text_styles.dart';
 
 /// 🎨 [AppThemeType] — Enhanced enum that defines full theme variants

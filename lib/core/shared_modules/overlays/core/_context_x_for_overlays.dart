@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/di_container/di_context_x.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/overlays%20copy/core/_overlay_base_methods.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_overlay_base_methods.dart';
 import 'package:flutter/material.dart';
 import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
 import '../overlay_dispatcher/_overlay_dispatcher.dart';

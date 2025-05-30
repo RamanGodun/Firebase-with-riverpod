@@ -8,9 +8,9 @@ import '../../features/auth/data_providers/sign_up_repo_provider.dart';
 import '../../features/auth/data_providers/reset_password_repo_provider.dart';
 import '../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../features/profile/domain_and_data/remote_data_source.dart';
-import '../shared_modules/overlays copy/overlay_dispatcher/_overlay_dispatcher.dart';
-import '../shared_modules/overlays copy/overlay_dispatcher/dispatcher_provider.dart';
-import '../shared_modules/overlays copy/overlay_dispatcher/overlay_status_cubit.dart';
+import '../shared_modules/overlays/overlay_dispatcher/_overlay_dispatcher.dart';
+import '../shared_modules/overlays/overlay_dispatcher/dispatcher_provider.dart';
+import '../shared_modules/overlays/overlay_dispatcher/overlay_status_cubit.dart';
 import '../shared_modules/theme/provider_and_toggle_widget/theme_provider.dart';
 
 /// 🌍 Global singleton DI container
