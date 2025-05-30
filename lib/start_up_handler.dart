@@ -6,67 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
-import '../../../__for_each_project/firebase/env.dart';
-import '../../shared_modules/localization/code_base_for_both_options/_app_localizer.dart';
-import '../firebase/env_firebase_options.dart';
-import '../firebase/firebase_utils.dart';
-import '../configs/app_config_consts.dart';
+import '__for_each_project/firebase/env.dart';
+import 'core/shared_modules/localization/code_base_for_both_options/_app_localizer.dart';
+import 'core/app_configs/constants/platform_requirements.dart';
+import 'core/app_configs/firebase/env_firebase_options.dart';
+import 'core/app_configs/firebase/firebase_utils.dart';
 
-/// 🧰 [AppBootstrap]: Loads .env, initializes Firebase,  local storage, etc
+/// 🧰 [StartUpHandler]: Loads .env, initializes Firebase,  local storage, etc
 /// ---------------------------------------------------------------------
-final class AppBootstrap {
-  AppBootstrap._();
+final class StartUpHandler {
+  StartUpHandler._();
 
   /// 🎯 Entry point — must be called before [runApp]
-  static Future<void> initialize() async {
-    debugPrint('[Bootstrap] 🚀 Starting initialization...');
+  static Future<void> run() async {
     WidgetsFlutterBinding.ensureInitialized();
-    debugPrint('[Bootstrap] ✅ Widgets binding initialized');
-
-    try {
-      await _initLocalization();
-      debugPrint('[Bootstrap] ✅ Localization initialized');
-    } catch (e, s) {
-      debugPrint('[Bootstrap][ERROR] ❌ Localization: $e\n$s');
-      rethrow;
-    }
-
-    try {
-      await _validatePlatformSupport();
-      debugPrint('[Bootstrap] ✅ Platform validation passed');
-    } catch (e, s) {
-      debugPrint('[Bootstrap][ERROR] ❌ Platform validation: $e\n$s');
-      rethrow;
-    }
-
-    try {
-      await _loadEnvFile();
-      debugPrint('[Bootstrap] ✅ Env file loaded');
-    } catch (e, s) {
-      debugPrint('[Bootstrap][ERROR] ❌ Env loading: $e\n$s');
-      rethrow;
-    }
-
-    try {
-      await _initLocalStorage();
-      debugPrint('[Bootstrap] ✅ Local storage initialized');
-    } catch (e, s) {
-      debugPrint('[Bootstrap][ERROR] ❌ Local storage: $e\n$s');
-      rethrow;
-    }
-
-    try {
-      await _initializeFirebase();
-      debugPrint('[Bootstrap] ✅ Firebase initialized');
-    } catch (e, s) {
-      debugPrint('[Bootstrap][ERROR] ❌ Firebase: $e\n$s');
-      rethrow;
-    }
-
+    await _initLocalization();
+    await _validatePlatformSupport();
+    await _loadEnvFile();
+    await _initLocalStorage();
+    await _initializeFirebase();
     _initUrlStrategy();
-    debugPrint('[Bootstrap] ✅ URL strategy set');
-
-    debugPrint('[Bootstrap] 🎉 Initialization complete');
   }
 
   ///
@@ -85,9 +44,9 @@ final class AppBootstrap {
   static Future<void> _validatePlatformSupport() async {
     if (Platform.isAndroid) {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
-      if (androidInfo.version.sdkInt < AppConfigConsts.minSdkVersion) {
+      if (androidInfo.version.sdkInt < PlatformConstants.minSdkVersion) {
         throw UnsupportedError(
-          'Android SDK ${androidInfo.version.sdkInt} is not supported. Minimum is ${AppConfigConsts.minSdkVersion}',
+          'Android SDK ${androidInfo.version.sdkInt} is not supported. Minimum is ${PlatformConstants.minSdkVersion}',
         );
       }
     }

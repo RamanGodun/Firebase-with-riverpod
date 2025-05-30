@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart' show useEffect;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../core/app_config/firebase/firebase_constants.dart';
+import '../../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';

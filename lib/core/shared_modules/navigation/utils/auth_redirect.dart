@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../app_config/firebase/firebase_constants.dart';
+import '../../../app_configs/firebase/firebase_constants.dart';
 
 /// 🧭 [AuthRedirectMapper] — centralized redirect logic for GoRouter
 /// 🔐 Dynamically handles redirection based on Firebase auth state:

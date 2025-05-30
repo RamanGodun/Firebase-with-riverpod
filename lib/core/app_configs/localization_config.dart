@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../shared_modules/localization/generated/locale_keys.g.dart';
+import '../shared_modules/localization/generated/locale_keys.g.dart';
 
 /// 🌍 [LocalizationConfig] — Extracts and holds localization settings from [BuildContext].
 /// ✅ Includes active locale, supported locales and localization delegates.

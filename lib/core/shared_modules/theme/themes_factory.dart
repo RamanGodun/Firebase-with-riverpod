@@ -1,4 +1,4 @@
-part of '_app_themes.dart';
+part of 'app_themes.dart';
 
 /// 🏭 [_ThemeFactory] — Internal factory class for building complete [ThemeData] objects
 /// 🔧 Converts a strongly-typed [AppThemeType] into a fully styled theme configuration

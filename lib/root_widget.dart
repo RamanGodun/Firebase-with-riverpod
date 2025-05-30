@@ -1,40 +1,29 @@
 import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/app_config/configs/localization_config.dart';
-import 'core/shared_modules/navigation/router_provider.dart';
-import 'core/app_config/configs/app_root_config.dart';
-import 'core/app_config/configs/theme_config.dart';
-import 'core/shared_modules/theme/provider_and_toggle_widget/theme_provider.dart';
+import 'core/app_configs/app_root_config.dart';
 
-/// 🌳 [RootAppShell] — Provides app-wide dependencies (theme, router, locale).
-/// Consumes Riverpod providers and builds final [MaterialApp].
+/// 🌳🧩 [AppRootShell] — Provides app-wide dependencies (theme, router, locale).
+/// ✅ Now simplified using factory constructor in [AppRootConfig].
 //------------------------------------------------------------
-class RootAppShell extends ConsumerWidget {
-  const RootAppShell({super.key});
+class AppRootShell extends ConsumerWidget {
+  const AppRootShell({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeModeProvider);
-    final router = ref.watch(routerProvider);
-    final localization = LocalizationConfig.fromContext(context);
-
-    final config = AppRootConfig(
-      theme: ThemeConfig.from(themeMode),
-      localization: localization,
-      router: router,
-    );
-
-    return _RootMaterialApp(config: config);
+    //
+    final config = AppRootConfig.from(ref: ref, context: context);
+    return _AppRootView(config: config);
+    //
   }
 }
 
-/// 🧱 [_RootMaterialApp] — Final MaterialApp.router widget
-/// configured from [AppRootConfig].
+/// 📱🧱 [_AppRootView] — Final MaterialApp.router widget
+///   ✅ Configured from [AppRootConfig].
 //------------------------------------------------------
-class _RootMaterialApp extends StatelessWidget {
+class _AppRootView extends StatelessWidget {
   final AppRootConfig config;
-  const _RootMaterialApp({required this.config});
+  const _AppRootView({required this.config});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/app_config/firebase/firebase_constants.dart';
+import '../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../core/shared_modules/localization/code_base_for_both_options/key_value_x_for_text_w.dart';
 import '../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../core/shared_modules/localization/generated/locale_keys.g.dart';
