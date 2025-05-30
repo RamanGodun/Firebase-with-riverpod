@@ -1,10 +1,10 @@
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation/constants/_app_constants.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation/widgets/buttons/custom_buttons.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 
-import '../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
-import '../../shared_modules/localization/generated/locale_keys.g.dart';
+import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
+import '../../../shared_modules/localization/generated/locale_keys.g.dart';
 
 /// 🔥 [FirebaseErrorPage] — shown when Firebase initialization fails or has a runtime error.
 /// Displays fallback UI with retry option.

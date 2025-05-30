@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared_presentation/constants/_app_constants.dart';
+import '../../shared_layers/shared_presentation/constants/_app_constants.dart';
 import 'text_styles.dart';
 
 /// 🎨 [AppThemes] — Provides consistent light/dark themes across the app.

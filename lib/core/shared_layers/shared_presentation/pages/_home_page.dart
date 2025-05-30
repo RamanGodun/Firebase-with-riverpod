@@ -2,11 +2,11 @@ import 'package:firebase_with_riverpod/core/shared_modules/localization/generate
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation/constants/_app_constants.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/constants/_app_constants.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/routes_names.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation/widgets/custom_app_bar.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/theme_toggle_widget.dart';
-import '../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
+import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.
 /// Displays a toggle for theme switching and navigates to profile/settings.

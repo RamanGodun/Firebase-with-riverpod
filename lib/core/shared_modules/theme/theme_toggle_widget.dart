@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../shared_presentation/constants/_app_constants.dart';
+import '../../shared_layers/shared_presentation/constants/_app_constants.dart';
 import '../overlays/simple_overlay/overlay_service.dart';
 import 'theme_provider.dart';
 

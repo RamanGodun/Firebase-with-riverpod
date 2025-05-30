@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../../shared_presentation/constants/_app_constants.dart';
+import '../../../shared_layers/shared_presentation/constants/_app_constants.dart';
 import '../../localization/code_base_for_both_options/text_widget.dart';
 
 part 'overlay_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
+import '../../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../constants/_app_constants.dart' show AppSpacing;
 
 /// 🌍 [CustomButtonForGoRouter]

@@ -3,8 +3,8 @@ import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared_presentation/constants/_app_constants.dart';
-import '../localization/generated/locale_keys.g.dart';
+import '../../core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import 'form_fields_model.dart';
 import 'form_state_provider.dart';
 

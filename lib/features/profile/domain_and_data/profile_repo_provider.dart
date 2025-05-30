@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/shared_domain/entities/app_user.dart';
+import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import 'remote_data_source.dart';
 
 part 'profile_repo_provider.g.dart';

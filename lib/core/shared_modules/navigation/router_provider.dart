@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../features/auth/data_providers/auth_state_stream_provider.dart';
-import '../../shared_presentation/pages/page_not_found.dart';
+import '../../shared_layers/shared_presentation/pages/page_not_found.dart';
 import 'routes_map.dart';
 import 'utils/auth_redirect.dart';
 

@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
+import '../../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
 
 /// 🔘 Button types supported: [filled], [text]
 enum ButtonType { filled, text }

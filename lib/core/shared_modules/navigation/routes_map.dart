@@ -6,9 +6,9 @@ import '../../../features/auth/presentation/sign_in/signin_page.dart';
 import '../../../features/auth/presentation/sign_up/signup_page.dart';
 import '../../../features/auth/presentation/user_validation/reauthenticate_page.dart';
 import '../../../features/auth/presentation/user_validation/verify_email_page.dart';
-import '../../shared_presentation/pages/firebase_error_page.dart';
-import '../../shared_presentation/widgets/mini_widgets.dart';
-import '../../shared_presentation/pages/_home_page.dart';
+import '../../shared_layers/shared_presentation/pages/firebase_error_page.dart';
+import '../../shared_layers/shared_presentation/widgets/mini_widgets.dart';
+import '../../shared_layers/shared_presentation/pages/_home_page.dart';
 import 'routes_names.dart';
 
 abstract final class AppRoutes {

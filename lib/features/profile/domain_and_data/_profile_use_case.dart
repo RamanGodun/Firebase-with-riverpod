@@ -1,4 +1,4 @@
-import '../../../../core/shared_domain/entities/app_user.dart';
+import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import 'profile_repo_provider.dart';
 
 /// 🧩 [getProfileUseCaseProvider] encapsulated business logic
