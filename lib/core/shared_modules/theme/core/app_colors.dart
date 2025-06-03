@@ -48,6 +48,16 @@ final class AppColors {
   static const Color overlayLightBorder2 = Color(0x0F000000); // ~6%
   static const Color overlayLightShadow = Color(0x26000000); // ~15%
 
+  ///
+  static const Color overlayDarkBarrier = Color(0x80000000); // 50% black
+  static const Color overlayLightBarrier = Color(0x66D0D0D0); // 40% grey
+  static const Color dividerLightOpacity = Color(0x1FFFFFFF); // 12% white
+  static const Color dividerDarkOpacity = Color(0x14000000); // 8% black
+  static const Color snackbarDark = Color(0xF22C2C2E); //  95%
+  static const Color snackbarLight = Color(0xFAFFFFFF); //  98%
+  static const Color androidDialogShadowDark = Color(0x44000000); // ~26%
+  static const Color androidDialogShadowLight = Color(0x33000000); // ~20%
+
   /// ───────────────────────────────────────────────────────────────────
   /// BUTTON COLORS
   // ────────────────────────────────────────────────────────────────────
@@ -55,6 +65,8 @@ final class AppColors {
   static const Color primary30 = Color(0x4D005153);
   static const Color buttonDisabledBackground = Color(0xFFBDBDBD);
   static const Color buttonDisabledForeground = Color(0xB3FFFFFF);
+
+  ///
 
   ///
 }

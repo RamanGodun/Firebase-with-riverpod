@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../animation/overlays_animation/animation_engines/__animation_engine.dart';
-import 'presentation/overlay_presets/overlay_preset_props.dart';
-import 'presentation/widgets/android/android_banner.dart';
-import 'presentation/widgets/android/android_dialog.dart';
-import 'presentation/widgets/android/android_snackbar.dart';
-import 'presentation/widgets/ios/ios_banner.dart';
-import 'presentation/widgets/ios/ios_dialog.dart';
-import 'presentation/widgets/ios/ios_snackbar.dart';
+import '../../animation/overlays_animation/animation_engines/__animation_engine.dart';
+import '../presentation/overlay_presets/overlay_preset_props.dart';
+import '../presentation/widgets/android/android_banner.dart';
+import '../presentation/widgets/android/android_dialog.dart';
+import '../presentation/widgets/android/android_snackbar.dart';
+import '../presentation/widgets/ios/ios_banner.dart';
+import '../presentation/widgets/ios/ios_dialog.dart';
+import '../presentation/widgets/ios/ios_snackbar.dart';
 
 abstract final class PlatformMapper {
   PlatformMapper._();
@@ -104,7 +104,7 @@ abstract final class PlatformMapper {
     required OverlayUIPresetProps presetProps,
   }) {
     return switch (platform) {
-      TargetPlatform.iOS => IOSSnackbarCard(
+      TargetPlatform.iOS => IOSToastBubble(
         message: message,
         icon: icon,
         engine: engine,
@@ -116,7 +116,7 @@ abstract final class PlatformMapper {
         engine: engine,
         props: presetProps,
       ),
-      _ => IOSSnackbarCard(
+      _ => IOSToastBubble(
         message: message,
         icon: icon,
         engine: engine,

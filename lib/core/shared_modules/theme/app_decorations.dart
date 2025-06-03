@@ -7,15 +7,14 @@ import 'package:flutter/material.dart'
         BoxShadow,
         Offset,
         Radius;
-import '../app_colors.dart';
+import 'core/app_colors.dart';
 
-/// 🎨 [BannerDecorations] — Unified visual styles used across the app
-/// 🍏 Includes macOS-style glass boxes
-//----------------------------------------------------------------
+/// 🎨 [BannerDecorations] — macOS/iOS-style banners with glassmorphism
+/// 🍏 Includes blur, border, shadows for light/dark modes
+/// ────────────────────────────────────────────────────────────────
 final class BannerDecorations {
   const BannerDecorations._();
 
-  /// 🍏 Glass box for **light theme**
   static const BoxDecoration glassBoxLight = BoxDecoration(
     color: AppColors.overlayLightBackground,
     borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -32,7 +31,6 @@ final class BannerDecorations {
     ],
   );
 
-  /// 🍏 Glass box for **dark theme**
   static const BoxDecoration glassBoxDark = BoxDecoration(
     color: AppColors.overlayDarkBackground,
     borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -49,25 +47,16 @@ final class BannerDecorations {
     ],
   );
 
-  /// 📦 Getter to resolve current theme’s decoration
   static BoxDecoration glassBox(bool isDark) =>
       isDark ? glassBoxDark : glassBoxLight;
-
-  //
 }
 
-///
-
-///
-
-/// 🧊 [DialogDecorations] — Decorations for Cupertino dialogs (iOS/macOS style)
-/// - Soft glassmorphism for light/dark themes
-/// - Used in CupertinoAlertDialog (e.g., IOSAppDialog)
+/// 🧊 [DialogDecorations] — iOS/macOS style dialogs with soft glass style
+/// - Used in Cupertino alert modals
 /// ────────────────────────────────────────────────────────────────
 final class DialogDecorations {
   const DialogDecorations._();
 
-  /// 🌙 Dark dialog background
   static const BoxDecoration dark = BoxDecoration(
     color: AppColors.overlayDarkBackground,
     borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -84,7 +73,6 @@ final class DialogDecorations {
     ],
   );
 
-  /// ☀️ Light dialog background (optimized for readability and elegance)
   static const BoxDecoration light = BoxDecoration(
     color: AppColors.overlayLightBackground4,
     borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -101,6 +89,57 @@ final class DialogDecorations {
     ],
   );
 
-  /// 🔘 Resolved theme-based getter
   static BoxDecoration glassBox(bool isDark) => isDark ? dark : light;
+}
+
+/// 🧱 [AndroidDialogDecorations] — Material-style overlays (Dialog, Snackbar, Banner)
+/// - Consistent Material 3 appearance
+/// - Centralized styles for Android overlays
+/// ────────────────────────────────────────────────────────────────
+final class AndroidDialogDecorations {
+  const AndroidDialogDecorations._();
+
+  /// 🌙 Dialog for **dark mode**
+  static const BoxDecoration dark = BoxDecoration(
+    color: AppColors.darkSurface,
+    borderRadius: BorderRadius.all(Radius.circular(12)),
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.androidDialogShadowDark,
+        blurRadius: 14,
+        spreadRadius: 0.2,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
+
+  /// ☀️ Dialog for **light mode**
+  static const BoxDecoration light = BoxDecoration(
+    color: AppColors.lightSurface,
+    borderRadius: BorderRadius.all(Radius.circular(12)),
+    boxShadow: [
+      BoxShadow(
+        color: AppColors.androidDialogShadowLight,
+        blurRadius: 10,
+        spreadRadius: 0.1,
+        offset: Offset(0, 3),
+      ),
+    ],
+  );
+
+  /// 🍞 Snackbar style (similar to dialog but with border)
+  static BoxDecoration snackbar(bool isDark) => BoxDecoration(
+    color: isDark ? AppColors.snackbarDark : AppColors.snackbarLight,
+    borderRadius: BorderRadius.circular(6),
+    border: Border.all(
+      color:
+          isDark
+              ? AppColors.overlayDarkBorder.withOpacity(0.4)
+              : AppColors.overlayLightBorder.withOpacity(0.5),
+      width: 0.6,
+    ),
+  );
+
+  /// 📦 Dialog decoration resolver
+  static BoxDecoration resolve(bool isDark) => isDark ? dark : light;
 }

@@ -5,7 +5,7 @@ import '../../../utils/debouncer.dart';
 import '../core/overlay_core_objects.dart';
 import '../overlay_entries/_overlay_entries_registry.dart';
 import '../overlay_logger.dart';
-import '../tap_through_overlay_barrier.dart';
+import '../core/tap_through_overlay_barrier.dart';
 
 part 'policy_resolver.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/core/app_colors.dart';
 import '../code_base_for_both_options/text_widget.dart';
 import '../generated/locale_keys.g.dart';
 

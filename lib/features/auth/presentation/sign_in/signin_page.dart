@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/cont
 import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/shared_modules/theme/app_colors.dart';
+import '../../../../core/shared_modules/theme/core/app_colors.dart';
 import '../../../form_fields/form_field_widget.dart';
 import '../../../form_fields/form_fields_model.dart';
 import '../../../form_fields/form_state_provider.dart';
