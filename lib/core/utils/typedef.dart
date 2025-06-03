@@ -31,3 +31,15 @@ typedef LocalizationWrapper = Widget Function(Widget child);
 
 ///
 // typedef OverlayBannerFactory = Widget Function(OverlayUIPresets, String);
+
+///
+typedef ShowUserSnackbar =
+    void Function({required String message, IconData? icon});
+
+/// 📦 Navigation with params
+typedef GoTo =
+    void Function(
+      String routeName, {
+      Map<String, String> pathParameters,
+      Map<String, dynamic> queryParameters,
+    });

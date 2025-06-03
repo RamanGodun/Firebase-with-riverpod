@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
-import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import '../../../shared_layers/shared_presentation/constants/_app_constants.dart';
 import 'language_option.dart';

@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
-import '../overlays/core/overlay_core_objects.dart';
+import '../../../shared_modules/overlays/core/overlay_core_objects.dart';
 
 /// 🧊 [BlurContainer] — Glassmorphism wrapper with built-in blur & rounding
 /// - Wraps child with ClipRRect + BackdropFilter

@@ -2,19 +2,19 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart'
     show LocaleKeys;
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/utils/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../../core/shared_layers/shared_presentation/constants/_app_constants.dart';
 import '../../../../core/shared_modules/navigation/routes_names.dart';
-import '../../../../core/utils/extensions/context_extensions/_context_extensions.dart';
+import '../../../../core/shared_layers/shared_presentation/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../form_fields/form_field_widget.dart';
 import '../../../form_fields/form_fields_model.dart';
 import '../../../form_fields/form_state_provider.dart';
 import '../../../form_fields/presets_of_forms.dart';
-import '../../../../core/utils/snackbars.dart';
 import 'reset_password_provider.dart';
 
 part 'widgets_for_reset_password_page.dart';
@@ -79,14 +79,13 @@ class ResetPasswordPage extends ConsumerWidget {
   void _listenForResetEvents(BuildContext context, WidgetRef ref) {
     ref.listen(resetPasswordProvider, (prev, next) {
       next.whenOrNull(
-        // error: (e, _) => context.showErrorDialog(handleException(e)),
         data: (_) {
-          CustomSnackbars.show(
-            ScaffoldMessenger.of(context),
-            LocaleKeys.reset_password_success.tr(),
+          context.showUserSnackbar(
+            message: LocaleKeys.reset_password_success.tr(),
           );
           if (context.mounted) context.goTo(RoutesNames.signin);
         },
+        // TODO: showErrorDialog(error);
       );
     });
   }

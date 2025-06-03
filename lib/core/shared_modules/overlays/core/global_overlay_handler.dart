@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
-import 'package:firebase_with_riverpod/core/utils/extensions/context_extensions/_context_extensions.dart';
+import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/context_extensions/_context_extensions.dart';
 import 'package:flutter/material.dart';
 
 /// 🧩 [GlobalOverlayHandler] — Universal gesture wrapper for screen-wide UX improvements:
