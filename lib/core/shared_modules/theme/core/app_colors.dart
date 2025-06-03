@@ -57,6 +57,8 @@ final class AppColors {
   static const Color snackbarLight = Color(0xFAFFFFFF); //  98%
   static const Color androidDialogShadowDark = Color(0x44000000); // ~26%
   static const Color androidDialogShadowLight = Color(0x33000000); // ~20%
+  static const Color overlayDarkBorder40 = Color(0x66000000); // 40%
+  static const Color overlayLightBorder50 = Color(0x80000000); // 50%
 
   /// ───────────────────────────────────────────────────────────────────
   /// BUTTON COLORS

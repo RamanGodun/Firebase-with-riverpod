@@ -17,5 +17,10 @@ final class AppSpacing {
   static const double huge = 100.0;
   static const double massive = 120.0;
 
+  static const double p26 = 26.0;
+  static const double p16 = 16.0;
+  static const double p10 = 10.0;
+  static const double p7 = 7.0;
+
   ///
 }

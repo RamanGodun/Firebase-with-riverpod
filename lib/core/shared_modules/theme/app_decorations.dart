@@ -9,11 +9,11 @@ import 'package:flutter/material.dart'
         Radius;
 import 'core/app_colors.dart';
 
-/// 🎨 [BannerDecorations] — macOS/iOS-style banners with glassmorphism
+/// 🎨 [IOSBannerDecorations] — macOS/iOS-style banners with glassmorphism
 /// 🍏 Includes blur, border, shadows for light/dark modes
 /// ────────────────────────────────────────────────────────────────
-final class BannerDecorations {
-  const BannerDecorations._();
+final class IOSBannerDecorations {
+  const IOSBannerDecorations._();
 
   static const BoxDecoration glassBoxLight = BoxDecoration(
     color: AppColors.overlayLightBackground,
@@ -51,11 +51,11 @@ final class BannerDecorations {
       isDark ? glassBoxDark : glassBoxLight;
 }
 
-/// 🧊 [DialogDecorations] — iOS/macOS style dialogs with soft glass style
+/// 🧊 [IOSDialogDecorations] — iOS/macOS style dialogs with soft glass style
 /// - Used in Cupertino alert modals
 /// ────────────────────────────────────────────────────────────────
-final class DialogDecorations {
-  const DialogDecorations._();
+final class IOSDialogDecorations {
+  const IOSDialogDecorations._();
 
   static const BoxDecoration dark = BoxDecoration(
     color: AppColors.overlayDarkBackground,
@@ -127,19 +127,35 @@ final class AndroidDialogDecorations {
     ],
   );
 
-  /// 🍞 Snackbar style (similar to dialog but with border)
-  static BoxDecoration snackbar(bool isDark) => BoxDecoration(
-    color: isDark ? AppColors.snackbarDark : AppColors.snackbarLight,
-    borderRadius: BorderRadius.circular(6),
-    border: Border.all(
-      color:
-          isDark
-              ? AppColors.overlayDarkBorder.withOpacity(0.4)
-              : AppColors.overlayLightBorder.withOpacity(0.5),
-      width: 0.6,
+  /// 📦 Dialog decoration resolver
+  static BoxDecoration resolve(bool isDark) => isDark ? dark : light;
+}
+
+/// 🍞 [AndroidSnackbarDecorations] — Native-like Android snackbar (Material 3)
+/// - Appears at the bottom of the screen with subtle border
+/// - Uses flat surface background with slight opacity
+/// ────────────────────────────────────────────────────────────────
+final class AndroidSnackbarDecorations {
+  const AndroidSnackbarDecorations._();
+
+  /// 🌙 Snackbar for **dark theme**
+  static const BoxDecoration dark = BoxDecoration(
+    color: AppColors.snackbarDark,
+    borderRadius: BorderRadius.all(Radius.circular(6)),
+    border: Border.fromBorderSide(
+      BorderSide(color: AppColors.overlayDarkBorder40, width: 0.6),
     ),
   );
 
-  /// 📦 Dialog decoration resolver
+  /// ☀️ Snackbar for **light theme**
+  static const BoxDecoration light = BoxDecoration(
+    color: AppColors.snackbarLight,
+    borderRadius: BorderRadius.all(Radius.circular(6)),
+    border: Border.fromBorderSide(
+      BorderSide(color: AppColors.overlayLightBorder50, width: 0.6),
+    ),
+  );
+
+  /// 📦 Resolved by theme
   static BoxDecoration resolve(bool isDark) => isDark ? dark : light;
 }

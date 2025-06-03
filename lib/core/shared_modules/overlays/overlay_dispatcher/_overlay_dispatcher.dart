@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/animation/overlays_an
 import 'package:flutter/material.dart';
 import '../../../utils/debouncer.dart';
 import '../core/overlay_core_objects.dart';
-import '../overlay_entries/_overlay_entries_registry.dart';
+import 'overlay_entries/_overlay_entries_registry.dart';
 import '../overlay_logger.dart';
 import '../core/tap_through_overlay_barrier.dart';
 

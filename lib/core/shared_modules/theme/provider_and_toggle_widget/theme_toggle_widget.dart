@@ -35,8 +35,8 @@ class ThemeToggleIcon extends ConsumerWidget {
         final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
 
         // 🌟 Show overlay with correct message and icon
-        // context.showUserBanner(message: message, icon: icon);
-        context.showUserSnackbar(message: message, icon: icon);
+        context.showUserBanner(message: message, icon: icon);
+        // context.showUserSnackbar(message: message, icon: icon);
 
         ///
       },

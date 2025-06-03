@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/them
 import 'package:flutter/material.dart';
 import '../../animation/overlays_animation/animation_wrapper/animated_overlay_wrapper.dart';
 import '../overlay_dispatcher/_overlay_dispatcher.dart';
-import '../overlay_entries/_overlay_entries_registry.dart';
+import '../overlay_dispatcher/overlay_entries/_overlay_entries_registry.dart';
 import 'overlay_core_objects.dart';
 import 'platform_mapper.dart';
 import '../presentation/overlay_presets/overlay_presets.dart';

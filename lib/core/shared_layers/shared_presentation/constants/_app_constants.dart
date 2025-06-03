@@ -7,22 +7,27 @@ part 'app_icons.dart';
 abstract class UIConstants {
   const UIConstants._();
 
-  ///
-  /// ────────────────────────────────────────────────────────────────────
-  /// * 📏 Common UI Constants
-  // ────────────────────────────────────────────────────────────────────
-
   /// 🎯 Common border radius for UI elements (e.g. buttons, cards)
-  static const BorderRadius commonBorderRadius = BorderRadius.all(
-    Radius.circular(12),
+  static const BorderRadius bRadius13 = BorderRadius.all(Radius.circular(13));
+
+  /// 🎯 Card paddings
+  static const EdgeInsets cardPadding = EdgeInsets.symmetric(
+    horizontal: AppSpacing.p16,
+    vertical: AppSpacing.p10,
   );
 
-  /// * 🔳 size Factors
-  static const double sizeF08 = 0.8;
+  static const EdgeInsets cardPaddingV26 = EdgeInsets.symmetric(
+    horizontal: AppSpacing.p26,
+    vertical: AppSpacing.p10,
+  );
 
-  /// ────────────────────────────────────────────────────────────────────
-  /// * 🔥 OTHER
-  // ────────────────────────────────────────────────────────────────────
+  /// 🎯 Android banner padding (with dynamic top inset)
+  static EdgeInsets androidBannerPadding(double topInset) => EdgeInsets.only(
+    top: topInset + AppSpacing.p16,
+    left: AppSpacing.p16,
+    right: AppSpacing.p16,
+  );
 
-  ///
+  /// ───────────────────────────────────────────────────────────────────
+  /// * Other constants...
 }

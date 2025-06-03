@@ -57,9 +57,7 @@ class AppFormField extends HookConsumerWidget {
             isEmailField ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
           filled: true,
-          border: const OutlineInputBorder(
-            borderRadius: UIConstants.commonBorderRadius,
-          ),
+          border: const OutlineInputBorder(borderRadius: UIConstants.bRadius13),
           labelText: _labelFor(type),
           errorText: formState.errorFor(type),
           prefixIcon: _iconFor(type),
