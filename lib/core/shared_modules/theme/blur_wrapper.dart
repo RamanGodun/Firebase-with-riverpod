@@ -52,7 +52,7 @@ final class BlurContainer extends StatelessWidget {
   double _resolveSigmaX(ShowAs? type, bool isDark) {
     return switch (type) {
       ShowAs.banner => isDark ? 16.0 : 6.0,
-      ShowAs.dialog || ShowAs.infoDialog => isDark ? 6.0 : 2.0,
+      ShowAs.dialog || ShowAs.infoDialog => isDark ? 6.0 : 7.0,
       ShowAs.snackbar => isDark ? 4.0 : 2.0,
       _ => 4.0,
     };

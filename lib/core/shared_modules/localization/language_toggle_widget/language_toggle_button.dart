@@ -34,7 +34,12 @@ final class LanguageToggleButton extends StatelessWidget {
 
         // 🌟 Show overlay with correct message and icon
         context.setLocale(option.locale).then((_) {
-          showDialog(title: 'title', content: option.messageKey.tr());
+          showDialog(
+            title: 'Success',
+            isDismissible: false,
+            isInfoDialog: true,
+            content: option.messageKey.tr(),
+          );
           // showBanner(message: option.messageKey.tr(), icon: AppIcons.language);
 
           ///

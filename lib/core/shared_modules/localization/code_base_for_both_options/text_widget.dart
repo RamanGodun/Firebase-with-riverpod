@@ -124,7 +124,7 @@ final class TextWidget extends StatelessWidget {
       case TextType.labelSmall:
         return buildText(textTheme.labelSmall);
       case TextType.button:
-        return buildText(textTheme.labelLarge);
+        return buildText(textTheme.titleSmall);
       case TextType.error:
         final errorStyle = textTheme.bodyLarge ?? const TextStyle();
         return buildText(errorStyle.copyWith(color: AppColors.errorColor));

@@ -21,12 +21,7 @@ abstract class UIConstants {
     vertical: AppSpacing.p10,
   );
 
-  /// 🎯 Android banner padding (with dynamic top inset)
-  static EdgeInsets androidBannerPadding(double topInset) => EdgeInsets.only(
-    top: topInset + AppSpacing.p16,
-    left: AppSpacing.p16,
-    right: AppSpacing.p16,
-  );
+  static const EdgeInsets zeroPadding = EdgeInsets.all(AppSpacing.zero);
 
   /// ───────────────────────────────────────────────────────────────────
   /// * Other constants...

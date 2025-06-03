@@ -24,10 +24,11 @@ final class AnimatedOverlayShell extends StatelessWidget {
       child: ScaleTransition(scale: engine.scale, child: child),
     );
 
-    // Optional Slide wrapper
-    if (engine.slide != null) {
-      animated = SlideTransition(position: engine.slide!, child: animated);
-    }
+    // Wrap with SlideTransition anyway — fallback to static offset
+    animated = SlideTransition(
+      position: engine.slide ?? const AlwaysStoppedAnimation(Offset.zero),
+      child: animated,
+    );
 
     return animated;
   }

@@ -21,10 +21,7 @@ final class GlassTileDivider extends StatelessWidget {
           width: double.infinity,
           height: 0.5,
           margin: const EdgeInsets.only(bottom: AppSpacing.xs),
-          color:
-              isDark
-                  ? AppColors.dividerLightOpacity
-                  : AppColors.dividerDarkOpacity,
+          color: isDark ? AppColors.dividerLightOpacity : AppColors.darkBorder,
         ),
         const SizedBox(height: AppSpacing.s),
       ],
