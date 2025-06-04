@@ -24,7 +24,8 @@
     "page_not_found_message": "Ups! Strona, której szukasz, nie istnieje.",
     "error_dialog": "Wystąpił błąd",
     "firebase_title": "Błąd połączenia z Firebase",
-    "firebase_message": "Spróbuj ponownie później!"
+    "firebase_message": "Spróbuj ponownie później!",
+    "errors_general_title": "Wystąpił błąd"
   },
   "form": {
     "name": "Imię",

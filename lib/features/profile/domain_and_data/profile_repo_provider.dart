@@ -1,6 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
+import '../../../core/shared_modules/errors_handling/either_for_data/either.dart';
+import '../../../core/shared_modules/errors_handling/utils/failure_mapper.dart';
+import '../../../core/utils/typedef.dart';
 import 'profile_repo.dart';
 import 'remote_data_source.dart';
 
@@ -24,23 +27,29 @@ final class ProfileRepoImpl implements IProfileRepo {
 
   static const Duration _cacheDuration = Duration(minutes: 5);
 
+  ///
   @override
-  Future<AppUser> getProfile({required String userID}) async {
-    final now = DateTime.now();
+  ResultFuture<AppUser> getProfile({required String userID}) async {
+    try {
+      final now = DateTime.now();
 
-    if (_cachedUser != null && _lastFetched != null) {
-      final isValid = now.difference(_lastFetched!) < _cacheDuration;
-      if (isValid) return _cachedUser!;
+      if (_cachedUser != null && _lastFetched != null) {
+        final isValid = now.difference(_lastFetched!) < _cacheDuration;
+        if (isValid) return Right(_cachedUser!);
+      }
+
+      final doc = await _remote.fetchUserDoc(userID);
+      final user = AppUser.fromDoc(doc);
+      _cachedUser = user;
+      _lastFetched = now;
+
+      return Right(user);
+    } catch (e, s) {
+      return Left(FailureMapper.from(e, s));
     }
-
-    final doc = await _remote.fetchUserDoc(userID);
-    final user = AppUser.fromDoc(doc);
-    _cachedUser = user;
-    _lastFetched = now;
-
-    return user;
   }
 
+  ///
   @override
   void clearCache() {
     _cachedUser = null;

@@ -2,6 +2,8 @@ import 'package:firebase_with_riverpod/core/di_container/di_context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_overlay_base_methods.dart';
 import 'package:flutter/material.dart';
 import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../../localization/code_base_for_both_options/_app_localizer.dart';
+import '../../localization/generated/locale_keys.g.dart';
 import '../overlay_dispatcher/_overlay_dispatcher.dart';
 import '../overlay_dispatcher/dispatcher_provider.dart'
     show overlayDispatcherProvider;
@@ -54,7 +56,7 @@ extension ContextXForOverlays on BuildContext {
       //
       case ShowAs.dialog:
         showAppDialog(
-          title: 'Error occurred',
+          title: AppLocalizer.t(LocaleKeys.errors_errors_general_title),
           content: model.localizedMessage,
           confirmText: 'OK',
           cancelText: 'Cancel',

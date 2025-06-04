@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'profile_provider.dart';
+part of 'profile_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileHash() => r'b9caecc0f45c4bb04f0912a48363066ba5bd8898';
+String _$profileNotifierHash() => r'0c6920274dcf7388e4c3bf1839d9ca7ad5c51af4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,30 +29,39 @@ class _SystemHash {
   }
 }
 
-/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
-///
-/// Copied from [profile].
-@ProviderFor(profile)
-const profileProvider = ProfileFamily();
+abstract class _$ProfileNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<AppUser> {
+  late final String uid;
+
+  FutureOr<AppUser> build(String uid);
+}
 
 /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 ///
-/// Copied from [profile].
-class ProfileFamily extends Family<AsyncValue<AppUser>> {
+/// Copied from [ProfileNotifier].
+@ProviderFor(ProfileNotifier)
+const profileNotifierProvider = ProfileNotifierFamily();
+
+/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+///
+/// Copied from [ProfileNotifier].
+class ProfileNotifierFamily extends Family<AsyncValue<AppUser>> {
   /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
-  /// Copied from [profile].
-  const ProfileFamily();
+  /// Copied from [ProfileNotifier].
+  const ProfileNotifierFamily();
 
   /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
-  /// Copied from [profile].
-  ProfileProvider call(String uid) {
-    return ProfileProvider(uid);
+  /// Copied from [ProfileNotifier].
+  ProfileNotifierProvider call(String uid) {
+    return ProfileNotifierProvider(uid);
   }
 
   @override
-  ProfileProvider getProviderOverride(covariant ProfileProvider provider) {
+  ProfileNotifierProvider getProviderOverride(
+    covariant ProfileNotifierProvider provider,
+  ) {
     return call(provider.uid);
   }
 
@@ -68,31 +77,33 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'profileProvider';
+  String? get name => r'profileNotifierProvider';
 }
 
 /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
 ///
-/// Copied from [profile].
-class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
+/// Copied from [ProfileNotifier].
+class ProfileNotifierProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<ProfileNotifier, AppUser> {
   /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
   ///
-  /// Copied from [profile].
-  ProfileProvider(String uid)
+  /// Copied from [ProfileNotifier].
+  ProfileNotifierProvider(String uid)
     : this._internal(
-        (ref) => profile(ref as ProfileRef, uid),
-        from: profileProvider,
-        name: r'profileProvider',
+        () => ProfileNotifier()..uid = uid,
+        from: profileNotifierProvider,
+        name: r'profileNotifierProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$profileHash,
-        dependencies: ProfileFamily._dependencies,
-        allTransitiveDependencies: ProfileFamily._allTransitiveDependencies,
+                : _$profileNotifierHash,
+        dependencies: ProfileNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ProfileNotifierFamily._allTransitiveDependencies,
         uid: uid,
       );
 
-  ProfileProvider._internal(
+  ProfileNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -105,13 +116,16 @@ class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
   final String uid;
 
   @override
-  Override overrideWith(
-    FutureOr<AppUser> Function(ProfileRef provider) create,
-  ) {
+  FutureOr<AppUser> runNotifierBuild(covariant ProfileNotifier notifier) {
+    return notifier.build(uid);
+  }
+
+  @override
+  Override overrideWith(ProfileNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: ProfileProvider._internal(
-        (ref) => create(ref as ProfileRef),
+      override: ProfileNotifierProvider._internal(
+        () => create()..uid = uid,
         from: from,
         name: null,
         dependencies: null,
@@ -123,13 +137,14 @@ class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<AppUser> createElement() {
-    return _ProfileProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<ProfileNotifier, AppUser>
+  createElement() {
+    return _ProfileNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ProfileProvider && other.uid == uid;
+    return other is ProfileNotifierProvider && other.uid == uid;
   }
 
   @override
@@ -143,17 +158,18 @@ class ProfileProvider extends AutoDisposeFutureProvider<AppUser> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ProfileRef on AutoDisposeFutureProviderRef<AppUser> {
+mixin ProfileNotifierRef on AutoDisposeAsyncNotifierProviderRef<AppUser> {
   /// The parameter `uid` of this provider.
   String get uid;
 }
 
-class _ProfileProviderElement extends AutoDisposeFutureProviderElement<AppUser>
-    with ProfileRef {
-  _ProfileProviderElement(super.provider);
+class _ProfileNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<ProfileNotifier, AppUser>
+    with ProfileNotifierRef {
+  _ProfileNotifierProviderElement(super.provider);
 
   @override
-  String get uid => (origin as ProfileProvider).uid;
+  String get uid => (origin as ProfileNotifierProvider).uid;
 }
 
 // ignore_for_file: type=lint

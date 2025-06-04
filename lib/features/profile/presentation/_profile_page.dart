@@ -16,7 +16,7 @@ import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_b
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
 import '../../../core/shared_modules/theme/provider_and_toggle_widget/theme_toggle_widget.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
-import 'profile_provider.dart';
+import 'profile_notifier.dart';
 
 part 'profile_page_widgets.dart';
 
@@ -27,10 +27,16 @@ class ProfilePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final uid = fbAuth.currentUser?.uid;
     if (uid == null) return const SizedBox();
-    final profileAsync = ref.watch(profileProvider(uid));
+    final asyncUser = ref.watch(profileNotifierProvider(uid));
 
+    ref.listenManual(profileNotifierProvider(uid), (_, __) {
+      ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
+    });
+
+    ///
     return Scaffold(
       appBar: const CustomAppBar(
         title: LocaleKeys.profile_title,
@@ -42,19 +48,11 @@ class ProfilePage extends ConsumerWidget {
       ),
 
       ///
-      body: profileAsync.when(
+      body: asyncUser.when(
         data: (user) => _UserProfile(user),
-        error:
-            (e, _) => const MiniWidgets(
-              MWType.error,
-              // error: handleException(e),
-              isForDialog: false,
-            ),
+        error: (_, __) => const SizedBox(), // error shown by overlay
         loading: () => const MiniWidgets(MWType.loading),
-        skipLoadingOnRefresh: false,
       ),
     );
   }
-
-  //
 }

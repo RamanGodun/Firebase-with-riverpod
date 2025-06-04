@@ -24,7 +24,8 @@
     "page_not_found_message": "Oops! The page you’re looking for does not exist.",
     "error_dialog": "Error occurs",
     "firebase_title": "Firebase Connection Error",
-    "firebase_message": "Please try again later!"
+    "firebase_message": "Please try again later!",
+    "errors_general_title": "An error occurred"
   },
   "form": {
     "name": "Name",
