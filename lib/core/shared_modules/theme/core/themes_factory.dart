@@ -47,7 +47,7 @@ final class _ThemeFactory {
           backgroundColor: variant.primaryColor,
           foregroundColor: AppColors.white,
           shape: const RoundedRectangleBorder(
-            borderRadius: UIConstants.borderRadius13,
+            borderRadius: UIConstants.commonBorderRadius,
           ),
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
           elevation: 0.5,
@@ -58,7 +58,7 @@ final class _ThemeFactory {
   CardTheme _buildCardTheme() => CardTheme(
     color: variant.cardColor,
     shape: const RoundedRectangleBorder(
-      borderRadius: UIConstants.borderRadius13,
+      borderRadius: UIConstants.commonBorderRadius,
     ),
     shadowColor: AppColors.shadow,
     elevation: 5,

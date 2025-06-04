@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'custom_error.dart';
 
-/// 🧼 Обробляє [FirebaseAuthException] або повертає default
+/// 🧼 Handles [FirebaseAuthException] or returns default
 CustomError handleException(Object error) {
+  //
   if (error is FirebaseAuthException) {
     return CustomError(
       code: error.code,
@@ -16,4 +17,6 @@ CustomError handleException(Object error) {
     message: 'An unexpected error occurred',
     plugin: 'unknown',
   );
+
+  //
 }

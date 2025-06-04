@@ -30,8 +30,8 @@ final class AppColors {
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75%
   static const Color lightBorder = Color(0xFFD6D6D6);
 
-  /// ───────────────────────────────────────────────────────────────────
-  /// 🍏 macOS/iOS-like OVERLAY COLORS
+  /// ────────────────────────────────────────────────────────────────────
+  /// 🌈 Overlay colors
   // ────────────────────────────────────────────────────────────────────
 
   // 🌑 DARK

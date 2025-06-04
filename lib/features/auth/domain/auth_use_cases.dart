@@ -3,8 +3,8 @@ import 'auth_repos.dart';
 /// 📦 [ChangePasswordUseCase] — encapsulates password change logic
 /// 🧼 Invokes password update via [IChangePasswordRepo]
 //-------------------------------------------------------------
-
 final class ChangePasswordUseCase {
+  //
   final IChangePasswordRepo repo;
   const ChangePasswordUseCase(this.repo);
 
@@ -19,8 +19,8 @@ final class ChangePasswordUseCase {
 /// 📦 [EmailVerificationUseCase] — handles email verification workflow
 /// 🧼 Sends verification email and checks status after reload
 //------------------------------------------------------------------
-
 final class EmailVerificationUseCase {
+  //
   final IEmailVerificationRepo repo;
   const EmailVerificationUseCase(this.repo);
 
@@ -38,8 +38,8 @@ final class EmailVerificationUseCase {
 /// 📦 [ResetPasswordUseCase] — encapsulates password reset logic
 /// 🧼 Triggers password reset email via [IResetPasswordRepo]
 //--------------------------------------------------------------
-
 final class ResetPasswordUseCase {
+  //
   final IResetPasswordRepo repo;
   const ResetPasswordUseCase(this.repo);
 
@@ -52,8 +52,8 @@ final class ResetPasswordUseCase {
 /// 📦 [SignInUseCase] — encapsulates sign-in process
 /// 🧼 Handles user authentication using [ISignInRepo]
 //------------------------------------------------------------
-
 final class SignInUseCase {
+  //
   final ISignInRepo authRepo;
   const SignInUseCase(this.authRepo);
 
@@ -68,8 +68,8 @@ final class SignInUseCase {
 /// 📦 [SignOutUseCase] — encapsulates sign-out logic
 /// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
 //---------------------------------------------------
-
 final class SignOutUseCase {
+  //
   final ISignOutRepo repo;
   const SignOutUseCase(this.repo);
 
@@ -82,8 +82,8 @@ final class SignOutUseCase {
 /// 📦 [SignUpUseCase] — encapsulates user registration
 /// 🧼 Creates Firebase user and stores user profile via [ISignUpRepo]
 //------------------------------------------------------------------
-
 final class SignUpUseCase {
+  //
   final ISignUpRepo repo;
   const SignUpUseCase(this.repo);
 

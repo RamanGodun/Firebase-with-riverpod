@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../../../shared_modules/theme/core/app_colors.dart';
 
-part '_app_spacing.dart';
-part '_app_icons.dart';
-part '_app_shadow.dart';
+part 'app_spacing.dart';
+part 'app_icons.dart';
+part 'app_shadow.dart';
 
 /// 📦 [UIConstants] — centralized place for static constants used across the app.
 abstract final class UIConstants {
   const UIConstants._();
 
   /// 🎯 Common border radius for UI elements (e.g. buttons, cards)
-  static const BorderRadius borderRadius13 = BorderRadius.all(
+  static const BorderRadius commonBorderRadius = BorderRadius.all(
     Radius.circular(13),
   );
   static const BorderRadius borderRadius6 = BorderRadius.all(

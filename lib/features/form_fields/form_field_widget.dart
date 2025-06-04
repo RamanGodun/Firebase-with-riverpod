@@ -58,7 +58,7 @@ class AppFormField extends HookConsumerWidget {
         decoration: InputDecoration(
           filled: true,
           border: const OutlineInputBorder(
-            borderRadius: UIConstants.borderRadius13,
+            borderRadius: UIConstants.commonBorderRadius,
           ),
           labelText: _labelFor(type),
           errorText: formState.errorFor(type),

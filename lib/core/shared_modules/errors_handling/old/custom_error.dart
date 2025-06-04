@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 /// 🧼 Wraps platform-specific and Firebase errors into a consistent object
 //----------------------------------------------------------------//
 class CustomError extends Equatable {
+  //
   final String code;
   final String message;
   final String plugin;
@@ -21,4 +22,6 @@ class CustomError extends Equatable {
 
   @override
   List<Object?> get props => [code, message, plugin];
+
+  //
 }

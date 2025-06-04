@@ -11,7 +11,7 @@ final class IOSBannerDecoration {
 
   static const BoxDecoration _lightThemeDecoration = BoxDecoration(
     color: AppColors.overlayLightBackground,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     border: Border.fromBorderSide(
       BorderSide(color: AppColors.overlayLightBorder2, width: 1),
     ),
@@ -20,7 +20,7 @@ final class IOSBannerDecoration {
 
   static const BoxDecoration _darkThemeDecoration = BoxDecoration(
     color: AppColors.overlayDarkBackground,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     border: Border.fromBorderSide(
       BorderSide(color: AppColors.overlayDarkBorder, width: 1),
     ),
@@ -49,7 +49,7 @@ final class IOSDialogDecoration {
 
   static const BoxDecoration _lightThemeDecoration = BoxDecoration(
     color: AppColors.overlayLightBackground4,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     border: Border.fromBorderSide(
       BorderSide(color: AppColors.overlayLightBorder, width: 1),
     ),
@@ -58,7 +58,7 @@ final class IOSDialogDecoration {
 
   static const BoxDecoration _darkThemeDecoration = BoxDecoration(
     color: AppColors.overlayDarkBackground,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     border: Border.fromBorderSide(
       BorderSide(color: AppColors.overlayDarkBorder, width: 1),
     ),
@@ -87,13 +87,13 @@ final class AndroidDialogDecorations {
 
   static const BoxDecoration _lightThemeDecoration = BoxDecoration(
     color: AppColors.lightSurface,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     boxShadow: AppShadows.forAndroidLightThemeDialog,
   );
 
   static const BoxDecoration _darkThemeDecoration = BoxDecoration(
     color: AppColors.darkSurface,
-    borderRadius: UIConstants.borderRadius13,
+    borderRadius: UIConstants.commonBorderRadius,
     boxShadow: AppShadows.forAndroidDarkThemeDialog,
   );
 
