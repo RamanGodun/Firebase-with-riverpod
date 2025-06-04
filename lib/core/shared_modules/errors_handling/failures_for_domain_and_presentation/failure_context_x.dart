@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_contex
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../failures_for_domain_and_presentation/failure_ui_model.dart';
+import 'failure_ui_model.dart';
 import '../utils/consumable.dart';
 
 /// 📦 Extension to wrap any object in a [Consumable]

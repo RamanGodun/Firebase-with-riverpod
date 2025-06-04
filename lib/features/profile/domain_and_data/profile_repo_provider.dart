@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
+import 'profile_repo.dart';
 import 'remote_data_source.dart';
 
 part 'profile_repo_provider.g.dart';
@@ -10,13 +11,6 @@ part 'profile_repo_provider.g.dart';
 @riverpod
 IProfileRepo profileRepo(Ref ref) {
   return ProfileRepoImpl(ProfileRemoteDataSourceImpl());
-}
-
-/// 🧼 Contract-level abstraction for the repository.
-// ───────────────────────────────────────────────
-abstract interface class IProfileRepo {
-  Future<AppUser> getProfile({required String userID});
-  void clearCache();
 }
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
