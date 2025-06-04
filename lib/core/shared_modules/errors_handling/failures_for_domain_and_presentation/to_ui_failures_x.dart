@@ -12,7 +12,7 @@ extension FailureToUIModelX on Failure {
   ///
   FailureUIModel toUIModel() {
     final resolvedText =
-        translationKey != null
+        (translationKey?.isNotEmpty ?? false)
             ? AppLocalizer.t(translationKey!, fallback: message)
             : message;
 

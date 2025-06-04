@@ -27,6 +27,26 @@
     "firebase_message": "Spróbuj ponownie później!",
     "errors_general_title": "Wystąpił błąd"
   },
+"failure": {
+  "firebase": {
+    "doc_missing": "Brak profilu użytkownika.",
+    "generic": "Wystąpił błąd Firebase."
+  },
+  "format": {
+    "error": "Odebrano nieprawidłowe dane."
+  },
+  "network": {
+    "no_connection": "Brak połączenia z Internetem.",
+    "timeout": "Przekroczono limit czasu połączenia. Spróbuj ponownie."
+  },
+  "auth": {
+    "unauthorized": "Sesja wygasła. Zaloguj się ponownie."
+  },
+  "plugin": {
+    "missing": "Brakujący plugin. Skontaktuj się z pomocą techniczną."
+  },
+  "unknown": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie."
+},
   "form": {
     "name": "Imię",
     "email": "Email",

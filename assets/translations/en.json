@@ -27,6 +27,26 @@
     "firebase_message": "Please try again later!",
     "errors_general_title": "An error occurred"
   },
+"failure": {
+  "firebase": {
+    "doc_missing": "User profile is missing.",
+    "generic": "A Firebase error occurred."
+  },
+  "format": {
+    "error": "Invalid data format received."
+  },
+  "network": {
+    "no_connection": "No internet connection.",
+    "timeout": "Connection timed out. Please try again later."
+  },
+  "auth": {
+    "unauthorized": "Your session has expired. Please sign in again."
+  },
+  "plugin": {
+    "missing": "Missing plugin detected. Please contact support."
+  },
+  "unknown": "An unexpected error occurred. Please try again."
+},
   "form": {
     "name": "Name",
     "email": "Email",

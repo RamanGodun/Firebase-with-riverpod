@@ -43,6 +43,26 @@ class CodegenLoader extends AssetLoader{
     "firebase_message": "Spróbuj ponownie później!",
     "errors_general_title": "Wystąpił błąd"
   },
+  "failure": {
+    "firebase": {
+      "doc_missing": "Brak profilu użytkownika.",
+      "generic": "Wystąpił błąd Firebase."
+    },
+    "format": {
+      "error": "Odebrano nieprawidłowe dane."
+    },
+    "network": {
+      "no_connection": "Brak połączenia z Internetem.",
+      "timeout": "Przekroczono limit czasu połączenia. Spróbuj ponownie."
+    },
+    "auth": {
+      "unauthorized": "Sesja wygasła. Zaloguj się ponownie."
+    },
+    "plugin": {
+      "missing": "Brakujący plugin. Skontaktuj się z pomocą techniczną."
+    },
+    "unknown": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie."
+  },
   "form": {
     "name": "Imię",
     "email": "Email",
@@ -146,6 +166,26 @@ static const Map<String,dynamic> _uk = {
     "firebase_message": "Будь ласка, спробуйте пізніше!",
     "errors_general_title": "Виникла помилка"
   },
+  "failure": {
+    "firebase": {
+      "doc_missing": "Профіль користувача відсутній.",
+      "generic": "Сталася помилка Firebase."
+    },
+    "format": {
+      "error": "Отримано некоректні дані."
+    },
+    "network": {
+      "no_connection": "Немає підключення до Інтернету.",
+      "timeout": "Час очікування минув. Спробуйте ще раз."
+    },
+    "auth": {
+      "unauthorized": "Сесія закінчилась. Увійдіть знову."
+    },
+    "plugin": {
+      "missing": "Відсутній плагін. Зверніться до підтримки."
+    },
+    "unknown": "Сталася непередбачувана помилка. Спробуйте пізніше."
+  },
   "form": {
     "name": "Ім'я",
     "email": "Електронна пошта",
@@ -248,6 +288,26 @@ static const Map<String,dynamic> _en = {
     "firebase_title": "Firebase Connection Error",
     "firebase_message": "Please try again later!",
     "errors_general_title": "An error occurred"
+  },
+  "failure": {
+    "firebase": {
+      "doc_missing": "User profile is missing.",
+      "generic": "A Firebase error occurred."
+    },
+    "format": {
+      "error": "Invalid data format received."
+    },
+    "network": {
+      "no_connection": "No internet connection.",
+      "timeout": "Connection timed out. Please try again later."
+    },
+    "auth": {
+      "unauthorized": "Your session has expired. Please sign in again."
+    },
+    "plugin": {
+      "missing": "Missing plugin detected. Please contact support."
+    },
+    "unknown": "An unexpected error occurred. Please try again."
   },
   "form": {
     "name": "Name",

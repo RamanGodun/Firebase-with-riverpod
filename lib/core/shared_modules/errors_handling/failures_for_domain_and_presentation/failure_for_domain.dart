@@ -109,6 +109,13 @@ final class UnknownFailure extends Failure {
          statusCode: 'UNKNOWN',
          translationKey: translationKey.translationKey,
        );
+}
 
-  ///
+/// ❌ Thrown when a Firestore document is unexpectedly missing.
+final class FirestoreDocMissingFailure extends FirebaseFailure {
+  FirestoreDocMissingFailure()
+    : super(
+        message: 'Expected document is missing in Firestore.',
+        translationKey: FailureKey.firebaseDocMissing,
+      );
 }

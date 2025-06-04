@@ -58,8 +58,8 @@ extension ContextXForOverlays on BuildContext {
         showAppDialog(
           title: AppLocalizer.t(LocaleKeys.errors_errors_general_title),
           content: model.localizedMessage,
-          confirmText: 'OK',
-          cancelText: 'Cancel',
+          confirmText: AppLocalizer.t(LocaleKeys.buttons_ok),
+          cancelText: AppLocalizer.t(LocaleKeys.buttons_cancel),
           preset: preset,
           isError: true,
           isDismissible: isDismissible,
@@ -70,10 +70,10 @@ extension ContextXForOverlays on BuildContext {
       case ShowAs.infoDialog:
         showAppDialog(
           isInfoDialog: true,
-          title: 'Error occurred',
+          title: AppLocalizer.t(LocaleKeys.errors_errors_general_title),
           content: model.localizedMessage,
-          confirmText: 'OK',
-          cancelText: '',
+          confirmText: AppLocalizer.t(LocaleKeys.buttons_ok),
+          cancelText: AppLocalizer.t(LocaleKeys.buttons_cancel),
           preset: preset,
           isError: false,
           isDismissible: isDismissible,

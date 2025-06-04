@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
+
 part 'app_user.g.dart';
 
 /// 👤 [AppUser] — domain entity that represents an authenticated user
@@ -17,7 +19,12 @@ class AppUser extends Equatable {
 
   /// 🏗 Factory: Build from Firestore document snapshot
   factory AppUser.fromDoc(DocumentSnapshot doc) {
-    final data = doc.data() as Map<String, dynamic>;
+    //
+    final data = doc.data();
+    if (data is! Map<String, dynamic>) {
+      throw FirestoreDocMissingFailure();
+    }
+
     return AppUser(
       id: doc.id,
       name: data['name'] ?? '',
