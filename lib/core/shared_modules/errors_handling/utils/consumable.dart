@@ -30,3 +30,8 @@ final class Consumable<T> {
   String toString() =>
       'Consumable(value: $_value, consumed: $_hasBeenConsumed)';
 }
+
+/// 📦 Extension to wrap any object in a [Consumable]
+extension ConsumableX<T> on T {
+  Consumable<T> asConsumable() => Consumable(this);
+}

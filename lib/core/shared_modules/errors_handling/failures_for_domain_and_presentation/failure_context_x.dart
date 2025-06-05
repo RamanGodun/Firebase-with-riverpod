@@ -5,11 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'failure_ui_model.dart';
 import '../utils/consumable.dart';
 
-/// 📦 Extension to wrap any object in a [Consumable]
-extension ConsumableX<T> on T {
-  Consumable<T> asConsumable() => Consumable(this);
-}
-
 ///
 extension FailureUIContextX on BuildContext {
   void consumeErrorUI(
