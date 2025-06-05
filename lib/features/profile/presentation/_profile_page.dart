@@ -33,15 +33,7 @@ class ProfilePage extends ConsumerWidget {
     if (uid == null) return const SizedBox();
     final asyncUser = ref.watch(profileNotifierProvider(uid));
 
-    ref.listenManual(profileNotifierProvider(uid), (_, __) {
-      final failure =
-          ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
-      if (failure != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.showError(failure);
-        });
-      }
-    });
+    showDialogWhenError(context: context, ref: ref, uid: uid);
 
     ///
     return Scaffold(
@@ -57,9 +49,29 @@ class ProfilePage extends ConsumerWidget {
       ///
       body: asyncUser.when(
         data: (user) => _UserProfile(user),
-        error: (_, __) => const SizedBox(), // error shown by overlay
         loading: () => const MiniWidgets(MWType.loading),
+        error: (_, __) => const SizedBox(), // error shown by overlay
       ),
     );
   }
+
+  /// ✅ [showDialogWhenError] listens to failure in [profileNotifierProvider]
+  /// ✅ Triggers contextual `showError` only once per failure
+  void showDialogWhenError({
+    required BuildContext context,
+    required WidgetRef ref,
+    required String uid,
+  }) {
+    ref.listenManual(profileNotifierProvider(uid), (_, __) {
+      final failure =
+          ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
+      if (failure != null) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          context.showError(failure);
+        });
+      }
+    });
+  }
+
+  //
 }

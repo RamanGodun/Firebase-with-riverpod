@@ -7,7 +7,7 @@ part of 'result_notifiers.dart';
 // **************************************************************************
 
 String _$resultVoidNotifierHash() =>
-    r'9673c7ecc3675446538b7c60f3d1f222ec264bf9';
+    r'a0ff9e9e690abec3e1846e728d63493b11385b55';
 
 /// See also [ResultVoidNotifier].
 @ProviderFor(ResultVoidNotifier)

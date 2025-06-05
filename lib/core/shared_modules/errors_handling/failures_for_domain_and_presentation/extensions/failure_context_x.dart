@@ -2,8 +2,8 @@ import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_contex
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'failure_ui_model.dart';
-import '../utils/consumable.dart';
+import '../failure_ui_model.dart';
+import '../../utils/consumable.dart';
 
 ///
 extension FailureUIContextX on BuildContext {

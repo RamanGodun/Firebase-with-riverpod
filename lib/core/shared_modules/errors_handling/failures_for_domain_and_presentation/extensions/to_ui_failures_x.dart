@@ -1,11 +1,10 @@
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_diagnostics_x.dart';
 import 'package:flutter/material.dart';
-import '../../localization/code_base_for_both_options/_app_localizer.dart';
-import '../loggers_for_errors_handling_module/errors_logger.dart';
-import 'enums.dart';
-import 'failure_for_domain.dart';
-import '../utils/consumable.dart';
-import 'failure_ui_model.dart';
+import '../../../localization/code_base_for_both_options/_app_localizer.dart';
+import '../enums.dart';
+import '../failure_for_domain.dart';
+import '../../utils/consumable.dart';
+import '../failure_ui_model.dart';
 
 /// ✅ [FailureToUIModelX] — Maps [Failure] to [FailureUIModel] without localization context
 extension FailureToUIModelX on Failure {
@@ -15,10 +14,6 @@ extension FailureToUIModelX on Failure {
         (translationKey?.isNotEmpty ?? false)
             ? AppLocalizer.t(translationKey!, fallback: message)
             : message;
-
-    if (translationKey != null && resolvedText == message) {
-      ErrorsLogger.failure(this, StackTrace.current);
-    }
 
     return FailureUIModel(
       localizedMessage: resolvedText,
