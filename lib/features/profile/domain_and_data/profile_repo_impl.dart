@@ -1,3 +1,4 @@
+import '../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/either_for_data/either.dart';
 import '../../../core/shared_modules/errors_handling/utils/failure_mapper.dart';
@@ -28,6 +29,30 @@ final class ProfileRepoImpl implements IProfileRepo {
       }
 
       final doc = await _remote.fetchUserDoc(userID);
+
+      // ⛔ If user doc missing — create it using FirebaseAuth
+      if (!doc.exists) {
+        final firebaseUser = fbAuth.currentUser;
+        if (firebaseUser == null) {
+          throw Exception("No Firebase user found");
+        }
+
+        final newUser = AppUser(
+          id: firebaseUser.uid,
+          name:
+              firebaseUser.displayName?.trim().isNotEmpty == true
+                  ? firebaseUser.displayName!
+                  : 'User',
+          email: firebaseUser.email ?? 'unknown',
+        );
+
+        await usersCollection.doc(userID).set(newUser.toJson());
+
+        _cachedUser = newUser;
+        _lastFetched = now;
+        return Right(newUser);
+      }
+
       final user = AppUser.fromDoc(doc);
       _cachedUser = user;
       _lastFetched = now;
