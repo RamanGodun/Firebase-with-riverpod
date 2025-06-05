@@ -55,7 +55,7 @@ final class _ThemeFactory {
       );
 
   /// 🟦 Card theming
-  CardTheme _buildCardTheme() => CardTheme(
+  CardThemeData _buildCardTheme() => CardThemeData(
     color: variant.cardColor,
     shape: const RoundedRectangleBorder(
       borderRadius: UIConstants.commonBorderRadius,

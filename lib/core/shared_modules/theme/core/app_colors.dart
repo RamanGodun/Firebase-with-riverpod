@@ -21,6 +21,7 @@ final class AppColors {
   static const Color darkSurface = Color(0xFF2C2C2E);
   static const Color darkOverlay = Color(0xBF1C1C1E); // 75%
   static const Color darkBorder = Color(0xFF3A3A3C);
+  static const Color darkCard = Color(0xFF2C2C2E);
 
   /// ☀️ Light Theme Colors
   static const Color lightPrimary = Color(0xFF01514B);
@@ -29,6 +30,7 @@ final class AppColors {
   static const Color lightSurface = Color(0xFFFFFFFF);
   static const Color lightOverlay = Color(0xBFFFFFFF); // 75%
   static const Color lightBorder = Color(0xFFD6D6D6);
+  static const Color lightCard = Color(0xFFFFFFFF);
 
   /// ────────────────────────────────────────────────────────────────────
   /// 🌈 Overlay colors

@@ -50,7 +50,7 @@ class ProfilePage extends ConsumerWidget {
       body: asyncUser.when(
         data: (user) => _UserProfile(user),
         loading: () => const MiniWidgets(MWType.loading),
-        error: (_, __) => const SizedBox(), // error shown by overlay
+        error: (_, _) => const SizedBox(), // error shown by overlay
       ),
     );
   }
@@ -62,7 +62,7 @@ class ProfilePage extends ConsumerWidget {
     required WidgetRef ref,
     required String uid,
   }) {
-    ref.listenManual(profileNotifierProvider(uid), (_, __) {
+    ref.listenManual(profileNotifierProvider(uid), (_, _) {
       final failure =
           ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
       if (failure != null) {
