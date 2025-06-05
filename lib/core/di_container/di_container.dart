@@ -6,6 +6,7 @@ import '../../features/auth/data_providers/sign_in_repo_provider.dart';
 import '../../features/auth/data_providers/sign_out_repo_provider.dart';
 import '../../features/auth/data_providers/sign_up_repo_provider.dart';
 import '../../features/auth/data_providers/reset_password_repo_provider.dart';
+import '../../features/profile/domain_and_data/profile_repo_impl.dart';
 import '../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../features/profile/domain_and_data/remote_data_source.dart';
 import '../shared_modules/overlays/overlay_dispatcher/_overlay_dispatcher.dart';
