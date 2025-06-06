@@ -1,5 +1,10 @@
 library;
 
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
+import 'package:flutter/material.dart' show BuildContext;
+
+import '../failures_for_domain_and_presentation/failure_ui_model.dart';
+
 /// 🧩 [Consumable] — Wraps a value for one-time consumption.
 /// ✅ Prevents repeated UI side-effects (like dialogs/snackbars)
 ///----------------------------------------------------------------
@@ -31,7 +36,18 @@ final class Consumable<T> {
       'Consumable(value: $_value, consumed: $_hasBeenConsumed)';
 }
 
+///
+
 /// 📦 Extension to wrap any object in a [Consumable]
 extension ConsumableX<T> on T {
   Consumable<T> asConsumable() => Consumable(this);
+}
+
+extension FailureUIContextX on BuildContext {
+  //
+  void consume(FailureUIModel? model) {
+    if (model != null) showError(model);
+  }
+
+  //
 }

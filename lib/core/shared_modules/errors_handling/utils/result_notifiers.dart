@@ -22,18 +22,4 @@ class ResultVoidNotifier extends _$ResultVoidNotifier {
       (_) => const AsyncData(null),
     );
   }
-
-  ///
-  /*
-? Alternative for more complicated cases (with inner logic)
-state = const AsyncLoading();
-final result = await resultFuture;
-
-if (result.isLeft) {
-  state = AsyncError(result.leftOrNull!.toUIModel(), StackTrace.current);
-} else {
-  state = const AsyncData(null);
-}
-
- */
 }

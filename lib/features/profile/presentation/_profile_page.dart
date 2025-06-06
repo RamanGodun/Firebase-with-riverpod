@@ -1,7 +1,7 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/consumable.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/mini_widgets.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -62,14 +62,21 @@ class ProfilePage extends ConsumerWidget {
     required WidgetRef ref,
     required String uid,
   }) {
+    // ref.listenManual(profileNotifierProvider(uid), (_, _) {
+    //   final failure =
+    //       ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
+    //   if (failure != null) {
+    //     WidgetsBinding.instance.addPostFrameCallback((_) {
+    //       context.showError(failure);
+    //     });
+    //   }
+    // });
     ref.listenManual(profileNotifierProvider(uid), (_, _) {
-      final failure =
-          ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
-      if (failure != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          context.showError(failure);
-        });
-      }
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.consume(
+          ref.read(profileNotifierProvider(uid).notifier).consumeFailure(),
+        );
+      });
     });
   }
 
