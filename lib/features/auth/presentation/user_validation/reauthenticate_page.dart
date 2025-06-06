@@ -137,17 +137,6 @@ class _ReAuthFooter extends ConsumerWidget {
           children: [
             TextWidget(LocaleKeys.reauth_redirect_note, TextType.titleSmall),
             SignOutButton(),
-            // CustomButton(
-            //   type: ButtonType.text,
-            //   onPressed: () async {
-            //     await ref.read(signOutProvider.notifier).signOut();
-            //   },
-            //   label: AppStrings.signInButton,
-            //   fontWeight: FontWeight.w600,
-            //   fontSize: 15,
-            //   isEnabled: true,
-            //   isLoading: false,
-            // ),
             TextWidget(LocaleKeys.reauth_page, TextType.titleSmall),
           ],
         ),

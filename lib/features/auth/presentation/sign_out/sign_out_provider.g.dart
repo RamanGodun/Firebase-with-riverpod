@@ -6,7 +6,7 @@ part of 'sign_out_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signOutHash() => r'30d02f0bd05fa227ecc28f267c8defc717b62dd7';
+String _$signOutHash() => r'5e21691b5e00b3bc6ef6d563dd95bf1be25f80dd';
 
 /// See also [SignOut].
 @ProviderFor(SignOut)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared_modules/errors_handling/either_for_data/either.dart';
 import '../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
 import '../shared_modules/errors_handling/utils/dsl_result_handler/dsl_result_handler_.dart';
 import '../shared_modules/overlays/presentation/overlay_presets/overlay_presets.dart';
 
@@ -33,9 +34,15 @@ typedef GoTo =
       Map<String, dynamic> queryParameters,
     });
 
-///
+/// 🪧 [OverlayBannerFactory] — builds a custom banner for overlay display
+/// Used to render UI based on overlay presets
 typedef OverlayBannerFactory = Widget Function(OverlayUIPresets, String);
 
-///
+/// 💬 [ShowUserSnackbar] — displays a snackbar with optional icon
+/// Commonly used for user feedback and UI actions
 typedef ShowUserSnackbar =
     void Function({required String message, IconData? icon});
+
+/// ❗ [ErrorDispatcher] — handles UI error display via [FailureUIModel]
+/// Passes context-bound error handler (e.g., `context.showError`)
+typedef ErrorDispatcher = void Function(FailureUIModel);
