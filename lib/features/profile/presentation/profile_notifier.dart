@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/extensions/result_notifier_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/result_notifiers/result_notifier_x.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';

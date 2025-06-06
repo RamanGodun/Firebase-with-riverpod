@@ -1,4 +1,4 @@
-import '../failures_for_domain_and_presentation/enums.dart';
+import '../utils/enums.dart';
 import '../failures_for_domain_and_presentation/failure_for_domain.dart';
 
 /// 🧭 [FailureDiagnosticsX] — Diagnostic utilities for `Failure`

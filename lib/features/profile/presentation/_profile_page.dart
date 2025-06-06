@@ -62,15 +62,7 @@ class ProfilePage extends ConsumerWidget {
     required WidgetRef ref,
     required String uid,
   }) {
-    // ref.listenManual(profileNotifierProvider(uid), (_, _) {
-    //   final failure =
-    //       ref.read(profileNotifierProvider(uid).notifier).consumeFailure();
-    //   if (failure != null) {
-    //     WidgetsBinding.instance.addPostFrameCallback((_) {
-    //       context.showError(failure);
-    //     });
-    //   }
-    // });
+    //
     ref.listenManual(profileNotifierProvider(uid), (_, _) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         context.consume(

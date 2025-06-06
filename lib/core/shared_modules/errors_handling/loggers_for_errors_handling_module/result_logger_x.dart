@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart' show debugPrint;
-import '../either_for_data/either_x/_eithers_facade.dart';
+import '../either_for_data/either_extensions/_eithers_facade.dart';
 import '../failures_for_domain_and_presentation/failure_for_domain.dart';
 import 'errors_logger.dart';
 

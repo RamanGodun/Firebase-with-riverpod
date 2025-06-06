@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_x/_eithers_facade.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_extensions/_eithers_facade.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_diagnostics_x.dart';
 import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
 

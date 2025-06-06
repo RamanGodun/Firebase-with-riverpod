@@ -12,3 +12,4 @@ part 'profile_repo_provider.g.dart';
 IProfileRepo profileRepo(Ref ref) {
   return ProfileRepoImpl(ProfileRemoteDataSourceImpl());
 }
+

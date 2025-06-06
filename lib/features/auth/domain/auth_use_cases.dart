@@ -1,3 +1,5 @@
+import '../../../core/shared_modules/errors_handling/utils/helpers.dart';
+import '../../../core/utils/typedef.dart';
 import 'auth_repos.dart';
 
 /// 📦 [ChangePasswordUseCase] — encapsulates password change logic
@@ -69,12 +71,18 @@ final class SignInUseCase {
 /// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
 //---------------------------------------------------
 final class SignOutUseCase {
-  //
   final ISignOutRepo repo;
   const SignOutUseCase(this.repo);
 
-  // 🔓 Signs out the user
-  Future<void> call() => repo.signOut();
+  ResultFuture<void> call() async {
+    //
+    try {
+      await repo.signOut();
+      return right(null);
+    } catch (e, st) {
+      return left(mapToFailure(e, st));
+    }
+  }
 }
 
 ///
