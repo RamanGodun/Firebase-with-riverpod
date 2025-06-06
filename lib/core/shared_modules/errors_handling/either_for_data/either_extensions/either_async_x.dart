@@ -2,7 +2,7 @@ import 'dart:async' show FutureOr;
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_extensions/either_getters_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import '../../loggers_for_errors_handling_module/errors_logger.dart';
-import '../../utils/dsl_result_handler/dsl_result_handler_.dart';
+import '../../utils/dsl_result_handlers/result_handler.dart';
 import '../either.dart';
 import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
 
@@ -40,12 +40,12 @@ extension ResultFutureX<T> on Future<Either<Failure, T>> {
       (await this).fold((f) => f.message, (_) => null);
 
   /// 🔹 Runs failure handler if result is Left
-  Future<DSLLikeResultHandler<T>> onFailure(
+  Future<ResultHandler<T>> onFailure(
     FutureOr<void> Function(Failure f) handler,
   ) async {
     final result = await this;
     if (result.isLeft) await handler(result.leftOrNull!);
-    return DSLLikeResultHandler(result);
+    return ResultHandler(result);
   }
 
   /// 🔁 Maps Right value using async transformation

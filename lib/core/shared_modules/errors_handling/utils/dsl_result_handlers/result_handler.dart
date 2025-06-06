@@ -7,26 +7,38 @@ import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
 /// 🧩 [DSLLikeResultHandler<T>] — wrapper for `Either<Failure, T>`
 /// ✅ Clean, chainable result handling with both sync & async APIs
 /// ✅ Unified for use in Providers, Cubits, UseCases, UI, etc.
-//────────────────────────────────────────────────────────────────────────
+/// ─────
 
 @immutable
-final class DSLLikeResultHandler<T> {
+final class ResultHandler<T> {
   final Either<Failure, T> result;
-  const DSLLikeResultHandler(this.result);
+  const ResultHandler(this.result);
+
+  /// 🔒 Internal: result is success
+  bool get _isSuccess => result.isRight;
+
+  /// 🔒 Internal: result is failure
+  bool get _isFailure => result.isLeft;
+
+  /// 🔒 Internal: success value (non-nullable)
+  T get _successValue => result.rightOrNull as T;
+
+  /// 🔒 Internal: failure value (non-nullable)
+  Failure get _failureValue => result.leftOrNull!;
 
   //──────────────────────────────────────────────────────────────────────
   // 🔹 Success / Failure Callbacks (SYNC)
   //──────────────────────────────────────────────────────────────────────
 
   /// 🔹 Executes [handler] if result is success (sync)
-  DSLLikeResultHandler<T> onSuccess(void Function(T value) handler) {
-    if (result.isRight) handler(result.rightOrNull as T);
+  ResultHandler<T> onSuccess(void Function(T value) handler) {
+    if (_isSuccess) handler(_successValue);
     return this;
   }
 
   /// 🔹 Executes [handler] if result is failure (sync)
-  DSLLikeResultHandler<T> onFailure(void Function(Failure failure) handler) {
-    if (result.isLeft) handler(result.leftOrNull!);
+  ResultHandler<T> onFailure(void Function(Failure failure) handler) {
+    if (_isFailure) handler(_failureValue);
     return this;
   }
 
@@ -35,18 +47,18 @@ final class DSLLikeResultHandler<T> {
   //──────────────────────────────────────────────────────────────────────
 
   /// 🔹 Executes [handler] if result is success (async)
-  Future<DSLLikeResultHandler<T>> onSuccessAsync(
+  Future<ResultHandler<T>> onSuccessAsync(
     FutureOr<void> Function(T value) handler,
   ) async {
-    if (result.isRight) await handler(result.rightOrNull as T);
+    if (_isSuccess) await handler(_successValue);
     return this;
   }
 
   /// 🔹 Executes [handler] if result is failure (async)
-  Future<DSLLikeResultHandler<T>> onFailureAsync(
+  Future<ResultHandler<T>> onFailureAsync(
     FutureOr<void> Function(Failure failure) handler,
   ) async {
-    if (result.isLeft) await handler(result.leftOrNull!);
+    if (_isFailure) await handler(_failureValue);
     return this;
   }
 
@@ -84,24 +96,24 @@ final class DSLLikeResultHandler<T> {
   Failure? get failureOrNull => result.leftOrNull;
 
   /// ✅ Indicates if result is failure
-  bool get didFail => result.isLeft;
+  bool get didFail => _isFailure;
 
   /// ✅ Indicates if result is success
-  bool get didSucceed => result.isRight;
+  bool get didSucceed => _isSuccess;
 
   //──────────────────────────────────────────────────────────────────────
   // 🧪 Logging
   //──────────────────────────────────────────────────────────────────────
 
   /// 🐞 Logs failure (debug or Crashlytics)
-  DSLLikeResultHandler<T> log() {
-    result.leftOrNull?.log();
+  ResultHandler<T> log() {
+    _failureValue.log();
     return this;
   }
 
   /// 🐞 Logs failure (async)
-  Future<DSLLikeResultHandler<T>> logAsync() async {
-    result.leftOrNull?.log();
+  Future<ResultHandler<T>> logAsync() async {
+    _failureValue.log();
     return this;
   }
 

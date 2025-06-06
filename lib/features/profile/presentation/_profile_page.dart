@@ -17,7 +17,7 @@ import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_b
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
 import '../../../core/shared_modules/theme/provider_and_toggle_widget/theme_toggle_widget.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
-import 'profile_notifier.dart';
+import 'profile_provider.dart';
 
 part 'profile_page_widgets.dart';
 
@@ -31,9 +31,9 @@ class ProfilePage extends ConsumerWidget {
     //
     final uid = fbAuth.currentUser?.uid;
     if (uid == null) return const SizedBox();
-    final asyncUser = ref.watch(profileNotifierProvider(uid));
+    final asyncUser = ref.watch(profileProvider(uid));
 
-    showDialogWhenError(context: context, ref: ref, uid: uid);
+    context.listenProfileFailure(uid, ref);
 
     ///
     return Scaffold(
@@ -55,22 +55,21 @@ class ProfilePage extends ConsumerWidget {
     );
   }
 
-  /// ✅ [showDialogWhenError] listens to failure in [profileNotifierProvider]
-  /// ✅ Triggers contextual `showError` only once per failure
-  void showDialogWhenError({
-    required BuildContext context,
-    required WidgetRef ref,
-    required String uid,
-  }) {
-    //
-    ref.listenManual(profileNotifierProvider(uid), (_, _) {
+  //
+}
+
+/// 🧩 [listenProfileFailure] — listens to failure in [profileNotifierProvider]
+/// ✅ Triggers contextual `showError` only once per failure
+// ─────------------------------------------
+extension ProfileFailureListenerX on BuildContext {
+  //
+  void listenProfileFailure(String uid, WidgetRef ref) {
+    ref.listenManual(profileProvider(uid), (_, _) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        context.consume(
-          ref.read(profileNotifierProvider(uid).notifier).consumeFailure(),
+        consumeAndShowDialog(
+          ref.read(profileProvider(uid).notifier).consumeFailure(),
         );
       });
     });
   }
-
-  //
 }
