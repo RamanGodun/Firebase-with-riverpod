@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart' show GetStorage;
-import '../../features/profile/domain_and_data/profile_repo_impl.dart';
-import '../../features/profile/domain_and_data/profile_repo_provider.dart';
-import '../../features/profile/domain_and_data/remote_data_source.dart';
+import '../../features/profile/data/profile_repo_impl.dart';
+import '../../features/profile/data/profile_repo_provider.dart';
+import '../../features/profile/data/remote_data_source.dart';
 import '../shared_modules/overlays/overlay_dispatcher/_overlay_dispatcher.dart';
 import '../shared_modules/overlays/overlay_dispatcher/dispatcher_provider.dart';
 import '../shared_modules/overlays/overlay_dispatcher/overlay_status_cubit.dart';

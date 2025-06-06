@@ -73,25 +73,6 @@ final class SignInUseCase {
   }
 }
 
-///
-
-/// 📦 [SignOutUseCase] — encapsulates sign-out logic
-/// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
-//---------------------------------------------------
-final class SignOutUseCase {
-  final ISignOutRepo repo;
-  const SignOutUseCase(this.repo);
-
-  ResultFuture<void> call() async {
-    //
-    try {
-      await repo.signOut();
-      return right(null);
-    } catch (e, st) {
-      return left(mapToFailure(e, st));
-    }
-  }
-}
 
 ///
 

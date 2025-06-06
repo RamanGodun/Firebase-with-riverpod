@@ -3,7 +3,7 @@ import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/either_for_data/either.dart';
 import '../../../core/shared_modules/errors_handling/utils/failure_mapper.dart';
 import '../../../core/utils/typedef.dart';
-import 'profile_repo.dart';
+import '../domain_and_data/profile_repo.dart';
 import 'remote_data_source.dart';
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.

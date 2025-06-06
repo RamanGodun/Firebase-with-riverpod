@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'profile_repo.dart';
-import 'profile_repo_impl.dart';
-import 'remote_data_source.dart';
+import '../domain_and_data/profile_repo.dart';
+import '../data/profile_repo_impl.dart';
+import '../data/remote_data_source.dart';
 
 part 'profile_repo_provider.g.dart';
 

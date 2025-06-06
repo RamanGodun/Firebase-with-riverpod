@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
 import '../../../core/utils/typedef.dart';
-import '../../profile/domain_and_data/profile_repo_provider.dart';
+import '../../profile/data/profile_repo_provider.dart';
 import '../presentation/sign_out/sign_out_provider.dart';
 
 /// 🧩 [AuthActions] — utility class for sign-out UI logic
@@ -31,6 +31,10 @@ final class AuthActions {
     if (ref.read(signOutProvider).hasValue) {
       ref.read(profileRepoProvider).clearCache();
     }
+
+    ///
+
+    ///
   }
 
   ///
