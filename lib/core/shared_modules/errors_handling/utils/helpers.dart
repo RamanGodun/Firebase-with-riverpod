@@ -9,4 +9,3 @@ Failure mapToFailure(dynamic error, [StackTrace? stack]) =>
 
 Right<Failure, T> right<T>(T value) => Right(value);
 Left<Failure, T> left<T>(Failure failure) => Left(failure);
-
