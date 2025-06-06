@@ -6,7 +6,7 @@ part of 'sign_in_repo_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signInRepoHash() => r'97d0c28980c80985dc27729a1a1ccfd98fa673e8';
+String _$signInRepoHash() => r'4d23ac4f21a33038baa1cf139a6b56eeb41de255';
 
 /// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl]
 /// 🧼 Dependency injection for user sign-in logic

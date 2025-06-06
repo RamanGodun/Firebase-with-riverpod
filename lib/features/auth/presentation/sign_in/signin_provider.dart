@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/utils/for_riverpod_providers/safe_async_state.dart';
-import '../../data_providers/sign_in_repo_provider.dart';
+import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../../domain/auth_use_cases.dart';
+import '../../domain/sign_in_use_case_provider.dart';
 
 part 'signin_provider.g.dart';
 
@@ -9,7 +9,7 @@ part 'signin_provider.g.dart';
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
 /// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
 //----------------------------------------------------------------//
-@riverpod
+@Riverpod(keepAlive: false)
 class Signin extends _$Signin with SafeAsyncState<void> {
   /// 🧱 Initializes safe lifecycle tracking
   @override
@@ -19,11 +19,12 @@ class Signin extends _$Signin with SafeAsyncState<void> {
 
   /// 🔐 Signs in user with provided email and password
   /// - Delegates auth to [SignInUseCase]
-  /// - Ensures state is only updated if still mounted
   Future<void> signin({required String email, required String password}) async {
-    final repo = ref.read(signInRepoProvider);
-    final useCase = SignInUseCase(repo);
-
-    await updateSafely(() => useCase(email: email, password: password));
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      final useCase = ref.watch(signInUseCaseProvider);
+      final result = await useCase(email: email, password: password);
+      return result.fold((failure) => throw failure, (_) => null);
+    });
   }
 }

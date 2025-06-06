@@ -1,11 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart' show GetStorage;
-import '../../features/auth/data_providers/change_password_repo_provider.dart';
-import '../../features/auth/data_providers/email_verification_repo_provider.dart';
-import '../../features/auth/data_providers/sign_in_repo_provider.dart';
-import '../../features/auth/data_providers/sign_out_repo_provider.dart';
-import '../../features/auth/data_providers/sign_up_repo_provider.dart';
-import '../../features/auth/data_providers/reset_password_repo_provider.dart';
 import '../../features/profile/domain_and_data/profile_repo_impl.dart';
 import '../../features/profile/domain_and_data/profile_repo_provider.dart';
 import '../../features/profile/domain_and_data/remote_data_source.dart';
@@ -28,23 +22,6 @@ late final ProviderContainer globalContainer;
 final List<Override> diContainer = [
   // 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
   // 🔧 Centralized registration of manual providers for Domain and Data layers
-
-  /// ── Auth Repositories ───
-
-  // Handles email/password sign-in
-  signInRepoProvider.overrideWith((ref) => SignInRepoImpl()),
-  // Handles user registration
-  signUpRepoProvider.overrideWith((ref) => SignUpRepoImpl()),
-  // Handles user sign-out
-  signOutRepoProvider.overrideWith((ref) => SignOutRepoImpl()),
-  // Changes user password
-  changePasswordRepoProvider.overrideWith((ref) => ChangePasswordRepoImpl()),
-  // Sends reset link to email
-  resetPasswordRepoProvider.overrideWith((ref) => ResetPasswordRepoImpl()),
-  // Sends verification email
-  emailVerificationRepoProvider.overrideWith(
-    (ref) => EmailVerificationRepoImpl(),
-  ),
 
   /// ── Profile Layer ───
 

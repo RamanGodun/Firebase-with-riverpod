@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../../core/utils/for_riverpod_providers/auth_actions.dart';
+import '../../utils/auth_actions.dart';
 
 class SignOutButton extends ConsumerWidget {
   const SignOutButton({super.key});

@@ -29,7 +29,6 @@ class ReAuthenticationPage extends ConsumerWidget {
     final submitting = ValueNotifier(false);
 
     return Scaffold(
-      appBar: AppBar(),
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,

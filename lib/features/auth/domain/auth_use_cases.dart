@@ -60,8 +60,16 @@ final class SignInUseCase {
   const SignInUseCase(this.authRepo);
 
   // 🔐 Signs in with provided credentials
-  Future<void> call({required String email, required String password}) {
-    return authRepo.signIn(email: email, password: password);
+  ResultFuture<void> call({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await authRepo.signIn(email: email, password: password);
+      return right(null);
+    } catch (e, st) {
+      return left(mapToFailure(e, st));
+    }
   }
 }
 

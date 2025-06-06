@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/extensions/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class SignInPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
+
     final fieldTypes = FormTemplates.signInFields;
     final formProvider = formStateNotifierProvider(fieldTypes);
     final formState = ref.watch(formProvider);
@@ -30,7 +33,8 @@ class SignInPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
     final signInState = ref.watch(signinProvider);
 
-    _listenToSignIn(context, ref);
+    // 🔁 Declarative side-effect for error displaying
+    _showDialogWhenError(context, ref);
 
     /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
@@ -107,13 +111,12 @@ class SignInPage extends ConsumerWidget {
   }
 
   /// ⚠️ Subscribes to [signinProvider] and handles sign-in errors.
-  void _listenToSignIn(BuildContext context, WidgetRef ref) {
-    ref.listen(signinProvider, (prev, next) {
-      next.whenOrNull(
-        // error: (e, _) => context.showErrorDialog(handleException(e)),
-      );
-    });
+  void _showDialogWhenError(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<void>>(
+      signinProvider,
+      (prev, next) => context.showDialogWhenErrorState(next),
+    );
   }
 
-  ///
+  //
 }

@@ -7,7 +7,7 @@ part 'sign_in_repo_provider.g.dart';
 
 /// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl]
 /// 🧼 Dependency injection for user sign-in logic
-@riverpod
+@Riverpod(keepAlive: false)
 ISignInRepo signInRepo(Ref ref) => SignInRepoImpl();
 
 ///----------------------------------------------------------------
