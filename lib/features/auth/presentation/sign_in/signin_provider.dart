@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../../domain/auth_use_cases.dart';
 import '../../domain/sign_in_use_case_provider.dart';
 
 part 'signin_provider.g.dart';
@@ -20,7 +19,9 @@ class Signin extends _$Signin with SafeAsyncState<void> {
   /// 🔐 Signs in user with provided email and password
   /// - Delegates auth to [SignInUseCase]
   Future<void> signin({required String email, required String password}) async {
+    //
     state = const AsyncLoading();
+
     state = await AsyncValue.guard(() async {
       final useCase = ref.watch(signInUseCaseProvider);
       final result = await useCase(email: email, password: password);

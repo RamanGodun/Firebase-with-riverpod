@@ -1,5 +1,3 @@
-import '../../../core/shared_modules/errors_handling/utils/helpers.dart';
-import '../../../core/utils/typedef.dart';
 import 'auth_repos.dart';
 
 /// 📦 [ChangePasswordUseCase] — encapsulates password change logic
@@ -49,46 +47,4 @@ final class ResetPasswordUseCase {
   Future<void> call(String email) => repo.sendResetLink(email);
 }
 
-///
-
-/// 📦 [SignInUseCase] — encapsulates sign-in process
-/// 🧼 Handles user authentication using [ISignInRepo]
-//------------------------------------------------------------
-final class SignInUseCase {
-  //
-  final ISignInRepo authRepo;
-  const SignInUseCase(this.authRepo);
-
-  // 🔐 Signs in with provided credentials
-  ResultFuture<void> call({
-    required String email,
-    required String password,
-  }) async {
-    try {
-      await authRepo.signIn(email: email, password: password);
-      return right(null);
-    } catch (e, st) {
-      return left(mapToFailure(e, st));
-    }
-  }
-}
-
-///
-
-/// 📦 [SignUpUseCase] — encapsulates user registration
-/// 🧼 Creates Firebase user and stores user profile via [ISignUpRepo]
-//------------------------------------------------------------------
-final class SignUpUseCase {
-  //
-  final ISignUpRepo repo;
-  const SignUpUseCase(this.repo);
-
-  // 🆕 Creates a new account with email and password
-  Future<void> call({
-    required String name,
-    required String email,
-    required String password,
-  }) {
-    return repo.signup(name: name, email: email, password: password);
-  }
-}
+//

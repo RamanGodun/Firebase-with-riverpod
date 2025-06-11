@@ -4,6 +4,7 @@ import '../../../core/utils/typedef.dart';
 import '../../profile/data/profile_repo_provider.dart';
 import '../presentation/sign_in/signin_provider.dart';
 import '../presentation/sign_out/sign_out_provider.dart';
+import '../presentation/sign_up/signup_provider.dart';
 
 /// 🧩 [AuthActions] — utility class for sign-out UI logic
 /// ✅ Handles logout, overlay error, GoRouter redirect, cache cleanup
@@ -46,6 +47,27 @@ final class AuthActions {
 
     final failure = ref
         .read(signinProvider)
+        .maybeWhen(error: (e, _) => e, orElse: () => null);
+
+    if (failure case final FailureUIModel model) {
+      onError(model);
+      notifier.reset();
+    }
+  }
+
+  ///
+  static Future<void> signUp({
+    required WidgetRef ref,
+    required String name,
+    required String email,
+    required String password,
+    required ErrorDispatcher onError,
+  }) async {
+    final notifier = ref.read(signupProvider.notifier);
+    await notifier.signup(name: name, email: email, password: password);
+
+    final failure = ref
+        .read(signupProvider)
         .maybeWhen(error: (e, _) => e, orElse: () => null);
 
     if (failure case final FailureUIModel model) {

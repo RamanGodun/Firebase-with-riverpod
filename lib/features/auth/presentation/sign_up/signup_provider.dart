@@ -1,36 +1,54 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/to_ui_failures_x.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../../../../core/shared_modules/errors_handling/utils/consumable.dart';
 import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../../data_providers/sign_up_repo_provider.dart';
-import '../../domain/auth_use_cases.dart';
+import '../../domain/sign_up_use_case_provider.dart';
 
 part 'signup_provider.g.dart';
 
-/// 🧩 [signupProvider] — async notifier that handles user registration
-/// 🧼 Uses [SafeAsyncState] to protect state updates after disposal
-/// 🧼 Leverages [AsyncValue.guard] for safe error propagation
-//----------------------------------------------------------------//
-@riverpod
+/// 🧩 [signupProvider] — async notifier for user registration
+/// 🧼 Uses [SafeAsyncState] for lifecycle safety
+/// 🧼 Exposes `reset()` and `consumeFailure()` for UI feedback
+@Riverpod(keepAlive: false)
 class Signup extends _$Signup with SafeAsyncState<void> {
-  /// 🧱 Initializes safe state mechanism
+  /// 💥 Holds last failure for contextual UI consumption
+  Consumable<FailureUIModel>? _lastFailure;
+
+  /// 🧱 Initializes safe lifecycle mechanism
   @override
   FutureOr<void> build() {
     initSafe();
   }
 
-  /// 📝 Registers a new user using name, email, and password
-  /// - Calls [SignUpUseCase] through injected repository
-  /// - Automatically catches and exposes errors via [AsyncValue.guard]
-  /// - Updates state only if notifier is still mounted
+  /// 📝 Signs up user with name, email and password
   Future<void> signup({
     required String name,
     required String email,
     required String password,
   }) async {
-    final repo = ref.read(signUpRepoProvider);
-    final useCase = SignUpUseCase(repo);
+    state = const AsyncLoading();
 
-    await updateSafely(
-      () => useCase(name: name, email: email, password: password),
-    );
+    final useCase = ref.watch(signUpUseCaseProvider);
+
+    state = await AsyncValue.guard(() async {
+      final result = await useCase(
+        name: name,
+        email: email,
+        password: password,
+      );
+      return result.fold((f) {
+        _lastFailure = f.toUIModel().asConsumable();
+        throw f;
+      }, (_) => null);
+    });
   }
+
+  /// 🧼 Resets state after UI has handled error
+  void reset() => state = const AsyncData(null);
+
+  /// 🧯 Reads and consumes the last failure (for `context.showError`)
+  FailureUIModel? consumeFailure() => _lastFailure?.consume();
+
+  //
 }

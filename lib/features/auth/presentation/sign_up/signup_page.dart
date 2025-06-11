@@ -1,5 +1,6 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
@@ -22,6 +23,7 @@ class SignupPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final fieldTypes = FormTemplates.signUpFields;
     final formProvider = formStateNotifierProvider(fieldTypes);
     final formState = ref.watch(formProvider);
@@ -29,6 +31,7 @@ class SignupPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
     final signUpState = ref.watch(signupProvider);
 
+    // 🔁 Declarative side-effect for error displaying
     _listenToSignup(context, ref);
 
     return Scaffold(
@@ -101,12 +104,13 @@ class SignupPage extends ConsumerWidget {
     }
   }
 
-  /// ⚠️ Subscribes to [signupProvider] and handles errors
+  /// ⚠️ Subscribes to [signupProvider] and handles errors via `context.showError(...)`
   void _listenToSignup(BuildContext context, WidgetRef ref) {
-    ref.listen(signupProvider, (prev, next) {
-      next.whenOrNull(
-        // error: (e, _) => context.showErrorDialog(handleException(e)),
-      );
+    ref.listenManual(signupProvider, (_, _) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final failure = ref.read(signupProvider.notifier).consumeFailure();
+        if (failure != null) context.showError(failure);
+      });
     });
   }
 
