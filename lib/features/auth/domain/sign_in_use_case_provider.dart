@@ -38,4 +38,6 @@ final class SignInUseCase {
       return left(mapToFailure(e, st));
     }
   }
+
+  //
 }

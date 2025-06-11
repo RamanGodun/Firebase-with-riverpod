@@ -38,4 +38,6 @@ final class SignUpUseCase {
       return left(mapToFailure(e, st));
     }
   }
+
+  //
 }
