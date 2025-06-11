@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/features/auth/domain/auth_repos.dart'
     show ISignUpRepo;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/shared_modules/errors_handling/utils/helpers.dart';
+import '../../../core/shared_modules/errors_handling/utils/for_riverpod/helpers.dart';
 import '../../../core/utils/typedef.dart';
 import '../data_providers/sign_up_repo_provider.dart';
 

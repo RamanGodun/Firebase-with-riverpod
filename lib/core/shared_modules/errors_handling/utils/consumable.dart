@@ -44,7 +44,6 @@ extension ConsumableX<T> on T {
 }
 
 extension FailureUIContextX on BuildContext {
-  //
   void consumeAndShowDialog(FailureUIModel? model) {
     if (model != null) showError(model);
   }
