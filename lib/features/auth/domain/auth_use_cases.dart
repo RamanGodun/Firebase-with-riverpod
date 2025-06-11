@@ -73,7 +73,6 @@ final class SignInUseCase {
   }
 }
 
-
 ///
 
 /// 📦 [SignUpUseCase] — encapsulates user registration

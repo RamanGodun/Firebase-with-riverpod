@@ -27,4 +27,11 @@ class Signin extends _$Signin with SafeAsyncState<void> {
       return result.fold((failure) => throw failure, (_) => null);
     });
   }
+
+  /// 🧼 Resets state to idle after error or submission
+  void reset() {
+    state = const AsyncData(null);
+  }
+
+  //
 }

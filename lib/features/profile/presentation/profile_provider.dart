@@ -26,4 +26,6 @@ class Profile extends _$Profile {
       uid,
     ).guardAndConsume(onFailure: (uiFailure) => _lastFailure = uiFailure);
   }
+
+  //
 }
