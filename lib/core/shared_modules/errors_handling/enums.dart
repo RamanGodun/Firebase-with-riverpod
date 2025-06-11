@@ -28,10 +28,14 @@ enum FailureKey {
   networkTimeout,
   unauthorized,
   firebaseGeneric,
-  firebaseDocMissing, // 👈 NEW
+  firebaseDocMissing,
   formatError,
   unknown,
+  firebaseInvalidCredential,
+  firebaseUserNotFound,
+  firebaseWrongPassword,
   missingPlugin;
+
   // other cases
 
   String get translationKey => switch (this) {
@@ -42,6 +46,9 @@ enum FailureKey {
     firebaseDocMissing => 'failure.firebase.doc_missing',
     formatError => 'failure.format.error',
     unknown => 'failure.unknown',
+    firebaseInvalidCredential => 'failure.firebase.invalid_credential',
+    firebaseUserNotFound => 'failure.firebase.user_not_found',
+    firebaseWrongPassword => 'failure.firebase.wrong_password',
     missingPlugin => 'failure.plugin.missing',
   };
 }

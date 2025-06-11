@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/extensions/show_dialog_when_error_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/mini_widgets.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
