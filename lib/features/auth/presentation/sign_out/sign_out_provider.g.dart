@@ -6,9 +6,13 @@ part of 'sign_out_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signOutHash() => r'08bb46b7209f60c90597f99fe48bc27e7157ae38';
+String _$signOutHash() => r'631eb5f102827037bd9606b467880ae5713aae19';
 
-/// See also [SignOut].
+/// 🔓 [SignOutProvider] — async notifier for user sign-out
+/// 🧼 Uses [SafeAsyncState] for lifecycle safety and cache cleanup
+/// 🧼 Wraps result in [AsyncValue.guard]-like error propagation
+///
+/// Copied from [SignOut].
 @ProviderFor(SignOut)
 final signOutProvider =
     AutoDisposeAsyncNotifierProvider<SignOut, void>.internal(

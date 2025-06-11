@@ -13,11 +13,8 @@ class SignOutButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ❗️ Listens (declarative) error state
-    ref.listen<AsyncValue<void>>(
-      signOutProvider,
-      (prev, next) => context.showDialogWhenErrorState(next),
-    );
+    // ❗️ Shows (declarative) error state
+    ref.listenFailure(signOutProvider, context);
 
     return CustomButton(
       type: ButtonType.text,
@@ -39,11 +36,8 @@ class VerifyEmailCancelButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ❗️ Listens (declarative) error state
-    ref.listen<AsyncValue<void>>(
-      signOutProvider,
-      (prev, next) => context.showDialogWhenErrorState(next),
-    );
+    // ❗️ Shows (declarative) error state
+    ref.listenFailure(signOutProvider, context);
 
     return CustomButton(
       type: ButtonType.filled,
@@ -63,11 +57,8 @@ class SignOutIconButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ❗️ Listens (declarative) error state
-    ref.listen<AsyncValue<void>>(
-      signOutProvider,
-      (prev, next) => context.showDialogWhenErrorState(next),
-    );
+    // ❗️ Shows (declarative) error state
+    ref.listenFailure(signOutProvider, context);
 
     return IconButton(
       icon: const Icon(Icons.logout),

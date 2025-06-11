@@ -31,8 +31,8 @@ class SignupPage extends ConsumerWidget {
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
     final signUpState = ref.watch(signupProvider);
 
-    // 🔁 Declarative side-effect for error displaying
-    _showDialogWhenError(context, ref);
+    // ❗️ Declarative error handling
+    ref.listenFailure(signupProvider, context);
 
     return Scaffold(
       body: SafeArea(
@@ -104,13 +104,5 @@ class SignupPage extends ConsumerWidget {
     }
   }
 
-  /// ⚠️ Subscribes to [signupProvider] and declaratively handles errors
-  void _showDialogWhenError(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<void>>(
-      signupProvider,
-      (prev, next) => context.showDialogWhenErrorState(next),
-    );
-  }
-
-  ///
+  //
 }

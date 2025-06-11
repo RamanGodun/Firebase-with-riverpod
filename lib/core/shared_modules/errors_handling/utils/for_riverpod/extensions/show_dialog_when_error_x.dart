@@ -15,3 +15,17 @@ extension ContextAsyncValueX on BuildContext {
     }
   }
 }
+
+///
+
+extension RefFailureListenerX on WidgetRef {
+  void listenFailure<T>(
+    ProviderListenable<AsyncValue<T>> provider,
+    BuildContext context,
+  ) {
+    listen<AsyncValue<T>>(provider, (prev, next) {
+      final failure = next.asFailure;
+      if (failure != null) context.showError(failure.toUIModel());
+    });
+  }
+}

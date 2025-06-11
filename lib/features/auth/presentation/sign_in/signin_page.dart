@@ -31,10 +31,10 @@ class SignInPage extends ConsumerWidget {
     final formState = ref.watch(formProvider);
     final formNotifier = ref.read(formProvider.notifier);
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
-    final signInState = ref.watch(signinProvider);
+    final signInState = ref.watch(signInProvider);
 
     // 🔁 Declarative side-effect for error displaying
-    _showDialogWhenError(context, ref);
+    ref.listenFailure(signInProvider, context);
 
     /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
@@ -56,7 +56,6 @@ class SignInPage extends ConsumerWidget {
                           fields: fieldTypes,
                           showToggleVisibility: type == FormFieldType.password,
                         ),
-
                       const SizedBox(height: AppSpacing.xxl),
 
                       CustomButton(
@@ -100,7 +99,7 @@ class SignInPage extends ConsumerWidget {
   ) {
     if (isFormValid) {
       ref
-          .read(signinProvider.notifier)
+          .read(signInProvider.notifier)
           .signin(
             email: form.valueOf(FormFieldType.email),
             password: form.valueOf(FormFieldType.password),
@@ -108,14 +107,6 @@ class SignInPage extends ConsumerWidget {
     } else {
       notifier.validateAll();
     }
-  }
-
-  /// ⚠️ Subscribes to [signinProvider] and handles sign-in errors.
-  void _showDialogWhenError(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<void>>(
-      signinProvider,
-      (prev, next) => context.showDialogWhenErrorState(next),
-    );
   }
 
   //

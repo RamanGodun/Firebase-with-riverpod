@@ -9,7 +9,7 @@ part 'signin_provider.g.dart';
 /// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
 //----------------------------------------------------------------//
 @Riverpod(keepAlive: false)
-class Signin extends _$Signin with SafeAsyncState<void> {
+class SignIn extends _$SignIn with SafeAsyncState<void> {
   /// 🧱 Initializes safe lifecycle tracking
   @override
   FutureOr<void> build() {
