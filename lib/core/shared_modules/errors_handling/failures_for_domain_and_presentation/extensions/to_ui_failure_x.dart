@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_diagnostics_x.dart';
 import 'package:flutter/material.dart';
 import '../../../localization/code_base_for_both_options/_app_localizer.dart';
-import '../../enums.dart';
+import '../../utils/enums.dart';
 import '../failure_for_domain.dart';
 import '../../utils/for_bloc/consumable.dart';
 import '../failure_ui_model.dart';

@@ -31,6 +31,9 @@
 "failure": {
   "firebase": {
     "doc_missing": "User profile is missing.",
+    "wrong_password": "Wrong password.",
+    "user_not_found": "User not found.",
+    "invalid_credential": "Invalid credentials. Please check your input and try again",
     "generic": "A Firebase error occurred."
   },
   "format": {

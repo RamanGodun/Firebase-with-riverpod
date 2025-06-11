@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
   static const languages_switched_to_pl = 'languages.switched_to_pl';
@@ -29,6 +29,9 @@ abstract class LocaleKeys {
   static const errors_errors_general_title = 'errors.errors_general_title';
   static const errors = 'errors';
   static const failure_firebase_doc_missing = 'failure.firebase.doc_missing';
+  static const failure_firebase_wrong_password = 'failure.firebase.wrong_password';
+  static const failure_firebase_user_not_found = 'failure.firebase.user_not_found';
+  static const failure_firebase_invalid_credential = 'failure.firebase.invalid_credential';
   static const failure_firebase_generic = 'failure.firebase.generic';
   static const failure_firebase = 'failure.firebase';
   static const failure_format_error = 'failure.format.error';
@@ -105,4 +108,5 @@ abstract class LocaleKeys {
   static const theme_light_enabled = 'theme.light_enabled';
   static const theme_dark_enabled = 'theme.dark_enabled';
   static const theme = 'theme';
+
 }

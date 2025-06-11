@@ -29,8 +29,11 @@
      "errors_general_title": "Виникла помилка"
   },
  "failure": {
-  "firebase": {
+   "firebase": {
     "doc_missing": "Профіль користувача відсутній.",
+    "wrong_password": "Неправильний пароль",
+    "user_not_found": "Користувача не знайдено",
+    "invalid_credential": "Некоректні облікові дані. Будь ласка, перевірте правильність введення та спробуйте ще раз",
     "generic": "Сталася помилка Firebase."
   },
   "format": {

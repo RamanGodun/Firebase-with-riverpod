@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:dio/dio.dart';
 import '../loggers_for_errors_handling_module/errors_logger.dart';
-import '../enums.dart';
+import 'enums.dart';
 import '../failures_for_domain_and_presentation/failure_for_domain.dart';
 
 /// 🧰 [FailureMapper] — centralized converter for raw exceptions to domain-level [Failure].
@@ -43,9 +43,6 @@ final class FailureMapper {
         UnauthorizedFailure(message: 'Unauthorized. Please log in again.'),
 
       ///
-      // FirebaseException(:final message) => FirebaseFailure(
-      //   message: message ?? 'Firebase error occurred.',
-      // ),
       FirebaseException(:final code, :final message) => switch (code) {
         'invalid-credential' => FirebaseFailure(
           message: message ?? 'Invalid credentials.',

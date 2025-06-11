@@ -31,6 +31,9 @@
 "failure": {
   "firebase": {
     "doc_missing": "Brak profilu użytkownika.",
+    "wrong_password": "Nieprawidłowe hasło.",
+    "user_not_found": "Użytkownik nie został znaleziony.",
+    "invalid_credential": "Nieprawidłowe dane logowania. Sprawdź poprawność i spróbuj ponownie",
     "generic": "Wystąpił błąd Firebase."
   },
   "format": {
