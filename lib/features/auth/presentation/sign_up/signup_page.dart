@@ -1,6 +1,6 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/extensions/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
@@ -32,7 +32,7 @@ class SignupPage extends ConsumerWidget {
     final signUpState = ref.watch(signupProvider);
 
     // 🔁 Declarative side-effect for error displaying
-    _listenToSignup(context, ref);
+    _showDialogWhenError(context, ref);
 
     return Scaffold(
       body: SafeArea(
@@ -104,14 +104,12 @@ class SignupPage extends ConsumerWidget {
     }
   }
 
-  /// ⚠️ Subscribes to [signupProvider] and handles errors via `context.showError(...)`
-  void _listenToSignup(BuildContext context, WidgetRef ref) {
-    ref.listenManual(signupProvider, (_, _) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        final failure = ref.read(signupProvider.notifier).consumeFailure();
-        if (failure != null) context.showError(failure);
-      });
-    });
+  /// ⚠️ Subscribes to [signupProvider] and declaratively handles errors
+  void _showDialogWhenError(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<void>>(
+      signupProvider,
+      (prev, next) => context.showDialogWhenErrorState(next),
+    );
   }
 
   ///
