@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
+import 'package:firebase_with_riverpod/core/utils/widget_ref_exetnsions/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/features/auth/presentation/sign_out/sign_out_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

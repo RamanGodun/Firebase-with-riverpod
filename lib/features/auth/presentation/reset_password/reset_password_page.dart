@@ -1,9 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/localization/generated/locale_keys.g.dart'
     show LocaleKeys;
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/utils/widget_ref_exetnsions/reset_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
@@ -19,20 +18,27 @@ import 'reset_password_provider.dart';
 
 part 'widgets_for_reset_password_page.dart';
 
-/// 🔐 [ResetPasswordPage] — screen that allows user to request password reset.
+/// 🔐 [ResetPasswordPage] — screen that allows user to request password reset
+/// 📩 Sends reset link to user's email using [ResetPasswordProvider]
+/// 🧼 Declarative Riverpod + FormState + centralized error handling
+//----------------------------------------------------------------
 class ResetPasswordPage extends ConsumerWidget {
   const ResetPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 🎯 Reactive form state management
     final fieldTypes = FormTemplates.resetPasswordFields;
     final formProvider = formStateNotifierProvider(fieldTypes);
     final formState = ref.watch(formProvider);
     final formNotifier = ref.read(formProvider.notifier);
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
+
+    // 🔁 Async state of the reset password request
     final resetPasswordState = ref.watch(resetPasswordProvider);
 
-    _listenForResetEvents(context, ref);
+    // 👂 Declarative listener for success/failure
+    ref.listenToResetPassword(context);
 
     return Scaffold(
       body: SafeArea(
@@ -42,11 +48,15 @@ class ResetPasswordPage extends ConsumerWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
+                //
                 const _ResetPasswordHeader(),
 
+                /// 🧾 Dynamic fields from form preset
                 for (final type in fieldTypes)
                   AppFormField(type: type, fields: fieldTypes),
                 const SizedBox(height: AppSpacing.huge),
+
+                /// 🔘 Submit button — disabled while loading
                 CustomButton(
                   type: ButtonType.filled,
                   onPressed:
@@ -75,22 +85,8 @@ class ResetPasswordPage extends ConsumerWidget {
     );
   }
 
-  /// 📡 Subscribes to [resetPasswordProvider] to handle success & error flows.
-  void _listenForResetEvents(BuildContext context, WidgetRef ref) {
-    ref.listen(resetPasswordProvider, (prev, next) {
-      next.whenOrNull(
-        data: (_) {
-          context.showUserSnackbar(
-            message: LocaleKeys.reset_password_success.tr(),
-          );
-          if (context.mounted) context.goTo(RoutesNames.signin);
-        },
-        // TODO: showErrorDialog(error);
-      );
-    });
-  }
-
-  ///
+  /// 🧩 [_handleResetPressed] — validates form and sends reset email
+  /// If form is valid, calls `resetPassword()`; otherwise, forces validation
   void _handleResetPressed(
     WidgetRef ref,
     FormStateModel form,
@@ -106,5 +102,5 @@ class ResetPasswordPage extends ConsumerWidget {
     }
   }
 
-  ///
+  //
 }

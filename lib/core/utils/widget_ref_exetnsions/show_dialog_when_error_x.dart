@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_contex
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
 extension RefFailureListenerX on WidgetRef {

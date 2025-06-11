@@ -1,19 +1,5 @@
 import 'auth_repos.dart';
 
-/// 📦 [ChangePasswordUseCase] — encapsulates password change logic
-/// 🧼 Invokes password update via [IChangePasswordRepo]
-//-------------------------------------------------------------
-final class ChangePasswordUseCase {
-  //
-  final IChangePasswordRepo repo;
-  const ChangePasswordUseCase(this.repo);
-
-  // 🔁 Triggers password changing
-  Future<void> call(String newPassword) {
-    return repo.changePassword(newPassword);
-  }
-}
-
 ///
 
 /// 📦 [EmailVerificationUseCase] — handles email verification workflow
@@ -32,19 +18,3 @@ final class EmailVerificationUseCase {
     return repo.isEmailVerified();
   }
 }
-
-///
-
-/// 📦 [ResetPasswordUseCase] — encapsulates password reset logic
-/// 🧼 Triggers password reset email via [IResetPasswordRepo]
-//--------------------------------------------------------------
-final class ResetPasswordUseCase {
-  //
-  final IResetPasswordRepo repo;
-  const ResetPasswordUseCase(this.repo);
-
-  // 📩 Sends reset link to the provided email
-  Future<void> call(String email) => repo.sendResetLink(email);
-}
-
-//
