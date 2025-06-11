@@ -3,9 +3,9 @@ import '../../../../../utils/typedef.dart';
 import '../../../either_for_data/either.dart';
 import '../../../failures_for_domain_and_presentation/failure_for_domain.dart';
 import '../../../failures_for_domain_and_presentation/failure_ui_model.dart';
-import '../../consumable.dart';
+import '../../for_bloc/consumable.dart';
 import 'result_notifier_provider.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/to_ui_failures_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_x.dart';
 import 'dart:async';
 
 /// 🧩 [AsyncResultNotifierRefX] — adds `.runVoid()` to WidgetRef

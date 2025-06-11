@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_diagnostics_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import '../failures_for_domain_and_presentation/failure_for_domain.dart';
 
@@ -16,7 +17,7 @@ abstract final class ErrorsLogger {
 
   /// 🧱 Logs a domain-level [Failure].
   static void failure(Failure failure, [StackTrace? stackTrace]) {
-    debugPrint('[Failure] ${failure.runtimeType}: $failure');
+    debugPrint('[Failure] ${failure.label}');
     if (stackTrace case final trace?) debugPrint(trace.toString());
   }
 
@@ -24,5 +25,5 @@ abstract final class ErrorsLogger {
     ErrorsLogger.exception(error, stackTrace);
   }
 
-  ///
+  //
 }

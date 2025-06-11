@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../utils/typedef.dart';
 import '../../../failures_for_domain_and_presentation/failure_for_domain.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/to_ui_failures_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_x.dart';
 import 'dart:async';
 
 /// 🧩 [ResultNotifier<T>] — async wrapper for `ResultFuture<T>`

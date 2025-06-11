@@ -38,7 +38,7 @@ abstract final class CrashlyticsLogger {
   /// 🧱 Logs mapped [Failure] objects from the domain layer.
   static void failure(Failure failure, [StackTrace? stackTrace]) {
     final reason =
-        '[FAILURE][${failure.pluginSource}][${failure.runtimeType}] ${failure.message}';
+        '[FAILURE][${failure.pluginSource}][${failure.safeCode}] ${failure.message}';
     _record(
       error: failure,
       stackTrace: stackTrace ?? StackTrace.current,

@@ -7,7 +7,7 @@ import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/ex
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_with_riverpod/features/auth/presentation/sign_out/sign_out_provider.dart';
-import '../../../../core/shared_modules/errors_handling/old/fb_exceptions.dart';
+import '../../../../core/shared_modules/errors_handling/old_and_simple/fb_exceptions.dart';
 import '../../../../core/utils/typedef.dart';
 import '../../../form_fields/form_field_widget.dart';
 import '../../../form_fields/form_fields_model.dart';

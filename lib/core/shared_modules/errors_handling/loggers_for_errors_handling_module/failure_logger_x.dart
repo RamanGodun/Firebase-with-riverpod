@@ -14,7 +14,7 @@ extension FailureLogger on Failure {
 
 extension FailureTrackX on Failure {
   Failure track(void Function(String eventName) trackCallback) {
-    trackCallback('failure_${runtimeType.toString().toLowerCase()}');
+    trackCallback('failure_${safeCode.toLowerCase()}');
     return this;
   }
 }

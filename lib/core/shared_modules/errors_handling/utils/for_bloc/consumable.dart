@@ -3,7 +3,7 @@ library;
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart' show BuildContext;
 
-import '../failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../../failures_for_domain_and_presentation/failure_ui_model.dart';
 
 /// 🧩 [Consumable] — Wraps a value for one-time consumption.
 /// ✅ Prevents repeated UI side-effects (like dialogs/snackbars)

@@ -2,7 +2,7 @@ import 'dart:async' show FutureOr;
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_extensions/_eithers_facade.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_logger_x.dart';
-import '../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
 
 /// 🧩 [DSLLikeResultHandler<T>] — wrapper for `Either<Failure, T>`
 /// ✅ Clean, chainable result handling with both sync & async APIs

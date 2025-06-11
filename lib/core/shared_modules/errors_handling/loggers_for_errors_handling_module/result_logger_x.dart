@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_logger_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import '../either_for_data/either_extensions/_eithers_facade.dart';
 import '../failures_for_domain_and_presentation/failure_for_domain.dart';
@@ -10,7 +11,7 @@ import 'errors_logger.dart';
 extension ResultLoggerExt<T> on Either<Failure, T> {
   /// 🪵 Logs failure if result is Left
   Either<Failure, T> log([StackTrace? stack]) {
-    if (isLeft) ErrorsLogger.failure(leftOrNull!, stack);
+    ErrorsLogger.failure(leftOrNull!.debugLog());
     return this;
   }
 

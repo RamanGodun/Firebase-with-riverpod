@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
-import '../utils/enums.dart';
+import 'enums.dart';
 
 /// 🔥 [Failure] — Domain abstraction for all app-level errors.
 /// ✅ Used throughout AZER: [Either<Failure, T>]
-//---------------------------------------------------------------------------
-
+/// ✅ Implements sealed class + accessors for message, code, key
+//--------------------------------------------------------------------
 abstract class Failure extends Equatable {
+  //
   final String message;
   final String? translationKey;
   final dynamic statusCode;
@@ -22,25 +23,29 @@ abstract class Failure extends Equatable {
   List<Object?> get props => [message, translationKey, statusCode, code];
 }
 
-/// 🌐 API-related failure (remote server error)
+///
+// ────────────────────────
+/// 🚨 Subclasses of [Failure]
+// ────────────────────────
+///
+
+/// 🌐 [ApiFailure] — HTTP/API-level failures (non-auth)
 final class ApiFailure extends Failure {
   ApiFailure({required int super.statusCode, required super.message})
     : super._(code: 'API', translationKey: FailureKey.unknown.translationKey);
 }
 
-/// 🔥 Firebase failure
-final class FirebaseFailure extends Failure {
-  FirebaseFailure({
-    required super.message,
-    FailureKey translationKey = FailureKey.firebaseGeneric,
-  }) : super._(
-         statusCode: ErrorPlugin.firebase.code,
-         code: 'FIREBASE',
-         translationKey: translationKey.translationKey,
-       );
+/// 📡 [NetworkFailure] — connectivity issues (no connection / timeout)
+final class NetworkFailure extends Failure {
+  NetworkFailure({required super.message, required FailureKey translationKey})
+    : super._(
+        statusCode: ErrorPlugin.httpClient.code,
+        code: 'NETWORK',
+        translationKey: translationKey.translationKey,
+      );
 }
 
-/// 🔒 Unauthorized/Expired Token (auth-based)
+/// 🔒 [UnauthorizedFailure] — 401 token expired / not logged in
 final class UnauthorizedFailure extends Failure {
   UnauthorizedFailure({
     required super.message,
@@ -52,17 +57,19 @@ final class UnauthorizedFailure extends Failure {
        );
 }
 
-/// 📡 Connectivity issue
-final class NetworkFailure extends Failure {
-  NetworkFailure({required super.message, required FailureKey translationKey})
-    : super._(
-        statusCode: ErrorPlugin.httpClient.code,
-        code: 'NETWORK',
-        translationKey: translationKey.translationKey,
-      );
+/// 🔥 [FirebaseFailure] — general firebase-related issues
+final class FirebaseFailure extends Failure {
+  FirebaseFailure({
+    required super.message,
+    FailureKey translationKey = FailureKey.firebaseGeneric,
+  }) : super._(
+         statusCode: ErrorPlugin.firebase.code,
+         code: 'FIREBASE',
+         translationKey: translationKey.translationKey,
+       );
 }
 
-/// 🧠 Business logic violation (Domain)
+/// 🧠 [UseCaseFailure] — validation / business logic violation
 final class UseCaseFailure extends Failure {
   UseCaseFailure({required super.message})
     : super._(
@@ -72,7 +79,7 @@ final class UseCaseFailure extends Failure {
       );
 }
 
-/// ⚙️ Platform/SDK failure (non-domain system issues)
+/// ⚙️ [GenericFailure] — system/platform issues (plugin missing, etc.)
 final class GenericFailure extends Failure {
   final ErrorPlugin plugin;
 
@@ -90,7 +97,7 @@ final class GenericFailure extends Failure {
   List<Object?> get props => super.props..add(plugin);
 }
 
-/// 🧊 Cache/local read failure
+/// 🧊 [CacheFailure] — local storage, preferences, or disk read/write error
 final class CacheFailure extends Failure {
   CacheFailure({required super.message})
     : super._(
@@ -100,7 +107,7 @@ final class CacheFailure extends Failure {
       );
 }
 
-/// ❓ Unexpected/unhandled error (ASTRODES fallback)
+/// ❓ [UnknownFailure] — unhandled, uncategorized fallback
 final class UnknownFailure extends Failure {
   UnknownFailure({
     required super.message,
@@ -111,7 +118,7 @@ final class UnknownFailure extends Failure {
        );
 }
 
-/// ❌ Thrown when in Firestore document exists, but has invalid structure (e.g., null or wrong type)
+/// 🔍 [FirestoreDocMissingFailure] — document exists but has wrong structure
 final class FirestoreDocMissingFailure extends FirebaseFailure {
   FirestoreDocMissingFailure()
     : super(
@@ -120,7 +127,7 @@ final class FirestoreDocMissingFailure extends FirebaseFailure {
       );
 }
 
-/// ❌ Thrown when a Firestore user doc is missing.
+/// ❌ [FirebaseUserMissingFailure] — FirebaseAuth.currentUser is null
 final class FirebaseUserMissingFailure extends FirebaseFailure {
   FirebaseUserMissingFailure()
     : super(
