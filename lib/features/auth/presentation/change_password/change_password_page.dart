@@ -36,7 +36,6 @@ class ChangePasswordPage extends ConsumerWidget {
     final changePasswordState = ref.watch(changePasswordProvider);
 
     final showSnackbar = context.showUserSnackbar;
-    // final showDialog = context.showUserDialog;
     final goTo = context.goTo;
 
     _listenToPasswordChange(ref, context, showSnackbar, goTo);

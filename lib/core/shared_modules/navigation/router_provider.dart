@@ -2,10 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../features/auth/data_providers/auth_state_stream_provider.dart';
 import '../../shared_layers/shared_presentation/pages/page_not_found.dart';
 import 'routes_map.dart';
 import 'utils/auth_redirect.dart';
+import 'utils/auth_state_stream_provider.dart';
 
 part 'router_provider.g.dart';
 
