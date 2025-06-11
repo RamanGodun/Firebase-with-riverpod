@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/consumable.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/extensions/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/widgets/mini_widgets.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
@@ -33,7 +33,8 @@ class ProfilePage extends ConsumerWidget {
     if (uid == null) return const SizedBox();
     final asyncUser = ref.watch(profileProvider(uid));
 
-    context.listenProfileFailure(uid, ref);
+    // ❗️ Declarative error listener
+    ref.listenFailure(profileProvider(uid), context);
 
     ///
     return Scaffold(
@@ -56,20 +57,4 @@ class ProfilePage extends ConsumerWidget {
   }
 
   //
-}
-
-/// 🧩 [listenProfileFailure] — listens to failure in [profileNotifierProvider]
-/// ✅ Triggers contextual `showError` only once per failure
-// ─────------------------------------------
-extension ProfileFailureListenerX on BuildContext {
-  //
-  void listenProfileFailure(String uid, WidgetRef ref) {
-    ref.listenManual(profileProvider(uid), (_, _) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        consumeAndShowDialog(
-          ref.read(profileProvider(uid).notifier).consumeFailure(),
-        );
-      });
-    });
-  }
 }

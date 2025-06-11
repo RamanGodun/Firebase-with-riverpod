@@ -6,7 +6,7 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileHash() => r'749b6aa0f81e2729ec2d566b43f62935079fc7ea';
+String _$profileHash() => r'd0fd0d3a4e4d9a180a38cf8156fdc71ad7a14944';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,22 +35,30 @@ abstract class _$Profile extends BuildlessAutoDisposeAsyncNotifier<AppUser> {
   FutureOr<AppUser> build(String uid);
 }
 
-/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+/// 👤 [profileProvider] — async notifier that fetches user profile
+/// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+/// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
 ///
 /// Copied from [Profile].
 @ProviderFor(Profile)
 const profileProvider = ProfileFamily();
 
-/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+/// 👤 [profileProvider] — async notifier that fetches user profile
+/// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+/// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
 ///
 /// Copied from [Profile].
 class ProfileFamily extends Family<AsyncValue<AppUser>> {
-  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+  /// 👤 [profileProvider] — async notifier that fetches user profile
+  /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+  /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
   ///
   /// Copied from [Profile].
   const ProfileFamily();
 
-  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+  /// 👤 [profileProvider] — async notifier that fetches user profile
+  /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+  /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
   ///
   /// Copied from [Profile].
   ProfileProvider call(String uid) {
@@ -77,12 +85,16 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
   String? get name => r'profileProvider';
 }
 
-/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+/// 👤 [profileProvider] — async notifier that fetches user profile
+/// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+/// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
 ///
 /// Copied from [Profile].
 class ProfileProvider
     extends AutoDisposeAsyncNotifierProviderImpl<Profile, AppUser> {
-  /// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+  /// 👤 [profileProvider] — async notifier that fetches user profile
+  /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+  /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
   ///
   /// Copied from [Profile].
   ProfileProvider(String uid)

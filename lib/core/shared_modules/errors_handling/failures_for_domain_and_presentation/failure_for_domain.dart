@@ -111,11 +111,20 @@ final class UnknownFailure extends Failure {
        );
 }
 
-/// ❌ Thrown when a Firestore document is unexpectedly missing.
+/// ❌ Thrown when in Firestore document exists, but has invalid structure (e.g., null or wrong type)
 final class FirestoreDocMissingFailure extends FirebaseFailure {
   FirestoreDocMissingFailure()
     : super(
         message: 'Expected document is missing in Firestore.',
         translationKey: FailureKey.firebaseDocMissing,
+      );
+}
+
+/// ❌ Thrown when a Firestore user doc is missing.
+final class FirebaseUserMissingFailure extends FirebaseFailure {
+  FirebaseUserMissingFailure()
+    : super(
+        message: 'FirebaseAuth.currentUser is null. User not signed in.',
+        translationKey: FailureKey.firebaseGeneric,
       );
 }

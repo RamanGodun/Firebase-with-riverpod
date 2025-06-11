@@ -21,6 +21,8 @@ class AppUser extends Equatable {
   factory AppUser.fromDoc(DocumentSnapshot doc) {
     //
     final data = doc.data();
+
+    // ⛔ Document exists but has invalid structure (e.g., null or wrong type)
     if (data is! Map<String, dynamic>) {
       throw FirestoreDocMissingFailure();
     }

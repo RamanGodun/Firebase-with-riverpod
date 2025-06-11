@@ -1,31 +1,41 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/result_handlers_for_riverpod/for_result_notifier_x.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
-import '../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
-import '../../../core/shared_modules/errors_handling/utils/consumable.dart';
+import '../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../domain_and_data/profile_use_case_provider.dart';
 
 part 'profile_provider.g.dart';
 
-/// 🧩 [profileProvider] — state manager, that delegates logic to use case.
+/// 👤 [profileProvider] — async notifier that fetches user profile
+/// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
+/// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
 //----------------------------------------------------------------
 @riverpod
 class Profile extends _$Profile {
-  /// 💥 Holds the last failure for contextual UI dialog
-  Consumable<FailureUIModel>? _lastFailure;
-
-  /// 🧼 Called by `context.listenProfileFailure(...)`
-  FailureUIModel? consumeFailure() => _lastFailure?.consume();
-
-  /// 🧩 Fetches user data via [GetProfileUseCase]
-  /// ✅ Handles error via `.guardAndConsume(...)`
+  //
   @override
-  FutureOr<AppUser> build(String uid) async {
+  Future<AppUser> build(String uid) async {
     final useCase = ref.watch(getProfileUseCaseProvider);
-    return await useCase(
-      uid,
-    ).guardAndConsume(onFailure: (uiFailure) => _lastFailure = uiFailure);
+    final result = await useCase(uid);
+    return result.fold((f) => throw f, (user) => user);
   }
+
+  /// ♻️ Refetch user manually (e.g. pull-to-refresh)
+  Future<void> refresh() async {
+    final uid = this.uid;
+    final useCase = ref.read(getProfileUseCaseProvider);
+
+    state = await AsyncValue.guard(() async {
+      final result = await useCase(uid);
+      return result.fold((f) => throw f, (user) => user);
+    });
+  }
+
+  /// 🧼 Optional reset (usually after logout)
+  void reset() => ref.invalidateSelf();
+  /*
+? or 
+ void reset() => ref.invalidateSelf();
+ */
 
   //
 }

@@ -1,7 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/to_ui_failures_x.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
-import '../../../../core/shared_modules/errors_handling/utils/consumable.dart';
 import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../../domain/sign_up_use_case_provider.dart';
 
@@ -12,9 +9,7 @@ part 'signup_provider.g.dart';
 /// 🧼 Exposes `reset()` and `consumeFailure()` for UI feedback
 @Riverpod(keepAlive: false)
 class Signup extends _$Signup with SafeAsyncState<void> {
-  /// 💥 Holds last failure for contextual UI consumption
-  Consumable<FailureUIModel>? _lastFailure;
-
+  //
   /// 🧱 Initializes safe lifecycle mechanism
   @override
   FutureOr<void> build() {
@@ -37,18 +32,12 @@ class Signup extends _$Signup with SafeAsyncState<void> {
         email: email,
         password: password,
       );
-      return result.fold((f) {
-        _lastFailure = f.toUIModel().asConsumable();
-        throw f;
-      }, (_) => null);
+      return result.fold((f) => throw f, (_) => null);
     });
   }
 
   /// 🧼 Resets state after UI has handled error
   void reset() => state = const AsyncData(null);
-
-  /// 🧯 Reads and consumes the last failure (for `context.showError`)
-  FailureUIModel? consumeFailure() => _lastFailure?.consume();
 
   //
 }

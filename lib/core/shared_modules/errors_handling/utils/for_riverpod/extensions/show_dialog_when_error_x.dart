@@ -5,16 +5,16 @@ import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue] using [BuildContext]
-extension ContextAsyncValueX on BuildContext {
-  //
-  /// ❗️If [value] has a [Failure], shows it via [showError] overlay
-  void showDialogWhenErrorState<T>(AsyncValue<T> value) {
-    final failure = value.asFailure;
-    if (failure != null) {
-      showError(failure.toUIModel());
-    }
-  }
-}
+// extension ContextAsyncValueX on BuildContext {
+//   //
+//   /// ❗️If [value] has a [Failure], shows it via [showError] overlay
+//   void showDialogWhenErrorState<T>(AsyncValue<T> value) {
+//     final failure = value.asFailure;
+//     if (failure != null) {
+//       showError(failure.toUIModel());
+//     }
+//   }
+// }
 
 ///
 
