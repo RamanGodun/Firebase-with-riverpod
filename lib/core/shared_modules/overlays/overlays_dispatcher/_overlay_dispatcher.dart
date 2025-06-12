@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
 import 'overlay_entries/_overlay_entries_registry.dart';
-import '../overlay_logger.dart';
+import '../core/observers/overlay_logger.dart';
 import '../core/tap_through_overlay_barrier.dart';
 
 part 'policy_resolver.dart';

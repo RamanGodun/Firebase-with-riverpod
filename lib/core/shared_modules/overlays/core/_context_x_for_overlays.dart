@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
 import '../../localization/code_base_for_both_options/_app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
-import '../overlay_dispatcher/_overlay_dispatcher.dart';
-import '../overlay_dispatcher/overlay_dispatcher_provider.dart'
+import '../overlays_dispatcher/_overlay_dispatcher.dart';
+import '../overlays_dispatcher/overlay_dispatcher_provider.dart'
     show overlayDispatcherProvider;
-import '../presentation/overlay_presets/overlay_presets.dart';
+import '../overlays_presentation/overlay_presets/overlay_presets.dart';
 import 'enums_for_overlay_module.dart';
 
 /// 🎯 [ContextXForOverlays] — Unified extension for overlay DSL and dispatcher access

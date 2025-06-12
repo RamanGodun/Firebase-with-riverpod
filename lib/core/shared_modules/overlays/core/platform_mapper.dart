@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../animation/overlays_animation/animation_engines/__animation_engine.dart';
-import '../presentation/overlay_presets/overlay_preset_props.dart';
-import '../presentation/widgets/android/android_banner.dart';
-import '../presentation/widgets/android/android_dialog.dart';
-import '../presentation/widgets/android/android_snackbar.dart';
-import '../presentation/widgets/ios/ios_banner.dart';
-import '../presentation/widgets/ios/ios_dialog.dart';
-import '../presentation/widgets/ios/ios_snackbar.dart';
+import '../overlays_presentation/overlay_presets/overlay_preset_props.dart';
+import '../overlays_presentation/widgets/android/android_banner.dart';
+import '../overlays_presentation/widgets/android/android_dialog.dart';
+import '../overlays_presentation/widgets/android/android_snackbar.dart';
+import '../overlays_presentation/widgets/ios/ios_banner.dart';
+import '../overlays_presentation/widgets/ios/ios_dialog.dart';
+import '../overlays_presentation/widgets/ios/ios_snackbar.dart';
 
 /// 🧭📱 [PlatformMapper] — Resolves platform-specific overlay components
 /// based on platform and [ShowAs] intention (dialog/snackbar/banner).

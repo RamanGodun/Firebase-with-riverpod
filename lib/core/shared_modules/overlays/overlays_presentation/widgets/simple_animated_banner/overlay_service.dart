@@ -2,18 +2,17 @@ import 'dart:async';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../localization/code_base_for_both_options/text_widget.dart';
-import '../../theme/core/app_colors.dart';
+import '../../../../localization/code_base_for_both_options/text_widget.dart';
+import '../../../../theme/core/app_colors.dart';
 
 part 'overlay_widget.dart';
 
 /// 🌟 [OverlayNotificationService] — macOS-style overlay (snackbar replacement)
 /// 🧼 Shows a floating, styled, animated banner for temporary notifications
-//----------------------------------------------------------------//
-
-enum OverlayPosition { top, center, bottom }
 
 class OverlayNotificationService {
+  ///-----------------------------
+
   static OverlayEntry? _overlayEntry;
   static bool _isShowing = false;
 
@@ -25,6 +24,7 @@ class OverlayNotificationService {
     OverlayPosition position = OverlayPosition.center,
     Duration duration = const Duration(seconds: 2),
   }) {
+    //
     final overlay = Overlay.of(context, rootOverlay: true);
 
     showOverlayViaOverlay(
@@ -44,6 +44,7 @@ class OverlayNotificationService {
     OverlayPosition position = OverlayPosition.center,
     Duration duration = const Duration(seconds: 2),
   }) {
+    //
     if (_isShowing) return;
     _isShowing = true;
 
@@ -81,4 +82,10 @@ class OverlayNotificationService {
 
   static void info(BuildContext context, String message) =>
       showOverlay(context, message: message, icon: Icons.info);
+
+  //
 }
+
+///
+
+enum OverlayPosition { top, center, bottom }
