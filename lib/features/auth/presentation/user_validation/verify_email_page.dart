@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/utils/widget_ref_exetnsions/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/features/auth/presentation/user_validation/email_verification_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -28,12 +29,12 @@ class VerifyEmailPage extends HookConsumerWidget {
       return null;
     }, []);
 
-    /// 🔁 Listens to email verification status and handles redirect or error
+    /// 🪝 Error listener — declarative failure handling
+    ref.listenFailure(emailVerificationNotifierProvider, context);
+
+    /// 🪝 Success listener — redirect after success
     ref.listen(emailVerificationNotifierProvider, (prev, next) {
-      next.whenOrNull(
-        data: (_) => context.goTo(RoutesNames.home),
-        // error: (e, _) => context.showErrorDialog(handleException(e)),
-      );
+      if (next is AsyncData) context.goTo(RoutesNames.home);
     });
 
     return const Scaffold(body: _VerifyEmailBody());
