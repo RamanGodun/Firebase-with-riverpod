@@ -5,21 +5,20 @@ import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_mo
 import '../../localization/code_base_for_both_options/_app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../overlay_dispatcher/_overlay_dispatcher.dart';
-import '../overlay_dispatcher/dispatcher_provider.dart'
+import '../overlay_dispatcher/overlay_dispatcher_provider.dart'
     show overlayDispatcherProvider;
 import '../presentation/overlay_presets/overlay_presets.dart';
-import 'overlay_core_objects.dart';
+import 'enums_for_overlay_module.dart';
 
 /// 🎯 [ContextXForOverlays] — Unified extension for overlay DSL and dispatcher access
 /// ✅ Use `context.showSnackbar(...)` / `context.showBanner(...)` directly
-//-------------------------------------------------------------
+
 extension ContextXForOverlays on BuildContext {
-  //
+  //------------------------------------------
 
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);
 
-  //
   /// 🧠 Handles displaying [FailureUIModel] as banner/snackbar/dialog
   /// 📌 Uses [OverlayUIPresets] and [ShowAs] to configure appearance and behavior
   void showError(

@@ -5,9 +5,10 @@ part of '_overlay_entries_registry.dart';
 /// - Encapsulates priority, dismiss policy, and visual props
 /// - Built via [AnimationHost] and animated per platform
 /// - Called by Dispatcher during overlay insertion
-// ----------------------------------------------------------------------
 
 final class SnackbarOverlayEntry extends OverlayUIEntry {
+  // ---------------------------------------------------
+
   final Widget widget;
   final bool isError; // ❗ Marks as an error (affects strategy and priority)
   // 🔐 Dismiss policy (persistent or dismissible)
@@ -48,5 +49,6 @@ final class SnackbarOverlayEntry extends OverlayUIEntry {
     // 🎯 Make some actions after dismiss or
     // Track/log auto-dismissed overlay if needed
   }
+
   //
 }

@@ -26,7 +26,7 @@
     "error_dialog": "Сталася помилка",
     "firebase_title": "Помилка з'єднання з Firebase",
     "firebase_message": "Будь ласка, спробуйте пізніше!",
-     "errors_general_title": "Виникла помилка"
+    "errors_general_title": "Виникла помилка"
   },
  "failure": {
    "firebase": {

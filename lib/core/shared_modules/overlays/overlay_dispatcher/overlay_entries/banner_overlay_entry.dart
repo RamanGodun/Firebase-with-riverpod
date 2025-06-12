@@ -5,21 +5,22 @@ part of '_overlay_entries_registry.dart';
 /// - Defines conflict strategy, priority, and dismissibility
 /// - Renders animated [AppBanner] via [AnimationHost]
 /// - Called by Dispatcher during overlay insertion
-// --------------------------------------------------------------
 
 final class BannerOverlayEntry extends OverlayUIEntry {
+  // --------------------------------------------------
+
   final Widget widget;
   final bool isError; // ❗ Marks as an error (affects priority & category)
+  final OverlayPriority priority;
   // 🔐 Dismiss policy (persistent or dismissible)
   @override
   final OverlayDismissPolicy? dismissPolicy;
-  final OverlayPriority priority;
 
   BannerOverlayEntry({
     required this.widget,
     this.isError = false,
-    this.dismissPolicy = OverlayDismissPolicy.dismissible,
     required this.priority,
+    this.dismissPolicy = OverlayDismissPolicy.dismissible,
   });
 
   /// ⚙️ Defines how this entry behaves in conflict scenarios
@@ -49,5 +50,6 @@ final class BannerOverlayEntry extends OverlayUIEntry {
     // 🎯 Make some actions after dismiss or
     // Track/log auto-dismissed overlay if needed
   }
+
   //
 }
