@@ -21,6 +21,7 @@ class ReAuthenticationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final fieldTypes = FormTemplates.reAuthenticationFields;
     final formProvider = formStateNotifierProvider(fieldTypes);
     final formState = ref.watch(formProvider);
