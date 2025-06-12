@@ -6,8 +6,10 @@ import 'core/shared_modules/overlays/core/global_overlay_handler.dart';
 
 /// 🌳🧩 [AppRootShell] — Provides app-wide dependencies (theme, router, locale).
 /// ✅ Now simplified using factory constructor in [AppRootConfig].
-//------------------------------------------------------------
+
 class AppRootShell extends ConsumerWidget {
+  ///--------------------------------------
+
   const AppRootShell({super.key});
 
   @override
@@ -19,10 +21,14 @@ class AppRootShell extends ConsumerWidget {
   }
 }
 
+///
+
 /// 📱🧱 [_AppRootView] — Final MaterialApp.router widget
 ///   ✅ Configured from [AppRootConfig].
-//------------------------------------------------------
+
 class _AppRootView extends StatelessWidget {
+  ///--------------------------------------
+
   final AppRootConfig config;
   const _AppRootView({required this.config});
 
@@ -48,7 +54,7 @@ class _AppRootView extends StatelessWidget {
       // 🧩 Overlay handlings
       builder: (context, child) => GlobalOverlayHandler(child: child!),
 
-      ///
+      //
     );
   }
 }

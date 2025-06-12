@@ -8,6 +8,7 @@ import 'core/shared_modules/logging/for_riverpod/riverpod_observer.dart';
 
 /// 🏁 Entry point of the application.
 /// ✅ Performs synchronous bootstrapping and launches the app.
+
 Future<void> main() async {
   ///
   // 🔧🧩 Essential services (Firebase, .env, secure storage, etc.)

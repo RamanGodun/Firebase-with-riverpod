@@ -5,9 +5,11 @@ import '../shared_modules/theme/core/theming_enums.dart';
 
 /// 🎛️ [ThemeConfig] — Factory for constructing theming configuration.
 /// ✅ Resolves light/dark theme based on the selected [ThemeMode].
+
 @immutable
 final class ThemeConfig {
   const ThemeConfig._();
+  //--------------------
 
   static AppThemeConfig from(ThemeMode mode) {
     return AppThemeConfig(
@@ -18,10 +20,15 @@ final class ThemeConfig {
   }
 }
 
+///
+
 /// 🎨 [AppThemeConfig] — Container holding [ThemeData] for MaterialApp.
 /// ✅ Used by root-level widgets to apply consistent theming.
+
 @immutable
 final class AppThemeConfig {
+  ///------------------------
+
   final ThemeData theme;
   final ThemeData darkTheme;
   final ThemeMode themeMode;

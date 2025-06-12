@@ -8,8 +8,11 @@ import 'theme_config.dart';
 
 /// 🧩 [AppRootConfig] — Immutable object holding all global config required by [MaterialApp].
 /// ✅ Clean separation of logic & widget layer, with convenient factory for Riverpod integration.
+
 @immutable
 final class AppRootConfig {
+  ///----------------------
+
   final AppThemeConfig theme;
   final LocalizationConfig localization;
   final GoRouter router;
@@ -19,6 +22,8 @@ final class AppRootConfig {
     required this.localization,
     required this.router,
   });
+
+  ///
 
   /// 🏭 Factory method that builds [AppRootConfig] from Riverpod + Flutter context.
   factory AppRootConfig.from({
