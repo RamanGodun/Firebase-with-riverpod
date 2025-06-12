@@ -1,7 +1,5 @@
 part of 'verify_email_page.dart';
 
-
-
 /// ------------------------- Local stateless widgets ------------------------/
 
 /// ℹ️ [_VerifyEmailInfo] — shows instructions about checking inbox / spam
