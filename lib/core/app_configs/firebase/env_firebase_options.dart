@@ -19,43 +19,52 @@ final class EnvFirebaseOptions {
     return switch (defaultTargetPlatform) {
       TargetPlatform.android => _android,
       TargetPlatform.iOS => _ios,
-      TargetPlatform.macOS => throw UnsupportedError('❌ macOS not supported'),
+      TargetPlatform.macOS =>
+        throw UnsupportedError('❌ macOS is not supported'),
       TargetPlatform.windows =>
-        throw UnsupportedError('❌ Windows not supported'),
-      TargetPlatform.linux => throw UnsupportedError('❌ Linux not supported'),
+        throw UnsupportedError('❌ Windows is not supported'),
+      TargetPlatform.linux =>
+        throw UnsupportedError('❌ Linux is not supported'),
       _ when kIsWeb => _web,
       _ => throw UnsupportedError('❌ Unknown platform'),
     };
   }
 
-  static String _env(String key) => dotenv.env[key]!;
+  /// 🔐 Returns required .env value or throws
+  static String _env(String key) {
+    final value = dotenv.env[key];
+    if (value == null || value.isEmpty) {
+      throw ArgumentError('Missing `$key` in .env');
+    }
+    return value;
+  }
 
-  /// 🤖 Android config (read from .env)
+  /// 🤖 Android Firebase config
   static FirebaseOptions get _android => FirebaseOptions(
     apiKey: _env('FIREBASE_API_KEY'),
-    appId: dotenv.env['FIREBASE_APP_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '',
+    appId: _env('FIREBASE_APP_ID'),
+    projectId: _env('FIREBASE_PROJECT_ID'),
+    messagingSenderId: _env('FIREBASE_MESSAGING_SENDER_ID'),
+    storageBucket: _env('FIREBASE_STORAGE_BUCKET'),
   );
 
-  /// 🍏 iOS config (read from .env)
+  /// 🍏 iOS Firebase config
   static FirebaseOptions get _ios => FirebaseOptions(
     apiKey: _env('FIREBASE_API_KEY'),
-    appId: dotenv.env['FIREBASE_APP_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'],
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '',
+    appId: _env('FIREBASE_APP_ID'),
+    projectId: _env('FIREBASE_PROJECT_ID'),
+    messagingSenderId: _env('FIREBASE_MESSAGING_SENDER_ID'),
+    storageBucket: _env('FIREBASE_STORAGE_BUCKET'),
+    iosBundleId: _env('FIREBASE_IOS_BUNDLE_ID'),
   );
 
   /// 🌍 Web config (read from .env)
   static FirebaseOptions get _web => FirebaseOptions(
     apiKey: _env('FIREBASE_API_KEY'),
-    appId: dotenv.env['FIREBASE_APP_ID']!,
-    projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
-    messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
-    authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN'],
-    storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '',
+    appId: _env('FIREBASE_APP_ID'),
+    projectId: _env('FIREBASE_PROJECT_ID'),
+    messagingSenderId: _env('FIREBASE_MESSAGING_SENDER_ID'),
+    storageBucket: _env('FIREBASE_STORAGE_BUCKET'),
+    authDomain: _env('FIREBASE_AUTH_DOMAIN'),
   );
 }

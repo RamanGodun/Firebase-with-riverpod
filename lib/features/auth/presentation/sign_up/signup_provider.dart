@@ -1,12 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../../domain/sign_up_use_case_provider.dart';
-
 part 'signup_provider.g.dart';
 
 /// 🧩 [signupProvider] — async notifier for user registration
 /// 🧼 Uses [SafeAsyncState] for lifecycle safety
-/// 🧼 Exposes `reset()` and `consumeFailure()` for UI feedback
+/// 🧼 Compatible with new declarative error handling (listenFailure)
 @Riverpod(keepAlive: false)
 class Signup extends _$Signup with SafeAsyncState<void> {
   //
@@ -22,11 +21,9 @@ class Signup extends _$Signup with SafeAsyncState<void> {
     required String email,
     required String password,
   }) async {
-    state = const AsyncLoading();
+    final useCase = ref.read(signUpUseCaseProvider);
 
-    final useCase = ref.watch(signUpUseCaseProvider);
-
-    state = await AsyncValue.guard(() async {
+    await updateSafely(() async {
       final result = await useCase(
         name: name,
         email: email,
@@ -38,6 +35,4 @@ class Signup extends _$Signup with SafeAsyncState<void> {
 
   /// 🧼 Resets state after UI has handled error
   void reset() => state = const AsyncData(null);
-
-  //
 }

@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
-import '__for_each_project/firebase/env.dart';
+import 'core/app_configs/firebase/env.dart';
 import 'core/di_container/di_container.dart';
 import 'core/shared_modules/localization/code_base_for_both_options/_app_localizer.dart';
 import 'core/app_configs/constants/platform_requirements.dart';
@@ -28,9 +28,10 @@ final class StartUpHandler {
   static Future<void> bootstrap() async {
     //
     _initializeCoreBindings();
+
+    await _loadEnvFile();
     await _initLocalization();
     await _validatePlatformSupport();
-    await _loadEnvFile();
     await _initLocalStorage();
     await _initializeFirebase();
     _initUrlStrategy();

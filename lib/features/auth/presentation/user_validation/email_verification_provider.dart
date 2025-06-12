@@ -1,52 +1,50 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../data_providers/email_verification_repo_provider.dart';
-import '../../domain/auth_use_cases.dart';
+import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../domain/user_validation_use_case_provider.dart';
 
 part 'email_verification_provider.g.dart';
 
-/// 🧩 [emailVerificationNotifierProvider] — async notifier that handles email verification
-/// 🧼 Sends verification email and polls every 5s to check if user verified email
+/// 🧩 [emailVerificationNotifierProvider] — async notifier that handles email verification polling
+/// 🧼 Sends verification email and checks if email is verified via Firebase
 //----------------------------------------------------------------//
-
 @riverpod
-class EmailVerificationNotifier extends _$EmailVerificationNotifier {
+class EmailVerificationNotifier extends _$EmailVerificationNotifier
+    with SafeAsyncState<void> {
   Timer? _timer;
   late final EmailVerificationUseCase _useCase;
-  bool _isMounted = true;
 
-  /// 🧱 Initializes verification flow
+  /// 🧱 Initializes verification logic
   @override
-  Future<void> build() async {
-    _useCase = EmailVerificationUseCase(
-      ref.read(emailVerificationRepoProvider),
-    );
+  FutureOr<void> build() {
+    _useCase = ref.read(emailVerificationUseCaseProvider);
+    initSafe();
 
-    await _useCase.sendVerificationEmail();
+    unawaited(_useCase.sendVerificationEmail());
     _startPolling();
 
-    ref.onDispose(() {
-      _timer?.cancel();
-      _isMounted = false;
+    ref.onDispose(() => _timer?.cancel());
+  }
+
+  /// 🔁 Periodic email check every 5 seconds
+  void _startPolling() {
+    _timer = Timer.periodic(
+      const Duration(seconds: 5),
+      (_) => _checkEmailVerified(),
+    );
+  }
+
+  /// ✅ Checks if email is verified and cancels timer
+  Future<void> _checkEmailVerified() async {
+    final result = await _useCase.checkIfEmailVerified();
+    result.fold((_) => null, (isVerified) {
+      if (isVerified) {
+        _timer?.cancel();
+
+        state = const AsyncData(null);
+      }
     });
   }
 
-  /// 🔁 Periodic check every 5s
-  void _startPolling() {
-    _timer = Timer.periodic(const Duration(seconds: 5), (_) => checkVerified());
-  }
-
-  /// ✅ Public method for manual verification check
-  Future<void> checkVerified() async {
-    final isVerified = await _useCase.checkIfEmailVerified();
-    if (!_isMounted) return;
-
-    if (isVerified) {
-      _timer?.cancel();
-      state = const AsyncData(null);
-    }
-  }
-
-  ///
+  //
 }
