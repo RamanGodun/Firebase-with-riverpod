@@ -14,6 +14,7 @@ enum FailureKeys {
   firebaseInvalidCredential, // Wrong login/password
   firebaseUserNotFound, // Email not registered
   firebaseWrongPassword, // Valid email, wrong pass
+  firebaseNoCurrentUser, // User == null
   missingPlugin; // Platform plugin not available
 
   // ...
@@ -32,6 +33,7 @@ enum FailureKeys {
     firebaseInvalidCredential => 'failure.firebase.invalid_credential',
     firebaseUserNotFound => 'failure.firebase.user_not_found',
     firebaseWrongPassword => 'failure.firebase.wrong_password',
+    firebaseNoCurrentUser => 'failure.firebase.no_current_user',
     missingPlugin => 'failure.plugin.missing',
   };
 

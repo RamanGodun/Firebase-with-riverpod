@@ -26,18 +26,17 @@ Failure _handleFirebase(FirebaseException error) => switch (error.code) {
   ),
 };
 
+///
+
 /// 🧊 [_handleFirebaseAuth] — edge-case handler for [FirebaseAuthException].
 /// ✅ Used when user is disabled or missing in auth context.
 
 Failure _handleFirebaseAuth(FirebaseAuthException error) => switch (error
     .code) {
-  //
+  'no-current-user' => FirebaseUserMissingFailure(),
   'user-disabled' => FirebaseUserMissingFailure(),
-
   _ => FirebaseFailure(
     message: error.message ?? 'Firebase Auth error.',
-    translationKey: FailureKeys.firebaseGeneric,
+    translationKey: FailureKeys.firebaseNoCurrentUser,
   ),
-
-  //
 };
