@@ -15,17 +15,17 @@ class _VerifyEmailInfo extends StatelessWidget {
           TextType.titleMedium,
           fontWeight: FontWeight.w700,
         ),
-        const SizedBox(height: AppSpacing.m),
+        const SizedBox(height: AppSpacing.xxxm),
         const TextWidget(LocaleKeys.verify_email_sent, TextType.bodyMedium),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpacing.xxs),
         TextWidget(
           fbAuth.currentUser?.email ?? LocaleKeys.verify_email_unknown,
           TextType.titleSmall,
           fontWeight: FontWeight.bold,
         ),
-        const SizedBox(height: AppSpacing.m),
+        const SizedBox(height: AppSpacing.xxxm),
         const TextWidget(LocaleKeys.verify_email_not_found, TextType.bodySmall),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpacing.xxs),
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
@@ -47,13 +47,13 @@ class _VerifyEmailInfo extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: AppSpacing.s),
+        const SizedBox(height: AppSpacing.xxxs),
         const TextWidget(
           LocaleKeys.verify_email_or,
           TextType.error,
           color: AppColors.forErrors,
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpacing.xxs),
         const TextWidget(
           LocaleKeys.verify_email_ensure_correct,
           TextType.bodySmall,

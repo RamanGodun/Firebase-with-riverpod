@@ -75,7 +75,7 @@ class ResetPasswordPage extends ConsumerWidget {
                   isLoading: resetPasswordState.isLoading,
                   isEnabled: !resetPasswordState.isLoading,
                 ),
-                const SizedBox(height: AppSpacing.s),
+                const SizedBox(height: AppSpacing.xxxs),
                 const _ResetPasswordFooter(),
               ],
             ).withPaddingHorizontal(AppSpacing.l),

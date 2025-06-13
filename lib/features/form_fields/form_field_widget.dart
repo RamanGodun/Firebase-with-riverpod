@@ -49,7 +49,7 @@ class AppFormField extends HookConsumerWidget {
 
     /// 🧱 TextFormField UI
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.s),
+      padding: const EdgeInsets.only(bottom: AppSpacing.xxxs),
       child: TextFormField(
         controller: controller,
         obscureText: isPasswordField && obscure.value,

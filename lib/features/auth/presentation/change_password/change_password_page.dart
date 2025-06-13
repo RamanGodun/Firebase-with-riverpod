@@ -42,7 +42,7 @@ class ChangePasswordPage extends ConsumerWidget {
               shrinkWrap: true,
               children: [
                 const _ChangePasswordInfo(),
-                const SizedBox(height: AppSpacing.m),
+                const SizedBox(height: AppSpacing.xxxm),
                 for (final type in fieldTypes)
                   AppFormField(
                     type: type,

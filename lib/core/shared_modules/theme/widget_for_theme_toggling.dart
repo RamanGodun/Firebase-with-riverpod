@@ -4,9 +4,9 @@ import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'constants/_app_constants.dart';
-import '../../localization/code_base_for_both_options/_app_localizer.dart';
-import '../theme_provider/theme_provider.dart';
+import 'core/constants/_app_constants.dart';
+import '../localization/code_base_for_both_options/_app_localizer.dart';
+import 'theme_provider/theme_provider.dart';
 
 /// 🌗 [ThemeToggleIcon] — toggles light/dark mode and shows overlay notification
 

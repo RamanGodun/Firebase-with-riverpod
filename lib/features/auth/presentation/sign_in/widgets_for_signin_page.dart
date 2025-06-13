@@ -14,7 +14,7 @@ class _SigninHeader extends StatelessWidget {
         SizedBox(height: AppSpacing.xxl),
         TextWidget(LocaleKeys.sign_in_header, TextType.headlineSmall),
         TextWidget(LocaleKeys.sign_in_sub_header, TextType.bodyMedium),
-        SizedBox(height: AppSpacing.m),
+        SizedBox(height: AppSpacing.xxxm),
       ],
     );
   }
@@ -47,7 +47,7 @@ class _SigninFooter extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: AppSpacing.xs),
+        const SizedBox(height: AppSpacing.xxs),
         CustomButton(
           type: ButtonType.text,
           onPressed: () => context.goTo(RoutesNames.resetPassword),

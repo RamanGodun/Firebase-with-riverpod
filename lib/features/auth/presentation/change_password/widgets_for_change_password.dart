@@ -14,7 +14,7 @@ class _ChangePasswordInfo extends StatelessWidget {
           LocaleKeys.change_password_title,
           TextType.headlineMedium,
         ),
-        const SizedBox(height: AppSpacing.s),
+        const SizedBox(height: AppSpacing.xxxs),
         const TextWidget(
           LocaleKeys.change_password_warning,
           TextType.bodyMedium,
@@ -37,7 +37,7 @@ class _ChangePasswordInfo extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: AppSpacing.s),
+        const SizedBox(height: AppSpacing.xxxs),
       ],
     );
   }

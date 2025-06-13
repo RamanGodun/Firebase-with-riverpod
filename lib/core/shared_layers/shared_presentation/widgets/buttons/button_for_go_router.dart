@@ -2,7 +2,8 @@ import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/cont
 import 'package:firebase_with_riverpod/core/shared_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';
-import '../../../../shared_modules/theme/core/constants/_app_constants.dart' show AppSpacing;
+import '../../../../shared_modules/theme/core/constants/_app_constants.dart'
+    show AppSpacing;
 
 /// 🌍 [CustomButtonForGoRouter]
 /// Styled full-width Cupertino button that triggers navigation or a custom action.
@@ -29,12 +30,12 @@ class CustomButtonForGoRouter extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.xl,
-        vertical: AppSpacing.s,
+        vertical: AppSpacing.xxxs,
       ),
       child: SizedBox(
         width: double.infinity,
         child: CupertinoButton(
-          padding: const EdgeInsets.symmetric(vertical: AppSpacing.m),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xxxm),
           borderRadius: BorderRadius.circular(14),
           color: scheme.primary.withOpacity(0.85),
           disabledColor: scheme.primary.withOpacity(0.3),

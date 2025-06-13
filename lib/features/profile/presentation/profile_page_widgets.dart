@@ -25,20 +25,20 @@ class _UserProfile extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.xl),
           const TextWidget(LocaleKeys.profile_title, TextType.titleMedium),
-          const SizedBox(height: AppSpacing.s),
+          const SizedBox(height: AppSpacing.xxxs),
           KeyValueTextWidget(
             labelKey: LocaleKeys.profile_email,
             value: user.email,
             labelTextType: TextType.bodyMedium,
           ),
-          const SizedBox(height: AppSpacing.s),
+          const SizedBox(height: AppSpacing.xxxs),
           KeyValueTextWidget(
             labelKey: LocaleKeys.profile_id,
             value: user.id,
             labelTextType: TextType.bodyMedium,
           ),
 
-          const SizedBox(height: AppSpacing.xxxl2),
+          const SizedBox(height: AppSpacing.xxxxl),
           CustomButton(
             type: ButtonType.filled,
             onPressed: () => context.goTo(RoutesNames.changePassword),

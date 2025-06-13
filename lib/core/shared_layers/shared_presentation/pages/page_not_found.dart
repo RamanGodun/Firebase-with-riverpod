@@ -19,7 +19,7 @@ class PageNotFound extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          spacing: AppSpacing.m,
+          spacing: AppSpacing.xxxm,
           children: [
             const TextWidget(
               LocaleKeys.errors_page_not_found_title,

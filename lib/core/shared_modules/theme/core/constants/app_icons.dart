@@ -1,29 +1,27 @@
 part of '_app_constants.dart';
 
-final class AppIcons {
+abstract final class AppIcons {
   const AppIcons._();
+  // ──────────────
 
-  /// ────────────────────────────────────────────────────────────────────
-  /// * 🛠️ ICONS
-  // ────────────────────────────────────────────────────────────────────
   // 🌤 Theme & UI
-  static const IconData sunIcon = Icons.sunny;
+  static const IconData sun = Icons.sunny;
   static const IconData lightMode = Icons.light_mode;
   static const IconData darkMode = Icons.dark_mode;
-  static const IconData syncIcon = Icons.sync;
-  static const IconData changeCircleIcon = Icons.change_circle;
+  static const IconData sync = Icons.sync;
+  static const IconData changeCircle = Icons.change_circle;
 
   // 📤 UI Actions
-  static const IconData removeIcon = Icons.remove;
-  static const IconData deleteIcon = Icons.delete_forever;
+  static const IconData remove = Icons.remove;
+  static const IconData delete = Icons.delete_forever;
 
   // 👤 Profile / Auth
-  static const IconData profileIcon = Icons.account_circle;
-  static const IconData logoutIcon = Icons.exit_to_app;
-  static const IconData emailIcon = Icons.email;
-  static const IconData nameIcon = Icons.account_box;
-  static const IconData passwordIcon = Icons.lock;
-  static const IconData confirmPasswordIcon = Icons.lock_outline;
+  static const IconData profile = Icons.account_circle;
+  static const IconData logout = Icons.exit_to_app;
+  static const IconData email = Icons.email;
+  static const IconData name = Icons.account_box;
+  static const IconData password = Icons.lock;
+  static const IconData confirmPassword = Icons.lock_outline;
 
   // 🌐 Language toggle icons
   static const IconData languageEn = Icons.language;
@@ -31,10 +29,11 @@ final class AppIcons {
   static const IconData languagePl = Icons.language;
   static const IconData language = Icons.language;
 
-  ///
+  //
 }
 
 ///
+
 extension ThemeIconX on IconData {
   IconData get toggled =>
       this == AppIcons.darkMode ? AppIcons.lightMode : AppIcons.darkMode;

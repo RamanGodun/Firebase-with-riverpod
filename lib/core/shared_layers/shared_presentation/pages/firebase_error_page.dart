@@ -17,7 +17,7 @@ class FirebaseErrorPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          spacing: AppSpacing.m,
+          spacing: AppSpacing.xxxm,
           children: [
             const TextWidget(LocaleKeys.errors_firebase_title, TextType.error),
             const TextWidget(

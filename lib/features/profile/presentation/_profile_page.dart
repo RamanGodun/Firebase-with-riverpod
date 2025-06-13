@@ -15,7 +15,7 @@ import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
-import '../../../core/shared_modules/theme/core/widget_for_theme_toggling.dart';
+import '../../../core/shared_modules/theme/widget_for_theme_toggling.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
 import 'profile_provider.dart';
 

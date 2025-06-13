@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.person_2),
             onPressed: () => context.pushToNamed(RoutesNames.profilePage),
-          ).withPaddingRight(AppSpacing.m),
+          ).withPaddingRight(AppSpacing.xxxm),
         ],
       ),
 

@@ -80,7 +80,7 @@ class SignInPage extends ConsumerWidget {
                       const SizedBox(height: AppSpacing.xxl),
                       const _SigninFooter(),
                     ],
-                  ).withPaddingHorizontal(AppSpacing.m),
+                  ).withPaddingHorizontal(AppSpacing.xxxm),
                 ),
               );
             },

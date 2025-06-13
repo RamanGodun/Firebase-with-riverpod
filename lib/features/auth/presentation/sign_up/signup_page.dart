@@ -77,7 +77,7 @@ class SignupPage extends ConsumerWidget {
                 const SizedBox(height: AppSpacing.xl),
                 const _SignupFooter(),
               ],
-            ).withPaddingHorizontal(AppSpacing.m),
+            ).withPaddingHorizontal(AppSpacing.xxxm),
           ),
         ),
       ),
