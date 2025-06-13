@@ -1,5 +1,5 @@
 import 'dart:collection';
-import 'package:firebase_with_riverpod/core/shared_modules/animation/overlays_animation/animation_wrapper/animation_x_for_widget.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/animation/overlays_animation/animation_wrapper/overlay_animation_x_for_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../general_utils/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
