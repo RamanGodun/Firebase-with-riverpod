@@ -8,23 +8,27 @@ import 'sign_up_repo_contract.dart';
 part 'sign_up_use_case_provider.g.dart';
 
 /// 🧩 Provides [SignUpUseCase] via injected repo
+
 @riverpod
 SignUpUseCase signUpUseCase(Ref ref) {
   final repo = ref.watch(signUpRepoProvider);
   return SignUpUseCase(repo);
 }
 
-///
+////
+
+////
 
 /// 📦 [SignUpUseCase] — encapsulates user registration
 /// 🧼 Creates Firebase user and stores user profile via [ISignUpRepo]
-//------------------------------------------------------------------
+
 final class SignUpUseCase {
-  //
+  //----------------------
+
   final ISignUpRepo repo;
   const SignUpUseCase(this.repo);
 
-  // 🔐 Register a new user and retutns result
+  // 🔐 Register a new user and returns result
   ResultFuture<void> call({
     required String name,
     required String email,

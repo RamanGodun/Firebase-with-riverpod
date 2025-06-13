@@ -4,17 +4,13 @@ part of '_exceptions_to_failures_mapper.dart';
 /// ✅ Handles all major Firebase error codes with localization support.
 
 Failure _handleFirebase(FirebaseException error) => switch (error.code) {
+  'email-already-in-use' => FirebaseFailure(
+    message: error.message ?? 'Email already in use.',
+    translationKey: FailureKeys.firebaseEmailInUse,
+  ),
   'invalid-credential' => FirebaseFailure(
     message: error.message ?? 'Invalid credentials.',
     translationKey: FailureKeys.firebaseInvalidCredential,
-  ),
-  'user-not-found' => FirebaseFailure(
-    message: error.message ?? 'No user found with this email.',
-    translationKey: FailureKeys.firebaseUserNotFound,
-  ),
-  'wrong-password' => FirebaseFailure(
-    message: error.message ?? 'Incorrect password.',
-    translationKey: FailureKeys.firebaseWrongPassword,
   ),
   'invalid-email' => FirebaseFailure(
     message: error.message ?? 'Email format is invalid.',
@@ -24,9 +20,33 @@ Failure _handleFirebase(FirebaseException error) => switch (error.code) {
     message: error.message ?? 'Email is missing.',
     translationKey: FailureKeys.firebaseMissingEmail,
   ),
+  'operation-not-allowed' => FirebaseFailure(
+    message: error.message ?? 'Operation not allowed.',
+    translationKey: FailureKeys.firebaseOperationNotAllowed,
+  ),
+  'requires-recent-login' => FirebaseFailure(
+    message: error.message ?? 'Please re-authenticate.',
+    translationKey: FailureKeys.firebaseRequiresRecentLogin,
+  ),
   'too-many-requests' => FirebaseFailure(
     message: error.message ?? 'Too many attempts. Please try again later.',
     translationKey: FailureKeys.firebaseTooManyRequests,
+  ),
+  'user-disabled' => FirebaseFailure(
+    message: error.message ?? 'Account is disabled.',
+    translationKey: FailureKeys.firebaseUserDisabled,
+  ),
+  'user-not-found' => FirebaseFailure(
+    message: error.message ?? 'No user found with this email.',
+    translationKey: FailureKeys.firebaseUserNotFound,
+  ),
+  'weak-password' => FirebaseFailure(
+    message: error.message ?? 'Password is too weak.',
+    translationKey: FailureKeys.firebaseWeakPassword,
+  ),
+  'wrong-password' => FirebaseFailure(
+    message: error.message ?? 'Incorrect password.',
+    translationKey: FailureKeys.firebaseWrongPassword,
   ),
   _ => FirebaseFailure(
     message: error.message ?? 'Firebase error occurred.',

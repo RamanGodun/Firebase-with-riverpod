@@ -7,9 +7,10 @@ import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custo
 
 /// 🔘 [SignOutButton] — triggers logout via [signOutProvider]
 /// 🧼 Declarative error handling with overlay via `.listen()`
-//----------------------------------------------------------
+
 class SignOutButton extends ConsumerWidget {
   const SignOutButton({super.key});
+  //------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,11 +29,16 @@ class SignOutButton extends ConsumerWidget {
   }
 }
 
+////
+
+////
+
 /// ❌ [VerifyEmailCancelButton] — signs out from verification screen
 /// 🧼 Listens for errors via [signOutProvider]
-//-------------------------------------------------
+
 class VerifyEmailCancelButton extends ConsumerWidget {
   const VerifyEmailCancelButton({super.key});
+  //----------------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,11 +55,16 @@ class VerifyEmailCancelButton extends ConsumerWidget {
   }
 }
 
+////
+
+////
+
 /// 🔓 [SignOutIconButton] — used in AppBar to logout
 /// 🧼 Shows errors using overlay on failure
-//-------------------------------------------
+
 class SignOutIconButton extends ConsumerWidget {
   const SignOutIconButton({super.key});
+  //----------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

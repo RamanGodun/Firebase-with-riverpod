@@ -9,6 +9,7 @@ part 'sign_in_use_case_provider.g.dart';
 
 /// 🧩 [signInUseCaseProvider] — provides instance of [SignInUseCase]
 /// 🧼 Depends on [signInRepoProvider] to inject repository
+
 @Riverpod(keepAlive: false)
 SignInUseCase signInUseCase(Ref ref) {
   final repo = ref.watch(signInRepoProvider);
@@ -17,11 +18,14 @@ SignInUseCase signInUseCase(Ref ref) {
 
 ///
 
+///
+
 /// 📦 [SignInUseCase] — encapsulates sign-in process
 /// 🧼 Handles user authentication using [ISignInRepo]
-//------------------------------------------------------------
+
 final class SignInUseCase {
-  //
+  //----------------------
+
   final ISignInRepo authRepo;
   const SignInUseCase(this.authRepo);
 

@@ -19,18 +19,20 @@ import '../../../../core/shared_layers/shared_presentation/extensions/context_ex
 part 'widgets_for_signin_page.dart';
 
 /// 🔐 [SignInPage] — screen that allows user to sign in.
+
 class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
+  //--------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-
     final fieldTypes = FormTemplates.signInFields;
     final formProvider = formStateNotifierProvider(fieldTypes);
     final formState = ref.watch(formProvider);
     final formNotifier = ref.read(formProvider.notifier);
     final isFormValid = ref.watch(formValidProvider(fieldTypes));
+
     final signInState = ref.watch(signInProvider);
 
     // 🔁 Declarative side-effect for error displaying

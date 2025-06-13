@@ -6,9 +6,11 @@ part 'signup_provider.g.dart';
 /// 🧩 [signupProvider] — async notifier for user registration
 /// 🧼 Uses [SafeAsyncState] for lifecycle safety
 /// 🧼 Compatible with new declarative error handling (listenFailure)
+
 @Riverpod(keepAlive: false)
 class Signup extends _$Signup with SafeAsyncState<void> {
-  //
+  //----------------------------------------------------
+
   /// 🧱 Initializes safe lifecycle mechanism
   @override
   FutureOr<void> build() {

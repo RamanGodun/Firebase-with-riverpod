@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
+import '../../../../core/shared_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../domain/sign_out_repo_contract.dart';
 
 part 'sign_out_repo_provider.g.dart';
@@ -10,12 +11,25 @@ part 'sign_out_repo_provider.g.dart';
 @riverpod
 ISignOutRepo signOutRepo(Ref ref) => SignOutRepoImpl();
 
-///-----------------------------------------------------------------
+////
+
+////
+
 /// 🧩 [SignOutRepoImpl] — concrete implementation of [ISignOutRepo]
-/// 🧼 Wraps [FirebaseAuth.signOut]
+/// 🧼 Wraps [FirebaseAuth.signOut] with error logging
+
 final class SignOutRepoImpl implements ISignOutRepo {
+  ///-----------------------------------------------
+
   @override
   Future<void> signOut() async {
-    await fbAuth.signOut();
+    try {
+      await fbAuth.signOut();
+    } catch (e, st) {
+      ErrorsLogger.log(e, st);
+      rethrow;
+    }
   }
+
+  //
 }

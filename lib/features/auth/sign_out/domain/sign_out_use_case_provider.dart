@@ -13,12 +13,16 @@ SignOutUseCase signOutUseCase(Ref ref) {
   return SignOutUseCase(repo);
 }
 
-///
+////
+
+////
 
 /// 📦 [SignOutUseCase] — encapsulates sign-out logic
 /// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
-//---------------------------------------------------
+
 final class SignOutUseCase {
+  //-----------------------
+
   final ISignOutRepo repo;
   const SignOutUseCase(this.repo);
 
@@ -31,4 +35,6 @@ final class SignOutUseCase {
       return left(mapToFailure(e, st));
     }
   }
+
+  //
 }
