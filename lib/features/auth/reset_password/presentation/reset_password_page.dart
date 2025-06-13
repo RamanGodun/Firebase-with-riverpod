@@ -21,9 +21,10 @@ part 'widgets_for_reset_password_page.dart';
 /// 🔐 [ResetPasswordPage] — screen that allows user to request password reset
 /// 📩 Sends reset link to user's email using [ResetPasswordProvider]
 /// 🧼 Declarative Riverpod + FormState + centralized error handling
-//----------------------------------------------------------------
+
 class ResetPasswordPage extends ConsumerWidget {
   const ResetPasswordPage({super.key});
+  //----------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

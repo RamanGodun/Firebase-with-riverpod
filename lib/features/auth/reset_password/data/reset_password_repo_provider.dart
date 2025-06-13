@@ -7,15 +7,24 @@ part 'reset_password_repo_provider.g.dart';
 
 /// 🧩 [resetPasswordRepoProvider] — provides instance of [ResetPasswordRepoImpl]
 /// 🧼 Dependency injection for password reset functionality
+
 @riverpod
 IResetPasswordRepo resetPasswordRepo(Ref ref) => ResetPasswordRepoImpl();
 
-///----------------------------------------------------------------------------
+///
+
+///
+
 /// 🧩 [ResetPasswordRepoImpl] — concrete implementation of [IResetPasswordRepo]
 /// 🧼 Uses FirebaseAuth to send reset email
+
 final class ResetPasswordRepoImpl implements IResetPasswordRepo {
+  ///-----------------------------------------------------------
+
   @override
   Future<void> sendResetLink(String email) async {
     await fbAuth.sendPasswordResetEmail(email: email);
   }
+
+  //
 }

@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
+import '../../utils/auth_user_utils.dart';
 import '../domain/change_password_repo_contract.dart';
 
 part 'change_password_repo_provider.g.dart';
@@ -24,9 +23,7 @@ final class ChangePasswordRepoImpl implements IChangePasswordRepo {
   @override
   Future<void> changePassword(String newPassword) async {
     //
-    final user = fbAuth.currentUser;
-    if (user == null) throw FirebaseUserMissingFailure();
-
+    final user = AuthUserUtils.currentUserOrThrow;
     await user.updatePassword(newPassword);
   }
 

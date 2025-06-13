@@ -7,10 +7,11 @@ part 'reset_password_provider.g.dart';
 /// 🧩 [resetPasswordProvider] — async notifier that handles password reset
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
 /// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
-//----------------------------------------------------------------
+
 @riverpod
 class ResetPassword extends _$ResetPassword with SafeAsyncState<void> {
-  //
+  //----------------------------------------------------------------
+
   /// 🧱 Initializes safe lifecycle tracking
   @override
   FutureOr<void> build() {
