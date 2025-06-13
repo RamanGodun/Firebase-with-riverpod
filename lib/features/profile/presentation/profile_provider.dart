@@ -8,10 +8,11 @@ part 'profile_provider.g.dart';
 /// 👤 [profileProvider] — async notifier that fetches user profile
 /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
 /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
-//----------------------------------------------------------------
+
 @riverpod
 class Profile extends _$Profile {
-  //
+  //----------------------------
+
   @override
   Future<AppUser> build(String uid) async {
     final useCase = ref.watch(getProfileUseCaseProvider);

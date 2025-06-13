@@ -23,8 +23,10 @@ part 'profile_page_widgets.dart';
 
 /// 👤 [ProfilePage] — displays user info, handles logout and refresh actions
 /// 🧼 Uses [profileProvider] to fetch data and [authRepositoryProvider] to sign out
+
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
+  //---------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -1,14 +1,16 @@
-part of '_profile_page.dart';
+part of 'profile__page.dart';
 
 /// 📦 [_UserProfile] — displays user data and password change button
 /// 🧼 Rendered after successful response from [profileProvider]
+
 class _UserProfile extends StatelessWidget {
   final AppUser user;
-
   const _UserProfile(this.user);
+  //--------------------------
 
   @override
   Widget build(BuildContext context) {
+    //
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

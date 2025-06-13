@@ -4,14 +4,15 @@ import '../../../core/shared_modules/errors_handling/either/either.dart';
 import '../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../../../core/general_utils/typedef.dart';
-import '../domain_and_data/profile_repo.dart';
+import '../domain_and_data/profile_repo_contract.dart';
 import 'remote_data_source.dart';
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
-// ─────────────────────────────────────────────────────────────
+
 final class ProfileRepoImpl implements IProfileRepo {
   final IProfileRemoteDataSource _remote;
   ProfileRepoImpl(this._remote);
+  // ─────────────────────────
 
   AppUser? _cachedUser;
   DateTime? _lastFetched;

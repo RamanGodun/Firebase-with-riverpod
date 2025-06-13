@@ -6,10 +6,14 @@ abstract interface class IProfileRemoteDataSource {
 }
 
 /// Concrete Firestore access.
-// ─────────────────────────────────────────────────────────────
+
 final class ProfileRemoteDataSourceImpl implements IProfileRemoteDataSource {
+  // ─────────────────────────────────────────────────────────────----------
+
   @override
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchUserDoc(String uid) {
     return usersCollection.doc(uid).get();
   }
+
+  //
 }
