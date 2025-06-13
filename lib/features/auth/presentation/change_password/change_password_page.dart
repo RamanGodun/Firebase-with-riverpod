@@ -10,7 +10,7 @@ import '../../../form_fields/form_fields_model.dart';
 import '../../../form_fields/form_state_provider.dart';
 import '../../../form_fields/presets_of_forms.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
-import '../../../../core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../../../core/shared_modules/theme/core/constants/_app_constants.dart';
 import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import 'change_password_provider.dart';
 

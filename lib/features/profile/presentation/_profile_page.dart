@@ -10,12 +10,12 @@ import '../../../core/shared_modules/localization/code_base_for_both_options/key
 import '../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';
 import '../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/shared_modules/localization/language_toggle_widget/language_toggle_button.dart';
-import '../../../core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import '../../../core/shared_modules/theme/core/constants/_app_constants.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
-import '../../../core/shared_modules/theme/provider_and_toggle_widget/theme_toggle_widget.dart';
+import '../../../core/shared_modules/theme/core/widget_for_theme_toggling.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
 import 'profile_provider.dart';
 

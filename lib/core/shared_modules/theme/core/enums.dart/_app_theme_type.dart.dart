@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
-import '../text_theme/_text_styles.dart';
+import '../app_colors.dart';
+import '../../text_theme/_text_styles.dart';
+
+part 'font_family_type.dart';
+part 'app_theme_mode.dart';
 
 /// 🎨 [AppThemeType] — Enhanced enum that defines full theme variants
 /// ✅ Used to generate [ThemeData] dynamically
-//----------------------------------------------------------------
 
 enum AppThemeType {
+  //---------------
+
   ///
   light(
     brightness: Brightness.light,
@@ -23,7 +27,7 @@ enum AppThemeType {
       onSecondary: AppColors.black,
       onBackground: AppColors.black,
       onSurface: AppColors.black,
-      error: AppColors.errorColor,
+      error: AppColors.forErrors,
     ),
   ),
 
@@ -32,7 +36,7 @@ enum AppThemeType {
     brightness: Brightness.dark,
     background: AppColors.darkBackground,
     primaryColor: AppColors.darkPrimary,
-    cardColor: AppColors.darkOverlay,
+    cardColor: AppColors.darkGlassBackground,
     contrastColor: AppColors.white,
     colorScheme: ColorScheme.dark(
       primary: AppColors.darkPrimary,
@@ -43,7 +47,7 @@ enum AppThemeType {
       onSecondary: AppColors.white,
       onBackground: AppColors.white,
       onSurface: AppColors.white,
-      error: AppColors.errorColor,
+      error: AppColors.forErrors,
     ),
   ),
 
@@ -63,7 +67,7 @@ enum AppThemeType {
       onSecondary: AppColors.white,
       onBackground: AppColors.white,
       onSurface: AppColors.white,
-      error: AppColors.errorColor,
+      error: AppColors.forErrors,
     ),
   ),
 
@@ -83,13 +87,14 @@ enum AppThemeType {
       onSecondary: AppColors.white,
       onBackground: AppColors.white,
       onSurface: AppColors.white,
-      error: AppColors.errorColor,
+      error: AppColors.forErrors,
     ),
 
-    ///
+    //
   );
 
-  //
+  ///
+
   const AppThemeType({
     required this.brightness,
     required this.background,
@@ -119,46 +124,5 @@ enum AppThemeType {
   /// 🔤 Selected font family
   FontFamilyType get font => FontFamilyType.sfPro;
 
-  ///
-}
-
-//
-///==============================================================
-//
-
-//
-/// 🔤 [FontFamilyType] — Enhanced enum for supported fonts
-/// 🧩 Can be extended to support Google Fonts in future
-//----------------------------------------------------------------
-
-enum FontFamilyType {
-  sfPro('SFProText'),
-  aeonik('Aeonik'),
-  poppins('Poppins');
-  // google => custom dynamic font loading could go here later
-
-  final String value;
-  const FontFamilyType(this.value);
-
-  /// 🔎 Checks if font is a Google Font
-  bool get isGoogle => this == FontFamilyType.poppins;
-
-  ///
-}
-
-//
-///==============================================================
-//
-
-//
-/// 🌓 [AppThemeMode] — Represents base typography configuration
-/// 💡 Used to switch light/dark [TextTheme] factories
-//----------------------------------------------------------------
-
-enum AppThemeMode {
-  light(TextStyleFactory.light),
-  dark(TextStyleFactory.dark);
-
-  final TextStyleFactory builder;
-  const AppThemeMode(this.builder);
+  //
 }

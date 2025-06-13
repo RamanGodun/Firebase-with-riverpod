@@ -2,23 +2,23 @@ part of 'app_themes.dart';
 
 /// 🏭 [_ThemeFactory] — Internal factory class for building complete [ThemeData] objects
 /// 🔧 Converts a strongly-typed [AppThemeType] into a fully styled theme configuration
-//----------------------------------------------------------------
 
 final class _ThemeFactory {
-  ///
+  ///---------------------
+
   final AppThemeType variant;
   const _ThemeFactory(this.variant);
 
   /// 🧱 Builds a fully configured [ThemeData]
   ThemeData build({FontFamilyType? font}) {
-    final fontValue = (font ?? variant.font).value;
+    final fontFamily = (font ?? variant.font).value;
 
     return ThemeData(
       brightness: variant.brightness,
       scaffoldBackgroundColor: variant.background,
       primaryColor: variant.primaryColor,
       colorScheme: variant.colorScheme,
-      appBarTheme: _buildAppBarTheme(fontValue),
+      appBarTheme: _buildAppBarTheme(fontFamily),
       elevatedButtonTheme: _buildElevatedButtonTheme(),
       textTheme: AppTextStyles.getTextTheme(variant.appThemeMode, font: font),
       cardTheme: _buildCardTheme(),

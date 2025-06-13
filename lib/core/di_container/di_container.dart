@@ -5,7 +5,7 @@ import '../../features/profile/data/profile_repo_provider.dart';
 import '../../features/profile/data/remote_data_source.dart';
 import '../shared_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../shared_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
-import '../shared_modules/theme/provider_and_toggle_widget/theme_provider.dart';
+import '../shared_modules/theme/theme_provider/theme_provider.dart';
 
 /// 🌍 Global singleton DI container
 /// ───────────────────────────────────────

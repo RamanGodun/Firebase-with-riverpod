@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../shared_modules/theme/provider_and_toggle_widget/theme_provider.dart';
+import '../shared_modules/theme/theme_provider/theme_provider.dart';
 import 'localization_config.dart';
 import 'router_config.dart';
-import 'theme_config.dart';
+import '../shared_modules/theme/core/_theme_config.dart';
 
 /// 🧩 [AppRootConfig] — Immutable object holding all global config required by [MaterialApp].
-/// ✅ Clean separation of logic & widget layer, with convenient factory for Riverpod integration.
+/// ✅ Clean separation of logic & widget layer, with convenient factory for Riverpod or Bloc integration.
 
 @immutable
 final class AppRootConfig {
@@ -25,13 +25,19 @@ final class AppRootConfig {
 
   ///
 
-  /// 🏭 Factory method that builds [AppRootConfig] from Riverpod + Flutter context.
+  /// 🏭 Factory method that builds [AppRootConfig] from Riverpod/Bloc + Flutter context.
   factory AppRootConfig.from({
     required WidgetRef ref,
     required BuildContext context,
   }) {
-    final theme = ThemeConfig.from(ref.watch(themeModeProvider));
+    //
+    // ? when use Riverpod state manager, uncomment next:
+    final theme = ThemeConfig.fromMode(ref.watch(themeModeProvider));
+    // ? when use BLoC state manager, uncomment next:
+    // final theme = ThemeConfig.fromBloc(themeState);
+
     final localization = LocalizationConfig.fromContext(context);
+
     final router = AppRouterConfig.use(ref);
 
     return AppRootConfig(

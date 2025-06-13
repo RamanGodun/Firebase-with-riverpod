@@ -51,7 +51,7 @@ class _VerifyEmailInfo extends StatelessWidget {
         const TextWidget(
           LocaleKeys.verify_email_or,
           TextType.error,
-          color: AppColors.errorColor,
+          color: AppColors.forErrors,
         ),
         const SizedBox(height: AppSpacing.xs),
         const TextWidget(

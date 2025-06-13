@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/constants/_app_constants.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/theme/core/constants/_app_constants.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import '../../../shared_modules/localization/code_base_for_both_options/text_widget.dart';

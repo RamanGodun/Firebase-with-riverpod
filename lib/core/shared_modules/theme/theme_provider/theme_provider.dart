@@ -20,7 +20,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
 
   ThemeModeNotifier(this._storage) : super(_loadInitialTheme(_storage));
 
-  /// 📦 Loads saved theme or defaults to system
+  /// 💾 Loads saved theme or defaults to system
   static ThemeMode _loadInitialTheme(GetStorage storage) {
     final stored = storage.read<String>(_themeStorageKey);
     return switch (stored) {
@@ -30,9 +30,11 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     };
   }
 
-  /// 🔁 Toggles theme and persists it
+  /// 🔁🎨 Toggles theme and persists it
   void toggleTheme() {
     state = state.toggle();
     _storage.write(_themeStorageKey, state.name);
   }
+
+  //
 }
