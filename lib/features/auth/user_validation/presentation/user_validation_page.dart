@@ -20,11 +20,14 @@ part 'widgets_for_verify_email_page.dart';
 
 /// 🧼 [VerifyEmailPage] — screen that handles email verification polling
 /// Automatically redirects when email gets verified
+
 class VerifyEmailPage extends HookConsumerWidget {
   const VerifyEmailPage({super.key});
+  //-------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     /// 🚀 Starts the polling logic by reading the notifier
     useEffect(() {
       ref.read(emailVerificationNotifierProvider);
@@ -43,12 +46,18 @@ class VerifyEmailPage extends HookConsumerWidget {
   }
 }
 
+///
+
+///
+
 /// 📦 [_VerifyEmailBody] — main UI container with info & cancel
 class _VerifyEmailBody extends StatelessWidget {
   const _VerifyEmailBody();
+  //-------------------------------
 
   @override
   Widget build(BuildContext context) {
+    //
     return Center(
       child: DecoratedBox(
         decoration: BoxDecoration(

@@ -7,10 +7,12 @@ part 'user_validation_provider.g.dart';
 
 /// 🧩 [emailVerificationNotifierProvider] — async notifier that handles email verification polling
 /// 🧼 Sends verification email and checks if email is verified via Firebase
-//----------------------------------------------------------------//
+
 @riverpod
 class EmailVerificationNotifier extends _$EmailVerificationNotifier
     with SafeAsyncState<void> {
+  //----------------------------------------------------------------
+
   Timer? _timer;
   late final EmailVerificationUseCase _useCase;
 
