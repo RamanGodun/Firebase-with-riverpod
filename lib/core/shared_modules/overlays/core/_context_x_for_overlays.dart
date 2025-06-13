@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/di_container/di_context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_overlay_base_methods.dart';
 import 'package:flutter/material.dart';
-import '../../errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../../errors_handling/failures/failure_ui_entity.dart';
 import '../../localization/code_base_for_both_options/_app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../overlays_dispatcher/_overlay_dispatcher.dart';
@@ -19,10 +19,10 @@ extension ContextXForOverlays on BuildContext {
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);
 
-  /// 🧠 Handles displaying [FailureUIModel] as banner/snackbar/dialog
+  /// 🧠 Handles displaying [FailureUIEntity] as banner/snackbar/dialog
   /// 📌 Uses [OverlayUIPresets] and [ShowAs] to configure appearance and behavior
   void showError(
-    FailureUIModel model, {
+    FailureUIEntity model, {
     ShowAs showAs = ShowAs.infoDialog,
     OverlayUIPresets preset = const OverlayErrorUIPreset(),
     bool isDismissible = false,

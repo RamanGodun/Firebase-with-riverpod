@@ -1,16 +1,17 @@
 import 'dart:async' show FutureOr;
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_extensions/either_getters_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either/either_extensions/either_getters_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
-import '../../loggers_for_errors_handling_module/errors_logger.dart';
-import '../../utils/for_bloc/result_handler.dart';
+import '../../observers/loggers/errors_log_util.dart';
+import '../../utils/for_bloc/result_handler_async.dart';
 import '../either.dart';
-import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../failures/failure_entity.dart';
 
 /// 🧩 [ResultFutureX<T>] — Async sugar for `Future<Either<Failure, T>>`
 /// ✅ Unified access to async chaining, fallback and message handling
-//-------------------------------------------------------------------------
 
 extension ResultFutureX<T> on Future<Either<Failure, T>> {
+  //-----------------------------------------------------
+
   /// 🔁 Match with async callbacks — auto-logs failure and tracks success
   Future<void> matchAsync({
     required Future<void> Function(Failure) onFailure,
@@ -40,12 +41,12 @@ extension ResultFutureX<T> on Future<Either<Failure, T>> {
       (await this).fold((f) => f.message, (_) => null);
 
   /// 🔹 Runs failure handler if result is Left
-  Future<ResultHandler<T>> onFailure(
+  Future<ResultHandlerAsync<T>> onFailure(
     FutureOr<void> Function(Failure f) handler,
   ) async {
     final result = await this;
     if (result.isLeft) await handler(result.leftOrNull!);
-    return ResultHandler(result);
+    return ResultHandlerAsync(result);
   }
 
   /// 🔁 Maps Right value using async transformation
@@ -97,5 +98,5 @@ extension ResultFutureX<T> on Future<Either<Failure, T>> {
     return result;
   }
 
-  ///
+  //
 }

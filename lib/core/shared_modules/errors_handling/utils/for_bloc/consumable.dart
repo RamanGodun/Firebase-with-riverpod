@@ -3,7 +3,7 @@ library;
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart' show BuildContext;
 
-import '../../failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../../failures/failure_ui_entity.dart';
 
 /// 🧩 [Consumable] — Wraps a value for one-time consumption.
 /// ✅ Prevents repeated UI side-effects (like dialogs/snackbars)
@@ -44,7 +44,7 @@ extension ConsumableX<T> on T {
 }
 
 extension FailureUIContextX on BuildContext {
-  void consumeAndShowDialog(FailureUIModel? model) {
+  void consumeAndShowDialog(FailureUIEntity? model) {
     if (model != null) showError(model);
   }
 

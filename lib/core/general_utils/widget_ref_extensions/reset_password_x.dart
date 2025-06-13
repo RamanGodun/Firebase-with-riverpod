@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/features/auth/presentation/reset_password/reset_password_provider.dart';
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../shared_modules/errors_handling/failures/failure_entity.dart';
 import '../../shared_modules/localization/generated/locale_keys.g.dart';
 import '../../shared_modules/navigation/routes_names.dart';
 
@@ -29,7 +29,7 @@ extension RefResetPasswordListenerX on WidgetRef {
                   : UnknownFailure(
                     message: 'Unexpected error during password reset',
                   );
-          context.showError(failure.toUIModel());
+          context.showError(failure.toUIEntity());
         },
       );
     });

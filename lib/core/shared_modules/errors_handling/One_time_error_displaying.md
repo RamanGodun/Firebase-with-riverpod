@@ -6,7 +6,7 @@
 
 Ensure error feedback (dialogs, banners, snackbars) is **shown only once**, even if the UI rebuilds or user returns to the screen.
 
-> ✅ Fully aligned with the [`AZER`](./README.md#📦-overview) error strategy, Clean Architecture, and stateless UI principles.
+> ✅ Fully aligned with the [`Either`](./README.md#📦-overview) error strategy, Clean Architecture, and stateless UI principles.
 
 ---
 
@@ -143,7 +143,7 @@ BlocListener<MyCubit, MyState>(
 
 ## 🛡️ Aligned With:
 
-* ✅ AZER: Domain-level `Failure` returned as `Either<Failure, T>`
+* ✅ Either: Domain-level `Failure` returned as `Either<Failure, T>`
 * ✅ Failure Mapping: `.toUIModel()` for consistent overlays
 * ✅ Clean Presentation: `Consumable<FailureUIModel>` in `Cubit`, no business logic in UI
 * ✅ Stateless Feedback: UI reads + consumes, never stores failure logic

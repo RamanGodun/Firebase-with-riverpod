@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../shared_modules/errors_handling/either_for_data/either.dart';
-import '../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
-import '../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_ui_model.dart';
+import '../shared_modules/errors_handling/either/either.dart';
+import '../shared_modules/errors_handling/failures/failure_entity.dart';
+import '../shared_modules/errors_handling/failures/failure_ui_entity.dart';
 import '../shared_modules/errors_handling/utils/for_bloc/result_handler.dart';
 import '../shared_modules/overlays/overlays_presentation/overlay_presets/overlay_presets.dart';
 
@@ -43,6 +43,6 @@ typedef OverlayBannerFactory = Widget Function(OverlayUIPresets, String);
 typedef ShowUserSnackbar =
     void Function({required String message, IconData? icon});
 
-/// ❗ [ErrorDispatcher] — handles UI error display via [FailureUIModel]
+/// ❗ [ErrorDispatcher] — handles UI error display via [FailureUIEntity]
 /// Passes context-bound error handler (e.g., `context.showError`)
-typedef ErrorDispatcher = void Function(FailureUIModel);
+typedef ErrorDispatcher = void Function(FailureUIEntity);

@@ -1,6 +1,6 @@
-import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../failures/failure_entity.dart';
 import '../failure_mapper.dart';
-import '../../either_for_data/either.dart';
+import '../../either/either.dart';
 
 /// 🧩 [mapToFailure] — shorthand alias for `FailureMapper.from(...)`
 /// ✅ Used in all `ResultFuture` blocks and use cases

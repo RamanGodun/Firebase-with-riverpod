@@ -1,12 +1,13 @@
 import '../utils/enums.dart';
-import '../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../failures/failure_entity.dart';
 
 /// 🧭 [FailureDiagnosticsX] — Diagnostic utilities for `Failure`
 /// ✅ Includes type checkers, casting, logging helpers, and fallback-safe metadata access.
 /// ✅ Used in logging, Crashlytics, result handlers, and advanced failure branching.
-// ──────────────────────────────────────────────────────────────────────
 
 extension FailureDiagnosticsX on Failure {
+  // ────────────────────────────────────
+
   /// 🔌 Source & Type Diagnostics
 
   /// Returns plugin source identifier (used in logs, analytics, crash reports)
@@ -19,6 +20,24 @@ extension FailureDiagnosticsX on Failure {
     CacheFailure() => 'CACHE',
     _ => ErrorPlugin.unknown.code,
   };
+
+  /// True if failure is related to network (e.g. no internet, timeout)
+  bool get isNetworkFailure => pluginSource == ErrorPlugin.httpClient.code;
+
+  /// True if failure originated from Firebase
+  bool get isFirebaseFailure => this is FirebaseFailure;
+
+  /// True if failure indicates unauthenticated access (401, expired token)
+  bool get isUnauthorized => this is UnauthorizedFailure;
+
+  /// True if failure is related to cache/storage layer
+  bool get isCacheFailure => this is CacheFailure;
+
+  /// True if failure is a fallback for unknown/unhandled exceptions
+  bool get isUnknown => this is UnknownFailure;
+
+  ///
+  // 🔁 Runtime Casting & Metadata
 
   /// Safe type-cast of the current failure to a specific subtype
   T? as<T extends Failure>() => this is T ? this as T : null;

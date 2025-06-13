@@ -1,15 +1,19 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_diagnostics_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/observers/failure_diagnostics_x.dart';
 import 'package:flutter/material.dart';
 import '../../../localization/code_base_for_both_options/_app_localizer.dart';
+import '../../observers/loggers/errors_log_util.dart';
 import '../../utils/enums.dart';
-import '../failure_for_domain.dart';
+import '../failure_entity.dart';
 import '../../utils/for_bloc/consumable.dart';
-import '../failure_ui_model.dart';
+import '../failure_ui_entity.dart';
 
-/// ✅ [FailureToUIModelX] — Maps [Failure] to [FailureUIModel] without localization context
-extension FailureToUIModelX on Failure {
+/// ✅ [FailureToUIEntityX] — Maps [Failure] to [FailureUIEntity] without localization context
+extension FailureToUIEntityX on Failure {
   //
-  FailureUIModel toUIModel() {
+
+  /// From [Failure] to [FailureUIEntity] mapper
+  FailureUIEntity toUIEntity() {
+    //
     final resolvedText = switch ((
       translationKey?.isNotEmpty,
       message.isNotEmpty,
@@ -19,14 +23,18 @@ extension FailureToUIModelX on Failure {
       _ => message,
     };
 
-    return FailureUIModel(
+    if (translationKey != null && resolvedText == message) {
+      ErrorsLogger.failure(this, StackTrace.current);
+    }
+
+    return FailureUIEntity(
       localizedMessage: resolvedText,
       formattedCode: safeCode,
       icon: _resolveIcon(),
     );
   }
 
-  // 🖼️ Internal: Icon depending on failure type
+  // 🖼️ Icon depending on failure type
   IconData _resolveIcon() => switch (this) {
     ApiFailure() => Icons.cloud_off,
     FirebaseFailure() => Icons.fireplace,
@@ -43,8 +51,9 @@ extension FailureToUIModelX on Failure {
     _ => Icons.error_outline,
   };
 
-  // 🎯 One-shot wrapper for state management
-  Consumable<FailureUIModel> asConsumableUIModel() => Consumable(toUIModel());
-}
+  // 🎯 Wrapper for "one-shot" state management
+  Consumable<FailureUIEntity> asConsumableUIEntity() =>
+      Consumable(toUIEntity());
 
-///
+  //
+}

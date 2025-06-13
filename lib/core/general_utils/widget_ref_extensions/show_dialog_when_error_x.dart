@@ -1,9 +1,9 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures_for_domain_and_presentation/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
 import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../shared_modules/errors_handling/failures/failure_entity.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
 extension RefFailureListenerX on WidgetRef {
@@ -13,7 +13,7 @@ extension RefFailureListenerX on WidgetRef {
   ) {
     listen<AsyncValue<T>>(provider, (prev, next) {
       final failure = next.asFailure;
-      if (failure != null) context.showError(failure.toUIModel());
+      if (failure != null) context.showError(failure.toUIEntity());
     });
   }
 }

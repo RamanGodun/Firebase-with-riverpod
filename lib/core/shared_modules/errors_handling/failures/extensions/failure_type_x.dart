@@ -1,10 +1,12 @@
-import '../failure_for_domain.dart';
+import '../failure_entity.dart';
 
 /// 🧭 [FailureTypeX] — Semantic helpers for `Failure` type branching
 /// ✅ Replaces `is SomeFailure` with readable intent
 /// ✅ Improves clarity in conditional logic (UI/logic branching)
-// ─────────────────────────────────────────────────────────────
+
 extension FailureTypeX on Failure {
+  // ─────────────────────────────
+
   /// ❌ True if failure is due to lack of network or timeout
   bool get isNetwork => this is NetworkFailure;
 
@@ -28,4 +30,6 @@ extension FailureTypeX on Failure {
 
   /// 🧠 True if failure occurred in business/use-case logic
   bool get isUseCase => this is UseCaseFailure;
+
+  //
 }

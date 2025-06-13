@@ -1,92 +1,36 @@
-import 'dart:async' show FutureOr;
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either/either_extensions/__eithers_facade.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/observers/loggers/failure_logger_x.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/either_for_data/either_extensions/_eithers_facade.dart';
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/loggers_for_errors_handling_module/failure_logger_x.dart';
-import '../../failures_for_domain_and_presentation/failure_for_domain.dart';
+import '../../failures/failure_entity.dart';
 
-/// 🧩 [DSLLikeResultHandler<T>] — wrapper for `Either<Failure, T>`
-/// ✅ Clean, chainable result handling with both sync & async APIs
-/// ✅ Unified for use in Providers, Cubits, UseCases, UI, etc.
-/// ─────
-
+/// 🧩 [ResultHandler<T>] — wrapper around `Either<Failure, T>`
+/// ✅ Clean, chainable, and readable result API for Cubits, Providers, UseCases.
 @immutable
 final class ResultHandler<T> {
   final Either<Failure, T> result;
   const ResultHandler(this.result);
 
-  /// 🔒 Internal: result is success
-  bool get _isSuccess => result.isRight;
+  // ──────────────────────────────────────────────────────────────────────
+  // 🔹 Success / Failure Callbacks
+  // ──────────────────────────────────────────────────────────────────────
 
-  /// 🔒 Internal: result is failure
-  bool get _isFailure => result.isLeft;
-
-  /// 🔒 Internal: success value (non-nullable)
-  T get _successValue => result.rightOrNull as T;
-
-  /// 🔒 Internal: failure value (non-nullable)
-  Failure get _failureValue => result.leftOrNull!;
-
-  //──────────────────────────────────────────────────────────────────────
-  // 🔹 Success / Failure Callbacks (SYNC)
-  //──────────────────────────────────────────────────────────────────────
-
-  /// 🔹 Executes [handler] if result is success (sync)
+  /// 🔹 Executes handler if result is success
   ResultHandler<T> onSuccess(void Function(T value) handler) {
-    if (_isSuccess) handler(_successValue);
+    if (result.isRight) handler(result.rightOrNull as T);
     return this;
   }
 
-  /// 🔹 Executes [handler] if result is failure (sync)
+  /// 🔹 Executes handler if result is failure
   ResultHandler<T> onFailure(void Function(Failure failure) handler) {
-    if (_isFailure) handler(_failureValue);
+    if (result.isLeft) handler(result.leftOrNull!);
     return this;
   }
 
-  //──────────────────────────────────────────────────────────────────────
-  // 🔹 Success / Failure Callbacks (ASYNC)
-  //──────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────
+  // 🎯 Accessors & Info
+  // ──────────────────────────────────────────────────────────────────────
 
-  /// 🔹 Executes [handler] if result is success (async)
-  Future<ResultHandler<T>> onSuccessAsync(
-    FutureOr<void> Function(T value) handler,
-  ) async {
-    if (_isSuccess) await handler(_successValue);
-    return this;
-  }
-
-  /// 🔹 Executes [handler] if result is failure (async)
-  Future<ResultHandler<T>> onFailureAsync(
-    FutureOr<void> Function(Failure failure) handler,
-  ) async {
-    if (_isFailure) await handler(_failureValue);
-    return this;
-  }
-
-  //──────────────────────────────────────────────────────────────────────
-  // 🔁 Fold Logic
-  //──────────────────────────────────────────────────────────────────────
-
-  /// 🔁 Pattern match logic (sync)
-  void fold({
-    required void Function(Failure failure) onFailure,
-    required void Function(T value) onSuccess,
-  }) {
-    result.fold(onFailure, onSuccess);
-  }
-
-  /// 🔁 Pattern match logic (async)
-  Future<void> foldAsync({
-    required FutureOr<void> Function(Failure failure) onFailure,
-    required FutureOr<void> Function(T value) onSuccess,
-  }) async {
-    await result.fold(onFailure, onSuccess);
-  }
-
-  //──────────────────────────────────────────────────────────────────────
-  // 🎯 Accessors
-  //──────────────────────────────────────────────────────────────────────
-
-  /// ✅ Returns success value or fallback
+  /// ✅ Success value or fallback
   T getOrElse(T fallback) => result.fold((_) => fallback, (r) => r);
 
   /// ✅ Nullable success
@@ -96,24 +40,30 @@ final class ResultHandler<T> {
   Failure? get failureOrNull => result.leftOrNull;
 
   /// ✅ Indicates if result is failure
-  bool get didFail => _isFailure;
+  bool get didFail => result.isLeft;
 
   /// ✅ Indicates if result is success
-  bool get didSucceed => _isSuccess;
+  bool get didSucceed => result.isRight;
 
-  //──────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────
+  // 🔁 Fold Logic
+  // ──────────────────────────────────────────────────────────────────────
+
+  /// 🔁 Pattern match logic
+  void fold({
+    required void Function(Failure failure) onFailure,
+    required void Function(T value) onSuccess,
+  }) {
+    result.fold(onFailure, onSuccess);
+  }
+
+  // ──────────────────────────────────────────────────────────────────────
   // 🧪 Logging
-  //──────────────────────────────────────────────────────────────────────
+  // ──────────────────────────────────────────────────────────────────────
 
   /// 🐞 Logs failure (debug or Crashlytics)
   ResultHandler<T> log() {
-    _failureValue.log();
-    return this;
-  }
-
-  /// 🐞 Logs failure (async)
-  Future<ResultHandler<T>> logAsync() async {
-    _failureValue.log();
+    result.leftOrNull?.log();
     return this;
   }
 
