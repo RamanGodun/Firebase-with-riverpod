@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
 import '../../../features/profile/presentation/_profile_page.dart';
-import '../../../features/auth/presentation/change_password/change_password_page.dart';
-import '../../../features/auth/presentation/reset_password/reset_password_page.dart';
-import '../../../features/auth/presentation/sign_in/signin_page.dart';
-import '../../../features/auth/presentation/sign_up/signup_page.dart';
-import '../../../features/auth/presentation/change_password/reauthenticate_page.dart';
-import '../../../features/auth/presentation/user_validation/verify_email_page.dart';
+import '../../../features/auth/change_password/presentation/change_password_page.dart';
+import '../../../features/auth/reset_password/presentation/reset_password_page.dart';
+import '../../../features/auth/sign_in/presentation/signin_page.dart';
+import '../../../features/auth/sign_up/presentation/signup_page.dart';
+import '../../../features/auth/change_password/presentation/reauth_page.dart';
+import '../../../features/auth/user_validation/presentation/user_validation_page.dart';
 import '../../shared_layers/shared_presentation/pages/firebase_error_page.dart';
 import '../../shared_layers/shared_presentation/widgets/mini_widgets.dart';
 import '../../shared_layers/shared_presentation/pages/_home_page.dart';
