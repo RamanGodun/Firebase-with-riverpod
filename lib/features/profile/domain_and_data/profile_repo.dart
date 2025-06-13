@@ -1,5 +1,5 @@
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
-import '../../../core/utils/typedef.dart';
+import '../../../core/general_utils/typedef.dart';
 
 /// 🧼 Contract-level abstraction for the repository.
 // ───────────────────────────────────────────────

@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'package:firebase_with_riverpod/core/shared_modules/animation/overlays_animation/animation_wrapper/animation_x_for_widget.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/debouncer.dart';
+import '../../../general_utils/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
 import 'overlay_entries/_overlay_entries_registry.dart';
 import '../core/observers/overlay_logger.dart';

@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/features/auth/domain/auth_repos.dart'
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
-import '../../../core/utils/typedef.dart';
+import '../../../core/general_utils/typedef.dart';
 import '../data_providers/sign_up_repo_provider.dart';
 
 part 'sign_up_use_case_provider.g.dart';

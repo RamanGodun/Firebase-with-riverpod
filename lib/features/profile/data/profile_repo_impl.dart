@@ -3,7 +3,7 @@ import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/either_for_data/either.dart';
 import '../../../core/shared_modules/errors_handling/failures_for_domain_and_presentation/failure_for_domain.dart';
 import '../../../core/shared_modules/errors_handling/utils/failure_mapper.dart';
-import '../../../core/utils/typedef.dart';
+import '../../../core/general_utils/typedef.dart';
 import '../domain_and_data/profile_repo.dart';
 import 'remote_data_source.dart';
 

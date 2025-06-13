@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/shared_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
-import '../../../core/utils/typedef.dart';
+import '../../../core/general_utils/typedef.dart';
 import '../data_providers/change_password_repo_provider.dart';
 import 'auth_repos.dart';
 
