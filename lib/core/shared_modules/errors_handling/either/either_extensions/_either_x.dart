@@ -1,7 +1,7 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/observers/failure_diagnostics_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/observers/failure_diagnostics_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import '../../failures/failure_entity.dart';
-import '../../observers/loggers/errors_log_util.dart';
+import '../../utils/observers/loggers/errors_log_util.dart';
 import '__eithers_facade.dart';
 
 /// 🧩 [ResultX<T>] — Sync sugar for `Either<Failure, T>`

@@ -2,7 +2,7 @@ import '../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/either/either.dart';
 import '../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
-import '../../../core/shared_modules/errors_handling/utils/failure_mapper.dart';
+import '../../../core/shared_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../../../core/general_utils/typedef.dart';
 import '../domain_and_data/profile_repo.dart';
 import 'remote_data_source.dart';
@@ -68,7 +68,7 @@ final class ProfileRepoImpl implements IProfileRepo {
 
       return Right(user);
     } catch (e, s) {
-      return Left(FailureMapper.from(e, s));
+      return Left(ExceptionToFailureMapper.from(e, s));
     }
   }
 

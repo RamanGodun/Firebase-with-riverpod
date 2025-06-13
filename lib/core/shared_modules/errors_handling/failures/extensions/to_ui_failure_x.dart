@@ -1,8 +1,8 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/observers/failure_diagnostics_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/observers/failure_diagnostics_x.dart';
 import 'package:flutter/material.dart';
 import '../../../localization/code_base_for_both_options/_app_localizer.dart';
-import '../../observers/loggers/errors_log_util.dart';
-import '../../utils/enums.dart';
+import '../../utils/observers/loggers/errors_log_util.dart';
+import '../../enums/error_plugins.dart';
 import '../failure_entity.dart';
 import '../../utils/for_bloc/consumable.dart';
 import '../failure_ui_entity.dart';
@@ -40,9 +40,9 @@ extension FailureToUIEntityX on Failure {
     FirebaseFailure() => Icons.fireplace,
     UseCaseFailure() => Icons.settings,
     GenericFailure(:final plugin) => switch (plugin) {
-      ErrorPlugin.httpClient => Icons.wifi_off,
-      ErrorPlugin.firebase => Icons.fire_extinguisher,
-      ErrorPlugin.useCase => Icons.build,
+      ErrorPlugins.httpClient => Icons.wifi_off,
+      ErrorPlugins.firebase => Icons.fire_extinguisher,
+      ErrorPlugins.useCase => Icons.build,
       _ => Icons.error_outline,
     },
     UnauthorizedFailure() => Icons.lock,

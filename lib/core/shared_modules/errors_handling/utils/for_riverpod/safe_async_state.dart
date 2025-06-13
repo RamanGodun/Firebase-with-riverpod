@@ -3,8 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// 🧩 [SafeAsyncState] — lifecycle-safe helper for `AsyncNotifier`
 /// ✅ Prevents calling `state =` after the notifier is disposed
 /// ✅ Must be mixed into `AutoDisposeAsyncNotifier<T>`
-/// ─────
+
 mixin SafeAsyncState<T> on AutoDisposeAsyncNotifier<T> {
+  /// ─────--------------------------------------------
+
+  /// 🧬 Lifecycle token to track whether notifier is still active
   Object? _key;
 
   /// 🏁 Initializes the lifecycle token

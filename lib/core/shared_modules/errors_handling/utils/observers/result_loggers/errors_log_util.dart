@@ -1,12 +1,12 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/observers/failure_diagnostics_x.dart';
+import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/observers/failure_diagnostics_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
-import '../../failures/failure_entity.dart';
+import '../../../failures/failure_entity.dart';
 
-/// 🧭 [ErrorsLogger] — Centralized logger for all application-level telemetry.
+/// 🧭 [ErrorsLoggerUtil] — Centralized logger for all application-level telemetry.
 /// 🔍 Supports runtime exceptions and domain-level failures
 
-abstract final class ErrorsLogger {
-  const ErrorsLogger._();
+abstract final class ErrorsLoggerUtil {
+  const ErrorsLoggerUtil._();
   //------------------
 
   /// ❗ Logs any raw [Exception] or [Error].
@@ -22,7 +22,7 @@ abstract final class ErrorsLogger {
   }
 
   static void log(Object error, [StackTrace? stackTrace]) {
-    ErrorsLogger.exception(error, stackTrace);
+    ErrorsLoggerUtil.exception(error, stackTrace);
   }
 
   //

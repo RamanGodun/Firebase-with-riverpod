@@ -17,4 +17,3 @@ final class Right<L, R> extends Either<L, R> {
 }
 
 ///
-
