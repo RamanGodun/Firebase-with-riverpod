@@ -40,3 +40,4 @@ class Profile extends _$Profile {
 
   //
 }
+

@@ -6,11 +6,19 @@ import '../data/remote_data_source.dart';
 
 part 'profile_repo_provider.g.dart';
 
-/// DI binding for repository + data source.
+/// 📦 [profileRepoProvider] — provides the domain repository via DI
+/// 🧩 Combines implementation with remote data source dependency
+/// 🧼 Keeps separation between contract and concrete logic
 
 @riverpod
 IProfileRepo profileRepo(Ref ref) {
-  // ─────────────────────────────
+  //------------------------------
 
-  return ProfileRepoImpl(ProfileRemoteDataSourceImpl());
+  // Injects concrete implementation of IProfileRemoteDataSource
+  final remote = ProfileRemoteDataSourceImpl();
+
+  // Returns the repository with injected dependency
+  return ProfileRepoImpl(remote);
+
+  //
 }
