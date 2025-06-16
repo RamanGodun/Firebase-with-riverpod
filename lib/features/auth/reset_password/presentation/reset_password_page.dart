@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/shared_modules/localization/generate
     show LocaleKeys;
 import 'package:firebase_with_riverpod/core/shared_modules/navigation/utils/context_x.dart';
 import 'package:firebase_with_riverpod/core/shared_layers/shared_presentation/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/core/general_utils/widget_ref_extensions/reset_password_x.dart';
+import 'package:firebase_with_riverpod/features/auth/utils/reset_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_modules/localization/code_base_for_both_options/text_widget.dart';

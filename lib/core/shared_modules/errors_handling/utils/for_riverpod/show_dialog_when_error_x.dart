@@ -3,17 +3,33 @@ import 'package:firebase_with_riverpod/core/shared_modules/overlays/core/_contex
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../shared_modules/errors_handling/failures/failure_entity.dart';
+import '../../../../general_utils/typedef.dart';
+import '../../failures/failure_entity.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
+// extension RefFailureListenerX on WidgetRef {
+//   void listenFailure<T>(
+//     ProviderListenable<AsyncValue<T>> provider,
+//     BuildContext context,
+//   ) {
+//     listen<AsyncValue<T>>(provider, (prev, next) {
+//       final failure = next.asFailure;
+//       if (failure != null) context.showError(failure.toUIEntity());
+//     });
+//   }
+// }
 extension RefFailureListenerX on WidgetRef {
   void listenFailure<T>(
     ProviderListenable<AsyncValue<T>> provider,
-    BuildContext context,
-  ) {
+    BuildContext context, {
+    ListenFailureCallback? onFailure,
+  }) {
     listen<AsyncValue<T>>(provider, (prev, next) {
       final failure = next.asFailure;
-      if (failure != null) context.showError(failure.toUIEntity());
+      if (failure != null) {
+        onFailure?.call(failure);
+        context.showError(failure.toUIEntity());
+      }
     });
   }
 }

@@ -46,3 +46,18 @@ typedef ShowUserSnackbar =
 /// ❗ [ErrorDispatcher] — handles UI error display via [FailureUIEntity]
 /// Passes context-bound error handler (e.g., `context.showError`)
 typedef ErrorDispatcher = void Function(FailureUIEntity);
+
+/// 🧩 [VoidResult] — `ResultFuture<void>`, for void  action
+typedef VoidResult = ResultFuture<void>;
+
+/// 🧩 [FailureOr<T>] — Sync `Either<Failure, T>`
+typedef FailureOr<T> = Either<Failure, T>;
+
+/// 🔁 [VoidEither] — Sync `Either<Failure, void>`
+typedef VoidEither = Either<Failure, void>;
+
+/// 📤 [AsyncNotifierFn<T>] — for such methods as `updateSafely(...)`
+typedef AsyncNotifierFn<T> = Future<T> Function();
+
+/// 📡 [ListenFailureCallback] — optional handler when failure is caught
+typedef ListenFailureCallback = void Function(Failure failure);
