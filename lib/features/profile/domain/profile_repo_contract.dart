@@ -1,4 +1,4 @@
-import 'entities/app_user.dart';
+import 'entities/app_user_entity.dart';
 import '../../../core/general_utils/typedef.dart';
 
 /// 🧼 Contract-level abstraction for the repository.

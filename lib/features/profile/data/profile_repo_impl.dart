@@ -1,10 +1,13 @@
+import 'package:firebase_with_riverpod/features/profile/domain/entities/app_user_mapper.dart';
+
 import '../../../core/app_configs/firebase/firebase_constants.dart';
-import '../domain/entities/app_user.dart';
+import '../domain/entities/app_user_entity.dart';
 import '../../../core/shared_modules/errors_handling/either/either.dart';
 import '../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../../../core/general_utils/typedef.dart';
 import '../domain/profile_repo_contract.dart';
+import 'data_transfer_objects/app_user_dto.dart';
 import 'remote_data_source.dart';
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
@@ -53,16 +56,17 @@ final class ProfileRepoImpl implements IProfileRepo {
           email: firebaseUser.email ?? 'unknown',
         );
 
-        // Write user data in Firestore
-        await usersCollection.doc(userID).set(newUser.toJson());
+        // 💾 Save user to Firestore via DTO
+        final dto = newUser.toDto();
+        await usersCollection.doc(userID).set(dto.toJson());
 
         _cachedUser = newUser;
         _lastFetched = now;
         return Right(newUser);
       }
 
-      // ✅ If doc exists, then parse it through model
-      final user = AppUser.fromDoc(doc);
+      // ✅ Parse existing Firestore document into DTO, then domain entity
+      final user = AppUserDto.fromDoc(doc).toDomain();
 
       _cachedUser = user;
       _lastFetched = now;

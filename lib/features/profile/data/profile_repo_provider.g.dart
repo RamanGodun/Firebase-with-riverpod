@@ -6,9 +6,11 @@ part of 'profile_repo_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileRepoHash() => r'27e6e0a5e22ef0b078ac851e56b77c8e3f271ffd';
+String _$profileRepoHash() => r'ac70e940332b55897e6200cf48c379ac0a435390';
 
-/// DI binding for repository + data source.
+/// 📦 [profileRepoProvider] — provides the domain repository via DI
+/// 🧩 Combines implementation with remote data source dependency
+/// 🧼 Keeps separation between contract and concrete logic
 ///
 /// Copied from [profileRepo].
 @ProviderFor(profileRepo)

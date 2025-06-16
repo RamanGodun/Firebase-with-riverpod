@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../domain/entities/app_user.dart';
+import '../domain/entities/app_user_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../domain/profile_use_case_provider.dart';
 
@@ -40,4 +40,3 @@ class Profile extends _$Profile {
 
   //
 }
-

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'entities/app_user.dart';
+import 'entities/app_user_entity.dart';
 import '../../../core/general_utils/typedef.dart';
 import '../data/profile_repo_provider.dart';
 import 'profile_repo_contract.dart';
