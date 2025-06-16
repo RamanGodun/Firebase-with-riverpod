@@ -1,28 +1,65 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
-import 'app_user_dto.dart';
+import '../../../../core/general_utils/typedef.dart';
+import '_user_dto.dart';
 
-extension AppUserDtoFactoryX on AppUserDto {
-  static AppUserDto fromDoc(DocumentSnapshot doc) {
+/// 🧰 [UserDTOFactories] — Static utilities for creating [UserDTO]
+/// ✅ Use case: Firestore mapping, default user creation
+
+extension UserDTOFactories on UserDTO {
+  //-------------------------------
+
+  /// 🔄 Creates [UserDTO] from Firestore document snapshot
+  static UserDTO fromDoc(DocumentSnapshot<Map<String, dynamic>> doc) {
+    //
     final data = doc.data();
-
-    if (data is! Map<String, dynamic>) {
-      throw FirestoreDocMissingFailure();
+    if (data == null) {
+      throw const FormatException('No user data found in document');
     }
 
-    return AppUserDto(
-      id: doc.id,
-      name: data['name'] ?? '',
-      email: data['email'] ?? '',
-    );
+    try {
+      return UserDTO(
+        id: doc.id,
+        name: data['name'] as String? ?? '',
+        email: data['email'] as String? ?? '',
+        profileImage: data['profileImage'] as String? ?? '',
+        point:
+            (data['point'] is int)
+                ? data['point'] as int
+                : int.tryParse('${data['point']}') ?? 0,
+        rank: data['rank'] as String? ?? '',
+      );
+    } catch (e) {
+      throw const FormatException(
+        'Invalid or corrupted Firestore user document',
+      );
+    }
   }
 
+  ///
+
+  /// 🔄 Creates [UserDTO] from raw Firestore [Map]
+  static UserDTO fromMap(DataMap map, {required String id}) => UserDTO(
+    id: id,
+    name: map['name'] ?? '',
+    email: map['email'] ?? '',
+    profileImage: map['profileImage'] ?? '',
+    point: map['point'] ?? 0,
+    rank: map['rank'] ?? '',
+  );
+
   /// 🆕 Creates a new default [UserDTO] for registration
-  static AppUserDto newUser({
+  static UserDTO newUser({
     required String id,
     required String name,
     required String email,
-  }) => AppUserDto(id: id, name: name, email: email);
+  }) => UserDTO(
+    id: id,
+    name: name,
+    email: email,
+    profileImage: 'https://picsum.photos/300',
+    point: 0,
+    rank: 'bronze',
+  );
 
   //
 }

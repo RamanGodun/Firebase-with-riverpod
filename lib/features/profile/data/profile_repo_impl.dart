@@ -1,13 +1,14 @@
-import 'package:firebase_with_riverpod/features/profile/domain/entities/app_user_mapper.dart';
+import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
+import 'package:firebase_with_riverpod/features/profile/domain/entities/user_entity_x.dart';
 
 import '../../../core/app_configs/firebase/firebase_constants.dart';
-import '../domain/entities/app_user_entity.dart';
+import '../../../core/general_utils/typedef.dart';
 import '../../../core/shared_modules/errors_handling/either/either.dart';
 import '../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
-import '../../../core/general_utils/typedef.dart';
+import '../domain/entities/_user_entity.dart';
 import '../domain/profile_repo_contract.dart';
-import 'data_transfer_objects/app_user_dto.dart';
+import 'data_transfer_objects/user_dto_factories_x.dart';
 import 'remote_data_source.dart';
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
@@ -17,14 +18,14 @@ final class ProfileRepoImpl implements IProfileRepo {
   ProfileRepoImpl(this._remote);
   // ─────────────────────────
 
-  AppUser? _cachedUser;
+  UserEntity? _cachedUser;
   DateTime? _lastFetched;
 
   static const Duration _cacheDuration = Duration(minutes: 5);
 
   ///
   @override
-  ResultFuture<AppUser> getProfile({required String userID}) async {
+  ResultFuture<UserEntity> getProfile({required String userID}) async {
     //
     try {
       final now = DateTime.now();
@@ -47,18 +48,21 @@ final class ProfileRepoImpl implements IProfileRepo {
           throw FirebaseUserMissingFailure();
         }
 
-        final newUser = AppUser(
+        final newUser = UserEntity(
           id: firebaseUser.uid,
           name:
               firebaseUser.displayName?.trim().isNotEmpty == true
                   ? firebaseUser.displayName!
                   : 'User',
           email: firebaseUser.email ?? 'unknown',
+          profileImage: 'https://picsum.photos/300',
+          point: 0,
+          rank: 'bronze',
         );
 
         // 💾 Save user to Firestore via DTO
-        final dto = newUser.toDto();
-        await usersCollection.doc(userID).set(dto.toJson());
+        final dto = newUser.toDTO();
+        await usersCollection.doc(userID).set(dto.toJsonMap());
 
         _cachedUser = newUser;
         _lastFetched = now;
@@ -66,7 +70,7 @@ final class ProfileRepoImpl implements IProfileRepo {
       }
 
       // ✅ Parse existing Firestore document into DTO, then domain entity
-      final user = AppUserDto.fromDoc(doc).toDomain();
+      final UserEntity user = UserDTOFactories.fromDoc(doc).toEntity();
 
       _cachedUser = user;
       _lastFetched = now;

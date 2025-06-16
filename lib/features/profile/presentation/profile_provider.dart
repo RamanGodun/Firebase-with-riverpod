@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../domain/entities/app_user_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../domain/entities/_user_entity.dart';
 import '../domain/profile_use_case_provider.dart';
 
 part 'profile_provider.g.dart';
@@ -14,7 +14,7 @@ class Profile extends _$Profile {
   //----------------------------
 
   @override
-  Future<AppUser> build(String uid) async {
+  Future<UserEntity> build(String uid) async {
     final useCase = ref.watch(getProfileUseCaseProvider);
     final result = await useCase(uid);
     return result.fold((f) => throw f, (user) => user);

@@ -6,7 +6,7 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileHash() => r'dd91835137ad81009196d8708dca39b2ad05f9e2';
+String _$profileHash() => r'4ae13f5fe624683289062e225a43ab721dffbe0e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,10 +29,10 @@ class _SystemHash {
   }
 }
 
-abstract class _$Profile extends BuildlessAutoDisposeAsyncNotifier<AppUser> {
+abstract class _$Profile extends BuildlessAutoDisposeAsyncNotifier<UserEntity> {
   late final String uid;
 
-  FutureOr<AppUser> build(String uid);
+  FutureOr<UserEntity> build(String uid);
 }
 
 /// 👤 [profileProvider] — async notifier that fetches user profile
@@ -48,7 +48,7 @@ const profileProvider = ProfileFamily();
 /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
 ///
 /// Copied from [Profile].
-class ProfileFamily extends Family<AsyncValue<AppUser>> {
+class ProfileFamily extends Family<AsyncValue<UserEntity>> {
   /// 👤 [profileProvider] — async notifier that fetches user profile
   /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
   /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
@@ -91,7 +91,7 @@ class ProfileFamily extends Family<AsyncValue<AppUser>> {
 ///
 /// Copied from [Profile].
 class ProfileProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<Profile, AppUser> {
+    extends AutoDisposeAsyncNotifierProviderImpl<Profile, UserEntity> {
   /// 👤 [profileProvider] — async notifier that fetches user profile
   /// 🧼 Declarative-only approach, throws [Failure] and is handled in `.listenFailure(...)`
   /// 🧼 Compatible with `.family` and avoids breaking [SafeAsyncState] limitations
@@ -124,7 +124,7 @@ class ProfileProvider
   final String uid;
 
   @override
-  FutureOr<AppUser> runNotifierBuild(covariant Profile notifier) {
+  FutureOr<UserEntity> runNotifierBuild(covariant Profile notifier) {
     return notifier.build(uid);
   }
 
@@ -145,7 +145,7 @@ class ProfileProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<Profile, AppUser> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<Profile, UserEntity> createElement() {
     return _ProfileProviderElement(this);
   }
 
@@ -165,13 +165,13 @@ class ProfileProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ProfileRef on AutoDisposeAsyncNotifierProviderRef<AppUser> {
+mixin ProfileRef on AutoDisposeAsyncNotifierProviderRef<UserEntity> {
   /// The parameter `uid` of this provider.
   String get uid;
 }
 
 class _ProfileProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<Profile, AppUser>
+    extends AutoDisposeAsyncNotifierProviderElement<Profile, UserEntity>
     with ProfileRef {
   _ProfileProviderElement(super.provider);
 

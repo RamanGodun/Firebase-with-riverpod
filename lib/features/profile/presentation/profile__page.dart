@@ -11,7 +11,7 @@ import '../../../core/shared_modules/localization/code_base_for_both_options/tex
 import '../../../core/shared_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/shared_modules/localization/language_toggle_widget/language_toggle_button.dart';
 import '../../../core/shared_modules/theme/core/constants/_app_constants.dart';
-import '../domain/entities/app_user_entity.dart';
+import '../domain/entities/_user_entity.dart';
 import '../../../core/shared_modules/navigation/routes_names.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
 import '../../../core/shared_layers/shared_presentation/widgets/custom_app_bar.dart';
@@ -33,7 +33,8 @@ class ProfilePage extends ConsumerWidget {
     //
     final uid = fbAuth.currentUser?.uid;
     if (uid == null) return const SizedBox();
-    final asyncUser = ref.watch(profileProvider(uid));
+
+    final asyncUser = ref.watch<AsyncValue<UserEntity>>(profileProvider(uid));
 
     // ❗️ Declarative error listener
     ref.listenFailure(profileProvider(uid), context);

@@ -4,7 +4,7 @@ part of 'profile__page.dart';
 /// 🧼 Rendered after successful response from [profileProvider]
 
 class _UserProfile extends StatelessWidget {
-  final AppUser user;
+  final UserEntity user;
   const _UserProfile(this.user);
   //--------------------------
 

@@ -1,6 +1,6 @@
+import 'package:firebase_with_riverpod/features/profile/domain/entities/_user_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'entities/app_user_entity.dart';
 import '../../../core/general_utils/typedef.dart';
 import '../data/profile_repo_provider.dart';
 import 'profile_repo_contract.dart';
@@ -27,7 +27,7 @@ final class GetProfileUseCase {
   final IProfileRepo repo;
   const GetProfileUseCase(this.repo);
 
-  ResultFuture<AppUser> call(String uid) {
+  ResultFuture<UserEntity> call(String uid) {
     return repo.getProfile(userID: uid);
   }
 
