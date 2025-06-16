@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../shared_modules/errors_handling/failures/failure_entity.dart';
+import '../../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
 
 part 'app_user.g.dart';
 

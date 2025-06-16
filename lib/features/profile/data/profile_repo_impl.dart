@@ -1,10 +1,10 @@
 import '../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../core/shared_layers/shared_domain/entities/app_user.dart';
+import '../domain/entities/app_user.dart';
 import '../../../core/shared_modules/errors_handling/either/either.dart';
 import '../../../core/shared_modules/errors_handling/failures/failure_entity.dart';
 import '../../../core/shared_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../../../core/general_utils/typedef.dart';
-import '../domain_and_data/profile_repo_contract.dart';
+import '../domain/profile_repo_contract.dart';
 import 'remote_data_source.dart';
 
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
