@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/shared_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../../../../core/modules_shared/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../domain/reset_password_repo_contract.dart';
 
 part 'reset_password_repo_provider.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/shared_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../../../../core/modules_shared/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../../utils/auth_user_utils.dart';
 import '../domain/change_password_repo_contract.dart';
 

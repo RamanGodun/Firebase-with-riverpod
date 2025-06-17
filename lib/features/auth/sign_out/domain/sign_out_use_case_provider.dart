@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/general_utils/typedef.dart';
-import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
+import '../../../../core/utils_shared/typedef.dart';
+import '../../../../core/modules_shared/errors_handling/utils/for_riverpod/failure_utils.dart';
 import '../data/sign_out_repo_provider.dart';
 import 'sign_out_repo_contract.dart';
 

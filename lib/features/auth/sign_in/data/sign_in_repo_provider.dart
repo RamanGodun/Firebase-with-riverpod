@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/shared_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../../../../core/modules_shared/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../domain/sign_in_repo_contract.dart';
 
 part 'sign_in_repo_provider.g.dart';

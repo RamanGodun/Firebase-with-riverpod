@@ -1,12 +1,12 @@
 import 'dart:convert';
-import '../../../../core/general_utils/typedef.dart';
+import '../../../../core/utils_shared/typedef.dart';
 import '../../domain/entities/_user_entity.dart';
 import '_user_dto.dart';
 
-/// 🔄 [UserDTOMapper] — Instance-level helpers for [UserDTO]
+/// 🔄 [UserDTOX] — Instance-level helpers for [UserDTO]
 /// ✅ Converts to entity or JSON (for logic or API usage)
 
-extension UserDTOMapper on UserDTO {
+extension UserDTOX on UserDTO {
   //----------------------------
 
   /// 🔄 Converts [UserDTO] → Domain [UserEntity] entity

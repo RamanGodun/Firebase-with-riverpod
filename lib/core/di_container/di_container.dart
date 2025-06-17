@@ -3,9 +3,9 @@ import 'package:get_storage/get_storage.dart' show GetStorage;
 import '../../features/profile/data/profile_repo_impl.dart';
 import '../../features/profile/data/profile_repo_provider.dart';
 import '../../features/profile/data/remote_data_source.dart';
-import '../shared_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
-import '../shared_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
-import '../shared_modules/theme/theme_provider/theme_provider.dart';
+import '../modules_shared/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
+import '../modules_shared/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
+import '../modules_shared/theme/theme_provider/theme_provider.dart';
 
 /// 🌍 Global singleton DI container
 /// ───────────────────────────────────────

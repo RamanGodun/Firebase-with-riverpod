@@ -1,9 +1,9 @@
-import 'package:firebase_with_riverpod/core/shared_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/features/auth/sign_out/presentation/sign_out_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/shared_modules/localization/generated/locale_keys.g.dart';
-import '../../../../core/shared_layers/shared_presentation/widgets/buttons/custom_buttons.dart';
+import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
+import '../../../../core/layers_shared/shared_presentation/widgets/buttons/custom_buttons.dart';
 
 /// 🔘 [SignOutButton] — triggers logout via [signOutProvider]
 /// 🧼 Declarative error handling with overlay via `.listen()`

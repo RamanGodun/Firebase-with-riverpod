@@ -1,4 +1,4 @@
-import '../../../core/general_utils/typedef.dart';
+import '../../../core/utils_shared/typedef.dart';
 import 'entities/_user_entity.dart';
 
 /// 🧼 Contract-level abstraction for the repository.

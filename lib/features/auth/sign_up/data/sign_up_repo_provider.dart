@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objec
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/shared_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../../../../core/modules_shared/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../../../profile/data/data_transfer_objects/user_dto_factories_x.dart';
 import '../domain/sign_up_repo_contract.dart';
 

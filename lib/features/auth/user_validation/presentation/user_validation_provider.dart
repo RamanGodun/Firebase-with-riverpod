@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/shared_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../../../core/modules_shared/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../domain/user_validation_use_case_provider.dart';
 
 part 'user_validation_provider.g.dart';
