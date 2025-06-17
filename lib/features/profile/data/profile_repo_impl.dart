@@ -1,5 +1,4 @@
 import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
-import 'package:firebase_with_riverpod/features/profile/domain/entities/user_entity_x.dart';
 
 import '../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../core/general_utils/typedef.dart';
@@ -48,22 +47,19 @@ final class ProfileRepoImpl implements IProfileRepo {
           throw FirebaseUserMissingFailure();
         }
 
-        final newUser = UserEntity(
+        final dto = UserDTOFactories.newUser(
           id: firebaseUser.uid,
           name:
               firebaseUser.displayName?.trim().isNotEmpty == true
                   ? firebaseUser.displayName!
                   : 'User',
           email: firebaseUser.email ?? 'unknown',
-          profileImage: 'https://picsum.photos/300',
-          point: 0,
-          rank: 'bronze',
         );
 
         // 💾 Save user to Firestore via DTO
-        final dto = newUser.toDTO();
         await usersCollection.doc(userID).set(dto.toJsonMap());
 
+        final newUser = dto.toEntity();
         _cachedUser = newUser;
         _lastFetched = now;
         return Right(newUser);
