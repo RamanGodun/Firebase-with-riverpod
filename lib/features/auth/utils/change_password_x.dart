@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/failures/extensions/to_ui_failure_x.dart';
-import 'package:firebase_with_riverpod/core/modules_shared/navigation/utils/context_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../change_password/presentation/change_password_provider.dart';
 import '../change_password/presentation/reauth_page.dart';
 import '../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../core/modules_shared/navigation/routes_names.dart';
+import '../../../core/modules_shared/navigation/core/routes_names.dart';
 import '../../../core/modules_shared/errors_handling/failures/failure_entity.dart';
 
 /// 🧩 [RefPasswordChangeListenerX] — declarative handler for ChangePassword lifecycle

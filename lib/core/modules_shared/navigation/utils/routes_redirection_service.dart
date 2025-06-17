@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../app_configs/firebase/firebase_constants.dart';
 
-/// 🧭 [RoutesRedirectionService] — centralized redirect logic for GoRouter
+/// 🧭🚦 [RoutesRedirectionService] — centralized redirect logic for GoRouter
 /// 🔐 Dynamically handles redirection based on Firebase auth state:
 ///   - 🚪 `/signin` if unauthenticated
 ///   - 🧪 `/verifyEmail` if email is not verified

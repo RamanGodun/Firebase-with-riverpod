@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'router_provider.dart';
+import 'core/router_provider.dart';
+
 
 /// 🧭 [AppRouterConfig] — Wrapper for router provider.
 /// ✅ Enables consistent API across Bloc / Riverpod apps.

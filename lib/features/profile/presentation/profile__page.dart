@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
-import 'package:firebase_with_riverpod/core/modules_shared/navigation/utils/context_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ import '../../../core/modules_shared/theme/core/constants/_app_constants.dart';
 import '../../../core/modules_shared/theme/theme_utils/blur_wrapper.dart';
 import '../../../core/modules_shared/theme/theme_utils/decorations/_box_decorations_factory.dart';
 import '../domain/entities/_user_entity.dart';
-import '../../../core/modules_shared/navigation/routes_names.dart';
+import '../../../core/modules_shared/navigation/core/routes_names.dart';
 import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/custom_app_bar.dart';
 import '../../../core/modules_shared/theme/widget_for_theme_toggling.dart';
