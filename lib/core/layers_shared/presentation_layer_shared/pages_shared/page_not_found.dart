@@ -8,13 +8,19 @@ import '../../../modules_shared/navigation/core/routes_names.dart';
 import '../widgets_shared/buttons/custom_buttons.dart';
 
 /// 🧭 [PageNotFound] — generic 404 fallback UI for unknown routes
+
 class PageNotFound extends StatelessWidget {
+  //---------------------------------------
+
   final String errorMessage;
 
   const PageNotFound({super.key, required this.errorMessage});
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     return Scaffold(
       body: Center(
         child: Column(
@@ -49,33 +55,3 @@ class PageNotFound extends StatelessWidget {
     );
   }
 }
-
-/*
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          spacing: AppSpacing.xxxm,
-          children: [
-            const TextWidget(LocaleKeys.errors_firebase_title, TextType.error),
-            const TextWidget(
-              LocaleKeys.errors_firebase_message,
-              TextType.bodyMedium,
-            ),
-            const SizedBox(height: 20.0),
-            CustomButton(
-              type: ButtonType.filled,
-              onPressed: () => Navigator.pop(context),
-              label: LocaleKeys.buttons_retry,
-              isEnabled: true,
-              isLoading: false,
-            ),
-          ],
-        ).withPaddingHorizontal(AppSpacing.l),
-      ),
-    );
-  }
- */

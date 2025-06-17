@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// 📦 [AsyncValueExtensions] — Extension for `AsyncValue<T>`
-///
 /// Adds convenient debugging and logging utilities for Riverpod async states.
 
 extension AsyncValueExtensions<T> on AsyncValue<T> {
+  ///----------------------------------------------
+
   /// 🔍 Returns a short string representation of the current `AsyncValue` state.
   /// Useful for quick debug prints:
   String get toStr {
@@ -25,11 +26,6 @@ isLoading: $isLoading, isRefreshing: $isRefreshing, isReloading: $isReloading
 hasValue: $hasValue, hasError: $hasError, value: $valueOrNull
 ''';
   }
-}
 
-///
-/// Usage:
-/// ```dart
-/// ref.watch(myAsyncProvider).toStr;
-/// ref.watch(myAsyncProvider).props;
-/// ```
+  //
+}

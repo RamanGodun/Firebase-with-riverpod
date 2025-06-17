@@ -1,19 +1,21 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../layers_shared/domain_layer_shared/providers_shared/auth_state_provider.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
 import '../utils/overlay_navigation_observer.dart';
 import '../utils/routes_redirection_service.dart';
 import 'app_routes.dart';
-import 'auth_state_stream_provider.dart';
 import 'routes_names.dart';
 
 part 'router_provider.g.dart';
 
 /// 🧭🚦 [routerProvider] — GoRouter configuration with global auth-aware redirect
+
 @riverpod
 GoRouter router(Ref ref) {
-  //
+  //---------------------
+
   final authState = ref.watch(authStateStreamProvider);
 
   ///

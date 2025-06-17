@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/loader.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../features/profile/presentation/profile__page.dart';
 import '../../../../features/auth/change_password/presentation/change_password_page.dart';
@@ -7,7 +8,6 @@ import '../../../../features/auth/sign_up/presentation/signup_page.dart';
 import '../../../../features/auth/change_password/presentation/reauth_page.dart';
 import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
-import '../../../layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/_home_page.dart';
 import 'routes_names.dart';
 import '../utils/page_transition.dart';
@@ -17,6 +17,7 @@ import '../utils/page_transition.dart';
 
 abstract final class AppRoutes {
   ///-------------------------
+
   AppRoutes._();
 
   ///
@@ -26,7 +27,7 @@ abstract final class AppRoutes {
     GoRoute(
       path: '/splash',
       name: RoutesNames.splash,
-      builder: (context, state) => const MiniWidgets(MWType.loading),
+      builder: (context, state) => const Loader(),
     ),
 
     /// 🏠 Home Page

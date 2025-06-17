@@ -12,8 +12,8 @@ part 'profile_repo_provider.g.dart';
 
 @riverpod
 IProfileRepo profileRepo(Ref ref) {
-  //------------------------------
-
+  ///------------------------------
+  //
   // Injects concrete implementation of IProfileRemoteDataSource
   final remote = ProfileRemoteDataSourceImpl();
 

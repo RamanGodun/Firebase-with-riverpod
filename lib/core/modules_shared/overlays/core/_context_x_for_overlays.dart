@@ -19,6 +19,8 @@ extension ContextXForOverlays on BuildContext {
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);
 
+  ///
+
   /// 🧠 Handles displaying [FailureUIEntity] as banner/snackbar/dialog
   /// 📌 Uses [OverlayUIPresets] and [ShowAs] to configure appearance and behavior
   void showError(
@@ -29,7 +31,7 @@ extension ContextXForOverlays on BuildContext {
     OverlayPriority priority = OverlayPriority.high,
   }) {
     //
-
+    ///
     switch (showAs) {
       case ShowAs.banner:
         showBanner(
@@ -83,6 +85,8 @@ extension ContextXForOverlays on BuildContext {
     }
   }
 
+  ///
+
   /// 💬 Shows a platform-adaptive dialog manually triggered by user
   void showUserDialog({
     required String title,
@@ -110,6 +114,8 @@ extension ContextXForOverlays on BuildContext {
     );
   }
 
+  ///
+
   /// 🪧 Shows a banner overlay triggered manually by user
   void showUserBanner({
     required String message,
@@ -126,6 +132,8 @@ extension ContextXForOverlays on BuildContext {
       priority: OverlayPriority.userDriven,
     );
   }
+
+  ///
 
   /// 💬 Shows a platform-adaptive snackbar manually triggered by user
   void showUserSnackbar({

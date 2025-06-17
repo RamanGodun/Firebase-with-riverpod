@@ -11,15 +11,16 @@ part 'user_validation_use_case_provider.g.dart';
 
 @riverpod
 EmailVerificationUseCase emailVerificationUseCase(Ref ref) {
-  //-------------------------------------------------------
-
+  ///-------------------------------------------------------
+  //
   final repo = ref.watch(emailVerificationRepoProvider);
   return EmailVerificationUseCase(repo);
+  //
 }
 
-///
+////
 
-///
+////
 
 /// 📦 [EmailVerificationUseCase] — encapsulates email verification logic
 /// 🧼 Handles send + reload + check via Firebase

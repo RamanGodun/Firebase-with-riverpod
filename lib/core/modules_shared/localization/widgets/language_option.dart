@@ -4,9 +4,10 @@ import 'text_widget.dart';
 import '../generated/locale_keys.g.dart';
 
 /// 🌐🌍 Enum describing supported app languages with metadata
-// ---------------------------------------------------
 
 enum LanguageOption {
+  // ---------------
+
   en(
     Locale('en'),
     '🇬🇧',
@@ -26,12 +27,12 @@ enum LanguageOption {
     'Zmień na polski',
   );
 
-  const LanguageOption(this.locale, this.flag, this.messageKey, this.label);
-
   final Locale locale;
   final String flag;
   final String messageKey;
   final String label;
+
+  const LanguageOption(this.locale, this.flag, this.messageKey, this.label);
 
   /// Converts to styled [PopupMenuItem], disables current language
   PopupMenuItem<LanguageOption> toMenuItem(String currentLangCode) {
@@ -63,5 +64,5 @@ enum LanguageOption {
     );
   }
 
-  ///
+  //
 }

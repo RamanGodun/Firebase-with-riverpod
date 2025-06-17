@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
-import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
+import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/loader.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,8 +27,9 @@ part 'profile_page_widgets.dart';
 /// 🧼 Uses [profileProvider] to fetch data and [authRepositoryProvider] to sign out
 
 class ProfilePage extends ConsumerWidget {
+  //-------------------------------------
   const ProfilePage({super.key});
-  //---------------------------
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,7 +56,7 @@ class ProfilePage extends ConsumerWidget {
       ///
       body: asyncUser.when(
         data: (user) => _UserProfile(user),
-        loading: () => const MiniWidgets(MWType.loading),
+        loading: () => const Loader(),
         error: (_, _) => const SizedBox(), // error shown by overlay
       ),
     );

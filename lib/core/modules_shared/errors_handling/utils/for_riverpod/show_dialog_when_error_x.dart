@@ -6,18 +6,10 @@ import '../../../../utils_shared/typedef.dart';
 import '../../failures/failure_entity.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
-// extension RefFailureListenerX on WidgetRef {
-//   void listenFailure<T>(
-//     ProviderListenable<AsyncValue<T>> provider,
-//     BuildContext context,
-//   ) {
-//     listen<AsyncValue<T>>(provider, (prev, next) {
-//       final failure = next.asFailure;
-//       if (failure != null) context.showError(failure.toUIEntity());
-//     });
-//   }
-// }
+
 extension RefFailureListenerX on WidgetRef {
+  ///--------------------------------------
+
   void listenFailure<T>(
     ProviderListenable<AsyncValue<T>> provider,
     BuildContext context, {
@@ -31,12 +23,20 @@ extension RefFailureListenerX on WidgetRef {
       }
     });
   }
+
+  //
 }
+
+////
+
+////
 
 /// 🧩 [AsyncValueX] — extension for extracting [Failure] from [AsyncError]
 /// ✅ Enables typed access to domain failures in async state
-/// ─────
+
 extension AsyncValueX<T> on AsyncValue<T> {
+  /// ─────-------------------------------
+
   /// ❌ Returns [Failure] if this is an [AsyncError] containing a domain failure
   Failure? get asFailure {
     final error = this;
@@ -45,4 +45,6 @@ extension AsyncValueX<T> on AsyncValue<T> {
     }
     return null;
   }
+
+  // /
 }

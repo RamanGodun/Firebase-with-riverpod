@@ -22,8 +22,8 @@ part 'widgets_for_verify_email_page.dart';
 /// Automatically redirects when email gets verified
 
 class VerifyEmailPage extends HookConsumerWidget {
+  //---------------------------------------------
   const VerifyEmailPage({super.key});
-  //-------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -46,14 +46,14 @@ class VerifyEmailPage extends HookConsumerWidget {
   }
 }
 
-///
+////
 
-///
+////
 
 /// 📦 [_VerifyEmailBody] — main UI container with info & cancel
 class _VerifyEmailBody extends StatelessWidget {
+  //-------------------------------------------
   const _VerifyEmailBody();
-  //-------------------------------
 
   @override
   Widget build(BuildContext context) {

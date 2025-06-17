@@ -4,10 +4,9 @@ library;
 /// 🧼 Abstracts sign-out method used across use cases
 
 abstract interface class ISignOutRepo {
-  //----------------------------------
-
+  ///----------------------------------
+  //
   // 🔓 Signs out the currently authenticated user
   Future<void> signOut();
-
   //
 }

@@ -24,9 +24,11 @@ final class GlobalOverlayHandler extends StatelessWidget {
     this.dismissKeyboard = true,
     this.dismissOverlay = true,
   });
+  //
 
   @override
   Widget build(BuildContext context) {
+    //
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () async {

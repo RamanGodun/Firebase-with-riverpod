@@ -1,10 +1,10 @@
-/// 🧾 Application identity & versioning constants
-final class AppInfoConstants {
-  AppInfoConstants._();
+library;
 
-  /// ═══════════════════════════════════════════════════════════════
-  // 🧾 App Identity & Versioning
-  // ═══════════════════════════════════════════════════════════════
+/// 🧾 Application identity & versioning constants
+
+final class AppInfoConstants {
+  ///------------------------
+  AppInfoConstants._();
 
   /// 🧾 Application display name
   static const String appName = 'Firebase with Riverpod';
@@ -15,4 +15,6 @@ final class AppInfoConstants {
   /// 🏷️ Application ID / bundle ID
   static const String androidAppId = 'com.example.firebaseWithRiverpod';
   static const String iosBundleId = 'com.example.firebaseWithRiverpod';
+
+  //
 }

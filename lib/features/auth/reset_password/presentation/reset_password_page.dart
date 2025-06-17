@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/modules_shared/localization/generate
     show LocaleKeys;
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils/reset_password_x.dart';
+import 'package:firebase_with_riverpod/features/auth/utils_for_auth_feature/reset_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
@@ -23,8 +23,9 @@ part 'widgets_for_reset_password_page.dart';
 /// 🧼 Declarative Riverpod + FormState + centralized error handling
 
 class ResetPasswordPage extends ConsumerWidget {
+  //-------------------------------------------
   const ResetPasswordPage({super.key});
-  //----------------------------------
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

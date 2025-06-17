@@ -9,10 +9,11 @@ part 'profile_use_case_provider.g.dart';
 
 @Riverpod(keepAlive: false)
 GetProfileUseCase getProfileUseCase(Ref ref) {
-  //-----------------------------------------
-
+  ///-----------------------------------------
+  //
   final repo = ref.watch(profileRepoProvider);
   return GetProfileUseCase(repo);
+  //
 }
 
 ////

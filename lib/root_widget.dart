@@ -9,11 +9,12 @@ import 'core/modules_shared/overlays/core/global_overlay_handler.dart';
 
 class AppRootShell extends ConsumerWidget {
   ///--------------------------------------
-
   const AppRootShell({super.key});
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // /
     // ? Theme memoization
     final config = AppRootConfig.from(ref: ref, context: context);
     return _AppRootView(config: config);
@@ -21,19 +22,22 @@ class AppRootShell extends ConsumerWidget {
   }
 }
 
-///
+////
+
+////
 
 /// 📱🧱 [_AppRootView] — Final MaterialApp.router widget
 ///   ✅ Configured from [AppRootConfig].
 
 class _AppRootView extends StatelessWidget {
   ///--------------------------------------
-
   final AppRootConfig config;
   const _AppRootView({required this.config});
+  //
 
   @override
   Widget build(BuildContext context) {
+    //
     return MaterialApp.router(
       title: config.localization.title,
       debugShowCheckedModeBanner: !kReleaseMode,

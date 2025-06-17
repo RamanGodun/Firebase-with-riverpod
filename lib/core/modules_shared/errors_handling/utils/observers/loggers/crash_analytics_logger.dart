@@ -8,8 +8,11 @@ import '../failure_diagnostics_x.dart';
 /// ✅ Prints debug output in development mode for immediate visibility.
 
 abstract final class CrashlyticsLogger {
+  //-----------------------------------
+
   const CrashlyticsLogger._();
-  //---------------------------
+
+  ///
 
   /// 🧩 Internal helper for consistent error reporting.
   static void _record({

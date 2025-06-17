@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../modules_shared/localization/widgets/text_widget.dart';
 
-/// 🔘 Button types supported: [filled], [text]
-enum ButtonType { filled, text }
-
 /// ✅ [CustomButton] — animated cross-platform button with Cupertino spinner and theming
+
 class CustomButton extends StatelessWidget {
+  ///--------------------------------------
+
   final VoidCallback? onPressed;
   final ButtonType type;
   final bool isLoading;
@@ -29,8 +29,11 @@ class CustomButton extends StatelessWidget {
     this.fontWeight = FontWeight.w600,
   });
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     final scheme = context.colorScheme;
     final isDark = context.isDarkMode;
     final borderRadius = BorderRadius.circular(14);
@@ -163,4 +166,13 @@ class CustomButton extends StatelessWidget {
       child: buttonContent,
     );
   }
+
+  //
 }
+
+////
+
+////
+
+/// 🔘 Button types supported: [filled], [text]
+enum ButtonType { filled, text }

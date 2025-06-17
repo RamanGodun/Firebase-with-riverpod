@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 ///   • Disposal (`didDisposeProvider`)
 
 final class Logger extends ProviderObserver {
+  ///-----------------------------------------
   @override
   void didAddProvider(
     ProviderBase<Object?> provider,
@@ -61,4 +62,6 @@ final class Logger extends ProviderObserver {
     }
     super.didUpdateProvider(provider, previousValue, newValue, container);
   }
+
+  //
 }

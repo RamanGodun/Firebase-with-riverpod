@@ -7,7 +7,10 @@ import '../../../../modules_shared/theme/core/constants/_app_constants.dart'
 
 /// 🌍 [CustomButtonForGoRouter]
 /// Styled full-width Cupertino button that triggers navigation or a custom action.
+
 class CustomButtonForGoRouter extends StatelessWidget {
+  ///------------------------------------------------
+
   final String title;
   final String? routeName;
   final Map<String, String>? pathParameters;
@@ -23,8 +26,11 @@ class CustomButtonForGoRouter extends StatelessWidget {
     this.onPressedCallback,
   });
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     final scheme = context.colorScheme;
 
     return Padding(
@@ -68,4 +74,6 @@ class CustomButtonForGoRouter extends StatelessWidget {
       debugPrint('⚠️ [CustomButtonForGoRouter] No route or callback provided');
     }
   }
+
+  //
 }

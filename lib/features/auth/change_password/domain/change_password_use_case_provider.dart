@@ -19,9 +19,9 @@ ChangePasswordUseCase changePasswordUseCase(Ref ref) {
   //
 }
 
-///
+////
 
-///
+////
 
 /// 📦 [ChangePasswordUseCase] — encapsulates password change logic
 /// 🧼 Handles Firebase logic with failure mapping

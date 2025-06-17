@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utils_shared/timing_control/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
 import 'overlay_entries/_overlay_entries_registry.dart';
-import '../core/observers/overlay_logger.dart';
+import '../overlay_logger.dart';
 import '../core/tap_through_overlay_barrier.dart';
 
 part 'policy_resolver.dart';
@@ -37,6 +37,8 @@ final class OverlayDispatcher {
   bool get canBeDismissedExternally =>
       _activeRequest?.dismissPolicy == OverlayDismissPolicy.dismissible;
   //
+
+  ///
 
   /// 📥 Adds a new request to the queue, resolves replacement/drop strategy
   void enqueueRequest(BuildContext context, OverlayUIEntry request) async {
@@ -72,6 +74,8 @@ final class OverlayDispatcher {
 
     _finalizeEnqueue(overlay, request);
   }
+
+  ///
 
   /// 🧱 Finalizes the enqueue logic after replacement/drop resolution
   void _finalizeEnqueue(OverlayState overlay, OverlayUIEntry request) {

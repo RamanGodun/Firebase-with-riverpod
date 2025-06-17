@@ -7,10 +7,13 @@ import '../../theme/core/constants/_app_constants.dart';
 import 'language_option.dart';
 
 /// 🌐🌍 [LanguageToggleButton] — macOS-style drop-down with flag + native text
-//-------------------------------------------------------------------------
 
 final class LanguageToggleButton extends StatelessWidget {
+  //-----------------------------------------------------
+
   const LanguageToggleButton({super.key});
+
+  ///
 
   @override
   Widget build(BuildContext context) {

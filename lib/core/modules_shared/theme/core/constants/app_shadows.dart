@@ -1,8 +1,10 @@
 part of '_app_constants.dart';
 
 abstract final class AppShadows {
+  //----------------------------
+
   const AppShadows._();
-  //-----------------
+  //
 
   /// 🍏 Dialog-specific shadows
   static const List<BoxShadow> forIOSLightThemeDialog = [

@@ -10,23 +10,25 @@ part 'signin_provider.g.dart';
 
 @Riverpod(keepAlive: false)
 class SignIn extends _$SignIn with SafeAsyncState<void> {
-  //----------------------------------------------------
-
+  ///----------------------------------------------------
+  //
   /// 🧱 Initializes safe lifecycle tracking
   @override
   FutureOr<void> build() {
     initSafe();
+    //
   }
 
-  ///
+  ////
 
-  ///
+  ////
 
   /// 🔐 Signs in user with provided email and password
   /// - Delegates auth to [SignInUseCase]
-  Future<void> signin({required String email, required String password}) async {
-    //----------------------------------------------------
 
+  Future<void> signin({required String email, required String password}) async {
+    ///------------------------------------------------------------------------
+    //
     state = const AsyncLoading();
 
     state = await AsyncValue.guard(() async {

@@ -5,28 +5,32 @@ part of '_box_decorations_factory.dart';
 /// Cached internally for fast access
 
 final class AndroidDialogsDecoration {
-  const AndroidDialogsDecoration._();
-  // ──────────────────────────────
+  // ──────────────────────────────--
 
+  const AndroidDialogsDecoration._();
+  //
+
+  ///
   static const BoxDecoration _lightThemeDecoration = BoxDecoration(
     color: AppColors.lightSurface,
     borderRadius: UIConstants.commonBorderRadius,
     boxShadow: AppShadows.forAndroidLightThemeDialog,
   );
 
+  ///
   static const BoxDecoration _darkThemeDecoration = BoxDecoration(
     color: AppColors.darkSurface,
     borderRadius: UIConstants.commonBorderRadius,
     boxShadow: AppShadows.forAndroidDarkThemeDialog,
   );
 
-  // 📦 Memoized lookup map
+  /// 📦 Memoized lookup map
   static final Map<bool, BoxDecoration> _cache = {
     false: _lightThemeDecoration,
     true: _darkThemeDecoration,
   };
 
-  // 📦 Returns appropriate dialog box style
+  /// 📦 Returns appropriate dialog box style
   static BoxDecoration fromTheme(bool isDark) =>
       _cache[isDark] ?? (throw ArgumentError('Unknown brightness value'));
 

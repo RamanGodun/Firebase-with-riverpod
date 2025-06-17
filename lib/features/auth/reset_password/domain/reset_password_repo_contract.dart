@@ -7,4 +7,6 @@ abstract interface class IResetPasswordRepo {
 
   // 📩 Sends password reset link to given email
   Future<void> sendResetLink(String email);
+
+  //
 }

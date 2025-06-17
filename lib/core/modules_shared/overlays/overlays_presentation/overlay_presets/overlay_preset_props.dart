@@ -33,6 +33,7 @@ class OverlayUIPresetProps extends Equatable {
     required this.contentPadding,
     required this.behavior,
   });
+  //
 
   /// 🔁 Creates a new copy with optional overrides
   OverlayUIPresetProps copyWith({

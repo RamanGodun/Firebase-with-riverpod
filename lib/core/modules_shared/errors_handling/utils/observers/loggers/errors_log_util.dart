@@ -6,8 +6,11 @@ import '../../../failures/failure_entity.dart';
 /// 🔍 Supports runtime exceptions and domain-level failures
 
 abstract final class ErrorsLogger {
+  //------------------------------
+
   const ErrorsLogger._();
-  //------------------
+
+  ///
 
   /// ❗ Logs any raw [Exception] or [Error].
   static void exception(Object error, [StackTrace? stackTrace]) {

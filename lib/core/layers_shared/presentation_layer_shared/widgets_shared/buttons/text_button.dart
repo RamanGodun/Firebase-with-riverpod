@@ -5,7 +5,10 @@ import '../../../../modules_shared/theme/core/app_colors.dart';
 import '../../../../modules_shared/theme/core/constants/_app_constants.dart';
 
 /// 🔁🌐 [RedirectTextButton] a reusable text button, used for navigation or redirects.
+
 final class RedirectTextButton extends StatelessWidget {
+  ///--------------------------------------------------
+
   final VoidCallback? onPressed;
   final String label;
   final bool isDisabled;
@@ -17,8 +20,11 @@ final class RedirectTextButton extends StatelessWidget {
     this.isDisabled = false,
   });
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     return TextButton(
       onPressed: isDisabled ? null : onPressed,
       child: Row(

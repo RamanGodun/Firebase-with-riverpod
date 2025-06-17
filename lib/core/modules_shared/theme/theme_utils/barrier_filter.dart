@@ -8,8 +8,10 @@ import '../core/app_colors.dart';
 /// - Supports [ShowAs] or override with [OverlayBlurLevel]
 
 final class OverlayBarrierFilter {
-  const OverlayBarrierFilter._();
   // ───────────────────────────
+
+  const OverlayBarrierFilter._();
+  //
 
   /// 📦 Main resolver: theme + type + optional [level] override
   static Widget resolve({

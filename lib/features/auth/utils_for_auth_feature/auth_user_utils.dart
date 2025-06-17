@@ -25,5 +25,5 @@ abstract final class AuthUserUtils {
   /// 📬 Returns user email or throws
   static String get email => currentUserOrThrow.email ?? 'unknown';
 
-  // (за потреби додати методи на токен, рефреш, тощо)
+  // (here can be add methods, tokens, refresh ...)
 }

@@ -1,3 +1,5 @@
+library;
+
 /// 🌐 [EnvConfig] — Environment-based configuration
 /// Supports `dev`, `staging`, and `prod` modes, use `.env` + `flutter_dotenv` for actual secrets.
 
@@ -8,11 +10,9 @@
 ///       • Logging / debug switches
 ///       • Static defaults in development
 
-library;
-
-enum Environment { dev, staging, prod }
-
 final class EnvConfig {
+  ///-----------------
+
   /// 🌍 Current environment (⚠️ change before release!)
   static const Environment currentEnv = Environment.dev;
 
@@ -39,5 +39,9 @@ final class EnvConfig {
   /// 🔒 Production mode check
   static bool get isProduction => currentEnv == Environment.prod;
 
-  ///
+  //
 }
+
+////
+
+enum Environment { dev, staging, prod }

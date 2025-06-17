@@ -3,8 +3,8 @@ part of 'signup_page.dart';
 /// 🧾 [_SignupHeader] — logo and welcome message
 
 class _SignupHeader extends StatelessWidget {
+  //----------------------------------------
   const _SignupHeader();
-  //-------------------
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class _SignupHeader extends StatelessWidget {
 
 /// 🔁 [_SignupFooter] — sign in redirect
 class _SignupFooter extends StatelessWidget {
+  //----------------------------------------
   const _SignupFooter();
-  //-------------------
 
   @override
   Widget build(BuildContext context) {

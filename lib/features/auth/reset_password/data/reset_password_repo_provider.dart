@@ -12,9 +12,9 @@ part 'reset_password_repo_provider.g.dart';
 @riverpod
 IResetPasswordRepo resetPasswordRepo(Ref ref) => ResetPasswordRepoImpl();
 
-///
+////
 
-///
+////
 
 /// 🧩 [ResetPasswordRepoImpl] — concrete implementation of [IResetPasswordRepo]
 /// 🧼 Uses FirebaseAuth to send reset email

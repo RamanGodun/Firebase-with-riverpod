@@ -93,7 +93,14 @@ enum AppThemeType {
     //
   );
 
-  ///
+  ////
+
+  final Brightness brightness;
+  final Color background;
+  final Color primaryColor;
+  final Color cardColor;
+  final Color contrastColor;
+  final ColorScheme colorScheme;
 
   const AppThemeType({
     required this.brightness,
@@ -103,13 +110,6 @@ enum AppThemeType {
     required this.contrastColor,
     required this.colorScheme,
   });
-
-  final Brightness brightness;
-  final Color background;
-  final Color primaryColor;
-  final Color cardColor;
-  final Color contrastColor;
-  final ColorScheme colorScheme;
 
   /// 🔘 True getter if dark theme
   bool get isDark => brightness == Brightness.dark;

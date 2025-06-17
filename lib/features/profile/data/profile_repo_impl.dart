@@ -13,13 +13,14 @@ import 'remote_data_source.dart';
 /// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
 
 final class ProfileRepoImpl implements IProfileRepo {
+  // ─────────────────────────----------------------
+
   final IProfileRemoteDataSource _remote;
   ProfileRepoImpl(this._remote);
-  // ─────────────────────────
+  //
 
   UserEntity? _cachedUser;
   DateTime? _lastFetched;
-
   static const Duration _cacheDuration = Duration(minutes: 5);
 
   ///

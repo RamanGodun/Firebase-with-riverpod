@@ -21,8 +21,9 @@ part 'widgets_for_signin_page.dart';
 /// 🔐 [SignInPage] — screen that allows user to sign in.
 
 class SignInPage extends ConsumerWidget {
+  //------------------------------------
   const SignInPage({super.key});
-  //--------------------------
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

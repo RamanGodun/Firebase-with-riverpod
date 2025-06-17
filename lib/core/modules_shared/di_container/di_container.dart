@@ -8,19 +8,22 @@ import '../overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../theme/theme_provider/theme_provider.dart';
 
 /// 🌍 Global singleton DI container
-/// ───────────────────────────────────────
-late final ProviderContainer globalContainer;
 // ✅ Used both inside the widget tree (`ProviderScope.parent`)
 // ✅ And outside context (e.g., background logic, isolate, utilities)
 // 🧩 Instantiated once during bootstrap: `StartUpHandler._initDI()`
 
+late final ProviderContainer globalContainer;
+
+/// ───────────────────────────────────────
+
 ///
 
 /// 📦 [diContainer] — global list of manually maintained providers
-//----------------------------------------------------------------
+// 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
+// 🔧 Centralized registration of manual providers for Domain and Data layers
+
 final List<Override> diContainer = [
-  // 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
-  // 🔧 Centralized registration of manual providers for Domain and Data layers
+  //----------------------------------------------------------------
 
   /// ── Profile Layer ───
 

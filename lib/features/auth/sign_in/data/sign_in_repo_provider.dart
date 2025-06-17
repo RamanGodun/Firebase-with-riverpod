@@ -13,9 +13,9 @@ part 'sign_in_repo_provider.g.dart';
 @Riverpod(keepAlive: false)
 ISignInRepo signInRepo(Ref ref) => SignInRepoImpl();
 
-///
+////
 
-///
+////
 
 /// 🧩 [SignInRepoImpl] — concrete implementation of [ISignInRepo]
 /// 🧼 Wraps [FirebaseAuth.signInWithEmailAndPassword]

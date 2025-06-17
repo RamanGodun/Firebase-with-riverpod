@@ -3,8 +3,9 @@ part of 'signin_page.dart';
 /// 🧾 [_SigninHeader] — logo and welcome messages
 
 class _SigninHeader extends StatelessWidget {
+  //----------------------------------------
   const _SigninHeader();
-  //-------------------
+  //
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +24,16 @@ class _SigninHeader extends StatelessWidget {
   }
 }
 
-///
+////
 
-///
+////
 
 /// 🔁 [_SigninFooter] — sign up & reset password actions
 
 class _SigninFooter extends StatelessWidget {
+  //----------------------------------------
   const _SigninFooter();
-  //-------------------
+  //
 
   @override
   Widget build(BuildContext context) {

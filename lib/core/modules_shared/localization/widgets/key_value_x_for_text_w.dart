@@ -3,15 +3,14 @@ import 'text_widget.dart';
 
 /// 🔑 [KeyValueTextWidget] — Combines a localized key with a dynamic value in a single line,
 /// with baseline alignment and columnar spacing for visual consistency.
-///----------------------------------------------------------------
 
 final class KeyValueTextWidget extends StatelessWidget {
+  ///--------------------------------------------------
+
   final String labelKey;
   final String value;
-
   // 🅰️ Style for localized label
   final TextType labelTextType;
-
   // 🅱️ Optional style override for value
   final TextType? valueTextType;
 
@@ -23,8 +22,11 @@ final class KeyValueTextWidget extends StatelessWidget {
     this.valueTextType,
   });
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
@@ -58,4 +60,6 @@ final class KeyValueTextWidget extends StatelessWidget {
       ),
     );
   }
+
+  //
 }

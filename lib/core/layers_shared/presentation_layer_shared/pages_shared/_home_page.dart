@@ -9,11 +9,15 @@ import '../../../modules_shared/localization/widgets/text_widget.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.
 /// Displays a toggle for theme switching and navigates to profile/settings.
+
 class HomePage extends StatelessWidget {
+  //----------------------------------
+
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //
     return Scaffold(
       appBar: CustomAppBar(
         title: LocaleKeys.pages_home,

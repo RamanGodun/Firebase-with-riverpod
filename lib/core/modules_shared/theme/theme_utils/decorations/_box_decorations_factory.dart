@@ -13,8 +13,10 @@ part 'android_card_bd.dart';
 /// Used across overlay components and modals
 
 sealed class BoxDecorationFactory {
+  // ────────────────────────────
+
   const BoxDecorationFactory._();
-  // ──────────────────────────────────
+  //
 
   /// 🍏 iOS banner (glassmorphism)
   static BoxDecoration iosCard(bool isDark) =>

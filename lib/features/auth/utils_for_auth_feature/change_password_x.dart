@@ -12,8 +12,13 @@ import '../../../core/modules_shared/navigation/core/routes_names.dart';
 import '../../../core/modules_shared/errors_handling/failures/failure_entity.dart';
 
 /// 🧩 [RefPasswordChangeListenerX] — declarative handler for ChangePassword lifecycle
+
 extension RefPasswordChangeListenerX on WidgetRef {
+  ///---------------------------------------------
+
+  ///
   void listenToPasswordChange(BuildContext context) {
+    //
     final showSnackbar = context.showUserSnackbar;
 
     listen<AsyncValue<void>>(changePasswordProvider, (prev, next) async {
@@ -48,4 +53,6 @@ extension RefPasswordChangeListenerX on WidgetRef {
       );
     });
   }
+
+  //
 }

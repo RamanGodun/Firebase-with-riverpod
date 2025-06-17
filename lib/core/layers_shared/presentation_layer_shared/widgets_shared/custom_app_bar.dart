@@ -4,7 +4,8 @@ import '../../../modules_shared/localization/widgets/text_widget.dart';
 /// 🎨 CustomAppBar with flexible icon/widgets in actions
 final class CustomAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  ///
+  ///-----------------------------------------
+
   final String title;
   final IconData? leadingIcon;
   final VoidCallback? onLeadingPressed;
@@ -30,8 +31,11 @@ final class CustomAppBar extends StatelessWidget
     this.backgroundColor,
   });
 
+  ///
+
   @override
   Widget build(BuildContext context) {
+    //
     // 🔐 Runtime validation
     if (actionWidgets == null &&
         (actionIcons?.length != actionCallbacks?.length)) {
@@ -80,5 +84,5 @@ final class CustomAppBar extends StatelessWidget
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  ///
+  //
 }

@@ -5,11 +5,10 @@ import '../../../core/app_configs/firebase/firebase_constants.dart';
 /// 🧼 Abstracts data fetching from Firestore for user profile
 
 abstract interface class IProfileRemoteDataSource {
-  //---------------------------------------------
-
-  /// 🔽 Fetches user document from Firestore by [uid]
+  ///---------------------------------------------
+  //
+  // 🔽 Fetches user document from Firestore by [uid]
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchUserDoc(String uid);
-
   //
 }
 

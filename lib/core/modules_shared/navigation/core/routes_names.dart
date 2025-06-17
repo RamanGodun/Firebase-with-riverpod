@@ -5,6 +5,7 @@ library;
 
 abstract final class RoutesNames {
   //-----------------------------
+
   RoutesNames._();
   //
 

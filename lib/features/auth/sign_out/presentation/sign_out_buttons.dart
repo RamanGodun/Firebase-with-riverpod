@@ -9,11 +9,13 @@ import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/
 /// 🧼 Declarative error handling with overlay via `.listen()`
 
 class SignOutButton extends ConsumerWidget {
+  //--------------------------------------
   const SignOutButton({super.key});
-  //------------------------------
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     // ❗️ Shows (declarative) error state
     ref.listenFailure(signOutProvider, context);
 
@@ -37,11 +39,12 @@ class SignOutButton extends ConsumerWidget {
 /// 🧼 Listens for errors via [signOutProvider]
 
 class VerifyEmailCancelButton extends ConsumerWidget {
+  //-------------------------------------------------
   const VerifyEmailCancelButton({super.key});
-  //----------------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     // ❗️ Shows (declarative) error state
     ref.listenFailure(signOutProvider, context);
 
@@ -68,6 +71,7 @@ class SignOutIconButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     // ❗️ Shows (declarative) error state
     ref.listenFailure(signOutProvider, context);
 

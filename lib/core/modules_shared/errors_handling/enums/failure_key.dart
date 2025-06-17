@@ -56,4 +56,6 @@ enum FailureKeys {
     unknown => 'failure.unknown',
     missingPlugin => 'failure.plugin.missing',
   };
+
+  //
 }

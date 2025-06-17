@@ -1,5 +1,9 @@
+library;
+
 /// 📱 Platform-specific requirements
+
 final class PlatformConstants {
+  ///--------------------------
   PlatformConstants._();
 
   /// 📱 Minimum Android SDK version supported
@@ -8,5 +12,5 @@ final class PlatformConstants {
   /// 📲 Minimum iOS version supported (informational only)
   static const String minIosVersion = '13.0';
 
-  ///
+  //
 }

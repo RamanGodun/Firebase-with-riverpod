@@ -23,6 +23,8 @@ final class AndroidOverlayAnimationConfig {
     this.slideCurve,
     this.slideOffset,
   });
+
+  //
 }
 
 ///
@@ -48,4 +50,6 @@ final class IOSOverlayAnimationConfig {
     required this.scaleCurve,
     required this.scaleBegin,
   });
+
+  //
 }

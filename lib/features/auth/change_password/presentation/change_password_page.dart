@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils/change_password_x.dart';
+import 'package:firebase_with_riverpod/features/auth/utils_for_auth_feature/change_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../form_fields/form_field_widget.dart';
@@ -19,8 +19,10 @@ part 'widgets_for_change_password.dart';
 /// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
 
 class ChangePasswordPage extends ConsumerWidget {
+  //-------------------------------------------
+
   const ChangePasswordPage({super.key});
-  //-----------------------------------
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

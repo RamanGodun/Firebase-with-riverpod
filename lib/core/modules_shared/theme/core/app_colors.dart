@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart' show Color, Colors;
 
 final class AppColors {
+  //------------------
+
   const AppColors._();
+  //
 
   /// ─────────────────────
   /// 🚨 Common Colors

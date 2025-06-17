@@ -16,9 +16,9 @@ SignInUseCase signInUseCase(Ref ref) {
   return SignInUseCase(repo);
 }
 
-///
+////
 
-///
+////
 
 /// 📦 [SignInUseCase] — encapsulates sign-in process
 /// 🧼 Handles user authentication using [ISignInRepo]

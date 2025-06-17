@@ -21,9 +21,11 @@ final class TapThroughOverlayBarrier extends StatelessWidget {
     this.enablePassthrough = false,
     this.onTapOverlay,
   });
+  //
 
   @override
   Widget build(BuildContext context) {
+    //
     return Listener(
       behavior: HitTestBehavior.translucent,
       onPointerDown: (event) {

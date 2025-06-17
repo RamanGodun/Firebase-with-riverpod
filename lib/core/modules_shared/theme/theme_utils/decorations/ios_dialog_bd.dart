@@ -5,9 +5,12 @@ part of '_box_decorations_factory.dart';
 /// Optimized for fast retrieval via theme-based caching
 
 final class IOSDialogsDecoration {
-  const IOSDialogsDecoration._();
   // ───────────────────────────
 
+  const IOSDialogsDecoration._();
+  //
+
+  ///
   static const BoxDecoration _lightThemeDecoration = BoxDecoration(
     color: AppColors.overlayLightBackground70,
     borderRadius: UIConstants.commonBorderRadius,
@@ -17,6 +20,7 @@ final class IOSDialogsDecoration {
     boxShadow: AppShadows.forIOSLightThemeDialog,
   );
 
+  ///
   static const BoxDecoration _darkThemeDecoration = BoxDecoration(
     color: AppColors.overlayDarkBackground,
     borderRadius: UIConstants.commonBorderRadius,
@@ -26,13 +30,13 @@ final class IOSDialogsDecoration {
     boxShadow: AppShadows.forIOSDarkThemeDialog,
   );
 
-  // 📦 Memoized lookup map
+  /// 📦 Memoized lookup map
   static final Map<bool, BoxDecoration> _cache = {
     false: _lightThemeDecoration,
     true: _darkThemeDecoration,
   };
 
-  // 📦 Returns appropriate glass box for dialog
+  /// 📦 Returns appropriate glass box for dialog
   static BoxDecoration fromTheme(bool isDark) =>
       _cache[isDark] ?? (throw ArgumentError('Unknown brightness value'));
 

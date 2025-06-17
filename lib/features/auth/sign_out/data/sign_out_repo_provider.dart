@@ -8,6 +8,7 @@ part 'sign_out_repo_provider.g.dart';
 
 /// 🧩 [signOutRepoProvider] — provides instance of [SignOutRepoImpl]
 /// 🧼 Dependency injection for sign-out operation
+
 @riverpod
 ISignOutRepo signOutRepo(Ref ref) => SignOutRepoImpl();
 

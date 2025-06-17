@@ -8,7 +8,7 @@ import '../../failures/failure_entity.dart';
 
 @immutable
 final class ResultHandler<T> {
-  ///----------------------------
+  ///------------------------
 
   final Either<Failure, T> result;
   const ResultHandler(this.result);

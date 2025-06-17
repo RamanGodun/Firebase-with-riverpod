@@ -20,8 +20,8 @@ part 'widgets_for_signup_page.dart';
 /// 🔐 [SignupPage] — screen that allows user to register a new account.
 
 class SignupPage extends ConsumerWidget {
+  //------------------------------------
   const SignupPage({super.key});
-  //---------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

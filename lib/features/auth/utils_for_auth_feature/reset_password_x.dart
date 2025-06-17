@@ -10,7 +10,11 @@ import '../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../core/modules_shared/navigation/core/routes_names.dart';
 
 /// 🧩 [RefResetPasswordListenerX] — declarative handler for ResetPassword lifecycle
+
 extension RefResetPasswordListenerX on WidgetRef {
+  ///--------------------------------------------
+
+  //
   void listenToResetPassword(BuildContext context) {
     final showSnackbar = context.showUserSnackbar;
 
@@ -34,4 +38,6 @@ extension RefResetPasswordListenerX on WidgetRef {
       );
     });
   }
+
+  //
 }

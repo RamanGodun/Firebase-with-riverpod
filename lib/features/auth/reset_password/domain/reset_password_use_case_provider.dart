@@ -12,10 +12,11 @@ part 'reset_password_use_case_provider.g.dart';
 
 @riverpod
 ResetPasswordUseCase resetPasswordUseCase(Ref ref) {
-  //─────------------------------------------------
-
+  ///─────------------------------------------------
+  //
   final repo = ref.watch(resetPasswordRepoProvider);
   return ResetPasswordUseCase(repo);
+  //
 }
 
 ///
@@ -26,8 +27,8 @@ ResetPasswordUseCase resetPasswordUseCase(Ref ref) {
 /// 🧼 Sends password reset email via [IResetPasswordRepo]
 
 final class ResetPasswordUseCase {
-  //─────------------------------
-
+  ///─────------------------------
+  //
   final IResetPasswordRepo repo;
   const ResetPasswordUseCase(this.repo);
 

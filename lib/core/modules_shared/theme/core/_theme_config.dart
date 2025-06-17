@@ -8,8 +8,10 @@ import 'enums.dart/_app_theme_type.dart.dart';
 
 @immutable
 final class ThemeConfig {
+  //--------------------
+
   const ThemeConfig._();
-  //----------------------
+  //
 
   /// 🧩 Factory from ThemeMode (used in Riverpod)
   static AppThemeConfig fromMode(ThemeMode mode) {
@@ -35,12 +37,17 @@ final class ThemeConfig {
   //
 }
 
+////
+
+////
+
 /// 🎨 [AppThemeConfig] — Theme container passed into MaterialApp
 /// ✅ Holds light/dark themes and current ThemeMode.
 
 @immutable
 final class AppThemeConfig {
-  /// ─────-----------------
+  /// ─────----------------
+
   final ThemeData theme;
   final ThemeData darkTheme;
   final ThemeMode themeMode;
@@ -50,4 +57,6 @@ final class AppThemeConfig {
     required this.darkTheme,
     required this.themeMode,
   });
+
+  //
 }
