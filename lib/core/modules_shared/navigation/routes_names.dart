@@ -1,23 +1,45 @@
 library;
 
-/// 🧩 [RoutesNames] — central route names used by GoRouter
-/// 🧼 Prevents hardcoded strings across the app and enables type-safe navigation
-//----------------------------------------------------------------
+/// 🏷️ [RoutesNames] — Centralized route name constants used across the app
+/// ✅ Used in GoRouter config, navigation logic, and redirection guards
 
 abstract final class RoutesNames {
+  //-----------------------------
   RoutesNames._();
+  //
 
-  static const String home = 'home';
-  static const String signin = 'signin';
-  static const String signup = 'signup';
-  static const String resetPassword = 'resetPassword';
-  static const String verifyEmail = 'verifyEmail';
-  static const String changePassword = 'changePassword';
-  static const String splash = 'splash';
+  /// ⏳ Splash / Loading Page
+  static const splash = 'splash';
+
+  /// 🔐 Sign In Page
+  static const signIn = 'signin';
+
+  /// 🆕 Sign Up Page
+  static const signUp = 'signup';
+
+  /// 📧 Verify Email Page
+  static const verifyEmail = 'verifyEmail';
+
+  /// 🏠 Home Page
+  static const home = 'home';
+
+  /// 👤 Profile Page
+  static const profile = 'profile';
+
+  /// 🔁 Reset Password Page
+  static const resetPassword = 'resetPassword';
+
+  /// 🛠 Change Password Page
+  static const changePassword = 'changePassword';
+
+  /// 🔑 Re-authentication Page (e.g. before changing password)
+  static const String reAuthentication = 'reAuthenticationPage';
+
+  /// ❌ Fallback Error Page (e.g. 404)
+  static const pageNotFound = 'pageNotFound';
+
+  /// 🚫 Firebase Auth Error Page
   static const String firebaseError = 'firebaseError';
-  static const String pageNotFound = 'pageNotFound';
-  static const String profilePage = 'profilePage';
-  static const String reAuthenticationPage = 'reAuthenticationPage';
 
-  ///
+  //
 }

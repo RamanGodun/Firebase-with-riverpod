@@ -1,15 +1,15 @@
 import 'package:go_router/go_router.dart';
-import '../../../features/profile/presentation/profile__page.dart';
-import '../../../features/auth/change_password/presentation/change_password_page.dart';
-import '../../../features/auth/reset_password/presentation/reset_password_page.dart';
-import '../../../features/auth/sign_in/presentation/signin_page.dart';
-import '../../../features/auth/sign_up/presentation/signup_page.dart';
-import '../../../features/auth/change_password/presentation/reauth_page.dart';
-import '../../../features/auth/user_validation/presentation/user_validation_page.dart';
-import '../../layers_shared/presentation_layer_shared/pages_shared/firebase_error_page.dart';
-import '../../layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
-import '../../layers_shared/presentation_layer_shared/pages_shared/_home_page.dart';
-import 'routes_names.dart';
+import '../../../../features/profile/presentation/profile__page.dart';
+import '../../../../features/auth/change_password/presentation/change_password_page.dart';
+import '../../../../features/auth/reset_password/presentation/reset_password_page.dart';
+import '../../../../features/auth/sign_in/presentation/signin_page.dart';
+import '../../../../features/auth/sign_up/presentation/signup_page.dart';
+import '../../../../features/auth/change_password/presentation/reauth_page.dart';
+import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
+import '../../../layers_shared/presentation_layer_shared/pages_shared/firebase_error_page.dart';
+import '../../../layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
+import '../../../layers_shared/presentation_layer_shared/pages_shared/_home_page.dart';
+import '../routes_names.dart';
 
 abstract final class AppRoutes {
   AppRoutes._();
@@ -29,7 +29,7 @@ abstract final class AppRoutes {
       routes: [
         GoRoute(
           path: 'profile',
-          name: RoutesNames.profilePage,
+          name: RoutesNames.profile,
           builder: (context, state) => const ProfilePage(),
           routes: [
             GoRoute(
@@ -44,13 +44,13 @@ abstract final class AppRoutes {
 
     GoRoute(
       path: '/signin',
-      name: RoutesNames.signin,
+      name: RoutesNames.signIn,
       builder: (context, state) => const SignInPage(),
     ),
 
     GoRoute(
       path: '/signup',
-      name: RoutesNames.signup,
+      name: RoutesNames.signUp,
       builder: (context, state) => const SignupPage(),
     ),
 
@@ -68,7 +68,7 @@ abstract final class AppRoutes {
 
     GoRoute(
       path: '/reAuthenticationPage',
-      name: RoutesNames.reAuthenticationPage,
+      name: RoutesNames.reAuthentication,
       builder: (context, state) => const ReAuthenticationPage(),
     ),
 

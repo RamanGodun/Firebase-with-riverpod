@@ -21,7 +21,7 @@ extension RefPasswordChangeListenerX on WidgetRef {
         data: (_) {
           showSnackbar(message: LocaleKeys.reauth_password_updated.tr());
           if (context.mounted) {
-            context.goTo(RoutesNames.reAuthenticationPage);
+            context.goTo(RoutesNames.reAuthentication);
           }
         },
         error: (e, st) async {

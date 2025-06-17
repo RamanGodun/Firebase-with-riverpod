@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
           /// 👤 Navigate to profile
           IconButton(
             icon: const Icon(Icons.person_2),
-            onPressed: () => context.pushToNamed(RoutesNames.profilePage),
+            onPressed: () => context.pushToNamed(RoutesNames.profile),
           ).withPaddingRight(AppSpacing.xxxm),
         ],
       ),

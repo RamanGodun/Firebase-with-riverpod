@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
-import 'routes_map.dart';
-import 'utils/auth_redirect.dart';
+import 'utils/routes_map.dart';
+import 'utils/routes_redirection_service.dart';
 import 'utils/auth_state_stream_provider.dart';
 
 part 'router_provider.g.dart';
@@ -21,7 +21,10 @@ GoRouter router(Ref ref) {
 
     /// 🔐 Redirect logic handled by [AuthRedirectMapper], based on auth state
     redirect: (context, state) {
-      return AuthRedirectMapper.map(state: state, authState: authState);
+      return RoutesRedirectionService.map(
+        goRouterState: state,
+        authState: authState,
+      );
     },
 
     /// 📌 Route definitions
@@ -34,3 +37,20 @@ GoRouter router(Ref ref) {
 
   //
 }
+
+/*
+
+redirect: (context, state) {
+  final authState = ref.watch(authStateStreamProvider);
+
+  return AuthRedirectMapper.from(
+    isAuthenticated: authState.value != null,
+    isVerified: fbAuth.currentUser?.emailVerified ?? false,
+    isLoading: authState.isLoading,
+    isError: authState.hasError,
+    currentPath: state.matchedLocation,
+  );
+}
+
+
+ */

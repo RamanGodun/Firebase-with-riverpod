@@ -19,7 +19,7 @@ extension RefResetPasswordListenerX on WidgetRef {
         data: (_) {
           showSnackbar(message: LocaleKeys.reset_password_success.tr());
           if (context.mounted) {
-            context.goTo(RoutesNames.signin);
+            context.goTo(RoutesNames.signIn);
           }
         },
         error: (e, _) {

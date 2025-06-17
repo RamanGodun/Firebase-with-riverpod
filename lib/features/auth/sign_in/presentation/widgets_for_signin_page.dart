@@ -48,7 +48,7 @@ class _SigninFooter extends StatelessWidget {
             ),
             CustomButton(
               type: ButtonType.text,
-              onPressed: () => context.goTo(RoutesNames.signup),
+              onPressed: () => context.goTo(RoutesNames.signUp),
               label: LocaleKeys.buttons_sign_up,
               fontWeight: FontWeight.w600,
               fontSize: 15,
