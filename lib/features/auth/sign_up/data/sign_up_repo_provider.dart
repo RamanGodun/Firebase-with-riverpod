@@ -48,7 +48,6 @@ final class SignUpRepoImpl implements ISignUpRepo {
 
       // 💾 Save in Firestore
       await usersCollection.doc(user.uid).set(dto.toJsonMap());
-
     } on FirebaseAuthException catch (e, st) {
       ErrorsLogger.log(e, st);
       rethrow;
