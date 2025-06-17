@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../core/routes_names.dart';
 
-
 /// 🧭 [NavigationX] — Adds concise navigation helpers for [GoRouter] & [Navigator]
 /// ✅ Improves DX with named routes, push/pop, and fallback handling
 //----------------------------------------------------------------
