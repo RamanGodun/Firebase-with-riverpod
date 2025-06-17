@@ -15,7 +15,6 @@ class _UserProfile extends StatelessWidget {
 
     return Center(
       child: BlurContainer(
-        overlayType: ShowAs.dialog,
         borderRadius: UIConstants.commonBorderRadius,
         child: Container(
           width: double.infinity,

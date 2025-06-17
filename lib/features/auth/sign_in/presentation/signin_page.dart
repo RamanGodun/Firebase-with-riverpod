@@ -10,7 +10,7 @@ import '../../../form_fields/form_state_provider.dart';
 import '../../../form_fields/presets_of_forms.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../../core/layers_shared/shared_presentation/widgets/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 import '../../../../core/modules_shared/theme/core/constants/_app_constants.dart';
 import '../../../../core/modules_shared/navigation/routes_names.dart';
 import 'signin_provider.dart';

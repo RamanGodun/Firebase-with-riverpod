@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/features/auth/sign_out/presentation/sign_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../../core/layers_shared/shared_presentation/widgets/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 
 /// 🔘 [SignOutButton] — triggers logout via [signOutProvider]
 /// 🧼 Declarative error handling with overlay via `.listen()`

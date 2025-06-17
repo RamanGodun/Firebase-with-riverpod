@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import 'core/app_configs/firebase/env.dart';
-import 'core/di_container/di_container.dart';
+import 'core/modules_shared/di_container/di_container.dart';
 import 'core/modules_shared/localization/app_localizer.dart';
 import 'core/app_configs/constants/platform_requirements.dart';
 import 'core/app_configs/firebase/env_firebase_options.dart';

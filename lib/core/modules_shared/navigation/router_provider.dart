@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../layers_shared/shared_presentation/pages/page_not_found.dart';
+import '../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
 import 'routes_map.dart';
 import 'utils/auth_redirect.dart';
 import 'utils/auth_state_stream_provider.dart';

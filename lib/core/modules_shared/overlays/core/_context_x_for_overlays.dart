@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/di_container/di_context_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/di_container/di_context_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/overlays/core/_overlay_base_methods.dart';
 import 'package:flutter/material.dart';
 import '../../errors_handling/failures/failure_ui_entity.dart';

@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/core/constants/_app_constants.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/routes_names.dart';
-import 'package:firebase_with_riverpod/core/layers_shared/shared_presentation/widgets/custom_app_bar.dart';
+import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/custom_app_bar.dart';
 import '../../../modules_shared/localization/widgets/text_widget.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.

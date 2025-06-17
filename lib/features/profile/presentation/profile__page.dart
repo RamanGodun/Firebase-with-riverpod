@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/utils/context_x.dart';
-import 'package:firebase_with_riverpod/core/layers_shared/shared_presentation/widgets/mini_widgets.dart';
+import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/mini_widgets.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,14 +10,13 @@ import '../../../core/modules_shared/localization/widgets/key_value_x_for_text_w
 import '../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../core/modules_shared/localization/widgets/language_toggle_button.dart';
-import '../../../core/modules_shared/overlays/core/enums_for_overlay_module.dart';
 import '../../../core/modules_shared/theme/core/constants/_app_constants.dart';
 import '../../../core/modules_shared/theme/theme_utils/blur_wrapper.dart';
 import '../../../core/modules_shared/theme/theme_utils/decorations/_box_decorations_factory.dart';
 import '../domain/entities/_user_entity.dart';
 import '../../../core/modules_shared/navigation/routes_names.dart';
-import '../../../core/layers_shared/shared_presentation/widgets/buttons/custom_buttons.dart';
-import '../../../core/layers_shared/shared_presentation/widgets/custom_app_bar.dart';
+import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
+import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/custom_app_bar.dart';
 import '../../../core/modules_shared/theme/widget_for_theme_toggling.dart';
 import '../../auth/sign_out/presentation/sign_out_buttons.dart';
 import 'profile_provider.dart';

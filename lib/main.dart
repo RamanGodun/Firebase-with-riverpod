@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'root_widget.dart';
 import 'start_up_handler.dart';
-import 'core/di_container/di_container.dart';
+import 'core/modules_shared/di_container/di_container.dart';
 import 'core/modules_shared/localization/app_localization.dart';
 import 'core/modules_shared/logging/for_riverpod/riverpod_observer.dart';
 

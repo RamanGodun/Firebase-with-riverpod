@@ -2,11 +2,13 @@
   "app": {
     "title": "Firebase z Riverpod"
   },
+
   "languages": {
     "switched_to_pl": "Język zmieniono na 🇵🇱 polski",
     "switched_to_en": "Język zmieniono na 🇬🇧 angielski",
     "switched_to_ua": "Język zmieniono na 🇺🇦 ukraiński"
   },
+
   "buttons": {
     "ok": "OK",
     "sign_in": "Zaloguj się",
@@ -20,6 +22,7 @@
     "go_to_home": "Na stronę główną",
     "reset_password": "Zresetuj hasło"
   },
+
   "errors": {
     "page_not_found_title": "Strony nie znaleziono",
     "page_not_found_message": "Ups! Strona, której szukasz, nie istnieje.",
@@ -28,35 +31,47 @@
     "firebase_message": "Spróbuj ponownie później!",
     "errors_general_title": "Wystąpił błąd"
   },
+
 "failure": {
   "firebase": {
     "doc_missing": "Brak profilu użytkownika.",
     "wrong_password": "Nieprawidłowe hasło.",
     "user_not_found": "Użytkownik nie został znaleziony.",
-    "invalid_credential": "Nieprawidłowe dane logowania. Sprawdź poprawność i spróbuj ponownie",
-    "generic": "Wystąpił błąd Firebase."
+    "invalid_credential": "Nieprawidłowe dane logowania. Sprawdź poprawność i spróbuj ponownie.",
+    "generic": "Wystąpił błąd Firebase.",
+    "email_in_use": "Ten adres e-mail jest już używany.",
+    "invalid_email": "Nieprawidłowy format adresu e-mail.",
+    "missing_email": "Brak pola e-mail.",
+    "no_current_user": "Brak aktualnie zalogowanego użytkownika.",
+    "operation_not_allowed": "Ta operacja nie jest dozwolona przez Firebase.",
+    "requires_recent_login": "Aby kontynuować, musisz się ponownie zalogować.",
+    "too_many_requests": "Zbyt wiele prób. Spróbuj ponownie później.",
+    "user_disabled": "To konto zostało dezaktywowane.",
+    "weak_password": "Hasło jest zbyt słabe."
   },
   "format": {
-    "error": "Odebrano nieprawidłowe dane."
+    "error": "Odebrano nieprawidłowy format danych."
   },
   "network": {
     "no_connection": "Brak połączenia z Internetem.",
-    "timeout": "Przekroczono limit czasu połączenia. Spróbuj ponownie."
+    "timeout": "Limit czasu połączenia został przekroczony. Spróbuj ponownie później."
   },
   "auth": {
-    "unauthorized": "Sesja wygasła. Zaloguj się ponownie."
+    "unauthorized": "Twoja sesja wygasła. Zaloguj się ponownie."
   },
   "plugin": {
-    "missing": "Brakujący plugin. Skontaktuj się z pomocą techniczną."
+    "missing": "Wykryto brakujący plugin. Skontaktuj się z pomocą techniczną."
   },
   "unknown": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie."
 },
+
   "form": {
     "name": "Imię",
     "email": "Email",
     "password": "Hasło",
     "confirm_password": "Potwierdź hasło"
   },
+
   "pages": {
     "home": "     Strona główna",
     "home_message": "Możesz przejść do profilu i zmienić ustawienia",
@@ -68,6 +83,7 @@
     "sign_up": "Dołącz do nas!",
     "reauthentication": "Ponowna autoryzacja"
   },
+
   "profile": {
     "title": "Profil",
     "name": "👤 Imię:",
@@ -78,12 +94,14 @@
     "error": "Ups!\nCoś poszło nie tak.",
     "welcome": "Witaj,"
   },
+
   "reset_password": {
     "header": "Zresetuj swoje hasło",
     "sub_header": "Wyślemy Ci e-mail z linkiem do resetowania.",
     "success": "E-mail resetujący hasło został wysłany",
     "remember": "Pamiętasz hasło?   "
   },
+
   "change_password": {
     "title": "Zmień hasło",
     "warning": "Jeśli zmienisz hasło,",
@@ -91,6 +109,7 @@
     "signed_out": "wylogowany!",
     "success": "Pomyślnie uwierzytelniono ponownie"
   },
+
   "sign_in": {
     "header": "Witaj ponownie!",
     "sub_header": "Zaloguj się, aby kontynuować.",
@@ -98,11 +117,13 @@
     "not_member": "Nie masz konta?",
     "button": "Zaloguj się"
   },
+
   "sign_up": {
     "sub_header": "Utwórz konto, aby rozpocząć.",
     "already_have_account": "Masz już konto?",
     "button": "Zarejestruj się"
   },
+
   "reauth": {
     "label": "Ponowna autoryzacja",
     "description": "To operacja wymagająca bezpieczeństwa — musisz być ostatnio zalogowany!",
@@ -110,6 +131,7 @@
     "redirect_note": "Lub możesz przejść do     ",
     "page": "   strony"
   },
+
   "verify_email": {
     "sent": "E-mail weryfikacyjny został wysłany do",
     "not_found": "Jeśli nie widzisz wiadomości,",
@@ -120,8 +142,10 @@
     "unknown": "Nieznany",
     "or": "LUB"
   },
+
   "theme": {
     "light_enabled": "Obecnie \"Tryb jasny\"",
     "dark_enabled": "Obecnie \"Tryb ciemny\""
   }
+
 }

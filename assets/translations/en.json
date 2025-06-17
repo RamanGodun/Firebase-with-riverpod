@@ -2,11 +2,13 @@
   "app": {
     "title": "Firebase with Riverpod"
   },
+
   "languages": {
     "switched_to_pl": "Language switched to 🇵🇱 Polish",
     "switched_to_en": "Language switched to 🇬🇧 English",
     "switched_to_ua": "Language switched to 🇺🇦 Ukrainian"
   },
+
   "buttons": {
     "ok": "OK",
     "sign_in": "Sign In",
@@ -20,6 +22,7 @@
     "go_to_home": "To Home Page",
     "reset_password": "Reset Password" 
   },
+
   "errors": {
     "page_not_found_title": "Page Not Found",
     "page_not_found_message": "Oops! The page you’re looking for does not exist.",
@@ -28,13 +31,23 @@
     "firebase_message": "Please try again later!",
     "errors_general_title": "An error occurred"
   },
+
 "failure": {
   "firebase": {
     "doc_missing": "User profile is missing.",
     "wrong_password": "Wrong password.",
     "user_not_found": "User not found.",
-    "invalid_credential": "Invalid credentials. Please check your input and try again",
-    "generic": "A Firebase error occurred."
+    "invalid_credential": "Invalid credentials. Please check your input and try again.",
+    "generic": "A Firebase error occurred.",
+    "email_in_use": "Email is already in use.",
+    "invalid_email": "Invalid email format.",
+    "missing_email": "Missing email field.",
+    "no_current_user": "No current user signed in.",
+    "operation_not_allowed": "Operation not allowed by Firebase.",
+    "requires_recent_login": "Please reauthenticate to continue.",
+    "too_many_requests": "Too many attempts. Please try again later.",
+    "user_disabled": "This account is disabled.",
+    "weak_password": "Password is too weak."
   },
   "format": {
     "error": "Invalid data format received."
@@ -51,12 +64,14 @@
   },
   "unknown": "An unexpected error occurred. Please try again."
 },
+
   "form": {
     "name": "Name",
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password"
   },
+
   "pages": {
     "home": "     Home Page",
     "home_message": "You can go to profile page and make some settings",
@@ -68,6 +83,7 @@
     "sign_up": "Join Us!",
     "reauthentication": "Reauthentication"
   },
+
   "profile": {
     "title": "Profile",
     "name": "👤 Name:",
@@ -78,12 +94,14 @@
     "error": "Oops!\nSomething went wrong.",
     "welcome": "Welcome,"
   },
+
   "reset_password": {
     "header": "Reset your password",
     "sub_header": "We will send you an email to reset it.",
     "success": "Password reset email has been sent",
     "remember": "Remember password?    "
   },
+
   "change_password": {
     "title": "Change Password",
     "warning": "If you change your password,",
@@ -91,6 +109,7 @@
     "signed_out": "signed out!",
     "success": "Successfully reauthenticated"
   },
+
   "sign_in": {
     "header": "Welcome Back!",
     "sub_header": "Please sign in to continue.",
@@ -98,11 +117,13 @@
     "not_member": "Not a member?",
     "button": "Sign In"
   },
+
   "sign_up": {
     "sub_header": "Create an account to get started.",
     "already_have_account": "Already have an account?",
     "button": "Sign Up"
   },
+
   "reauth": {
     "label": "Reauthenticate",
     "description": "This is a security-sensitive operation, you must have recently signed in!",
@@ -110,6 +131,7 @@
     "redirect_note": "Or you can go     ",
     "page": "   page"
   },
+
   "verify_email": {
     "sent": "Verification email has been sent to",
     "not_found": "If you cannot find the email,",
@@ -120,8 +142,10 @@
     "unknown": "Unknown",
     "or": "OR"
   },
+
   "theme": {
     "light_enabled": "now is  \"Light Mode\"",
     "dark_enabled": "now is  \"Dark Mode\""
   }
+
 }
