@@ -5,8 +5,7 @@ part of '_box_decorations_factory.dart';
 /// Cached internally per theme brightness
 
 final class AndroidCardsDecoration {
-  // ────────────────────────────--
-
+  /// ────────────────────────────--
   const AndroidCardsDecoration._();
   //
 

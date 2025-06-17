@@ -23,7 +23,7 @@ part 'widgets_for_reset_password_page.dart';
 /// 🧼 Declarative Riverpod + FormState + centralized error handling
 
 class ResetPasswordPage extends ConsumerWidget {
-  //-------------------------------------------
+  ///------------------------------------------
   const ResetPasswordPage({super.key});
   //
 

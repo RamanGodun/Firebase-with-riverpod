@@ -9,10 +9,8 @@ import '../failure_diagnostics_x.dart';
 
 abstract final class CrashlyticsLogger {
   //-----------------------------------
-
   const CrashlyticsLogger._();
-
-  ///
+  //
 
   /// 🧩 Internal helper for consistent error reporting.
   static void _record({

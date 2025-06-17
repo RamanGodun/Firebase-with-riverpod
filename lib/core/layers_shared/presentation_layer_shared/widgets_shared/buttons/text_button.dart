@@ -19,8 +19,7 @@ final class RedirectTextButton extends StatelessWidget {
     required this.onPressed,
     this.isDisabled = false,
   });
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

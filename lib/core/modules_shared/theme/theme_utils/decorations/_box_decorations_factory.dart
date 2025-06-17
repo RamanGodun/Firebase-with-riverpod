@@ -13,8 +13,7 @@ part 'android_card_bd.dart';
 /// Used across overlay components and modals
 
 sealed class BoxDecorationFactory {
-  // ────────────────────────────
-
+  /// ────────────────────────────
   const BoxDecorationFactory._();
   //
 

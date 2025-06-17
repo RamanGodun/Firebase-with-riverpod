@@ -14,8 +14,7 @@ import '../../../app_configs/firebase/firebase_constants.dart';
 abstract final class RoutesRedirectionService {
   //----------------------------------------------
   RoutesRedirectionService._();
-
-  ///
+  //
 
   /// 🗝️ Publicly accessible routes (no authentication required)
   static const Set<String> _publicRoutes = {

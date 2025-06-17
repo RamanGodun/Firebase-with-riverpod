@@ -10,9 +10,8 @@ part 'auth_state_provider.g.dart';
 
 @riverpod
 Stream<User?> authStateStream(Ref ref) {
-  //-----------------------------------
-
+  ///-----------------------------------
+  //
   return fbAuth.authStateChanges();
-
   //
 }

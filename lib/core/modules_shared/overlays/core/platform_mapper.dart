@@ -13,8 +13,7 @@ import '../overlays_presentation/widgets/ios/ios_snackbar.dart';
 /// Used internally by [OverlayDispatcher] system.
 
 abstract final class PlatformMapper {
-  //-------------------------------
-
+  ///-------------------------------
   PlatformMapper._();
   //
 

@@ -8,8 +8,7 @@ import 'enums.dart/_app_theme_type.dart.dart';
 
 @immutable
 final class ThemeConfig {
-  //--------------------
-
+  ///--------------------
   const ThemeConfig._();
   //
 

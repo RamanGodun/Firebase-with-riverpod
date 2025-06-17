@@ -9,7 +9,10 @@ import 'form_fields_model.dart';
 import 'form_state_provider.dart';
 
 /// ✅ [AppFormField] — universal reactive form input field (Hooked + Riverpod powered)
+
 class AppFormField extends HookConsumerWidget {
+  ///-----------------------------------------
+
   final FormFieldType type;
   final List<FormFieldType> fields;
   final bool showToggleVisibility;
@@ -20,9 +23,11 @@ class AppFormField extends HookConsumerWidget {
     required this.fields,
     this.showToggleVisibility = false,
   });
+  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     // 🔁 Controller to manage input value
     final controller = useTextEditingController();
     // 👁️ State for obscuring password text
@@ -78,7 +83,13 @@ class AppFormField extends HookConsumerWidget {
         ),
       ),
     );
+
+    //
   }
+
+  ////
+
+  ////
 
   /// 🏷 Returns label text based on [FormFieldType]
   String _labelFor(FormFieldType type) => switch (type) {

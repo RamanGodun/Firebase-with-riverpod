@@ -8,7 +8,7 @@ import 'di_container.dart' show globalContainer;
 
 extension ContextDI on BuildContext {
   ///───────────────────────────────
-
+  //
   T readDI<T>(ProviderListenable<T> provider) {
     return globalContainer.read(provider);
   }

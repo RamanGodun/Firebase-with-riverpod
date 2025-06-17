@@ -28,8 +28,7 @@ class CustomButton extends StatelessWidget {
     this.fontSize = 17,
     this.fontWeight = FontWeight.w600,
   });
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

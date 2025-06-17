@@ -10,10 +10,8 @@ import 'language_option.dart';
 
 final class LanguageToggleButton extends StatelessWidget {
   //-----------------------------------------------------
-
   const LanguageToggleButton({super.key});
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

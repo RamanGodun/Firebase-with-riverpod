@@ -6,8 +6,8 @@ import 'package:flutter/foundation.dart';
 @immutable
 final class FirebaseUtils {
   //----------------------
-
   const FirebaseUtils._();
+  //
 
   /// ✅ Checks if [DEFAULT] Firebase app is initialized
   static bool get isDefaultAppInitialized {

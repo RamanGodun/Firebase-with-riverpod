@@ -5,8 +5,7 @@ part of '_box_decorations_factory.dart';
 /// Cached internally for fast access
 
 final class AndroidDialogsDecoration {
-  // ──────────────────────────────--
-
+  /// ──────────────────────────────--
   const AndroidDialogsDecoration._();
   //
 

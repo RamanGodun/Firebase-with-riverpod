@@ -2,7 +2,10 @@
 import 'form_fields_model.dart';
 
 /// 🧩 Field combinations for various forms
+
 class FormTemplates {
+  ///---------------
+
   static const List<FormFieldType> signInFields = [
     FormFieldType.email,
     FormFieldType.password,
@@ -26,4 +29,6 @@ class FormTemplates {
     FormFieldType.email,
     FormFieldType.password,
   ];
+
+  //
 }

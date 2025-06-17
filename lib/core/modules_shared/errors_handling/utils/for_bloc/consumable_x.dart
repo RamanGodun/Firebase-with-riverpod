@@ -6,7 +6,8 @@ import 'consumable.dart';
 /// 📦 Extension to wrap any object in a [Consumable]
 
 extension ConsumableX<T> on T {
-  //--------------------------
+  ///--------------------------
+  //
   Consumable<T> asConsumable() => Consumable(this);
   //
 }
@@ -16,6 +17,7 @@ extension ConsumableX<T> on T {
 ////
 
 extension FailureUIContextX on BuildContext {
+  ///---------------------------------------
   //
   void consumeAndShowDialog(FailureUIEntity? model) {
     if (model != null) showError(model);

@@ -21,10 +21,8 @@ part 'domain_cases.dart';
 
 final class ExceptionToFailureMapper {
   //---------------------------------
-
   const ExceptionToFailureMapper._();
-
-  ///
+  //
 
   /// 🛡️ Converts any caught error into domain-level [Failure].
   static Failure from(dynamic error, [StackTrace? stackTrace]) {

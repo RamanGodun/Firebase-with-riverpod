@@ -5,8 +5,7 @@ part of '_box_decorations_factory.dart';
 /// Optimized for fast retrieval via theme-based caching
 
 final class IOSCardsDecoration {
-  // ─────────────────────────
-
+  /// ─────────────────────────
   const IOSCardsDecoration._();
   //
 

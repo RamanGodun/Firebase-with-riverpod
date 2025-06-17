@@ -6,8 +6,8 @@ import '../../errors_handling/failures/failure_entity.dart';
 /// ✅ Recommended for handling auth/navigation flows declaratively
 
 extension FailureNavigationX on Failure {
-  // -----------------------------------
-
+  /// -----------------------------------
+  //
   /// 📡 Navigates to login screen or callback when unauthorized (401)
   /// ⚠️ This is an example — replace [onUnauthorized] with actual implementation in your app
   Failure redirectIfUnauthorized(VoidCallback onUnauthorized) {

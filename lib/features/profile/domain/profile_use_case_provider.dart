@@ -23,10 +23,11 @@ GetProfileUseCase getProfileUseCase(Ref ref) {
 /// 🧩 [getProfileUseCaseProvider] encapsulated business logic
 
 final class GetProfileUseCase {
-  //----------------------------
-
+  ///-------------------------
+  //
   final IProfileRepo repo;
   const GetProfileUseCase(this.repo);
+  //
 
   ResultFuture<UserEntity> call(String uid) {
     return repo.getProfile(userID: uid);

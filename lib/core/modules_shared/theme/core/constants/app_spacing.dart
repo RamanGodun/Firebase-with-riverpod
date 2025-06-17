@@ -3,8 +3,7 @@ part of '_app_constants.dart';
 /// 📏 [AppSpacing] — Defines common padding/margin spacing values for layout
 
 abstract final class AppSpacing {
-  //----------------------------
-
+  ///----------------------------
   const AppSpacing._();
   //
 

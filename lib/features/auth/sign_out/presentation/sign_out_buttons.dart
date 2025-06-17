@@ -9,7 +9,7 @@ import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/
 /// 🧼 Declarative error handling with overlay via `.listen()`
 
 class SignOutButton extends ConsumerWidget {
-  //--------------------------------------
+  ///--------------------------------------
   const SignOutButton({super.key});
   //
 
@@ -39,7 +39,7 @@ class SignOutButton extends ConsumerWidget {
 /// 🧼 Listens for errors via [signOutProvider]
 
 class VerifyEmailCancelButton extends ConsumerWidget {
-  //-------------------------------------------------
+  ///-------------------------------------------------
   const VerifyEmailCancelButton({super.key});
 
   @override
@@ -66,8 +66,8 @@ class VerifyEmailCancelButton extends ConsumerWidget {
 /// 🧼 Shows errors using overlay on failure
 
 class SignOutIconButton extends ConsumerWidget {
+  ///----------------------------------
   const SignOutIconButton({super.key});
-  //----------------------------------
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

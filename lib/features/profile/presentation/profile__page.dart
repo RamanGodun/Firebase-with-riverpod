@@ -27,7 +27,7 @@ part 'profile_page_widgets.dart';
 /// 🧼 Uses [profileProvider] to fetch data and [authRepositoryProvider] to sign out
 
 class ProfilePage extends ConsumerWidget {
-  //-------------------------------------
+  ///------------------------------------
   const ProfilePage({super.key});
   //
 

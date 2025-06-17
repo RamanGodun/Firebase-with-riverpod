@@ -4,8 +4,8 @@ import 'generated/codegen_loader.g.dart';
 
 abstract final class AppLocalization {
   //---------------------------------
-
   AppLocalization._();
+  //
 
   /// 🌐🌍 Supported locales for the app
   static final supportedLocales = [

@@ -19,6 +19,5 @@ IProfileRepo profileRepo(Ref ref) {
 
   // Returns the repository with injected dependency
   return ProfileRepoImpl(remote);
-
   //
 }

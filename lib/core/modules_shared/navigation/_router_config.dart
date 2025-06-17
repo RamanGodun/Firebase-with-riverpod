@@ -6,8 +6,7 @@ import 'core/router_provider.dart';
 /// ✅ Enables consistent API across Bloc / Riverpod apps.
 
 final class AppRouterConfig {
-  //------------------------
-
+  ///------------------------
   const AppRouterConfig._();
   //
 

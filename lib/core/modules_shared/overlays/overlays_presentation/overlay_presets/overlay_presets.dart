@@ -6,8 +6,7 @@ import 'overlay_preset_props.dart';
 /// - Presets are immutable, optimized, and support `.withOverride(...)`
 
 sealed class OverlayUIPresets {
-  //--------------------------
-
+  ///-------------------------
   const OverlayUIPresets();
   //
 

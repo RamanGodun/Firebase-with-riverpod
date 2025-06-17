@@ -20,8 +20,7 @@ part 'widgets_for_reauth_page.dart';
 /// 🔐 [ReAuthenticationPage] — screen used to re-authenticate the user before sensitive operations
 
 class ReAuthenticationPage extends ConsumerWidget {
-  //----------------------------------------------
-
+  ///---------------------------------------------
   const ReAuthenticationPage({super.key});
   //
 

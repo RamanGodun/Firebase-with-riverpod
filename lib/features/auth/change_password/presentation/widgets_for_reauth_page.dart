@@ -3,8 +3,7 @@ part of 'reauth_page.dart';
 /// ℹ️ [_ReauthenticateInfo] — informative section about re-authentication requirement
 
 class _ReauthenticateInfo extends StatelessWidget {
-  //----------------------------------------------
-
+  ///---------------------------------------------
   const _ReauthenticateInfo();
   //
 
@@ -33,8 +32,7 @@ class _ReauthenticateInfo extends StatelessWidget {
 
 /// 🔁 [_ReAuthFooter] — sign in redirect
 class _ReAuthFooter extends ConsumerWidget {
-  //---------------------------------------
-
+  ///--------------------------------------
   const _ReAuthFooter();
 
   @override

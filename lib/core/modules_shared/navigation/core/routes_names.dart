@@ -4,8 +4,7 @@ library;
 /// ✅ Used in GoRouter config, navigation logic, and redirection guards
 
 abstract final class RoutesNames {
-  //-----------------------------
-
+  ///----------------------------
   RoutesNames._();
   //
 

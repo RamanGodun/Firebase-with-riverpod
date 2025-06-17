@@ -17,11 +17,10 @@ import '../utils/page_transition.dart';
 
 abstract final class AppRoutes {
   ///-------------------------
-
   AppRoutes._();
+  //
 
   ///
-
   static final List<GoRoute> all = [
     /// ⏳ Splash Page
     GoRoute(

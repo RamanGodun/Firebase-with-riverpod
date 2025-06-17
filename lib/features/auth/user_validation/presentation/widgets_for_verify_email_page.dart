@@ -3,7 +3,7 @@ part of 'user_validation_page.dart';
 /// ℹ️ [_VerifyEmailInfo] — shows instructions about checking inbox / spam
 
 class _VerifyEmailInfo extends StatelessWidget {
-  //-------------------------------------------
+  ///------------------------------------------
   const _VerifyEmailInfo();
   //
 

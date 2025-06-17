@@ -9,8 +9,7 @@ part 'app_shadows.dart';
 /// 📦 [UIConstants] — centralized place for static constants used across the app.
 
 abstract final class UIConstants {
-  //-----------------------------
-
+  ///-----------------------------
   const UIConstants._();
   //
 

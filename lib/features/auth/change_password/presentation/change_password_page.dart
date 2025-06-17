@@ -19,8 +19,7 @@ part 'widgets_for_change_password.dart';
 /// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
 
 class ChangePasswordPage extends ConsumerWidget {
-  //-------------------------------------------
-
+  ///-------------------------------------------
   const ChangePasswordPage({super.key});
   //
 

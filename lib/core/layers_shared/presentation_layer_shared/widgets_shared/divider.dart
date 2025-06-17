@@ -10,8 +10,8 @@ import '../../../modules_shared/theme/core/constants/_app_constants.dart'
 
 final class GlassTileDivider extends StatelessWidget {
   /// ─────────────────────────────────────────────
-
   const GlassTileDivider({super.key});
+  //
 
   @override
   Widget build(BuildContext context) {

@@ -25,8 +25,7 @@ class CustomButtonForGoRouter extends StatelessWidget {
     this.queryParameters,
     this.onPressedCallback,
   });
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

@@ -3,8 +3,7 @@ part of 'change_password_page.dart';
 /// ℹ️ Info section for [ChangePasswordPage]
 
 class _ChangePasswordInfo extends StatelessWidget {
-  //----------------------------------------------
-
+  ///---------------------------------------------
   const _ChangePasswordInfo();
   //
 

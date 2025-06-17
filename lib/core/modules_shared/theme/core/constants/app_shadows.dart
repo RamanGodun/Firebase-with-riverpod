@@ -1,8 +1,7 @@
 part of '_app_constants.dart';
 
 abstract final class AppShadows {
-  //----------------------------
-
+  ///----------------------------
   const AppShadows._();
   //
 

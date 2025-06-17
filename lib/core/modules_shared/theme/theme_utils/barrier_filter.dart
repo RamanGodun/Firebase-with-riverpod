@@ -8,8 +8,7 @@ import '../core/app_colors.dart';
 /// - Supports [ShowAs] or override with [OverlayBlurLevel]
 
 final class OverlayBarrierFilter {
-  // ───────────────────────────
-
+  /// ───────────────────────────
   const OverlayBarrierFilter._();
   //
 

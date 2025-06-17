@@ -14,16 +14,14 @@ import '../theme/theme_provider/theme_provider.dart';
 
 late final ProviderContainer globalContainer;
 
-/// ───────────────────────────────────────
-
-///
+////
 
 /// 📦 [diContainer] — global list of manually maintained providers
 // 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
 // 🔧 Centralized registration of manual providers for Domain and Data layers
 
 final List<Override> diContainer = [
-  //----------------------------------------------------------------
+  //-------------------------------
 
   /// ── Profile Layer ───
 

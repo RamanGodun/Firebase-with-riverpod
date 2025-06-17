@@ -4,8 +4,7 @@ import 'overlays_dispatcher/overlay_entries/_overlay_entries_registry.dart';
 /// 🧾 [OverlayLogger] – Utility class for logging overlay lifecycle events.
 
 abstract final class OverlayLogger {
-  //-------------------------------
-
+  ///-------------------------------
   const OverlayLogger._();
   //
 

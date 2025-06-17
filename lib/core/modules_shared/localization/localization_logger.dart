@@ -5,10 +5,8 @@ import 'package:flutter/foundation.dart';
 
 abstract final class LocalizationLogger {
   //------------------------------------
-
   const LocalizationLogger._();
-
-  ///
+  //
 
   /// 🧭 Logs when a translation key is missing and fallback is used.
   static void missingKey({required String key, required String fallback}) {

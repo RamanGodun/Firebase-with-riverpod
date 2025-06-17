@@ -7,10 +7,8 @@ import '../../../failures/failure_entity.dart';
 
 abstract final class ErrorsLogger {
   //------------------------------
-
   const ErrorsLogger._();
-
-  ///
+  //
 
   /// ❗ Logs any raw [Exception] or [Error].
   static void exception(Object error, [StackTrace? stackTrace]) {

@@ -13,10 +13,8 @@ class PageNotFound extends StatelessWidget {
   //---------------------------------------
 
   final String errorMessage;
-
   const PageNotFound({super.key, required this.errorMessage});
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

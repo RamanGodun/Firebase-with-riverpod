@@ -30,8 +30,7 @@ final class CustomAppBar extends StatelessWidget
     this.isNeedPaddingAfterActionIcon = false,
     this.backgroundColor,
   });
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

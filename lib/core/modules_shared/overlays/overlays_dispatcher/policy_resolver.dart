@@ -4,8 +4,7 @@ part of '_overlay_dispatcher.dart';
 /// ✅ Centralizes logic for priority-based replacement and dismissibility behavior
 
 final class OverlayPolicyResolver {
-  //-----------------------------
-
+  ///-----------------------------
   const OverlayPolicyResolver._();
   //
 

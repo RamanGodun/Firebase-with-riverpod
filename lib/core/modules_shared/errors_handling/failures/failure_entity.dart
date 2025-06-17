@@ -14,7 +14,7 @@ part 'failure_subclasses/unknown_failure.dart';
 
 @sealed
 abstract class Failure extends Equatable {
-  //-------------------------------------
+  ///-------------------------------------
 
   final String message; //📝 Human-readable error
   final String? translationKey; //🌐 Optional localization key

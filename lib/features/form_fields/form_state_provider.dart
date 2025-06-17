@@ -6,8 +6,11 @@ import 'form_fields_model.dart';
 part 'form_state_provider.g.dart';
 
 /// 📦 [FormStateNotifier] — Manages reactive validation and form field values
+
 @riverpod
 class FormStateNotifier extends _$FormStateNotifier {
+  ///-----------------------------------------------
+
   late final List<FormFieldType> _activeFields;
 
   @override
@@ -67,6 +70,10 @@ class FormStateNotifier extends _$FormStateNotifier {
     }
   }
 }
+
+////
+
+////
 
 /// ✅ Provider for overall form validity (memoized)
 final formValidProvider = Provider.autoDispose

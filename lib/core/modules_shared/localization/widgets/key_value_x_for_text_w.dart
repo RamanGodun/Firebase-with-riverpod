@@ -21,8 +21,7 @@ final class KeyValueTextWidget extends StatelessWidget {
     required this.labelTextType,
     this.valueTextType,
   });
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {

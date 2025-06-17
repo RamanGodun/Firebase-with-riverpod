@@ -7,8 +7,8 @@ import 'dart:collection' show UnmodifiableMapView;
 
 abstract final class LocalesFallbackMapper {
   //---------------------------------------
-
   LocalesFallbackMapper._();
+  //
 
   /// 🗺️ Immutable fallback map of translation keys → hardcoded localized messages
   static final _fallbackMap = UnmodifiableMapView(<String, String>{
@@ -39,8 +39,8 @@ abstract final class LocalesFallbackMapper {
 
 abstract final class FallbackKeysForErrors {
   //---------------------------------------
-
   const FallbackKeysForErrors._();
+  //
 
   /// ⚠️ Overlay + Failure error messages
   static const unexpected = 'Something went wrong';

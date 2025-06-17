@@ -12,10 +12,9 @@ part 'change_password_use_case_provider.g.dart';
 @riverpod
 ChangePasswordUseCase changePasswordUseCase(Ref ref) {
   ///------------------------------------------------
-
+  //
   final repo = ref.watch(changePasswordRepoProvider);
   return ChangePasswordUseCase(repo);
-
   //
 }
 
