@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../modules_shared/theme/theme_provider/theme_provider.dart';
 import '../modules_shared/localization/localization_config.dart';
-import '../modules_shared/navigation/_router_config.dart';
+import '../modules_shared/navigation/core/_router_config.dart';
 import '../modules_shared/theme/core/_theme_config.dart';
 
 /// 🧩 [AppRootConfig] — Immutable object holding all global config required by [MaterialApp].
