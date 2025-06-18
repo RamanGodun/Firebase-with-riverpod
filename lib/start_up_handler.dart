@@ -24,6 +24,7 @@ final class StartUpHandler {
   //
 
   /// 🎯 Entry point — must be called before [runApp]
+
   static Future<void> bootstrap() async {
     /// ────────────────────────────────
     //
@@ -40,6 +41,7 @@ final class StartUpHandler {
 
   ///🛠️ Initializes fundamental Flutter bindings and core services
   // ✅ Sets up global Riverpod DI container with overrides
+
   static void _initializeCoreBindings() {
     /// ────────────────────────────────
     //
@@ -48,8 +50,11 @@ final class StartUpHandler {
     globalContainer = ProviderContainer(overrides: diContainer);
   }
 
+  ////
+
   ///🌍 Initializes localization engine (EasyLocalization)
   // ✅ Sets up `AppLocalizer` resolver
+
   static Future<void> _initLocalization() async {
     /// ────────────────────────────────────────
     //
@@ -58,7 +63,10 @@ final class StartUpHandler {
     // AppLocalizer.initWithFallback(); // ← use if app has no translations
   }
 
+  ////
+
   ///📱 Check minimum platform support (e.g., Android SDK)
+
   static Future<void> _validatePlatformSupport() async {
     /// ───────────────────────────────────────────────
     //
@@ -73,7 +81,10 @@ final class StartUpHandler {
     }
   }
 
+  ////
+
   ///📀 Loads environment configuration (.env file)
+
   static Future<void> _initEnvFile() async {
     /// ───────────────────────────────────
     //
@@ -86,7 +97,10 @@ final class StartUpHandler {
     debugPrint('✅ Loaded env file: $envFile');
   }
 
+  ////
+
   /// 🔥 Initializes Firebase if not already initialized
+
   static Future<void> _initializeFirebase() async {
     /// ──────────────────────────────────────────
     //
@@ -109,8 +123,11 @@ final class StartUpHandler {
     FirebaseUtils.logAllApps();
   }
 
+  ////
+
   ///💾 Initializes local storage services
   // ✅ Initializes GetStorage (local key-value DB)
+
   static Future<void> _initLocalStorage() async {
     /// ───────────────────────────────────────-
     //
@@ -119,8 +136,11 @@ final class StartUpHandler {
     // final sharedPrefs = await SharedPreferences.getInstance();
   }
 
+  ////
+
   /// 🌐 Sets URL strategy for Flutter web
   // ✅ Removes `#` from web URLs for cleaner routing
+
   static void _initUrlStrategy() {
     /// ────────────────────────
     //

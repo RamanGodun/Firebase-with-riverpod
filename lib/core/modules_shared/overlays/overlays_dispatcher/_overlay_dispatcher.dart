@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../utils_shared/timing_control/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
 import 'overlay_entries/_overlay_entries_registry.dart';
-import '../overlay_logger.dart';
+import 'overlay_logger.dart';
 import '../core/tap_through_overlay_barrier.dart';
 
 part 'policy_resolver.dart';
@@ -21,6 +21,8 @@ final class OverlayDispatcher {
   final void Function(bool isActive)? onOverlayStateChanged;
   OverlayDispatcher({this.onOverlayStateChanged});
 
+  ///
+
   /// 📦 Queue to hold pending overlay requests
   final Queue<OverlayQueueItem> _queue = Queue();
 
@@ -36,7 +38,6 @@ final class OverlayDispatcher {
   // 🔓 Whether the current overlay can be dismissed externally.
   bool get canBeDismissedExternally =>
       _activeRequest?.dismissPolicy == OverlayDismissPolicy.dismissible;
-  //
 
   ///
 

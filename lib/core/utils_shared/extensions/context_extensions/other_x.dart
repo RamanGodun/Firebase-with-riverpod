@@ -5,7 +5,7 @@ part of '_context_extensions.dart';
 extension OtherContextX on BuildContext {
   ///------------------------------------
   ///
-  /// ⌨️ Unfocuses current input field and hides keyboard
+  /// ⌨️ Unfocus current input field and hides keyboard
   void unfocusKeyboard() => FocusScope.of(this).unfocus();
   //
 }

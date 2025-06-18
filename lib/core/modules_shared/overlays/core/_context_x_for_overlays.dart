@@ -14,7 +14,7 @@ import 'enums_for_overlay_module.dart';
 /// ✅ Use `context.showSnackbar(...)` / `context.showBanner(...)` directly
 
 extension ContextXForOverlays on BuildContext {
-  ///------------------------------------------
+  ///----------------------------------------
 
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);

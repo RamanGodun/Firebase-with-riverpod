@@ -17,11 +17,11 @@ import 'signup_provider.dart';
 
 part 'widgets_for_signup_page.dart';
 
-/// 🔐 [SignupPage] — screen that allows user to register a new account.
+/// 🔐 [SignUpPage] — screen that allows user to register a new account.
 
-class SignupPage extends ConsumerWidget {
+class SignUpPage extends ConsumerWidget {
   ///-----------------------------------
-  const SignupPage({super.key});
+  const SignUpPage({super.key});
   //
 
   @override

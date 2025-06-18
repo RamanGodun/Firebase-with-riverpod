@@ -29,6 +29,7 @@ final class LanguageToggleButton extends StatelessWidget {
               LanguageOption.values
                   .map((e) => e.toMenuItem(currentLangCode))
                   .toList(),
+
       onSelected: (option) {
         final showBanner = context.showUserBanner;
 

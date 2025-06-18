@@ -1,7 +1,6 @@
 import 'package:firebase_with_riverpod/core/modules_shared/theme/core/app_colors.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
-
 import '../../../modules_shared/theme/core/constants/_app_constants.dart'
     show AppSpacing;
 

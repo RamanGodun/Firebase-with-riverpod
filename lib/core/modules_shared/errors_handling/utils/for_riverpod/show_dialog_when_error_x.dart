@@ -26,7 +26,8 @@ extension RefFailureListenerX on WidgetRef {
   }
 
   ///
-  /// 📦 Слухає помилки і при помилці — показує діалог з кастомним [onConfirm] дією
+
+  /// 📦 Listen and shows erors dialog with custom [onConfirm] action
   void listenFailureWithAction<T>(
     ProviderListenable<AsyncValue<T>> provider,
     BuildContext context, {

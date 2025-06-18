@@ -1,8 +1,5 @@
 /*
 
-import 'package:flutter/foundation.dart' show debugPrint, kDebugMode;
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 /// 🔍 [AppBlocObserver] — Global observer for BLoC/Cubit lifecycle events.
 /// Logs key transitions to help debug and track state changes, includes:
 ///           - 🟢 onCreate
@@ -14,10 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 final class AppBlocObserver extends BlocObserver {
   ///--------------------------------------------
-
   const AppBlocObserver();
-
-  ///
+  //
 
   /// 🕒 Returns the current time for consistent log entries.
   String _timestamp() => DateTime.now().toIso8601String();
@@ -75,6 +70,5 @@ final class AppBlocObserver extends BlocObserver {
 
   //
 }
-
 
  */

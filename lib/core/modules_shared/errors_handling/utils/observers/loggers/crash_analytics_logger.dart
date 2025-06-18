@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show debugPrint, kDebugMode;
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import '../../../failures/failure_entity.dart';
-import '../failure_diagnostics_x.dart';
+import '../../../failures/extensions/failure_diagnostics_x.dart';
 
 /// 🧱 [CrashlyticsLogger] — Utility class for sending structured logs to Firebase Crashlytics.
 /// ✅ Handles exceptions, domain-level failures, and Bloc observer errors.

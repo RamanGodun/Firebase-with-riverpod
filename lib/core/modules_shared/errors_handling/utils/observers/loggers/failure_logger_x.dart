@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/observers/failure_diagnostics_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/failures/extensions/failure_diagnostics_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import '../../../failures/failure_entity.dart';
 import 'errors_log_util.dart';

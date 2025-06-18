@@ -5,6 +5,7 @@ import 'overlay_preset_props.dart';
 /// - Returns resolved [OverlayUIPresetProps] used by overlays (banners, dialogs, etc.)
 /// - Presets are immutable, optimized, and support `.withOverride(...)`
 
+@immutable
 sealed class OverlayUIPresets {
   ///-------------------------
   const OverlayUIPresets();

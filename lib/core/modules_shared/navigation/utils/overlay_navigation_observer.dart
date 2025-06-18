@@ -14,6 +14,8 @@ final class OverlayNavigatorObserver extends NavigatorObserver {
   OverlayDispatcher get overlaysDispatcher =>
       globalContainer.read(overlayDispatcherProvider);
 
+  ///
+
   /// 🔁 Called when a new route is pushed onto the navigator
   @override
   void didPush(Route route, Route? previousRoute) {

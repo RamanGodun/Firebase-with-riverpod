@@ -22,8 +22,7 @@ final class AppRootConfig {
     required this.localization,
     required this.router,
   });
-
-  ///
+  //
 
   /// 🏭 Factory method that builds [AppRootConfig] from Riverpod/Bloc + Flutter context.
   factory AppRootConfig.from({

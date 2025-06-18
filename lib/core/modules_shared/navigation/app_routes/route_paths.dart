@@ -2,6 +2,7 @@ part of 'app_routes.dart';
 
 /// 📍 [RoutesPaths] — Centralized absolute paths used in routing
 /// ✅ All paths are `/...` versions of [RoutesNames] and used in GoRouter config and redirects
+
 abstract final class RoutesPaths {
   //----------------------------
   RoutesPaths._();
@@ -10,7 +11,7 @@ abstract final class RoutesPaths {
   /// ⏳ Splash Screen
   static const splash = '/${RoutesNames.splash}';
 
-  /// 🔐 Auth routes
+  /// 🔐 Auth Routes
   static const signIn = '/${RoutesNames.signIn}';
   static const signUp = '/${RoutesNames.signUp}';
   static const resetPassword = '/${RoutesNames.resetPassword}';
@@ -20,10 +21,10 @@ abstract final class RoutesPaths {
   /// 🏠 Main App Route (root)
   static const home = '/${RoutesNames.home}';
 
-  /// 👤 Profile is nested under /home
+  /// 👤 Profile (nested under /home)
   static const profile = '$home/${RoutesNames.profile}';
 
-  /// 🔐 Change Password is nested under /home/profile
+  /// 🔐 Change Password (nested under /home/profile)
   static const changePassword = '$profile/${RoutesNames.changePassword}';
 
   /// ❌ Error fallback route
