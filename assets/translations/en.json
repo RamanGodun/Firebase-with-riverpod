@@ -59,6 +59,9 @@
   "auth": {
     "unauthorized": "Your session has expired. Please sign in again."
   },
+  "email_verification": {
+  "timeout": "Email verification took too long. Please try again later."
+  },
   "plugin": {
     "missing": "Missing plugin detected. Please contact support."
   },

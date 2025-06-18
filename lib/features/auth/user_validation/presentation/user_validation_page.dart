@@ -4,11 +4,13 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/features/auth/user_validation/presentation/user_validation_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
+import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../../../../core/modules_shared/theme/core/constants/_app_constants.dart';
 import '../../../../core/modules_shared/theme/core/app_colors.dart';
 import '../../sign_out/presentation/sign_out_buttons.dart';
@@ -25,7 +27,15 @@ class VerifyEmailPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ⛑️ Error listener
-    ref.listenFailure(emailVerificationNotifierProvider, context);
+    // ref.listenFailure(emailVerificationNotifierProvider, context);
+    ref.listenFailureWithAction<void>(
+      emailVerificationNotifierProvider,
+      context,
+      onConfirmed: () async {
+        await fbAuth.signOut();
+        if (context.mounted) context.goNamed(RoutesNames.signIn);
+      },
+    );
 
     // 🎯 Trigger the polling logic
     ref.read(emailVerificationNotifierProvider);
@@ -49,7 +59,7 @@ class VerifyEmailPage extends ConsumerWidget {
             children: [_VerifyEmailInfo(), VerifyEmailCancelButton()],
           ).withPaddingAll(AppSpacing.l),
         ),
-      ),
+      ).withPaddingHorizontal(AppSpacing.xm),
     );
   }
 }

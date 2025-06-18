@@ -47,10 +47,10 @@ final class AuthStateRefresher extends ChangeNotifier
   }
 
   // void trigger() => notifyListeners();
-void trigger() {
-  debugPrint('AuthStateRefresher: notifyListeners triggered manually'); // 🪵
-  notifyListeners();
-}
+  void trigger() {
+    debugPrint('AuthStateRefresher: notifyListeners triggered manually'); // 🪵
+    notifyListeners();
+  }
 
   @override
   void dispose() {

@@ -59,6 +59,9 @@
   "auth": {
     "unauthorized": "Twoja sesja wygasła. Zaloguj się ponownie."
   },
+  "email_verification": {
+  "timeout": "Weryfikacja e-maila trwała zbyt długo. Spróbuj ponownie później."
+  },
   "plugin": {
     "missing": "Wykryto brakujący plugin. Skontaktuj się z pomocą techniczną."
   },

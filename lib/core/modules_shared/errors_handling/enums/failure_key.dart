@@ -23,6 +23,7 @@ enum FailureKeys {
   firebaseUserNotFound, // 👤 Email not registered
   firebaseWeakPassword, // 🧵 Too simple
   firebaseWrongPassword, // 🔑 Valid email, wrong password
+  emailVerificationTimeout, // 🆕 Timeout during email verification polling
 
   formatError, // 📦 JSON parsing or data format
   unknown, // ❓ Unexpected or unclassified
@@ -51,6 +52,7 @@ enum FailureKeys {
     firebaseUserNotFound => 'failure.firebase.user_not_found',
     firebaseWeakPassword => 'failure.firebase.weak_password',
     firebaseWrongPassword => 'failure.firebase.wrong_password',
+    emailVerificationTimeout => 'failure.email_verification.timeout',
 
     formatError => 'failure.format.error',
     unknown => 'failure.unknown',
