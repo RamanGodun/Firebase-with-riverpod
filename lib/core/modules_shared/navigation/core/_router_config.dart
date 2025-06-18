@@ -1,8 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'router_provider.dart';
+import 'go_router.dart';
 
 /// 🧭 [AppRouterConfig] — Wrapper for router provider.
+/// ✅ Entry point for GoRouter integration with [MaterialApp.router]
 /// ✅ Enables consistent API across Bloc / Riverpod apps.
 
 final class AppRouterConfig {
@@ -10,25 +11,20 @@ final class AppRouterConfig {
   const AppRouterConfig._();
   //
 
-  /// 🧩 Global router instance from Riverpod
-  static final provider = routerProvider;
+  /// 🧩 Global router instance
+  static final router = goRouter;
 
-  /// 💡 Access actual GoRouter object using ref.watch(...)
-  static GoRouter use(WidgetRef ref) => ref.watch(routerProvider);
+  /// 💡 Access actual GoRouter object for Riverpod (read-only)
+  static GoRouter use(WidgetRef ref) => ref.watch(goRouter);
+
+  /// ✅ Bloc (if you need delegate/parser/provider explicitly)
+  /// Provides the core routing components:
+  /// - `routerDelegate`
+  /// - `routeInformationParser`
+  /// - `routeInformationProvider`
+  // static final delegate = goRouterProvider.routerDelegate;
+  // static final parser = goRouterProvider.routeInformationParser;
+  // static final provider = goRouterProvider.routeInformationProvider;
 
   //
 }
-
-/*
-
-final class AppRouterConfig {
-  const AppRouterConfig._();
-
-  static final router = goRouter;
-
-  static final delegate = router.routerDelegate;
-  static final parser = router.routeInformationParser;
-  static final provider = router.routeInformationProvider;
-}
-
- */

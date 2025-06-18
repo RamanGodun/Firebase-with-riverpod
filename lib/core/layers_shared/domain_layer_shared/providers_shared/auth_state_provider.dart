@@ -12,6 +12,6 @@ part 'auth_state_provider.g.dart';
 Stream<User?> authStateStream(Ref ref) {
   ///-----------------------------------
   //
-  return fbAuth.authStateChanges();
+  return fbAuth.userChanges();
   //
 }

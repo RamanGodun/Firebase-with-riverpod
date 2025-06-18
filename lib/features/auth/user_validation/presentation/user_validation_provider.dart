@@ -1,5 +1,8 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../core/app_configs/firebase/firebase_constants.dart';
+import '../../../../core/layers_shared/domain_layer_shared/providers_shared/auth_state_refresher_provider.dart';
 import '../../../../core/modules_shared/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../domain/user_validation_use_case_provider.dart';
 
@@ -21,6 +24,7 @@ class EmailVerificationNotifier extends _$EmailVerificationNotifier
   FutureOr<void> build() {
     _useCase = ref.read(emailVerificationUseCaseProvider);
     initSafe();
+    debugPrint('VerificationNotifier: build() called...');
 
     unawaited(_useCase.sendVerificationEmail());
     _startPolling();
@@ -38,10 +42,22 @@ class EmailVerificationNotifier extends _$EmailVerificationNotifier
 
   /// ✅ Checks if email is verified and cancels timer
   Future<void> _checkEmailVerified() async {
+    debugPrint(
+      'EmailVerificationNotifier: checking email verification status...',
+    );
     final result = await _useCase.checkIfEmailVerified();
-    result.fold((_) => null, (isVerified) {
+    result.fold((_) => null, (isVerified) async {
       if (isVerified) {
         _timer?.cancel();
+
+        await _useCase.reloadUser();
+
+        final refreshed = fbAuth.currentUser;
+        debugPrint(
+          '🔁 After reload: emailVerified=${refreshed?.emailVerified}',
+        );
+
+        ref.read(authStateRefreshStreamProvider).trigger();
 
         state = const AsyncData(null);
       }

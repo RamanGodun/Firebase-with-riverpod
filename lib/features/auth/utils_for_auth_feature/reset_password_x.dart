@@ -7,7 +7,7 @@ import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/modules_shared/errors_handling/failures/failure_entity.dart';
 import '../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../core/modules_shared/navigation/core/routes_names.dart';
+import '../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 
 /// 🧩 [RefResetPasswordListenerX] — declarative handler for ResetPassword lifecycle
 

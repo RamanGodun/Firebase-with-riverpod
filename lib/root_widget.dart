@@ -5,7 +5,7 @@ import 'core/app_configs/app_root_config.dart';
 import 'core/modules_shared/overlays/core/global_overlay_handler.dart';
 
 /// 🌳🧩 [AppRootShell] — Provides app-wide dependencies (theme, router, locale).
-/// ✅ Now simplified using factory constructor in [AppRootConfig].
+/// ✅  Using factory constructor in [AppRootConfig].
 
 class AppRootShell extends ConsumerWidget {
   ///--------------------------------------
@@ -14,7 +14,7 @@ class AppRootShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // /
+    //
     // ? Theme memoization
     final config = AppRootConfig.from(ref: ref, context: context);
     return _AppRootView(config: config);

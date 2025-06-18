@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../app_configs/firebase/firebase_constants.dart';
+import '../app_routes/app_routes.dart';
 
 /// 🧭🚦 [RoutesRedirectionService] — centralized redirect logic for GoRouter
 /// 🔐 Dynamically handles redirection based on Firebase auth state:
@@ -18,44 +19,58 @@ abstract final class RoutesRedirectionService {
 
   /// 🗝️ Publicly accessible routes (no authentication required)
   static const Set<String> _publicRoutes = {
-    '/signin',
-    '/signup',
-    '/resetPassword',
+    RoutesPaths.signIn,
+    RoutesPaths.signUp,
+    RoutesPaths.resetPassword,
   };
 
-  ///
+  //
 
-  /// 🔁📤 Maps current router state to an optional redirect path, returns:
-  /// a new path as [String] if redirection is needed, or null otherwise
-  static String? map({
-    required GoRouterState goRouterState, // current GoRouter state
+  /// 🔁 Maps current router state + auth state to a redirect route (if needed)
+  static String? from({
+    required GoRouterState goRouterState,
     required AsyncValue<User?> authState,
   }) {
-    ///
-    final isAuthenticated = authState.valueOrNull != null;
-    final isVerified = fbAuth.currentUser?.emailVerified ?? false;
+    // 🔄 CurrentPath inside method
+    final currentPath = goRouterState.matchedLocation;
 
-    final isOnPublicPages = _publicRoutes.contains(
-      goRouterState.matchedLocation,
-    );
-    final isOnVerifyPage = goRouterState.matchedLocation == '/verifyEmail';
-    final isOnSplashPage = goRouterState.matchedLocation == '/splash';
+    debugPrint('[🔁 Redirect] from() called → currentPath: $currentPath');
+
+    // 🔄 Derive directly from state
+    final isLoading = authState is AsyncLoading<User?>;
+    final isAuthError = authState is AsyncError<User?>;
+    final user = authState.valueOrNull;
+    final isAuthenticated = user != null;
+    final isEmailVerified = user?.emailVerified ?? false;
+    debugPrint('[🔁 Redirect] user: $user, isVerified: $isEmailVerified');
+
+    final isOnPublicPages = _publicRoutes.contains(currentPath);
+    final isOnVerifyPage = currentPath == RoutesPaths.verifyEmail;
+    final isOnSplashPage = currentPath == RoutesPaths.splash;
 
     //
     // ⏳ Redirect to splash while loading
-    if (authState is AsyncLoading<User?>) return '/splash';
+    if (isLoading) return RoutesPaths.splash;
 
     // 💥 Redirect to error page if auth error
-    if (authState is AsyncError<User?>) return '/firebaseError';
+    if (isAuthError) return RoutesPaths.signIn;
 
     // 🚪 Redirect to SignIn page if unauthenticated and not on public page
-    if (!isAuthenticated) return isOnPublicPages ? null : '/signin';
+    if (!isAuthenticated) return isOnPublicPages ? null : RoutesPaths.signIn;
 
     // 🧪 Redirect to /verifyEmail if not verified
-    if (!isVerified) return isOnVerifyPage ? null : '/verifyEmail';
+    if (!isEmailVerified)
+      return isOnVerifyPage ? null : RoutesPaths.verifyEmail;
 
     // ✅ Redirect to /home if already authenticated and on splash/public/verify
-    if (isOnPublicPages || isOnSplashPage || isOnVerifyPage) return '/home';
+    // if ((isOnPublicPages || isOnSplashPage || isOnVerifyPage) &&
+    //     isEmailVerified)
+    //   return RoutesPaths.home;
+    if ((isOnPublicPages || isOnSplashPage || isOnVerifyPage) &&
+        isEmailVerified) {
+      debugPrint('[🔁 Redirect] ✅ Redirecting to home — email verified');
+      return RoutesPaths.home;
+    }
 
     // ➖ No redirect
     return null;
@@ -63,3 +78,14 @@ abstract final class RoutesRedirectionService {
 
   //
 }
+
+
+/*
+? for debugging:
+
+    if (kDebugMode) {
+        debugPrint(
+          '[🔁 Redirect] $currentPath → $target (authStatus: unknown)',
+        );
+      }
+ */

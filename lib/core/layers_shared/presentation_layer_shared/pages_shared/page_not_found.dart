@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:flutter/material.dart';
 import '../../../modules_shared/localization/widgets/text_widget.dart';
 import '../../../modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../modules_shared/navigation/core/routes_names.dart';
+import '../../../modules_shared/navigation/app_routes/app_routes.dart';
 import '../widgets_shared/buttons/custom_buttons.dart';
 
 /// 🧭 [PageNotFound] — generic 404 fallback UI for unknown routes

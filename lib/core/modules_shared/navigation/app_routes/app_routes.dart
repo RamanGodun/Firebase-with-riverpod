@@ -9,8 +9,10 @@ import '../../../../features/auth/change_password/presentation/reauth_page.dart'
 import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/_home_page.dart';
-import 'routes_names.dart';
 import '../utils/page_transition.dart';
+
+part 'routes_names.dart';
+part 'route_paths.dart';
 
 /// 🧭 [AppRoutes] — Centralized list of all GoRouter routes
 /// ✅ Used in [goRouter] and matches [RoutesNames]

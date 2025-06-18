@@ -5,10 +5,10 @@ import 'package:firebase_with_riverpod/core/modules_shared/overlays/core/_contex
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../change_password/presentation/change_password_provider.dart';
 import '../change_password/presentation/reauth_page.dart';
 import '../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../core/modules_shared/navigation/core/routes_names.dart';
 import '../../../core/modules_shared/errors_handling/failures/failure_entity.dart';
 
 /// 🧩 [RefPasswordChangeListenerX] — declarative handler for ChangePassword lifecycle

@@ -6,7 +6,7 @@ part of 'auth_state_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authStateStreamHash() => r'21e813fdefad80f26d5eb53e54bf5851a3a9382d';
+String _$authStateStreamHash() => r'19e115663741392de4b1f1b93050252f6cabd9f4';
 
 /// 🧩 [authStateStreamProvider] — exposes auth state as stream of [User?]
 /// 🧼 Reactively notifies when user signs in/out or changes

@@ -41,6 +41,16 @@ final class EmailVerificationUseCase {
     }
   }
 
+  /// 📧 Sends verification email
+  ResultFuture<void> reloadUser() async {
+    try {
+      await repo.reloadUser();
+      return right(null);
+    } catch (e, st) {
+      return left(mapToFailure(e, st));
+    }
+  }
+
   /// ✅ Checks email verification status
   ResultFuture<bool> checkIfEmailVerified() async {
     try {
