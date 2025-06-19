@@ -11,40 +11,45 @@ import '../app_routes/app_routes.dart';
 /// 🧭🚦 [goRouter] — GoRouter configuration with global auth-aware redirect
 
 final goRouter = Provider<GoRouter>((ref) {
-  ///---------------------------------------------
+  ///------------------------------------
 
+  /// 👤 Firebase user authentication state
   final authState = ref.watch(authStateStreamProvider);
+  // 🔁 Notifier that triggers GoRouter refresh when auth state updates
   final refresher = ref.watch(authStateRefreshStreamProvider);
 
   ///
   return GoRouter(
-    /// 👁️ Observers — Navigation side-effects
-    /// - ✅ Auto-clears overlays on push/pop/replace (OverlayDispatcher)
+    ///
+    /// 👁️ Observers — navigation side-effects (e.g., dismissing overlays)
     observers: [OverlayNavigatorObserver()],
 
-    /// ⏳ Initial route (Splash Screen)
-    initialLocation: RoutesPaths.splash,
-
-    /// 🐞 Enable GoRouter debug logs (only in debug mode)
+    /// 🐞 Enable verbose logging for GoRouter (only active in debug mode)
     debugLogDiagnostics: true,
 
     ///
-    refreshListenable: refresher,
 
-    /// 🧭 Redirect logic handled by [RoutesRedirectionService], based on auth state
-    redirect: (context, state) {
-      return RoutesRedirectionService.from(
-        goRouterState: state,
-        authState: authState,
-      );
-    },
+    /// ⏳ Initial route shown on app launch (Splash Screen)
+    initialLocation: RoutesPaths.splash,
 
-    /// 📌 Route definitions
+    /// 🗺️ Route definitions used across the app
     routes: AppRoutes.all,
 
-    /// ❌ Wildcard handler for unmatched routes
+    /// ❌ Fallback UI for unknown/unmatched routes
     errorBuilder:
         (context, state) => PageNotFound(errorMessage: state.error.toString()),
+
+    ///
+
+    /// 🔁 Triggers route evaluation when `authState` changes
+    refreshListenable: refresher,
+
+    /// 🧭 Global redirect handler — routes user depending on auth state
+    redirect: (context, state) {
+      return RoutesRedirectionService.from(context, state, authState);
+    },
+
+    //
   );
 
   //

@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../app_routes/app_routes.dart';
@@ -13,7 +13,7 @@ import '../app_routes/app_routes.dart';
 ///   - ✅ `/home` if fully authenticated and verified
 
 abstract final class RoutesRedirectionService {
-  //----------------------------------------------
+  ///----------------------------------------
   RoutesRedirectionService._();
   //
 
@@ -27,23 +27,25 @@ abstract final class RoutesRedirectionService {
   //
 
   /// 🔁 Maps current router state + auth state to a redirect route (if needed)
-  static String? from({
-    required GoRouterState goRouterState,
-    required AsyncValue<User?> authState,
-  }) {
-    // 🔄 CurrentPath inside method
-    final currentPath = goRouterState.matchedLocation;
-
-    debugPrint('[🔁 Redirect] from() called → currentPath: $currentPath');
-
-    // 🔄 Derive directly from state
+  static String? from(
+    BuildContext context,
+    GoRouterState goRouterState,
+    AsyncValue<User?> authState,
+  ) {
+    ///
+    // 🔄 Error/Loading State, directly from state
     final isLoading = authState is AsyncLoading<User?>;
     final isAuthError = authState is AsyncError<User?>;
+
+    // User
     final user = authState.valueOrNull;
     final isAuthenticated = user != null;
     final isEmailVerified = user?.emailVerified ?? false;
-    debugPrint('[🔁 Redirect] user: $user, isVerified: $isEmailVerified');
 
+    // 🔄 CurrentPath
+    final currentPath = goRouterState.matchedLocation;
+
+    // 📍 Route flags
     final isOnPublicPages = _publicRoutes.contains(currentPath);
     final isOnVerifyPage = currentPath == RoutesPaths.verifyEmail;
     final isOnSplashPage = currentPath == RoutesPaths.splash;
@@ -63,14 +65,9 @@ abstract final class RoutesRedirectionService {
       return isOnVerifyPage ? null : RoutesPaths.verifyEmail;
 
     // ✅ Redirect to /home if already authenticated and on splash/public/verify
-    // if ((isOnPublicPages || isOnSplashPage || isOnVerifyPage) &&
-    //     isEmailVerified)
-    //   return RoutesPaths.home;
     if ((isOnPublicPages || isOnSplashPage || isOnVerifyPage) &&
-        isEmailVerified) {
-      debugPrint('[🔁 Redirect] ✅ Redirecting to home — email verified');
+        isEmailVerified)
       return RoutesPaths.home;
-    }
 
     // ➖ No redirect
     return null;

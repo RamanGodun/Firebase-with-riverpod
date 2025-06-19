@@ -3,35 +3,36 @@ import 'package:flutter/material.dart';
 import 'app_themes.dart';
 import 'enums.dart/_app_theme_type.dart.dart';
 
-/// 🎯 [ThemeConfig] — Unified config builder for both Bloc and Riverpod.
+/// 🎯 [AppThemeBuilder] — Unified config builder for both Bloc and Riverpod.
 /// ✅ Converts either ThemeMode (Riverpod) or AppThemeState (Bloc) into AppThemeConfig.
 
 @immutable
-final class ThemeConfig {
-  ///--------------------
-  const ThemeConfig._();
+final class AppThemeBuilder {
+  ///----------------------
+  const AppThemeBuilder._();
   //
-
-  /// 🧩 Factory from ThemeMode (used in Riverpod)
-  static AppThemeConfig fromMode(ThemeMode mode) {
-    return AppThemeConfig(
-      theme: AppThemes.resolve(AppThemeType.light),
-      darkTheme: AppThemes.resolve(AppThemeType.dark),
-      themeMode: mode,
-    );
-  }
 
   /*
   ? next use, when theme provider is BLoC/Cubit
   /// 🧩 Factory from Bloc state (AppThemeState)
-  static AppThemeConfig fromBloc(AppThemeState state) {
+ static AppThemesScheme from(AppThemeState state) {
     final mode = state.isDarkTheme ? ThemeMode.dark : ThemeMode.light;
     return fromMode(mode);
   }
+  }
  */
 
+  /// 🧩 Factory from ThemeMode (used in Riverpod)
+  static AppThemesScheme fromMode(ThemeMode mode) {
+    return AppThemesScheme(
+      light: AppThemes.resolve(AppThemeType.light),
+      dark: AppThemes.resolve(AppThemeType.dark),
+      mode: mode,
+    );
+  }
+
   /// 🧩 Fallback: default system mode
-  static AppThemeConfig fallback() => fromMode(ThemeMode.system);
+  static AppThemesScheme fallback() => fromMode(ThemeMode.system);
 
   //
 }
@@ -40,21 +41,21 @@ final class ThemeConfig {
 
 ////
 
-/// 🎨 [AppThemeConfig] — Theme container passed into MaterialApp
+/// 🎨 [AppThemesScheme] — Theme container passed into MaterialApp
 /// ✅ Holds light/dark themes and current ThemeMode.
 
 @immutable
-final class AppThemeConfig {
+final class AppThemesScheme {
   /// ─────----------------
 
-  final ThemeData theme;
-  final ThemeData darkTheme;
-  final ThemeMode themeMode;
+  final ThemeData light;
+  final ThemeData dark;
+  final ThemeMode mode;
 
-  const AppThemeConfig({
-    required this.theme,
-    required this.darkTheme,
-    required this.themeMode,
+  const AppThemesScheme({
+    required this.light,
+    required this.dark,
+    required this.mode,
   });
 
   //

@@ -51,9 +51,9 @@ class _AppRootView extends StatelessWidget {
       routerConfig: config.router,
 
       // 🎨 Theming
-      theme: config.theme.theme,
-      darkTheme: config.theme.darkTheme,
-      themeMode: config.theme.themeMode,
+      theme: config.theme.light,
+      darkTheme: config.theme.dark,
+      themeMode: config.theme.mode,
 
       // 🧩 Overlay handlings
       builder: (context, child) => GlobalOverlayHandler(child: child!),
