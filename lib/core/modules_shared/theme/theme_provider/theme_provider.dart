@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 
-// 🔐 Key for storing theme preference
-const _themeStorageKey = 'selectedTheme';
+part 'theme_storage_provider.dart';
 
-/// 🧩 [themeStorageProvider] — Provides the shared GetStorage instance
-final themeStorageProvider = Provider<GetStorage>((ref) => GetStorage());
+// final appThemeTypeProvider =
+//     StateNotifierProvider<AppThemeTypeNotifier, AppThemeType>(
+//       (ref) => AppThemeTypeNotifier(ref.watch(themeStorageProvider)),
+//     );
 
 /// 🧩 [themeModeProvider] — StateNotifier for switching themes with injected storage
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_themes.dart';
 import 'enums.dart/_app_theme_type.dart.dart';
+import '../theme_utils/theme_mode_adapter.dart';
 
 /// 🎯 [AppThemeBuilder] — Unified config builder for both Bloc and Riverpod.
 /// ✅ Converts either ThemeMode (Riverpod) or AppThemeState (Bloc) into AppThemeConfig.
@@ -12,27 +13,18 @@ final class AppThemeBuilder {
   const AppThemeBuilder._();
   //
 
-  /*
-  ? next use, when theme provider is BLoC/Cubit
-  /// 🧩 Factory from Bloc state (AppThemeState)
- static AppThemesScheme from(AppThemeState state) {
-    final mode = state.isDarkTheme ? ThemeMode.dark : ThemeMode.light;
-    return fromMode(mode);
-  }
-  }
- */
-
   /// 🧩 Factory from ThemeMode (used in Riverpod)
-  static AppThemesScheme fromMode(ThemeMode mode) {
+  static AppThemesScheme from(IAppThemeState state) {
     return AppThemesScheme(
       light: AppThemes.resolve(AppThemeType.light),
       dark: AppThemes.resolve(AppThemeType.dark),
-      mode: mode,
+      mode: state.mode,
     );
   }
 
   /// 🧩 Fallback: default system mode
-  static AppThemesScheme fallback() => fromMode(ThemeMode.system);
+  static AppThemesScheme fallback() =>
+      from(const ThemeModeAdapter(ThemeMode.system));
 
   //
 }

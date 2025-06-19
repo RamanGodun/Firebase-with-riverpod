@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../modules_shared/navigation/core/go_router.dart';
+import '../modules_shared/theme/theme_utils/theme_mode_adapter.dart';
 import '../modules_shared/theme/theme_provider/theme_provider.dart';
 import '../modules_shared/localization/localization_config.dart';
 import '../modules_shared/theme/core/_theme_config.dart';
@@ -30,28 +31,17 @@ final class AppRootConfig {
     required BuildContext context,
   }) {
     ///
-    //
     final localization = LocalizationConfig.fromContext(context);
 
     ///
-    final theme = AppThemeBuilder.fromMode(ref.watch(themeModeProvider));
-    /*
-    ? when using BLoC as state manager, uncomment next:
-    final theme = ThemeConfig.fromBloc(themeState);
-
-    ? when use Riverpod state manager, uncomment next:
-    final theme = ThemeConfig.from(ref.watch(themeModeProvider));
- */
+    final theme = AppThemeBuilder.from(
+      ThemeModeAdapter(ref.watch(themeModeProvider)), //  ? when using Riverpod
+    );
+    // final theme = AppThemeBuilder.from(themeState); // ? when using BLoC
 
     ///
-    final router = ref.watch(goRouter);
-    /*
-    ? when use Riverpod state manager, uncomment next:
-    final router = ref.watch(goRouter);
-    
-    ? when use BLoC state manager, uncomment next:
-    final router = AppRouterConfig.router;
- */
+    final router = ref.watch(goRouter); // ? when use Riverpod
+    //  final router = AppRouterConfig.router; // ? when using BLoC
 
     return AppRootConfig(
       localization: localization,
