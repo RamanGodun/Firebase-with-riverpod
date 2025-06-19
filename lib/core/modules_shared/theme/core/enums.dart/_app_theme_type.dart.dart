@@ -52,26 +52,6 @@ enum AppThemeType {
   ),
 
   ///
-  amoled(
-    brightness: Brightness.dark,
-    background: AppColors.black,
-    primaryColor: AppColors.darkPrimary,
-    cardColor: AppColors.darkOverlay,
-    contrastColor: AppColors.white,
-    colorScheme: ColorScheme.dark(
-      primary: AppColors.darkPrimary,
-      secondary: AppColors.darkAccent,
-      background: AppColors.black,
-      surface: AppColors.darkSurface,
-      onPrimary: AppColors.white,
-      onSecondary: AppColors.white,
-      onBackground: AppColors.white,
-      onSurface: AppColors.white,
-      error: AppColors.forErrors,
-    ),
-  ),
-
-  ///
   glass(
     brightness: Brightness.dark,
     background: AppColors.darkOverlay,
@@ -89,8 +69,26 @@ enum AppThemeType {
       onSurface: AppColors.white,
       error: AppColors.forErrors,
     ),
+  ),
 
-    //
+  ///
+  amoled(
+    brightness: Brightness.dark,
+    background: AppColors.black,
+    primaryColor: AppColors.darkPrimary,
+    cardColor: AppColors.darkOverlay,
+    contrastColor: AppColors.white,
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.darkPrimary,
+      secondary: AppColors.darkAccent,
+      background: AppColors.black,
+      surface: AppColors.darkSurface,
+      onPrimary: AppColors.white,
+      onSecondary: AppColors.white,
+      onBackground: AppColors.white,
+      onSurface: AppColors.white,
+      error: AppColors.forErrors,
+    ),
   );
 
   ////

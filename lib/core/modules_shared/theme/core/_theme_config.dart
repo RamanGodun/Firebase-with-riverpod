@@ -16,10 +16,15 @@ final class AppThemeBuilder {
   /// 🧩 Factory from ThemeMode (used in Riverpod)
   static AppThemesScheme from(IAppThemeState state) {
     return AppThemesScheme(
-      light: AppThemes.resolve(AppThemeType.light),
-      dark: AppThemes.resolve(AppThemeType.dark),
+      light: AppTheme.resolve(AppThemeType.light),
+      dark: AppTheme.resolve(AppThemeType.dark),
       mode: state.mode,
     );
+  }
+
+  ///
+  static AppThemesScheme fromType(AppThemeType type) {
+    return AppThemesScheme.fromType(type);
   }
 
   /// 🧩 Fallback: default system mode
@@ -49,6 +54,22 @@ final class AppThemesScheme {
     required this.dark,
     required this.mode,
   });
+  //
+
+  ///
+  /// 🧩 Creates a full theme scheme from selected [AppThemeType]
+  factory AppThemesScheme.fromType(AppThemeType type) {
+    final isDark = switch (type) {
+      AppThemeType.light => false,
+      _ => true,
+    };
+
+    return AppThemesScheme(
+      light: AppTheme.resolveFromType(AppThemeType.light),
+      dark: AppTheme.resolveFromType(type),
+      mode: isDark ? ThemeMode.dark : ThemeMode.light,
+    );
+  }
 
   //
 }

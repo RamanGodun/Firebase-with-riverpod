@@ -35,8 +35,8 @@ final List<Override> diContainer = [
   // Persists theme mode
   themeStorageProvider.overrideWith((ref) => GetStorage()),
   // Controls current theme mode
-  themeModeProvider.overrideWith(
-    (ref) => ThemeModeNotifier(ref.watch(themeStorageProvider)),
+  themeProvider.overrideWith(
+    (ref) => ThemeTypeNotifier(ref.watch(themeStorageProvider)),
   ),
 
   /// ── Overlay System ───

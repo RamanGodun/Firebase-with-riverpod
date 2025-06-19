@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../modules_shared/navigation/core/go_router.dart';
-import '../modules_shared/theme/theme_utils/theme_mode_adapter.dart';
-import '../modules_shared/theme/theme_provider/theme_provider.dart';
 import '../modules_shared/localization/localization_config.dart';
 import '../modules_shared/theme/core/_theme_config.dart';
+import '../modules_shared/theme/theme_provider/theme_provider.dart';
 
 /// 🧩 [AppRootConfig] — Immutable object holding all global config required by [MaterialApp].
 /// ✅ Clean separation of logic & widget layer, with convenient factory for Riverpod or Bloc integration.
@@ -34,9 +33,10 @@ final class AppRootConfig {
     final localization = LocalizationConfig.fromContext(context);
 
     ///
-    final theme = AppThemeBuilder.from(
-      ThemeModeAdapter(ref.watch(themeModeProvider)), //  ? when using Riverpod
-    );
+    final theme = AppThemeBuilder.fromType(
+      ref.watch(themeProvider),
+    ); //  ? when using Riverpod
+    // );
     // final theme = AppThemeBuilder.from(themeState); // ? when using BLoC
 
     ///

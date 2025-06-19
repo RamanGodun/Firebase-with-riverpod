@@ -65,8 +65,13 @@ class _UserProfile extends StatelessWidget {
                 value: user.id,
                 labelTextType: TextType.bodyMedium,
               ),
+              const SizedBox(height: AppSpacing.l),
 
+              ThemePicker(
+                key: ValueKey(Localizations.localeOf(context).languageCode),
+              ),
               const SizedBox(height: AppSpacing.xl),
+
               CustomButton(
                 type: ButtonType.filled,
                 onPressed: () => context.goTo(RoutesNames.changePassword),

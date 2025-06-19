@@ -148,7 +148,11 @@
 
   "theme": {
     "light_enabled": "now is  \"Light Mode\"",
-    "dark_enabled": "now is  \"Dark Mode\""
+    "dark_enabled": "now is  \"Dark Mode\"",
+    "amoled_enabled": "now is  \"Amoled Mode\"",
+    "light": "Light theme",
+    "dark": "Dark theme ",
+    "amoled": "Amoled theme"
   }
 
 }

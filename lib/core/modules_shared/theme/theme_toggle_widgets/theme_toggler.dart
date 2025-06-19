@@ -4,21 +4,23 @@ import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/constants/_app_constants.dart';
-import '../localization/app_localizer.dart';
-import 'theme_provider/theme_provider.dart';
+import '../core/constants/_app_constants.dart';
+import '../../localization/app_localizer.dart';
+import '../core/enums.dart/_app_theme_type.dart.dart';
+import '../theme_provider/theme_provider.dart';
 
-/// 🌗 [ThemeToggleIcon] — toggles light/dark mode and shows overlay notification
+/// 🌗 [ThemeToggler] — toggles light/dark mode and shows overlay notification
 
-class ThemeToggleIcon extends ConsumerWidget {
+class ThemeToggler extends ConsumerWidget {
   ///-----------------------------------------
-  const ThemeToggleIcon({super.key});
+  const ThemeToggler({super.key});
   //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final wasDark = ref.watch(themeModeProvider) == ThemeMode.dark;
+    final wasDark = ref.watch(themeProvider) == AppThemeType.dark;
+    // final wasDark = ref.watch(themeModeProvider) == ThemeMode.dark;
 
     final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
     final iconColor = context.colorScheme.primary;
@@ -27,8 +29,11 @@ class ThemeToggleIcon extends ConsumerWidget {
       icon: Icon(icon, color: iconColor),
 
       onPressed: () {
+        //
+        final newTheme = wasDark ? AppThemeType.light : AppThemeType.dark;
+
         /// 🕹️🔄 Toggles the theme between light and dark mode.
-        ref.read(themeModeProvider.notifier).toggleTheme();
+        ref.read(themeProvider.notifier).set(newTheme);
 
         final msgKey =
             wasDark

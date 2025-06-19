@@ -10,7 +10,6 @@ enum AppThemeMode {
   dark(TextStyleFactory.dark);
 
   final TextStyleFactory builder;
-
   const AppThemeMode(this.builder);
 
   //
