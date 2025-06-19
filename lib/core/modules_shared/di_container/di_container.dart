@@ -5,7 +5,7 @@ import '../../../features/profile/data/profile_repo_provider.dart';
 import '../../../features/profile/data/remote_data_source.dart';
 import '../overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
-import '../theme/theme_provider/theme_provider.dart';
+import '../theme/theme_config_provider/theme_config_provider.dart';
 
 /// 🌍 Global singleton DI container
 // ✅ Used both inside the widget tree (`ProviderScope.parent`)
@@ -35,8 +35,8 @@ final List<Override> diContainer = [
   // Persists theme mode
   themeStorageProvider.overrideWith((ref) => GetStorage()),
   // Controls current theme mode
-  themeProvider.overrideWith(
-    (ref) => ThemeTypeNotifier(ref.watch(themeStorageProvider)),
+  themeConfigProvider.overrideWith(
+    (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
   ),
 
   /// ── Overlay System ───

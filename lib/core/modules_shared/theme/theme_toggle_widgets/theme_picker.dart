@@ -6,7 +6,7 @@ import '../../localization/app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../../localization/widgets/text_widget.dart';
 import '../core/enums.dart/_app_theme_type.dart.dart';
-import '../theme_provider/theme_provider.dart';
+import '../theme_config_provider/theme_config_provider.dart';
 
 class ThemePicker extends ConsumerWidget {
   ///--------------------------------------
@@ -16,19 +16,20 @@ class ThemePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final currentTheme = ref.watch(themeProvider);
+    final config = ref.watch(themeConfigProvider);
+    final themeNotifier = ref.read(themeConfigProvider.notifier);
     final locale = Localizations.localeOf(context);
 
     return DropdownButton<AppThemeType>(
       key: ValueKey(locale.languageCode),
-      value: currentTheme,
+      value: config.theme,
       icon: const Icon(Icons.arrow_drop_down),
       underline: const SizedBox(),
       onChanged: (AppThemeType? selected) {
         if (selected == null) return;
 
         // 🟢 Apply selected theme
-        ref.read(themeProvider.notifier).set(selected);
+        themeNotifier.setTheme(selected);
 
         // 🏷️ Fetch localized label
         final label = _chosenThemeLabel(context, selected);

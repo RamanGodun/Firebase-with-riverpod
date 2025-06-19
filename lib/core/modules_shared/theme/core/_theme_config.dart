@@ -1,37 +1,20 @@
-import 'package:flutter/material.dart';
-
-import 'app_themes.dart';
+// 📦 Core model: App-wide theme configuration (theme + font)
+import 'package:flutter/material.dart' show ThemeData, ThemeMode;
+import 'package:meta/meta.dart' show immutable;
 import 'enums.dart/_app_theme_type.dart.dart';
-import '../theme_utils/theme_mode_adapter.dart';
-
-/// 🎯 [AppThemeBuilder] — Unified config builder for both Bloc and Riverpod.
-/// ✅ Converts either ThemeMode (Riverpod) or AppThemeState (Bloc) into AppThemeConfig.
 
 @immutable
-final class AppThemeBuilder {
-  ///----------------------
-  const AppThemeBuilder._();
-  //
+final class ThemeConfig {
+  /// 🌗 Selected [AppThemeType] (light, dark, amoled, etc.)
+  final AppThemeType theme;
 
-  /// 🧩 Factory from ThemeMode (used in Riverpod)
-  static AppThemesScheme from(IAppThemeState state) {
-    return AppThemesScheme(
-      light: AppTheme.resolve(AppThemeType.light),
-      dark: AppTheme.resolve(AppThemeType.dark),
-      mode: state.mode,
-    );
-  }
+  /// 🔤 Selected [FontFamilyType] (sfPro, Aeonik, etc.)
+  final FontFamilyType font;
 
-  ///
-  static AppThemesScheme fromType(AppThemeType type) {
-    return AppThemesScheme.fromType(type);
-  }
+  const ThemeConfig({required this.theme, required this.font});
 
-  /// 🧩 Fallback: default system mode
-  static AppThemesScheme fallback() =>
-      from(const ThemeModeAdapter(ThemeMode.system));
-
-  //
+  /// 🎨 Builds the full [AppThemesScheme] using theme + font
+  AppThemesScheme get scheme => AppThemesScheme.fromType(theme, font: font);
 }
 
 ////
@@ -56,18 +39,15 @@ final class AppThemesScheme {
   });
   //
 
-  ///
-  /// 🧩 Creates a full theme scheme from selected [AppThemeType]
-  factory AppThemesScheme.fromType(AppThemeType type) {
-    final isDark = switch (type) {
-      AppThemeType.light => false,
-      _ => true,
-    };
-
+  // 🧩 Factory using selected ThemeType + Font
+  factory AppThemesScheme.fromType(
+    AppThemeType type, {
+    required FontFamilyType font,
+  }) {
     return AppThemesScheme(
-      light: AppTheme.resolveFromType(AppThemeType.light),
-      dark: AppTheme.resolveFromType(type),
-      mode: isDark ? ThemeMode.dark : ThemeMode.light,
+      light: AppThemeType.light.buildTheme(font: font),
+      dark: type.buildTheme(font: font),
+      mode: type.isDark ? ThemeMode.dark : ThemeMode.light,
     );
   }
 
