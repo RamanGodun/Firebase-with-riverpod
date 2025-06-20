@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../theme_styling/app_colors.dart';
-import '../../text_theme/text_theme_factory.dart';
-import '../../theme_styling/constants/_app_constants.dart';
+import '../theme_styling/app_colors.dart';
+import '../text_theme/text_theme_factory.dart';
+import '../theme_styling/constants/_app_constants.dart';
 
 part 'theme_types_x.dart';
 
@@ -72,7 +72,7 @@ enum ThemeTypes {
     brightness: Brightness.dark,
     background: AppColors.black,
     primaryColor: AppColors.darkPrimary,
-    cardColor: AppColors.darkOverlay,
+    cardColor: AppColors.darkGlassBackground,
     contrastColor: AppColors.white,
     colorScheme: ColorScheme.dark(
       primary: AppColors.darkPrimary,

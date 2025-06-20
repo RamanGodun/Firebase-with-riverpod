@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
 import 'core/modules_shared/localization/generated/locale_keys.g.dart';
-import 'core/modules_shared/navigation/core/go_router.dart';
+import 'core/modules_shared/navigation/core/go_router_provider.dart';
 import 'core/modules_shared/overlays/core/global_overlay_handler.dart';
 import 'core/modules_shared/theme/theme_config_provider/theme_config_provider.dart';
 
@@ -17,14 +17,22 @@ final class AppRootViewWrapper extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //
-    final theme = ref.watch(themeConfigProvider); // 🌓 watches Theme changes
-    final router = ref.watch(goRouter); // 🧭 watches GoRouter changes
+    ///
+    // 🔀 Watch GoRouter only if instance changes
+    final router = ref.watch(routerProvider.select((r) => r));
+
+    // 🎯 Watch only theme
+    final themeConfig = ref.watch(themeProvider.select((t) => t));
+
+    // 🌓 Build modes and themes based on cached methods
+    final lightTheme = themeConfig.buildLight();
+    final darkTheme = themeConfig.buildDark();
+    final themeMode = themeConfig.mode;
 
     return AppRootView(
-      theme: theme.light,
-      darkTheme: theme.dark,
-      themeMode: theme.mode,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: themeMode,
       router: router,
     );
   }

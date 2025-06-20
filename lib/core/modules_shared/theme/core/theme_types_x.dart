@@ -1,4 +1,4 @@
-part of '_app_theme_type.dart.dart';
+part of 'theme_type_enum.dart.dart';
 
 // 🎨 Enhanced enum for ThemeType
 extension ThemeTypesX on ThemeTypes {

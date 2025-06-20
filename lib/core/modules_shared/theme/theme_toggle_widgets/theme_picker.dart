@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../localization/app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../../localization/widgets/text_widget.dart';
-import '../core/enums.dart/_app_theme_type.dart.dart';
+import '../core/theme_type_enum.dart.dart';
 import '../theme_config_provider/theme_config_provider.dart';
 
 class ThemePicker extends ConsumerWidget {
@@ -16,8 +16,8 @@ class ThemePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final config = ref.watch(themeConfigProvider);
-    final themeNotifier = ref.read(themeConfigProvider.notifier);
+    final config = ref.watch(themeProvider);
+    final themeNotifier = ref.read(themeProvider.notifier);
     final locale = Localizations.localeOf(context);
 
     return DropdownButton<ThemeTypes>(
