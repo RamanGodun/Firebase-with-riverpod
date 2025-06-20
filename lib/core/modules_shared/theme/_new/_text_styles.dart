@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../core/enums.dart/_app_theme_type.dart.dart';
 
 /// 🧩 [AppTextStyles] — Entry point for accessing themed [TextTheme] & [CupertinoTextThemeData]
 /// ✅ Centralized typography resolver used across both Material & Cupertino widgets
@@ -10,11 +9,13 @@ abstract final class AppTextStyles {
 
   /// 🎨 Returns themed [TextTheme],
   /// based on selected [AppThemeMode] + optional [FontFamilyType]
-  static TextTheme getTextTheme(AppThemeMode mode, {FontFamilyType? font}) =>
-      mode.builder.build(font);
+  static TextTheme getTextTheme(Color baseColor, {FontFamilyType? font}) =>
+      TextStyleFactory(baseColor).build(font);
 
   //
 }
+
+////
 
 /// 🏭 [TextStyleFactory] — Generates complete [TextTheme] from [AppThemeMode] and optional font
 
@@ -22,11 +23,14 @@ final class TextStyleFactory {
   //-------------------------
 
   final Color color;
-  const TextStyleFactory._(this.color);
+  TextStyleFactory(this.color);
   //
 
   static const light = TextStyleFactory._(Colors.black);
   static const dark = TextStyleFactory._(Colors.white);
+
+  const TextStyleFactory._(this.color);
+  //
 
   /// 🎨 Builds [TextTheme] using provided font and base color
   TextTheme build([FontFamilyType? font]) {
@@ -53,4 +57,18 @@ final class TextStyleFactory {
   );
 
   //
+}
+
+////
+
+/// 🔤 [FontFamilyType] — Enhanced enum for supported fonts
+/// 🧩 Can be extended to support Google Fonts in future
+
+enum FontFamilyType {
+  sfPro('SFProText'),
+  aeonik('Aeonik'),
+  poppins('Poppins');
+
+  const FontFamilyType(this.value);
+  final String value;
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../theme_styling/app_colors.dart';
-import '../../text_theme/_text_styles.dart';
+import '../../text_theme/text_styles_factory.dart';
 import '../../theme_styling/constants/_app_constants.dart';
 
 part 'font_family_type.dart';

@@ -1,7 +1,7 @@
+import 'package:firebase_with_riverpod/root_wrappers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'root_widget.dart';
-import 'start_up_handler.dart';
+import 'start_up_bootstrap.dart';
 import 'core/modules_shared/di_container/di_container.dart';
 import 'core/modules_shared/localization/app_localization.dart';
 import 'core/modules_shared/logging/for_riverpod/riverpod_observer.dart';
@@ -19,7 +19,7 @@ Future<void> main() async {
     ProviderScope(
       parent: globalContainer,
       observers: [Logger()],
-      child: AppLocalization.wrap(const AppRootShell()),
+      child: AppLocalization.wrap(const ThemeWrapper()),
     ),
   );
 }

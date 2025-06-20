@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart' show GetStorage;
 import '../../../features/profile/data/profile_repo_impl.dart';
 import '../../../features/profile/data/profile_repo_provider.dart';
 import '../../../features/profile/data/remote_data_source.dart';
+import '../navigation/core/go_router.dart';
 import '../overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../theme/theme_config_provider/theme_config_provider.dart';
@@ -38,6 +39,9 @@ final List<Override> diContainer = [
   themeConfigProvider.overrideWith(
     (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
   ),
+
+  /// ── Navigation System ───
+  goRouter.overrideWith((ref) => buildGoRouter(ref)),
 
   /// ── Overlay System ───
 
