@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/root_wrappers.dart';
+import 'package:firebase_with_riverpod/root_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'start_up_bootstrap.dart';
@@ -19,7 +19,7 @@ Future<void> main() async {
     ProviderScope(
       parent: globalContainer,
       observers: [Logger()],
-      child: AppLocalization.wrap(const ThemeWrapper()),
+      child: AppLocalization.wrap(const AppRootViewWrapper()),
     ),
   );
 }

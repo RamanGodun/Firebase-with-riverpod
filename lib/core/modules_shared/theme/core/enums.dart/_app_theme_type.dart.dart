@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../theme_styling/app_colors.dart';
-import '../../text_theme/text_styles_factory.dart';
+import '../../text_theme/text_theme_factory.dart';
 import '../../theme_styling/constants/_app_constants.dart';
 
-part 'font_family_type.dart';
-part 'app_theme_mode.dart';
+part 'theme_types_x.dart';
 
-/// 🎨 [AppThemeType] — Enhanced enum that defines full theme variants
+/// 🎨 [ThemeTypes] — Enhanced enum that defines full theme variants
 /// ✅ Used to generate [ThemeData] dynamically
 
-enum AppThemeType {
+enum ThemeTypes {
   //---------------
 
-  ///
   light(
     brightness: Brightness.light,
     background: AppColors.lightBackground,
@@ -32,7 +30,6 @@ enum AppThemeType {
     ),
   ),
 
-  ///
   dark(
     brightness: Brightness.dark,
     background: AppColors.darkBackground,
@@ -52,7 +49,6 @@ enum AppThemeType {
     ),
   ),
 
-  ///
   glass(
     brightness: Brightness.dark,
     background: AppColors.darkOverlay,
@@ -72,7 +68,6 @@ enum AppThemeType {
     ),
   ),
 
-  ///
   amoled(
     brightness: Brightness.dark,
     background: AppColors.black,
@@ -101,7 +96,7 @@ enum AppThemeType {
   final Color contrastColor;
   final ColorScheme colorScheme;
 
-  const AppThemeType({
+  const ThemeTypes({
     required this.brightness,
     required this.background,
     required this.primaryColor,
@@ -113,15 +108,11 @@ enum AppThemeType {
   /// 🔘 True getter if dark theme
   bool get isDark => brightness == Brightness.dark;
 
-  /// 📦 Converts to [ThemeMode]
+  /// 🌓 Converts to [ThemeMode]
   ThemeMode get themeMode => isDark ? ThemeMode.dark : ThemeMode.light;
 
-  /// 🌓 Maps to [AppThemeMode]
-  AppThemeMode get appThemeMode =>
-      isDark ? AppThemeMode.dark : AppThemeMode.light;
-
   /// 🔤 Selected font family
-  FontFamilyType get font => FontFamilyType.sfPro;
+  FontFamily get font => FontFamily.sfPro;
 
   //
 }
@@ -129,49 +120,3 @@ enum AppThemeType {
 ////
 
 ////
-
-// 🎨 Enhanced enum for ThemeType
-extension AppThemeTypeX on AppThemeType {
-  ThemeData buildTheme({FontFamilyType? font}) {
-    final fontFamily = (font ?? FontFamilyType.sfPro).value;
-    return ThemeData(
-      brightness: brightness,
-      scaffoldBackgroundColor: background,
-      primaryColor: primaryColor,
-      colorScheme: colorScheme,
-      appBarTheme: AppBarTheme(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        foregroundColor: contrastColor,
-        actionsIconTheme: IconThemeData(color: primaryColor),
-        titleTextStyle: TextStyle(
-          fontFamily: fontFamily,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: contrastColor,
-        ),
-        centerTitle: false,
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: primaryColor,
-          foregroundColor: AppColors.white,
-          shape: const RoundedRectangleBorder(
-            borderRadius: UIConstants.commonBorderRadius,
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-          elevation: 0.5,
-        ),
-      ),
-      cardTheme: CardThemeData(
-        color: cardColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: UIConstants.commonBorderRadius,
-        ),
-        shadowColor: AppColors.shadow,
-        elevation: 5,
-      ),
-      textTheme: AppTextStyles.getTextTheme(appThemeMode, font: font),
-    );
-  }
-}

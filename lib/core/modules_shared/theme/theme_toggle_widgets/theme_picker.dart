@@ -20,12 +20,12 @@ class ThemePicker extends ConsumerWidget {
     final themeNotifier = ref.read(themeConfigProvider.notifier);
     final locale = Localizations.localeOf(context);
 
-    return DropdownButton<AppThemeType>(
+    return DropdownButton<ThemeTypes>(
       key: ValueKey(locale.languageCode),
       value: config.theme,
       icon: const Icon(Icons.arrow_drop_down),
       underline: const SizedBox(),
-      onChanged: (AppThemeType? selected) {
+      onChanged: (ThemeTypes? selected) {
         if (selected == null) return;
 
         // 🟢 Apply selected theme
@@ -40,9 +40,9 @@ class ThemePicker extends ConsumerWidget {
 
       // 🧾 Theme options list
       items:
-          [AppThemeType.light, AppThemeType.dark, AppThemeType.amoled]
+          [ThemeTypes.light, ThemeTypes.dark, ThemeTypes.amoled]
               .map(
-                (type) => DropdownMenuItem<AppThemeType>(
+                (type) => DropdownMenuItem<ThemeTypes>(
                   value: type,
                   child: TextWidget(
                     _themeLabel(context, type),
@@ -56,13 +56,13 @@ class ThemePicker extends ConsumerWidget {
 
   //
   /// 🏷️ Returns localized label for a given theme type
-  String _themeLabel(BuildContext context, AppThemeType type) {
+  String _themeLabel(BuildContext context, ThemeTypes type) {
     switch (type) {
-      case AppThemeType.light:
+      case ThemeTypes.light:
         return AppLocalizer.t(LocaleKeys.theme_light);
-      case AppThemeType.dark:
+      case ThemeTypes.dark:
         return AppLocalizer.t(LocaleKeys.theme_dark);
-      case AppThemeType.amoled:
+      case ThemeTypes.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled);
       default:
         return AppLocalizer.t(LocaleKeys.theme_dark);
@@ -70,13 +70,13 @@ class ThemePicker extends ConsumerWidget {
   }
 
   /// 🏷️ Returns localized label for a given theme type
-  String _chosenThemeLabel(BuildContext context, AppThemeType type) {
+  String _chosenThemeLabel(BuildContext context, ThemeTypes type) {
     switch (type) {
-      case AppThemeType.light:
+      case ThemeTypes.light:
         return AppLocalizer.t(LocaleKeys.theme_light_enabled);
-      case AppThemeType.dark:
+      case ThemeTypes.dark:
         return AppLocalizer.t(LocaleKeys.theme_dark_enabled);
-      case AppThemeType.amoled:
+      case ThemeTypes.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled_enabled);
       default:
         return AppLocalizer.t(LocaleKeys.theme_dark_enabled);

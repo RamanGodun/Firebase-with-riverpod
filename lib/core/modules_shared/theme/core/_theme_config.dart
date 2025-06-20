@@ -1,55 +1,54 @@
-// 📦 Core model: App-wide theme configuration (theme + font)
-import 'package:flutter/material.dart' show ThemeData, ThemeMode;
-import 'package:meta/meta.dart' show immutable;
-import 'enums.dart/_app_theme_type.dart.dart';
+import 'package:flutter/material.dart';
+import '../core/enums.dart/_app_theme_type.dart.dart';
+import '../text_theme/text_theme_factory.dart';
 
 @immutable
-final class ThemeConfig {
-  /// 🌗 Selected [AppThemeType] (light, dark, amoled, etc.)
-  final AppThemeType theme;
+final class AppThemeConfig {
+  /// Обраний варіант теми
+  final ThemeTypes theme;
 
-  /// 🔤 Selected [FontFamilyType] (sfPro, Aeonik, etc.)
-  final FontFamilyType font;
+  /// Обраний шрифт
+  final FontFamily font;
 
-  const ThemeConfig({required this.theme, required this.font});
-
-  /// 🎨 Builds the full [AppThemesScheme] using theme + font
-  AppThemesScheme get scheme => AppThemesScheme.fromType(theme, font: font);
-}
-
-////
-
-////
-
-/// 🎨 [AppThemesScheme] — Theme container passed into MaterialApp
-/// ✅ Holds light/dark themes and current ThemeMode.
-
-@immutable
-final class AppThemesScheme {
-  /// ─────----------------
-
+  /// Автоматично обчислювана світла тема
   final ThemeData light;
+
+  /// Автоматично обчислювана темна тема
   final ThemeData dark;
+
+  /// ThemeMode (для MaterialApp)
   final ThemeMode mode;
 
-  const AppThemesScheme({
+  const AppThemeConfig._({
+    required this.theme,
+    required this.font,
     required this.light,
     required this.dark,
     required this.mode,
   });
-  //
 
-  // 🧩 Factory using selected ThemeType + Font
-  factory AppThemesScheme.fromType(
-    AppThemeType type, {
-    required FontFamilyType font,
+  /// 🔧 Factory-конструктор
+  factory AppThemeConfig({
+    required ThemeTypes theme,
+    required FontFamily font,
   }) {
-    return AppThemesScheme(
-      light: AppThemeType.light.buildTheme(font: font),
-      dark: type.buildTheme(font: font),
-      mode: type.isDark ? ThemeMode.dark : ThemeMode.light,
+    return AppThemeConfig._(
+      theme: theme,
+      font: font,
+      light: ThemeTypes.light.buildTheme(font: font),
+      dark: theme.buildTheme(font: font),
+      mode: theme.isDark ? ThemeMode.dark : ThemeMode.light,
     );
   }
 
-  //
+  /// 🔁 Копія з оновленням
+  AppThemeConfig copyWith({ThemeTypes? theme, FontFamily? font}) {
+    final t = theme ?? this.theme;
+    final f = font ?? this.font;
+
+    return AppThemeConfig(theme: t, font: f);
+  }
+
+  /// 🧩 Текстова назва (опціонально для UI/логів)
+  String get label => '$theme · ${font.value}';
 }

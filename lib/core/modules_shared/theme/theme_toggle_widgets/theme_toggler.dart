@@ -19,7 +19,7 @@ class ThemeToggler extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final wasDark = ref.watch(themeConfigProvider).theme == AppThemeType.dark;
+    final wasDark = ref.watch(themeConfigProvider).theme == ThemeTypes.dark;
 
     final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
     final iconColor = context.colorScheme.primary;
@@ -29,7 +29,7 @@ class ThemeToggler extends ConsumerWidget {
 
       onPressed: () {
         //
-        final newTheme = wasDark ? AppThemeType.light : AppThemeType.dark;
+        final newTheme = wasDark ? ThemeTypes.light : ThemeTypes.dark;
 
         /// 🕹️🔄 Toggles the theme between light and dark mode.
         ref.read(themeConfigProvider.notifier).setTheme(newTheme);

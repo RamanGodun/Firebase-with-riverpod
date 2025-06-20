@@ -11,4 +11,5 @@ part 'router_factory.dart';
 
 /// 🔑 Provider key for [GoRouter].
 /// ✅ Logic is injected manually via `overrideWith(...)` in `diContainer`.
+
 final goRouter = Provider<GoRouter>((_) => throw UnimplementedError());

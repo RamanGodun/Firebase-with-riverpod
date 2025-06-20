@@ -6,8 +6,8 @@ GoRouter buildGoRouter(Ref ref) {
   ///--------------------------
 
   return GoRouter(
-    //
-    /// 👁️ Observers — navigation side-effects (e.g., dismissing overlays)
+    ///
+    // 👁️ Observers — navigation side-effects (e.g., dismissing overlays)
     observers: [OverlayNavigatorObserver()],
 
     /// 🐞 Enable verbose logging for GoRouter (only active in debug mode)
