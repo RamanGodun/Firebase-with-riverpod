@@ -6,7 +6,7 @@ import '../../localization/app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../../localization/widgets/text_widget.dart';
 import '../core/theme_type_enum.dart.dart';
-import '../theme_config_provider/theme_config_provider.dart';
+import '../theme_provider/theme_config_provider.dart';
 
 class ThemePicker extends ConsumerWidget {
   ///--------------------------------------
@@ -16,15 +16,16 @@ class ThemePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final config = ref.watch(themeProvider);
+    final themeConfig = ref.watch(themeProvider);
     final themeNotifier = ref.read(themeProvider.notifier);
     final locale = Localizations.localeOf(context);
 
     return DropdownButton<ThemeTypes>(
       key: ValueKey(locale.languageCode),
-      value: config.theme,
+      value: themeConfig.theme,
       icon: const Icon(Icons.arrow_drop_down),
       underline: const SizedBox(),
+
       onChanged: (ThemeTypes? selected) {
         if (selected == null) return;
 
@@ -64,8 +65,6 @@ class ThemePicker extends ConsumerWidget {
         return AppLocalizer.t(LocaleKeys.theme_dark);
       case ThemeTypes.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled);
-      default:
-        return AppLocalizer.t(LocaleKeys.theme_dark);
     }
   }
 
@@ -78,8 +77,6 @@ class ThemePicker extends ConsumerWidget {
         return AppLocalizer.t(LocaleKeys.theme_dark_enabled);
       case ThemeTypes.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled_enabled);
-      default:
-        return AppLocalizer.t(LocaleKeys.theme_dark_enabled);
     }
   }
 

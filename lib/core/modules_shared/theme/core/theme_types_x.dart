@@ -34,7 +34,10 @@ extension ThemeTypesX on ThemeTypes {
           shape: const RoundedRectangleBorder(
             borderRadius: UIConstants.commonBorderRadius,
           ),
-          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+          padding: const EdgeInsets.symmetric(
+            vertical: AppSpacing.xm,
+            horizontal: AppSpacing.xxxm,
+          ),
           elevation: 0.5,
         ),
       ),
@@ -44,7 +47,7 @@ extension ThemeTypesX on ThemeTypes {
           borderRadius: UIConstants.commonBorderRadius,
         ),
         shadowColor: AppColors.shadow,
-        elevation: 5,
+        elevation: 1,
       ),
       textTheme: TextThemeFactory.fromBrightness(brightness, font: font),
     );

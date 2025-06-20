@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../text_theme/text_theme_factory.dart';
+import 'theme_cache_mixin.dart';
 import 'theme_type_enum.dart.dart';
 
 /// 🎨 [ThemeConfig] — Lightweight configuration for theme and font
@@ -8,13 +9,26 @@ import 'theme_type_enum.dart.dart';
 
 @immutable
 final class ThemeConfig with ThemeCacheMixin {
-  /// Selected theme variant (light, dark, glass, amoled)
-  final ThemeTypes theme;
+  ///---------------------------------------
 
-  /// Selected font family (e.g., SF Pro, Aeonik)
+  // Selected theme variant (light, dark, glass, amoled)
+  final ThemeTypes theme;
+  // Selected font family (e.g., SF Pro, Aeonik)
   final FontFamily font;
 
   const ThemeConfig({required this.theme, required this.font});
+  //
+
+  /// Resolves [ThemeMode] based on current theme
+  ThemeMode get mode => theme.isDark ? ThemeMode.dark : ThemeMode.light;
+
+  /// Returns light [ThemeData] using cache
+  ThemeData buildLight() =>
+      cachedTheme(ThemeTypes.light, ThemeTypes.light.font);
+
+  /// Returns dark [ThemeData] using cache
+  ThemeData buildDark() => cachedTheme(theme, ThemeTypes.dark.font);
+  //
 
   /// Creates a copy with updated fields
   ThemeConfig copyWith({ThemeTypes? theme, FontFamily? font}) {
@@ -23,15 +37,6 @@ final class ThemeConfig with ThemeCacheMixin {
 
   /// Human-readable label (e.g. "glass · SFProText")
   String get label => '$theme · ${font.value}';
-
-  /// Resolves [ThemeMode] based on current theme
-  ThemeMode get mode => theme.isDark ? ThemeMode.dark : ThemeMode.light;
-
-  /// Returns light [ThemeData] using cache
-  ThemeData buildLight() => cachedTheme(ThemeTypes.light, font);
-
-  /// Returns dark [ThemeData] using cache
-  ThemeData buildDark() => cachedTheme(theme, font);
 
   @override
   bool operator ==(Object other) =>
@@ -43,20 +48,4 @@ final class ThemeConfig with ThemeCacheMixin {
 
   @override
   int get hashCode => Object.hash(theme, font);
-}
-
-////
-
-////
-
-/// 🧩 [ThemeCacheMixin] — Caches ThemeData by (ThemeTypes, FontFamily) pair
-
-mixin ThemeCacheMixin {
-  static final _cache = <(ThemeTypes, FontFamily), ThemeData>{};
-
-  /// Returns cached [ThemeData] or builds and caches it if missing
-  ThemeData cachedTheme(ThemeTypes theme, FontFamily font) {
-    final key = (theme, font);
-    return _cache.putIfAbsent(key, () => theme.buildTheme(font: font));
-  }
 }

@@ -28,6 +28,7 @@ enum ThemeTypes {
       onSurface: AppColors.black,
       error: AppColors.forErrors,
     ),
+    font: FontFamily.sfPro,
   ),
 
   dark(
@@ -47,25 +48,7 @@ enum ThemeTypes {
       onSurface: AppColors.white,
       error: AppColors.forErrors,
     ),
-  ),
-
-  glass(
-    brightness: Brightness.dark,
-    background: AppColors.darkOverlay,
-    primaryColor: AppColors.darkPrimary,
-    cardColor: AppColors.glassCard,
-    contrastColor: AppColors.white,
-    colorScheme: ColorScheme.dark(
-      primary: AppColors.darkPrimary,
-      secondary: AppColors.darkAccent,
-      background: AppColors.darkOverlay,
-      surface: AppColors.darkSurface,
-      onPrimary: AppColors.white,
-      onSecondary: AppColors.white,
-      onBackground: AppColors.white,
-      onSurface: AppColors.white,
-      error: AppColors.forErrors,
-    ),
+    font: FontFamily.sfPro,
   ),
 
   amoled(
@@ -85,6 +68,7 @@ enum ThemeTypes {
       onSurface: AppColors.white,
       error: AppColors.forErrors,
     ),
+    font: FontFamily.sfPro,
   );
 
   ////
@@ -95,6 +79,7 @@ enum ThemeTypes {
   final Color cardColor;
   final Color contrastColor;
   final ColorScheme colorScheme;
+  final FontFamily font;
 
   const ThemeTypes({
     required this.brightness,
@@ -103,6 +88,7 @@ enum ThemeTypes {
     required this.cardColor,
     required this.contrastColor,
     required this.colorScheme,
+    required this.font,
   });
 
   /// 🔘 True getter if dark theme
@@ -112,7 +98,7 @@ enum ThemeTypes {
   ThemeMode get themeMode => isDark ? ThemeMode.dark : ThemeMode.light;
 
   /// 🔤 Selected font family
-  FontFamily get font => FontFamily.sfPro;
+  FontFamily get defaultFont => FontFamily.sfPro;
 
   //
 }

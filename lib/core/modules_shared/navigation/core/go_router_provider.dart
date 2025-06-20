@@ -25,12 +25,6 @@ final routerProvider = Provider<GoRouter>((ref) => ref.watch(goRouter));
 
 final goRouter = Provider<GoRouter>((_) => throw UnimplementedError());
 
-
-
-
-
-
-
 /*
 !
 створити Provider<GoRouter>, використовувати .select((r)=>r) або .watch(routerProvider) у верху дерева,

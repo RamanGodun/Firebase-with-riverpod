@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme_styling/constants/_app_constants.dart';
 import '../../localization/app_localizer.dart';
 import '../core/theme_type_enum.dart.dart';
-import '../theme_config_provider/theme_config_provider.dart';
+import '../theme_provider/theme_config_provider.dart';
 
 /// 🌗 [ThemeToggler] — toggles light/dark mode and shows overlay notification
 
@@ -20,7 +20,6 @@ class ThemeToggler extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //
     final wasDark = ref.watch(themeProvider).theme == ThemeTypes.dark;
-
     final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
     final iconColor = context.colorScheme.primary;
 
