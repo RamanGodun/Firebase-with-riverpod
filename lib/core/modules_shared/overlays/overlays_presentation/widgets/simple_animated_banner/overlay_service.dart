@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../../localization/widgets/text_widget.dart';
-import '../../../../theme/theme_styling/app_colors.dart';
+import '../../../../theme/theme_styling/main_constants/app_colors.dart';
 
 part 'overlay_widget.dart';
 

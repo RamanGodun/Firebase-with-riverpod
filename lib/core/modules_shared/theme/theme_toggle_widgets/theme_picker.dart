@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../localization/app_localizer.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../../localization/widgets/text_widget.dart';
-import '../core/theme_type_enum.dart.dart';
+import '../core/app_theme_variants.dart';
 import '../theme_provider/theme_config_provider.dart';
 
 class ThemePicker extends ConsumerWidget {
@@ -20,13 +20,13 @@ class ThemePicker extends ConsumerWidget {
     final themeNotifier = ref.read(themeProvider.notifier);
     final locale = Localizations.localeOf(context);
 
-    return DropdownButton<ThemeTypes>(
+    return DropdownButton<ThemeVariantsEnum>(
       key: ValueKey(locale.languageCode),
       value: themeConfig.theme,
       icon: const Icon(Icons.arrow_drop_down),
       underline: const SizedBox(),
 
-      onChanged: (ThemeTypes? selected) {
+      onChanged: (ThemeVariantsEnum? selected) {
         if (selected == null) return;
 
         // 🟢 Apply selected theme
@@ -41,9 +41,13 @@ class ThemePicker extends ConsumerWidget {
 
       // 🧾 Theme options list
       items:
-          [ThemeTypes.light, ThemeTypes.dark, ThemeTypes.amoled]
+          [
+                ThemeVariantsEnum.light,
+                ThemeVariantsEnum.dark,
+                ThemeVariantsEnum.amoled,
+              ]
               .map(
-                (type) => DropdownMenuItem<ThemeTypes>(
+                (type) => DropdownMenuItem<ThemeVariantsEnum>(
                   value: type,
                   child: TextWidget(
                     _themeLabel(context, type),
@@ -57,25 +61,25 @@ class ThemePicker extends ConsumerWidget {
 
   //
   /// 🏷️ Returns localized label for a given theme type
-  String _themeLabel(BuildContext context, ThemeTypes type) {
+  String _themeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
-      case ThemeTypes.light:
+      case ThemeVariantsEnum.light:
         return AppLocalizer.t(LocaleKeys.theme_light);
-      case ThemeTypes.dark:
+      case ThemeVariantsEnum.dark:
         return AppLocalizer.t(LocaleKeys.theme_dark);
-      case ThemeTypes.amoled:
+      case ThemeVariantsEnum.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled);
     }
   }
 
   /// 🏷️ Returns localized label for a given theme type
-  String _chosenThemeLabel(BuildContext context, ThemeTypes type) {
+  String _chosenThemeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
-      case ThemeTypes.light:
+      case ThemeVariantsEnum.light:
         return AppLocalizer.t(LocaleKeys.theme_light_enabled);
-      case ThemeTypes.dark:
+      case ThemeVariantsEnum.dark:
         return AppLocalizer.t(LocaleKeys.theme_dark_enabled);
-      case ThemeTypes.amoled:
+      case ThemeVariantsEnum.amoled:
         return AppLocalizer.t(LocaleKeys.theme_amoled_enabled);
     }
   }

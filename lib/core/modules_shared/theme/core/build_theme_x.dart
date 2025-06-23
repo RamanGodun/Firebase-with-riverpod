@@ -1,32 +1,30 @@
-part of 'theme_type_enum.dart.dart';
+part of 'app_theme_variants.dart';
 
 // 🎨 Enhanced enum for ThemeType
-extension ThemeTypesX on ThemeTypes {
+extension ThemeVariantX on ThemeVariantsEnum {
   ///----------------------------------
 
   ///
-  ThemeData buildTheme({FontFamily? font}) {
+  ThemeData build({AppFontFamily? font}) {
+    ///
     //
-    final fontFamily = (font ?? FontFamily.sfPro).value;
-
     return ThemeData(
+      //
       brightness: brightness,
       scaffoldBackgroundColor: background,
       primaryColor: primaryColor,
       colorScheme: colorScheme,
+
       appBarTheme: AppBarTheme(
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: contrastColor,
         actionsIconTheme: IconThemeData(color: primaryColor),
-        titleTextStyle: TextStyle(
-          fontFamily: fontFamily,
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: contrastColor,
-        ),
+        titleTextStyle:
+            TextThemeFactory.fromBrightness(brightness, font: font).titleSmall,
         centerTitle: false,
       ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
@@ -41,15 +39,19 @@ extension ThemeTypesX on ThemeTypes {
           elevation: 0.5,
         ),
       ),
+
       cardTheme: CardThemeData(
-        color: cardColor,
+        color: cardColor, 
         shape: const RoundedRectangleBorder(
           borderRadius: UIConstants.commonBorderRadius,
         ),
         shadowColor: AppColors.shadow,
         elevation: 1,
       ),
+
       textTheme: TextThemeFactory.fromBrightness(brightness, font: font),
+
+      //
     );
   }
 

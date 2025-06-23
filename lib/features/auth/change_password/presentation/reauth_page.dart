@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
-import '../../../../core/modules_shared/theme/theme_styling/constants/_app_constants.dart';
+import '../../../../core/modules_shared/theme/theme_styling/main_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import '../../../form_fields/form_field_widget.dart';
 import '../../../form_fields/form_fields_model.dart';

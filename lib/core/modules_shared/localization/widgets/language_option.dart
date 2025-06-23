@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/theme_styling/app_colors.dart';
-import '../../theme/theme_styling/constants/_app_constants.dart';
+import '../../theme/theme_styling/main_constants/app_colors.dart';
+import '../../theme/theme_styling/main_constants/_app_constants.dart';
 import 'text_widget.dart';
 import '../generated/locale_keys.g.dart';
 

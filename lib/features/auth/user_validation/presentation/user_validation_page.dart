@@ -11,8 +11,8 @@ import '../../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
-import '../../../../core/modules_shared/theme/theme_styling/constants/_app_constants.dart';
-import '../../../../core/modules_shared/theme/theme_styling/app_colors.dart';
+import '../../../../core/modules_shared/theme/theme_styling/main_constants/_app_constants.dart';
+import '../../../../core/modules_shared/theme/theme_styling/main_constants/app_colors.dart';
 import '../../sign_out/presentation/sign_out_buttons.dart';
 
 part 'widgets_for_verify_email_page.dart';

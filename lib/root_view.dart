@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
@@ -29,7 +30,7 @@ final class AppRootViewWrapper extends ConsumerWidget {
     final darkTheme = themeConfig.buildDark();
     final themeMode = themeConfig.mode;
 
-    return AppRootView(
+    return _AppRootView(
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeMode,
@@ -42,10 +43,10 @@ final class AppRootViewWrapper extends ConsumerWidget {
 
 ////
 
-/// 📱🧱 [AppRootView] — Final stateless [MaterialApp.router] widget.
+/// 📱🧱 [_AppRootView] — Final stateless [MaterialApp.router] widget.
 /// ✅ Receives fully resolved config: theme + router + localization.
 
-final class AppRootView extends StatelessWidget {
+final class _AppRootView extends StatelessWidget {
   ///------------------------------------------
 
   final ThemeData theme;
@@ -53,8 +54,7 @@ final class AppRootView extends StatelessWidget {
   final ThemeMode themeMode;
   final GoRouter router;
 
-  const AppRootView({
-    super.key,
+  const _AppRootView({
     required this.theme,
     required this.darkTheme,
     required this.themeMode,
@@ -68,17 +68,17 @@ final class AppRootView extends StatelessWidget {
     return MaterialApp.router(
       //
       title: LocaleKeys.app_title.tr(),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: !kReleaseMode,
 
-      // 🌍 Localization
+      // 🌍 Localization config
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
 
-      // 🔀 Routing
+      // 🔀 GoRouter configuration
       routerConfig: router,
 
-      // 🎨 Theming
+      /// 🎨 Theme configuration
       theme: theme,
       darkTheme: darkTheme,
       themeMode: themeMode,
