@@ -22,6 +22,9 @@ final class ThemePreferences with ThemeCacheMixin {
   /// Resolves [ThemeMode] based on current theme
   ThemeMode get mode => theme.isDark ? ThemeMode.dark : ThemeMode.light;
 
+  /// Resolves current theme brightness
+  bool get isDark => theme.isDark;
+
   /// Returns light [ThemeData] using cache
   ThemeData buildLight() =>
       cachedTheme(ThemeVariantsEnum.light, ThemeVariantsEnum.light.font);

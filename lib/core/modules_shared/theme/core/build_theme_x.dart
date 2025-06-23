@@ -41,7 +41,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
       ),
 
       cardTheme: CardThemeData(
-        color: cardColor, 
+        color: cardColor,
         shape: const RoundedRectangleBorder(
           borderRadius: UIConstants.commonBorderRadius,
         ),

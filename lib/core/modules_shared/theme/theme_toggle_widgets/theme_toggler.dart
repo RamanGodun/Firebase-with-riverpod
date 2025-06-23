@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/them
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../theme_styling/main_constants/_app_constants.dart';
+import '../theme_styling/ui_constants/_app_constants.dart';
 import '../../localization/app_localizer.dart';
 import '../core/app_theme_variants.dart';
 import '../theme_provider/theme_config_provider.dart';

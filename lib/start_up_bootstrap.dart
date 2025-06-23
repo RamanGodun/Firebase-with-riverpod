@@ -41,11 +41,11 @@ final class StartUpHandler {
 
   ///🛠️ Initializes fundamental Flutter bindings and core services
   // ✅ Sets up global Riverpod DI container with overrides
-
+// 
   static void _initializeCoreBindings() {
     /// ────────────────────────────────
     //
-    WidgetsFlutterBinding.ensureInitialized();
+    // WidgetsFlutterBinding.ensureInitialized();
     debugRepaintRainbowEnabled = false;
     globalContainer = ProviderContainer(overrides: diContainer);
   }

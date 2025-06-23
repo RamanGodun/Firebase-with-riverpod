@@ -11,6 +11,8 @@ import 'core/modules_shared/logging/for_riverpod/riverpod_observer.dart';
 
 Future<void> main() async {
   ///
+  WidgetsFlutterBinding.ensureInitialized();
+
   /// Launch Loader, while app is initializing
   // final themeMode = await resolveThemeMode();
   // runApp(InitialLoader(themeMode: themeMode));
