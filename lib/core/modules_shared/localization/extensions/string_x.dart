@@ -14,7 +14,6 @@ extension TranslateNullableKey on String? {
   //
 }
 
-
 /// Example:
 /// ```dart
 /// String? key = 'form.email_is_invalid';

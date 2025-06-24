@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
   static const languages_switched_to_pl = 'languages.switched_to_pl';
@@ -29,19 +29,30 @@ abstract class  LocaleKeys {
   static const errors_errors_general_title = 'errors.errors_general_title';
   static const errors = 'errors';
   static const failure_firebase_doc_missing = 'failure.firebase.doc_missing';
-  static const failure_firebase_wrong_password = 'failure.firebase.wrong_password';
-  static const failure_firebase_user_not_found = 'failure.firebase.user_not_found';
-  static const failure_firebase_invalid_credential = 'failure.firebase.invalid_credential';
+  static const failure_firebase_wrong_password =
+      'failure.firebase.wrong_password';
+  static const failure_firebase_user_not_found =
+      'failure.firebase.user_not_found';
+  static const failure_firebase_invalid_credential =
+      'failure.firebase.invalid_credential';
   static const failure_firebase_generic = 'failure.firebase.generic';
   static const failure_firebase_email_in_use = 'failure.firebase.email_in_use';
-  static const failure_firebase_invalid_email = 'failure.firebase.invalid_email';
-  static const failure_firebase_missing_email = 'failure.firebase.missing_email';
-  static const failure_firebase_no_current_user = 'failure.firebase.no_current_user';
-  static const failure_firebase_operation_not_allowed = 'failure.firebase.operation_not_allowed';
-  static const failure_firebase_requires_recent_login = 'failure.firebase.requires_recent_login';
-  static const failure_firebase_too_many_requests = 'failure.firebase.too_many_requests';
-  static const failure_firebase_user_disabled = 'failure.firebase.user_disabled';
-  static const failure_firebase_weak_password = 'failure.firebase.weak_password';
+  static const failure_firebase_invalid_email =
+      'failure.firebase.invalid_email';
+  static const failure_firebase_missing_email =
+      'failure.firebase.missing_email';
+  static const failure_firebase_no_current_user =
+      'failure.firebase.no_current_user';
+  static const failure_firebase_operation_not_allowed =
+      'failure.firebase.operation_not_allowed';
+  static const failure_firebase_requires_recent_login =
+      'failure.firebase.requires_recent_login';
+  static const failure_firebase_too_many_requests =
+      'failure.firebase.too_many_requests';
+  static const failure_firebase_user_disabled =
+      'failure.firebase.user_disabled';
+  static const failure_firebase_weak_password =
+      'failure.firebase.weak_password';
   static const failure_firebase = 'failure.firebase';
   static const failure_format_error = 'failure.format.error';
   static const failure_format = 'failure.format';
@@ -50,7 +61,8 @@ abstract class  LocaleKeys {
   static const failure_network = 'failure.network';
   static const failure_auth_unauthorized = 'failure.auth.unauthorized';
   static const failure_auth = 'failure.auth';
-  static const failure_email_verification_timeout = 'failure.email_verification.timeout';
+  static const failure_email_verification_timeout =
+      'failure.email_verification.timeout';
   static const failure_email_verification = 'failure.email_verification';
   static const failure_plugin_missing = 'failure.plugin.missing';
   static const failure_plugin = 'failure.plugin';
@@ -66,8 +78,10 @@ abstract class  LocaleKeys {
   static const form_password_required = 'form.password_required';
   static const form_password_too_short = 'form.password_too_short';
   static const form_confirm_password = 'form.confirm_password';
-  static const form_confirm_password_is_empty = 'form.confirm_password_is_empty';
-  static const form_confirm_password_mismatch = 'form.confirm_password_mismatch';
+  static const form_confirm_password_is_empty =
+      'form.confirm_password_is_empty';
+  static const form_confirm_password_mismatch =
+      'form.confirm_password_mismatch';
   static const form = 'form';
   static const pages_home = 'pages.home';
   static const pages_home_message = 'pages.home_message';
@@ -131,5 +145,4 @@ abstract class  LocaleKeys {
   static const theme_dark = 'theme.dark';
   static const theme_amoled = 'theme.amoled';
   static const theme = 'theme';
-
 }
