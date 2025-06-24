@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
-import '../../../../core/modules_shared/theme/theme_styling/ui_constants/app_colors.dart';
+import '../../../../core/modules_shared/theme/ui_constants/app_colors.dart';
 import '../../../form_fields/form_field_widget.dart';
 import '../../../form_fields/form_fields_model.dart';
 import '../../../form_fields/form_state_provider.dart';
@@ -12,7 +12,7 @@ import '../../../form_fields/presets_of_forms.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
-import '../../../../core/modules_shared/theme/theme_styling/ui_constants/_app_constants.dart';
+import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
 import 'signin_provider.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 

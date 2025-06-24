@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
-import '../../theme/theme_styling/ui_constants/app_colors.dart';
+import '../../theme/ui_constants/app_colors.dart';
 import '../app_localizer.dart';
 
 /// 📝 [TextWidget] — Custom Text widget with dynamic styling options.
@@ -150,7 +150,7 @@ final class TextWidget extends StatelessWidget {
   String _resolveText(String raw, String? fallback) {
     final isLocalCaseKey = raw.contains('.');
     if (isLocalCaseKey && AppLocalizer.isInitialized) {
-      return AppLocalizer.t(raw, fallback: fallback ?? raw);
+      return AppLocalizer.translateSafely(raw, fallback: fallback ?? raw);
     }
     return raw;
   }

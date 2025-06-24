@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/modules_shared/theme/core/app_theme_variants.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/theme/app_theme_variants.dart';
 import 'package:flutter/material.dart' show ThemeData;
 import '../text_theme/text_theme_factory.dart';
 

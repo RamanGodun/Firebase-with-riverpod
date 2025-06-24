@@ -2,11 +2,11 @@ import 'package:firebase_with_riverpod/core/modules_shared/overlays/core/_contex
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../localization/app_localizer.dart';
-import '../../localization/generated/locale_keys.g.dart';
-import '../../localization/widgets/text_widget.dart';
-import '../core/app_theme_variants.dart';
-import '../theme_provider/theme_config_provider.dart';
+import '../../../localization/app_localizer.dart';
+import '../../../localization/generated/locale_keys.g.dart';
+import '../../../localization/widgets/text_widget.dart';
+import '../../app_theme_variants.dart';
+import '../../theme_provider/theme_config_provider.dart';
 
 class ThemePicker extends ConsumerWidget {
   ///--------------------------------------
@@ -64,11 +64,11 @@ class ThemePicker extends ConsumerWidget {
   String _themeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
       case ThemeVariantsEnum.light:
-        return AppLocalizer.t(LocaleKeys.theme_light);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_light);
       case ThemeVariantsEnum.dark:
-        return AppLocalizer.t(LocaleKeys.theme_dark);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_dark);
       case ThemeVariantsEnum.amoled:
-        return AppLocalizer.t(LocaleKeys.theme_amoled);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_amoled);
     }
   }
 
@@ -76,11 +76,11 @@ class ThemePicker extends ConsumerWidget {
   String _chosenThemeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
       case ThemeVariantsEnum.light:
-        return AppLocalizer.t(LocaleKeys.theme_light_enabled);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_light_enabled);
       case ThemeVariantsEnum.dark:
-        return AppLocalizer.t(LocaleKeys.theme_dark_enabled);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_dark_enabled);
       case ThemeVariantsEnum.amoled:
-        return AppLocalizer.t(LocaleKeys.theme_amoled_enabled);
+        return AppLocalizer.translateSafely(LocaleKeys.theme_amoled_enabled);
     }
   }
 
