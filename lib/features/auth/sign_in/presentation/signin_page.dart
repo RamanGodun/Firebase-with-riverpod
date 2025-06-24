@@ -1,18 +1,21 @@
 import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../../../../core/modules_shared/theme/ui_constants/app_colors.dart';
-import '../../../form_fields_old/form_field_widget.dart';
-import '../../../form_fields_old/form_fields_model.dart';
-import '../../../form_fields_old/form_state_provider.dart';
-import '../../../form_fields_old/presets_of_forms.dart';
+import '../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../form_fields/utils/use_auth_focus_nodes.dart';
+import '../../../form_fields/widgets/_fields_factory.dart';
+import '../../../form_fields/widgets/password_visibility_icon.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
+import 'new_sign_in_provider.dart';
 import 'signin_provider.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 
@@ -20,7 +23,7 @@ part 'widgets_for_signin_page.dart';
 
 /// 🔐 [SignInPage] — screen that allows user to sign in.
 
-class SignInPage extends ConsumerWidget {
+class SignInPage extends HookConsumerWidget {
   ///-----------------------------------
   const SignInPage({super.key});
   //
@@ -28,13 +31,13 @@ class SignInPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final fieldTypes = FormTemplates.signInFields;
-    final formProvider = formStateNotifierProvider(fieldTypes);
-    final formState = ref.watch(formProvider);
-    final formNotifier = ref.read(formProvider.notifier);
-    final isFormValid = ref.watch(formValidProvider(fieldTypes));
 
+    final focus = useSignInFocusNodes();
+
+    final form = ref.watch(signInFormProvider);
+    final formNotifier = ref.read(signInFormProvider.notifier);
     final signInState = ref.watch(signInProvider);
+    final isOverlayActive = ref.isOverlayActive;
 
     // 🔁 Declarative side-effect for error displaying
     ref.listenFailure(signInProvider, context);
@@ -53,13 +56,28 @@ class SignInPage extends ConsumerWidget {
                     children: [
                       const _SigninHeader(),
 
-                      for (final type in fieldTypes)
-                        AppFormField(
-                          type: type,
-                          fields: fieldTypes,
-                          showToggleVisibility: type == FormFieldType.password,
+                      InputFieldFactory.create(
+                        type: InputFieldType.email,
+                        focusNode: focus.email,
+                        errorText: form.email.uiErrorKey,
+                        onChanged: formNotifier.emailChanged,
+                        onSubmitted: () => focus.password.requestFocus(),
+                      ),
+                      const SizedBox(height: AppSpacing.xxxs),
+
+                      InputFieldFactory.create(
+                        type: InputFieldType.password,
+                        focusNode: focus.password,
+                        errorText: form.password.uiErrorKey,
+                        isObscure: form.isPasswordObscure,
+                        onChanged: formNotifier.passwordChanged,
+                        onSubmitted: () => _handleSubmit(ref),
+                        suffixIcon: ObscureToggleIcon(
+                          isObscure: form.isPasswordObscure,
+                          onPressed: formNotifier.togglePasswordVisibility,
                         ),
-                      const SizedBox(height: AppSpacing.xxl),
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
 
                       CustomButton(
                         type: ButtonType.filled,
@@ -67,17 +85,12 @@ class SignInPage extends ConsumerWidget {
                             signInState.isLoading
                                 ? LocaleKeys.buttons_submitting
                                 : LocaleKeys.buttons_sign_in,
-                        isEnabled: !signInState.isLoading,
+                        isEnabled: form.isValid && !isOverlayActive,
                         isLoading: signInState.isLoading,
                         onPressed:
-                            signInState.isLoading
-                                ? null
-                                : () => _handleSignIn(
-                                  ref,
-                                  formState,
-                                  formNotifier,
-                                  isFormValid,
-                                ),
+                            form.isValid && !signInState.isLoading
+                                ? () => _handleSubmit(ref)
+                                : null,
                       ),
 
                       const SizedBox(height: AppSpacing.xxl),
@@ -94,22 +107,11 @@ class SignInPage extends ConsumerWidget {
   }
 
   /// 📩 Handles form validation and submission to [signinProvider].
-  void _handleSignIn(
-    WidgetRef ref,
-    FormStateModel form,
-    FormStateNotifier notifier,
-    bool isFormValid,
-  ) {
-    if (isFormValid) {
-      ref
-          .read(signInProvider.notifier)
-          .signin(
-            email: form.valueOf(FormFieldType.email),
-            password: form.valueOf(FormFieldType.password),
-          );
-    } else {
-      notifier.validateAll();
-    }
+  void _handleSubmit(WidgetRef ref) {
+    final form = ref.read(signInFormProvider);
+    ref
+        .read(signInProvider.notifier)
+        .signin(email: form.email.value, password: form.password.value);
   }
 
   //
