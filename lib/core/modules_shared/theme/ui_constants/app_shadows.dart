@@ -62,5 +62,14 @@ abstract final class AppShadows {
     ),
   ];
 
+  /// 🍏 Button-specific double shadows for iOS/macOS (modern style)
+  static const List<BoxShadow> forIOSLightThemeButton = [
+    BoxShadow(color: AppColors.black5, blurRadius: 20, offset: Offset(0, 2)),
+  ];
+
+  static const List<BoxShadow> forIOSDarkThemeButton = [
+    BoxShadow(color: AppColors.shadow, blurRadius: 20, offset: Offset(0, 2)),
+  ];
+
   //
 }

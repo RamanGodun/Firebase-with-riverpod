@@ -18,9 +18,9 @@ abstract final class AppSpacing {
 
   ///
   static const double m = 10.0;
-  static const double xm = 13.0;
-  static const double xxm = 16.0;
-  static const double xxxm = 20.0;
+  static const double xm = 12.0;
+  static const double xxm = 15.0;
+  static const double xxxm = 18.0;
 
   ///
   static const double l = 30.0;
