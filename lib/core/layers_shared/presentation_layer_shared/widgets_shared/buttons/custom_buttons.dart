@@ -8,11 +8,12 @@ import '../../../../modules_shared/localization/widgets/text_widget.dart';
 class CustomButton extends StatelessWidget {
   ///--------------------------------------
 
+  final String label;
   final VoidCallback? onPressed;
   final ButtonType type;
   final bool isLoading;
   final bool isEnabled;
-  final String label;
+
   final Color? foregroundColor;
   final double? fontSize;
   final FontWeight? fontWeight;

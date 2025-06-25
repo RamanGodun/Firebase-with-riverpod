@@ -15,8 +15,8 @@ import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
-import 'new_sign_in_provider.dart';
-import 'signin_provider.dart';
+import 'sign_in_form_fields_provider.dart';
+import '_signin_provider.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 
 part 'widgets_for_signin_page.dart';
