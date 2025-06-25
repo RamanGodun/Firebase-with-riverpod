@@ -19,7 +19,7 @@ class SignOutButton extends ConsumerWidget {
     // ❗️ Shows (declarative) error state
     ref.listenFailure(signOutProvider, context);
 
-    return CustomTextButton(
+    return AppTextButton(
       onPressed: () => ref.read(signOutProvider.notifier).signOut(),
       label: LocaleKeys.buttons_sign_out,
     );

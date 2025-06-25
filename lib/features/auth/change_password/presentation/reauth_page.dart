@@ -12,7 +12,7 @@ import '../../../form_fields_old/form_field_widget.dart';
 import '../../../form_fields_old/form_fields_model.dart';
 import '../../../form_fields_old/form_state_provider.dart';
 import '../../../form_fields_old/presets_of_forms.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
 import '../../sign_out/presentation/sign_out_buttons.dart';
 
 part 'widgets_for_reauth_page.dart';
@@ -55,7 +55,7 @@ class ReAuthenticationPage extends ConsumerWidget {
                         ),
                       const SizedBox(height: AppSpacing.huge),
 
-                      CustomButton(
+                      CustomFilledButton(
                         label:
                             isSubmitting
                                 ? LocaleKeys.buttons_submitting

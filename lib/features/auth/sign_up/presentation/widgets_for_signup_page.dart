@@ -45,7 +45,7 @@ class _SignupFooter extends StatelessWidget {
               LocaleKeys.buttons_redirect_to_sign_in,
               TextType.titleSmall,
             ),
-            CustomTextButton(
+            AppTextButton(
               onPressed: () => context.goTo(RoutesNames.signIn),
               label: LocaleKeys.buttons_sign_in,
             ),

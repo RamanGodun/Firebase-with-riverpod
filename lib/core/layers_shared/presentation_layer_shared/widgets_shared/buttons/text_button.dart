@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import '../../../../modules_shared/localization/widgets/text_widget.dart';
 
-/// 🔘 [CustomTextButton] — minimal, animated text-only button with underline option
-class CustomTextButton extends StatelessWidget {
+/// 🔘 [AppTextButton] — minimal, animated text-only button with underline option
+class AppTextButton extends StatelessWidget {
   ///--------------------------------------
 
   final String label;
@@ -16,7 +16,7 @@ class CustomTextButton extends StatelessWidget {
   final FontWeight? fontWeight;
   final bool? isUnderlined;
 
-  const CustomTextButton({
+  const AppTextButton({
     super.key,
     required this.label,
     required this.onPressed,

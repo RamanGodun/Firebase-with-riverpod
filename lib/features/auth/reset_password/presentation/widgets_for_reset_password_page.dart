@@ -46,7 +46,7 @@ class _ResetPasswordFooter extends StatelessWidget {
             LocaleKeys.reset_password_remember,
             TextType.titleSmall,
           ),
-          CustomTextButton(
+          AppTextButton(
             onPressed: () => context.goTo(RoutesNames.signIn),
             label: LocaleKeys.buttons_sign_in,
           ),

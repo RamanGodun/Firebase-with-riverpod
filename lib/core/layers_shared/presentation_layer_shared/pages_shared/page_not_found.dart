@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../modules_shared/localization/widgets/text_widget.dart';
 import '../../../modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../modules_shared/navigation/app_routes/app_routes.dart';
-import '../widgets_shared/buttons/custom_buttons.dart';
+import '../widgets_shared/buttons/filled_button.dart';
 
 /// 🧭 [PageNotFound] — generic 404 fallback UI for unknown routes
 
@@ -40,7 +40,7 @@ class PageNotFound extends StatelessWidget {
             ),
 
             /// 🏠 Navigation back to home
-            CustomButton(
+            CustomFilledButton(
               onPressed: () => context.goTo(RoutesNames.home),
               label: LocaleKeys.buttons_go_to_home,
             ),

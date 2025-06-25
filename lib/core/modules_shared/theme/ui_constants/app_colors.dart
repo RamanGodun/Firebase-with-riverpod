@@ -11,6 +11,8 @@ final class AppColors {
   static const Color transparent = Colors.transparent;
   static const Color forErrors = Color(0xFFFF5252); // redAccent
   static const Color white = Color(0xFFFFFFFF);
+  static const Color white30 = Color(0x4DFFFFFF); // 30%
+  static const Color white24 = Color(0x3DFFFFFF); // 24%
   static const Color black = Color(0xFF000000);
   static const Color shadow = Color(0x33000000); // 20% black
   static const Color caption = Color(0x99000000); // approx grey.shade600

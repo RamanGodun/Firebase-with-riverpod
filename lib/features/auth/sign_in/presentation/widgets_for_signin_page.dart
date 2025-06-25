@@ -71,7 +71,7 @@ class _SigninSubmitButton extends ConsumerWidget {
     final signInState = ref.watch(signInProvider);
     final isOverlayActive = ref.isOverlayActive;
 
-    return CustomButton(
+    return CustomFilledButton(
       label:
           signInState.isLoading
               ? LocaleKeys.buttons_submitting
@@ -113,7 +113,7 @@ class _SigninFooter extends StatelessWidget {
             ),
             const SizedBox(width: AppSpacing.m),
 
-            CustomTextButton(
+            AppTextButton(
               onPressed: () => context.goTo(RoutesNames.signUp),
               label: LocaleKeys.buttons_sign_up,
             ),
@@ -121,7 +121,7 @@ class _SigninFooter extends StatelessWidget {
         ),
 
         const SizedBox(height: AppSpacing.xxs),
-        CustomTextButton(
+        AppTextButton(
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: LocaleKeys.sign_in_forgot_password,
           foregroundColor: AppColors.forErrors,

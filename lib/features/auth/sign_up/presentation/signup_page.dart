@@ -9,7 +9,7 @@ import '../../../../core/modules_shared/localization/generated/locale_keys.g.dar
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
 import '../../../form_fields_old/form_field_widget.dart';
 import '../../../form_fields_old/form_fields_model.dart';
 import '../../../form_fields_old/form_state_provider.dart';
@@ -59,7 +59,7 @@ class SignUpPage extends ConsumerWidget {
 
                 const SizedBox(height: AppSpacing.xxl),
 
-                CustomButton(
+                CustomFilledButton(
                   label:
                       signUpState.isLoading
                           ? LocaleKeys.buttons_submitting

@@ -16,8 +16,8 @@ import '../../../core/modules_shared/theme/widgets_and_utils/theme_toggle_widget
 import '../../../core/modules_shared/theme/widgets_and_utils/blur_wrapper.dart';
 import '../../../core/modules_shared/theme/widgets_and_utils/box_decorations/_box_decorations_factory.dart';
 import '../domain/entities/_user_entity.dart';
-import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
-import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/custom_app_bar.dart';
+import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
+import '../../../core/layers_shared/presentation_layer_shared/widgets_shared/app_bar.dart';
 import '../../../core/modules_shared/theme/widgets_and_utils/theme_toggle_widgets/theme_toggler.dart';
 import '../../auth/sign_out/presentation/sign_out_buttons.dart';
 import 'profile_provider.dart';
@@ -57,7 +57,7 @@ class ProfilePage extends ConsumerWidget {
       ///
       body: asyncUser.when(
         data: (user) => _UserProfile(user),
-        loading: () => const Loader(),
+        loading: () => const AppLoader(),
         error: (_, _) => const SizedBox(), // error shown by overlay
       ),
     );

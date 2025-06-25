@@ -11,7 +11,7 @@ import '../../../form_fields_old/form_state_provider.dart';
 import '../../../form_fields_old/presets_of_forms.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
 import 'change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';
@@ -55,7 +55,7 @@ class ChangePasswordPage extends ConsumerWidget {
                     showToggleVisibility: true,
                   ),
                 const SizedBox(height: AppSpacing.massive),
-                CustomButton(
+                CustomFilledButton(
                   onPressed:
                       changePasswordState.isLoading
                           ? null

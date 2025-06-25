@@ -15,7 +15,7 @@ import '../../../form_fields/widgets/_fields_factory.dart';
 import '../../../form_fields/widgets/password_visibility_icon.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
 import 'providers/_signin_provider.dart';
 import 'providers/sign_in_form_fields_provider.dart';
