@@ -1,48 +1,82 @@
-import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import '../../../../modules_shared/localization/widgets/text_widget.dart';
-import '../../../../modules_shared/theme/ui_constants/_app_constants.dart';
-import '../../../../modules_shared/theme/ui_constants/app_colors.dart';
 
-/// 🔁🌐 [RedirectTextButton] a reusable text button, used for navigation or redirects.
+/// 🔘 [CustomTextButton] — minimal, animated text-only button with underline option
+class CustomTextButton extends StatelessWidget {
+  ///--------------------------------------
 
-final class RedirectTextButton extends StatelessWidget {
-  ///--------------------------------------------------
-
-  final VoidCallback? onPressed;
   final String label;
-  final bool isDisabled;
+  final VoidCallback? onPressed;
+  final bool isLoading;
+  final bool isEnabled;
+  final Color? foregroundColor;
+  final double? fontSize;
+  final FontWeight? fontWeight;
 
-  const RedirectTextButton({
+  const CustomTextButton({
     super.key,
     required this.label,
     required this.onPressed,
-    this.isDisabled = false,
+    this.isLoading = false,
+    this.isEnabled = true,
+    this.foregroundColor,
+    this.fontSize = 16,
+    this.fontWeight = FontWeight.w400,
   });
-  //
 
   @override
   Widget build(BuildContext context) {
-    //
+    final colorScheme = context.colorScheme;
+
     return TextButton(
-      onPressed: isDisabled ? null : onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Expanded(
-            child: Divider(thickness: 0.5, color: AppColors.caption),
-          ),
-          const SizedBox(width: AppSpacing.xxxm),
-          TextWidget(
-            label,
-            TextType.bodyMedium,
-            color: context.colorScheme.primary,
-          ),
-          const SizedBox(width: AppSpacing.xxxm),
-          const Expanded(
-            child: Divider(thickness: 0.5, color: AppColors.caption),
-          ),
-        ],
+      onPressed: (isEnabled && !isLoading) ? onPressed : null,
+      style: TextButton.styleFrom(
+        foregroundColor: foregroundColor ?? colorScheme.primary,
+        padding: EdgeInsets.zero,
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: VisualDensity.compact,
+        textStyle: TextStyle(
+          fontFamily: 'SFProText',
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
+      ),
+      child: AnimatedSize(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        alignment: Alignment.center,
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 250),
+          switchInCurve: Curves.easeOut,
+          switchOutCurve: Curves.easeIn,
+          layoutBuilder:
+              (currentChild, previousChildren) => Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (currentChild != null) currentChild,
+                  ...previousChildren,
+                ],
+              ),
+          transitionBuilder:
+              (child, animation) => FadeTransition(
+                opacity: animation,
+                child: ScaleTransition(scale: animation, child: child),
+              ),
+          child:
+              isLoading
+                  ? const CupertinoActivityIndicator(radius: 10)
+                  : TextWidget(
+                    label,
+                    TextType.titleMedium,
+                    fontSize: fontSize,
+                    fontWeight: fontWeight,
+                    color: foregroundColor ?? colorScheme.primary,
+                    isUnderlined: true,
+                  ),
+        ),
       ),
     );
   }

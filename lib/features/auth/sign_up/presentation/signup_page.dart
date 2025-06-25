@@ -3,6 +3,7 @@ import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
@@ -59,7 +60,6 @@ class SignUpPage extends ConsumerWidget {
                 const SizedBox(height: AppSpacing.xxl),
 
                 CustomButton(
-                  type: ButtonType.filled,
                   label:
                       signUpState.isLoading
                           ? LocaleKeys.buttons_submitting

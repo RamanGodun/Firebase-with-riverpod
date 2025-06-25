@@ -41,11 +41,8 @@ class PageNotFound extends StatelessWidget {
 
             /// 🏠 Navigation back to home
             CustomButton(
-              type: ButtonType.filled,
               onPressed: () => context.goTo(RoutesNames.home),
               label: LocaleKeys.buttons_go_to_home,
-              isEnabled: true,
-              isLoading: false,
             ),
           ],
         ).withPaddingAll(AppSpacing.l),

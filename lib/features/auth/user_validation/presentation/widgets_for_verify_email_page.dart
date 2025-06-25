@@ -70,3 +70,25 @@ class _VerifyEmailInfo extends StatelessWidget {
     );
   }
 }
+
+////
+
+/// ❌ [VerifyEmailCancelButton] — signs out from verification screen
+/// 🧼 Listens for errors via [signOutProvider]
+
+class VerifyEmailCancelButton extends ConsumerWidget {
+  ///-------------------------------------------------
+  const VerifyEmailCancelButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    //
+    // ❗️ Shows (declarative) error state
+    ref.listenFailure(signOutProvider, context);
+
+    return CustomTextButton(
+      onPressed: () => ref.read(signOutProvider.notifier).signOut(),
+      label: LocaleKeys.buttons_cancel,
+    );
+  }
+}

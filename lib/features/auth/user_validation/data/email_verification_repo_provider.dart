@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/modules_shared/errors_handling/utils/observers/loggers/errors_log_util.dart';
-import '../../utils_for_auth_feature/auth_user_utils.dart';
+import '../../utils_and_extensions_for_auth_feature/auth_user_utils.dart';
 import '../domain/user_validation_repo_contract.dart';
 
 part 'email_verification_repo_provider.g.dart';

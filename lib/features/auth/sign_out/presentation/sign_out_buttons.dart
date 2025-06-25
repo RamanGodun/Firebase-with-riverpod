@@ -2,8 +2,8 @@ import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils
 import 'package:firebase_with_riverpod/features/auth/sign_out/presentation/sign_out_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/custom_buttons.dart';
 
 /// 🔘 [SignOutButton] — triggers logout via [signOutProvider]
 /// 🧼 Declarative error handling with overlay via `.listen()`
@@ -19,14 +19,9 @@ class SignOutButton extends ConsumerWidget {
     // ❗️ Shows (declarative) error state
     ref.listenFailure(signOutProvider, context);
 
-    return CustomButton(
-      type: ButtonType.text,
+    return CustomTextButton(
       onPressed: () => ref.read(signOutProvider.notifier).signOut(),
       label: LocaleKeys.buttons_sign_out,
-      fontWeight: FontWeight.w600,
-      fontSize: 15,
-      isEnabled: true,
-      isLoading: false,
     );
   }
 }
@@ -35,28 +30,7 @@ class SignOutButton extends ConsumerWidget {
 
 ////
 
-/// ❌ [VerifyEmailCancelButton] — signs out from verification screen
-/// 🧼 Listens for errors via [signOutProvider]
 
-class VerifyEmailCancelButton extends ConsumerWidget {
-  ///-------------------------------------------------
-  const VerifyEmailCancelButton({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    //
-    // ❗️ Shows (declarative) error state
-    ref.listenFailure(signOutProvider, context);
-
-    return CustomButton(
-      type: ButtonType.filled,
-      onPressed: () => ref.read(signOutProvider.notifier).signOut(),
-      label: LocaleKeys.buttons_cancel,
-      isEnabled: true,
-      isLoading: false,
-    );
-  }
-}
 
 ////
 

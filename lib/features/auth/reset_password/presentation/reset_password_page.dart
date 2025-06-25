@@ -2,9 +2,10 @@ import 'package:firebase_with_riverpod/core/modules_shared/localization/generate
     show LocaleKeys;
 import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils_for_auth_feature/reset_password_x.dart';
+import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/reset_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
@@ -60,7 +61,6 @@ class ResetPasswordPage extends ConsumerWidget {
 
                 /// 🔘 Submit button — disabled while loading
                 CustomButton(
-                  type: ButtonType.filled,
                   onPressed:
                       resetPasswordState.isLoading
                           ? null

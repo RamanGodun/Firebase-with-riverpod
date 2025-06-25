@@ -56,7 +56,6 @@ class ReAuthenticationPage extends ConsumerWidget {
                       const SizedBox(height: AppSpacing.huge),
 
                       CustomButton(
-                        type: ButtonType.filled,
                         label:
                             isSubmitting
                                 ? LocaleKeys.buttons_submitting

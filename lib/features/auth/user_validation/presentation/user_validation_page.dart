@@ -8,12 +8,13 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
 import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
 import '../../../../core/modules_shared/theme/ui_constants/app_colors.dart';
-import '../../sign_out/presentation/sign_out_buttons.dart';
+import '../../sign_out/presentation/sign_out_provider.dart';
 
 part 'widgets_for_verify_email_page.dart';
 

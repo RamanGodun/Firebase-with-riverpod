@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/modules_shared/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../domain/sign_in_use_case_provider.dart';
+import '../../../../../core/modules_shared/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../domain/sign_in_use_case_provider.dart';
 
 part '_signin_provider.g.dart';
 

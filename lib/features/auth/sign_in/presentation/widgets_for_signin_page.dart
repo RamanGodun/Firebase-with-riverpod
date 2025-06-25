@@ -1,25 +1,87 @@
 part of 'signin_page.dart';
 
-/// 🧾 [_SigninHeader] — logo and welcome messages
+/// 🧩 [_SignInEmailInputField] — email and password fields
 
-class _SigninHeader extends StatelessWidget {
-  ///---------------------------------------
-  const _SigninHeader();
+class _SignInEmailInputField extends ConsumerWidget {
+  ///-----------------------------------------------
+
+  final ({FocusNode email, FocusNode password}) focus;
+  const _SignInEmailInputField(this.focus);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final form = ref.watch(signInFormProvider);
+    final formNotifier = ref.read(signInFormProvider.notifier);
+
+    return InputFieldFactory.create(
+      type: InputFieldType.email,
+      focusNode: focus.email,
+      errorText: form.email.uiErrorKey,
+      onChanged: formNotifier.emailChanged,
+      onSubmitted: () => focus.password.requestFocus(),
+    );
+  }
+}
+
+////
+
+////
+
+/// 🧩 [_SignInPasswordInputField] — password input field with visibility toggle
+
+class _SignInPasswordInputField extends ConsumerWidget {
+  ///-------------------------------------------------
+
+  final ({FocusNode email, FocusNode password}) focus;
+  const _SignInPasswordInputField(this.focus);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final form = ref.watch(signInFormProvider);
+    final formNotifier = ref.read(signInFormProvider.notifier);
+
+    return InputFieldFactory.create(
+      type: InputFieldType.password,
+      focusNode: focus.password,
+      errorText: form.password.uiErrorKey,
+      isObscure: form.isPasswordObscure,
+      onChanged: formNotifier.passwordChanged,
+      onSubmitted: () => ref.submitSignIn(),
+      suffixIcon: ObscureToggleIcon(
+        isObscure: form.isPasswordObscure,
+        onPressed: formNotifier.togglePasswordVisibility,
+      ),
+    );
+  }
+}
+
+////
+
+////
+
+/// 🔘 [_SigninSubmitButton] — submit button for the sign-in form
+class _SigninSubmitButton extends ConsumerWidget {
+  ///-------------------------------------------
+  const _SigninSubmitButton();
   //
 
   @override
-  Widget build(BuildContext context) {
-    //
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: AppSpacing.huge),
-        FlutterLogo(size: AppSpacing.massive),
-        SizedBox(height: AppSpacing.xxl),
-        TextWidget(LocaleKeys.sign_in_header, TextType.headlineSmall),
-        TextWidget(LocaleKeys.sign_in_sub_header, TextType.bodyMedium),
-        SizedBox(height: AppSpacing.xxxm),
-      ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    final form = ref.watch(signInFormProvider);
+    final signInState = ref.watch(signInProvider);
+    final isOverlayActive = ref.isOverlayActive;
+
+    return CustomButton(
+      label:
+          signInState.isLoading
+              ? LocaleKeys.buttons_submitting
+              : LocaleKeys.buttons_sign_in,
+      isEnabled: form.isValid && !isOverlayActive,
+      isLoading: signInState.isLoading,
+      onPressed:
+          form.isValid && !signInState.isLoading
+              ? () => ref.submitSignIn()
+              : null,
     );
   }
 }
@@ -40,6 +102,7 @@ class _SigninFooter extends StatelessWidget {
     //
     return Column(
       children: [
+        //
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -48,26 +111,20 @@ class _SigninFooter extends StatelessWidget {
               LocaleKeys.buttons_redirect_to_sign_up,
               TextType.titleSmall,
             ),
-            CustomButton(
-              type: ButtonType.text,
+            const SizedBox(width: AppSpacing.m),
+
+            CustomTextButton(
               onPressed: () => context.goTo(RoutesNames.signUp),
               label: LocaleKeys.buttons_sign_up,
-              fontWeight: FontWeight.w600,
-              fontSize: 15,
-              isEnabled: true,
-              isLoading: false,
             ),
           ],
         ),
+
         const SizedBox(height: AppSpacing.xxs),
-        CustomButton(
-          type: ButtonType.text,
+        CustomTextButton(
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: LocaleKeys.sign_in_forgot_password,
           foregroundColor: AppColors.forErrors,
-          fontWeight: FontWeight.w500,
-          isEnabled: true,
-          isLoading: false,
         ),
       ],
     );

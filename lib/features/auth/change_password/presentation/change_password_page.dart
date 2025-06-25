@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils_for_auth_feature/change_password_x.dart';
+import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/change_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../form_fields_old/form_field_widget.dart';
@@ -56,7 +56,6 @@ class ChangePasswordPage extends ConsumerWidget {
                   ),
                 const SizedBox(height: AppSpacing.massive),
                 CustomButton(
-                  type: ButtonType.filled,
                   onPressed:
                       changePasswordState.isLoading
                           ? null

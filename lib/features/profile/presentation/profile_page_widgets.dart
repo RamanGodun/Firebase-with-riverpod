@@ -73,11 +73,8 @@ class _UserProfile extends StatelessWidget {
               const SizedBox(height: AppSpacing.xl),
 
               CustomButton(
-                type: ButtonType.filled,
                 onPressed: () => context.goTo(RoutesNames.changePassword),
                 label: LocaleKeys.change_password_title,
-                isEnabled: true,
-                isLoading: false,
               ),
             ],
           ),
