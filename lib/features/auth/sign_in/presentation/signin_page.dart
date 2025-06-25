@@ -60,7 +60,7 @@ class SignInPage extends HookConsumerWidget {
                       ),
                       const TextWidget(
                         LocaleKeys.sign_in_sub_header,
-                        TextType.bodyMedium,
+                        TextType.bodyLarge,
                       ),
                       const SizedBox(height: AppSpacing.xl),
 

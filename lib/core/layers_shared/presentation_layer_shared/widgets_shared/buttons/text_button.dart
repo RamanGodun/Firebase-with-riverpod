@@ -14,6 +14,7 @@ class CustomTextButton extends StatelessWidget {
   final Color? foregroundColor;
   final double? fontSize;
   final FontWeight? fontWeight;
+  final bool? isUnderlined;
 
   const CustomTextButton({
     super.key,
@@ -22,60 +23,66 @@ class CustomTextButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.foregroundColor,
-    this.fontSize = 16,
-    this.fontWeight = FontWeight.w400,
+    this.fontSize,
+    this.fontWeight = FontWeight.w200,
+    this.isUnderlined = true,
   });
 
   @override
   Widget build(BuildContext context) {
+    //
     final colorScheme = context.colorScheme;
+    final effectiveColor =
+        (isEnabled && !isLoading)
+            ? (foregroundColor ?? colorScheme.primary)
+            : colorScheme.onSurface.withOpacity(0.4);
 
-    return TextButton(
-      onPressed: (isEnabled && !isLoading) ? onPressed : null,
-      style: TextButton.styleFrom(
-        foregroundColor: foregroundColor ?? colorScheme.primary,
-        padding: EdgeInsets.zero,
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        visualDensity: VisualDensity.compact,
-        textStyle: TextStyle(
-          fontFamily: 'SFProText',
-          fontSize: fontSize,
-          fontWeight: fontWeight,
+    return Semantics(
+      button: true,
+      enabled: isEnabled,
+      label: label,
+      child: TextButton(
+        onPressed: (isEnabled && !isLoading) ? onPressed : null,
+        style: TextButton.styleFrom(
+          foregroundColor: effectiveColor,
+          padding: EdgeInsets.zero,
+          minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          visualDensity: VisualDensity.compact,
         ),
-      ),
-      child: AnimatedSize(
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeInOut,
-        alignment: Alignment.center,
-        child: AnimatedSwitcher(
+        child: AnimatedSize(
           duration: const Duration(milliseconds: 250),
-          switchInCurve: Curves.easeOut,
-          switchOutCurve: Curves.easeIn,
-          layoutBuilder:
-              (currentChild, previousChildren) => Stack(
-                alignment: Alignment.center,
-                children: [
-                  if (currentChild != null) currentChild,
-                  ...previousChildren,
-                ],
-              ),
-          transitionBuilder:
-              (child, animation) => FadeTransition(
-                opacity: animation,
-                child: ScaleTransition(scale: animation, child: child),
-              ),
-          child:
-              isLoading
-                  ? const CupertinoActivityIndicator(radius: 10)
-                  : TextWidget(
-                    label,
-                    TextType.titleMedium,
-                    fontSize: fontSize,
-                    fontWeight: fontWeight,
-                    color: foregroundColor ?? colorScheme.primary,
-                    isUnderlined: true,
-                  ),
+          curve: Curves.easeInOut,
+          alignment: Alignment.center,
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 250),
+            switchInCurve: Curves.easeOut,
+            switchOutCurve: Curves.easeIn,
+            layoutBuilder:
+                (currentChild, previousChildren) => Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    if (currentChild != null) currentChild,
+                    ...previousChildren,
+                  ],
+                ),
+            transitionBuilder:
+                (child, animation) => FadeTransition(
+                  opacity: animation,
+                  child: ScaleTransition(scale: animation, child: child),
+                ),
+            child:
+                isLoading
+                    ? const CupertinoActivityIndicator(radius: 10)
+                    : TextWidget(
+                      label,
+                      TextType.button,
+                      fontSize: fontSize,
+                      fontWeight: fontWeight,
+                      color: foregroundColor ?? colorScheme.primary,
+                      isUnderlined: isUnderlined,
+                    ),
+          ),
         ),
       ),
     );

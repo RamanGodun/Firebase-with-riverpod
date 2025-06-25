@@ -2,6 +2,7 @@ import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/them
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../../modules_shared/localization/widgets/text_widget.dart';
+import '../../../../modules_shared/theme/ui_constants/_app_constants.dart';
 import '../../../../modules_shared/theme/ui_constants/app_colors.dart';
 
 /// ✅ [CustomButton] — animated cross-platform button with Cupertino spinner and theming
@@ -25,8 +26,8 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
     this.foregroundColor,
-    this.fontSize = 17,
-    this.fontWeight = FontWeight.w600,
+    this.fontSize = 18,
+    this.fontWeight = FontWeight.w400,
   });
   //
 
@@ -35,7 +36,7 @@ class CustomButton extends StatelessWidget {
     //
     final scheme = context.colorScheme;
     final isDark = context.isDarkMode;
-    final borderRadius = BorderRadius.circular(14);
+    final borderRadius = UIConstants.commonBorderRadius;
 
     final backgroundColor = scheme.primary.withOpacity(0.9);
 

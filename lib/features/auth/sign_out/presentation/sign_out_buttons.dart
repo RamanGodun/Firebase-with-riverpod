@@ -30,8 +30,6 @@ class SignOutButton extends ConsumerWidget {
 
 ////
 
-
-
 ////
 
 ////

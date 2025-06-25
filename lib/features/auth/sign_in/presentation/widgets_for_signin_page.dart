@@ -109,7 +109,7 @@ class _SigninFooter extends StatelessWidget {
           children: [
             const TextWidget(
               LocaleKeys.buttons_redirect_to_sign_up,
-              TextType.titleSmall,
+              TextType.bodyMedium,
             ),
             const SizedBox(width: AppSpacing.m),
 
