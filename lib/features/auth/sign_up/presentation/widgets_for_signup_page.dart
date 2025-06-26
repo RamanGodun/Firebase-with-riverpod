@@ -37,19 +37,15 @@ class _SignupFooter extends StatelessWidget {
     //
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const TextWidget(
-              LocaleKeys.buttons_redirect_to_sign_in,
-              TextType.titleSmall,
-            ),
-            AppTextButton(
-              onPressed: () => context.goTo(RoutesNames.signIn),
-              label: LocaleKeys.buttons_sign_in,
-            ),
-          ],
+        const TextWidget(
+          LocaleKeys.buttons_redirect_to_sign_in,
+          TextType.titleSmall,
+        ),
+        const SizedBox(height: AppSpacing.s),
+
+        AppTextButton(
+          onPressed: () => context.goTo(RoutesNames.signIn),
+          label: LocaleKeys.buttons_sign_in,
         ),
       ],
     );

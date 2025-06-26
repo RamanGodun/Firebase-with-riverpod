@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/modules_shared/animation/widget_animation_x.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import '../../../../modules_shared/localization/widgets/text_widget.dart';
@@ -32,54 +33,24 @@ class CustomFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //
-    final scheme = context.colorScheme;
-
-    ///
-    // final child = AnimatedSwitcher(
-    //   duration: const Duration(milliseconds: 300),
-    //   switchInCurve: Curves.easeOut,
-    //   switchOutCurve: Curves.easeIn,
-    //   child: content,
-    // );
+    final colorScheme = context.colorScheme;
 
     return SizedBox(
       width: double.infinity,
       child: Hero(
-        tag: 'submit',
+        tag: 'filled_button',
 
         child: FilledButton(
           /// ⚙️ Only enabled when not loading
           onPressed: (isEnabled && !isLoading) ? onPressed : null,
 
           child:
-          /// 🔁 Animated label or Cupertino spinner
-          AnimatedSize(
-            duration: const Duration(milliseconds: 250),
-            curve: Curves.easeInOut,
-            alignment: Alignment.center,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 250),
-              switchInCurve: Curves.easeOut,
-              switchOutCurve: Curves.easeIn,
-              layoutBuilder:
-                  (currentChild, previousChildren) => Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      if (currentChild != null) currentChild,
-                      ...previousChildren,
-                    ],
-                  ),
-              transitionBuilder:
-                  (child, animation) => FadeTransition(
-                    opacity: animation,
-                    child: ScaleTransition(scale: animation, child: child),
-                  ),
-              child:
-                  isLoading
+              //
+              (isLoading
                       ? AppLoader(
                         size: 20,
                         cupertinoRadius: 12,
-                        color: scheme.onSurface,
+                        color: colorScheme.onSurface,
                       )
                       : TextWidget(
                         label,
@@ -88,13 +59,14 @@ class CustomFilledButton extends StatelessWidget {
                         fontSize: fontSize,
                         color:
                             (isLoading || !isEnabled)
-                                ? scheme.inverseSurface
-                                : scheme.onPrimary,
-                      ),
-            ),
-          ),
+                                ? colorScheme.inverseSurface
+                                : colorScheme.onPrimary,
+                      ))
+                  .withAnimatedSwitcherSize(),
         ),
       ),
+      // ),
+      // ),
     );
   }
 

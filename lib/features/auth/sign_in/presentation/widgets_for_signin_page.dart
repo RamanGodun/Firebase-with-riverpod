@@ -103,24 +103,18 @@ class _SigninFooter extends StatelessWidget {
     return Column(
       children: [
         //
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const TextWidget(
-              LocaleKeys.buttons_redirect_to_sign_up,
-              TextType.bodyMedium,
-            ),
-            const SizedBox(width: AppSpacing.m),
-
-            AppTextButton(
-              onPressed: () => context.goTo(RoutesNames.signUp),
-              label: LocaleKeys.buttons_sign_up,
-            ),
-          ],
+        const TextWidget(
+          LocaleKeys.buttons_redirect_to_sign_up,
+          TextType.bodyMedium,
         ),
+        const SizedBox(width: AppSpacing.s),
 
-        const SizedBox(height: AppSpacing.xxs),
+        AppTextButton(
+          onPressed: () => context.goTo(RoutesNames.signUp),
+          label: LocaleKeys.buttons_sign_up,
+        ),
+        const SizedBox(height: AppSpacing.xl),
+
         AppTextButton(
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: LocaleKeys.sign_in_forgot_password,
