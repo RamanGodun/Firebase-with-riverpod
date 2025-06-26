@@ -36,7 +36,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
           disabledBackgroundColor: AppColors.white10,
           disabledForegroundColor: AppColors.white24,
           surfaceTintColor: AppColors.transparent,
-          shadowColor: AppColors.transparent,
+          shadowColor: AppColors.shadow,
           padding: const EdgeInsets.symmetric(
             vertical: AppSpacing.xm,
             horizontal: AppSpacing.xxxm,
@@ -49,7 +49,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
             ),
           ),
           textStyle: TextThemeFactory.from(colorScheme, font: font).titleSmall
-              ?.copyWith(letterSpacing: 0.3, color: colorScheme.onPrimary),
+              ?.copyWith(letterSpacing: 0.9, color: colorScheme.onPrimary),
           elevation: 0,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           animationDuration: const Duration(milliseconds: 200),
