@@ -1,22 +1,3 @@
-import 'package:firebase_with_riverpod/core/modules_shared/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
-import 'package:firebase_with_riverpod/core/modules_shared/navigation/extensions/navigation_x.dart';
-import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
-import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
-import '../../../../core/modules_shared/localization/generated/locale_keys.g.dart';
-import '../../../../core/modules_shared/navigation/app_routes/app_routes.dart';
-import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
-import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
-import '../../../form_fields_old/form_field_widget.dart';
-import '../../../form_fields_old/form_fields_model.dart';
-import '../../../form_fields_old/form_state_provider.dart';
-import '../../../form_fields_old/presets_of_forms.dart';
-import 'signup_provider.dart';
-
-part 'widgets_for_signup_page.dart';
 
 /// 🔐 [SignUpPage] — screen that allows user to register a new account.
 

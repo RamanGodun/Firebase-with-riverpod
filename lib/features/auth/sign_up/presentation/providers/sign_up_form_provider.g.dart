@@ -1,30 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_in_form_fields_provider.dart';
+part of 'sign_up_form_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signInFormHash() => r'79b556192c6abde066910b4510ea05616abd51be';
+String _$signUpFormHash() => r'8e227e8a39b253772b7c8184576aed7dfec678e5';
 
-/// 🧩 [SignInForm] — Manages the state of the sign-in form using [StateNotifier].
-/// Handles input updates, validation, and visibility toggling for password field.
+/// 🧩 [SignUpForm] — Manages the state of the sign-up form using [StateNotifier].
+/// Handles input updates, validation, and visibility toggling for password fields.
 ///
-/// Copied from [SignInForm].
-@ProviderFor(SignInForm)
-final signInFormProvider =
-    AutoDisposeNotifierProvider<SignInForm, SignInFormState>.internal(
-      SignInForm.new,
-      name: r'signInFormProvider',
+/// Copied from [SignUpForm].
+@ProviderFor(SignUpForm)
+final signUpFormProvider =
+    AutoDisposeNotifierProvider<SignUpForm, SignUpFormState>.internal(
+      SignUpForm.new,
+      name: r'signUpFormProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$signInFormHash,
+              : _$signUpFormHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$SignInForm = AutoDisposeNotifier<SignInFormState>;
+typedef _$SignUpForm = AutoDisposeNotifier<SignUpFormState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

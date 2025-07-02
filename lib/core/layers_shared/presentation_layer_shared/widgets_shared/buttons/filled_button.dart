@@ -7,7 +7,7 @@ import '../loader.dart';
 /// ✅ [CustomFilledButton] — animated cross-platform button with Cupertino spinner and theming
 
 class CustomFilledButton extends StatelessWidget {
-  ///--------------------------------------
+  ///------------------------------------------
 
   final String label;
   final VoidCallback? onPressed;

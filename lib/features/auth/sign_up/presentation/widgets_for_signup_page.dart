@@ -1,4 +1,4 @@
-part of 'signup_page.dart';
+part of '_signup_page.dart';
 
 /// 🧾 [_SignupHeader] — logo and welcome message
 
@@ -19,6 +19,38 @@ class _SignupHeader extends StatelessWidget {
         TextWidget(LocaleKeys.sign_up_sub_header, TextType.bodyMedium),
         SizedBox(height: AppSpacing.l),
       ],
+    );
+  }
+}
+
+////
+
+////
+
+////
+
+////
+
+class _SignupSubmitButton extends ConsumerWidget {
+  const _SignupSubmitButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final form = ref.watch(signUpFormProvider);
+    final signupState = ref.watch(signupProvider);
+    final isOverlayActive = ref.isOverlayActive;
+
+    return CustomFilledButton(
+      label:
+          signupState.isLoading
+              ? LocaleKeys.buttons_submitting
+              : LocaleKeys.buttons_sign_up,
+      isEnabled: form.isValid && !isOverlayActive,
+      isLoading: signupState.isLoading,
+      onPressed:
+          form.isValid && !signupState.isLoading
+              ? () => ref.submitSignUp()
+              : null,
     );
   }
 }
