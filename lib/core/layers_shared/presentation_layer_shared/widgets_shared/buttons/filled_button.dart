@@ -14,19 +14,12 @@ class CustomFilledButton extends StatelessWidget {
   final bool isLoading;
   final bool isEnabled;
 
-  final Color? foregroundColor;
-  final double? fontSize;
-  final FontWeight? fontWeight;
-
   const CustomFilledButton({
     super.key,
     required this.label,
     required this.onPressed,
     this.isLoading = false,
     this.isEnabled = true,
-    this.foregroundColor,
-    this.fontSize = 18,
-    this.fontWeight = FontWeight.w400,
   });
   //
 
@@ -55,8 +48,10 @@ class CustomFilledButton extends StatelessWidget {
                       : TextWidget(
                         label,
                         TextType.titleMedium,
-                        fontWeight: fontWeight,
-                        fontSize: fontSize,
+                        fontWeight:
+                            !isEnabled ? FontWeight.w300 : FontWeight.w400,
+                        fontSize: 18,
+                        letterSpacing: 0.9,
                         color:
                             (isLoading || !isEnabled)
                                 ? colorScheme.inverseSurface
