@@ -199,93 +199,7 @@ See [`ADR.md`](./ADR.md) for rationale behind architectural choices, Riverpod us
 
 ## Files TREE
 lib/
-├── __for_each_project
-│   ├── _code_base
-│   ├── _docs
-│   │   ├── App core modules
-│   │   │   ├── Animation
-│   │   │   │   └── Lottie.md
-│   │   │   ├── Form fields
-│   │   │   │   └── Form fields for Riverpod.md
-│   │   │   └── Navigation
-│   │   │       ├── Auto Route.md
-│   │   │       ├── Go Router.md
-│   │   │       ├── Navigaion.md
-│   │   │       └── Navigator_2_0.md
-│   │   ├── Architecture Issues
-│   │   │   ├── Layers
-│   │   │   │   ├── for Riverpod.md
-│   │   │   │   ├── IDEAL Layers Separation.md
-│   │   │   │   └── Layered_code_base.md
-│   │   │   ├── MY OWN
-│   │   │   │   ├── AMS pattern.md
-│   │   │   │   └── NEW_SOLID.md
-│   │   │   ├── Patterns
-│   │   │   │   ├── 0 _ SHORT Description of Patterns.md
-│   │   │   │   ├── 1_ Creational patterns.md
-│   │   │   │   ├── 2_ Structural patterns.md
-│   │   │   │   ├── 3_Behavior patterns copy.md
-│   │   │   │   ├── How_to_choose_pattern.md
-│   │   │   │   └── Key Architecture principles.md
-│   │   │   └── x others
-│   │   │       └── Books.md
-│   │   ├── ChatGPT instructions for flutter.md
-│   │   ├── Data bases
-│   │   │   ├── DB readme.md
-│   │   │   ├── Local databases
-│   │   │   ├── Models.md
-│   │   │   └── Remote databases
-│   │   │       └── Dio&Retrofit implementation.md
-│   │   ├── Optimization
-│   │   │   ├── Class modifiers.md
-│   │   │   ├── Factory_model VS Enhanced_enum.md
-│   │   │   └── Objects amount decreasing.md
-│   │   ├── Others
-│   │   │   ├── GIT
-│   │   │   │   ├── GIT banches names.md
-│   │   │   │   └── renaming of branches.md
-│   │   │   └── README
-│   │   │       └── get projects files structure.md
-│   │   ├── Project Settings
-│   │   │   ├── App deployment.md
-│   │   │   ├── Build.md
-│   │   │   ├── Firebase Settings.md
-│   │   │   ├── Often-used packages.md
-│   │   │   ├── Root_SETUP guide.md
-│   │   │   └── Сommitizen setup.md
-│   │   └── State Managers
-│   │       ├── BLoC
-│   │       │   ├── BLoC:Cubit general_Info.md
-│   │       │   ├── Event_transformer example.md
-│   │       │   ├── Global:Scoped BLoC Injection.md
-│   │       │   ├── Hydrated BLoC.md
-│   │       │   ├── Rx_Dart info.md
-│   │       │   └── RX-Dart.md
-│   │       └── Riverpod
-│   │           ├── Async Value.md
-│   │           ├── GoRouter imlementation.md
-│   │           ├── lifehacks
-│   │           │   ├── _Convert Riverpod TO BLoC.md
-│   │           │   ├── AutoDispose_mode and keepAlive Pattern .md
-│   │           │   ├── Immutable_models with freezed.md
-│   │           │   ├── Pagination.md
-│   │           │   ├── Performance optimization.md
-│   │           │   ├── ProviderScopes and Overrides.md
-│   │           │   ├── Riverpod lints.md
-│   │           │   ├── Riverpod Logging.md
-│   │           │   ├── Riverpod Snippets extension.md
-│   │           │   ├── Skip-loading on refresh.md
-│   │           │   └── Use When or Switch syntaxys .md
-│   │           └── providers
-│   │               ├── Async_Noifier providers.md
-│   │               ├── Async_Stream providers.md
-│   │               ├── Future providers.md
-│   │               ├── Notifier providers.md
-│   │               ├── Simple providers.md
-│   │               ├── State providers.md
-│   │               ├── State_and_Change_Notifier providers.md
-│   │               └── Stream providers.md
-│   ├── ADR.md
+├──--── ADR.md
 │   ├── analysis_options.yaml
 │   ├── assets
 │   │   ├── fonts
@@ -339,19 +253,7 @@ lib/
 │   │   ├── translations
 │   │   │   ├── en.json
 │   │   │   ├── pl.json
-│   │   │   ├── translations
-│   │   │   │   ├── en.json
-│   │   │   │   ├── pl.json
-│   │   │   │   ├── translations
-│   │   │   │   │   ├── en.json
-│   │   │   │   │   ├── pl.json
-│   │   │   │   │   ├── translations
-│   │   │   │   │   │   ├── en.json
-│   │   │   │   │   │   ├── pl.json
-│   │   │   │   │   │   └── uk.json
-│   │   │   │   │   └── uk.json
-│   │   │   │   └── uk.json
-│   │   │   └── uk.json
+│   │   │   ├── uk.json
 │   │   └── vectors
 │   ├── custom_lint.log
 │   ├── firebase
