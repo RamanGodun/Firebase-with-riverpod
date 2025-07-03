@@ -1,19 +1,16 @@
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:formz/formz.dart' show Formz;
 import '../../../../form_fields/input_validation/_validation_enums.dart';
 
 /// 📦 [SignInFormState] — Immutable model representing the state of the sign-in form.
 /// Tracks field values, password visibility, and overall form validity.
 
-class SignInFormState {
-  ///----------------
+class SignInFormState extends Equatable {
+  ///---------------------------------
 
-  // Formz input for validating user email
   final EmailInputValidation email;
-  // Current value of the password input field.
   final PasswordInputValidation password;
-  // Whether the password should be obscured (hidden).
   final bool isPasswordObscure;
-  // Whether the form is valid (all inputs are valid).
   final bool isValid;
 
   /// Creates a new [SignInFormState] instance.
@@ -44,6 +41,10 @@ class SignInFormState {
     final valid = Formz.validate([email, password]);
     return copyWith(isValid: valid);
   }
+
+  ///
+  @override
+  List<Object> get props => [email, password, isPasswordObscure, isValid];
 
   //
 }
