@@ -39,8 +39,11 @@ useSignUpFocusNodes() {
 ////
 
 ////
-({FocusNode email}) useResetPasswordFocusNodes() {
-  final email = useFocusNode();
 
-  return (email: email);
+({FocusNode password, FocusNode confirmPassword})
+useChangePasswordFocusNodes() {
+  final password = useFocusNode();
+  final confirmPassword = useFocusNode();
+
+  return (password: password, confirmPassword: confirmPassword);
 }

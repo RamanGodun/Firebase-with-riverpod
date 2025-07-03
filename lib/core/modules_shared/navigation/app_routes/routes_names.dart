@@ -33,7 +33,7 @@ abstract final class RoutesNames {
   static const changePassword = 'changePassword';
 
   /// 🔑 Re-authentication Page (e.g. before changing password)
-  static const String reAuthentication = 'reAuthenticationPage';
+  // static const String reAuthentication = 'reAuthenticationPage';
 
   /// ❌ Fallback Error Page (e.g. 404)
   static const pageNotFound = 'pageNotFound';

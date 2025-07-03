@@ -1,0 +1,68 @@
+import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
+
+import '../../../../form_fields/input_validation/_validation_enums.dart';
+
+/// 📦 [ChangePasswordFormState] — immutable state of the change password form
+/// 🧠 Tracks inputs, visibility flags, and overall form validity
+
+class ChangePasswordFormState extends Equatable {
+  /// ----------------------------------------
+
+  final PasswordInputValidation password;
+  final ConfirmPasswordInputValidation confirmPassword;
+  final bool isPasswordObscure;
+  final bool isConfirmPasswordObscure;
+  final bool isValid;
+
+  /// 🧱 Constructor with default (pure) values
+  const ChangePasswordFormState({
+    this.password = const PasswordInputValidation.pure(),
+    this.confirmPassword = const ConfirmPasswordInputValidation.pure(),
+    this.isPasswordObscure = true,
+    this.isConfirmPasswordObscure = true,
+    this.isValid = false,
+  });
+
+  /// 🔁 Returns new state with updated fields
+  ChangePasswordFormState copyWith({
+    PasswordInputValidation? password,
+    ConfirmPasswordInputValidation? confirmPassword,
+    bool? isPasswordObscure,
+    bool? isConfirmPasswordObscure,
+    bool? isValid,
+  }) {
+    return ChangePasswordFormState(
+      password: password ?? this.password,
+      confirmPassword: confirmPassword ?? this.confirmPassword,
+      isPasswordObscure: isPasswordObscure ?? this.isPasswordObscure,
+      isConfirmPasswordObscure:
+          isConfirmPasswordObscure ?? this.isConfirmPasswordObscure,
+      isValid: isValid ?? this.isValid,
+    );
+  }
+
+  /// ✅ Validates inputs and updates [isValid]
+  ChangePasswordFormState validate() {
+    final valid = Formz.validate([password, confirmPassword]);
+    return copyWith(isValid: valid);
+  }
+
+  /// 🔁 Revalidates [confirmPassword] after [password] changes
+  ChangePasswordFormState updateConfirmPasswordValidation() {
+    final updatedConfirm = confirmPassword.updatePassword(password.value);
+    final valid = Formz.validate([password, updatedConfirm]);
+    return copyWith(confirmPassword: updatedConfirm, isValid: valid);
+  }
+
+  @override
+  List<Object> get props => [
+    password,
+    confirmPassword,
+    isPasswordObscure,
+    isConfirmPasswordObscure,
+    isValid,
+  ];
+
+  //
+}

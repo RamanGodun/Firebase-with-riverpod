@@ -16,7 +16,7 @@ abstract final class RoutesPaths {
   static const signUp = '/${RoutesNames.signUp}';
   static const resetPassword = '/${RoutesNames.resetPassword}';
   static const verifyEmail = '/${RoutesNames.verifyEmail}';
-  static const reAuthentication = '/${RoutesNames.reAuthentication}';
+  // static const reAuthentication = '/${RoutesNames.reAuthentication}';
 
   /// 🏠 Main App Route (root)
   static const home = '/${RoutesNames.home}';

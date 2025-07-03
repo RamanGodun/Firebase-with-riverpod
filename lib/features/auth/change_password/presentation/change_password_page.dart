@@ -1,24 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/modules_shared/localization/generated/locale_keys.g.dart';
+import 'package:firebase_with_riverpod/core/modules_shared/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/change_password_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../form_fields_old/form_field_widget.dart';
-import '../../../form_fields_old/form_fields_model.dart';
-import '../../../form_fields_old/form_state_provider.dart';
-import '../../../form_fields_old/presets_of_forms.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
+import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
+import '../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../../core/modules_shared/localization/widgets/text_widget.dart';
 import '../../../../core/modules_shared/theme/ui_constants/_app_constants.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
-import 'change_password_provider.dart';
+import '../../../form_fields/widgets/_fields_factory.dart';
+import '../../../form_fields/widgets/password_visibility_icon.dart';
+import 'providers/change_password_form_provider.dart';
+import 'providers/change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';
 
 /// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
 
-class ChangePasswordPage extends ConsumerWidget {
+class ChangePasswordPage extends HookConsumerWidget {
   ///-------------------------------------------
   const ChangePasswordPage({super.key});
   //
@@ -26,16 +29,11 @@ class ChangePasswordPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    final fieldTypes = FormTemplates.changePasswordFields;
-    final formProvider = formStateNotifierProvider(fieldTypes);
-    final formState = ref.watch(formProvider);
-    final formNotifier = ref.read(formProvider.notifier);
-    final isFormValid = ref.watch(formValidProvider(fieldTypes));
-
-    final changePasswordState = ref.watch(changePasswordProvider);
 
     // 🔁 Declarative side-effect for ChangePassword
     ref.listenToPasswordChange(context);
+
+    final focus = useChangePasswordFocusNodes();
 
     return Scaffold(
       appBar: AppBar(),
@@ -48,36 +46,14 @@ class ChangePasswordPage extends ConsumerWidget {
               children: [
                 const _ChangePasswordInfo(),
                 const SizedBox(height: AppSpacing.xxxm),
-                for (final type in fieldTypes)
-                  AppFormField(
-                    type: type,
-                    fields: fieldTypes,
-                    showToggleVisibility: true,
-                  ),
-                const SizedBox(height: AppSpacing.massive),
-                CustomFilledButton(
-                  onPressed:
-                      changePasswordState.isLoading
-                          ? null
-                          : () {
-                            if (isFormValid) {
-                              ref
-                                  .read(changePasswordProvider.notifier)
-                                  .changePassword(
-                                    formState.valueOf(FormFieldType.password),
-                                  );
-                            } else {
-                              formNotifier.validateAll();
-                            }
-                          },
-                  label:
-                      changePasswordState.isLoading
-                          ? LocaleKeys.buttons_submitting
-                          : LocaleKeys.change_password_title,
-                  isEnabled: !changePasswordState.isLoading,
-                  isLoading: changePasswordState.isLoading,
-                ),
-                const SizedBox(height: AppSpacing.huge),
+
+                _PasswordField(focus: focus),
+                const SizedBox(height: AppSpacing.m),
+
+                _ConfirmPasswordField(focus: focus),
+                const SizedBox(height: AppSpacing.xxxl),
+
+                const _ChangePasswordSubmitButton(),
               ],
             ).withPaddingHorizontal(AppSpacing.l),
           ),

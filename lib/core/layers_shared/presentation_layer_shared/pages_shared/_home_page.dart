@@ -52,7 +52,7 @@ class _GoToProfilePageButton extends StatelessWidget {
     //
     return IconButton(
       icon: const Icon(Icons.person_2),
-      onPressed: () => context.pushToNamed(RoutesNames.profile),
+      onPressed: () => context.goPushTo(RoutesNames.profile),
     ).withPaddingRight(AppSpacing.l);
   }
 
