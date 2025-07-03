@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
-import 'core/modules_shared/localization/generated/locale_keys.g.dart';
+// import 'core/modules_shared/localization/generated/locale_keys.g.dart';
 import 'core/modules_shared/navigation/core/go_router_provider.dart';
 import 'core/modules_shared/overlays/core/global_overlay_handler.dart';
 import 'core/modules_shared/theme/theme_provider/theme_config_provider.dart';
@@ -67,7 +67,8 @@ final class _AppRootView extends StatelessWidget {
     //
     return MaterialApp.router(
       //
-      title: LocaleKeys.app_title.tr(),
+      title: '',
+      // titleBuilder: (context, _) => LocaleKeys.app_title.tr(),
       debugShowCheckedModeBanner: !kReleaseMode,
 
       // 🌍 Localization config

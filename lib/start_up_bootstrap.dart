@@ -5,64 +5,55 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show debugRepaintRainbowEnabled;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 import 'core/app_configs/firebase/env.dart';
-import 'core/modules_shared/di_container/di_container.dart';
 import 'core/modules_shared/localization/app_localizer.dart';
 import 'core/app_configs/constants/platform_requirements.dart';
 import 'core/app_configs/firebase/env_firebase_options.dart';
 import 'core/app_configs/firebase/firebase_utils.dart';
 
+/// 🧰 [StartUpHandler] — Abstract contract for app startup logic
+/// ✅ Must be called before [runApp] to initialize critical services
+
+sealed class StartUpHandler {
+  ///----------------------
+  const StartUpHandler();
+
+  ///
+  Future<void> bootstrap();
+  //
+}
+
+////
+
+////
+
+////
+
 ///🧰 Handles all startup initialization tasks
 // ✅ Sequentially initializes all critical services
 
-final class StartUpHandler {
-  /// ────────────────────
-  StartUpHandler._();
+final class DefaultStartUpHandler extends StartUpHandler {
+  /// ────────────────────-----------------------------
+  const DefaultStartUpHandler();
   //
 
   /// 🎯 Entry point — must be called before [runApp]
-
-  static Future<void> bootstrap() async {
+  @override
+  Future<void> bootstrap() async {
     /// ────────────────────────────────
     //
-    _initializeCoreBindings();
     await _validatePlatformSupport();
     await _initLocalization();
     await _initLocalStorage();
     await _initEnvFile();
     await _initializeFirebase();
     _initUrlStrategy();
+    _configureDebugTools();
   }
 
   ////
-
-  ///🛠️ Initializes fundamental Flutter bindings and core services
-  // ✅ Sets up global Riverpod DI container with overrides
-  //
-  static void _initializeCoreBindings() {
-    /// ────────────────────────────────
-    //
-    // WidgetsFlutterBinding.ensureInitialized();
-    debugRepaintRainbowEnabled = false;
-    globalContainer = ProviderContainer(overrides: diContainer);
-  }
-
-  ////
-
-  ///🌍 Initializes localization engine (EasyLocalization)
-  // ✅ Sets up `AppLocalizer` resolver
-
-  static Future<void> _initLocalization() async {
-    /// ────────────────────────────────────────
-    //
-    await EasyLocalization.ensureInitialized();
-    AppLocalizer.init(resolver: (key) => key.tr());
-    // AppLocalizer.initWithFallback(); // ← use if app has no translations
-  }
-
   ////
 
   ///📱 Check minimum platform support (e.g., Android SDK)
@@ -83,18 +74,26 @@ final class StartUpHandler {
 
   ////
 
+  ///🌍 Initializes localization engine (EasyLocalization)
+  // ✅ Sets up `AppLocalizer` resolver
+
+  static Future<void> _initLocalization() async {
+    /// ────────────────────────────────────────
+    //
+    await EasyLocalization.ensureInitialized();
+    AppLocalizer.init(resolver: (key) => key.tr());
+    // AppLocalizer.initWithFallback(); // ← use if app has no translations
+  }
+
+  ////
+
   ///📀 Loads environment configuration (.env file)
 
   static Future<void> _initEnvFile() async {
     /// ───────────────────────────────────
     //
-    final envFile = switch (EnvConfig.currentEnv) {
-      Environment.dev => '.env.dev',
-      Environment.staging => '.env.staging',
-      Environment.prod => '.env',
-    };
-    await dotenv.load(fileName: envFile);
-    debugPrint('✅ Loaded env file: $envFile');
+    await dotenv.load(fileName: EnvConfig.currentEnv.fileName);
+    debugPrint('✅ Loaded env file: $EnvConfig.currentEnv.fileName');
   }
 
   ////
@@ -145,6 +144,12 @@ final class StartUpHandler {
     /// ────────────────────────
     //
     setPathUrlStrategy();
+  }
+
+  /// 🧪 Configures Flutter-specific debug tools
+  /// ✅ Controls visual debugging options (e.g., repaint highlighting)
+  static void _configureDebugTools() {
+    debugRepaintRainbowEnabled = false;
   }
 
   //
