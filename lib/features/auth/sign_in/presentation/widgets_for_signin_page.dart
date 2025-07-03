@@ -46,7 +46,7 @@ class _SignInPasswordInputField extends ConsumerWidget {
       errorText: form.password.uiErrorKey,
       isObscure: form.isPasswordObscure,
       onChanged: formNotifier.passwordChanged,
-      onSubmitted: () => ref.submitSignIn(),
+      onSubmitted: form.isValid ? () => ref.submitSignIn() : null,
       suffixIcon: ObscureToggleIcon(
         isObscure: form.isPasswordObscure,
         onPressed: formNotifier.togglePasswordVisibility,

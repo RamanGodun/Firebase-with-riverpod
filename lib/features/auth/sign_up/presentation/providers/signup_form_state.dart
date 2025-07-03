@@ -41,7 +41,8 @@ class SignUpFormState {
       password: password ?? this.password,
       confirmPassword: confirmPassword ?? this.confirmPassword,
       isPasswordObscure: isPasswordObscure ?? this.isPasswordObscure,
-      isConfirmPasswordObscure: isConfirmPasswordObscure ?? this.isConfirmPasswordObscure,
+      isConfirmPasswordObscure:
+          isConfirmPasswordObscure ?? this.isConfirmPasswordObscure,
       isValid: isValid ?? this.isValid,
     );
   }

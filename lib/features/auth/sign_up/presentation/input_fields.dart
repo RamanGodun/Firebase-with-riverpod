@@ -105,7 +105,7 @@ class _ConfirmPasswordInputField extends ConsumerWidget {
       errorText: form.confirmPassword.uiErrorKey,
       isObscure: form.isConfirmPasswordObscure,
       onChanged: formNotifier.confirmPasswordChanged,
-      onSubmitted: () => ref.submitSignUp(),
+      onSubmitted: form.isValid ? () => ref.submitSignUp() : null,
       suffixIcon: ObscureToggleIcon(
         isObscure: form.isConfirmPasswordObscure,
         onPressed: formNotifier.toggleConfirmPasswordVisibility,

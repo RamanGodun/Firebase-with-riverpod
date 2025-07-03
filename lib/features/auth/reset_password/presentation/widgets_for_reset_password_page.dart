@@ -28,6 +28,65 @@ class _ResetPasswordHeader extends StatelessWidget {
 
 ////
 
+/// 🧾 [_ResetPasswordEmailInputField] — email input field for password reset
+
+class _ResetPasswordEmailInputField extends HookConsumerWidget {
+  ///----------------------------------------------------
+  const _ResetPasswordEmailInputField();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    //
+    final form = ref.watch(resetPasswordFormProvider);
+    final notifier = ref.read(resetPasswordFormProvider.notifier);
+    final focusNode = useFocusNode();
+
+    return InputFieldFactory.create(
+      type: InputFieldType.email,
+      focusNode: focusNode,
+      errorText: form.email.uiErrorKey,
+      onChanged: notifier.emailChanged,
+      onSubmitted: form.isValid ? () => ref.submitResetPassword() : null,
+    );
+  }
+}
+
+////
+
+////
+
+/// 🔘 [_ResetPasswordSubmitButton] — confirms reset action
+
+class _ResetPasswordSubmitButton extends ConsumerWidget {
+  ///--------------------------------------
+  const _ResetPasswordSubmitButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    //
+    final form = ref.watch(resetPasswordFormProvider);
+    final resetState = ref.watch(resetPasswordProvider);
+    final isOverlayActive = ref.isOverlayActive;
+
+    return CustomFilledButton(
+      onPressed:
+          form.isValid && !resetState.isLoading
+              ? () => ref.submitResetPassword()
+              : null,
+      label:
+          resetState.isLoading
+              ? LocaleKeys.buttons_submitting
+              : LocaleKeys.buttons_reset_password,
+      isLoading: resetState.isLoading,
+      isEnabled: form.isValid && !isOverlayActive,
+    );
+  }
+}
+
+////
+
+////
+
 /// 🔁 [_ResetPasswordFooter] — footer with redirect to Sign In
 
 class _ResetPasswordFooter extends StatelessWidget {

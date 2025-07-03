@@ -31,10 +31,10 @@ class SignUpForm extends _$SignUpForm {
   void passwordChanged(String value) {
     final password = PasswordInputValidation.dirty(value);
     final confirmPassword = state.confirmPassword.updatePassword(value);
-    state = state.copyWith(
-      password: password,
-      confirmPassword: confirmPassword,
-    ).validate();
+    state =
+        state
+            .copyWith(password: password, confirmPassword: confirmPassword)
+            .validate();
   }
 
   /// Updates the confirm password field and revalidates.
