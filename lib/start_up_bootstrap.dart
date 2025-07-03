@@ -42,8 +42,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
   /// 🎯 Entry point — must be called before [runApp]
   @override
   Future<void> bootstrap() async {
-    /// ────────────────────────────────
-    //
+    ///
     await _validatePlatformSupport();
     await _initLocalization();
     await _initLocalStorage();
@@ -51,6 +50,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
     await _initializeFirebase();
     _initUrlStrategy();
     _configureDebugTools();
+    //
   }
 
   ////
@@ -59,8 +59,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
   ///📱 Check minimum platform support (e.g., Android SDK)
 
   static Future<void> _validatePlatformSupport() async {
-    /// ───────────────────────────────────────────────
-    //
+    ///
     if (Platform.isAndroid) {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
       if (androidInfo.version.sdkInt < PlatformConstants.minSdkVersion) {
@@ -78,8 +77,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
   // ✅ Sets up `AppLocalizer` resolver
 
   static Future<void> _initLocalization() async {
-    /// ────────────────────────────────────────
-    //
+    ///
     await EasyLocalization.ensureInitialized();
     AppLocalizer.init(resolver: (key) => key.tr());
     // AppLocalizer.initWithFallback(); // ← use if app has no translations
@@ -90,10 +88,10 @@ final class DefaultStartUpHandler extends StartUpHandler {
   ///📀 Loads environment configuration (.env file)
 
   static Future<void> _initEnvFile() async {
-    /// ───────────────────────────────────
-    //
+    ///
     await dotenv.load(fileName: EnvConfig.currentEnv.fileName);
     debugPrint('✅ Loaded env file: $EnvConfig.currentEnv.fileName');
+    //
   }
 
   ////
@@ -101,8 +99,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
   /// 🔥 Initializes Firebase if not already initialized
 
   static Future<void> _initializeFirebase() async {
-    /// ──────────────────────────────────────────
-    //
+    ///
     if (!FirebaseUtils.isDefaultAppInitialized) {
       try {
         await Firebase.initializeApp(
@@ -120,6 +117,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
       debugPrint('⚠️ Firebase already initialized (checked manually)');
     }
     FirebaseUtils.logAllApps();
+    //
   }
 
   ////
@@ -128,11 +126,9 @@ final class DefaultStartUpHandler extends StartUpHandler {
   // ✅ Initializes GetStorage (local key-value DB)
 
   static Future<void> _initLocalStorage() async {
-    /// ───────────────────────────────────────-
-    //
+    ///
     await GetStorage.init();
-    // SharedPreferences (if used) can be initialized here
-    // final sharedPrefs = await SharedPreferences.getInstance();
+    //
   }
 
   ////
@@ -141,15 +137,18 @@ final class DefaultStartUpHandler extends StartUpHandler {
   // ✅ Removes `#` from web URLs for cleaner routing
 
   static void _initUrlStrategy() {
-    /// ────────────────────────
-    //
+    ///
     setPathUrlStrategy();
+    //
   }
 
   /// 🧪 Configures Flutter-specific debug tools
   /// ✅ Controls visual debugging options (e.g., repaint highlighting)
+
   static void _configureDebugTools() {
+    ///
     debugRepaintRainbowEnabled = false;
+    //
   }
 
   //

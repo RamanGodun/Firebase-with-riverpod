@@ -30,7 +30,6 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       parent: globalContainer,
-      observers: [Logger()],
       child: AppLocalization.wrap(const AppRootViewWrapper()),
     ),
   );
