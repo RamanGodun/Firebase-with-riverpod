@@ -1,9 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../layers_shared/domain_layer_shared/providers_shared/auth_state_provider.dart';
-import '../../../layers_shared/domain_layer_shared/providers_shared/auth_state_refresher_provider.dart';
+import '../../../layers_shared/domain_layer_shared/providers_shared/auth_state_providers.dart';
 import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
-import '../utils/overlay_navigation_observer.dart';
+import '../../overlays/overlays_dispatcher/overlay_navigation_observer.dart';
 import '../utils/routes_redirection_service.dart';
 import '../app_routes/app_routes.dart';
 
@@ -26,7 +25,6 @@ final routerProvider = Provider<GoRouter>((ref) => ref.watch(goRouter));
 final goRouter = Provider<GoRouter>((_) => throw UnimplementedError());
 
 /*
-!
-створити Provider<GoRouter>, використовувати .select((r)=>r) або .watch(routerProvider) у верху дерева,
-! і передати результат в MaterialApp.router. Офіційні гайди підтверджують це як best practice 
+? створити Provider<GoRouter>, використовувати .select((r)=>r) або .watch(routerProvider) у верху дерева,
+? і передати результат в MaterialApp.router. Офіційні гайди підтверджують це як best practice 
  */

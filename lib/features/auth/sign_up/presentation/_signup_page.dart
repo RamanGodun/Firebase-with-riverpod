@@ -8,7 +8,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
 import '../../../../core/foundation/localization/widgets/text_widget.dart';
 import '../../../../core/foundation/localization/generated/locale_keys.g.dart';
-import '../../../../core/foundation/navigation/app_routes/app_routes.dart';
 import '../../../../core/foundation/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
@@ -19,7 +18,7 @@ import '../../../form_fields/widgets/password_visibility_icon.dart';
 import 'providers/sign_up_form_provider.dart';
 import 'providers/signup_provider.dart';
 
-part 'widgets_for_signup_page.dart';
+part 'widgets_for_sign_up_page.dart';
 part 'input_fields.dart';
 
 /// 🔐 [SignUpPage] — screen that allows user to register a new account.

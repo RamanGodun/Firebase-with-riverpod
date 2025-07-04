@@ -21,7 +21,7 @@ import 'providers/_signin_provider.dart';
 import 'providers/sign_in_form_fields_provider.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 
-part 'widgets_for_signin_page.dart';
+part 'widgets_for_sign_in_page.dart';
 
 /// 🔐 [SignInPage] — screen that allows user to sign in.
 

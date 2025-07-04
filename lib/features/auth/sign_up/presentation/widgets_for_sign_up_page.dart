@@ -76,7 +76,8 @@ class _SignupFooter extends StatelessWidget {
         const SizedBox(height: AppSpacing.s),
 
         AppTextButton(
-          onPressed: () => context.goTo(RoutesNames.signIn),
+          onPressed: () => context.popView(),
+          // context.goTo(RoutesNames.signIn),
           label: LocaleKeys.buttons_sign_in,
         ),
       ],
