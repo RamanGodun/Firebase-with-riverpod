@@ -1,10 +1,10 @@
 import 'package:firebase_with_riverpod/root_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/modules_shared/di_container/di_container.dart';
-import 'core/modules_shared/localization/app_localization.dart';
-import 'core/modules_shared/logging/for_riverpod/riverpod_observer.dart';
-import 'start_up_handler_provider.dart';
+import 'core/layers_shared/_infrastructure_layer/di_container/di_container.dart';
+import 'core/foundation/localization/app_localization.dart';
+import 'core/foundation/logging/for_riverpod/riverpod_observer.dart';
+import 'start_up_bootstrap.dart';
 
 /// 🏁 Entry point of the application.
 /// ✅ Performs synchronous bootstrapping and launches the app.
@@ -24,7 +24,14 @@ Future<void> main() async {
   );
 
   /// 🚀 Run startup logic injected via DI
-  await globalContainer.read(startUpHandlerProvider).bootstrap();
+  final startUpHandler = const DefaultStartUpHandler(
+    // ? Here can be pluged in custom dependencies, fe:
+    // firebaseStack: MockFirebaseStack(),
+    // debugTools: FakeDebugTools(),
+  );
+  await startUpHandler.bootstrap();
+
+  ////
 
   // 🏁🚀 Run app inside Riverpod's scope with logger and localization
   runApp(
@@ -36,8 +43,6 @@ Future<void> main() async {
 }
 
 /*
-
-2.  винести обробку FirebaseException в загальний error handler,
 
 3.  Можна за бажанням кешувати GoRouter у Provider.autoDispose з keepAlive для тестабельності
 

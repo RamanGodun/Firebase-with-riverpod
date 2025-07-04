@@ -2,9 +2,9 @@ import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objec
 
 import '../../../core/app_configs/firebase/firebase_constants.dart';
 import '../../../core/utils_shared/typedef.dart';
-import '../../../core/modules_shared/errors_handling/either/either.dart';
-import '../../../core/modules_shared/errors_handling/failures/failure_entity.dart';
-import '../../../core/modules_shared/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
+import '../../../core/foundation/errors_handling/either/either.dart';
+import '../../../core/foundation/errors_handling/failures/failure_entity.dart';
+import '../../../core/foundation/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../domain/entities/_user_entity.dart';
 import '../domain/profile_repo_contract.dart';
 import 'data_transfer_objects/user_dto_factories_x.dart';

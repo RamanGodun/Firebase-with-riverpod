@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter/material.dart' show ChangeNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../modules_shared/navigation/utils/refresh_adapter.dart';
+import '../../../foundation/navigation/utils/refresh_adapter.dart';
 import 'auth_state_provider.dart';
 
 part 'auth_state_refresher_provider.g.dart';

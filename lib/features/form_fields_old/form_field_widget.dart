@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/foundation/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../core/modules_shared/theme/ui_constants/_app_constants.dart';
-import '../../core/modules_shared/localization/generated/locale_keys.g.dart';
+import '../../core/foundation/theme/ui_constants/_app_constants.dart';
+import '../../core/foundation/localization/generated/locale_keys.g.dart';
 import 'form_fields_model.dart';
 import 'form_state_provider.dart';
 

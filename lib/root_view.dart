@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
 // import 'core/modules_shared/localization/generated/locale_keys.g.dart';
-import 'core/modules_shared/navigation/core/go_router_provider.dart';
-import 'core/modules_shared/overlays/core/global_overlay_handler.dart';
-import 'core/modules_shared/theme/theme_provider/theme_config_provider.dart';
+import 'core/foundation/navigation/core/go_router_provider.dart';
+import 'core/foundation/overlays/core/global_overlay_handler.dart';
+import 'core/foundation/theme/theme_provider/theme_config_provider.dart';
 
 /// 🧩 [AppRootViewWrapper] — Combines both Theme and Router configuration
 /// ✅ Ensures minimal rebuilds using selective `ref.watch(...)`

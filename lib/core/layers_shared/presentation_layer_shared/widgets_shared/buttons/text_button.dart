@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/modules_shared/theme/extensions/theme_x.dart';
-import '../../../../modules_shared/localization/widgets/text_widget.dart';
+import 'package:firebase_with_riverpod/core/foundation/theme/extensions/theme_x.dart';
+import '../../../../foundation/localization/widgets/text_widget.dart';
 
 /// 🔘 [AppTextButton] — minimal, animated text-only button with underline option
 class AppTextButton extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../../core/modules_shared/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../../../../core/foundation/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../../domain/change_password_use_case_provider.dart';
 
 part 'change_password_provider.g.dart';
