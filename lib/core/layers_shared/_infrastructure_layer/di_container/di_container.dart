@@ -9,7 +9,8 @@ import '../../../foundation/overlays/overlays_dispatcher/overlay_dispatcher_prov
 import '../../../foundation/theme/theme_provider/theme_config_provider.dart';
 
 /// 🌍 Global singleton DI container
-/// ✅ Used both inside the widget tree (`ProviderScope.parent`) and outside context (e.g., background logic, isolate, utilities)
+/// ✅ Used both inside the widget tree (`ProviderScope.parent`) and outside context
+/// e.g., background logic, startup handlers, isolates, or tests).
 /// ✅ Initialized once in [main()]
 
 late final ProviderContainer globalContainer;
@@ -18,24 +19,23 @@ late final ProviderContainer globalContainer;
 ////
 ////
 
-/// 📦 [diContainer] — global list of manually maintained providers
-// 🧼 Used in `ProviderScope(overrides: [...])` or just imported once
+/// 📦 [diOverrides] — all DI overrides for Riverpod ProviderScope
+/// 🧼 Used in `ProviderScope(overrides: diOverrides)` at app startup
 
-final List<Override> diContainer = [
-  //-------------------------------
-
-  // 🧩 Profile layer
+final List<Override> diOverrides = [
+  ///
+  // 🧩 Profile
   profileRepoProvider.overrideWith(
     (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
   ),
 
-  // 🎨 Theme layer
+  // 🎨 Theme
   themeStorageProvider.overrideWith((ref) => GetStorage()),
   themeProvider.overrideWith(
     (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
   ),
 
-  /// ── Navigation System ───
+  // 🗺️ Navigation
   goRouter.overrideWith((ref) => buildGoRouter(ref)),
 
   // 📤 Overlay dispatcher
@@ -45,5 +45,5 @@ final List<Override> diContainer = [
     ),
   ),
 
-  // ...
+  //
 ];

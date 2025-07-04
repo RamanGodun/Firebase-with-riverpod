@@ -26,11 +26,12 @@ GoRouter buildGoRouter(Ref ref) {
         (context, state) => PageNotFound(errorMessage: state.error.toString()),
 
     /// 🔁 Triggers route evaluation when `authState` changes
-    refreshListenable: ref.watch(authStateRefreshListenableProvider),
+    // refreshListenable: ref.watch(authStateRefreshListenableProvider),
 
     /// 🧭 Global redirect handler — routes user depending on auth state
     redirect: (context, state) {
-      final authState = ref.read(authStateStreamProvider);
+      final authState = ref.watch(authStateStreamProvider);
+      // final authState = ref.read(authStateStreamProvider); // ? when using refreshListenable
       return RoutesRedirectionService.from(context, state, authState);
     },
   );

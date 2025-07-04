@@ -6,26 +6,26 @@ import 'core/foundation/localization/app_localization.dart';
 import 'core/foundation/logging/for_riverpod/riverpod_observer.dart';
 import 'start_up_bootstrap.dart';
 
-/// 🏁 Entry point of the application.
-/// ✅ Performs synchronous bootstrapping and launches the app.
+/// 🏁 Entry point of the application. Initializes Flutter bindings, configures DI, and launches the app
 Future<void> main() async {
   ///
-  // 🛠️ Ensure Flutter is ready
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// Launch Loader, while app is initializing
+  /// 🚀 Launch Loader, while app is initializing
   // final themeMode = await resolveThemeMode();
   // runApp(InitialLoader(themeMode: themeMode));
 
-  /// 🧩 Create global ProviderContainer with overrides
+  /// Creates a global DI container for access outside widget tree.
+  /// ProviderScope inherits this via `parent`, ensuring shared DI and consistent overrides between imperative code and widgets tree.
   globalContainer = ProviderContainer(
-    overrides: diContainer,
+    overrides: diOverrides,
     observers: [Logger()],
   );
 
-  /// 🚀 Run startup logic injected via DI
+  /// 🚀 Runs all imperative startup logic (localization, Firebase, storage, etc).
+  /// StartupHandler can access DI from globalContainer outside context.
   final startUpHandler = const DefaultStartUpHandler(
-    // ? Here can be pluged in custom dependencies, fe:
+    // ? Here can be plugged in custom dependencies, fe:
     // firebaseStack: MockFirebaseStack(),
     // debugTools: FakeDebugTools(),
   );
@@ -33,7 +33,7 @@ Future<void> main() async {
 
   ////
 
-  // 🏁🚀 Run app inside Riverpod's scope with logger and localization
+  /// 🏁🚀 Launches the app with ProviderScope using the global container as parent.
   runApp(
     ProviderScope(
       parent: globalContainer,
@@ -41,11 +41,3 @@ Future<void> main() async {
     ),
   );
 }
-
-/*
-
-3.  Можна за бажанням кешувати GoRouter у Provider.autoDispose з keepAlive для тестабельності
-
-4. Розглянь titleBuilder або реактивну зміну title, якщо локалізація зміниться на гарячу
-
- */
