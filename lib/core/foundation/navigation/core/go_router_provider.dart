@@ -23,4 +23,3 @@ final routerProvider = Provider<GoRouter>((ref) => ref.watch(goRouter));
 /// 🚫 Should not be used directly in the widget tree.
 
 final goRouter = Provider<GoRouter>((_) => throw UnimplementedError());
-

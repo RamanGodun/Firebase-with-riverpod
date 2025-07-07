@@ -3,10 +3,9 @@ import 'core/layers_shared/_infrastructure_layer/_bootstrap/debug_tools.dart';
 import 'core/layers_shared/_infrastructure_layer/_bootstrap/firebase_init.dart';
 import 'core/layers_shared/_infrastructure_layer/_bootstrap/local_storage_init.dart';
 import 'core/layers_shared/_infrastructure_layer/_bootstrap/localization_init.dart';
-import 'core/layers_shared/_infrastructure_layer/_bootstrap/others_boostrap.dart';
+import 'core/layers_shared/_infrastructure_layer/_bootstrap/others_bootstrap.dart';
 
 /// 🧰 [StartUpHandler] — Abstract contract for app startup logic
-/// ✅ Must be called before [runApp] to initialize critical services
 
 sealed class StartUpHandler {
   ///----------------------
@@ -21,8 +20,8 @@ sealed class StartUpHandler {
 
 ////
 
-///🧰 Handles all startup initialization tasks
-// ✅ Sequentially initializes all critical services
+/// 🧰 [DefaultStartUpHandler] — Production [StartUpHandler] implementation for bootstrapping all critical services.
+/// ✅ All dependencies are injectable for testing/mocking.
 
 final class DefaultStartUpHandler extends StartUpHandler {
   /// ────────────────────-----------------------------
@@ -33,6 +32,8 @@ final class DefaultStartUpHandler extends StartUpHandler {
   final IDebugTools _debugTools;
   final IOthersBootstrap _othersBootstrap;
 
+  /// Creates a fully-configurable startup handler.
+  /// All dependencies are optional and will default to production implementations.
   const DefaultStartUpHandler({
     ILocalizationStack? localizationStack,
     IFirebaseStack? firebaseStack,
@@ -49,7 +50,7 @@ final class DefaultStartUpHandler extends StartUpHandler {
 
   //
 
-  /// 🎯 Entry point — must be called before [runApp]
+  /// Main entrypoint: sequentially bootstraps all core app services before [runApp]
   @override
   Future<void> bootstrap() async {
     //

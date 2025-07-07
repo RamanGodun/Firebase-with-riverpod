@@ -25,7 +25,7 @@ Future<void> main() async {
   /// 🚀 Runs all imperative startup logic (localization, Firebase, storage, etc).
   /// StartupHandler can access DI from globalContainer outside context.
   final startUpHandler = const DefaultStartUpHandler(
-    // ? Here can be plugged in custom dependencies, fe:
+    // ? Here can be plugged in custom dependencies, e.g.:
     // firebaseStack: MockFirebaseStack(),
     // debugTools: FakeDebugTools(),
   );
