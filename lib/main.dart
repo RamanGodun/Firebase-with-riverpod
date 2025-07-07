@@ -3,24 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/layers_shared/_infrastructure_layer/di_container/di_container.dart';
 import 'core/foundation/localization/app_localization.dart';
-import 'core/foundation/logging/for_riverpod/riverpod_observer.dart';
 import 'start_up_bootstrap.dart';
 
 /// 🏁 Entry point of the application. Initializes Flutter bindings, configures DI, and launches the app
 Future<void> main() async {
   ///
-  WidgetsFlutterBinding.ensureInitialized();
-
-  /// 🚀 Launch Loader, while app is initializing
-  // final themeMode = await resolveThemeMode();
-  // runApp(InitialLoader(themeMode: themeMode));
-
-  /// Creates a global DI container for access outside widget tree.
-  /// ProviderScope inherits this via `parent`, ensuring shared DI and consistent overrides between imperative code and widgets tree.
-  globalContainer = ProviderContainer(
-    overrides: diOverrides,
-    observers: [Logger()],
-  );
 
   /// 🚀 Runs all imperative startup logic (localization, Firebase, storage, etc).
   /// StartupHandler can access DI from globalContainer outside context.
