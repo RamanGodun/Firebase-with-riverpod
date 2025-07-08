@@ -47,3 +47,18 @@ final List<Override> diOverrides = [
 
   //
 ];
+
+////
+
+////
+
+late final ProviderContainer dIContainerForInitLoader;
+
+final List<Override> dIForLoaderOverrides = [
+  ///
+  // 🎨 Theme
+  themeStorageProvider.overrideWith((ref) => GetStorage()),
+  themeProvider.overrideWith(
+    (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
+  ),
+];

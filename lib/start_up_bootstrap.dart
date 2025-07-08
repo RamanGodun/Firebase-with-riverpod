@@ -8,7 +8,6 @@ import 'core/layers_shared/_infrastructure_layer/bootstrap/localization_init.dar
 import 'core/layers_shared/_infrastructure_layer/bootstrap/others_bootstrap.dart';
 import 'core/layers_shared/_infrastructure_layer/di_container/di_container.dart';
 import 'core/layers_shared/_infrastructure_layer/di_container/di_container_config.dart';
-import 'core/layers_shared/_infrastructure_layer/bootstrap/initial_loader.dart';
 
 /// 🧰 [StartUpHandler] — Abstract contract for app startup logic
 
@@ -63,23 +62,26 @@ final class DefaultStartUpHandler extends IStartUpHandler {
 
   @override
   Future<void> preBootstrap() async {
+    // Initialize Flutter bindings
+    WidgetsFlutterBinding.ensureInitialized();
+
+    _debugTools.configure();
+    await _debugTools.validatePlatformSupport();
+
+    await _localStorageStack.init();
+
     /// 🚀 Launch Loader, while app is initializing
-    final themeMode = await resolveThemeMode();
-    runApp(InitialLoader(themeMode: themeMode));
+    // final themeMode = await resolveThemeMode();
+    // runApp(InitialLoader(themeMode: themeMode));
   }
 
   /// Main entrypoint: sequentially bootstraps all core app services before [runApp]
   @override
   Future<void> bootstrap() async {
     //
-    _debugTools.configure();
-    await _debugTools.validatePlatformSupport();
-
     initDIContainer();
 
     await _localizationStack.init();
-
-    await _localStorageStack.init();
 
     await _firebaseStack.init();
 
