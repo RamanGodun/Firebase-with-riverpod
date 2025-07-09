@@ -48,7 +48,7 @@ class AppLoader extends StatelessWidget {
     final colorScheme = context.colorScheme;
     final primaryColor = color ?? colorScheme.primary;
 
-    final loader = Align(
+    return Align(
       alignment: alignment,
       child:
           isCupertino
@@ -79,7 +79,5 @@ class AppLoader extends StatelessWidget {
                 ),
               ),
     );
-
-    return wrapInMaterialApp ? MaterialApp(home: loader) : loader;
   }
 }

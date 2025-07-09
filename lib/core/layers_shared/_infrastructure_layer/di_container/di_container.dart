@@ -17,18 +17,12 @@ late final ProviderContainer globalContainer;
 
 ////
 ////
-////
 
 /// 📦 [diOverrides] — all DI overrides for Riverpod ProviderScope
 /// 🧼 Used in `ProviderScope(overrides: diOverrides)` at app startup
 
 final List<Override> diOverrides = [
   ///
-  // 🧩 Profile
-  profileRepoProvider.overrideWith(
-    (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
-  ),
-
   // 🎨 Theme
   themeStorageProvider.overrideWith((ref) => GetStorage()),
   themeProvider.overrideWith(
@@ -45,20 +39,9 @@ final List<Override> diOverrides = [
     ),
   ),
 
-  //
-];
-
-////
-
-////
-
-late final ProviderContainer dIContainerForInitLoader;
-
-final List<Override> dIForLoaderOverrides = [
-  ///
-  // 🎨 Theme
-  themeStorageProvider.overrideWith((ref) => GetStorage()),
-  themeProvider.overrideWith(
-    (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
+  // 🧩 Profile
+  profileRepoProvider.overrideWith(
+    (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
   ),
+  //
 ];

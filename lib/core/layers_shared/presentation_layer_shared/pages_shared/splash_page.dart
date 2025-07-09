@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets_shared/loader.dart';
+import '../widgets_shared/loaders/loader.dart';
 
 /// ⏳ [SplashPage] — Displays a loading indicator
 
