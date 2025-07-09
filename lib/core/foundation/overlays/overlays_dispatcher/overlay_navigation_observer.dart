@@ -12,7 +12,7 @@ final class OverlayNavigatorObserver extends NavigatorObserver {
 
   /// 📦 Reference to the overlay dispatcher (via DI)
   OverlayDispatcher get overlaysDispatcher =>
-      globalContainer.read(overlayDispatcherProvider);
+      GlobalDIContainer.instance.read(overlayDispatcherProvider);
 
   ///
 

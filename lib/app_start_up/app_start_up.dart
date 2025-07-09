@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../core/foundation/logging/for_riverpod/riverpod_observer.dart';
 import 'app_core_initializations/debug_tools.dart';
 import 'app_core_initializations/local_storage.dart';
 import 'app_core_initializations/platform_validator.dart';
@@ -17,7 +16,7 @@ sealed class IAppStartUp {
   Future<void> run();
 
   /// Creates a global DI container accessible both outside and inside the widget tree.
-  Future<ProviderContainer> initDIContainer();
+  Future<void> initGlobalDIContainer();
 
   /// Initialize local storage
   Future<void> initLocalStorage();
@@ -36,6 +35,7 @@ final class AppStartUp extends IAppStartUp {
   final IDebugTools _debugTools;
   final ILocalStorageStack _localStorageStack;
   // final IDiConfig _diConfig; // (Optional) advanced/test DI setup
+  final DIConfiguration _diConfiguration;
 
   /// Creates a fully-configurable startup handler.
   /// All dependencies are injectable and default to production implementations if not provided.
@@ -43,11 +43,13 @@ final class AppStartUp extends IAppStartUp {
     IPlatformValidator? platformValidator,
     IDebugTools? debugTools,
     ILocalStorageStack? localStorageStack,
+    DIConfiguration? diConfiguration,
 
     // IDiConfig? diConfig,
   }) : _platformValidator = platformValidator ?? const PlatformValidator(),
        _debugTools = debugTools ?? const DebugTools(),
-       _localStorageStack = localStorageStack ?? const LocalStorageStack()
+       _localStorageStack = localStorageStack ?? const LocalStorageStack(),
+       _diConfiguration = diConfiguration ?? InitialDIConfiguration()
   //  _diConfig = diConfig ?? const DefaultDiConfig(),
   ;
 
@@ -69,16 +71,41 @@ final class AppStartUp extends IAppStartUp {
   ////
 
   @override
-  Future<ProviderContainer> initDIContainer() async {
+  Future<void> initGlobalDIContainer() async {
     //
     // Global DI for use both outside widget tree and for ProviderScope.parent
     //  ensuring shared DI and consistent overrides between imperative code and widgets tree.
-    final getGlobalContainer = ProviderContainer(
-      overrides: diOverrides,
-      // overrides: testOverrides, // for tests
-      observers: [Logger()],
+    final ProviderContainer getGlobalContainer = ProviderContainer(
+      overrides: _diConfiguration.overrides,
+      //  [
+      //   ///
+      //   // 🎨 Theme
+      //   themeStorageProvider.overrideWith((ref) => GetStorage()),
+      //   themeProvider.overrideWith(
+      //     (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
+      //   ),
+
+      //   // 🗺️ Navigation
+      //   goRouter.overrideWith((ref) => buildGoRouter(ref)),
+
+      //   // 📤 Overlay dispatcher
+      //   overlayDispatcherProvider.overrideWith(
+      //     (ref) => OverlayDispatcher(
+      //       onOverlayStateChanged:
+      //           ref.read(overlayStatusProvider.notifier).update,
+      //     ),
+      //   ),
+
+      //   // 🧩 Profile
+      //   profileRepoProvider.overrideWith(
+      //     (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
+      //   ),
+      //   //
+      // ],
+      // observers: [Logger()],
+      observers: _diConfiguration.observers,
     );
-    return getGlobalContainer;
+    GlobalDIContainer.initialize(getGlobalContainer);
   }
 
   ////
