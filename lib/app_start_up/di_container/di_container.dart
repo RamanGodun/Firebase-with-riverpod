@@ -45,3 +45,24 @@ final List<Override> diOverrides = [
   ),
   //
 ];
+
+class DIContainer {
+  static ProviderContainer? _instance;
+  static bool get isInitialized => _instance != null;
+
+  static ProviderContainer get instance {
+    if (_instance == null) {
+      throw StateError('DIContainer.instance is not initialized!');
+    }
+    return _instance!;
+  }
+
+  static void initialize(ProviderContainer container) {
+    if (_instance != null) {
+      throw StateError('DIContainer.instance already initialized!');
+    }
+    _instance = container;
+  }
+
+  static void reset() => _instance = null; // for test
+}

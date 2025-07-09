@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/foundation/localization/widgets/text_widget.dart';
 import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/foundation/theme/extensions/theme_x.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/foundation/theme/theme_provider/theme_config_provider.dart';
 
 class ShellForCriticalErrorScreen extends ConsumerWidget {
-  const ShellForCriticalErrorScreen({super.key});
+  final Object error;
+
+  const ShellForCriticalErrorScreen(this.error, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +20,7 @@ class ShellForCriticalErrorScreen extends ConsumerWidget {
       theme: themeState.buildLight(),
       darkTheme: themeState.buildDark(),
       themeMode: themeState.mode,
-      home: const _CriticalErrorScreen(),
+      home: _CriticalErrorScreen(error),
     );
 
     //
@@ -27,7 +30,8 @@ class ShellForCriticalErrorScreen extends ConsumerWidget {
 }
 
 class _CriticalErrorScreen extends StatelessWidget {
-  const _CriticalErrorScreen();
+  final Object error;
+  const _CriticalErrorScreen(this.error);
 
   @override
   Widget build(BuildContext context) {
@@ -47,25 +51,15 @@ class _CriticalErrorScreen extends StatelessWidget {
                 color: colorScheme.error.withOpacity(0.8),
               ),
               const SizedBox(height: 28),
-              Text(
+              const TextWidget(
                 'Oops! Something went wrong.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: colorScheme.onBackground,
-                  letterSpacing: 0.2,
-                ),
+                TextType.titleMedium,
               ),
+              // TextWidget(error.toString(), TextType.titleMedium),
               const SizedBox(height: 14),
-              Text(
+              const TextWidget(
                 'Please restart the app or contact support if the problem persists.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: colorScheme.onBackground.withOpacity(0.58),
-                  fontWeight: FontWeight.w400,
-                ),
+                TextType.bodySmall,
               ),
               const SizedBox(height: 34),
               FilledButton(
@@ -74,21 +68,7 @@ class _CriticalErrorScreen extends StatelessWidget {
                   // Для demo – просто navigator pop
                   Navigator.of(context).maybePop();
                 },
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 38,
-                    vertical: 13,
-                  ),
-                  backgroundColor: colorScheme.primary,
-                  foregroundColor: colorScheme.onPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14),
-                  ),
-                ),
-                child: const Text(
-                  'Retry',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
-                ),
+                child: const TextWidget('Retry', TextType.button),
               ),
             ],
           ),

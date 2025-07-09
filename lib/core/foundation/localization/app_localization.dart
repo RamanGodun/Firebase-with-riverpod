@@ -20,8 +20,10 @@ abstract final class AppLocalization {
   /// 🌐🌍 Fallback locale for the app
   static const fallbackLocale = Locale('en');
 
-  ///
-  static Widget wrap(Widget child) {
+  /// Wraps the provided widget with localization configuration.
+  /// Ensures that the entire subtree has access to EasyLocalization,
+  /// which enables locale switching, translation, and fallback logic.
+  static Widget configure(Widget child) {
     return EasyLocalization(
       supportedLocales: supportedLocales,
       path: localizationPath,

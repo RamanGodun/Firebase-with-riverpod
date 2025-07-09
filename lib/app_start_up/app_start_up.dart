@@ -6,18 +6,22 @@ import 'app_core_initializations/local_storage.dart';
 import 'app_core_initializations/platform_validator.dart';
 import 'di_container/di_container.dart';
 
-/// 🏁 [IAppInitialStartUp] — abstraction for minimal imperative startup logic.
+/// 🏁 [IAppStartUp] — abstraction for minimal imperative startup logic.
 ///   - Orchestrates all required app-wide initializations before UI loads.
 ///   - Handles DI container setup for use both outside and inside the widget tree.
 
-sealed class IAppInitialStartUp {
+sealed class IAppStartUp {
   ///--------------------------------
-  //
+
   /// Runs all imperative pre-initialization (Flutter bindings, platform checks, debug flags, storage, etc).
   Future<void> run();
 
   /// Creates a global DI container accessible both outside and inside the widget tree.
   Future<ProviderContainer> initDIContainer();
+
+  /// Initialize local storage
+  Future<void> initLocalStorage();
+
   //
 }
 
@@ -25,7 +29,7 @@ sealed class IAppInitialStartUp {
 
 ////
 
-final class AppInitialStartUp extends IAppInitialStartUp {
+final class AppStartUp extends IAppStartUp {
   ///-----------------------------------------------------------------
 
   final IPlatformValidator _platformValidator;
@@ -35,7 +39,7 @@ final class AppInitialStartUp extends IAppInitialStartUp {
 
   /// Creates a fully-configurable startup handler.
   /// All dependencies are injectable and default to production implementations if not provided.
-  AppInitialStartUp({
+  AppStartUp({
     IPlatformValidator? platformValidator,
     IDebugTools? debugTools,
     ILocalStorageStack? localStorageStack,
@@ -54,14 +58,12 @@ final class AppInitialStartUp extends IAppInitialStartUp {
     // Ensures Flutter bindings are ready before any further setup.
     WidgetsFlutterBinding.ensureInitialized();
     //
-    // Configures Flutter debug tools/overlays.
-    _debugTools.configure();
-    //
     // Validates platform (min. OS versions, emulator restrictions, etc).
     await _platformValidator.validatePlatformSupport();
     //
-    // Initializes local storage (currently, GetStorage).
-    await _localStorageStack.init();
+    // Configures Flutter debug tools/overlays.
+    _debugTools.configure();
+    //
   }
 
   ////
@@ -77,6 +79,14 @@ final class AppInitialStartUp extends IAppInitialStartUp {
       observers: [Logger()],
     );
     return getGlobalContainer;
+  }
+
+  ////
+
+  @override
+  Future<void> initLocalStorage() async {
+    // Initializes local storage (currently, GetStorage).
+    await _localStorageStack.init();
   }
 
   //
