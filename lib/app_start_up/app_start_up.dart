@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app_core_initializations/debug_tools.dart';
 import 'app_core_initializations/local_storage.dart';
 import 'app_core_initializations/platform_validator.dart';
+import 'di_container/di_config_sync.dart';
 import 'di_container/di_container.dart';
 
 /// 🏁 [IAppStartUp] — abstraction for minimal imperative startup logic.
@@ -34,8 +35,7 @@ final class AppStartUp extends IAppStartUp {
   final IPlatformValidator _platformValidator;
   final IDebugTools _debugTools;
   final ILocalStorageStack _localStorageStack;
-  // final IDiConfig _diConfig; // (Optional) advanced/test DI setup
-  final DIConfiguration _diConfiguration;
+  final DIConfigSync _diConfiguration;
 
   /// Creates a fully-configurable startup handler.
   /// All dependencies are injectable and default to production implementations if not provided.
@@ -43,15 +43,11 @@ final class AppStartUp extends IAppStartUp {
     IPlatformValidator? platformValidator,
     IDebugTools? debugTools,
     ILocalStorageStack? localStorageStack,
-    DIConfiguration? diConfiguration,
-
-    // IDiConfig? diConfig,
+    DIConfigSync? diConfiguration,
   }) : _platformValidator = platformValidator ?? const PlatformValidator(),
        _debugTools = debugTools ?? const DebugTools(),
        _localStorageStack = localStorageStack ?? const LocalStorageStack(),
-       _diConfiguration = diConfiguration ?? InitialDIConfiguration()
-  //  _diConfig = diConfig ?? const DefaultDiConfig(),
-  ;
+       _diConfiguration = diConfiguration ?? DefaultDIConfiguration();
 
   ////
 
@@ -77,32 +73,6 @@ final class AppStartUp extends IAppStartUp {
     //  ensuring shared DI and consistent overrides between imperative code and widgets tree.
     final ProviderContainer getGlobalContainer = ProviderContainer(
       overrides: _diConfiguration.overrides,
-      //  [
-      //   ///
-      //   // 🎨 Theme
-      //   themeStorageProvider.overrideWith((ref) => GetStorage()),
-      //   themeProvider.overrideWith(
-      //     (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
-      //   ),
-
-      //   // 🗺️ Navigation
-      //   goRouter.overrideWith((ref) => buildGoRouter(ref)),
-
-      //   // 📤 Overlay dispatcher
-      //   overlayDispatcherProvider.overrideWith(
-      //     (ref) => OverlayDispatcher(
-      //       onOverlayStateChanged:
-      //           ref.read(overlayStatusProvider.notifier).update,
-      //     ),
-      //   ),
-
-      //   // 🧩 Profile
-      //   profileRepoProvider.overrideWith(
-      //     (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
-      //   ),
-      //   //
-      // ],
-      // observers: [Logger()],
       observers: _diConfiguration.observers,
     );
     GlobalDIContainer.initialize(getGlobalContainer);

@@ -8,10 +8,10 @@ import '../../core/foundation/overlays/overlays_dispatcher/_overlay_dispatcher.d
 import '../../core/foundation/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/foundation/theme/theme_provider/theme_config_provider.dart';
 
-/// 🔧 [IDiConfig] — Abstraction for DI configuration
+/// 🔧 [IDIConfigAsync] — Abstraction for DI configuration
 ///     Can be used if DI Container became big and managing/testing become complicated
 
-abstract interface class IDiConfig {
+abstract interface class IDIConfigAsync {
   ///----------------------------
   //
   Future<List<Override>> buildOverrides();
@@ -24,7 +24,7 @@ abstract interface class IDiConfig {
 
 /// 🔧 [DefaultDiConfig] — Production DI configuration
 
-final class DefaultDiConfig implements IDiConfig {
+final class DefaultDiConfig implements IDIConfigAsync {
   ///------------------------------------------
   const DefaultDiConfig();
 
@@ -50,22 +50,6 @@ final class DefaultDiConfig implements IDiConfig {
               ref.read(overlayStatusProvider.notifier).update,
         ),
       ),
-    ];
-  }
-}
-
-////
-
-////
-
-final class TestDiConfig implements IDiConfig {
-  const TestDiConfig();
-
-  @override
-  Future<List<Override>> buildOverrides() async {
-    return [
-      // profileRepoProvider.overrideWith((ref) => MockProfileRepo()),
-      // Other test overrides...
     ];
   }
 }

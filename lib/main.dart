@@ -11,7 +11,6 @@ Future<void> main() async {
     // ? Here can be plugged in custom dependencies, e.g.:
     // debugTools: NewDebugTools(),
     // localStorageStack: OtherLocalStorageStack(),
-    diConfiguration: FullDIConfiguration(),
   );
   // Run imperative bootstrap (platform validation, debug tools configuration, local storage initialization)
   await startUp.run();
