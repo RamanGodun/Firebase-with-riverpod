@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_sha
 import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../foundation/theme/theme_provider/theme_config_provider.dart';
+import '../../core/foundation/theme/theme_provider/theme_config_provider.dart';
 
 class ShellForInitialLoader extends ConsumerWidget {
   const ShellForInitialLoader({super.key});
@@ -59,3 +59,23 @@ final class _InitialLoaderScreen extends StatelessWidget {
     );
   }
 }
+
+/*
+Future<ThemeMode> resolveThemeMode() async {
+  // await GetStorage.init();
+  final storage = GetStorage();
+  final isDark = storage.read('isDarkTheme') as bool?;
+
+  final ThemeMode themeMode = switch (isDark) {
+    true => ThemeMode.dark,
+    false => ThemeMode.light,
+    null =>
+      WidgetsBinding.instance.platformDispatcher.platformBrightness ==
+              Brightness.dark
+          ? ThemeMode.dark
+          : ThemeMode.light,
+  };
+  return themeMode;
+}
+
+ */

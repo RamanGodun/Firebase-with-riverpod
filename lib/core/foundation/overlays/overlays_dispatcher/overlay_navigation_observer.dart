@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import '../../../layers_shared/_infrastructure_layer/di_container/di_container.dart';
+import '../../../../app_start_up/di_container/di_container.dart';
 import '_overlay_dispatcher.dart';
 import 'overlay_dispatcher_provider.dart';
 

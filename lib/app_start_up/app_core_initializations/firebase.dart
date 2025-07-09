@@ -2,9 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../../app_configs/firebase/env.dart';
-import '../../../app_configs/firebase/firebase_options_env.dart';
-import '../../../app_configs/firebase/firebase_utils.dart';
+import '../../core/app_configs/firebase/env.dart';
+import '../../core/app_configs/firebase/firebase_options_env.dart';
+import '../../core/app_configs/firebase/firebase_utils.dart';
 
 /// 🔥 [IFirebaseStack] — Abstraction for Firebase+Env initialization logic.
 /// ✅ Used to decouple startup logic and enable mocking in tests.
@@ -21,11 +21,11 @@ abstract interface class IFirebaseStack {
 
 ////
 
-/// 🔥 [DefaultFirebaseStack] — implementation of [IFirebaseStack].
+/// 🔥 [FirebaseStack] — implementation of [IFirebaseStack].
 
-final class DefaultFirebaseStack implements IFirebaseStack {
+final class FirebaseStack implements IFirebaseStack {
   ///----------------------------------------------------
-  const DefaultFirebaseStack();
+  const FirebaseStack();
   //
 
   @override

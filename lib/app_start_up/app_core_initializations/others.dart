@@ -1,9 +1,9 @@
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
 
-/// 🌐 [IOthersBootstrap] — abstraction for miscellaneous startup logic.
+/// 🌐 [IOthersBootstrapStack] — abstraction for miscellaneous startup logic.
 /// ✅ Used for things like URL strategy, app-wide initializations, etc.
 
-abstract interface class IOthersBootstrap {
+abstract interface class IOthersBootstrapStack {
   ///-----------------------------------
   //
   /// Initializes misc startup logic (e.g., URL strategy for web)
@@ -13,11 +13,11 @@ abstract interface class IOthersBootstrap {
 
 ////
 
-/// 🌐 [DefaultOthersBootstrap] — implementation of [IOthersBootstrap].
+/// 🌐 [OthersBootstrapStack] — implementation of [IOthersBootstrapStack].
 
-final class DefaultOthersBootstrap implements IOthersBootstrap {
+final class OthersBootstrapStack implements IOthersBootstrapStack {
   ///----------------------------------------------------
-  const DefaultOthersBootstrap();
+  const OthersBootstrapStack();
   //
 
   /// ✅ Removes `#` from web URLs for cleaner routing (Flutter web).

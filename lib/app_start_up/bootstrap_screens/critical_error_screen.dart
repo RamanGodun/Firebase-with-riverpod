@@ -1,8 +1,33 @@
+import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/foundation/theme/extensions/theme_x.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CriticalErrorScreen extends StatelessWidget {
-  const CriticalErrorScreen({super.key});
+import '../../core/foundation/theme/theme_provider/theme_config_provider.dart';
+
+class ShellForCriticalErrorScreen extends ConsumerWidget {
+  const ShellForCriticalErrorScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeState = ref.watch(themeProvider);
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: !kReleaseMode,
+      theme: themeState.buildLight(),
+      darkTheme: themeState.buildDark(),
+      themeMode: themeState.mode,
+      home: const _CriticalErrorScreen(),
+    );
+
+    //
+  }
+
+  //
+}
+
+class _CriticalErrorScreen extends StatelessWidget {
+  const _CriticalErrorScreen();
 
   @override
   Widget build(BuildContext context) {

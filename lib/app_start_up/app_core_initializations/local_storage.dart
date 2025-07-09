@@ -13,12 +13,12 @@ abstract interface class ILocalStorageStack {
 
 ////
 
-/// 💾 [DefaultLocalStorageStack] — Implementation of [ILocalStorageStack].
+/// 💾 [LocalStorageStack] — Implementation of [ILocalStorageStack].
 /// ✅ Initializes GetStorage (local key-value DB).
 
-final class DefaultLocalStorageStack implements ILocalStorageStack {
+final class LocalStorageStack implements ILocalStorageStack {
   ///----------------------------------------------------
-  const DefaultLocalStorageStack();
+  const LocalStorageStack();
 
   @override
   Future<void> init() async {

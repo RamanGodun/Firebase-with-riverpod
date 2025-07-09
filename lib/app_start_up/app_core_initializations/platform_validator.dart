@@ -1,17 +1,14 @@
 import 'dart:io' show Platform;
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/rendering.dart';
-import '../../../app_configs/constants/platform_requirements.dart';
+import '../../core/app_configs/constants/platform_requirements.dart';
 
-/// 🧪 [IDebugTools] — abstraction for debug and platform support tools.
-/// ✅ Allows to configure debug options and validate platform support.
+/// 🛡️ [IPlatformValidator] — abstraction for platform/environment pre-checks.
 
-abstract interface class IDebugTools {
-  ///------------------------------
+abstract interface class IPlatformValidator {
+  ///-------------------------------------
   //
+  /// Validates that current platform version is supported
   Future<void> validatePlatformSupport();
-  //
-  void configure();
   //
 }
 
@@ -19,11 +16,11 @@ abstract interface class IDebugTools {
 
 ////
 
-/// 🧪 [DefaultDebugTools] — production implementation.
+/// 🧪 [PlatformValidator] — production implementation.
 
-final class DefaultDebugTools implements IDebugTools {
-  ///----------------------------------------------
-  const DefaultDebugTools();
+final class PlatformValidator implements IPlatformValidator {
+  ///-----------------------------------------------------
+  const PlatformValidator();
 
   ///📱 Check minimum platform support (e.g., Android SDK, IOS version)
   @override
@@ -56,13 +53,6 @@ final class DefaultDebugTools implements IDebugTools {
       }
     }
     // Add check for Web/other platforms if needed.
-  }
-
-  /// Configures Flutter-specific debug tools.
-  @override
-  void configure() {
-    // Controls visual debugging options (e.g., repaint highlighting).
-    debugRepaintRainbowEnabled = false;
   }
 
   //
