@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app_core_initializations/debug_tools.dart';
 import 'app_core_initializations/local_storage.dart';
-import 'app_core_initializations/platform_validator.dart';
+import 'app_core_initializations/platform_validation.dart';
 import 'di_container/di_config_sync.dart';
 import 'di_container/di_container.dart';
 
@@ -44,7 +44,8 @@ final class AppStartUp extends IAppStartUp {
     IDebugTools? debugTools,
     ILocalStorageStack? localStorageStack,
     DIConfigSync? diConfiguration,
-  }) : _platformValidator = platformValidator ?? const PlatformValidator(),
+  }) : _platformValidator =
+           platformValidator ?? const PlatformValidationStack(),
        _debugTools = debugTools ?? const DebugTools(),
        _localStorageStack = localStorageStack ?? const LocalStorageStack(),
        _diConfiguration = diConfiguration ?? DefaultDIConfiguration();
@@ -61,7 +62,7 @@ final class AppStartUp extends IAppStartUp {
     //
     // Configures Flutter debug tools/overlays.
     _debugTools.configure();
-    //
+    // ... (other debug tools)
   }
 
   ////

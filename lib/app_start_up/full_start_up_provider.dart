@@ -10,6 +10,6 @@ final appFullStartUpProvider = FutureProvider<void>((ref) async {
     // ? Here can be plugged in custom dependencies, e.g.:
     // firebaseStack: MockFirebaseStack(),
   );
-  await fullAppBootstrap.bootstrap();
+  await fullAppBootstrap.run();
   //
 });

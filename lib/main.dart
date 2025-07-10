@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app_start_up/app_start_up.dart';
+import 'app_start_up/minimal_app_start_up.dart';
 import 'app_start_up/di_container/di_container.dart';
 import 'bootstrapper.dart';
 

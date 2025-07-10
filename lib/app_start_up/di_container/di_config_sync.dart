@@ -12,7 +12,7 @@ import '../../features/profile/data/remote_data_source.dart';
 /// 🔧 [IDIConfig] — Abstraction for DI configuration
 ///     Can be used if DI Container became big and managing/testing become complicated
 
-abstract interface class DIConfigSync {
+sealed class DIConfigSync {
   ///
   List<Override> get overrides;
 
@@ -25,7 +25,7 @@ abstract interface class DIConfigSync {
 
 ////
 
-final class DefaultDIConfiguration implements DIConfigSync {
+final class DefaultDIConfiguration extends DIConfigSync {
   ///-------------------------------------------------------
 
   ///
@@ -61,4 +61,3 @@ final class DefaultDIConfiguration implements DIConfigSync {
 
   //
 }
-

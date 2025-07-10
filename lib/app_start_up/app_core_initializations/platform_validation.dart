@@ -16,11 +16,11 @@ abstract interface class IPlatformValidator {
 
 ////
 
-/// 🧪 [PlatformValidator] — production implementation.
+/// 🧪 [PlatformValidationStack] — production implementation.
 
-final class PlatformValidator implements IPlatformValidator {
+final class PlatformValidationStack implements IPlatformValidator {
   ///-----------------------------------------------------
-  const PlatformValidator();
+  const PlatformValidationStack();
 
   ///📱 Check minimum platform support (e.g., Android SDK, IOS version)
   @override

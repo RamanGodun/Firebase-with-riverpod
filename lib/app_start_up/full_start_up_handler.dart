@@ -10,7 +10,7 @@ sealed class IAppFullStartUpHandler {
   const IAppFullStartUpHandler();
   //
   /// 🚀 Main initialization: all services and dependencies
-  Future<void> bootstrap();
+  Future<void> run();
   //
 }
 
@@ -46,7 +46,7 @@ final class AppFullStartUpHandler extends IAppFullStartUpHandler {
 
   /// Main entrypoint: sequentially bootstraps all core app services before [runApp]
   @override
-  Future<void> bootstrap() async {
+  Future<void> run() async {
     //
     await _localizationStack.init();
     //
