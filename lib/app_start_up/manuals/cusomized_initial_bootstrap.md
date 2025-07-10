@@ -1,49 +1,60 @@
-# Flutter App Bootstrap & Lazy DI Pattern
 
-> **Applies to:** Flutter applications using modern state management solutions 
-including Riverpod, BLoC, or GetIt for dependency injection and state management.
+Flutter App Bootstrap & Lazy DI Pattern
 
----
+Applies to: Flutter apps, that agnostic to state management or DI engine (Riverpod, BLoC+GetIt, Provider+GetIt etc).
+
+⸻
+
 
 ## 1. Overview
 
 This pattern provides a robust, scalable solution for Flutter app initialization that handles:
-- **Asynchronous dependency loading** with graceful error handling
-- **State management abstraction** allowing easy migration between solutions
-- **User-friendly startup experience** with loading states and retry mechanisms
-- **Testable architecture** with proper separation of concerns
+	•	Asynchronous dependency loading with graceful error handling
+	•	State management abstraction (agnostic to manager)
+	•	User-friendly startup experience with loading, progress, retry
+	•	Testable architecture with clean separation of concerns
 
-### Key Benefits
+  ### Key Benefits
+	•	✅ Scalable: Handles both simple and complex app initialization scenarios
+	•	✅ "StateManager & DI engine Agnostic": Works with any state management/DI solution
+       (Riverpod, BLoC+GetIt, Provider+GetIt).Therefore, minimal code changes when switching state management
+	•	✅ Robust: Timeout, retry, fallbacks, error handling built-in
+	•	✅ Testable: Clean isolation and test coverage for bootstrap logic
+	•	✅ User-friendly: Immediate, meaningful feedback to user during startup
+	•	✅ Clean, declarative, and highly testable. Strictly null safe when using sealed classes.
 
-- ✅ **Scalable**: Handles both simple and complex app initialization scenarios
-- ✅ **Flexible**: Works with any state management solution
-- ✅ **Robust**: Built-in timeout, retry, and error handling
-- ✅ **Testable**: Clear separation enables comprehensive testing
-- ✅ **User-friendly**: Provides immediate feedback during app startup
+⸻
 
----
 
 ## 2. Architecture Principles
 
-### 2.1 Centralized Readiness State
-A single source of truth manages the entire app's initialization status, providing clear visibility into the bootstrap process.
+### 2.1 Centralized Readiness State (Agnostic)
+	•	Maintain a single source of truth for app bootstrap status-state (loading/ready/error/progress) 
+    with help of sealed class or enum, and which is not tied to state manager.
+	•	Bootstrap state can live in a ValueNotifier, Stream, etc — choose what fits the app.
 
-### 2.2 Proxy-Based Dependency Injection
-Dependencies are accessed through proxies that provide fallback implementations during initialization, ensuring the app remains functional at all times.
+### 2.2 Proxy/Fallback Dependency Injection
+	•	All DI reads are through a proxy/provider, which:
+	•	Returns a stub/fallback when real implementation not ready (never null!).
+	•	Swaps to real implementation after ready.
 
-### 2.3 Declarative UI Rendering
-UI components react to state changes automatically, showing appropriate screens (loader, error, main app) without manual intervention.
+### 2.3 Declarative, State-driven UI
+	•	UI renders based only on readiness state: loader, error, app.
+	•	Use Provider.select/BlocSelector/ValueListenableBuilder — minimal rebuilds.
 
-### 2.4 Graceful Error Handling
-Comprehensive timeout and retry mechanisms ensure users can recover from initialization failures.
+### 2.4 Graceful Error, Retry, and Timeout Handling
+	•	Bootstrap manager encapsulates error/retry/timeout logic.
+	•	UI only reacts to state; all control/logic is in the bootstrap manager.
 
----
+⸻
+
 
 ## 3. Core Implementation
 
-### 3.1 Application Readiness State
+### 3.1 Application Readiness State (Independent Model)
+Store app readiness status in a global singleton, Sealed class pattern (recommended for strict null safety and extensibility)
+ and exhaustive pattern matching:
 
-Using sealed classes provides type safety and exhaustive pattern matching:
 
 ```dart
 /// Represents the current state of app initialization
@@ -97,6 +108,23 @@ final class AppError extends AppReadinessState {
   });
 }
 ```
+
+
+### 3.2 Bootstrap Manager (Agnostic Bridge)
+
+Bootstrap manager exposes an interface to manipulate/apply readiness state:
+
+abstract interface class AppBootstrapManager {
+  AppReadinessState get state;
+  Stream<AppReadinessState> get stateStream; // or ValueListenable, or whatever fits
+  void updateLoading({double? progress, String? currentStep});
+  void setReady();
+  void setError(String message, {Object? error, StackTrace? stackTrace, bool canRetry});
+  void retry();
+}
+
+Implementation can use Cubit, StateNotifier, ValueNotifier, custom — as needed.
+
 
 ### 3.2 State Management Implementation
 
@@ -179,48 +207,17 @@ class AppReadinessCubit extends Cubit<AppReadinessState> {
 }
 ```
 
-#### GetIt Implementation
+⸻
 
-```dart
-import 'package:flutter/foundation.dart';
-import 'package:get_it/get_it.dart';
 
-class AppReadinessService extends ValueNotifier<AppReadinessState> {
-  AppReadinessService() : super(const AppInitializing());
-  
-  void updateLoading({double? progress, String? currentStep}) {
-    value = AppLoading(progress: progress, currentStep: currentStep);
-  }
-  
-  void setReady() {
-    value = const AppReady();
-  }
-  
-  void setError(String message, {Object? error, StackTrace? stackTrace, bool canRetry = true}) {
-    value = AppError(
-      message: message,
-      error: error,
-      stackTrace: stackTrace,
-      canRetry: canRetry,
-    );
-  }
-  
-  void retry() {
-    value = const AppInitializing();
-  }
-}
 
-// Registration
-void setupGetIt() {
-  GetIt.instance.registerLazySingleton<AppReadinessService>(
-    () => AppReadinessService(),
-  );
-}
-```
+## 4. Proxy DI Pattern
 
----
+All services (routers, repositories, etc) are accessed via a proxy.
+Proxy can return a placeholder or a fallback implementation if main dependency is not ready.
 
-## 4. Proxy-Based Dependency Injection
+### 4.1 Here need to add Examples (for GoRouter, etc.)
+
 
 ### 4.1 Router Proxy Pattern
 
@@ -300,57 +297,30 @@ UserRepository userRepository(UserRepositoryRef ref) {
 }
 ```
 
----
+
+⸻
+
+
 
 ## 5. Bootstrap Lifecycle
 
-### 5.1 Main Entry Point
+  1.	Minimal bootstrap
+	•	Initialize Flutter, logging and debug tools, theme, local storage, etc.
+	•	Register baseline providers/singletons (can be GetIt or ProviderDIContainer).
+	2.	RunApp
+	•	Show loader UI bound to readiness state.
+	3.	Full/async bootstrap with timeout & retry
+	•	In background, load all heavy/async dependencies with timeout.
+	•	On failure/timeout, expose error state with a retry flag.
+	•	While loading, update readiness state to AppLoading(progress, step).
+	•	When finished, set readiness state to AppReady(). Proxies now return real dependencies.
+	4.	Declarative UI rendering
+	•	UI watches readiness state and proxy providers/blocs.
+	•	Shows loading screen (with optional progress/step), error shell (with retry), or full app as needed.
 
-```dart
-Future<void> main() async {
-  // Minimal Flutter initialization
-  WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize error handling
-  FlutterError.onError = (details) {
-    // Log error to crash reporting service
-    print('Flutter Error: ${details.exception}');
-  };
-  
-  // Platform-specific initialization
-  if (kIsWeb) {
-    await _initializeWeb();
-  } else {
-    await _initializeMobile();
-  }
-  
-  // Initialize state management
-  final container = ProviderContainer();
-  
-  // Start the app
-  runApp(
-    ProviderScope(
-      parent: container,
-      child: const MyApp(),
-    ),
-  );
-  
-  // Begin async initialization
-  _initializeAppAsync(container);
-}
 
-Future<void> _initializeMobile() async {
-  // Initialize services that must be ready before runApp
-  await Firebase.initializeApp();
-  // Initialize secure storage, logging, etc.
-}
 
-Future<void> _initializeWeb() async {
-  // Web-specific initialization
-}
-```
-
-### 5.2 Asynchronous Initialization
+### 5.2 Example of Asynchronous Initialization
 
 ```dart
 Future<void> _initializeAppAsync(ProviderContainer container) async {
@@ -431,11 +401,41 @@ Future<void> _initializeServices() async {
 }
 ```
 
----
 
-## 6. UI Implementation
+⸻
 
-### 6.1 Main App Widget
+
+## 6. UI Shell
+
+### 6.1 Example (using ValueListenableBuilder, BlocSelector, or Provider.select)
+
+ Agnostic
+
+``` dart
+class MyApp extends StatelessWidget {
+  final AppBootstrapManager manager;
+  const MyApp({super.key, required this.manager});
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<AppReadinessState>( // ? or AnimatedBuilder
+      valueListenable: manager.stateListenable,
+      builder: (context, state, _) {
+        return MaterialApp.router(
+          routerConfig: provideRouter(state),
+          builder: (context, child) => switch (state) {
+            AppReady() => child ?? SizedBox.shrink(),
+            AppError() => AppErrorScreen(state as AppError, onRetry: manager.retry),
+            AppLoading() || AppInitializing() => AppLoadingScreen(state),
+          },
+        );
+      },
+    );
+  }
+}
+```
+
+OR depends on state manager
+
 
 ```dart
 class MyApp extends ConsumerWidget {
@@ -444,15 +444,9 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final readinessState = ref.watch(appReadinessNotifierProvider);
-    final router = ref.watch(appRouterProvider);
-    
+        
     return MaterialApp.router(
-      title: 'My App',
-      routerConfig: router,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+     ...
       builder: (context, child) {
         return switch (readinessState) {
           AppReady() => child ?? const SizedBox.shrink(),
@@ -466,177 +460,31 @@ class MyApp extends ConsumerWidget {
 }
 ```
 
-### 6.2 Loading Screen
 
-```dart
-class AppLoadingScreen extends ConsumerWidget {
-  const AppLoadingScreen({super.key});
-  
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final readinessState = ref.watch(appReadinessNotifierProvider);
-    
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // App logo or branding
-              Icon(
-                Icons.flutter_dash,
-                size: 64,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              const SizedBox(height: 24),
-              
-              // Loading indicator
-              if (readinessState is AppLoading && readinessState.progress != null)
-                LinearProgressIndicator(
-                  value: readinessState.progress,
-                  backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
-                )
-              else
-                const CircularProgressIndicator(),
-              
-              const SizedBox(height: 16),
-              
-              // Current step
-              if (readinessState is AppLoading && readinessState.currentStep != null)
-                Text(
-                  readinessState.currentStep!,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-                  textAlign: TextAlign.center,
-                )
-              else
-                Text(
-                  'Starting up...',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
+⸻
 
-### 6.3 Error Screen
 
-```dart
-class AppErrorScreen extends ConsumerWidget {
-  const AppErrorScreen({super.key});
-  
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final readinessState = ref.watch(appReadinessNotifierProvider);
-    
-    if (readinessState is! AppError) {
-      return const SizedBox.shrink();
-    }
-    
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.error_outline,
-                size: 64,
-                color: Theme.of(context).colorScheme.error,
-              ),
-              const SizedBox(height: 24),
-              
-              Text(
-                'Oops! Something went wrong',
-                style: Theme.of(context).textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
-              
-              const SizedBox(height: 16),
-              
-              Text(
-                readinessState.message,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              
-              const SizedBox(height: 24),
-              
-              if (readinessState.canRetry) ...[
-                ElevatedButton.icon(
-                  onPressed: () {
-                    ref.read(appReadinessNotifierProvider.notifier).retry();
-                    _initializeAppAsync(ProviderScope.containerOf(context));
-                  },
-                  icon: const Icon(Icons.refresh),
-                  label: const Text('Try Again'),
-                ),
-                
-                const SizedBox(height: 12),
-                
-                TextButton(
-                  onPressed: () {
-                    // Show detailed error information
-                    _showErrorDetails(context, readinessState);
-                  },
-                  child: const Text('Show Details'),
-                ),
-              ],
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-  
-  void _showErrorDetails(BuildContext context, AppError error) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Error Details'),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Message: ${error.message}'),
-              if (error.error != null) ...[
-                const SizedBox(height: 8),
-                Text('Error: ${error.error}'),
-              ],
-              if (error.stackTrace != null) ...[
-                const SizedBox(height: 8),
-                Text('Stack Trace:\n${error.stackTrace}'),
-              ],
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
 
----
 
-## 7. Testing Strategy
+## 7. Testing Best Practices
+
+	•	Mock all possible readiness states (AppInitial, AppLoading, AppReady, AppError).
+	•	For DI proxies: Test both the fallback and the real implementation.
+	•	For UI: Snapshot/golden tests for loader, error, main app shells.
+	•	For services: Always provide test doubles/stubs via DI (e.g., StubProfileRepo, FakeRouter).
+	•	Test timeouts and retry logic explicitly.
+
+Example (Riverpod):
+
+testWidgets('shows retry on error', (tester) async {
+  final container = ProviderContainer(overrides: [
+    appReadyProvider.overrideWith((_) => AppError('fail', canRetry: true)),
+  ]);
+  await tester.pumpWidget(ProviderScope(parent: container, child: AppBootstrapper()));
+  expect(find.byType(ErrorShell), findsOneWidget);
+  // Simulate tap on retry, test retry flow
+});
+
 
 ### 7.1 State Testing
 
@@ -828,11 +676,75 @@ void main() {
 }
 ```
 
----
+⸻
 
-## 8. Adaptation for Different App Sizes
 
-### 8.1 Small Apps
+
+## 8. Best Practices
+
+### 8.1 General:
+	•	If possible, use "AppReadinessState/Manager abstraction" (use "clean bridge" for AppReadinessState in UI)
+     keep AppReadinessState and BootstrapManager decoupled from state manager/DI (state can be saved in        
+     ValueNotifier, ChangeNotifier, Streams or global var), UI subsripes on that is avaiable now
+	• Define sealed class/enum/abstract class AppReadinessState SEPARATLY from “presentation layer”
+	•	All proxy DI uses "Stub/Loading/Fallback Service", not null, "Safe/fallback DI for all sync/async services" 
+      (always must be “safe-fallback” to aboid null)
+	•	UI does not depend on DI or state manager, only on AppReadinessState.
+	•	Retry/timeout, error, progress logic in manager, not in UI.
+	•	Prepare (through  proxy/stub) minimal necessary DI (theme, router, local storage) for loader/error screens.
+	• Avoid implementaion in UI or DI Container
+	•	Test state and transitions in isolation.
+	• Use absolutely async bootstrap, all really heavy services - only after “ready”. 
+    Heavy services inject (through GetIt.reset() + re-register or through proxy/provider swap) 
+
+
+### 8.2 Performance Considerations
+- **Lazy initialization**: Only initialize services when needed
+- **Concurrent loading**: Use `Future.wait()` for independent operations
+- **Resource cleanup**: Properly dispose of resources in error cases
+- **Memory management**: Avoid memory leaks during long initialization
+
+### 8.3 User Experience
+- **Immediate feedback**: Show loading state immediately
+- **Progress indication**: Provide progress updates for long operations
+- **Meaningful messages**: Use clear, actionable error messages
+- **Retry mechanisms**: Always provide recovery options
+
+### 8.4 Error Handling
+- **Specific error types**: Use different error states for different failure modes
+- **Logging**: Log errors for debugging and monitoring
+- **Graceful degradation**: Provide fallback functionality where possible
+- **Timeout handling**: Set reasonable timeouts for all async operations
+
+### 8.5 Testing
+- **Mock dependencies**: Use dependency injection for testability
+- **State coverage**: Test all possible states and transitions
+- **Error scenarios**: Test timeout, network failure, and other edge cases
+- **Integration tests**: Verify end-to-end initialization flow
+
+### Advanced: Stepper/FSM Pipeline (Optional):
+ - for complex pipelines, implement a Stepper or State Machine for bootstrap process
+ (make stepper/fsm/chain-of-responsibility for pipeline-bootstrap,
+ etc split full bootstrap on pipeline-stages and  granular error/progress control, so-called "state machine, stepper")
+
+⸻
+
+
+
+
+## 9. Adoption
+
+  ### 9.1 Migration
+	•	Replace bootstrap logic with BootstrapManager (ValueNotifier)
+	•	Swap DI registration with proxy/fallback logic
+	•	Switch UI to react to AppReadinessState only
+
+
+  ### 9.2 Adaptation for Small Apps
+	•	Keep only a centralized readiness state.
+	•	Omit proxy/fallback for DI — use direct injection (e.g., always use real router/service, as no async bootstrapping is needed).
+	•	Use a simple enum or sealed with only initial, ready, error states.
+	•	Loader and error UI may be just a couple of widgets.
 
 For simpler applications, you can use a minimal version:
 
@@ -865,7 +777,7 @@ class SimpleApp extends ConsumerWidget {
 }
 ```
 
-### 8.2 Enterprise Apps
+### 9.3 Enterprise Apps
 
 For larger applications, enhance with additional features:
 
@@ -903,82 +815,13 @@ final class AppError extends AppReadinessState {
 }
 ```
 
----
 
-## 9. Best Practices & Recommendations
+⸻
 
-### 9.1 Performance Considerations
 
-- **Lazy initialization**: Only initialize services when needed
-- **Concurrent loading**: Use `Future.wait()` for independent operations
-- **Resource cleanup**: Properly dispose of resources in error cases
-- **Memory management**: Avoid memory leaks during long initialization
 
-### 9.2 User Experience
 
-- **Immediate feedback**: Show loading state immediately
-- **Progress indication**: Provide progress updates for long operations
-- **Meaningful messages**: Use clear, actionable error messages
-- **Retry mechanisms**: Always provide recovery options
-
-### 9.3 Error Handling
-
-- **Specific error types**: Use different error states for different failure modes
-- **Logging**: Log errors for debugging and monitoring
-- **Graceful degradation**: Provide fallback functionality where possible
-- **Timeout handling**: Set reasonable timeouts for all async operations
-
-### 9.4 Testing
-
-- **Mock dependencies**: Use dependency injection for testability
-- **State coverage**: Test all possible states and transitions
-- **Error scenarios**: Test timeout, network failure, and other edge cases
-- **Integration tests**: Verify end-to-end initialization flow
-
----
-
-## 10. Migration Guide
-
-### 10.1 From Direct Initialization
-
-```dart
-// Before
-void main() {
-  runApp(MyApp());
-}
-
-// After
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initializeMinimalServices();
-  
-  runApp(MyApp());
-  
-  // Initialize heavy services asynchronously
-  unawaited(initializeHeavyServices());
-}
-```
-
-### 10.2 Between State Management Solutions
-
-The pattern's abstraction makes migration straightforward:
-
-1. **Update state management**: Replace provider implementation
-2. **Update UI bindings**: Change how UI watches state
-3. **Update dependency injection**: Modify service registration
-4. **Keep business logic**: Core initialization logic remains unchanged
-
----
-
-## 11. Conclusion
-
-This pattern provides a robust foundation for Flutter app initialization that scales from simple to complex applications. By centralizing state management, providing graceful error handling, and maintaining clean separation of concerns, it ensures your app provides a professional user experience from the first launch.
-
-The pattern's flexibility allows you to adapt it to your specific needs while maintaining consistency across different state management solutions. Whether you're building a simple utility app or a complex enterprise application, this bootstrap pattern will help you deliver a reliable, user-friendly experience.
-
----
-
-## 12. References
+## 10. References
 
 - [Flutter State Management](https://docs.flutter.dev/development/data-and-backend/state-mgmt)
 - [Riverpod Documentation](https://riverpod.dev/)

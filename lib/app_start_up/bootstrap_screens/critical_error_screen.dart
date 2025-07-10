@@ -77,3 +77,115 @@ class _CriticalErrorScreen extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+! From new methodology:
+
+class AppErrorScreen extends ConsumerWidget {
+  const AppErrorScreen({super.key});
+  
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final readinessState = ref.watch(appReadinessNotifierProvider);
+    
+    if (readinessState is! AppError) {
+      return const SizedBox.shrink();
+    }
+    
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.error_outline,
+                size: 64,
+                color: Theme.of(context).colorScheme.error,
+              ),
+              const SizedBox(height: 24),
+              
+              Text(
+                'Oops! Something went wrong',
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+              
+              const SizedBox(height: 16),
+              
+              Text(
+                readinessState.message,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              
+              const SizedBox(height: 24),
+              
+              if (readinessState.canRetry) ...[
+                ElevatedButton.icon(
+                  onPressed: () {
+                    ref.read(appReadinessNotifierProvider.notifier).retry();
+                    _initializeAppAsync(ProviderScope.containerOf(context));
+                  },
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Try Again'),
+                ),
+                
+                const SizedBox(height: 12),
+                
+                TextButton(
+                  onPressed: () {
+                    // Show detailed error information
+                    _showErrorDetails(context, readinessState);
+                  },
+                  child: const Text('Show Details'),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  
+  void _showErrorDetails(BuildContext context, AppError error) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Error Details'),
+        content: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Message: ${error.message}'),
+              if (error.error != null) ...[
+                const SizedBox(height: 8),
+                Text('Error: ${error.error}'),
+              ],
+              if (error.stackTrace != null) ...[
+                const SizedBox(height: 8),
+                Text('Stack Trace:\n${error.stackTrace}'),
+              ],
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+ */

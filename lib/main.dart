@@ -30,9 +30,14 @@ Future<void> main() async {
   );
 }
 
-
 /*
 
-Об’єднуй класи в один BootstrappingStack/Service, використовуй sealed “readiness state” і proxy DI.
+Об’єднуй класи в один BootstrappingStack/Service, використовуй sealed “readiness state” і proxy DI, декларативний UI, error/retry flow
+
+Централізований readiness state
+	•	Для Riverpod ми робили StateNotifier/Provider, для BLoC/Cubit — просто Cubit з sealed states:
+(	Ти додаєш цей Cubit в MultiBlocProvider, як і всі інші, або навіть реєструєш у GetIt.)
+
+
 
  */
