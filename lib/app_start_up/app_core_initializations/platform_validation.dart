@@ -2,9 +2,9 @@ import 'dart:io' show Platform;
 import 'package:device_info_plus/device_info_plus.dart';
 import '../../core/app_configs/constants/platform_requirements.dart';
 
-/// 🛡️ [IPlatformValidator] — abstraction for platform/environment pre-checks.
+/// 🛡️ [IPlatformStack] — abstraction for platform/environment pre-checks.
 
-abstract interface class IPlatformValidator {
+abstract interface class IPlatformStack {
   ///-------------------------------------
   //
   /// Validates that current platform version is supported
@@ -18,7 +18,7 @@ abstract interface class IPlatformValidator {
 
 /// 🧪 [PlatformValidationStack] — production implementation.
 
-final class PlatformValidationStack implements IPlatformValidator {
+final class PlatformValidationStack implements IPlatformStack {
   ///-----------------------------------------------------
   const PlatformValidationStack();
 

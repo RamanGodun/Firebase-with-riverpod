@@ -32,7 +32,7 @@ sealed class IAppStartUp {
 final class AppStartUp extends IAppStartUp {
   ///-----------------------------------------------------------------
 
-  final IPlatformValidator _platformValidator;
+  final IPlatformStack _platformValidator;
   final IDebugTools _debugTools;
   final ILocalStorageStack _localStorageStack;
   final DIConfigSync _diConfiguration;
@@ -40,7 +40,7 @@ final class AppStartUp extends IAppStartUp {
   /// Creates a fully-configurable startup handler.
   /// All dependencies are injectable and default to production implementations if not provided.
   AppStartUp({
-    IPlatformValidator? platformValidator,
+    IPlatformStack? platformValidator,
     IDebugTools? debugTools,
     ILocalStorageStack? localStorageStack,
     DIConfigSync? diConfiguration,

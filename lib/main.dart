@@ -29,3 +29,10 @@ Future<void> main() async {
     ),
   );
 }
+
+
+/*
+
+Об’єднуй класи в один BootstrappingStack/Service, використовуй sealed “readiness state” і proxy DI.
+
+ */
