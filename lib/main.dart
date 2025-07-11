@@ -5,14 +5,15 @@ import 'app_bootstrap/di_container/di_container.dart';
 import 'core/foundation/localization/app_localization.dart';
 import 'root_view_shell.dart';
 
-/// 🏁 Entry point of the application. Initializes Flutter bindings, configures DI, and launches the app
+/// 🏁 Entry point of the application
 Future<void> main() async {
   ///
-  final startUp = AppBootstrap(
-    // ? Here can be plugged in custom dependencies, e.g.:
-    // localStorage: IsarLocalStorage(),
+  final appBootstrap = AppBootstrap(
+    // ? Here can be plugged in custom dependencies (e.g.  "localStorage: IsarLocalStorage()," )
   );
-  await startUp.runFullBootstrap();
+
+  /// 🚀 Runs all imperative startup logic (localization, Firebase, local storage, DI container, etc).
+  await appBootstrap.initAllServices();
 
   ////
 
@@ -23,6 +24,7 @@ Future<void> main() async {
       child: const AppLocalizationShell(),
     ),
   );
+  debugPrint('🏁 App fully started');
 }
 
 /// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.

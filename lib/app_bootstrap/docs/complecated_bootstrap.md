@@ -685,14 +685,14 @@ void main() {
 ### 8.1 General:
 	•	If possible, use "AppReadinessState/Manager abstraction" (use "clean bridge" for AppReadinessState in UI)
      keep AppReadinessState and BootstrapManager decoupled from state manager/DI (state can be saved in        
-     ValueNotifier, ChangeNotifier, Streams or global var), UI subsripes on that is avaiable now
-	• Define sealed class/enum/abstract class AppReadinessState SEPARATLY from “presentation layer”
+     ValueNotifier, ChangeNotifier, Streams or global var), UI subscribes on that is available now
+	• Define sealed class/enum/abstract class AppReadinessState SEPARATELY from “presentation layer”
 	•	All proxy DI uses "Stub/Loading/Fallback Service", not null, "Safe/fallback DI for all sync/async services" 
-      (always must be “safe-fallback” to aboid null)
+      (always must be “safe-fallback” to avoid null)
 	•	UI does not depend on DI or state manager, only on AppReadinessState.
 	•	Retry/timeout, error, progress logic in manager, not in UI.
 	•	Prepare (through  proxy/stub) minimal necessary DI (theme, router, local storage) for loader/error screens.
-	• Avoid implementaion in UI or DI Container
+	• Avoid implementation in UI or DI Container
 	•	Test state and transitions in isolation.
 	• Use absolutely async bootstrap, all really heavy services - only after “ready”. 
     Heavy services inject (through GetIt.reset() + re-register or through proxy/provider swap) 
