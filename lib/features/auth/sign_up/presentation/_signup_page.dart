@@ -5,12 +5,12 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/sign_up_submit_x.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
 import '../../../../core/foundation/localization/widgets/text_widget.dart';
 import '../../../../core/foundation/localization/generated/locale_keys.g.dart';
 import '../../../../core/foundation/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../form_fields/input_validation/_validation_enums.dart';
 import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../form_fields/widgets/_fields_factory.dart';

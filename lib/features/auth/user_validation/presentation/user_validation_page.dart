@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
 import '../../../../core/foundation/localization/widgets/text_widget.dart';
 import '../../../../core/foundation/localization/generated/locale_keys.g.dart';
 import '../../../../core/foundation/navigation/app_routes/app_routes.dart';

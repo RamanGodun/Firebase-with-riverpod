@@ -3,10 +3,10 @@ import 'package:firebase_with_riverpod/core/foundation/navigation/extensions/nav
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/foundation/theme/ui_constants/_app_constants.dart';
-import 'package:firebase_with_riverpod/core/layers_shared/presentation_layer_shared/widgets_shared/app_bar.dart';
+import 'package:firebase_with_riverpod/core/shared_presentation_layer/widgets_shared/app_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../foundation/localization/widgets/text_widget.dart';
-import '../../../foundation/navigation/app_routes/app_routes.dart';
+import '../../foundation/localization/widgets/text_widget.dart';
+import '../../foundation/navigation/app_routes/app_routes.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.
 /// Displays a toggle for theme switching and navigates to profile/settings.

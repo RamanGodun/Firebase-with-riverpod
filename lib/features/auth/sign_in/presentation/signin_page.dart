@@ -6,7 +6,7 @@ import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_au
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/text_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
 import '../../../../core/foundation/navigation/app_routes/app_routes.dart';
 import '../../../../core/foundation/theme/ui_constants/app_colors.dart';
 import '../../../form_fields/input_validation/_validation_enums.dart';
@@ -15,7 +15,7 @@ import '../../../form_fields/widgets/_fields_factory.dart';
 import '../../../form_fields/widgets/password_visibility_icon.dart';
 import '../../../../core/foundation/localization/widgets/text_widget.dart';
 import '../../../../core/foundation/localization/generated/locale_keys.g.dart';
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../../core/foundation/theme/ui_constants/_app_constants.dart';
 import 'providers/_signin_provider.dart';
 import 'providers/sign_in_form_fields_provider.dart';

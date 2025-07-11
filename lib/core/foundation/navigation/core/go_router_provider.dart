@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../layers_shared/domain_layer_shared/providers_shared/auth_state_providers.dart';
-import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
+import '../../../shared_domain_layer/providers_shared/auth_state_providers.dart';
+import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
 import '../../overlays/overlays_dispatcher/overlay_navigation_observer.dart';
 import '../utils/routes_redirection_service.dart';
 import '../app_routes/app_routes.dart';

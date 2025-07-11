@@ -7,7 +7,7 @@ import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_au
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
-import '../../../../core/layers_shared/presentation_layer_shared/widgets_shared/buttons/filled_button.dart';
+import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../form_fields/input_validation/_validation_enums.dart';
 import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../../core/foundation/localization/widgets/text_widget.dart';

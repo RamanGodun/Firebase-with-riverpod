@@ -5,9 +5,9 @@ import '../../../../features/auth/reset_password/presentation/reset_password_pag
 import '../../../../features/auth/sign_in/presentation/signin_page.dart';
 import '../../../../features/auth/sign_up/presentation/_signup_page.dart';
 import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
-import '../../../layers_shared/presentation_layer_shared/pages_shared/page_not_found.dart';
-import '../../../layers_shared/presentation_layer_shared/pages_shared/_home_page.dart';
-import '../../../layers_shared/presentation_layer_shared/pages_shared/splash_page.dart';
+import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
+import '../../../shared_presentation_layer/pages_shared/_home_page.dart';
+import '../../../shared_presentation_layer/pages_shared/splash_page.dart';
 import '../utils/page_transition.dart';
 
 part 'routes_names.dart';
