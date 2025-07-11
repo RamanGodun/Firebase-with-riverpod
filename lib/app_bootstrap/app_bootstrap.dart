@@ -70,6 +70,7 @@ final class AppBootstrap extends IAppBootstrap {
   @override
   Future<void> initAllServices() async {
     //
+    debugPrint('🚀 [Bootstrap] Starting full initialization...');
     await startUp();
     //
     await initGlobalDIContainer();
@@ -82,7 +83,9 @@ final class AppBootstrap extends IAppBootstrap {
     //
     /// Initializes remote database (currently, Firebase).
     await initRemoteDataBase();
+    //
     setPathUrlStrategy();
+    debugPrint('✅ [Bootstrap] All services initialized!');
     //
   }
 
@@ -90,7 +93,8 @@ final class AppBootstrap extends IAppBootstrap {
   @override
   Future<void> startUp() async {
     //
-    /// Ensures Flutter bindings.
+    debugPrint('🟢 [Startup] Flutter bindings and platform checks...');
+    // Ensures Flutter bindings.
     WidgetsFlutterBinding.ensureInitialized();
     //
     /// Validates platform (min. OS versions, emulator restrictions, etc).
@@ -98,6 +102,8 @@ final class AppBootstrap extends IAppBootstrap {
     //
     /// Controls visual debugging options (e.g., repaint highlighting).
     debugRepaintRainbowEnabled = false;
+    // ... (other debug tools)
+    debugPrint('✅ [Startup] Flutter bindings and platform validation done.');
   }
 
   ////
@@ -108,19 +114,23 @@ final class AppBootstrap extends IAppBootstrap {
   @override
   Future<void> initGlobalDIContainer() async {
     //
+    debugPrint('📦 [DI] Initializing global dependency container...');
     final ProviderContainer getGlobalContainer = ProviderContainer(
       overrides: _diConfiguration.overrides,
       observers: _diConfiguration.observers,
     );
     //
     GlobalDIContainer.initialize(getGlobalContainer);
+    debugPrint('✅ [DI] Dependency container ready.');
   }
 
   ////
 
   @override
   Future<void> initLocalStorage() async {
-    /// Initializes local storage (currently, GetStorage).
+    //
+    debugPrint('💾 [Storage] Initializing local storage...');
+    // Initializes local storage (currently, GetStorage).
     await _localStorage.init();
   }
 
@@ -130,6 +140,7 @@ final class AppBootstrap extends IAppBootstrap {
   Future<void> initRemoteDataBase() async {
     /// Initializes remote database (currently, Firebase).
     await _remoteDataBase.init();
+    debugPrint('✅ [Storage] Local storage initialized.');
   }
 
   ////

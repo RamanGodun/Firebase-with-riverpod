@@ -27,6 +27,10 @@ Future<void> main() async {
   debugPrint('🏁 App fully started');
 }
 
+////
+
+////
+
 /// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.
 ///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
 
