@@ -829,3 +829,40 @@ final class AppError extends AppReadinessState {
 - [GetIt Documentation](https://pub.dev/packages/get_it)
 - [Flutter App Architecture](https://docs.flutter.dev/development/data-and-backend/state-mgmt/options)
 - [Code with Andrea - App Initialization](https://codewithandrea.com/articles/robust-app-initialization-riverpod/)
+
+
+
+
+
+Summary of the Idea (Best Practices)
+	1.	Centralized, Framework-Agnostic Readiness State
+	•	AppReadinessState (sealed class) — an independent model, with no ties to BLoC, Riverpod, GetIt, etc.
+	•	The state can be stored anywhere: ValueNotifier, Stream, ChangeNotifier, Cubit, StateNotifier, or a global variable.
+	•	State updates are performed only through a dedicated manager that fires new states.
+	2.	Proxy / Fallback DI for All Services
+	•	Stub/Null Object/Fake pattern: every service has a minimal stub (e.g., StubUserRepository) that never returns null and never breaks the chain.
+	•	The real DI implementation is swapped in only after entering the AppReady state.
+	3.	Minimal Bootstrap
+	•	Only the minimum required for displaying the loader (theme, localization stub, router stub).
+	•	All other services go through fallback/proxy (never null).
+	4.	Fully Declarative UI Shell
+	•	Readiness is checked only via select/selector/ValueListenableBuilder/StreamBuilder.
+	•	Loader, Error, and Ready UI are automatically switched based on state, not depending on DI or state manager.
+	5.	All Error/Retry/Timeout Logic
+	•	Is encapsulated in the BootstrapManager (an abstraction not tied to the state manager).
+	•	The UI only triggers retry (e.g., via a callback), but the actual retry logic is the manager’s responsibility.
+	6.	For Large Applications
+	•	You can add a stepper/pipeline/FSM for complex scenarios (advanced use).
+	•	The DI container, when ready, swaps all proxies for real services (using reset/replace or dynamic proxy).
+
+⸻
+
+🔥 Checklist for a “Clean” Bootstrap-Flow (Enterprise-Level):
+	•	AppReadinessState — sealed class, agnostic, can be stored anywhere (ValueNotifier/Stream/Notifier).
+	•	BootstrapManager — a bridge, does not depend on DI/StateManager, responsible for error/retry/progress logic.
+	•	Proxy DI — always uses stubs (stub repository, router, theme, localization) before readiness.
+	•	Loader/Error/Main UI — automatically switched, subscription via select/selector/StreamBuilder.
+	•	No nulls, only safe stubs/fallbacks.
+	•	All minimal DI (theme, router, overlay) — always available via fallback/proxy.
+	•	Testing: all transitions and fallback services are easily mockable.
+	•	Easy adaptation for any state manager (Provider, Bloc, Riverpod, GetIt, etc.).

@@ -9,10 +9,11 @@ import '../../features/profile/data/profile_repo_impl.dart';
 import '../../features/profile/data/profile_repo_provider.dart';
 import '../../features/profile/data/remote_data_source.dart';
 
-/// 🔧 [IDIConfig] — Abstraction for DI configuration
-///     Can be used if DI Container became big and managing/testing become complicated
+/// 🔧 [IDIConfig] — Abstraction for DI configuration.
+///    Can be useful, when DI Container's managing/testing become complicated
 
-sealed class DIConfigSync {
+sealed class DIConfig {
+  ///-------------------
   ///
   List<Override> get overrides;
 
@@ -25,10 +26,9 @@ sealed class DIConfigSync {
 
 ////
 
-final class DefaultDIConfiguration extends DIConfigSync {
-  ///-------------------------------------------------------
-
-  ///
+final class DefaultDIConfiguration extends DIConfig {
+  ///-------------------------------------------------
+  //
   @override
   List<Override> get overrides => [
     ///
@@ -38,17 +38,17 @@ final class DefaultDIConfiguration extends DIConfigSync {
       (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
     ),
 
-    // 🗺️ Navigation
+    /// 🗺️ Navigation
     goRouter.overrideWith((ref) => buildGoRouter(ref)),
 
-    // 📤 Overlay dispatcher
+    /// 📤 Overlay dispatcher
     overlayDispatcherProvider.overrideWith(
       (ref) => OverlayDispatcher(
         onOverlayStateChanged: ref.read(overlayStatusProvider.notifier).update,
       ),
     ),
 
-    // 🧩 Profile
+    /// 🧩 Profile
     profileRepoProvider.overrideWith(
       (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
     ),

@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app_start_up/minimal_app_start_up.dart';
-import 'app_start_up/di_container/di_container.dart';
-import 'bootstrapper.dart';
+import 'app_bootstrap/app_bootstrap.dart';
+import 'app_bootstrap/di_container/di_container.dart';
+import 'core/foundation/localization/app_localization.dart';
+import 'root_view_shell.dart';
 
 /// 🏁 Entry point of the application. Initializes Flutter bindings, configures DI, and launches the app
 Future<void> main() async {
   ///
-  final startUp = AppStartUp(
+  final startUp = AppBootstrap(
     // ? Here can be plugged in custom dependencies, e.g.:
-    // debugTools: NewDebugTools(),
-    // localStorageStack: OtherLocalStorageStack(),
+    // localStorage: IsarLocalStorage(),
   );
-  // Run imperative bootstrap (platform validation, debug tools configuration, local storage initialization)
-  await startUp.run();
-  await startUp.initLocalStorage();
-
-  // Init global DI container
-  await startUp.initGlobalDIContainer();
+  await startUp.runFullBootstrap();
 
   ////
 
@@ -25,19 +20,23 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       parent: GlobalDIContainer.instance,
-      child: const AppBootstrapper(),
+      child: const AppLocalizationShell(),
     ),
   );
 }
 
-/*
+/// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.
+///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
 
-Об’єднуй класи в один BootstrappingStack/Service, використовуй sealed “readiness state” і proxy DI, декларативний UI, error/retry flow
+final class AppLocalizationShell extends StatelessWidget {
+  ///----------------------------------------------
+  const AppLocalizationShell({super.key});
 
-Централізований readiness state
-	•	Для Riverpod ми робили StateNotifier/Provider, для BLoC/Cubit — просто Cubit з sealed states:
-(	Ти додаєш цей Cubit в MultiBlocProvider, як і всі інші, або навіть реєструєш у GetIt.)
-
-
-
- */
+  @override
+  Widget build(BuildContext context) {
+    //
+    /// Injects localization context into the widget tree.
+    /// Provides all supported locales and translation assets to [child].
+    return AppLocalization.configure(const AppRootViewShell());
+  }
+}

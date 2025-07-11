@@ -3,31 +3,10 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
-import 'core/foundation/localization/app_localization.dart';
 import 'core/foundation/localization/generated/locale_keys.g.dart';
 import 'core/foundation/navigation/core/go_router_provider.dart';
 import 'core/foundation/overlays/core/global_overlay_handler.dart';
 import 'core/foundation/theme/theme_provider/theme_config_provider.dart';
-
-/// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.
-///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
-
-final class AppLocalizationShell extends StatelessWidget {
-  ///----------------------------------------------
-  const AppLocalizationShell({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    //
-    /// Injects localization context into the widget tree.
-    /// Provides all supported locales and translation assets to [child].
-    return AppLocalization.configure(const AppRootViewShell());
-  }
-}
-
-////
-
-////
 
 /// 🧩 [AppRootViewShell] — Combines both Theme and Router configuration
 /// ✅ Ensures minimal rebuilds using selective `ref.watch(...)`

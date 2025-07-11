@@ -2,17 +2,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../core/app_configs/firebase/env.dart';
-import '../../core/app_configs/firebase/firebase_options_env.dart';
-import '../../core/app_configs/firebase/firebase_utils.dart';
+import '../core/app_configs/firebase/env.dart';
+import '../core/app_configs/firebase/firebase_options_env.dart';
+import '../core/app_configs/firebase/firebase_utils.dart';
 
-/// 🔥 [IFirebaseStack] — Abstraction for Firebase+Env initialization logic.
-/// ✅ Used to decouple startup logic and enable mocking in tests.
+/// 🔥 [IRemoteDataBase] — Abstraction to decouple startup logic and enable mocking in tests.
 
-abstract interface class IFirebaseStack {
+abstract interface class IRemoteDataBase {
   ///---------------------------------
   //
-  /// Initializes all Firebase stack services
+  /// Initializes all [IRemoteDataBase] services
   Future<void> init();
   //
 }
@@ -21,11 +20,11 @@ abstract interface class IFirebaseStack {
 
 ////
 
-/// 🔥 [FirebaseStack] — implementation of [IFirebaseStack].
+/// 🔥 [FirebaseRemoteDataBase] — Current implementation of [IRemoteDataBase], with Firebase+Env initialization logic
 
-final class FirebaseStack implements IFirebaseStack {
+final class FirebaseRemoteDataBase implements IRemoteDataBase {
   ///----------------------------------------------------
-  const FirebaseStack();
+  const FirebaseRemoteDataBase();
   //
 
   @override
