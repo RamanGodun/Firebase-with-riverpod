@@ -1,5 +1,5 @@
 import 'dart:convert';
-import '../../../../core/utils_shared/typedef.dart';
+import '../../../../core/utils_shared/type_definitions.dart';
 import '../../domain/entities/_user_entity.dart';
 import '_user_dto.dart';
 

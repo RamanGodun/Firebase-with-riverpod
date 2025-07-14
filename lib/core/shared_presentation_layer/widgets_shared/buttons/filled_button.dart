@@ -1,7 +1,7 @@
-import 'package:firebase_with_riverpod/core/foundation/animation/widget_animation_x.dart';
-import 'package:firebase_with_riverpod/core/foundation/theme/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/animation/widget_animation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
-import '../../../foundation/localization/widgets/text_widget.dart';
+import '../../../base_modules/localization/widgets/text_widget.dart';
 import '../loaders/loader.dart';
 
 /// ✅ [CustomFilledButton] — animated cross-platform button with Cupertino spinner and theming

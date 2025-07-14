@@ -1,7 +1,7 @@
-import 'package:firebase_with_riverpod/core/foundation/localization/generated/locale_keys.g.dart'
+import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart'
     show LocaleKeys;
-import 'package:firebase_with_riverpod/core/foundation/navigation/extensions/navigation_x.dart';
-import 'package:firebase_with_riverpod/core/foundation/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/reset_password_x.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +9,9 @@ import 'package:flutter_hooks/flutter_hooks.dart' show useFocusNode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
-import '../../../../core/foundation/localization/widgets/text_widget.dart';
-import '../../../../core/foundation/navigation/app_routes/app_routes.dart';
-import '../../../../core/foundation/theme/ui_constants/_app_constants.dart';
+import '../../../../core/base_modules/localization/widgets/text_widget.dart';
+import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
+import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../form_fields/input_validation/_validation_enums.dart';

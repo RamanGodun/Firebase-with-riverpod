@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/app_configs/firebase/firebase_constants.dart';
-import '../../../../core/foundation/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
+import '../../../../core/base_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
 import '../../../profile/data/data_transfer_objects/user_dto_factories_x.dart';
 import '../domain/sign_up_repo_contract.dart';
 

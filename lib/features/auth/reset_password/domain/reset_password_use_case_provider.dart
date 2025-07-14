@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/utils_shared/typedef.dart';
-import '../../../../core/foundation/errors_handling/utils/for_riverpod/failure_utils.dart';
+import '../../../../core/utils_shared/type_definitions.dart';
+import '../../../../core/base_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
 import '../data/reset_password_repo_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'reset_password_repo_contract.dart';

@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/features/profile/domain/entities/_user_entity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../core/utils_shared/typedef.dart';
+import '../../../core/utils_shared/type_definitions.dart';
 import '../data/profile_repo_provider.dart';
 import 'profile_repo_contract.dart';
 

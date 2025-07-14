@@ -1,16 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_with_riverpod/core/foundation/errors_handling/failures/extensions/to_ui_failure_x.dart';
-import 'package:firebase_with_riverpod/core/foundation/navigation/extensions/navigation_x.dart';
-import 'package:firebase_with_riverpod/core/foundation/overlays/core/_context_x_for_overlays.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/features/auth/sign_in/presentation/signin_page.dart';
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/foundation/navigation/app_routes/app_routes.dart';
-import '../change_password/presentation/providers/change_password_form_provider.dart';
-import '../change_password/presentation/providers/change_password_provider.dart';
-import '../../../core/foundation/localization/generated/locale_keys.g.dart';
-import '../../../core/foundation/errors_handling/failures/failure_entity.dart';
+import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
+import '../../change_reset_password/presentation/change_passsword/providers/change_password_form_provider.dart';
+import '../../change_reset_password/presentation/change_passsword/providers/change_password_provider.dart';
+import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
+import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
 
 /// 🧩 [RefPasswordChangeListenerX] — declarative handler for ChangePassword lifecycle
 

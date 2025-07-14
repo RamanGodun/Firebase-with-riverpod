@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart' show DocumentSnapshot;
-import '../../../core/app_configs/firebase/firebase_constants.dart';
+import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 
 /// 📡 [IProfileRemoteDataSource] — contract for profile document loading
 /// 🧼 Abstracts data fetching from Firestore for user profile

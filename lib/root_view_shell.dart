@@ -3,10 +3,10 @@ import 'package:flutter/foundation.dart' show kReleaseMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
-import 'core/foundation/localization/generated/locale_keys.g.dart';
-import 'core/foundation/navigation/core/go_router_provider.dart';
-import 'core/foundation/overlays/core/global_overlay_handler.dart';
-import 'core/foundation/theme/theme_provider/theme_config_provider.dart';
+import 'core/base_modules/localization/generated/locale_keys.g.dart';
+import 'core/base_modules/navigation/core/go_router_provider.dart';
+import 'core/base_modules/overlays/core/global_overlay_handler.dart';
+import 'core/base_modules/theme/theme_provider/theme_config_provider.dart';
 
 /// 🧩 [AppRootViewShell] — Combines both Theme and Router configuration
 /// ✅ Ensures minimal rebuilds using selective `ref.watch(...)`

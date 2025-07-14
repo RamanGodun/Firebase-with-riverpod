@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/foundation/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
 import '../../../profile/data/profile_repo_provider.dart';
 import '../domain/sign_out_use_case_provider.dart';
 
