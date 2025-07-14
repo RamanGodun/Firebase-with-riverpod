@@ -12,4 +12,3 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 final authStateStreamProvider = StreamProvider<User?>((ref) {
   return FirebaseAuth.instance.userChanges();
 });
-

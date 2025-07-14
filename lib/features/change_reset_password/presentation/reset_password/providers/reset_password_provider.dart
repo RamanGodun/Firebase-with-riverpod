@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../../domain/reset_password_use_case_provider.dart';
+import '../../../domain/use_cases_provider.dart';
 
 part 'reset_password_provider.g.dart';
 
@@ -26,8 +26,8 @@ class ResetPassword extends _$ResetPassword with SafeAsyncState<void> {
 
     state = await AsyncValue.guard(() async {
       await updateSafely(() async {
-        final useCase = ref.watch(resetPasswordUseCaseProvider);
-        final result = await useCase(email);
+        final useCase = ref.watch(passwordUseCasesProvider);
+        final result = await useCase.callResetPassword(email);
         return result.fold((f) => throw f, (_) => null);
       });
 

@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
 import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
-import '../reset_password/presentation/providers/reset_password_form_provider.dart';
-import '../reset_password/presentation/providers/reset_password_provider.dart';
+import '../../change_reset_password/presentation/reset_password/providers/reset_password_form_provider.dart';
+import '../../change_reset_password/presentation/reset_password/providers/reset_password_provider.dart';
 
 /// 🧩 [RefResetPasswordListenerX] — declarative handler for ResetPassword lifecycle
 

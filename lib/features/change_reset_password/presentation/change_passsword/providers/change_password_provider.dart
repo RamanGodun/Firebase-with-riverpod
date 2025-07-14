@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../../../domain/change_password_use_case_provider.dart';
+import '../../../domain/use_cases_provider.dart';
 
 part 'change_password_provider.g.dart';
 
@@ -29,8 +29,8 @@ class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
     state = const AsyncLoading();
 
     state = await AsyncValue.guard(() async {
-      final useCase = ref.watch(changePasswordUseCaseProvider);
-      final result = await useCase(newPassword);
+      final useCase = ref.watch(passwordUseCasesProvider);
+      final result = await useCase.callChangePassword(newPassword);
       return result.fold((f) => throw f, (_) => null);
     });
   }
@@ -46,8 +46,8 @@ class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
     debugPrint('[ChangePassword] Retrying password change after reauth');
 
     state = await AsyncValue.guard(() async {
-      final useCase = ref.watch(changePasswordUseCaseProvider);
-      final result = await useCase(pwd);
+      final useCase = ref.watch(passwordUseCasesProvider);
+      final result = await useCase.callChangePassword(pwd);
       return result.fold((f) => throw f, (_) => null);
     });
   }

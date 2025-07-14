@@ -6,7 +6,7 @@ part of 'reset_password_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$resetPasswordHash() => r'd56025bc71acd535f7270f1320e91518a26fbe12';
+String _$resetPasswordHash() => r'fc80dbe70cf559b8bc8c6a01cc96c61328270e40';
 
 /// 🧩 [resetPasswordProvider] — async notifier that handles password reset
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates

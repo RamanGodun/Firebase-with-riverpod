@@ -45,3 +45,13 @@ final class AppLocalizationShell extends StatelessWidget {
     return AppLocalization.configure(const AppRootViewShell());
   }
 }
+
+
+/*
+
+
+flutter pub run build_runner build --delete-conflicting-outputs
+
+
+
+ */

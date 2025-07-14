@@ -24,12 +24,14 @@ extension RefPasswordChangeListenerX on WidgetRef {
 
     listen<AsyncValue<void>>(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
-        data: (_) {
+        data: (_) async {
           showSnackbar(message: LocaleKeys.reauth_password_updated.tr());
+
           if (context.mounted) {
-            context.goTo(RoutesNames.signIn);
+            context.goTo(RoutesNames.home);
           }
         },
+
         error: (e, st) async {
           final failure =
               e is Failure
