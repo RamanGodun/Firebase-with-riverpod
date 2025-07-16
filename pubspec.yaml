@@ -2,7 +2,10 @@ name: firebase_with_riverpod
 description: "A blueprint Flutter project integrating Firebase with Riverpod and
   Clean Architecture."
 publish_to: "none"
-version: 0.1.0
+version: 0.1.0+1
+
+license: "Proprietary License - All Rights Reserved"
+homepage: "https://github.com/RamanGodun/Firebase-with-riverpod.git"
 
 environment:
   sdk: ^3.7.2
@@ -104,4 +107,4 @@ spider:
   groups:
     - path: assets/images
       class_name: Images
-      types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
+      types: [.png, .jpg, .jpeg, .webp, .webm, .bmp]

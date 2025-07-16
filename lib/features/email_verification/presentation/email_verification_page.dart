@@ -22,7 +22,7 @@ part 'widgets_for_email_verification_page.dart';
 /// Automatically redirects when email gets verified
 //
 final class VerifyEmailPage extends ConsumerWidget {
-  ///--------------------------------------
+  ///--------------------------------------------
   const VerifyEmailPage({super.key});
 
   @override

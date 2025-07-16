@@ -5,6 +5,17 @@ import 'app_bootstrap_and_config/di_container/di_container.dart';
 import 'core/base_modules/localization/app_localization.dart';
 import 'root_view_shell.dart';
 
+/*
+
+ * Copyright (c) 2025 Roman Godun
+ * All rights reserved.
+ * This software is proprietary and confidential.
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+  
+ ! For licensing inquiries, contact: 4l.roman.godun@gmail.com or godun.rm@gmail.com
+
+ */
+
 /// 🏁 Entry point of the application
 //
 Future<void> main() async {
