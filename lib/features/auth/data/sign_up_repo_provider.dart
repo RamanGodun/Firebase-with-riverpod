@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../../core/base_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
-import '../../../profile/data/data_transfer_objects/user_dto_factories_x.dart';
+import '../../profile/data/data_transfer_objects/user_dto_factories_x.dart';
 import '../domain/sign_up_repo_contract.dart';
 
 part 'sign_up_repo_provider.g.dart';

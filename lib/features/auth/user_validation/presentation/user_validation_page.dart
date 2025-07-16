@@ -14,7 +14,7 @@ import '../../../../core/base_modules/localization/generated/locale_keys.g.dart'
 import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../../core/base_modules/theme/ui_constants/app_colors.dart';
-import '../../sign_out/presentation/sign_out_provider.dart';
+import '../../presentation/sign_out/sign_out_provider.dart';
 
 part 'widgets_for_verify_email_page.dart';
 

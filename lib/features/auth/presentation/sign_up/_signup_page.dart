@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/f
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/sign_up_submit_x.dart';
+import 'package:firebase_with_riverpod/features/auth/presentation/sign_up/sign_up_submit_x.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';

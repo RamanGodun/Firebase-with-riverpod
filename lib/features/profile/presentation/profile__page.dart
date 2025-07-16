@@ -16,11 +16,11 @@ import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/theme_toggle_widgets/theme_picker.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/box_decorations/_box_decorations_factory.dart';
+import '../../auth/presentation/sign_out/sign_out_buttons.dart';
 import '../domain/entities/_user_entity.dart';
 import '../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../core/shared_presentation_layer/widgets_shared/app_bar.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/theme_toggle_widgets/theme_toggler.dart';
-import '../../auth/sign_out/presentation/sign_out_buttons.dart';
 import 'profile_provider.dart';
 
 part 'profile_page_widgets.dart';
