@@ -5,7 +5,7 @@ import 'providers/signup_provider.dart';
 /// 📩 Handles form validation and submission to [signupProvider].
 extension SignUpSubmitX on WidgetRef {
   ///-------------------------------
-
+  //
   /// 📩 Triggers sign-up logic based on current form state
   void submitSignUp() {
     final form = read(signUpFormProvider);

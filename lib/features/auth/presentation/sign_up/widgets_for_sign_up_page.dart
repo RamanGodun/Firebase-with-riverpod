@@ -2,7 +2,7 @@ part of '_signup_page.dart';
 
 /// 🧾 [_SignupHeader] — logo and welcome message
 
-class _SignupHeader extends StatelessWidget {
+final class _SignupHeader extends StatelessWidget {
   ///---------------------------------------
   const _SignupHeader();
 
@@ -27,15 +27,12 @@ class _SignupHeader extends StatelessWidget {
 
 ////
 
-////
-
-////
-
-class _SignupSubmitButton extends ConsumerWidget {
+final class _SignupSubmitButton extends ConsumerWidget {
   const _SignupSubmitButton();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // /
     final form = ref.watch(signUpFormProvider);
     final signupState = ref.watch(signupProvider);
     final isOverlayActive = ref.isOverlayActive;
@@ -51,7 +48,7 @@ class _SignupSubmitButton extends ConsumerWidget {
           form.isValid && !signupState.isLoading
               ? () => ref.submitSignUp()
               : null,
-    );
+    ).withPaddingBottom(AppSpacing.xl);
   }
 }
 
@@ -60,7 +57,7 @@ class _SignupSubmitButton extends ConsumerWidget {
 ////
 
 /// 🔁 [_SignupFooter] — sign in redirect
-class _SignupFooter extends StatelessWidget {
+final class _SignupFooter extends StatelessWidget {
   ///---------------------------------------
   const _SignupFooter();
 

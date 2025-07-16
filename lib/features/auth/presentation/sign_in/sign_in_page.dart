@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/f
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/presentation/sign_in/sign_in_submit_x.dart';
+import 'package:firebase_with_riverpod/features/auth/presentation/sign_in/sign_in_ref_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
@@ -25,7 +25,7 @@ part 'widgets_for_sign_in_page.dart';
 
 /// 🔐 [SignInPage] — screen that allows user to sign in.
 
-class SignInPage extends HookConsumerWidget {
+final class SignInPage extends HookConsumerWidget {
   ///-----------------------------------
   const SignInPage({super.key});
   //
@@ -38,44 +38,25 @@ class SignInPage extends HookConsumerWidget {
     // 🔁 Declarative side-effect for error displaying
     ref.listenFailure(signInProvider, context);
 
-    /// used "LayoutBuilder + ConstrainedBox + IntrinsicHeight" pattern
     return Scaffold(
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
+
+          /// used "LayoutBuilder+ConstrainedBox" pattern
           child: LayoutBuilder(
             builder: (context, constraints) {
               return ConstrainedBox(
                 constraints: BoxConstraints(minHeight: constraints.maxHeight),
                 child: FocusTraversalGroup(
+                  ///
                   child: ListView(
                     children: [
-                      /// Logo and welcome messages
-                      const SizedBox(height: AppSpacing.huge),
-                      const FlutterLogo(size: AppSpacing.massive),
-                      const SizedBox(height: AppSpacing.xxl),
-                      const TextWidget(
-                        LocaleKeys.sign_in_header,
-                        TextType.headlineSmall,
-                      ),
-                      const TextWidget(
-                        LocaleKeys.sign_in_sub_header,
-                        TextType.bodyLarge,
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-
-                      ///
+                      //
+                      const _SignInHeader(),
                       _SignInEmailInputField(focus),
-                      const SizedBox(height: AppSpacing.m),
-
                       _SignInPasswordInputField(focus),
-                      const SizedBox(height: AppSpacing.xxxl),
-
-                      ///
                       const _SigninSubmitButton(),
-                      const SizedBox(height: AppSpacing.l),
-
-                      ///
                       const _SigninFooter(),
                       //
                     ],

@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../features/profile/presentation/profile__page.dart';
 import '../../../../features/change_reset_password/presentation/change_passsword/change_password_page.dart';
 import '../../../../features/change_reset_password/presentation/reset_password/reset_password_page.dart';
-import '../../../../features/auth/presentation/sign_in/signin_page.dart';
+import '../../../../features/auth/presentation/sign_in/sign_in_page.dart';
 import '../../../../features/auth/presentation/sign_up/_signup_page.dart';
 import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';

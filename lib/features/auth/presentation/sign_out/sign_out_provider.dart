@@ -10,7 +10,7 @@ part 'sign_out_provider.g.dart';
 /// 🧼 Wraps result in [AsyncValue.guard]-like error propagation
 
 @riverpod
-class SignOut extends _$SignOut with SafeAsyncState<void> {
+final class SignOut extends _$SignOut with SafeAsyncState<void> {
   //------------------------------------------------------
 
   @override

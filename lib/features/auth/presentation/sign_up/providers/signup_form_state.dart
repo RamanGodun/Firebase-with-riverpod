@@ -5,9 +5,9 @@ import '../../../../form_fields/input_validation/_validation_enums.dart';
 /// 📦 [SignUpFormState] — immutable state of the sign-up form.
 /// Tracks each input field and overall form validity.
 
-class SignUpFormState extends Equatable {
+final class SignUpFormState extends Equatable {
   /// --------------------------------
-
+  //
   final NameInputValidation name;
   final EmailInputValidation email;
   final PasswordInputValidation password;

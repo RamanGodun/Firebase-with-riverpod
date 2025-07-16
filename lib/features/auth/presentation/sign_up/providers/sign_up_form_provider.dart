@@ -8,7 +8,7 @@ part 'sign_up_form_provider.g.dart';
 /// Handles input updates, validation, and visibility toggling for password fields.
 
 @riverpod
-class SignUpForm extends _$SignUpForm {
+final class SignUpForm extends _$SignUpForm {
   ///--------------------------------
 
   /// Initializes the form state with default (pure) values.

@@ -1,15 +1,49 @@
-part of 'signin_page.dart';
+part of 'sign_in_page.dart';
+
+/// 🧩 [_SignInHeader] — displays logo and welcome messages for Sign In screen
+/// 📦 Contains app logo, main header, and sub-header
+
+final class _SignInHeader extends StatelessWidget {
+  ///------------------------------------------
+  const _SignInHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        /// 🖼️ App logo
+        const FlutterLogo(
+          size: AppSpacing.massive,
+        ).withPaddingOnly(top: AppSpacing.huge, bottom: AppSpacing.xxl),
+        //
+        /// 🏷️ Header text
+        const TextWidget(LocaleKeys.sign_in_header, TextType.headlineSmall),
+        //
+        /// 📝 Sub-header text
+        const TextWidget(
+          LocaleKeys.sign_in_sub_header,
+          TextType.bodyLarge,
+        ).withPaddingBottom(AppSpacing.xl),
+      ],
+    );
+  }
+}
+
+////
+
+////
 
 /// 🧩 [_SignInEmailInputField] — email and password fields
 
-class _SignInEmailInputField extends ConsumerWidget {
+final class _SignInEmailInputField extends ConsumerWidget {
   ///-----------------------------------------------
-
+  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInEmailInputField(this.focus);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signInFormProvider);
     final formNotifier = ref.read(signInFormProvider.notifier);
 
@@ -19,7 +53,7 @@ class _SignInEmailInputField extends ConsumerWidget {
       errorText: form.email.uiErrorKey,
       onChanged: formNotifier.emailChanged,
       onSubmitted: () => focus.password.requestFocus(),
-    );
+    ).withPaddingBottom(AppSpacing.m);
   }
 }
 
@@ -29,14 +63,15 @@ class _SignInEmailInputField extends ConsumerWidget {
 
 /// 🧩 [_SignInPasswordInputField] — password input field with visibility toggle
 
-class _SignInPasswordInputField extends ConsumerWidget {
+final class _SignInPasswordInputField extends ConsumerWidget {
   ///-------------------------------------------------
-
+  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInPasswordInputField(this.focus);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signInFormProvider);
     final formNotifier = ref.read(signInFormProvider.notifier);
 
@@ -51,7 +86,7 @@ class _SignInPasswordInputField extends ConsumerWidget {
         isObscure: form.isPasswordObscure,
         onPressed: formNotifier.togglePasswordVisibility,
       ),
-    );
+    ).withPaddingBottom(AppSpacing.xxxl);
   }
 }
 
@@ -60,13 +95,14 @@ class _SignInPasswordInputField extends ConsumerWidget {
 ////
 
 /// 🔘 [_SigninSubmitButton] — submit button for the sign-in form
-class _SigninSubmitButton extends ConsumerWidget {
+final class _SigninSubmitButton extends ConsumerWidget {
   ///-------------------------------------------
   const _SigninSubmitButton();
   //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signInFormProvider);
     final signInState = ref.watch(signInProvider);
     final isOverlayActive = ref.isOverlayActive;
@@ -82,7 +118,7 @@ class _SigninSubmitButton extends ConsumerWidget {
           form.isValid && !signInState.isLoading
               ? () => ref.submitSignIn()
               : null,
-    );
+    ).withPaddingBottom(AppSpacing.l);
   }
 }
 
@@ -92,7 +128,7 @@ class _SigninSubmitButton extends ConsumerWidget {
 
 /// 🔁 [_SigninFooter] — sign up & reset password actions
 
-class _SigninFooter extends StatelessWidget {
+final class _SigninFooter extends StatelessWidget {
   ///---------------------------------------
   const _SigninFooter();
   //
@@ -102,7 +138,6 @@ class _SigninFooter extends StatelessWidget {
     //
     return Column(
       children: [
-        //
         const TextWidget(
           LocaleKeys.buttons_redirect_to_sign_up,
           TextType.bodyMedium,
@@ -114,7 +149,6 @@ class _SigninFooter extends StatelessWidget {
           label: LocaleKeys.buttons_sign_up,
         ),
         const SizedBox(height: AppSpacing.xl),
-
         AppTextButton(
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: LocaleKeys.sign_in_forgot_password,

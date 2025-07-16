@@ -5,7 +5,7 @@ import '../../../../form_fields/input_validation/_validation_enums.dart';
 /// 📦 [SignInFormState] — Immutable model representing the state of the sign-in form.
 /// Tracks field values, password visibility, and overall form validity.
 
-class SignInFormState extends Equatable {
+final class SignInFormState extends Equatable {
   ///---------------------------------
 
   final EmailInputValidation email;

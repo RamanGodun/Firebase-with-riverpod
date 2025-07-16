@@ -23,7 +23,7 @@ part 'input_fields.dart';
 
 /// 🔐 [SignUpPage] — screen that allows user to register a new account.
 
-class SignUpPage extends HookConsumerWidget {
+final class SignUpPage extends HookConsumerWidget {
   ///-----------------------------------
   const SignUpPage({super.key});
   //
@@ -41,37 +41,41 @@ class SignUpPage extends HookConsumerWidget {
       body: SafeArea(
         child: GestureDetector(
           onTap: context.unfocusKeyboard,
-          child: FocusTraversalGroup(
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                /// 📋 Logo and welcome text
-                const _SignupHeader(),
 
-                /// 🔢 Name input field
-                _NameInputField(focus),
-                const SizedBox(height: AppSpacing.m),
+          /// used "LayoutBuilder + ConstrainedBox" pattern
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: FocusTraversalGroup(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      /// 📋 Logo and welcome text
+                      const _SignupHeader(),
 
-                /// 🔢 Email input field
-                _EmailInputField(focus),
-                const SizedBox(height: AppSpacing.m),
+                      /// 🔢 Name input field
+                      _NameInputField(focus),
 
-                /// 🔢 Password input field
-                _PasswordInputField(focus),
-                const SizedBox(height: AppSpacing.m),
+                      /// 🔢 Email input field
+                      _EmailInputField(focus),
 
-                /// 🔢 Confirm password field
-                _ConfirmPasswordInputField(focus),
-                const SizedBox(height: AppSpacing.xxxl),
+                      /// 🔢 Password input field
+                      _PasswordInputField(focus),
 
-                /// 🔺 Submit button
-                const _SignupSubmitButton(),
-                const SizedBox(height: AppSpacing.xl),
+                      /// 🔢 Confirm password field
+                      _ConfirmPasswordInputField(focus),
 
-                /// 🔄 Redirect to sign in
-                const _SignupFooter(),
-              ],
-            ).withPaddingHorizontal(AppSpacing.xxxm),
+                      /// 🔺 Submit button
+                      const _SignupSubmitButton(),
+
+                      /// 🔄 Redirect to sign in
+                      const _SignupFooter(),
+                    ],
+                  ).withPaddingHorizontal(AppSpacing.xxxm),
+                ),
+              );
+            },
           ),
         ),
       ),

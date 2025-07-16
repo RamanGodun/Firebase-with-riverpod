@@ -8,8 +8,8 @@ part 'signup_provider.g.dart';
 /// 🧼 Compatible with new declarative error handling (listenFailure)
 
 @Riverpod(keepAlive: false)
-class Signup extends _$Signup with SafeAsyncState<void> {
-  //----------------------------------------------------
+final class Signup extends _$Signup with SafeAsyncState<void> {
+  ///-------------------------------------------------
 
   /// 🧱 Initializes safe lifecycle mechanism
   @override

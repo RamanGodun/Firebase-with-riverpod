@@ -1,7 +1,7 @@
 part of '_signup_page.dart';
 
 /// 🧩 [_NameInputField] — name input field
-class _NameInputField extends ConsumerWidget {
+final class _NameInputField extends ConsumerWidget {
   final ({
     FocusNode name,
     FocusNode email,
@@ -13,6 +13,7 @@ class _NameInputField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signUpFormProvider);
     final formNotifier = ref.read(signUpFormProvider.notifier);
 
@@ -22,12 +23,16 @@ class _NameInputField extends ConsumerWidget {
       errorText: form.name.uiErrorKey,
       onChanged: formNotifier.nameChanged,
       onSubmitted: () => focus.email.requestFocus(),
-    );
+    ).withPaddingBottom(AppSpacing.m);
   }
 }
 
+////
+
+////
+
 /// 🧩 [_EmailInputField] — email input field
-class _EmailInputField extends ConsumerWidget {
+final class _EmailInputField extends ConsumerWidget {
   final ({
     FocusNode name,
     FocusNode email,
@@ -39,6 +44,7 @@ class _EmailInputField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signUpFormProvider);
     final formNotifier = ref.read(signUpFormProvider.notifier);
 
@@ -48,12 +54,16 @@ class _EmailInputField extends ConsumerWidget {
       errorText: form.email.uiErrorKey,
       onChanged: formNotifier.emailChanged,
       onSubmitted: () => focus.password.requestFocus(),
-    );
+    ).withPaddingBottom(AppSpacing.m);
   }
 }
 
+////
+
+////
+
 /// 🧩 [_PasswordInputField] — password input field
-class _PasswordInputField extends ConsumerWidget {
+final class _PasswordInputField extends ConsumerWidget {
   final ({
     FocusNode name,
     FocusNode email,
@@ -65,6 +75,7 @@ class _PasswordInputField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signUpFormProvider);
     final formNotifier = ref.read(signUpFormProvider.notifier);
 
@@ -79,12 +90,16 @@ class _PasswordInputField extends ConsumerWidget {
         isObscure: form.isPasswordObscure,
         onPressed: formNotifier.togglePasswordVisibility,
       ),
-    );
+    ).withPaddingBottom(AppSpacing.m);
   }
 }
 
+////
+
+////
+
 /// 🧩 [_ConfirmPasswordInputField] — confirm password field
-class _ConfirmPasswordInputField extends ConsumerWidget {
+final class _ConfirmPasswordInputField extends ConsumerWidget {
   final ({
     FocusNode name,
     FocusNode email,
@@ -96,6 +111,7 @@ class _ConfirmPasswordInputField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //
     final form = ref.watch(signUpFormProvider);
     final formNotifier = ref.read(signUpFormProvider.notifier);
 
@@ -110,6 +126,6 @@ class _ConfirmPasswordInputField extends ConsumerWidget {
         isObscure: form.isConfirmPasswordObscure,
         onPressed: formNotifier.toggleConfirmPasswordVisibility,
       ),
-    );
+    ).withPaddingBottom(AppSpacing.xxxl);
   }
 }
