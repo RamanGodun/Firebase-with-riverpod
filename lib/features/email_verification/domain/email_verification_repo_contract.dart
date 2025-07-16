@@ -1,7 +1,7 @@
 library;
 
 /// 🧼 Contract for email verification and user reload operations
-
+//
 abstract interface class IUserValidationRepo {
   ///-----------------------------------------
   //

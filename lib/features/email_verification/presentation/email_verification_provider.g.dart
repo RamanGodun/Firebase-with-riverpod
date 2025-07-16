@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_validation_provider.dart';
+part of 'email_verification_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

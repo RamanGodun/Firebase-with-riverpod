@@ -1,25 +1,25 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
-import '../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../domain/user_validation_use_case_provider.dart';
+import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
+import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../domain/email_verification_use_case.dart';
+import '../domain/email_verification_use_case_provider.dart';
 
-part 'user_validation_provider.g.dart';
+part 'email_verification_provider.g.dart';
 
 /// 🧩 [emailVerificationNotifierProvider] — async notifier that handles email verification polling
 /// 🧼 Sends verification email and checks if email is verified via Firebase
-
+//
 @riverpod
-class EmailVerificationNotifier extends _$EmailVerificationNotifier
+final class EmailVerificationNotifier extends _$EmailVerificationNotifier
     with SafeAsyncState<void> {
-  //----------------------------------------------------------------
+  ///-------------------------------------------------------------
 
   Timer? _timer;
   static const _maxPollingDuration = Duration(minutes: 2);
   final Stopwatch _stopwatch = Stopwatch();
-
   late final EmailVerificationUseCase _useCase;
 
   /// 🧱 Initializes verification logic

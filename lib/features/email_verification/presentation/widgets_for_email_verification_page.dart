@@ -1,11 +1,10 @@
-part of 'user_validation_page.dart';
+part of 'email_verification_page.dart';
 
 /// ℹ️ [_VerifyEmailInfo] — shows instructions about checking inbox / spam
-
-class _VerifyEmailInfo extends StatelessWidget {
-  ///------------------------------------------
+//
+final class _VerifyEmailInfo extends StatelessWidget {
+  ///----------------------------------------------
   const _VerifyEmailInfo();
-  //
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +72,13 @@ class _VerifyEmailInfo extends StatelessWidget {
 
 ////
 
+////
+
 /// ❌ [VerifyEmailCancelButton] — signs out from verification screen
 /// 🧼 Listens for errors via [signOutProvider]
-
-class VerifyEmailCancelButton extends ConsumerWidget {
-  ///-------------------------------------------------
+//
+final class VerifyEmailCancelButton extends ConsumerWidget {
+  ///----------------------------------------------------
   const VerifyEmailCancelButton({super.key});
 
   @override
