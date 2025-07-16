@@ -2,9 +2,9 @@ part of '_widget_x.dart';
 
 /// 🧩 [WidgetPaddingX] — Fluent widget padding extension
 /// ✅ Simplifies padding application with expressive syntax
-
+//
 extension WidgetPaddingX on Widget {
-  //-------------------------------
+  ///----------------------------
 
   /// 🔲 Apply uniform padding
   Widget withPaddingAll(double value) =>

@@ -1,7 +1,6 @@
-class AppImages {
+final class AppImages {
   ///-----------
   AppImages._();
-  //
 
   ///
   static const String blocLogoFull = 'assets/images/bloc_logo_full.png';

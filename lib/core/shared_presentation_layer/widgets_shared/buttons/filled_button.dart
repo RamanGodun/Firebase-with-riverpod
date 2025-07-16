@@ -5,10 +5,10 @@ import '../../../base_modules/localization/widgets/text_widget.dart';
 import '../loaders/loader.dart';
 
 /// ✅ [CustomFilledButton] — animated cross-platform button with Cupertino spinner and theming
-
-class CustomFilledButton extends StatelessWidget {
+//
+final class CustomFilledButton extends StatelessWidget {
   ///------------------------------------------
-
+  //
   final String label;
   final VoidCallback? onPressed;
   final bool isLoading;
@@ -21,7 +21,6 @@ class CustomFilledButton extends StatelessWidget {
     this.isLoading = false,
     this.isEnabled = true,
   });
-  //
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +59,6 @@ class CustomFilledButton extends StatelessWidget {
                   .withAnimatedSwitcherSize(),
         ),
       ),
-      // ),
-      // ),
     );
   }
 

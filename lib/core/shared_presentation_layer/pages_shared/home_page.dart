@@ -10,11 +10,10 @@ import '../../base_modules/navigation/app_routes/app_routes.dart';
 
 /// 🏠 [HomePage] — the main landing screen after login.
 /// Displays a toggle for theme switching and navigates to profile/settings.
-
-class HomePage extends ConsumerWidget {
-  //----------------------------------
+//
+final class HomePage extends ConsumerWidget {
+  ///----------------------------------
   const HomePage({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,12 +37,11 @@ class HomePage extends ConsumerWidget {
 }
 
 ////
-
 ////
 
 /// 👤 [_GoToProfilePageButton] — Navigates to profile page when pressed
-
-class _GoToProfilePageButton extends StatelessWidget {
+//
+final class _GoToProfilePageButton extends StatelessWidget {
   ///------------------------------------------------
   const _GoToProfilePageButton();
 
@@ -55,6 +53,4 @@ class _GoToProfilePageButton extends StatelessWidget {
       onPressed: () => context.goPushTo(RoutesNames.profile),
     ).withPaddingRight(AppSpacing.l);
   }
-
-  //
 }

@@ -6,7 +6,7 @@ import '../../../../features/auth/presentation/sign_in/sign_in_page.dart';
 import '../../../../features/auth/presentation/sign_up/_signup_page.dart';
 import '../../../../features/auth/user_validation/presentation/user_validation_page.dart';
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
-import '../../../shared_presentation_layer/pages_shared/_home_page.dart';
+import '../../../shared_presentation_layer/pages_shared/home_page.dart';
 import '../../../shared_presentation_layer/pages_shared/splash_page.dart';
 import '../utils/page_transition.dart';
 

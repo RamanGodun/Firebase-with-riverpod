@@ -5,7 +5,7 @@ import 'package:flutter/material.dart' show ChangeNotifier;
 /// 🔄 [StreamChangeNotifier] — Bridges any [Stream] to [ChangeNotifier] for imperative listeners
 /// ✅ Used for cases where you need to notify imperative listeners (e.g., GoRouter.refreshListenable)
 /// ✅ Compatible with any [Stream<T>] — Riverpod, Firebase, etc.
-
+//
 final class StreamChangeNotifier<T> extends ChangeNotifier {
   ///----------------------------------------------------
   //

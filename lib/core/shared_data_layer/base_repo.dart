@@ -3,7 +3,7 @@ import '../base_modules/errors_handling/utils/observers/loggers/errors_log_util.
 /// [BaseRepo] - Abstract base class for all repository implementations.
 /// Provides a utility method to wrap async repository logic
 /// with consistent error logging and rethrowing.
-
+//
 abstract class BaseRepo {
   /// -----------------
   //
@@ -20,7 +20,7 @@ abstract class BaseRepo {
 /// [SafeExecution] - Extension for async function types.
 /// Provides a convenient, declarative way to wrap any repository method
 /// with error logging and propagation.
-
+//
 extension SafeExecution<T> on Future<T> Function() {
   //
   Future<T> runWithErrorLog() async {

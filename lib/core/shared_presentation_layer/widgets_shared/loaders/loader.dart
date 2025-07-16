@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 ///    used for:
 ///     - showing loader during bootstrap (wrapInMaterialApp = true)
 ///     - loading states in UI (wrapInMaterialApp = false)
-
-class AppLoader extends StatelessWidget {
+//
+final class AppLoader extends StatelessWidget {
   ///----------------------------------
-
+  //
   ///  Whether to wrap with [MaterialApp]
   final bool wrapInMaterialApp;
   // Loader size (for Material spinner).

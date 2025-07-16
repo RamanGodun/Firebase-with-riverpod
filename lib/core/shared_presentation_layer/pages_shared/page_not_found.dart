@@ -8,13 +8,12 @@ import '../../base_modules/navigation/app_routes/app_routes.dart';
 import '../widgets_shared/buttons/filled_button.dart';
 
 /// 🧭 [PageNotFound] — generic 404 fallback UI for unknown routes
-
-class PageNotFound extends StatelessWidget {
-  //---------------------------------------
+//
+final class PageNotFound extends StatelessWidget {
+  ///------------------------------------------
 
   final String errorMessage;
   const PageNotFound({super.key, required this.errorMessage});
-  //
 
   @override
   Widget build(BuildContext context) {
