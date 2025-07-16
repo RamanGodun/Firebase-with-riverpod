@@ -1,0 +1,1 @@
+Кожен модуль ізольований, separation of concerns, dependency injection, зручне масштабування

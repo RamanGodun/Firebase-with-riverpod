@@ -4,7 +4,7 @@
 
 ## 🌟 Purpose
 
-This module provides a **clean, reusable, and UX-optimized** form field infrastructure using `Formz` and `Bloc/Cubit`,
+This module provides a **clean, reusable, and UX-optimized** form field infrastructure using `Formz` and `Bloc/Cubit/Riverpod`,
 tightly aligned with **Clean Architecture**, **SRP**, and **Flutter UX best practices**.
 It supports **sign-in**, **sign-up**, and any custom forms with:
 

@@ -2,7 +2,7 @@
 
 ## 📌 Title: Use of Clean Architecture + Riverpod for Firebase-Driven Flutter App
 
-### 📅 Date: 2025-04-16
+### 📅 Date: 2025-07-16
 ### 👥 Authors: Core Flutter Team
 ### 📈 Status: ✅ Accepted
 
@@ -10,29 +10,26 @@
 
 ## ❓ Context
 
-The goal of this project (`firebase_with_riverpod`) is to provide a **scalable, and testable Flutter boilerplate** that integrates:
+The goal of this project (`firebase_with_riverpod`) is to provide a **scalable, and testable adbanced Flutter blueprint app** that integrates:
 
 - 🔥 **Firebase** (Authentication, Firestore)
 - 🧩 **Riverpod** (state management, DI, codegen)
 - 🧱 **Clean Architecture** principles
-- 🎯 Modern Flutter best practices (hooks, extensions, sealed types)
+- 🎯 Modern Flutter best practices 
 - 🍏 **iOS/macOS-style UX and theming**
+- GoRouter navigation
+- 
 
-The blueprint is optimized for cross-platform development:
 
-- ✅ Android
-- ✅ iOS
-- ✅ Web (Firebase config support)
 
 It includes full support for:
-
 - 🆕 Sign Up
 - 🔐 Sign In
 - 🔁 Password Reset / Change
 - ✅ Email Verification
 - 🔑 Re-authentication Flow
 
-All features are modularized and designed with **separation of concerns** and **testability** in mind.
+All features are modularized and designed with **separation of concerns**, that ensures app testability and flexibility  
 
 ---
 
@@ -41,12 +38,12 @@ All features are modularized and designed with **separation of concerns** and **
 ### 🧱 Architecture
 
 - Clean Architecture with 3 main conceptual layers:
-  - `data/`: Firebase repositories, serialization, sources
-  - `domain/`: [Planned] Use Cases, Interfaces, Value Objects (future)
-  - `presentation/`: Stateless UI with `ConsumerWidget`, feature folders
+  - `shared_data/`: Firebase repositories, serialization, sources
+  - `shared_datadomain/`: Base Use Cases, Value Objects (future)
+  - `shared_presentation/`: Common pages and reusable widgets
 
 - `features/`: Modular folders (`sign_in`, `sign_up`, etc.) contain UI, providers, and states
-- `core/`: Global routing, constants, theming, extensions, and reusable widgets
+- `core/base_modules/`: Global routing, constants, theming, 
 
 ### ⚙️ State Management & DI
 

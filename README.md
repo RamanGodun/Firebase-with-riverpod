@@ -346,7 +346,7 @@ lib/
 │   │   │   │   │   ├── unknown_failure.dart
 │   │   │   │   │   └── usecase_and_cache_failures.dart
 │   │   │   │   └── failure_ui_entity.dart
-│   │   │   ├── README for Erors_handling module.md
+│   │   │   ├── README for Errors_handling module.md
 │   │   │   └── utils
 │   │   │       ├── exceptions_to_failures_mapper
 │   │   │       │   ├── _exceptions_to_failures_mapper.dart
@@ -620,7 +620,7 @@ lib/
 │   │       ├── sign_in_submit_x.dart
 │   │       └── sign_up_submit_x.dart
 │   ├── form_fields
-│   │   ├── Form_fielads README.md
+│   │   ├── Form_fields README.md
 │   │   ├── input_validation
 │   │   │   ├── _formz_status_x.dart
 │   │   │   ├── _validation_enums.dart
