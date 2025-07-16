@@ -38,7 +38,6 @@ class ThemeProps extends InheritedWidget {
   //
 }
 
-
 /*
 
  Example usage:

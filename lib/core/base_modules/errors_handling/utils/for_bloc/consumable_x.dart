@@ -15,7 +15,7 @@ extension ConsumableX<T> on T {
 
 ////
 
-/// 📦 Extension to one-time error show 
+/// 📦 Extension to one-time error show
 //
 extension FailureUIContextX on BuildContext {
   ///---------------------------------------
