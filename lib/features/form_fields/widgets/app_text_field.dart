@@ -9,10 +9,10 @@ import '../../../core/base_modules/localization/app_localizer.dart';
 /// - focus control
 /// - submit action
 /// - obscured (e.g. password) mode
-
-class AppTextField extends StatelessWidget {
-  //---------------------------------------
-
+//
+final class AppTextField extends StatelessWidget {
+  ///------------------------------------------
+  //
   final Key? fieldKey;
   final FocusNode focusNode;
   final String label;

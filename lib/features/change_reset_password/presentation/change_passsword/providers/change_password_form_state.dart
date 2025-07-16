@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../../form_fields/input_validation/validation_enums.dart';
 
 /// 📦 [ChangePasswordFormState] — immutable state of the change password form
 /// 🧠 Tracks inputs, visibility flags, and overall form validity

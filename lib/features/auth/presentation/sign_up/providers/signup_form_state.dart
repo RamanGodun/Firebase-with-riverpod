@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart' show Equatable;
 import 'package:formz/formz.dart';
-import '../../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../../form_fields/input_validation/validation_enums.dart';
 
 /// 📦 [SignUpFormState] — immutable state of the sign-up form.
 /// Tracks each input field and overall form validity.

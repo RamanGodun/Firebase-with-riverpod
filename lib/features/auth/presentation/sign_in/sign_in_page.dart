@@ -9,7 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
 import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../../core/base_modules/theme/ui_constants/app_colors.dart';
-import '../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../form_fields/input_validation/validation_enums.dart';
 import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../form_fields/widgets/_fields_factory.dart';
 import '../../../form_fields/widgets/password_visibility_icon.dart';

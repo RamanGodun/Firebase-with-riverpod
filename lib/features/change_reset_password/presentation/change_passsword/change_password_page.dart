@@ -13,7 +13,7 @@ import '../../../../core/base_modules/errors_handling/failures/failure_model.dar
 import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../auth/presentation/sign_in/sign_in_page.dart';
-import '../../../form_fields/input_validation/_validation_enums.dart';
+import '../../../form_fields/input_validation/validation_enums.dart';
 import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../../core/base_modules/localization/widgets/text_widget.dart';
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';

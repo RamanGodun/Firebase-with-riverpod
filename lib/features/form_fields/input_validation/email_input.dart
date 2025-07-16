@@ -1,16 +1,17 @@
-part of '_validation_enums.dart';
+part of 'validation_enums.dart';
 
 /// 📧 [EmailInputValidation] — Formz input for validating user email.
 /// Checks for non-empty input and valid email format.
-
+//
 final class EmailInputValidation
     extends FormzInput<String, EmailValidationError> {
   ///-------------------------------------------------
-
+  //
   const EmailInputValidation.pure() : super.pure('');
   const EmailInputValidation.dirty([super.value = '']) : super.dirty();
 
-  ///
+  /// 🧪 [validator] — core validation logic for email input.
+  ///    Called internally by Formz every time the input changes,
   @override
   EmailValidationError? validator(String value) {
     final trimmed = value.trim();
