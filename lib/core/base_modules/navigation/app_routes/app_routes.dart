@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../../../../features/profile/presentation/profile__page.dart';
-import '../../../../features/change_or_reset_password/presentation/change_passsword/change_password_page.dart';
+import '../../../../features/change_or_reset_password/presentation/change_password/change_password_page.dart';
 import '../../../../features/change_or_reset_password/presentation/reset_password/reset_password_page.dart';
 import '../../../../features/auth/presentation/sign_in/sign_in_page.dart';
 import '../../../../features/auth/presentation/sign_up/_signup_page.dart';
@@ -15,11 +15,10 @@ part 'route_paths.dart';
 
 /// 🧭 [AppRoutes] — Centralized list of all GoRouter routes
 /// ✅ Used in [goRouter] and matches [RoutesNames]
-
+//
 abstract final class AppRoutes {
   ///-------------------------
   AppRoutes._();
-  //
 
   ///
   static final List<GoRoute> all = [

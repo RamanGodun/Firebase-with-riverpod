@@ -9,12 +9,11 @@ import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_
 /// 🎯 [OverlayAnimationEngineMapperX] — resolves the correct animation engine
 /// based on overlay category and platform.
 /// Clean, centralized switch logic for easy extendability.
-
+//
 extension OverlayAnimationEngineMapperX on BuildContext {
   ///------------------------------------
-
+  //
   AnimationEngine getEngine(OverlayCategory type) {
-    //
     return switch ((type, platform)) {
       //
       // 🍎 iOS: use shared configurable engine
@@ -29,7 +28,7 @@ extension OverlayAnimationEngineMapperX on BuildContext {
       (OverlayCategory.snackbar, TargetPlatform.iOS) =>
         IOSOverlayAnimationEngine(ShowAs.snackbar),
 
-      ///
+      ////
 
       // 🤖 Android: use shared configurable engine
       (OverlayCategory.dialog, TargetPlatform.android) =>
@@ -41,7 +40,7 @@ extension OverlayAnimationEngineMapperX on BuildContext {
       (OverlayCategory.snackbar, TargetPlatform.android) =>
         AndroidOverlayAnimationEngine(ShowAs.snackbar),
 
-      ///
+      ////
 
       // 🛑 Default fallback
       _ => FallbackAnimationEngine(),

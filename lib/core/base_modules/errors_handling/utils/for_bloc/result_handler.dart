@@ -5,11 +5,11 @@ import '../../failures/failure_model.dart';
 
 /// 🧩 [ResultHandler<T>] — wrapper around `Either<Failure, T>`
 /// ✅ Chainable and readable result API for Cubits, Providers, UseCases.
-
+//
 @immutable
 final class ResultHandler<T> {
   ///------------------------
-
+  //
   final Either<Failure, T> result;
   const ResultHandler(this.result);
 

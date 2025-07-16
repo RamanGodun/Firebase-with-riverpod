@@ -4,7 +4,7 @@ import '../../errors_handling/failures/failure_model.dart';
 
 /// 🧭 [FailureNavigationX] — Handles redirection/navigation scenarios based on failure type
 /// ✅ Recommended for handling auth/navigation flows declaratively
-
+//
 extension FailureNavigationX on Failure {
   /// -----------------------------------
   //
@@ -14,6 +14,4 @@ extension FailureNavigationX on Failure {
     if (isUnauthorized) onUnauthorized();
     return this;
   }
-
-  //
 }

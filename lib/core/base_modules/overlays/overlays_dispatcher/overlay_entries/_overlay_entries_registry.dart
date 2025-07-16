@@ -10,9 +10,9 @@ part 'snackbar_overlay_entry.dart';
 /// - Used in queue management and conflict resolution
 /// - Holds config such as dismiss policy, priority, and platform-aware widget
 /// - Each entry is uniquely identified by [id] (used to avoid duplicate insertion)
-
+//
 sealed class OverlayUIEntry {
-  //-------------------------
+  ///---------------------
 
   /// 🆔 Unique entry identifier (auto-generated via UUID if not provided)
   OverlayUIEntry({String? id}) : id = id ?? const Uuid().v4();
@@ -43,10 +43,10 @@ sealed class OverlayUIEntry {
 /// 🧠 [OverlayConflictStrategy] — Strategy object for each overlay that
 /// defines its replacement logic and category identification.
 /// used to determine behavior when multiple overlays are triggered.
-
+//
 class OverlayConflictStrategy {
-  //---------------------------
-
+  ///-----------------------
+  //
   final OverlayPriority priority;
   final OverlayReplacePolicy policy;
   final OverlayCategory category;

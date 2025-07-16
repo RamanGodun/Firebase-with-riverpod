@@ -2,9 +2,9 @@ part of 'error_plugins.dart';
 
 /// 🗝️ [FailureKeys] — Localizable error keys for [Failure]
 /// 🧩 Used with i18n and [AppLocalizer] to resolve messages
-
+//
 enum FailureKeys {
-  //
+  ///
   networkNoConnection, // 🌐 No internet / offline
   networkTimeout, // ⏳ Request timeout
   unauthorized, // 🔐 401 or invalid session
@@ -29,7 +29,7 @@ enum FailureKeys {
   unknown, // ❓ Unexpected or unclassified
   missingPlugin; // 🧩 Platform plugin not available
 
-  ///
+  ////
 
   /// 🌐 Maps each key to translation ID for localization
   String get translationKey => switch (this) {

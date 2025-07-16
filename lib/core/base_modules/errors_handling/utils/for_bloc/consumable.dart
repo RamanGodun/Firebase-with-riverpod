@@ -2,10 +2,10 @@ library;
 
 /// 🧩 [Consumable] — Wraps a value for one-time consumption.
 /// ✅ Prevents repeated UI side-effects (like dialogs/snackbars)
-
+//
 final class Consumable<T> {
   ///---------------------
-
+  //
   final T? _value;
   bool _hasBeenConsumed = false;
 

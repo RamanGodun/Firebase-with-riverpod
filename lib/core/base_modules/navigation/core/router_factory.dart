@@ -1,7 +1,7 @@
 part of 'go_router_provider.dart';
 
 /// 🧭🚦 Returns fully constructed [GoRouter] instance
-
+//
 GoRouter buildGoRouter(Ref ref) {
   ///--------------------------
 

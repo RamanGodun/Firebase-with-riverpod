@@ -1,21 +1,26 @@
 part of 'app_theme_variants.dart';
 
-// 🎨 Enhanced enum for ThemeType
+/// 🎨 [ThemeVariantX] — Extension for [ThemeVariantsEnum] to generate ThemeData.
+///   - Provides a factory method for building fully customized [ThemeData]
+///   - Applies design tokens, color schemes, and app-specific constants
+///   - Centralizes all visual details for each theme variant
+///
 extension ThemeVariantX on ThemeVariantsEnum {
-  ///----------------------------------
-
-  ///
+  ///--------------------------------------
+  //
+  /// 🏗️ Builds [ThemeData] for the given [ThemeVariantsEnum] (light, dark, amoled).
+  /// - Optionally injects a custom font via [AppFontFamily]
+  /// - Uses design tokens and color scheme for visual consistency across the app
+  /// - Configures app bars, buttons, cards, text styles, etc.
   ThemeData build({AppFontFamily? font}) {
-    ///
-    //
     return ThemeData(
-      //
+      /// Theme core palette
       brightness: brightness,
       scaffoldBackgroundColor: background,
       primaryColor: primaryColor,
       colorScheme: colorScheme,
 
-      ///
+      /// AppBar configuration: transparent, with custom text and icon colors
       appBarTheme: AppBarTheme(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -26,7 +31,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
         centerTitle: false,
       ),
 
-      ///
+      /// Buttons: consistent paddings, radius, elevation, and colors
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: colorScheme.primary.withOpacity(
@@ -58,7 +63,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
         ),
       ),
 
-      ///
+      /// Cards: unified radius, background, shadow
       cardTheme: CardThemeData(
         color: cardColor,
         shape: const RoundedRectangleBorder(
@@ -68,6 +73,7 @@ extension ThemeVariantX on ThemeVariantsEnum {
         elevation: 0,
       ),
 
+      /// Typography: generated via factory using current palette & font
       textTheme: TextThemeFactory.from(colorScheme, font: font),
 
       //

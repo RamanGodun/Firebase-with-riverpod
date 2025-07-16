@@ -4,11 +4,10 @@ import '../../../failures/failure_model.dart';
 
 /// 🧭 [ErrorsLogger] — Centralized logger for all application-level telemetry.
 /// 🔍 Supports runtime exceptions and domain-level failures
-
+//
 abstract final class ErrorsLogger {
-  //------------------------------
+  ///---------------------------
   const ErrorsLogger._();
-  //
 
   /// ❗ Logs any raw [Exception] or [Error].
   static void exception(Object error, [StackTrace? stackTrace]) {

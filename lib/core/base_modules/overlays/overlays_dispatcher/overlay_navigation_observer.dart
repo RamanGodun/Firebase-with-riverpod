@@ -6,15 +6,14 @@ import 'overlay_dispatcher_provider.dart';
 /// 🧭 [OverlayNavigatorObserver] — Clears all overlays on navigation events
 /// ✅ Ensures that overlays (banners, snackbars, dialogs) do not persist
 /// ✅ Works with GoRouter, Navigator 2.0, or traditional Navigator
-
+//
 final class OverlayNavigatorObserver extends NavigatorObserver {
-  ///----------------------------------------------------------
+  ///--------------------------------------------------------
 
   /// 📦 Reference to the overlay dispatcher (via DI)
   OverlayDispatcher get overlaysDispatcher =>
       GlobalDIContainer.instance.read(overlayDispatcherProvider);
-
-  ///
+  ////
 
   /// 🔁 Called when a new route is pushed onto the navigator
   @override

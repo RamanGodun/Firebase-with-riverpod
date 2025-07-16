@@ -8,9 +8,9 @@ import '../../utils/for_bloc/consumable.dart';
 import '../failure_ui_model.dart';
 
 /// ✅ [FailureToUIEntityX] — Maps [Failure] to [FailureUIEntity] without localization context
-
+//
 extension FailureToUIEntityX on Failure {
-  //------------------------------------
+  ///---------------------------------
 
   /// From [Failure] to [FailureUIEntity] mapper
   FailureUIEntity toUIEntity() {

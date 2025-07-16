@@ -7,6 +7,7 @@ import '../text_theme/text_theme_factory.dart';
 part 'theme_storage_provider.dart';
 
 /// 🧩 [themeProvider] — StateNotifier for switching themes with injected storage
+//
 final themeProvider =
     StateNotifierProvider<ThemeConfigNotifier, ThemePreferences>(
       ///
@@ -19,10 +20,10 @@ final themeProvider =
 ////
 
 /// 🌗 [ThemeConfigNotifier] — Manages the ThemeMode state with persistent storage
-
+//
 class ThemeConfigNotifier extends StateNotifier<ThemePreferences> {
   ///----------------------------------------------------------
-
+  //
   final GetStorage _storage;
   static const _themeKey = 'selected_theme';
   static const _fontKey = 'selected_font';

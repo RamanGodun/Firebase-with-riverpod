@@ -6,11 +6,10 @@ import '../../../failures/extensions/failure_diagnostics_x.dart';
 /// 🧱 [CrashlyticsLogger] — Utility class for sending structured logs to Firebase Crashlytics.
 /// ✅ Handles exceptions, domain-level failures, and Bloc observer errors.
 /// ✅ Prints debug output in development mode for immediate visibility.
-
+//
 abstract final class CrashlyticsLogger {
-  //-----------------------------------
+  ///--------------------------------
   const CrashlyticsLogger._();
-  //
 
   /// 🧩 Internal helper for consistent error reporting.
   static void _record({

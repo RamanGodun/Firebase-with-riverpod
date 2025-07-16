@@ -7,7 +7,7 @@ import '../../../overlays/core/enums_for_overlay_module.dart';
 import '../../failures/failure_model.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
-
+//
 extension RefFailureListenerX on WidgetRef {
   ///--------------------------------------
 
@@ -58,7 +58,7 @@ extension RefFailureListenerX on WidgetRef {
 
 /// 🧩 [AsyncValueX] — extension for extracting [Failure] from [AsyncError]
 /// ✅ Enables typed access to domain failures in async state
-
+//
 extension AsyncValueX<T> on AsyncValue<T> {
   /// ─────-------------------------------
 

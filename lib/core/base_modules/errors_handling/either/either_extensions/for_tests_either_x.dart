@@ -3,9 +3,9 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failure
 import '../../failures/failure_model.dart';
 
 /// 🧪 [ResultFutureTestX] — Fluent test helpers for async Either
-
+//
 extension ResultFutureTestX<T> on Future<Either<Failure, T>> {
-  ///--------------------------------------------------------
+  ///------------------------------------------------------
 
   /// ✅ Expect that future resolves to Right with [expected] value
   Future<void> expectSuccess(T expected) async {

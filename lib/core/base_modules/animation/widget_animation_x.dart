@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// ✅ Provides common animated entrance effects for widgets:
 /// - fadeIn, scaleIn, slideInFromBottom, etc.
 /// - Uses `TweenAnimationBuilder` / `AnimatedOpacity`
-
+//
 extension WidgetAnimationX on Widget {
   ///---------------------------------
 

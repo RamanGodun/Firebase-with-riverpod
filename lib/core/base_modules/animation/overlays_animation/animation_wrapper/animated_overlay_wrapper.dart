@@ -6,10 +6,10 @@ import '../animation_engines/_animation_engine.dart';
 /// ✅ Automatically triggers the forward animation on mount.
 /// ✅ Optionally auto-dismisses after [displayDuration].
 /// ✅ Invokes [onDismiss] callback after reverse animation completes.
-
+//
 final class AnimatedOverlayWrapper extends StatefulWidget {
   ///-----------------------------------------------------
-
+  //
   final AnimationEngine engine;
   final Widget Function(AnimationEngine engine) builder;
   final Duration displayDuration;
@@ -33,9 +33,9 @@ final class AnimatedOverlayWrapper extends StatefulWidget {
 
 ////
 
-class _AnimatedOverlayWrapperState extends State<AnimatedOverlayWrapper>
+final class _AnimatedOverlayWrapperState extends State<AnimatedOverlayWrapper>
     with TickerProviderStateMixin {
-  ///-----------------------------------------------------
+  ///---------------------------------------------------
 
   bool _isInitialized = false;
 
@@ -65,8 +65,7 @@ class _AnimatedOverlayWrapperState extends State<AnimatedOverlayWrapper>
       if (mounted) widget.onDismiss?.call();
     });
   }
-
-  ///
+  //
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +76,7 @@ class _AnimatedOverlayWrapperState extends State<AnimatedOverlayWrapper>
     return widget.builder(widget.engine);
   }
 
+  ///
   @override
   void dispose() {
     widget.engine.dispose(); // 🧼 Cleanup engine

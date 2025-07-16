@@ -43,7 +43,7 @@ final class AppLocalizationShell extends StatelessWidget {
     //
     /// Injects localization context into the widget tree.
     /// Provides all supported locales and translation assets to [child].
-    return AppLocalization.configure(const AppRootViewShell());
+    return LocalizationWrapper.configure(const AppRootViewShell());
   }
 }
 

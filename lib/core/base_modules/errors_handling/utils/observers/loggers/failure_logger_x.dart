@@ -5,9 +5,9 @@ import 'errors_log_util.dart';
 
 /// 🧩 [Failure] extensions — logging, diagnostics, analytics hooks
 /// ✅ Track, debug, and log failures in structured way
-
+//
 extension FailureLogger on Failure {
-  //-------------------------------
+  ///-------------------------------
 
   /// 🐞 Logs failure to logger (e.g. Crashlytics)
   void log([StackTrace? stackTrace]) {

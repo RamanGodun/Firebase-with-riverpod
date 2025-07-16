@@ -9,10 +9,10 @@ part 'overlay_widget.dart';
 
 /// 🌟 [OverlayNotificationService] — macOS-style overlay (snackbar replacement)
 /// 🧼 Shows a floating, styled, animated banner for temporary notifications
-
+//
 class OverlayNotificationService {
   ///-----------------------------
-
+  //
   static OverlayEntry? _overlayEntry;
   static bool _isShowing = false;
 
@@ -86,6 +86,7 @@ class OverlayNotificationService {
   //
 }
 
+////
 ////
 
 enum OverlayPosition { top, center, bottom }

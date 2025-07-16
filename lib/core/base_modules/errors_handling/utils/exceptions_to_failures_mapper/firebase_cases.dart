@@ -2,7 +2,7 @@ part of '_exceptions_to_failures_mapper.dart';
 
 /// 🔥 [_handleFirebase] — maps [FirebaseException] to structured [Failure]s.
 /// ✅ Handles all major Firebase error codes with localization support.
-
+//
 Failure _handleFirebase(FirebaseException error) => switch (error.code) {
   'email-already-in-use' => FirebaseFailure(
     message: error.message ?? 'Email already in use.',
@@ -60,6 +60,6 @@ Failure _handleFirebase(FirebaseException error) => switch (error.code) {
 
 /// 🧊 [_handleFirebaseAuth] — edge-case handler for [FirebaseAuthException].
 /// ✅ Covers missing user, disabled accounts, and all other fallbacks.
-
+//
 Failure _handleFirebaseAuth(FirebaseAuthException error) =>
     _handleFirebase(error);

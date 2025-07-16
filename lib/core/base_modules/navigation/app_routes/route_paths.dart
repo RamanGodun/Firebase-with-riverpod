@@ -2,11 +2,10 @@ part of 'app_routes.dart';
 
 /// 📍 [RoutesPaths] — Centralized absolute paths used in routing
 /// ✅ All paths are `/...` versions of [RoutesNames] and used in GoRouter config and redirects
-
+//
 abstract final class RoutesPaths {
   //----------------------------
   RoutesPaths._();
-  //
 
   /// ⏳ Splash Screen
   static const splash = '/${RoutesNames.splash}';

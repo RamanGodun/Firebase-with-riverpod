@@ -8,7 +8,6 @@ final class Left<L, R> extends Either<L, R> {
 }
 
 ////
-
 ////
 
 /// 📦 [Right] — Represents success value of [Either]

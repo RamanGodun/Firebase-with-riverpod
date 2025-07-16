@@ -1,9 +1,10 @@
 part of '../failure_model.dart';
 
 /// ⚙️ [GenericFailure] — system/platform issues (plugin missing, etc.)
+//
 final class GenericFailure extends Failure {
-  ///---------------------------------------
-
+  ///-----------------------------------
+  //
   final ErrorPlugins plugin;
 
   GenericFailure({

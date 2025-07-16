@@ -1,6 +1,12 @@
 import 'when_app_without_localization/fallback_keys.dart';
 import 'localization_logger.dart';
 
+/// 🌍 [AppLocalizer] — Singleton for global translation resolution.
+///   ✅ Centralizes all translation lookups for the app.
+///   ✅ Provides safe fallback if no translation is found.
+///   ✅ Supports both EasyLocalization and fallback-only modes.
+///   ✅ Used in widgets, validation, and any string localization flow.
+//
 abstract final class AppLocalizer {
   ///-----------------------------
 

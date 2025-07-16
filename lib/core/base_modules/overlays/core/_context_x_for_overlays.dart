@@ -12,14 +12,14 @@ import 'enums_for_overlay_module.dart';
 
 /// 🎯 [ContextXForOverlays] — Unified extension for overlay DSL and dispatcher access
 /// ✅ Use `context.showSnackbar(...)` / `context.showBanner(...)` directly
-
+//
 extension ContextXForOverlays on BuildContext {
   ///----------------------------------------
 
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);
 
-  ///
+  ////
 
   /// 🧠 Handles displaying [FailureUIEntity] as banner/snackbar/dialog
   /// 📌 Uses [OverlayUIPresets] and [ShowAs] to configure appearance and behavior
@@ -95,7 +95,7 @@ extension ContextXForOverlays on BuildContext {
     }
   }
 
-  ///
+  ////
 
   /// 💬 Shows a platform-adaptive dialog manually triggered by user
   void showUserDialog({
@@ -124,7 +124,7 @@ extension ContextXForOverlays on BuildContext {
     );
   }
 
-  ///
+  ////
 
   /// 🪧 Shows a banner overlay triggered manually by user
   void showUserBanner({
@@ -143,7 +143,7 @@ extension ContextXForOverlays on BuildContext {
     );
   }
 
-  ///
+  ////
 
   /// 💬 Shows a platform-adaptive snackbar manually triggered by user
   void showUserSnackbar({

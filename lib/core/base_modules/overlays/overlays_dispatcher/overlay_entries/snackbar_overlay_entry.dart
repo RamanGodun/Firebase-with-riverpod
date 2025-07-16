@@ -7,8 +7,8 @@ part of '_overlay_entries_registry.dart';
 /// - Called by Dispatcher during overlay insertion
 
 final class SnackbarOverlayEntry extends OverlayUIEntry {
-  // ---------------------------------------------------
-
+  ///---------------------------------------------------
+  //
   final Widget widget;
   final bool isError; // ❗ Marks as an error (affects strategy and priority)
   // 🔐 Dismiss policy (persistent or dismissible)

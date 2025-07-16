@@ -11,11 +11,10 @@ import '../overlays_presentation/widgets/ios/ios_snackbar.dart';
 /// 🧭📱 [PlatformMapper] — Resolves platform-specific overlay components
 /// based on platform and [ShowAs] intention (dialog/snackbar/banner).
 /// Used internally by [OverlayDispatcher] system.
-
+//
 abstract final class PlatformMapper {
-  ///-------------------------------
+  ///-----------------------------
   PlatformMapper._();
-  //
 
   ///
   static Widget resolveAppDialog({
@@ -31,7 +30,7 @@ abstract final class PlatformMapper {
     required bool isInfoDialog,
     required bool isFromUserFlow,
   }) {
-    ///
+    //
     return switch (platform) {
       TargetPlatform.iOS => IOSAppDialog(
         title: title,
@@ -75,7 +74,7 @@ abstract final class PlatformMapper {
     //
   }
 
-  ///
+  ////
 
   /// 🪧 Resolves banner per platform
   static Widget resolveAppBanner({
@@ -111,7 +110,7 @@ abstract final class PlatformMapper {
     //
   }
 
-  ///
+  ////
 
   ///  🪧 Resolves snackbar per platform
   static Widget resolveAppSnackbar({

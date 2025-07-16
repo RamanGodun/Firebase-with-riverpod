@@ -5,10 +5,10 @@ import '../engine_configs.dart';
 
 /// 🍎 [IOSOverlayAnimationEngine] — shared animation engine for all iOS overlays
 /// ✅ Uses category-based configuration to generate platform-consistent animations
-
+//
 final class IOSOverlayAnimationEngine extends BaseAnimationEngine {
   ///-------------------------------------------------------------
-
+  //
   // ⚙️ Resolved animation config based on [overlayType]
   final IOSOverlayAnimationConfig _config;
   // 💫 Opacity animation
@@ -19,8 +19,7 @@ final class IOSOverlayAnimationEngine extends BaseAnimationEngine {
   /// 🏗️ Constructor, that initializes config from type
   IOSOverlayAnimationEngine(ShowAs overlayType)
     : _config = _resolveConfig(overlayType);
-
-  ///
+  //
 
   /// 🧠 Resolves preset animation configuration based on [ShowAs]
   static IOSOverlayAnimationConfig _resolveConfig(ShowAs overlayType) {

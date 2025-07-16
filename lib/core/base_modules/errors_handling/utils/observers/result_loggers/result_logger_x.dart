@@ -7,9 +7,9 @@ part 'async_result_logger.dart';
 
 /// 📦 [ResultLoggerExt<T>] — Unified logging extensions for Either and [Future<Either>]
 /// ✅ Supports logging, tracking, and success/failure diagnostics
-
+//
 extension ResultLoggerExt<T> on Either<Failure, T> {
-  //-------------------------------------------------
+  ///--------------------------------------------
 
   /// 🪵 Logs failure if result is Left
   Either<Failure, T> log([StackTrace? stack]) {

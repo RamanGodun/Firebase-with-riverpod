@@ -2,9 +2,9 @@ import '../either.dart';
 
 /// ✅ [EitherGetters] — lightweight accessors for Either results
 /// ✅ Enables safe reads, branching, and composable logic
-
+//
 extension EitherGetters<L, R> on Either<L, R> {
-  ///-----------------------------------------
+  ///---------------------------------------
 
   /// ❌ Returns Left value if exists, else null
   L? get leftOrNull => switch (this) {

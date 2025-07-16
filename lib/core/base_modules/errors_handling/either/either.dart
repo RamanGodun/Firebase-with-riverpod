@@ -8,7 +8,7 @@ part 'either_primitives.dart';
 
 @immutable
 sealed class Either<L, R> {
-  //-------------
+  //--------------------
   const Either();
   //
 

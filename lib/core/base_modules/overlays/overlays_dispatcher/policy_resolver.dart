@@ -2,9 +2,9 @@ part of '_overlay_dispatcher.dart';
 
 /// 🎯 [OverlayPolicyResolver] — Static resolver for overlay conflict and dismiss policies
 /// ✅ Centralizes logic for priority-based replacement and dismissibility behavior
-
+//
 final class OverlayPolicyResolver {
-  ///-----------------------------
+  ///---------------------------
   const OverlayPolicyResolver._();
   //
 
@@ -41,7 +41,7 @@ final class OverlayPolicyResolver {
     };
   }
 
-  ///
+  ////
 
   /// ⏳ Determines if the incoming overlay should wait instead of showing immediately
   /// Relevant for [OverlayReplacePolicy.waitQueue].
@@ -57,13 +57,13 @@ final class OverlayPolicyResolver {
           ? OverlayDismissPolicy.dismissible
           : OverlayDismissPolicy.persistent;
 
-  ///
+  ////
 
   // 🔁 Map of debounce instances by overlay category
   // Ensures that banners/snackbars/dialogs debounce independently.
   static final Map<OverlayCategory, Debouncer> _categoryDebouncers = {};
 
-  ///
+  ////
 
   // ⏱️ Predefined debounce durations for categories
   // Banners/snackbars usually need small delays; dialogs — instant.
@@ -73,7 +73,7 @@ final class OverlayPolicyResolver {
     OverlayCategory.dialog: Duration.zero,
   };
 
-  ///
+  ////
 
   // 🔁 Retrieves or creates a debouncer for given overlay category.
   // Used to prevent rapid re-triggering of overlays like banners/snackbars.
@@ -93,14 +93,12 @@ final class OverlayPolicyResolver {
 
 /// 📦 [OverlayQueueItem] — Internal holder for enqueued overlays.
 /// ✅ Binds [OverlayState] with a specific [OverlayUIEntry] for insertion.
-
+//
 final class OverlayQueueItem {
-  //-----------------------------
-
+  ///----------------------
+  //
   final OverlayState overlay;
   final OverlayUIEntry request;
-
   const OverlayQueueItem({required this.overlay, required this.request});
-
   //
 }

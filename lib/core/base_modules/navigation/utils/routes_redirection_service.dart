@@ -11,11 +11,10 @@ import '../app_routes/app_routes.dart';
 ///   - 🧯 `/firebaseError` if an auth error occurs
 ///   - ⏳ `/splash` while loading
 ///   - ✅ `/home` if fully authenticated and verified
-
+//
 abstract final class RoutesRedirectionService {
   ///----------------------------------------
   RoutesRedirectionService._();
-  //
 
   /// 🗝️ Publicly accessible routes (no authentication required)
   static const Set<String> _publicRoutes = {

@@ -8,9 +8,9 @@ import '../../failures/failure_model.dart';
 
 /// 🧩 [ResultFutureX<T>] — Async sugar for `Future<Either<Failure, T>>`
 /// ✅ Unified access to async chaining, fallback and message handling
-
+//
 extension ResultFutureX<T> on Future<Either<Failure, T>> {
-  //-----------------------------------------------------
+  ///--------------------------------------------------
 
   /// 🔁 Match with async callbacks — auto-logs failure and tracks success
   Future<void> matchAsync({

@@ -2,27 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'generated/codegen_loader.g.dart';
 
-abstract final class AppLocalization {
-  //---------------------------------
-  AppLocalization._();
-  //
+/// 🌍 [LocalizationWrapper] — Static utility for configuring app-wide localization with EasyLocalization.
+///     ✅ Injects all required locale and translation settings.
+///     ✅ Used as a single entry-point for wrapping the entire app widget tree.
+///     ✅ Ensures consistent locale switching and fallback logic everywhere.
+//
+abstract final class LocalizationWrapper {
+  ///----------------------------------
+  LocalizationWrapper._();
 
-  /// 🌐🌍 Supported locales for the app
+  /// 🌐🌍SList of all supported locales in the app
   static final supportedLocales = [
     const Locale('en'),
     const Locale('uk'),
     const Locale('pl'),
   ];
 
-  /// 🌐🌍 Localization path in assets
+  /// 🗂️ [localizationPath] — Path to the localization files in assets.
   static const localizationPath = 'assets/translations';
 
-  /// 🌐🌍 Fallback locale for the app
+  /// 🏳️ [fallbackLocale] — Fallback locale if no match is found or a translation is missing.
   static const fallbackLocale = Locale('en');
 
-  /// Wraps the provided widget with localization configuration.
-  /// Ensures that the entire subtree has access to EasyLocalization,
-  /// which enables locale switching, translation, and fallback logic.
+  /// 🏗️ [configure] — Wraps a widget with [EasyLocalization].
+  ///     Injects supported locales, fallback locale, translation path, and asset loader.
+  ///     Ensures that any widget tree below has full localization context.
+  ///     Call this **once** at the top-level (see [AppLocalizationShell]).
   static Widget configure(Widget child) {
     return EasyLocalization(
       supportedLocales: supportedLocales,

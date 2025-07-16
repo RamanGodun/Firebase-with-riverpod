@@ -16,12 +16,11 @@ part 'policy_resolver.dart';
 /// - Centralized logging
 
 final class OverlayDispatcher {
-  //--------------------------
-
+  ///------------------------
+  //
   final void Function(bool isActive)? onOverlayStateChanged;
   OverlayDispatcher({this.onOverlayStateChanged});
-
-  ///
+  ////
 
   /// 📦 Queue to hold pending overlay requests
   final Queue<OverlayQueueItem> _queue = Queue();

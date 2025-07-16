@@ -6,9 +6,9 @@ import '__eithers_facade.dart';
 
 /// 🧩 [ResultX<T>] — Sync sugar for `Either<Failure, T>`
 /// ✅ Enables fallback values, failure access, and folding logic
-
+//
 extension ResultX<T> on Either<Failure, T> {
-  //---------------------------------------
+  ///------------------------------------
 
   /// 🔁 Match (fold) sync logic — now chainable
   /// ✅ Auto-logs failure and tracks success

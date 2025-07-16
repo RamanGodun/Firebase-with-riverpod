@@ -11,9 +11,9 @@ import '../overlays_presentation/overlay_presets/overlay_presets.dart';
 
 /// 🎯 [OverlayBaseMethods] — Unified extension for low-level overlay
 ///  rendering methods (showBanner, showDialog, showSnackbar)
-
+//
 extension OverlayBaseMethods on BuildContext {
-  //------------------------------------------
+  ///--------------------------------------
 
   /// 5️⃣  📥 Adds a new request to the [IOverlayDispatcher]
   void addOverlayRequest(OverlayUIEntry entry) {

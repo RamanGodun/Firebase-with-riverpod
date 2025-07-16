@@ -5,10 +5,10 @@ import '../engine_configs.dart';
 
 /// 🌟 [AndroidOverlayAnimationEngine] — unified animation engine for all Android overlays
 /// ✅ Centralized engine supporting dialog, banner, snackbar animations via [ShowAs] config
-
+//
 final class AndroidOverlayAnimationEngine extends BaseAnimationEngine {
   ///----------------------------------------------------------------
-
+  //
   // 🧩 Overlay type used to resolve animation config
   final ShowAs overlayType;
   // ⚙️ Resolved animation config based on [overlayType]
@@ -23,8 +23,7 @@ final class AndroidOverlayAnimationEngine extends BaseAnimationEngine {
   /// 🏗️ Constructor, that initializes config from type
   AndroidOverlayAnimationEngine(this.overlayType)
     : _config = _resolveConfig(overlayType);
-
-  ///
+  //
 
   /// 🧠 Resolves preset animation configuration based on [ShowAs]
   static AndroidOverlayAnimationConfig _resolveConfig(ShowAs type) {

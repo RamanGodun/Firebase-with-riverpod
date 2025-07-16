@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 /// 🎨 [ThemeXOnContext] — Theme-related extensions on [BuildContext]
 /// ✅ Simplifies access to [ThemeData], [ColorScheme], [TextTheme], and brightness
-
+//
 extension ThemeXOnContext on BuildContext {
-  //-----------------------------------
+  ///------------------------------------
 
   /// 🎨 Full [ThemeData] object
   ThemeData get theme => Theme.of(this);

@@ -2,11 +2,10 @@ part of 'app_routes.dart';
 
 /// 🏷️ [RoutesNames] — Centralized route name constants used across the app
 /// ✅ Used in GoRouter config, navigation logic, and redirection guards
-
+//
 abstract final class RoutesNames {
   ///----------------------------
   RoutesNames._();
-  //
 
   /// ⏳ Splash / Loading Page
   static const splash = 'splash';

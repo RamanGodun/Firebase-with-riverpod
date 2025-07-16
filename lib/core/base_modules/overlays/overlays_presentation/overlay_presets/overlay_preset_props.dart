@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 /// - Immutable value object used in preset resolution
 /// - Passed to UI widgets (e.g. [AppBanner], [AppSnackbarWidget])
 /// - Encapsulates color, shape, icon, spacing, duration, etc.
-
+//
 @immutable
 final class OverlayUIPresetProps extends Equatable {
   ///---------------------------------------------
-
+  //
   ///🧩 Leading icon for the overlay
   final IconData icon;
   // 🎨 Background color
