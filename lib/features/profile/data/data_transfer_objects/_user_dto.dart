@@ -8,7 +8,7 @@ import 'package:meta/meta.dart' show immutable;
 
 @immutable
 final class UserDTO with EquatableMixin {
-  //------------------------------------
+  //----------------------------------
 
   final String id;
   final String name;

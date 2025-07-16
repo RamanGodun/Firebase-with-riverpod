@@ -7,7 +7,7 @@ import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants
 abstract interface class IProfileRemoteDataSource {
   ///---------------------------------------------
   //
-  // 🔽 Fetches user document from Firestore by [uid]
+  /// 🔽 Fetches user document from Firestore by [uid]
   Future<DocumentSnapshot<Map<String, dynamic>>> fetchUserDoc(String uid);
   //
 }
@@ -21,7 +21,7 @@ abstract interface class IProfileRemoteDataSource {
 
 final class ProfileRemoteDataSourceImpl implements IProfileRemoteDataSource {
   // ────────────────────────────────────────────────────────────────────────
-
+  //
   /// 📥 Loads Firestore document for the given user ID
   /// ⚠️ If document doesn't exist — logic is handled at repository level
   @override

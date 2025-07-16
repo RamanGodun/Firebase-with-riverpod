@@ -15,7 +15,6 @@ import '../../../core/base_modules/localization/widgets/language_toggle_button.d
 import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/theme_toggle_widgets/theme_picker.dart';
-import '../../../core/base_modules/theme/widgets_and_utils/blur_wrapper.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/box_decorations/_box_decorations_factory.dart';
 import '../domain/entities/_user_entity.dart';
 import '../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
@@ -26,40 +25,108 @@ import 'profile_provider.dart';
 
 part 'profile_page_widgets.dart';
 
-/// 👤 [ProfilePage] — displays user info, handles logout and refresh actions
-/// 🧼 Uses [profileProvider] to fetch data and [authRepositoryProvider] to sign out
+/// 👤 [ProfilePage] — Displays user details, handles logout, navigation to password change, and provides theme/language toggling.
+/// Uses [profileProvider] for user data and listens for error overlays.
 
 class ProfilePage extends ConsumerWidget {
-  ///------------------------------------
+  ///----------------------------------
   const ProfilePage({super.key});
   //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
+    /// Get current user UID (null if not signed in)
     final uid = fbAuth.currentUser?.uid;
     if (uid == null) return const SizedBox();
-
     final asyncUser = ref.watch<AsyncValue<UserEntity>>(profileProvider(uid));
 
-    // ❗️ Declarative error listener
+    // ❗️ Listen and display any async errors as overlays
     ref.listenFailure(profileProvider(uid), context);
+
+    final isDark = context.isDarkMode;
 
     ///
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: LocaleKeys.profile_title,
-        actionWidgets: [LanguageToggleButton(), SignOutIconButton()],
-      ),
+      appBar: const _ProfileAppBar(),
 
-      ///
+      /// User data loaded — render profile details
       body: asyncUser.when(
-        data: (user) => _UserProfile(user),
+        data:
+            (user) => Center(
+              child: Container(
+                width: double.infinity,
+                margin: const EdgeInsets.symmetric(horizontal: AppSpacing.xxm),
+                padding: const EdgeInsets.all(AppSpacing.l),
+                decoration: BoxDecorationFactory.iosCard(isDark),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    /// Avatar, username
+                    Row(
+                      children: [
+                        ClipOval(
+                          child:
+                              user.profileImage.isNotEmpty
+                                  ? FadeInImage.assetNetwork(
+                                    placeholder: 'assets/images/loading.gif',
+                                    image: user.profileImage,
+                                    width: 96,
+                                    height: 96,
+                                    fit: BoxFit.cover,
+                                  )
+                                  : Container(
+                                    width: 96,
+                                    height: 96,
+                                    color: context.colorScheme.surfaceVariant,
+                                    child: const Icon(Icons.person, size: 48),
+                                  ),
+                        ),
+                        const SizedBox(width: AppSpacing.m),
+                        Expanded(
+                          child: KeyValueTextWidget(
+                            labelKey: LocaleKeys.profile_welcome,
+                            value: user.name,
+                            labelTextType: TextType.headlineSmall,
+                            valueTextType: TextType.headlineSmall,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.m),
+
+                    /// Email and ID
+                    KeyValueTextWidget(
+                      labelKey: LocaleKeys.profile_email,
+                      value: user.email,
+                      labelTextType: TextType.bodyMedium,
+                    ),
+                    const SizedBox(height: AppSpacing.xxxs),
+                    KeyValueTextWidget(
+                      labelKey: LocaleKeys.profile_id,
+                      value: user.id,
+                      labelTextType: TextType.bodyMedium,
+                    ),
+                    const SizedBox(height: AppSpacing.l),
+
+                    /// Theme switcher and change password button
+                    const _ThemeSection(),
+                    const SizedBox(height: AppSpacing.xl),
+                    const _ChangePasswordButton(),
+                  ],
+                ),
+              ),
+            ).withPaddingBottom(AppSpacing.massive),
+
+        /// Show loader while data is loading
         loading: () => const AppLoader(),
-        error: (_, _) => const SizedBox(), // error shown by overlay
+
+        /// Show nothing, as overlay handles errors
+        error: (_, _) => const SizedBox(),
+
+        //
       ),
     );
   }
-
-  //
 }

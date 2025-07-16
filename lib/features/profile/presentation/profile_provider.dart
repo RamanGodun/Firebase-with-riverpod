@@ -33,10 +33,6 @@ class Profile extends _$Profile {
 
   /// 🧼 Optional reset (usually after logout)
   void reset() => ref.invalidateSelf();
-  /*
-? or 
- void reset() => ref.invalidateSelf();
- */
 
   //
 }

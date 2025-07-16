@@ -51,7 +51,7 @@ class ThemePicker extends ConsumerWidget {
                   value: type,
                   child: TextWidget(
                     _themeLabel(context, type),
-                    TextType.button,
+                    TextType.titleSmall,
                   ),
                 ),
               )
