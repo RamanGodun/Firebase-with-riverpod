@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/shared_domain_layer/shared_auth/base_use_case.dart';
+import 'package:firebase_with_riverpod/core/shared_domain_layer/base_use_case.dart';
 import '../../../core/utils_shared/type_definitions.dart';
 import 'repo_contract.dart';
 

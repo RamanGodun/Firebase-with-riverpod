@@ -3,7 +3,6 @@ import 'package:firebase_with_riverpod/core/base_modules/localization/generated/
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/change_reset_password/presentation/reset_password/widget_ref_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart' show useFocusNode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,8 +17,14 @@ import '../../../form_fields/input_validation/_validation_enums.dart';
 import '../../../form_fields/widgets/_fields_factory.dart';
 import 'providers/reset_password_form_provider.dart';
 import 'providers/reset_password_provider.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
+import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 
 part 'widgets_for_reset_password_page.dart';
+part 'reset_password_ref_x.dart';
 
 /// 🔐 [ResetPasswordPage] — screen that allows user to request password reset
 /// 📩 Sends reset link to user's email using [ResetPasswordProvider]
