@@ -1,4 +1,4 @@
-import '../../../core/base_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
+import 'package:firebase_with_riverpod/core/shared_domain_layer/shared_auth/base_use_case.dart';
 import '../../../core/utils_shared/type_definitions.dart';
 import 'repo_contract.dart';
 
@@ -13,24 +13,12 @@ final class PasswordRelatedUseCases {
 
   /// 🔁 Triggers password change and wraps result
   // Throws [FirebaseAuthException] if no user is signed in
-  ResultFuture<void> callChangePassword(String newPassword) async {
-    try {
-      await repo.changePassword(newPassword);
-      return right(null);
-    } catch (e, st) {
-      return left(mapToFailure(e, st));
-    }
-  }
+  ResultFuture<void> callChangePassword(String newPassword) =>
+      (() => repo.changePassword(newPassword)).executeWithFailureHandling();
 
   /// 📩 Sends reset link to the provided email
-  ResultFuture<void> callResetPassword(String email) async {
-    try {
-      await repo.sendResetLink(email);
-      return right(null);
-    } catch (e, st) {
-      return left(mapToFailure(e, st));
-    }
-  }
+  ResultFuture<void> callResetPassword(String email) =>
+      (() => repo.sendResetLink(email)).executeWithFailureHandling();
 
   //
 }

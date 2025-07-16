@@ -1,6 +1,6 @@
-import '../../failures/failure_model.dart';
-import '../exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
-import '../../either/either.dart';
+import '../failures/failure_model.dart';
+import 'exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
+import '../either/either.dart';
 
 /// 🧰 [FailureUtils] — shortcut helpers for converting errors into [Failure]s.
 /// ✅ Acts as a single entry point for mapping errors and creating `Either`

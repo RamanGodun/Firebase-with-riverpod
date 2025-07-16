@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/base_modules/localization/generated/
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/change_password_x.dart';
+import 'package:firebase_with_riverpod/features/change_reset_password/presentation/change_passsword/widget_ref_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;

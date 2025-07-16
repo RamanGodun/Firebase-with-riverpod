@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/utils_shared/type_definitions.dart';
-import '../../../../core/base_modules/errors_handling/utils/for_riverpod/failure_utils.dart';
+import '../../../../core/base_modules/errors_handling/utils/failure_utils.dart';
 import '../data/email_verification_repo_provider.dart';
 import 'user_validation_repo_contract.dart';
 

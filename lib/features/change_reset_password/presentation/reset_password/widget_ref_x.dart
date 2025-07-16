@@ -4,11 +4,11 @@ import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/n
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
-import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
-import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
-import '../../change_reset_password/presentation/reset_password/providers/reset_password_form_provider.dart';
-import '../../change_reset_password/presentation/reset_password/providers/reset_password_provider.dart';
+import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
+import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
+import 'providers/reset_password_form_provider.dart';
+import 'providers/reset_password_provider.dart';
 
 /// 🧩 [RefResetPasswordListenerX] — declarative handler for ResetPassword lifecycle
 

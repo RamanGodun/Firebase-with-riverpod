@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/base_modules/localization/generated/
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/utils_and_extensions_for_auth_feature/reset_password_x.dart';
+import 'package:firebase_with_riverpod/features/change_reset_password/presentation/reset_password/widget_ref_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart' show useFocusNode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';

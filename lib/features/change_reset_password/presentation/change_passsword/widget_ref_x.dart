@@ -6,11 +6,11 @@ import 'package:firebase_with_riverpod/features/auth/sign_in/presentation/signin
 import 'package:flutter/material.dart' show BuildContext;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
-import '../../change_reset_password/presentation/change_passsword/providers/change_password_form_provider.dart';
-import '../../change_reset_password/presentation/change_passsword/providers/change_password_provider.dart';
-import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
-import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
+import 'providers/change_password_form_provider.dart';
+import 'providers/change_password_provider.dart';
+import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
+import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
 
 /// 🧩 [RefPasswordChangeListenerX] — declarative handler for ChangePassword lifecycle
 
@@ -24,6 +24,7 @@ extension RefPasswordChangeListenerX on WidgetRef {
 
     listen<AsyncValue<void>>(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
+        //
         data: (_) async {
           showSnackbar(message: LocaleKeys.reauth_password_updated.tr());
 
@@ -32,6 +33,7 @@ extension RefPasswordChangeListenerX on WidgetRef {
           }
         },
 
+        ///
         error: (e, st) async {
           final failure =
               e is Failure
@@ -51,9 +53,12 @@ extension RefPasswordChangeListenerX on WidgetRef {
             context.showError(failure.toUIEntity());
           }
         },
+        //
       );
     });
   }
+
+  ////
 
   /// 📤 Submits the password change request
   Future<void> submitChangePassword() async {
