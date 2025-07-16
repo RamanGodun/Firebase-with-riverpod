@@ -8,10 +8,10 @@ part 'sign_out_provider.g.dart';
 /// 🔓 [SignOutProvider] — async notifier for user sign-out
 /// 🧼 Uses [SafeAsyncState] for lifecycle safety and cache cleanup
 /// 🧼 Wraps result in [AsyncValue.guard]-like error propagation
-
+//
 @riverpod
 final class SignOut extends _$SignOut with SafeAsyncState<void> {
-  //------------------------------------------------------
+  ///---------------------------------------------------------
 
   @override
   Future<void> build() async {

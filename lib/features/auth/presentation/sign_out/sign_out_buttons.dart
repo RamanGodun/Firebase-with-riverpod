@@ -7,11 +7,10 @@ import 'sign_out_provider.dart';
 
 /// 🔘 [SignOutButton] — triggers logout via [signOutProvider]
 /// 🧼 Declarative error handling with overlay via `.listen()`
-
+//
 final class SignOutButton extends ConsumerWidget {
   ///--------------------------------------
   const SignOutButton({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,7 +35,7 @@ final class SignOutButton extends ConsumerWidget {
 
 /// 🔓 [SignOutIconButton] — used in AppBar to logout
 /// 🧼 Shows errors using overlay on failure
-
+//
 final class SignOutIconButton extends ConsumerWidget {
   ///----------------------------------
   const SignOutIconButton({super.key});

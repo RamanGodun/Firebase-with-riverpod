@@ -26,16 +26,14 @@ part 'widgets_for_change_password.dart';
 part 'change_password_ref_x.dart';
 
 /// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
-
-class ChangePasswordPage extends HookConsumerWidget {
+//
+final class ChangePasswordPage extends HookConsumerWidget {
   ///-------------------------------------------
   const ChangePasswordPage({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-
     // 🔁 Declarative side-effect for ChangePassword
     ref.listenToPasswordChange(context);
 

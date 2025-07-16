@@ -6,7 +6,7 @@ part 'sign_up_form_provider.g.dart';
 
 /// 🧩 [SignUpForm] — Manages the state of the sign-up form using [StateNotifier].
 /// Handles input updates, validation, and visibility toggling for password fields.
-
+//
 @riverpod
 final class SignUpForm extends _$SignUpForm {
   ///--------------------------------

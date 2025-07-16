@@ -4,7 +4,7 @@ import 'auth_repo_contracts.dart';
 
 /// 📦 [SignInUseCase] — encapsulates sign-in process
 /// 🧼 Handles user authentication using [ISignInRepo]
-
+//
 final class SignInUseCase {
   ///-------------------
   //
@@ -24,7 +24,7 @@ final class SignInUseCase {
 
 /// 📦 [SignOutUseCase] — encapsulates sign-out logic
 /// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
-
+//
 final class SignOutUseCase {
   ///--------------------
   //
@@ -42,7 +42,7 @@ final class SignOutUseCase {
 
 /// 📦 [SignUpUseCase] — encapsulates user registration
 /// 🧼 Creates Firebase user and stores user profile via [ISignUpRepo]
-
+//
 final class SignUpUseCase {
   ///-------------------
   //

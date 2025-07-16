@@ -22,16 +22,14 @@ part 'widgets_for_sign_up_page.dart';
 part 'input_fields.dart';
 
 /// 🔐 [SignUpPage] — screen that allows user to register a new account.
-
+//
 final class SignUpPage extends HookConsumerWidget {
   ///-----------------------------------
   const SignUpPage({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-
     // ❗️ Declarative error handling
     ref.listenFailure(signupProvider, context);
 

@@ -7,7 +7,7 @@ part 'use_cases_provider.g.dart';
 
 /// 🧩 [passwordUseCasesProvider] — provides instance of [PasswordRelatedUseCases]
 /// 🧼 Depends on [passwordRepoProvider] for implementation
-
+//
 @riverpod
 PasswordRelatedUseCases passwordUseCases(Ref ref) {
   ///─────------------------------------------------

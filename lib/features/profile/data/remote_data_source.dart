@@ -3,7 +3,7 @@ import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants
 
 /// 📡 [IProfileRemoteDataSource] — contract for profile document loading
 /// 🧼 Abstracts data fetching from Firestore for user profile
-
+//
 abstract interface class IProfileRemoteDataSource {
   ///---------------------------------------------
   //
@@ -18,7 +18,7 @@ abstract interface class IProfileRemoteDataSource {
 
 /// 🛠️ [ProfileRemoteDataSourceImpl] — Firestore-based implementation
 /// 🧱 Provides actual data access logic behind the [IProfileRemoteDataSource]
-
+//
 final class ProfileRemoteDataSourceImpl implements IProfileRemoteDataSource {
   // ────────────────────────────────────────────────────────────────────────
   //

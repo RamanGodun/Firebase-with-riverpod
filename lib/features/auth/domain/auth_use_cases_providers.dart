@@ -7,7 +7,7 @@ part 'auth_use_cases_providers.g.dart';
 
 /// 🧩 [signInUseCaseProvider] — provides instance of [SignInUseCase]
 /// 🧼 Depends on [signInRepoProvider] to inject repository
-
+//
 @Riverpod(keepAlive: false)
 SignInUseCase signInUseCase(Ref ref) {
   final repo = ref.watch(signInRepoProvider);
@@ -17,7 +17,8 @@ SignInUseCase signInUseCase(Ref ref) {
 ////
 
 ////
-
+/// 🧩 Provides [SignOutUseCase] via injected repo
+//
 @Riverpod(keepAlive: false)
 SignOutUseCase signOutUseCase(Ref ref) {
   final repo = ref.watch(signOutRepoProvider);
@@ -29,7 +30,7 @@ SignOutUseCase signOutUseCase(Ref ref) {
 ////
 
 /// 🧩 Provides [SignUpUseCase] via injected repo
-
+//
 @riverpod
 SignUpUseCase signUpUseCase(Ref ref) {
   final repo = ref.watch(signUpRepoProvider);

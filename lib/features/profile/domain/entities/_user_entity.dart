@@ -3,10 +3,10 @@ import 'package:meta/meta.dart' show immutable;
 
 /// 👤 [UserEntity] — Domain Entity representing a user in the system
 /// ✅ Immutable, comparable via [Equatable], used only in domain layer
-
+//
 @immutable
-class UserEntity extends Equatable {
-  //------------------------------
+final class UserEntity extends Equatable {
+  ///-----------------------------
 
   final String id;
   final String name;

@@ -5,7 +5,7 @@ import 'package:meta/meta.dart' show immutable;
 /// ✅ Represents user data from remote source (Firestore)
 /// ✅ Used in data layer only — no logic inside
 /// ✅ Immutable, comparable, debug-friendly
-
+//
 @immutable
 final class UserDTO with EquatableMixin {
   //----------------------------------

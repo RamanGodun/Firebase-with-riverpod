@@ -5,7 +5,7 @@ import '../domain/repo_contract.dart';
 
 /// 🧩 [PasswordRepoImpl] — concrete implementation of [IPasswordRepo]
 /// 🧼 Uses FirebaseAuth for all password-related operations
-
+//
 final class PasswordRepoImpl implements IPasswordRepo {
   ///-------------------------------------------------------------
 

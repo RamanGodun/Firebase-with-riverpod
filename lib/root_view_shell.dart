@@ -10,11 +10,10 @@ import 'core/base_modules/theme/theme_provider/theme_config_provider.dart';
 
 /// 🧩 [AppRootViewShell] — Combines both Theme and Router configuration
 /// ✅ Ensures minimal rebuilds using selective `ref.watch(...)`
-
+//
 final class AppRootViewShell extends ConsumerWidget {
   ///------------------------------------------------
   const AppRootViewShell({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,10 +44,10 @@ final class AppRootViewShell extends ConsumerWidget {
 
 /// 📱🧱 [_AppRootView] — Final stateless [MaterialApp.router] widget.
 /// ✅ Receives fully resolved config: theme + router + localization.
-
+//
 final class _AppRootView extends StatelessWidget {
   ///------------------------------------------
-
+  //
   final ThemeData theme;
   final ThemeData darkTheme;
   final ThemeMode themeMode;
@@ -66,7 +65,6 @@ final class _AppRootView extends StatelessWidget {
   Widget build(BuildContext context) {
     //
     return MaterialApp.router(
-      //
       title: LocaleKeys.app_title.tr(),
       debugShowCheckedModeBanner: !kReleaseMode,
 

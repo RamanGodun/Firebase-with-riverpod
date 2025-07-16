@@ -4,7 +4,7 @@ import 'repo_contract.dart';
 
 /// 📦 [PasswordRelatedUseCases] — encapsulates password related logic
 /// 🧼 Handles Firebase logic with failure mapping
-
+//
 final class PasswordRelatedUseCases {
   ///-----------------------------
 

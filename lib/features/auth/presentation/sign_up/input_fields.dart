@@ -1,7 +1,10 @@
 part of '_signup_page.dart';
 
 /// 🧩 [_NameInputField] — name input field
+//
 final class _NameInputField extends ConsumerWidget {
+  ///--------------------------------------------
+  //
   final ({
     FocusNode name,
     FocusNode email,
@@ -32,7 +35,10 @@ final class _NameInputField extends ConsumerWidget {
 ////
 
 /// 🧩 [_EmailInputField] — email input field
+//
 final class _EmailInputField extends ConsumerWidget {
+  ///---------------------------------------------
+  //
   final ({
     FocusNode name,
     FocusNode email,
@@ -63,7 +69,10 @@ final class _EmailInputField extends ConsumerWidget {
 ////
 
 /// 🧩 [_PasswordInputField] — password input field
+//
 final class _PasswordInputField extends ConsumerWidget {
+  ///------------------------------------------------
+  //
   final ({
     FocusNode name,
     FocusNode email,
@@ -99,7 +108,10 @@ final class _PasswordInputField extends ConsumerWidget {
 ////
 
 /// 🧩 [_ConfirmPasswordInputField] — confirm password field
+//
 final class _ConfirmPasswordInputField extends ConsumerWidget {
+  ///-------------------------------------------------------
+  //
   final ({
     FocusNode name,
     FocusNode email,

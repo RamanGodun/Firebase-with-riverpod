@@ -28,8 +28,8 @@ part 'reset_password_ref_x.dart';
 
 /// 🔐 [ResetPasswordPage] — screen that allows user to request password reset
 /// 📩 Sends reset link to user's email using [ResetPasswordProvider]
-
-class ResetPasswordPage extends ConsumerWidget {
+//
+final class ResetPasswordPage extends ConsumerWidget {
   ///------------------------------------------
   const ResetPasswordPage({super.key});
   //

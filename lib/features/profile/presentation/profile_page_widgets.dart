@@ -1,7 +1,7 @@
 part of 'profile__page.dart';
 
 /// [_ProfileAppBar] — Top bar with profile title, language and sign-out actions.
-
+//
 final class _ProfileAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   ///----------------------------
@@ -24,7 +24,7 @@ final class _ProfileAppBar extends StatelessWidget
 ////
 
 /// 🎨 [_ThemeSection] — UI section for selecting app theme and toggling appearance.
-
+//
 final class _ThemeSection extends StatelessWidget {
   const _ThemeSection();
 
@@ -56,7 +56,7 @@ final class _ThemeSection extends StatelessWidget {
 ////
 
 /// 🔒 [_ChangePasswordButton] — Navigates user to Change Password screen.
-
+//
 final class _ChangePasswordButton extends StatelessWidget {
   const _ChangePasswordButton();
 

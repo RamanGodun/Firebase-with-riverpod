@@ -7,6 +7,6 @@ part 'password_repo_provider.g.dart';
 
 /// 🧩 [passwordRepoProvider] — provides instance of [PasswordRepoImpl]
 /// 🧼 Dependency injection for all password-related functionality
-
+//
 @riverpod
 IPasswordRepo passwordRepo(Ref ref) => PasswordRepoImpl();

@@ -5,7 +5,7 @@ part of 'change_password_page.dart';
 ///   - ✅ On success: shows success snackbar and navigates home.
 ///   - ❌ On failure: shows localized error.
 ///   - 🔄 On "requires-recent-login" error: triggers reauthentication flow and retries on success.
-
+//
 extension PasswordChangeRefX on WidgetRef {
   ///---------------------------------------------
 

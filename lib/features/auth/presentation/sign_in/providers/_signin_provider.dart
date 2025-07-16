@@ -6,11 +6,11 @@ part '_signin_provider.g.dart';
 /// 🧩 [signinProvider] — async notifier that handles user sign-in
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
 /// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
-
+//
 @Riverpod(keepAlive: false)
 final class SignIn extends _$SignIn with SafeAsyncState<void> {
   ///----------------------------------------------------
-  //
+
   /// 🧱 Initializes safe lifecycle tracking
   @override
   FutureOr<void> build() {

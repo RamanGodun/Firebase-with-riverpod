@@ -3,7 +3,7 @@ import 'entities/_user_entity.dart';
 import 'profile_repo_contract.dart';
 
 /// 🧩 [getProfileUseCaseProvider] encapsulated business logic
-
+//
 final class GetProfileUseCase {
   ///-------------------------
   //

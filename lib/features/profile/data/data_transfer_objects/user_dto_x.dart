@@ -5,9 +5,9 @@ import '_user_dto.dart';
 
 /// 🔄 [UserDTOX] — Instance-level helpers for [UserDTO]
 /// ✅ Converts to entity or JSON (for logic or API usage)
-
+//
 extension UserDTOX on UserDTO {
-  //----------------------------
+  ///------------------------
 
   /// 🔄 Converts [UserDTO] → Domain [UserEntity] entity
   UserEntity toEntity() => UserEntity(

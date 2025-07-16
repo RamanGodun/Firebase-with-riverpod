@@ -1,9 +1,9 @@
 part of 'reset_password_page.dart';
 
 /// ℹ️ [_ResetPasswordHeader] — header section with logo & instructions
-
-class _ResetPasswordHeader extends StatelessWidget {
-  //-----------------------------------------------
+//
+final class _ResetPasswordHeader extends StatelessWidget {
+  ///--------------------------------------------------
   const _ResetPasswordHeader();
 
   @override
@@ -29,9 +29,9 @@ class _ResetPasswordHeader extends StatelessWidget {
 ////
 
 /// 🧾 [_ResetPasswordEmailInputField] — email input field for password reset
-
-class _ResetPasswordEmailInputField extends HookConsumerWidget {
-  ///----------------------------------------------------
+//
+final class _ResetPasswordEmailInputField extends HookConsumerWidget {
+  ///--------------------------------------------------------------
   const _ResetPasswordEmailInputField();
 
   @override
@@ -56,9 +56,9 @@ class _ResetPasswordEmailInputField extends HookConsumerWidget {
 ////
 
 /// 🔘 [_ResetPasswordSubmitButton] — confirms reset action
-
-class _ResetPasswordSubmitButton extends ConsumerWidget {
-  ///--------------------------------------
+//
+final class _ResetPasswordSubmitButton extends ConsumerWidget {
+  ///-------------------------------------------------------
   const _ResetPasswordSubmitButton();
 
   @override
@@ -88,9 +88,9 @@ class _ResetPasswordSubmitButton extends ConsumerWidget {
 ////
 
 /// 🔁 [_ResetPasswordFooter] — footer with redirect to Sign In
-
-class _ResetPasswordFooter extends StatelessWidget {
-  //-----------------------------------------------
+//
+final class _ResetPasswordFooter extends StatelessWidget {
+  ///--------------------------------------------------
   const _ResetPasswordFooter();
 
   @override

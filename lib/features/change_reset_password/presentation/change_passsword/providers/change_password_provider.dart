@@ -8,11 +8,11 @@ part 'change_password_provider.g.dart';
 /// 🧩 [changePasswordProvider] — async notifier that handles password update
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
 /// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
-
+//
 @riverpod
-class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
+final class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
   ///----------------------------------------------------------------
-
+  //
   String? _pendingPassword;
 
   /// 🧱 Initializes safe lifecycle tracking

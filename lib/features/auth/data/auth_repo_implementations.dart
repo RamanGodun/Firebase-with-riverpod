@@ -6,7 +6,7 @@ import '../domain/auth_repo_contracts.dart';
 
 /// 🧩 [SignInRepoImpl] — concrete implementation of [ISignInRepo]
 /// 🧼 Wraps [FirebaseAuth.signInWithEmailAndPassword]
-
+//
 final class SignInRepoImpl implements ISignInRepo {
   ///---------------------------------------------
   //
@@ -26,7 +26,7 @@ final class SignInRepoImpl implements ISignInRepo {
 
 /// 🧩 [SignOutRepoImpl] — concrete implementation of [ISignOutRepo]
 /// 🧼 Wraps [FirebaseAuth.signOut] with error logging
-
+//
 final class SignOutRepoImpl implements ISignOutRepo {
   ///-----------------------------------------------
   //
@@ -41,7 +41,7 @@ final class SignOutRepoImpl implements ISignOutRepo {
 
 /// 🤩 [SignUpRepoImpl] — concrete implementation of [ISignUpRepo]
 /// 🧼 Wraps [FirebaseAuth.createUserWithEmailAndPassword] + Firestore
-
+//
 final class SignUpRepoImpl implements ISignUpRepo {
   ///---------------------------------------------
   //

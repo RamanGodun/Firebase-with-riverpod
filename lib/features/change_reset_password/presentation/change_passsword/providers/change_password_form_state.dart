@@ -5,10 +5,10 @@ import '../../../../form_fields/input_validation/_validation_enums.dart';
 
 /// 📦 [ChangePasswordFormState] — immutable state of the change password form
 /// 🧠 Tracks inputs, visibility flags, and overall form validity
-
-class ChangePasswordFormState extends Equatable {
+//
+final class ChangePasswordFormState extends Equatable {
   /// ----------------------------------------
-
+  //
   final PasswordInputValidation password;
   final ConfirmPasswordInputValidation confirmPassword;
   final bool isPasswordObscure;

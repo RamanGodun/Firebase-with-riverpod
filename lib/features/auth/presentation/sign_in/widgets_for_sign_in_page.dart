@@ -2,7 +2,7 @@ part of 'sign_in_page.dart';
 
 /// 🧩 [_SignInHeader] — displays logo and welcome messages for Sign In screen
 /// 📦 Contains app logo, main header, and sub-header
-
+//
 final class _SignInHeader extends StatelessWidget {
   ///------------------------------------------
   const _SignInHeader();
@@ -34,10 +34,9 @@ final class _SignInHeader extends StatelessWidget {
 ////
 
 /// 🧩 [_SignInEmailInputField] — email and password fields
-
+//
 final class _SignInEmailInputField extends ConsumerWidget {
   ///-----------------------------------------------
-  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInEmailInputField(this.focus);
 
@@ -62,10 +61,9 @@ final class _SignInEmailInputField extends ConsumerWidget {
 ////
 
 /// 🧩 [_SignInPasswordInputField] — password input field with visibility toggle
-
+//
 final class _SignInPasswordInputField extends ConsumerWidget {
   ///-------------------------------------------------
-  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInPasswordInputField(this.focus);
 
@@ -95,10 +93,10 @@ final class _SignInPasswordInputField extends ConsumerWidget {
 ////
 
 /// 🔘 [_SigninSubmitButton] — submit button for the sign-in form
+//
 final class _SigninSubmitButton extends ConsumerWidget {
   ///-------------------------------------------
   const _SigninSubmitButton();
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -127,11 +125,10 @@ final class _SigninSubmitButton extends ConsumerWidget {
 ////
 
 /// 🔁 [_SigninFooter] — sign up & reset password actions
-
+//
 final class _SigninFooter extends StatelessWidget {
   ///---------------------------------------
   const _SigninFooter();
-  //
 
   @override
   Widget build(BuildContext context) {

@@ -24,9 +24,9 @@ import '../../../../core/utils_shared/extensions/context_extensions/_context_ext
 part 'widgets_for_sign_in_page.dart';
 
 /// 🔐 [SignInPage] — screen that allows user to sign in.
-
+//
 final class SignInPage extends HookConsumerWidget {
-  ///-----------------------------------
+  ///-------------------------------------------
   const SignInPage({super.key});
   //
 

@@ -1,7 +1,7 @@
 library;
 
 /// 🧼 Contract for password-related operations with user account
-
+//
 abstract interface class IPasswordRepo {
   ///---------------------------------
   //

@@ -6,6 +6,7 @@ import 'core/base_modules/localization/app_localization.dart';
 import 'root_view_shell.dart';
 
 /// 🏁 Entry point of the application
+//
 Future<void> main() async {
   ///
   final appBootstrap = AppBootstrap(
@@ -32,7 +33,7 @@ Future<void> main() async {
 
 /// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.
 ///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
-
+//
 final class AppLocalizationShell extends StatelessWidget {
   ///----------------------------------------------
   const AppLocalizationShell({super.key});

@@ -6,9 +6,9 @@ part 'reset_password_form_provider.g.dart';
 
 /// 🧩 [ResetPasswordForm] — Manages the state of the reset password form using [StateNotifier].
 /// Handles input updates, validation, and future extensibility.
-
+//
 @riverpod
-class ResetPasswordForm extends _$ResetPasswordForm {
+final class ResetPasswordForm extends _$ResetPasswordForm {
   ///--------------------------------
 
   /// Initializes the form state with default (pure) values.

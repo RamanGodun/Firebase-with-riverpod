@@ -27,8 +27,8 @@ part 'profile_page_widgets.dart';
 
 /// 👤 [ProfilePage] — Displays user details, handles logout, navigation to password change, and provides theme/language toggling.
 /// Uses [profileProvider] for user data and listens for error overlays.
-
-class ProfilePage extends ConsumerWidget {
+//
+final class ProfilePage extends ConsumerWidget {
   ///----------------------------------
   const ProfilePage({super.key});
   //

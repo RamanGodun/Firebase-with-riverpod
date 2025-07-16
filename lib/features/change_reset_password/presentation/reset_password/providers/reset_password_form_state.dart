@@ -2,12 +2,12 @@ import 'package:equatable/equatable.dart' show Equatable;
 import 'package:formz/formz.dart';
 import '../../../../form_fields/input_validation/_validation_enums.dart';
 
-// 📦 [ResetPasswordFormState] — immutable state of the reset password form
-// 🧠 Tracks the email input and overall form validity
-
-class ResetPasswordFormState extends Equatable {
+/// 📦 [ResetPasswordFormState] — immutable state of the reset password form
+/// 🧠 Tracks the email input and overall form validity
+//
+final class ResetPasswordFormState extends Equatable {
   /// -------------------------
-
+  //
   final EmailInputValidation email;
   final bool isValid;
 

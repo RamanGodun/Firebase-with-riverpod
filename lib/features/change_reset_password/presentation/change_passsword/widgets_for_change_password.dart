@@ -1,9 +1,9 @@
 part of 'change_password_page.dart';
 
 /// ℹ️ Info section for [ChangePasswordPage]
-
-class _ChangePasswordInfo extends StatelessWidget {
-  ///---------------------------------------------
+//
+final class _ChangePasswordInfo extends StatelessWidget {
+  ///-------------------------------------------------
   const _ChangePasswordInfo();
   //
 
@@ -52,8 +52,9 @@ class _ChangePasswordInfo extends StatelessWidget {
 ////
 
 /// 🧾 [_PasswordField] — input for the new password
-class _PasswordField extends ConsumerWidget {
-  ///--------------------------------------
+//
+final class _PasswordField extends ConsumerWidget {
+  ///-------------------------------------------
   final ({FocusNode password, FocusNode confirmPassword}) focus;
   const _PasswordField({required this.focus});
 
@@ -83,7 +84,8 @@ class _PasswordField extends ConsumerWidget {
 ////
 
 /// 🧾 [_ConfirmPasswordField] — confirmation input
-class _ConfirmPasswordField extends ConsumerWidget {
+//
+final class _ConfirmPasswordField extends ConsumerWidget {
   ///---------------------------------------------------
   final ({FocusNode password, FocusNode confirmPassword}) focus;
   const _ConfirmPasswordField({required this.focus});
@@ -115,9 +117,9 @@ class _ConfirmPasswordField extends ConsumerWidget {
 
 /// 🔐 [_ChangePasswordSubmitButton] — dispatches the password change request
 /// 📤 Submits new password when form is valid
-
-class _ChangePasswordSubmitButton extends ConsumerWidget {
-  ///-----------------------------------------------------
+//
+final class _ChangePasswordSubmitButton extends ConsumerWidget {
+  ///--------------------------------------------------------
   const _ChangePasswordSubmitButton();
 
   @override

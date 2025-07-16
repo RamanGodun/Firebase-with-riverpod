@@ -4,7 +4,7 @@ import '_user_dto.dart';
 
 /// 🧰 [UserDTOFactories] — Static utilities for creating [UserDTO]
 /// ✅ Use case: Firestore mapping, default user creation
-
+//
 extension UserDTOFactories on UserDTO {
   //-------------------------------
 

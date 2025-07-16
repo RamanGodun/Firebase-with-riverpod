@@ -2,7 +2,7 @@ library;
 
 /// 🔐 [ISignInRepo] — contract for signing in user with email/password
 /// 🧼 Abstracts sign-in method used across use cases
-
+//
 abstract interface class ISignInRepo {
   ///---------------------------------
   //
@@ -17,7 +17,7 @@ abstract interface class ISignInRepo {
 
 /// 🔓 [ISignOutRepo] — contract for signing out the user
 /// 🧼 Abstracts sign-out method used across use cases
-
+//
 abstract interface class ISignOutRepo {
   ///----------------------------------
   //
@@ -32,7 +32,7 @@ abstract interface class ISignOutRepo {
 
 /// 🆕 [ISignUpRepo] — contract for user registration logic
 /// 🧼 Abstracts Firebase sign-up + Firestore user doc creation
-
+//
 abstract interface class ISignUpRepo {
   ///--------------------------------
   //

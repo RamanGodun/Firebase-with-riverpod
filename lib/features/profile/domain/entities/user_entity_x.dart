@@ -2,9 +2,9 @@ import '../../data/data_transfer_objects/_user_dto.dart';
 import '_user_entity.dart';
 
 /// 🔁 [UserEntityX] — Extension on [UserEntity] with transformation and utility methods
-
+//
 extension UserEntityX on UserEntity {
-  //----------------------------------------
+  ///------------------------------
 
   /// 🧱 Converts [UserEntity] → [UserDTO] (for persistence or transfer)
   UserDTO toDTO() => UserDTO(
