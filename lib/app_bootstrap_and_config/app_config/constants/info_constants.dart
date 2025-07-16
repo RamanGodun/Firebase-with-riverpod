@@ -1,9 +1,9 @@
 library;
 
 /// 🧾 Application identity & versioning constants
-
+// /
 final class AppInfoConstants {
-  ///------------------------
+  ///----------------------
   AppInfoConstants._();
 
   /// 🧾 Application display name

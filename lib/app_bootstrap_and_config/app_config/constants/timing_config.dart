@@ -1,9 +1,9 @@
 library;
 
 /// ⏱️ Commonly used timeout durations
-
+//
 final class TimeoutConstants {
-  ///------------------------
+  ///----------------------
   TimeoutConstants._();
 
   /// ⏱️ Global timeout for network requests

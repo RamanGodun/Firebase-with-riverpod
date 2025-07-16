@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:get_storage/get_storage.dart' show GetStorage;
 
 /// 💾 [ILocalStorage] — Abstraction to decouple startup logic and enable mocking in tests.
-
+//
 abstract interface class ILocalStorage {
   ///--------------------------------
   //
@@ -18,11 +18,11 @@ abstract interface class ILocalStorage {
 ////
 
 /// 🧩📦 [LocalStorage] — Current implementation of [ILocalStorage] with initialization logic.
-
+//
 final class LocalStorage implements ILocalStorage {
   ///----------------------------------------------------
   const LocalStorage();
-
+  //
   /// Initializes GetStorage (local key-value storage).
   @override
   Future<void> init() async {

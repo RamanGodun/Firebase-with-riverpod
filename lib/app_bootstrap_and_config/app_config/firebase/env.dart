@@ -2,14 +2,14 @@ library;
 
 /// 🌐 [EnvConfig] — Environment-based configuration
 /// Supports `dev`, `staging`, and `prod` modes, use `.env` + `flutter_dotenv` for actual secrets.
-
+//
 /// ! 🔐 Never store real credentials here!
 /// This file enables:
 ///       • Per-env API URLs
 ///       • Feature toggles
 ///       • Logging / debug switches
 ///       • Static defaults in development
-
+//
 final class EnvConfig {
   ///-----------------
 
@@ -43,9 +43,11 @@ final class EnvConfig {
 }
 
 ////
+////
 
 enum Environment { dev, staging, prod }
 
+////
 ////
 
 extension EnvFileName on Environment {

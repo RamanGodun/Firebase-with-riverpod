@@ -11,7 +11,7 @@ import 'di_container/di_config_sync.dart';
 import 'di_container/di_container.dart';
 
 /// 🏁 [IAppBootstrap] —  Abstract contract for app startup logic
-
+//
 sealed class IAppBootstrap {
   ///------------------
   //
@@ -45,22 +45,22 @@ sealed class IAppBootstrap {
 
 /// 🧰 [AppBootstrap] — Production [IAppBootstrap] implementation for bootstrapping all critical services.
 /// ✅ All dependencies are injectable for testing/mocking, steps are separated for flexibility
-
+//
 final class AppBootstrap extends IAppBootstrap {
   ///-------------------------------------
   //
   final ILocalStorage _localStorage;
-  final DIConfig _diConfiguration;
+  final IDIConfig _diConfiguration;
   final IRemoteDataBase _remoteDataBase;
 
   /// Creates a fully-configurable startup handler.
   /// All dependencies are injectable and default to production implementations if not provided.
   AppBootstrap({
     ILocalStorage? localStorageStack,
-    DIConfig? diConfiguration,
+    IDIConfig? diConfiguration,
     IRemoteDataBase? firebaseStack,
   }) : _localStorage = localStorageStack ?? const LocalStorage(),
-       _diConfiguration = diConfiguration ?? DefaultDIConfiguration(),
+       _diConfiguration = diConfiguration ?? DIConfiguration(),
        _remoteDataBase = firebaseStack ?? const FirebaseRemoteDataBase();
 
   ////

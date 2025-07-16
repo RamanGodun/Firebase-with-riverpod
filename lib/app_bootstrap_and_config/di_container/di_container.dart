@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// ✅ Used both inside the widget tree (`ProviderScope.parent`) and outside context
 /// e.g., background logic, startup handlers, isolates, or tests).
 /// ✅ Initialized once in [main()]
-
+//
 final class GlobalDIContainer {
   ///-----------------------
 

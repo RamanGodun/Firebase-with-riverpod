@@ -1,7 +1,7 @@
 library;
 
 /// 📱 Platform-specific requirements
-
+//
 final class PlatformConstants {
   ///--------------------------
   PlatformConstants._();

@@ -9,46 +9,49 @@ import '../../features/profile/data/profile_repo_impl.dart';
 import '../../features/profile/data/profile_repo_provider.dart';
 import '../../features/profile/data/remote_data_source.dart';
 
-/// 🔧 [IDIConfig] — Abstraction for DI configuration.
-///    Can be useful, when DI Container's managing/testing become complicated
-
-sealed class DIConfig {
-  ///-------------------
-  ///
-  List<Override> get overrides;
-
-  ///
-  List<ProviderObserver> get observers;
+/// 🔧 [DIConfig] — Abstract contract for DI (Dependency Injection) configuration.
+///     Provides lists of provider overrides and observers for Riverpod setup.
+///     Useful for switching between different DI environments or for testing.
+//
+sealed class IDIConfig {
   //
+  /// List of provider overrides for this configuration.
+  List<Override> get overrides;
+  //
+  /// List of provider observers for this configuration.
+  List<ProviderObserver> get observers;
 }
 
 ////
 
 ////
 
-final class DefaultDIConfiguration extends DIConfig {
+/// 🛠️ [DIConfiguration] — Default DI configuration for the app.
+///     Sets up storage, theme, navigation, overlays, and profile repo.
+//
+final class DIConfiguration extends IDIConfig {
   ///-------------------------------------------------
   //
   @override
   List<Override> get overrides => [
-    ///
-    // 🎨 Theme
+    //
+    // 🎨 Theme providers: Storage and ThemeConfig
     themeStorageProvider.overrideWith((ref) => GetStorage()),
     themeProvider.overrideWith(
       (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
     ),
 
-    /// 🗺️ Navigation
+    /// 🗺️ Navigation: GoRouter
     goRouter.overrideWith((ref) => buildGoRouter(ref)),
 
-    /// 📤 Overlay dispatcher
+    // 📤 Overlay dispatcher for modal overlays/toasts/dialogs
     overlayDispatcherProvider.overrideWith(
       (ref) => OverlayDispatcher(
         onOverlayStateChanged: ref.read(overlayStatusProvider.notifier).update,
       ),
     ),
 
-    /// 🧩 Profile
+    // 🧩 Profile repository with remote data source
     profileRepoProvider.overrideWith(
       (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
     ),

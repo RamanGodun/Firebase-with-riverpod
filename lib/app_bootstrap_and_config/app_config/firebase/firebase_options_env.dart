@@ -10,9 +10,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 ///      - ✅ iOS
 ///      - ✅ Web
 ///      - ❌ macOS, Windows, Linux (throws [UnsupportedError])
-
+//
 final class EnvFirebaseOptions {
-  //--------------------------
+  ///------------------------
 
   /// 🧱 Returns [FirebaseOptions] for the current platform
   static FirebaseOptions get currentPlatform {

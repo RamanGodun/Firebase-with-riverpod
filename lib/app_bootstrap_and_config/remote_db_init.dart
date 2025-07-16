@@ -7,7 +7,7 @@ import 'app_config/firebase/firebase_options_env.dart';
 import 'app_config/firebase/firebase_utils.dart';
 
 /// 📦💾 [IRemoteDataBase] — Abstraction to decouple startup logic and enable mocking in tests.
-
+//
 abstract interface class IRemoteDataBase {
   ///---------------------------------
   //
@@ -21,11 +21,10 @@ abstract interface class IRemoteDataBase {
 ////
 
 /// 🧩🔥 [FirebaseRemoteDataBase] — Current implementation of [IRemoteDataBase], with Firebase+Env initialization logic
-
+//
 final class FirebaseRemoteDataBase implements IRemoteDataBase {
   ///----------------------------------------------------
   const FirebaseRemoteDataBase();
-  //
 
   @override
   Future<void> init() async {
