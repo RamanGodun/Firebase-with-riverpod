@@ -6,18 +6,14 @@ import '../data/remote_data_source.dart';
 
 part 'profile_repo_provider.g.dart';
 
-/// 📦 [profileRepoProvider] — provides the domain repository via DI
-/// 🧩 Combines implementation with remote data source dependency
-/// 🧼 Keeps separation between contract and concrete logic
+/// 🧩 [profileRepoProvider] — provides [ProfileRepoImpl] with injected remote data source
+/// 🧼 Used by use cases to access user profile with caching and failure mapping
 //
 @riverpod
 IProfileRepo profileRepo(Ref ref) {
   ///------------------------------
   //
-  /// Injects concrete implementation of IProfileRemoteDataSource
   final remote = ProfileRemoteDataSourceImpl();
-  //
-  /// Returns the repository with injected dependency
   return ProfileRepoImpl(remote);
   //
 }

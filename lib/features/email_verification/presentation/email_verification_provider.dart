@@ -4,7 +4,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
 import '../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../domain/email_verification_use_case.dart';
 import '../domain/email_verification_use_case_provider.dart';
 
 part 'email_verification_provider.g.dart';

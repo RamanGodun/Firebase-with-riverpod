@@ -1,31 +1,30 @@
-import 'package:firebase_with_riverpod/core/shared_data_layer/base_repo.dart';
-import '../../../core/shared_domain_layer/shared_auth/auth_user_utils.dart';
+import '../../../core/base_modules/errors_handling/utils/failure_handling.dart';
+import '../../../core/utils_shared/type_definitions.dart';
 import '../domain/email_verification_repo_contract.dart';
+import 'remote_data_source.dart';
 
-/// 🧩 [IUserValidationRepoImpl] — concrete implementation of [IUserValidationRepo]
-/// 🧼 Handles email verification operations using FirebaseAuth
+/// 🧩 [IUserValidationRepoImpl] — Repo for email verification, applies error mapping and delegates to [IUserValidationRemoteDataSource]
 //
 final class IUserValidationRepoImpl implements IUserValidationRepo {
-  ///--------------------------------------------------------------
+  ///------------------------------------------------------------
+  //
+  final IUserValidationRemoteDataSource _remote;
+  const IUserValidationRepoImpl(this._remote);
 
+  /// 📧 Sends verification email via [IUserValidationRemoteDataSource]
   @override
-  Future<void> sendEmailVerification() =>
-      (() async {
-        final user = AuthUserUtils.currentUserOrThrow;
-        await user.sendEmailVerification();
-      }).runWithErrorLog();
+  ResultFuture<void> sendEmailVerification() =>
+      (() => _remote.sendVerificationEmail()).executeWithFailureHandling();
 
+  /// 🔁 Reloads current user from [IUserValidationRemoteDataSource]
   @override
-  Future<void> reloadUser() =>
-      (() async {
-        final user = AuthUserUtils.currentUserOrThrow;
-        await user.reload();
-      }).runWithErrorLog();
+  ResultFuture<void> reloadUser() =>
+      (() => _remote.reloadUser()).executeWithFailureHandling();
 
+  /// ✅ Checks if user's email is verified
   @override
-  bool isEmailVerified() {
-    return AuthUserUtils.currentUserOrThrow.emailVerified;
-  }
+  ResultFuture<bool> isEmailVerified() =>
+      (() async => _remote.isEmailVerified()).executeWithFailureHandling();
 
   //
 }

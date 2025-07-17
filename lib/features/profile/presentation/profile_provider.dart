@@ -22,7 +22,7 @@ final class Profile extends _$Profile {
 
   /// ♻️ Refetch user manually (e.g. pull-to-refresh)
   Future<void> refresh() async {
-    final uid = this.uid;
+    state = const AsyncLoading();
     final useCase = ref.read(getProfileUseCaseProvider);
 
     state = await AsyncValue.guard(() async {

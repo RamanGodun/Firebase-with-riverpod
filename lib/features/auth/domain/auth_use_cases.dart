@@ -1,9 +1,7 @@
-import 'package:firebase_with_riverpod/core/shared_domain_layer/base_use_case.dart';
 import '../../../../core/utils_shared/type_definitions.dart';
 import 'auth_repo_contracts.dart';
 
-/// 📦 [SignInUseCase] — encapsulates sign-in process
-/// 🧼 Handles user authentication using [ISignInRepo]
+/// 📦 [SignInUseCase] — Handles user authentication logic, using [ISignInRepo]
 //
 final class SignInUseCase {
   ///-------------------
@@ -13,8 +11,7 @@ final class SignInUseCase {
   //
   /// 🔐 Signs in with provided credentials
   ResultFuture<void> call({required String email, required String password}) =>
-      (() => authRepo.signIn(email: email, password: password))
-          .executeWithFailureHandling();
+      authRepo.signIn(email: email, password: password);
   //
 }
 
@@ -22,8 +19,7 @@ final class SignInUseCase {
 
 ////
 
-/// 📦 [SignOutUseCase] — encapsulates sign-out logic
-/// 🧼 Invokes Firebase sign-out via [ISignOutRepo]
+/// 📦 [SignOutUseCase] — Handles sign-out logic via [ISignOutRepo]
 //
 final class SignOutUseCase {
   ///--------------------
@@ -31,8 +27,7 @@ final class SignOutUseCase {
   final ISignOutRepo repo;
   const SignOutUseCase(this.repo);
   //
-  ResultFuture<void> call() =>
-      (() => repo.signOut()).executeWithFailureHandling();
+  ResultFuture<void> call() => repo.signOut();
   //
 }
 
@@ -40,8 +35,7 @@ final class SignOutUseCase {
 
 ////
 
-/// 📦 [SignUpUseCase] — encapsulates user registration
-/// 🧼 Creates Firebase user and stores user profile via [ISignUpRepo]
+/// 📦 [SignUpUseCase] — Handles user registration via [ISignUpRepo]
 //
 final class SignUpUseCase {
   ///-------------------
@@ -54,8 +48,6 @@ final class SignUpUseCase {
     required String name,
     required String email,
     required String password,
-  }) =>
-      (() => repo.signup(name: name, email: email, password: password))
-          .executeWithFailureHandling();
+  }) => repo.signup(name: name, email: email, password: password);
   //
 }

@@ -1,7 +1,7 @@
-import '../base_modules/errors_handling/either/either.dart';
-import '../base_modules/errors_handling/failures/failure_model.dart';
-import '../base_modules/errors_handling/utils/failure_utils.dart';
-import '../base_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
+import '../either/either.dart';
+import '../failures/failure_model.dart';
+import 'failure_utils.dart';
+import 'observers/loggers/errors_log_util.dart';
 
 /// [BaseUseCase] - Abstract base class for use case implementations.
 /// Provides a consistent method to wrap any async domain logic

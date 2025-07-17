@@ -8,8 +8,8 @@ part of 'profile_use_case_provider.dart';
 
 String _$getProfileUseCaseHash() => r'3422aad59f42e25fac1ecc688c97814bc08749ba';
 
-/// 📦 [GetProfileUseCase] — encapsulates get profile process
-/// 🧼 Handles user authentication using [IProfileRepo]
+/// 🧩 [getProfileUseCaseProvider] — provides [GetProfileUseCase]
+/// 🧼 Injects repository dependency from data layer
 ///
 /// Copied from [getProfileUseCase].
 @ProviderFor(getProfileUseCase)

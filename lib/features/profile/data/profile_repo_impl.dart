@@ -1,16 +1,12 @@
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/failure_handling.dart';
 import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
-
-import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../core/utils_shared/type_definitions.dart';
-import '../../../core/base_modules/errors_handling/either/either.dart';
-import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
-import '../../../core/base_modules/errors_handling/utils/exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import '../domain/entities/_user_entity.dart';
 import '../domain/profile_repo_contract.dart';
-import 'data_transfer_objects/user_dto_factories_x.dart';
 import 'remote_data_source.dart';
 
-/// [ProfileRepoImpl] - concrete repository, that handles logic via data source.
+/// 🧩 [ProfileRepoImpl] — implements [IProfileRepo] with error mapping and caching
+/// 🧼 Converts DTO ➡️ Entity, adds 5 min in-memory caching, handles failures
 //
 final class ProfileRepoImpl implements IProfileRepo {
   // ─────────────────────────----------------------
@@ -22,62 +18,28 @@ final class ProfileRepoImpl implements IProfileRepo {
   DateTime? _lastFetched;
   static const Duration _cacheDuration = Duration(minutes: 5);
 
-  ///
+  /// 🧠 Returns cached user if fresh, otherwise fetches from remote and caches result
   @override
-  ResultFuture<UserEntity> getProfile({required String userID}) async {
-    //
-    try {
-      final now = DateTime.now();
+  ResultFuture<UserEntity> getProfile({required String userID}) =>
+      (() async {
+        final now = DateTime.now();
 
-      // Caching (up to 5 min)
-      if (_cachedUser != null && _lastFetched != null) {
-        final isValid = now.difference(_lastFetched!) < _cacheDuration;
-        if (isValid) return Right(_cachedUser!);
-      }
-
-      // Doc loading from Firestore
-      final doc = await _remote.fetchUserDoc(userID);
-
-      // ⛔ If user doc missing — create it using FirebaseAuth
-      if (!doc.exists) {
-        final firebaseUser = fbAuth.currentUser;
-
-        // ⛔ FirebaseAuth  not initialized
-        if (firebaseUser == null) {
-          throw FirebaseUserMissingFailure();
+        // 🧺 Return cache if still valid
+        if (_cachedUser != null && _lastFetched != null) {
+          final isValid = now.difference(_lastFetched!) < _cacheDuration;
+          if (isValid) return _cachedUser!;
         }
 
-        final dto = UserDTOFactories.newUser(
-          id: firebaseUser.uid,
-          name:
-              firebaseUser.displayName?.trim().isNotEmpty == true
-                  ? firebaseUser.displayName!
-                  : 'User',
-          email: firebaseUser.email ?? 'unknown',
-        );
-
-        // 💾 Save user to Firestore via DTO
-        await usersCollection.doc(userID).set(dto.toJsonMap());
-
-        final newUser = dto.toEntity();
-        _cachedUser = newUser;
+        // 🛜 Fetch from remote and convert
+        final dto = await _remote.fetchOrCreateUser(userID);
+        final user = dto.toEntity();
+        _cachedUser = user;
         _lastFetched = now;
-        return Right(newUser);
-      }
+        return user;
+        //
+      }).executeWithFailureHandling();
 
-      // ✅ Parse existing Firestore document into DTO, then domain entity
-      final UserEntity user = UserDTOFactories.fromDoc(doc).toEntity();
-
-      _cachedUser = user;
-      _lastFetched = now;
-
-      return Right(user);
-    } catch (e, s) {
-      return Left(ExceptionToFailureMapper.from(e, s));
-    }
-  }
-
-  ///
+  /// ♻️ Clears in-memory cache
   @override
   void clearCache() {
     _cachedUser = null;

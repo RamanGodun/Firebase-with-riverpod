@@ -1,4 +1,4 @@
-library;
+import '../../../core/utils_shared/type_definitions.dart';
 
 /// 🧼 Contract for email verification and user reload operations
 //
@@ -6,10 +6,13 @@ abstract interface class IUserValidationRepo {
   ///-----------------------------------------
   //
   // 📧 Sends verification email to current user
-  Future<void> sendEmailVerification();
+  ResultFuture<void> sendEmailVerification();
+
   // 🔁 Reloads the current user's state from Firebase
-  Future<void> reloadUser();
+  ResultFuture<void> reloadUser();
+
   // ✅ Checks if the user's email is verified
-  bool isEmailVerified();
+  ResultFuture<bool> isEmailVerified();
+
   //
 }

@@ -1,5 +1,5 @@
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../core/shared_domain_layer/shared_auth/auth_user_utils.dart';
+import '../../../core/utils_shared/shared_auth/auth_user_utils.dart';
 
 /// 📡 [IPasswordRemoteDataSource] — contract for low-level password operations
 /// ✅ Abstracts infrastructure layer (e.g., Firebase)
