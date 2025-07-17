@@ -30,6 +30,7 @@ typedef SignInUseCaseRef = AutoDisposeProviderRef<SignInUseCase>;
 String _$signOutUseCaseHash() =>
     r'203132d4aa96cab7cb48e888c60f70c3cd5b080b'; ////
 ////
+/// 🧩 Provides [SignOutUseCase] via injected repo
 ///
 /// Copied from [signOutUseCase].
 @ProviderFor(signOutUseCase)

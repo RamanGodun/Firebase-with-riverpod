@@ -19,25 +19,15 @@ Built to scale with modular features, full testability, modern design, and stric
 
 ---
 
-## 🧱 Architecture
 
-The project follows the **Clean Architecture** principle with full feature encapsulation:
+## 🧾 Architectural Decisions
 
-```
-lib/
-├── core            # Constants, routing, entities, extensions
-├── data            # Firebase sources, repositories
-├── features        # Feature-oriented logic (SignIn, SignUp, Profile...)
-├── presentation    # Pages, shared widgets, theming
-```
-
-Each feature consists of:
-- `page` — Stateless UI with `ConsumerWidget`
-- `provider` — Riverpod provider for async logic
-Also in some features there are `widgets` —  UI components for this feature
+See [`ADR.md`](./ADR.md) for rationale behind architectural choices, 
+Riverpod usage, and Firebase integration patterns.
 
 
 ---
+
 
 ## ⚙️ Firebase Configuration
 
@@ -182,20 +172,6 @@ The architecture is modular by design and easily scalable:
 - 🧼 Strong boundaries between layers
 
 ---
-
-## 🧾 Architectural Decisions
-
-See [`ADR.md`](./ADR.md) for rationale behind architectural choices, Riverpod usage, and Firebase integration patterns.
-
----
-
-> 📌 For production readiness, consider adding:
-> - CI/CD with GitHub Actions
-> - Crashlytics monitoring
-> - SSL pinning for APIs
-> - Golden tests for UI regression
-
-
 
 ## Project files TREE
 

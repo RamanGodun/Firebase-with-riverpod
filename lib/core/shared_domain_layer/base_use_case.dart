@@ -1,6 +1,7 @@
 import '../base_modules/errors_handling/either/either.dart';
 import '../base_modules/errors_handling/failures/failure_model.dart';
 import '../base_modules/errors_handling/utils/failure_utils.dart';
+import '../base_modules/errors_handling/utils/observers/loggers/errors_log_util.dart';
 
 /// [BaseUseCase] - Abstract base class for use case implementations.
 /// Provides a consistent method to wrap any async domain logic
@@ -19,6 +20,7 @@ abstract class BaseUseCase {
       final result = await operation();
       return right(result);
     } catch (e, st) {
+      ErrorsLogger.log(e, st);
       return left(mapToFailure(e, st));
     }
   }
@@ -37,6 +39,7 @@ extension ResultFutureExtension<T> on Future<T> Function() {
       final result = await this();
       return right(result);
     } catch (e, st) {
+      ErrorsLogger.log(e, st);
       return left(mapToFailure(e, st));
     }
   }

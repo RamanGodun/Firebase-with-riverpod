@@ -7,7 +7,7 @@ part of 'email_verification_provider.dart';
 // **************************************************************************
 
 String _$emailVerificationNotifierHash() =>
-    r'c91bfeb3f5fa304195a7800289b82b68539459b3';
+    r'87cdf805ddf42e33984c21b83571490a2af7793c';
 
 /// 🧩 [emailVerificationNotifierProvider] — async notifier that handles email verification polling
 /// 🧼 Sends verification email and checks if email is verified via Firebase

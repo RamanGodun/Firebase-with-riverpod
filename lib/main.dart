@@ -1,20 +1,18 @@
+/*
+ * Copyright (c) 2025 Roman Godun
+ * All rights reserved, see [./LICENSE].
+ * This software is proprietary and confidential.
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+  
+  For licensing inquiries, contact: 4l.roman.godun@gmail.com or godun.rm@gmail.com
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app_bootstrap_and_config/app_bootstrap.dart';
 import 'app_bootstrap_and_config/di_container/di_container.dart';
 import 'core/base_modules/localization/app_localization.dart';
 import 'root_view_shell.dart';
-
-/*
-
- * Copyright (c) 2025 Roman Godun
- * All rights reserved.
- * This software is proprietary and confidential.
- * Unauthorized copying, distribution, or use is strictly prohibited.
-  
- ! For licensing inquiries, contact: 4l.roman.godun@gmail.com or godun.rm@gmail.com
-
- */
 
 /// 🏁 Entry point of the application
 //
@@ -46,7 +44,7 @@ Future<void> main() async {
 ///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
 //
 final class AppLocalizationShell extends StatelessWidget {
-  ///----------------------------------------------
+  ///--------------------------------------------------
   const AppLocalizationShell({super.key});
 
   @override
@@ -60,9 +58,6 @@ final class AppLocalizationShell extends StatelessWidget {
 
 /*
 
-
 flutter pub run build_runner build --delete-conflicting-outputs
-
-
 
  */

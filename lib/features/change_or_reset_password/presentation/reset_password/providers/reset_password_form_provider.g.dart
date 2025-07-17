@@ -6,7 +6,7 @@ part of 'reset_password_form_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$resetPasswordFormHash() => r'263087f9d0683a93f8f83df0b6e71532fe60406e';
+String _$resetPasswordFormHash() => r'07ad82f8b916d54b911fc767b856143ae7d4fcbc';
 
 /// 🧩 [ResetPasswordForm] — Manages the state of the reset password form using [StateNotifier].
 /// Handles input updates, validation, and future extensibility.

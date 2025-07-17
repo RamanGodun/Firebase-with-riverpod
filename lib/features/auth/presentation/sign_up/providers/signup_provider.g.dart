@@ -6,7 +6,7 @@ part of 'signup_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signupHash() => r'e91db91d89e6903a87f8b42f9849bd2094aaee1f';
+String _$signupHash() => r'eac891e7e9a99dc6026d9b0420aeae890c642336';
 
 /// 🧩 [signupProvider] — async notifier for user registration
 /// 🧼 Uses [SafeAsyncState] for lifecycle safety

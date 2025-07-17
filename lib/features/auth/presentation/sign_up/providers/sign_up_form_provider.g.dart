@@ -6,7 +6,7 @@ part of 'sign_up_form_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signUpFormHash() => r'8e227e8a39b253772b7c8184576aed7dfec678e5';
+String _$signUpFormHash() => r'de978c34a635d8457dd58a902c8184e669f243dd';
 
 /// 🧩 [SignUpForm] — Manages the state of the sign-up form using [StateNotifier].
 /// Handles input updates, validation, and visibility toggling for password fields.

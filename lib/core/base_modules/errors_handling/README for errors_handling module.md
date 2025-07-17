@@ -112,39 +112,7 @@ Future<void> fetchUser() async {
 ## 📂 Folder Structure
 
 ```plaintext
-errors_handling/
-│
-├── either_for_data/                       # Core functional primitives
-│   ├── either.dart                        # Either<L, R> implementation
-│   ├── unit.dart                          # Unit type
-│   ├── _eithers_facade.dart               # Exports commonly used extensions
-│   └── either_x/                          # DSL-like and utility extensions
-│       ├── either_async_x.dart
-│       ├── either_getters_x.dart
-│       ├── either_test_x.dart
-│       ├── either_x.dart
-│       ├── result_logger_x.dart
-│       └── result_navigation_x.dart
-│
-├── failures_for_domain_and_presentation/ # Domain + UI error types
-│   ├── enums.dart                         # FailureKey, ErrorPlugin
-│   ├── failure_for_domain.dart            # Failure base types
-│   ├── failure_ui_model.dart              # FailureUIModel
-│   └── failure_x/                         # Extensions
-│       ├── failure_diagnostics_x.dart
-│       ├── failure_logger_x.dart
-│       ├── failure_navigation.dart
-│       └── ui_failures_x.dart
-│
-├── utils/                                 # Additional helpers
-│   ├── consumable.dart                    # Consumable<T> wrapper
-│   ├── dsl_result_handler.dart            # DSLLikeResultHandler
-│   ├── dsl_result_handler_async.dart      # Async version
-│   └── failure_mapper.dart                # Exception to Failure mapper
-│
-├── Errors_Handling_FLOW.md               # Visualized flow diagram (optional)
-├── One_time_error_displaying.md          # Additional strategy pattern for UI
-└── README.md                              # Developer manual for error system
+                          # Developer manual for error system
 ```
 
 ---

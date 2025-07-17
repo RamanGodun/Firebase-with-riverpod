@@ -1,17 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'password_repo_provider.dart';
+part of 'password_data_layer_providers.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$passwordRepoHash() => r'53d5b94248b9c9198133a54e8638222a2fc7ff62';
+String _$passwordRemoteDataSourceHash() =>
+    r'45bde654f35d756198afa739a18f00b7a3caffb6';
 
 /// 🧩 [passwordRepoProvider] — provides instance of [PasswordRepoImpl]
 /// 🧼 Dependency injection for all password-related functionality
 ///
-/// Copied from [passwordRepo].
+/// Copied from [passwordRemoteDataSource].
+@ProviderFor(passwordRemoteDataSource)
+final passwordRemoteDataSourceProvider =
+    AutoDisposeProvider<IPasswordRemoteDataSource>.internal(
+      passwordRemoteDataSource,
+      name: r'passwordRemoteDataSourceProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$passwordRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PasswordRemoteDataSourceRef =
+    AutoDisposeProviderRef<IPasswordRemoteDataSource>;
+String _$passwordRepoHash() => r'6446de53a6a93c73e036841b609e1d1b5f80c260';
+
+/// See also [passwordRepo].
 @ProviderFor(passwordRepo)
 final passwordRepoProvider = AutoDisposeProvider<IPasswordRepo>.internal(
   passwordRepo,

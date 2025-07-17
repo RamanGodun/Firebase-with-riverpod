@@ -8,7 +8,10 @@ part of 'profile_use_case_provider.dart';
 
 String _$getProfileUseCaseHash() => r'3422aad59f42e25fac1ecc688c97814bc08749ba';
 
-/// See also [getProfileUseCase].
+/// 📦 [GetProfileUseCase] — encapsulates get profile process
+/// 🧼 Handles user authentication using [IProfileRepo]
+///
+/// Copied from [getProfileUseCase].
 @ProviderFor(getProfileUseCase)
 final getProfileUseCaseProvider =
     AutoDisposeProvider<GetProfileUseCase>.internal(

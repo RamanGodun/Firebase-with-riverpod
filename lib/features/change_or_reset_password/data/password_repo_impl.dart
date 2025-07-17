@@ -1,26 +1,49 @@
-import 'package:firebase_with_riverpod/core/shared_data_layer/base_repo.dart';
-import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../core/shared_domain_layer/shared_auth/auth_user_utils.dart';
+import 'package:firebase_with_riverpod/core/shared_domain_layer/base_use_case.dart';
+import '../../../core/utils_shared/type_definitions.dart';
 import '../domain/repo_contract.dart';
+import 'password_actions_remote_data_source.dart';
 
 /// 🧩 [PasswordRepoImpl] — concrete implementation of [IPasswordRepo]
 /// 🧼 Uses FirebaseAuth for all password-related operations
 //
 final class PasswordRepoImpl implements IPasswordRepo {
+  final IPasswordRemoteDataSource _remote;
+
+  const PasswordRepoImpl(this._remote);
+
+  @override
+  ResultFuture<void> changePassword(String newPassword) =>
+      (() => _remote.changePassword(newPassword)).executeWithFailureHandling();
+
+  @override
+  ResultFuture<void> sendResetLink(String email) =>
+      (() => _remote.sendResetLink(email)).executeWithFailureHandling();
+}
+
+
+/*
+
+
+final class PasswordRepoImpl implements IPasswordRepo {
   ///-------------------------------------------------------------
 
-  ///
+  /// Throws [FirebaseAuthException] if no user is signed in
   @override
-  Future<void> changePassword(String newPassword) =>
+  ResultFuture<void> changePassword(String newPassword) =>
       (() async {
         final user = AuthUserUtils.currentUserOrThrow;
         await user.updatePassword(newPassword);
-      }).runWithErrorLog();
+      }).executeWithFailureHandling();
 
   ///
   @override
-  Future<void> sendResetLink(String email) =>
-      (() => fbAuth.sendPasswordResetEmail(email: email)).runWithErrorLog();
+  ResultFuture<void> sendResetLink(String email) =>
+      (() => fbAuth.sendPasswordResetEmail(email: email))
+          .executeWithFailureHandling();
 
   //
 }
+
+
+
+ */

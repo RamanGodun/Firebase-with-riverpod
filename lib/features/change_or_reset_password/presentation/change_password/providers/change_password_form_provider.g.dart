@@ -7,9 +7,12 @@ part of 'change_password_form_provider.dart';
 // **************************************************************************
 
 String _$changePasswordFormHash() =>
-    r'964f16683f39cc9ee9ace8d8c5d0e767739d4972';
+    r'ad653ecfa111f43c1fad14641a21b23e83e07f73';
 
-/// See also [ChangePasswordForm].
+/// 🧩 [ChangePasswordForm] — Manages the state of the change passford form using [StateNotifier].
+/// Handles input updates, validation, and visibility toggling for password field.
+///
+/// Copied from [ChangePasswordForm].
 @ProviderFor(ChangePasswordForm)
 final changePasswordFormProvider = AutoDisposeNotifierProvider<
   ChangePasswordForm,

@@ -6,7 +6,7 @@ part of 'sign_in_form_fields_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signInFormHash() => r'79b556192c6abde066910b4510ea05616abd51be';
+String _$signInFormHash() => r'd7f4587326286cdab8e56c5036d5c86988d9467f';
 
 /// 🧩 [SignInForm] — Manages the state of the sign-in form using [StateNotifier].
 /// Handles input updates, validation, and visibility toggling for password field.
