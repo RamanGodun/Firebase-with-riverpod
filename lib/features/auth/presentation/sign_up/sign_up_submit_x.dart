@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'providers/sign_up_form_provider.dart';
-import 'providers/signup_provider.dart';
+import 'providers/sign_up_provider.dart';
 
 /// 📩 Handles form validation and submission to [signupProvider].
 //

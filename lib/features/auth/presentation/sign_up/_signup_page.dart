@@ -16,7 +16,7 @@ import '../../../form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../form_fields/widgets/_fields_factory.dart';
 import '../../../form_fields/widgets/password_visibility_icon.dart';
 import 'providers/sign_up_form_provider.dart';
-import 'providers/signup_provider.dart';
+import 'providers/sign_up_provider.dart';
 
 part 'widgets_for_sign_up_page.dart';
 part 'input_fields.dart';

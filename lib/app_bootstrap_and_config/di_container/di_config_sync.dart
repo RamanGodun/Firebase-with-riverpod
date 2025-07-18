@@ -6,7 +6,7 @@ import '../../core/base_modules/overlays/overlays_dispatcher/_overlay_dispatcher
 import '../../core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/base_modules/theme/theme_provider/theme_config_provider.dart';
 import '../../features/profile/data/profile_repo_impl.dart';
-import '../../features/profile/data/profile_repo_provider.dart';
+import '../../features/profile/data/profile_data_layer_providers.dart';
 import '../../features/profile/data/remote_data_source.dart';
 
 /// 🔧 [DIConfig] — Abstract contract for DI (Dependency Injection) configuration.
@@ -32,35 +32,49 @@ sealed class IDIConfig {
 final class DIConfiguration extends IDIConfig {
   ///-------------------------------------------------
   //
+  /// 🔁 Combined list of all feature overrides
   @override
-  List<Override> get overrides => [
-    //
-    // 🎨 Theme providers: Storage and ThemeConfig
+  List<Override> get overrides => [...coreOverrides, ...profileOverrides];
+
+  ///
+  @override
+  List<ProviderObserver> get observers => [Logger()];
+
+  ///
+  //───────── 🧩 FEATURE OVERRIDE MODULES ──────────────────
+  //
+
+  /// 🌐 Core system-wide overrides (e.g. theme, routing, overlays)
+  List<Override> get coreOverrides => [
+    /// 🎨 Theme storage and state
     themeStorageProvider.overrideWith((ref) => GetStorage()),
     themeProvider.overrideWith(
       (ref) => ThemeConfigNotifier(ref.watch(themeStorageProvider)),
     ),
 
-    /// 🗺️ Navigation: GoRouter
+    /// 🧭 Routing provider (GoRouter)
     goRouter.overrideWith((ref) => buildGoRouter(ref)),
 
-    // 📤 Overlay dispatcher for modal overlays/toasts/dialogs
+    /// 📤 Overlay dispatcher for toasts/dialogs/etc.
     overlayDispatcherProvider.overrideWith(
       (ref) => OverlayDispatcher(
         onOverlayStateChanged: ref.read(overlayStatusProvider.notifier).update,
       ),
     ),
-
-    // 🧩 Profile repository with remote data source
-    profileRepoProvider.overrideWith(
-      (ref) => ProfileRepoImpl(ProfileRemoteDataSourceImpl()),
-    ),
-    //
   ];
 
-  ///
-  @override
-  List<ProviderObserver> get observers => [Logger()];
+  /// 👤 Profile feature: profile loading with caching
+  List<Override> get profileOverrides => [
+    /// 🔌 Firestore-based remote user source
+    profileRemoteDataSourceProvider.overrideWith(
+      (ref) => ProfileRemoteDataSourceImpl(),
+    ),
+
+    /// 📦 Profile repo with cache + failure handling
+    profileRepoProvider.overrideWith(
+      (ref) => ProfileRepoImpl(ref.watch(profileRemoteDataSourceProvider)),
+    ),
+  ];
 
   //
 }

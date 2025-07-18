@@ -4,7 +4,7 @@ import '../domain/auth_repo_contracts.dart';
 import 'auth_remote_data_source.dart';
 import 'auth_repo_implementations.dart';
 
-part 'auth_repo_providers.g.dart';
+part 'auth_data_layer_providers.g.dart';
 
 /// 🔌 [authRemoteDataSourceProvider] — provides instance of [AuthRemoteDataSourceImpl]
 /// 🧼 Dependency injection for Firebase Auth access

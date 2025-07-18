@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'email_verification_repo_provider.dart';
+part of 'data_layer_providers.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -33,7 +33,6 @@ String _$userValidationRemoteDataSourceHash() =>
     r'd2193022a401cccff4ebbb2813ae532f857c4c4d';
 
 /// 🛰️ [userValidationRemoteDataSourceProvider] — provides Firebase-based remote source
-/// 🧼 Pure Firebase logic without error mapping
 ///
 /// Copied from [userValidationRemoteDataSource].
 @ProviderFor(userValidationRemoteDataSource)

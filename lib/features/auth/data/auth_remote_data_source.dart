@@ -34,7 +34,7 @@ abstract interface class IAuthRemoteDataSource {
 //
 final class AuthRemoteDataSourceImpl implements IAuthRemoteDataSource {
   ///---------------------------------------------------------------
-  // 
+  //
   /// 🔐 Firebase sign-in
   @override
   Future<void> signIn({required String email, required String password}) async {

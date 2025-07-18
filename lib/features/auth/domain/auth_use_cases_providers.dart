@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../data/auth_repo_providers.dart';
+import '../data/auth_data_layer_providers.dart';
 import 'auth_use_cases.dart';
 
 part 'auth_use_cases_providers.g.dart';

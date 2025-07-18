@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../form_fields/input_validation/validation_enums.dart';
-import 'signup_form_state.dart';
+import 'sign_up_form_state.dart';
 
 part 'sign_up_form_provider.g.dart';
 

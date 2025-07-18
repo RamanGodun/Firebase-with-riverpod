@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
-import '../../../profile/data/profile_repo_provider.dart';
+import '../../../profile/data/profile_data_layer_providers.dart';
 import '../../domain/auth_use_cases_providers.dart';
 
 part 'sign_out_provider.g.dart';

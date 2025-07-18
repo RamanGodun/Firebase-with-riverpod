@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_repo_providers.dart';
+part of 'auth_data_layer_providers.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,10 +29,9 @@ final authRemoteDataSourceProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AuthRemoteDataSourceRef = AutoDisposeProviderRef<IAuthRemoteDataSource>;
-String _$signInRepoHash() => r'7c2d4699c935c1e25da93d34448f9a2791e8fcb0'; ////
+String _$signInRepoHash() => r'cde27930b72ccf393d6f92d9eb6b316ddb2275de'; ////
 ////
-/// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl]
-/// 🧼 Dependency injection for user sign-in logic
+/// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl], injects [IAuthRemoteDataSource] from [authRemoteDataSourceProvider]
 ///
 /// Copied from [signInRepo].
 @ProviderFor(signInRepo)
@@ -48,10 +47,9 @@ final signInRepoProvider = AutoDisposeProvider<ISignInRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SignInRepoRef = AutoDisposeProviderRef<ISignInRepo>;
-String _$signOutRepoHash() => r'45771d917f241ee26457e89625a6512624219064'; ////
+String _$signOutRepoHash() => r'cf896c3f1e1922465c8ed985225ec9921f6c0db4'; ////
 ////
-/// 🧩 [signOutRepoProvider] — provides instance of [SignOutRepoImpl]
-/// 🧼 Dependency injection for sign-out operation
+/// 🧩 [signOutRepoProvider] — provides instance of [SignOutRepoImpl], injects [IAuthRemoteDataSource]
 ///
 /// Copied from [signOutRepo].
 @ProviderFor(signOutRepo)
@@ -67,10 +65,9 @@ final signOutRepoProvider = AutoDisposeProvider<ISignOutRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SignOutRepoRef = AutoDisposeProviderRef<ISignOutRepo>;
-String _$signUpRepoHash() => r'd00543e8f6083a09036e8afc731d69ffb74844b9'; ////
+String _$signUpRepoHash() => r'ff23eb0867617380a347c03b8eacc2c35de190f3'; ////
 ////
-/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl]
-/// 🧼 Dependency injection for sign-up logic
+/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl], injects [IAuthRemoteDataSource]
 ///
 /// Copied from [signUpRepo].
 @ProviderFor(signUpRepo)

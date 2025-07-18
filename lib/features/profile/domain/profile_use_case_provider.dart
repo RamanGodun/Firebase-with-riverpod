@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/utils_shared/type_definitions.dart';
-import '../data/profile_repo_provider.dart';
+import '../data/profile_data_layer_providers.dart';
 import 'entities/_user_entity.dart';
 import 'profile_repo_contract.dart';
 
