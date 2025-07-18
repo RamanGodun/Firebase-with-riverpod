@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/failure_handling.dart';
 import '../../../core/utils_shared/type_definitions.dart';
-import '../domain/repo_contract.dart';
-import 'current_remote_data_source.dart';
+import '../domain/i_repo.dart';
+import 'i_remote_database.dart';
 
 /// 🧩 [PasswordRepoImpl] — Delegates password-related calls to [IPasswordRemoteDataSource]
 /// 🧼 Adds unified failure handling via `.executeWithFailureHandling()`

@@ -57,6 +57,7 @@ final class AppLocalizationShell extends StatelessWidget {
 }
 
 /*
+! authProvider to global container
 
 flutter pub run build_runner build --delete-conflicting-outputs
 

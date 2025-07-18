@@ -2,32 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart' show UserCredential;
 import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../profile/data/data_transfer_objects/_user_dto.dart';
-
-/// 🔐 [IAuthRemoteDataSource] — contract for auth operations
-/// 🧼 Abstracts low-level Remote Database calls for sign-in / sign-up / sign-out
-//
-abstract interface class IAuthRemoteDataSource {
-  ///----------------------------------------
-  //
-  /// 🔐 Signs in Remote Database
-  Future<void> signIn({required String email, required String password});
-
-  /// 🆕 Creates new user in Remote Database
-  Future<UserCredential> signUp({
-    required String email,
-    required String password,
-  });
-
-  /// 💾 Save User in Remote Database
-  Future<void> saveUserDTO(UserDTO dto);
-
-  /// 🔓 Signs out current user
-  Future<void> signOut();
-}
-
-////
-
-////
+import 'i_remote_database.dart';
 
 /// 🛠️ [AuthRemoteDataSourceImpl] — Firebase-powered implementation
 /// 🧱 Directly performs Firebase Auth operations

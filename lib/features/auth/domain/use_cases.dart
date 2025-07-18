@@ -1,5 +1,5 @@
 import '../../../../core/utils_shared/type_definitions.dart';
-import 'auth_repo_contracts.dart';
+import 'i_repo.dart';
 
 /// 📦 [SignInUseCase] — Handles user authentication logic, using [ISignInRepo]
 //

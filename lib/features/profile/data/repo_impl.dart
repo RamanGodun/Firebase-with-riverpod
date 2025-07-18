@@ -2,8 +2,8 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/f
 import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
 import '../../../core/utils_shared/type_definitions.dart';
 import '../domain/entities/_user_entity.dart';
-import '../domain/profile_repo_contract.dart';
-import 'remote_data_source.dart';
+import '../domain/i_repo.dart';
+import 'i_remote_databse.dart';
 
 /// 🧩 [ProfileRepoImpl] — implements [IProfileRepo] with error mapping and caching
 /// 🧼 Converts DTO ➡️ Entity, adds 5 min in-memory caching, handles failures

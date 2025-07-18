@@ -1,10 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../domain/auth_repo_contracts.dart';
-import 'auth_remote_data_source.dart';
-import 'auth_repo_implementations.dart';
+import '../domain/i_repo.dart';
+import 'remote_database_impl.dart';
+import 'i_remote_database.dart';
+import 'auth_repo_implementations/sign_in_repo_impl.dart';
+import 'auth_repo_implementations/sign_out_repo_impl.dart';
+import 'auth_repo_implementations/sign_up_repo_impl.dart';
 
-part 'auth_data_layer_providers.g.dart';
+part 'data_layer_providers.g.dart';
 
 /// 🔌 [authRemoteDataSourceProvider] — provides instance of [AuthRemoteDataSourceImpl]
 /// 🧼 Dependency injection for Firebase Auth access
