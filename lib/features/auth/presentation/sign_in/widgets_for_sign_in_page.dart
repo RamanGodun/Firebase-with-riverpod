@@ -79,7 +79,7 @@ final class _SignInPasswordInputField extends ConsumerWidget {
       errorText: form.password.uiErrorKey,
       isObscure: form.isPasswordObscure,
       onChanged: formNotifier.passwordChanged,
-      onSubmitted: form.isValid ? () => ref.submitSignIn() : null,
+      onSubmitted: form.isValid ? () => ref.submit() : null,
       suffixIcon: ObscureToggleIcon(
         isObscure: form.isPasswordObscure,
         onPressed: formNotifier.togglePasswordVisibility,
@@ -113,9 +113,7 @@ final class _SigninSubmitButton extends ConsumerWidget {
       isEnabled: form.isValid && !isOverlayActive,
       isLoading: signInState.isLoading,
       onPressed:
-          form.isValid && !signInState.isLoading
-              ? () => ref.submitSignIn()
-              : null,
+          form.isValid && !signInState.isLoading ? () => ref.submit() : null,
     ).withPaddingBottom(AppSpacing.l);
   }
 }

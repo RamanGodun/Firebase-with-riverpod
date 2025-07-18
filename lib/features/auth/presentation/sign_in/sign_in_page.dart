@@ -35,8 +35,13 @@ final class SignInPage extends HookConsumerWidget {
     //
     final focus = useSignInFocusNodes();
 
-    // 🔁 Declarative side-effect for error displaying
-    ref.listenFailure(signInProvider, context);
+    /// 🧠🔁 Intelligent failure listener (declarative side-effect for error displaying) with optional "Retry" logic.
+    ref.listenRetryAwareFailure(
+      signInProvider,
+      context,
+      ref: ref,
+      onRetry: () => ref.submit(),
+    );
 
     return Scaffold(
       body: SafeArea(

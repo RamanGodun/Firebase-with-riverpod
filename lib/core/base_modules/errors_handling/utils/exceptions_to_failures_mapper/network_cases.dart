@@ -3,10 +3,12 @@ part of '_exceptions_to_failures_mapper.dart';
 /// 🌐 [_handleSocket] — maps [SocketException] to [NetworkFailure].
 /// ✅ Indicates no internet connection.
 //
-Failure _handleSocket(SocketException error) => NetworkFailure(
-  translationKey: FailureKeys.networkNoConnection,
-  message: 'No Internet connection. Please check your settings.',
-);
+Failure _handleSocket(SocketException error) {
+  return NetworkFailure(
+    message: 'No Internet connection. Please check your settings.',
+    translationKey: FailureKeys.networkNoConnection,
+  );
+}
 
 ////
 ////
@@ -25,7 +27,22 @@ Failure _handleTimeout(TimeoutException error) => NetworkFailure(
 /// 🌍 [_handleHttp] — maps [HttpException] to [NetworkFailure].
 /// ✅ Covers legacy HTTP errors (non-Dio).
 //
-Failure _handleHttp(HttpException error) => NetworkFailure(
-  translationKey: FailureKeys.networkTimeout,
-  message: error.message,
-);
+Failure _handleHttp(HttpException error) {
+  final msg = error.message.toLowerCase();
+
+  // iOS часто каже "The Internet connection appears to be offline"
+  if (msg.contains('offline') ||
+      msg.contains('internet connection') ||
+      msg.contains('network is unreachable')) {
+    return NetworkFailure(
+      message: 'No Internet connection. Please check your settings.',
+      translationKey: FailureKeys.networkNoConnection,
+    );
+  }
+
+  // Інакше — generic
+  return NetworkFailure(
+    translationKey: FailureKeys.networkTimeout,
+    message: error.message,
+  );
+}

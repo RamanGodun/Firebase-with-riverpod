@@ -47,7 +47,8 @@
     "requires_recent_login": "Please reauthenticate to continue.",
     "too_many_requests": "Too many attempts. Please try again later.",
     "user_disabled": "This account is disabled.",
-    "weak_password": "Password is too weak."
+    "weak_password": "Password is too weak.",
+    "timeout": "The request timed out. Please try again later."
   },
   "format": {
     "error": "Invalid data format received."

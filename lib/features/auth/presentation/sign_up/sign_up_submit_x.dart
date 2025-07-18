@@ -4,11 +4,11 @@ import 'providers/sign_up_provider.dart';
 
 /// 📩 Handles form validation and submission to [signupProvider].
 //
-extension SignUpSubmitX on WidgetRef {
+extension SignUpRefX on WidgetRef {
   ///-------------------------------
   //
   /// 📩 Triggers sign-up logic based on current form state
-  void submitSignUp() {
+  void submit() {
     final form = read(signUpFormProvider);
     read(signupProvider.notifier).signup(
       name: form.name.value,

@@ -47,7 +47,8 @@
     "requires_recent_login": "Aby kontynuować, musisz się ponownie zalogować.",
     "too_many_requests": "Zbyt wiele prób. Spróbuj ponownie później.",
     "user_disabled": "To konto zostało dezaktywowane.",
-    "weak_password": "Hasło jest zbyt słabe."
+    "weak_password": "Hasło jest zbyt słabe.",
+    "timeout": "Limit czasu żądania został przekroczony. Spróbuj ponownie później."
   },
   "format": {
     "error": "Odebrano nieprawidłowy format danych."

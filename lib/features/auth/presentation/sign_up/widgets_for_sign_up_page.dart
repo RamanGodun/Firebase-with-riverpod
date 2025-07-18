@@ -46,9 +46,7 @@ final class _SignupSubmitButton extends ConsumerWidget {
       isEnabled: form.isValid && !isOverlayActive,
       isLoading: signupState.isLoading,
       onPressed:
-          form.isValid && !signupState.isLoading
-              ? () => ref.submitSignUp()
-              : null,
+          form.isValid && !signupState.isLoading ? () => ref.submit() : null,
     ).withPaddingBottom(AppSpacing.xl);
   }
 }

@@ -30,8 +30,13 @@ final class SignUpPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
-    // ❗️ Declarative error handling
-    ref.listenFailure(signupProvider, context);
+    /// 🧠🔁 Intelligent failure listener (declarative side-effect for error displaying) with optional "Retry" logic.
+    ref.listenRetryAwareFailure(
+      signupProvider,
+      context,
+      ref: ref,
+      onRetry: () => ref.submit(),
+    );
 
     final focus = useSignUpFocusNodes();
 

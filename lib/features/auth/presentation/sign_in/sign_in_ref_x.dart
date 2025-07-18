@@ -4,11 +4,11 @@ import 'providers/sign_in_form_fields_provider.dart';
 
 /// 📩 Handles form validation and submission to [signinProvider].
 //
-extension SignInSubmitX on WidgetRef {
+extension SignInRefX on WidgetRef {
   ///-------------------------------
   //
   /// 📩 Triggers sign-in logic based on current form state
-  void submitSignIn() {
+  void submit() {
     final form = read(signInFormProvider);
     read(
       signInProvider.notifier,

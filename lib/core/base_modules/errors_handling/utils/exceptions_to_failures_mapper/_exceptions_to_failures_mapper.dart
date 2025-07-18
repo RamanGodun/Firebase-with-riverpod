@@ -75,6 +75,8 @@ final class ExceptionToFailureMapper {
       //🧠 Invalid arguments
       ArgumentError _ => _handleArgument(error),
 
+      //
+
       //❓ Fallback for uncategorized
       _ => UnknownFailure(
         message: error.toString(),

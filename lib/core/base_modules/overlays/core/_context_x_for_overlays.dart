@@ -31,6 +31,8 @@ extension ContextXForOverlays on BuildContext {
     OverlayPriority priority = OverlayPriority.high,
     VoidCallback? onConfirm,
     VoidCallback? onCancel,
+    String? confirmText,
+    String? cancelText,
   }) {
     //
     ///
@@ -63,8 +65,12 @@ extension ContextXForOverlays on BuildContext {
             LocaleKeys.errors_errors_general_title,
           ),
           content: model.localizedMessage,
-          confirmText: AppLocalizer.translateSafely(LocaleKeys.buttons_ok),
-          cancelText: AppLocalizer.translateSafely(LocaleKeys.buttons_cancel),
+          confirmText:
+              confirmText ??
+              AppLocalizer.translateSafely(LocaleKeys.buttons_ok),
+          cancelText:
+              cancelText ??
+              AppLocalizer.translateSafely(LocaleKeys.buttons_cancel),
           onConfirm: onConfirm,
           onCancel: onCancel,
           preset: preset,

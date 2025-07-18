@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../base_modules/errors_handling/either/either.dart';
 import '../base_modules/errors_handling/failures/failure_model.dart';
 
@@ -25,3 +26,7 @@ typedef SubmitCallback = void Function(BuildContext context);
 
 /// 📡 [ListenFailureCallback] — optional handler when failure is caught
 typedef ListenFailureCallback = void Function(Failure failure);
+
+///
+typedef RefAction = void Function();
+typedef RefCallback = void Function(WidgetRef ref);
