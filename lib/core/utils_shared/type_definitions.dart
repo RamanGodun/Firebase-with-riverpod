@@ -23,6 +23,5 @@ typedef FieldUiState = ({String? errorText, bool isObscure});
 /// 📤 [SubmitCallback] — Button or form submission callback
 typedef SubmitCallback = void Function(BuildContext context);
 
-
 /// 📡 [ListenFailureCallback] — optional handler when failure is caught
 typedef ListenFailureCallback = void Function(Failure failure);
