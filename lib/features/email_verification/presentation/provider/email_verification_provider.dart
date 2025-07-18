@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/base_modules/errors_handling/utils/for_riverpod/safe_async_state.dart';
+import '../../../../core/utils_shared/safe_async_state.dart';
 import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
 import '../../domain/use_case.dart';

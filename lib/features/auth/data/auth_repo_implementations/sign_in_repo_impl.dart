@@ -17,5 +17,5 @@ final class SignInRepoImpl implements ISignInRepo {
     required String password,
   }) =>
       (() => _remote.signIn(email: email, password: password))
-          .executeWithFailureHandling();
+          .runWithErrorHandling();
 }

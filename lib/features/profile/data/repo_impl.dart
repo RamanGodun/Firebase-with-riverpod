@@ -37,7 +37,7 @@ final class ProfileRepoImpl implements IProfileRepo {
         _lastFetched = now;
         return user;
         //
-      }).executeWithFailureHandling();
+      }).runWithErrorHandling();
 
   /// ♻️ Clears in-memory cache
   @override

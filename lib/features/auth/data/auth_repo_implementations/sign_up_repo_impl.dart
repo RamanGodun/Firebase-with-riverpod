@@ -34,5 +34,5 @@ final class SignUpRepoImpl implements ISignUpRepo {
         // 💾 Save in remote database
         await _remote.saveUserDTO(dto);
         //
-      }).executeWithFailureHandling();
+      }).runWithErrorHandling();
 }

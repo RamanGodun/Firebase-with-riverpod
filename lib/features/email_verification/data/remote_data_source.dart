@@ -1,4 +1,4 @@
-import '../../../core/utils_shared/shared_auth/auth_user_utils.dart';
+import '../../../core/utils_shared/auth_user_utils.dart';
 import 'i_remote_database.dart';
 
 /// 🛠️ [IUserValidationRemoteDataSourceImpl] — Firebase-powered implementation

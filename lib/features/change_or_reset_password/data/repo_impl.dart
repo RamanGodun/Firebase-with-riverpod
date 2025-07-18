@@ -15,12 +15,12 @@ final class PasswordRepoImpl implements IPasswordRepo {
   /// 🔁 Changes password for the currently signed-in user
   @override
   ResultFuture<void> changePassword(String newPassword) =>
-      (() => _remote.changePassword(newPassword)).executeWithFailureHandling();
+      (() => _remote.changePassword(newPassword)).runWithErrorHandling();
 
   /// 📩 Sends reset password link to provided email
   @override
   ResultFuture<void> sendResetLink(String email) =>
-      (() => _remote.sendResetLink(email)).executeWithFailureHandling();
+      (() => _remote.sendResetLink(email)).runWithErrorHandling();
 
   //
 }

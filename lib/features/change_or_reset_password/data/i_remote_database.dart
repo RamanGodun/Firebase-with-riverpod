@@ -1,5 +1,3 @@
-
-
 /// 📡 [IPasswordRemoteDataSource] — contract for low-level password operations
 /// ✅ Abstracts infrastructure layer (e.g., Firebase)
 //
@@ -12,4 +10,3 @@ abstract interface class IPasswordRemoteDataSource {
   /// 📩 Sends reset link to given email
   Future<void> sendResetLink(String email);
 }
-

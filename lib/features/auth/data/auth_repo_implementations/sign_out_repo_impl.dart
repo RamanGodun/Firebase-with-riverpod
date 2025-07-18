@@ -13,5 +13,5 @@ final class SignOutRepoImpl implements ISignOutRepo {
   //
   @override
   ResultFuture<void> signOut() =>
-      (() => _remote.signOut()).executeWithFailureHandling();
+      (() => _remote.signOut()).runWithErrorHandling();
 }

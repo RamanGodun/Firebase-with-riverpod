@@ -1,5 +1,5 @@
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../core/utils_shared/shared_auth/auth_user_utils.dart';
+import '../../../core/utils_shared/auth_user_utils.dart';
 import 'i_remote_database.dart';
 
 /// 🧩 [PasswordRemoteDataSourceImpl] — Firebase-based implementation of [IPasswordRemoteDataSource]

@@ -14,17 +14,17 @@ final class IUserValidationRepoImpl implements IUserValidationRepo {
   /// 📧 Sends verification email via [IUserValidationRemoteDataSource]
   @override
   ResultFuture<void> sendEmailVerification() =>
-      (() => _remote.sendVerificationEmail()).executeWithFailureHandling();
+      (() => _remote.sendVerificationEmail()).runWithErrorHandling();
 
   /// 🔁 Reloads current user from [IUserValidationRemoteDataSource]
   @override
   ResultFuture<void> reloadUser() =>
-      (() => _remote.reloadUser()).executeWithFailureHandling();
+      (() => _remote.reloadUser()).runWithErrorHandling();
 
   /// ✅ Checks if user's email is verified
   @override
   ResultFuture<bool> isEmailVerified() =>
-      (() async => _remote.isEmailVerified()).executeWithFailureHandling();
+      (() async => _remote.isEmailVerified()).runWithErrorHandling();
 
   //
 }
