@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../domain/i_repo.dart';
 import 'repo_impl.dart';
-import 'i_remote_databse.dart';
+import 'i_remote_database.dart';
 
 part 'data_layer_providers.g.dart';
 

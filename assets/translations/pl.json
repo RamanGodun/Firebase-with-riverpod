@@ -97,14 +97,12 @@
   },
 
   "profile": {
-    "title": "Profil",
-    "name": "👤 Imię:",
-    "id": "🆔 ID:",
-    "email": "📧 Email:",
-    "points": "📊 Punkty:",
-    "rank": "🏆 Ranga:",
-    "error": "Ups!\nCoś poszło nie tak.",
-    "welcome": "Witaj,"
+    "name": "👤 Imię:       ",
+    "id": "🆔 ID:           ",
+    "email": "📧 Email:     ",
+    "points": "📊 Punkty:   ",
+    "rank": "🏆 Ranga:    ",
+    "error": "Ups!\nCoś poszło nie tak."
   },
 
   "reset_password": {

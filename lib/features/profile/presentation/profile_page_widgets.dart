@@ -43,7 +43,7 @@ final class _ThemeSection extends StatelessWidget {
             ThemePicker(
               key: ValueKey(Localizations.localeOf(context).languageCode),
             ),
-            const ThemeToggler().withPaddingOnly(left: AppSpacing.l),
+            const ThemeTogglerIcon().withPaddingOnly(left: AppSpacing.l),
           ],
         ),
       ],

@@ -80,14 +80,12 @@ abstract class  LocaleKeys {
   static const pages_sign_up = 'pages.sign_up';
   static const pages_reauthentication = 'pages.reauthentication';
   static const pages = 'pages';
-  static const profile_title = 'profile.title';
   static const profile_name = 'profile.name';
   static const profile_id = 'profile.id';
   static const profile_email = 'profile.email';
   static const profile_points = 'profile.points';
   static const profile_rank = 'profile.rank';
   static const profile_error = 'profile.error';
-  static const profile_welcome = 'profile.welcome';
   static const profile = 'profile';
   static const reset_password_header = 'reset_password.header';
   static const reset_password_sub_header = 'reset_password.sub_header';

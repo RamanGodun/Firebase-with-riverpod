@@ -9,11 +9,11 @@ import '../../../localization/app_localizer.dart';
 import '../../app_theme_variants.dart';
 import '../../theme_provider/theme_config_provider.dart';
 
-/// 🌗 [ThemeToggler] — toggles light/dark mode and shows overlay notification
+/// 🌗 [ThemeTogglerIcon] — toggles light/dark mode and shows overlay notification
 
-class ThemeToggler extends ConsumerWidget {
+class ThemeTogglerIcon extends ConsumerWidget {
   ///-----------------------------------------
-  const ThemeToggler({super.key});
+  const ThemeTogglerIcon({super.key});
   //
 
   @override

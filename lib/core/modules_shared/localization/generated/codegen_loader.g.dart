@@ -106,14 +106,12 @@ class CodegenLoader extends AssetLoader{
     "reauthentication": "Ponowna autoryzacja"
   },
   "profile": {
-    "title": "Profil",
-    "name": "👤 Imię:",
-    "id": "🆔 ID:",
-    "email": "📧 Email:",
-    "points": "📊 Punkty:",
-    "rank": "🏆 Ranga:",
-    "error": "Ups!\nCoś poszło nie tak.",
-    "welcome": "Witaj,"
+    "name": "👤 Imię:       ",
+    "id": "🆔 ID:           ",
+    "email": "📧 Email:     ",
+    "points": "📊 Punkty:   ",
+    "rank": "🏆 Ranga:    ",
+    "error": "Ups!\nCoś poszło nie tak."
   },
   "reset_password": {
     "header": "Zresetuj swoje hasło",
@@ -259,14 +257,12 @@ static const Map<String,dynamic> _uk = {
     "reauthentication": "Повторна аутентифікація"
   },
   "profile": {
-    "title": "Профіль",
-    "name": "👤 Ім'я:",
-    "id": "🆔 ІН:",
-    "email": "📧 Електронна пошта:",
-    "points": "📊 Бали:",
-    "rank": "🏆 Ранг:",
-    "error": "Ой! Щось пішло не так.",
-    "welcome": "Вітаємо,"
+    "name": "👤 Ім'я:       ",
+    "id": "🆔 ID:          ",
+    "email": "📧 Пошта:  ",
+    "points": "📊 Бали:     ",
+    "rank": "🏆 Ранг:      ",
+    "error": "Ой! Щось пішло не так."
   },
   "reset_password": {
     "header": "Скидання пароля",
@@ -412,14 +408,12 @@ static const Map<String,dynamic> _en = {
     "reauthentication": "Reauthentication"
   },
   "profile": {
-    "title": "Profile",
-    "name": "👤 Name:",
-    "id": "🆔 ID:",
-    "email": "📧 Email:",
-    "points": "📊 Points:",
-    "rank": "🏆 Rank:",
-    "error": "Oops!\nSomething went wrong.",
-    "welcome": "Welcome,"
+    "name": "👤 Name:   ",
+    "id": "🆔 ID:         ",
+    "email": "📧 Email:    ",
+    "points": "📊 Points:  ",
+    "rank": "🏆 Rank:    ",
+    "error": "Oops!\nSomething went wrong."
   },
   "reset_password": {
     "header": "Reset your password",
