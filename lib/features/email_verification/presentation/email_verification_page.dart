@@ -33,7 +33,7 @@ final class VerifyEmailPage extends ConsumerWidget {
       emailVerificationNotifierProvider,
       context,
       onConfirmed: () async {
-        await fbAuth.signOut();
+        await FirebaseConstants.fbAuth.signOut();
         if (context.mounted) context.goNamed(RoutesNames.signIn);
       },
     );

@@ -13,7 +13,7 @@ final class _ProfileAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return const CustomAppBar(
-      title: LocaleKeys.profile_title,
+      title: LocaleKeys.pages_profile,
       actionWidgets: [LanguageToggleButton(), SignOutIconButton()],
     );
   }

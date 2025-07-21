@@ -198,7 +198,7 @@ dart run easy_localization:generate \
 dart run easy_localization:generate \
   -f keys \
   -S assets/translations \
-  -O lib/core/modules_shared/localization/generated \
+  -O lib/core/base_modules/localization/generated \
   -o locale_keys.g.dart
 ```
 

@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
+import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/localization/widgets/key_value_text_widget.dart';
 import '../../../core/base_modules/localization/widgets/text_widget.dart';
-import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/localization/widgets/language_toggle_button.dart';
 import '../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';
@@ -37,7 +37,7 @@ final class ProfilePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //
     /// Get current user UID (null if not signed in)
-    final uid = fbAuth.currentUser?.uid;
+    final uid = FirebaseConstants.fbAuth.currentUser?.uid;
     if (uid == null) return const SizedBox();
     final asyncUser = ref.watch<AsyncValue<UserEntity>>(profileProvider(uid));
 

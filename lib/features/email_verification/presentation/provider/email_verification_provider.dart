@@ -68,7 +68,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
 
         await _useCase.reloadUser();
 
-        final refreshed = fbAuth.currentUser;
+        final refreshed = FirebaseConstants.fbAuth.currentUser;
         debugPrint(
           '🔁 After reload: emailVerified=${refreshed?.emailVerified}',
         );

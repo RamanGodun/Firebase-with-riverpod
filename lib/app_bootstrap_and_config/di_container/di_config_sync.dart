@@ -5,9 +5,9 @@ import '../../core/base_modules/navigation/core/go_router_provider.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/base_modules/theme/theme_provider/theme_config_provider.dart';
+import '../../features/profile/data/remote_database_impl.dart';
 import '../../features/profile/data/repo_impl.dart';
 import '../../features/profile/data/data_layer_providers.dart';
-import '../../features/profile/data/i_remote_database.dart';
 
 /// 🔧 [DIConfig] — Abstract contract for DI (Dependency Injection) configuration.
 ///     Provides lists of provider overrides and observers for Riverpod setup.

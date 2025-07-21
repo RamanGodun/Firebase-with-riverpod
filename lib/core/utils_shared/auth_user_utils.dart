@@ -11,13 +11,13 @@ abstract final class AuthUserUtils {
 
   /// 👤 Returns current user or throws [FirebaseUserMissingFailure]
   static User get currentUserOrThrow {
-    final user = fbAuth.currentUser;
+    final user = FirebaseConstants.fbAuth.currentUser;
     if (user == null) throw FirebaseUserMissingFailure();
     return user;
   }
 
   /// ❓ Returns current user if present, or `null`
-  static User? get currentUserOrNull => fbAuth.currentUser;
+  static User? get currentUserOrNull => FirebaseConstants.fbAuth.currentUser;
 
   /// 🆔 Returns user UID or throws
   static String get uid => currentUserOrThrow.uid;
