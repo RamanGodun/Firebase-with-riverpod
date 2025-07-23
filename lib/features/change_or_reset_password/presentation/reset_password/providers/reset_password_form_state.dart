@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart' show Equatable;
 import 'package:formz/formz.dart';
-import '../../../../form_fields/input_validation/validation_enums.dart';
+import '../../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 
 /// 📦 [ResetPasswordFormState] — immutable state of the reset password form
 /// 🧠 Tracks the email input and overall form validity

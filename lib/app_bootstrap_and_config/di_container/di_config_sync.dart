@@ -5,9 +5,6 @@ import '../../core/base_modules/navigation/core/go_router_provider.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/base_modules/theme/theme_provider/theme_config_provider.dart';
-import '../../features/profile/data/remote_database_impl.dart';
-import '../../features/profile/data/repo_impl.dart';
-import '../../features/profile/data/data_layer_providers.dart';
 
 /// 🔧 [DIConfig] — Abstract contract for DI (Dependency Injection) configuration.
 ///     Provides lists of provider overrides and observers for Riverpod setup.
@@ -34,14 +31,17 @@ final class DIConfiguration extends IDIConfig {
   //
   /// 🔁 Combined list of all feature overrides
   @override
-  List<Override> get overrides => [...coreOverrides, ...profileOverrides];
+  List<Override> get overrides => [
+    ...coreOverrides,
+    ...otherOverrides, // placeholder
+  ];
 
   ///
   @override
   List<ProviderObserver> get observers => [Logger()];
+  //
 
-  ///
-  //───────── 🧩 FEATURE OVERRIDE MODULES ──────────────────
+  /// *🧩 FEATURE OVERRIDE MODULES
   //
 
   /// 🌐 Core system-wide overrides (e.g. theme, routing, overlays)
@@ -63,17 +63,12 @@ final class DIConfiguration extends IDIConfig {
     ),
   ];
 
-  /// 👤 Profile feature: profile loading with caching
-  List<Override> get profileOverrides => [
-    /// 🔌 Firestore-based remote user source
-    profileRemoteDataSourceProvider.overrideWith(
-      (ref) => ProfileRemoteDataSourceImpl(),
-    ),
+  ////
 
-    /// 📦 Profile repo with cache + failure handling
-    profileRepoProvider.overrideWith(
-      (ref) => ProfileRepoImpl(ref.watch(profileRemoteDataSourceProvider)),
-    ),
+  /// 👤 Profile feature: profile loading with caching
+  List<Override> get otherOverrides => [
+    //
+    /// ? Here can be added other providers, that have to be accessible in and outside context (widget tree)
   ];
 
   //

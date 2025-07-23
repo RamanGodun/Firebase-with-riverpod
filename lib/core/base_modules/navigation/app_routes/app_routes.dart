@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import '../../../../features/profile/presentation/profile__page.dart';
+import '../../../../features/profile/presentation/profile_page.dart';
 import '../../../../features/change_or_reset_password/presentation/change_password/change_password_page.dart';
 import '../../../../features/change_or_reset_password/presentation/reset_password/reset_password_page.dart';
 import '../../../../features/auth/presentation/sign_in/sign_in_page.dart';

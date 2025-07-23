@@ -23,6 +23,7 @@ final class HomePage extends ConsumerWidget {
         title: LocaleKeys.pages_home,
         actionWidgets: [_GoToProfilePageButton()],
       ),
+
       body: Center(
         child: const TextWidget(
           LocaleKeys.pages_home_message,

@@ -11,10 +11,10 @@ import '../../../../core/base_modules/localization/generated/locale_keys.g.dart'
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
-import '../../../form_fields/input_validation/validation_enums.dart';
-import '../../../form_fields/utils/use_auth_focus_nodes.dart';
-import '../../../form_fields/widgets/_fields_factory.dart';
-import '../../../form_fields/widgets/password_visibility_icon.dart';
+import '../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
+import '../../../../core/base_modules/form_fields/utils/use_auth_focus_nodes.dart';
+import '../../../../core/base_modules/form_fields/widgets/_fields_factory.dart';
+import '../../../../core/base_modules/form_fields/widgets/password_visibility_icon.dart';
 import 'providers/sign_up_form_provider.dart';
 import 'providers/sign_up_provider.dart';
 

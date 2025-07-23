@@ -1,65 +1,43 @@
-import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' show CollectionReference;
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth;
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
-import 'data_transfer_objects/_user_dto.dart';
-import 'data_transfer_objects/user_dto_factories_x.dart';
-import 'i_remote_database.dart';
+import 'remote_database_contract.dart';
 
-/// 🛠️ [ProfileRemoteDataSourceImpl] — Firestore implementation of [IProfileRemoteDataSource]
-/// 🧱 Loads or creates user documents and prevents duplicate fetches
+/// 🛠️ [ProfileRemoteDatabaseImpl] — Firestore implementation of [IProfileRemoteDatabase]
+/// ✅ Only low-level calls to Firestore/Auth, no business logic, no DTO<->Entity mapping
 //
-final class ProfileRemoteDataSourceImpl implements IProfileRemoteDataSource {
+final class ProfileRemoteDatabaseImpl implements IProfileRemoteDatabase {
   ///---------------------------------------------------------------------
   //
-  Future<UserDTO>? _inFlightFetch;
-  String? _inFlightUid;
+  final CollectionReference<Map<String, dynamic>> _usersCollection;
+  final FirebaseAuth _fbAuth;
+  //
+  ProfileRemoteDatabaseImpl(this._usersCollection, this._fbAuth);
+  //
 
-  /// 📥 Fetches or creates user document by [uid]
-  /// 🛡️ Prevents parallel Firestore reads for same user
+  /// 📥 Fetches user document by [uid], returns map or null if not found
   @override
-  Future<UserDTO> fetchOrCreateUser(String uid) async {
-    // 🛡️ Prevent duplicate simultaneous Firestore reads
-    if (_inFlightFetch != null && _inFlightUid == uid) {
-      return _inFlightFetch!;
-    }
-
-    final future = _fetchOrCreateInternal(uid);
-    _inFlightFetch = future;
-    _inFlightUid = uid;
-
-    // Clear cache after completion
-    return future.whenComplete(() {
-      _inFlightFetch = null;
-      _inFlightUid = null;
-    });
+  Future<Map<String, dynamic>?> fetchUserMap(String uid) async {
+    final doc = await _usersCollection.doc(uid).get();
+    return doc.data();
   }
 
-  /// 🧱 Internal Firestore logic: checks doc, creates default if missing
-  Future<UserDTO> _fetchOrCreateInternal(String uid) async {
-    final doc = await FirebaseConstants.usersCollection.doc(uid).get();
+  /// 🆕 Creates/updates user map in Firestore for given [uid]
+  @override
+  Future<void> createUserMap(String uid, Map<String, dynamic> data) async {
+    await FirebaseConstants.usersCollection.doc(uid).set(data);
+  }
 
-    // ⛔ If user doc missing — create it using FirebaseAuth
-    if (!doc.exists) {
-      final firebaseUser = FirebaseConstants.fbAuth.currentUser;
-      // ⛔ FirebaseAuth  not initialized
-      if (firebaseUser == null) throw FirebaseUserMissingFailure();
-
-      final dto = UserDTOFactories.newUser(
-        id: firebaseUser.uid,
-        name:
-            firebaseUser.displayName?.trim().isNotEmpty == true
-                ? firebaseUser.displayName!
-                : 'User',
-        email: firebaseUser.email ?? 'unknown',
-      );
-
-      // 💾 Save user to Firestore via DTO
-      await FirebaseConstants.usersCollection.doc(uid).set(dto.toJsonMap());
-      return dto;
-    }
-
-    // ✅ Parse existing Firestore document into DTO, then domain entity
-    return UserDTOFactories.fromDoc(doc);
+  /// 🔐 Retrieves current authenticated user's basic info (for profile creation)
+  @override
+  Future<Map<String, dynamic>?> getCurrentUserAuthData() async {
+    final user = _fbAuth.currentUser;
+    if (user == null) return null;
+    return {
+      'uid': user.uid,
+      'name': user.displayName ?? '',
+      'email': user.email ?? '',
+    };
   }
 
   //

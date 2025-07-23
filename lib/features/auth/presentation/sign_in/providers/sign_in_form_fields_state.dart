@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart' show Equatable;
 import 'package:formz/formz.dart' show Formz;
-import '../../../../form_fields/input_validation/validation_enums.dart';
+import '../../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 
 /// 📦 [SignInFormState] — Immutable model representing the state of the sign-in form.
 /// Tracks field values, password visibility, and overall form validity.

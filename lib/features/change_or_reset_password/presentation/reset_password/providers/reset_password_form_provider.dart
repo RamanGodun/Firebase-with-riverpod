@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../form_fields/input_validation/validation_enums.dart';
+import '../../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 import 'reset_password_form_state.dart';
 
 part 'reset_password_form_provider.g.dart';

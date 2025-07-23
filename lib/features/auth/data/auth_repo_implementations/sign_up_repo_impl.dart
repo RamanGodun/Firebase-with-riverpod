@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/failure_handling.dart';
-import 'package:firebase_with_riverpod/features/profile/data/data_transfer_objects/user_dto_x.dart';
+import 'package:firebase_with_riverpod/core/shared_data_layer/user_data_transfer_objects/user_dto_x.dart';
 import '../../../../core/utils_shared/type_definitions.dart';
-import '../../../profile/data/data_transfer_objects/user_dto_factories_x.dart';
+import '../../../../core/shared_data_layer/user_data_transfer_objects/user_dto_factories_x.dart';
 import '../../domain/i_repo.dart';
 import '../i_remote_database.dart';
 
