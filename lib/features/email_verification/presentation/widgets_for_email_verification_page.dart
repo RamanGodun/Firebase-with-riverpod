@@ -21,7 +21,8 @@ final class _VerifyEmailInfo extends StatelessWidget {
         const TextWidget(LocaleKeys.verify_email_sent, TextType.bodyMedium),
         const SizedBox(height: AppSpacing.xxs),
         TextWidget(
-          FirebaseConstants.fbAuth.currentUser?.email ?? LocaleKeys.verify_email_unknown,
+          FirebaseConstants.fbAuth.currentUser?.email ??
+              LocaleKeys.verify_email_unknown,
           TextType.bodyMedium,
           fontWeight: FontWeight.bold,
         ),

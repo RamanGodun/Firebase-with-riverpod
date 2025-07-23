@@ -37,7 +37,7 @@ Despite different state managers, more then 90% of the code remained identical, 
 Adopt a **State Agnostic Clean Architecture**, using Riverpod as the default state manager for orchestration,
  but ensuring all core business logic and modules are fully decoupled from any particular state manager.
 
-* All shared modules (Animation, Error Handling, Localization, Overlay, Theme, etc.) are practicaly (>95%) independent from state manager logic.
+* All shared modules (Animation, Error Handling, Localization, Overlay, Theme, etc.) are practically (>95%) independent from state manager logic.
 * The state manager’s only responsibility is orchestration — all business logic lives in use cases.
 * UI layer is as thin as possible; nearly all widgets are stateless and simply react to state changes.
 * DI is provided by Riverpod’s ProviderScope; no additional DI container needed (unlike Bloc + GetIt or Provider+GetIt).
@@ -87,7 +87,7 @@ State-agnosticism is achieved via strict layer separation and clean code princip
 ### Negative
 
 * Requires initial investment in discipline and structure.
-* Maintaining two consistant parallel projects for validation adds initial overhead.
+* Maintaining two consistent parallel projects for validation adds initial overhead.
 * Clean layering and state-agnostic thinking require team buy-in and onboarding.
 
 ---
