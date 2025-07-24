@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../domain/i_repo.dart';
-import 'i_remote_database.dart';
-import 'repo_impl.dart';
-import 'remote_data_source.dart';
+import '../../domain/repo_contract.dart';
+import '../email_verification_repo_impl.dart';
+import '../remote_database_contract.dart';
+import '../remote_database_impl.dart';
 
 part 'data_layer_providers.g.dart';
 

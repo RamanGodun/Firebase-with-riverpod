@@ -32,7 +32,6 @@ part 'reset_password_ref_x.dart';
 final class ResetPasswordPage extends ConsumerWidget {
   ///------------------------------------------
   const ResetPasswordPage({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -62,6 +61,53 @@ final class ResetPasswordPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+////
+
+////
+
+/// 🛡️ [ResetPasswordRefX] — extension for WidgetRef to handle Reset Password side-effects.
+/// Handles submission and listens for result feedback (success/error).
+//
+extension ResetPasswordRefX on WidgetRef {
+  //
+  /// Encapsulates success and error handling for the reset password process.
+  ///   - ✅ On success: shows success snackbar and navigates to Sign In page.
+  ///   - ❌ On failure: shows localized error.
+  void listenToResetPassword(BuildContext context) {
+    final showSnackbar = context.showUserSnackbar;
+
+    listen<AsyncValue<void>>(resetPasswordProvider, (prev, next) {
+      next.whenOrNull(
+        // ✅ On success
+        data: (_) {
+          showSnackbar(message: LocaleKeys.reset_password_success.tr());
+          if (context.mounted) {
+            context.goTo(RoutesNames.signIn);
+          }
+        },
+        // ❌ On error
+        error: (e, _) {
+          final failure =
+              e is Failure
+                  ? e
+                  : UnknownFailure(
+                    message: 'Unexpected error during password reset',
+                  );
+          context.showError(failure.toUIEntity());
+        },
+      );
+    });
+  }
+
+  ////
+
+  /// 📤 Submits the password reset request using the current form state.
+  void submitResetPassword() {
+    final form = read(resetPasswordFormProvider);
+    read(resetPasswordProvider.notifier).resetPassword(email: form.email.value);
   }
 
   //

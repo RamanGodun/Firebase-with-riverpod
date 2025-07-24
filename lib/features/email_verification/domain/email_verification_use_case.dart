@@ -1,5 +1,5 @@
 import '../../../core/utils_shared/type_definitions.dart';
-import 'i_repo.dart';
+import 'repo_contract.dart';
 
 /// 📦 [EmailVerificationUseCase] — encapsulates email verification logic
 //

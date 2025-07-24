@@ -1,7 +1,7 @@
-/// 📡 [IPasswordRemoteDataSource] — contract for low-level password operations
+/// 📡 [IPasswordRemoteDatabase] — contract for low-level password operations
 /// ✅ Abstracts infrastructure layer (e.g., Firebase)
 //
-abstract interface class IPasswordRemoteDataSource {
+abstract interface class IPasswordRemoteDatabase {
   ///--------------------------------------------
   //
   /// 🔁 Updates password of the currently signed-in user

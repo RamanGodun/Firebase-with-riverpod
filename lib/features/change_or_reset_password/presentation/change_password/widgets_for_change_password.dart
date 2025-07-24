@@ -5,7 +5,6 @@ part of 'change_password_page.dart';
 final class _ChangePasswordInfo extends StatelessWidget {
   ///-------------------------------------------------
   const _ChangePasswordInfo();
-  //
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +40,8 @@ final class _ChangePasswordInfo extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ],
-    ).withPaddingTop(AppSpacing.xxl);
+    ).withPaddingOnly(top: AppSpacing.xxl, bottom: AppSpacing.xxxm);
   }
-
-  //
 }
 
 ////
@@ -55,6 +52,7 @@ final class _ChangePasswordInfo extends StatelessWidget {
 //
 final class _PasswordField extends ConsumerWidget {
   ///-------------------------------------------
+  //
   final ({FocusNode password, FocusNode confirmPassword}) focus;
   const _PasswordField({required this.focus});
 
@@ -75,7 +73,7 @@ final class _PasswordField extends ConsumerWidget {
         isObscure: form.isPasswordObscure,
         onPressed: notifier.togglePasswordVisibility,
       ),
-    );
+    ).withPaddingBottom(AppSpacing.m);
   }
 }
 
@@ -87,6 +85,7 @@ final class _PasswordField extends ConsumerWidget {
 //
 final class _ConfirmPasswordField extends ConsumerWidget {
   ///---------------------------------------------------
+  // /
   final ({FocusNode password, FocusNode confirmPassword}) focus;
   const _ConfirmPasswordField({required this.focus});
 
@@ -107,7 +106,7 @@ final class _ConfirmPasswordField extends ConsumerWidget {
         isObscure: form.isConfirmPasswordObscure,
         onPressed: notifier.toggleConfirmPasswordVisibility,
       ),
-    );
+    ).withPaddingBottom(AppSpacing.xxxl);
   }
 }
 

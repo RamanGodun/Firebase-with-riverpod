@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../data/data_layer_providers.dart';
-import 'use_case.dart';
+import '../../data/providers/data_layer_providers.dart';
+import '../email_verification_use_case.dart';
 
 part 'use_case_provider.g.dart';
 

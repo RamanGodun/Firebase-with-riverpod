@@ -23,7 +23,6 @@ import 'providers/change_password_form_provider.dart';
 import 'providers/change_password_provider.dart';
 
 part 'widgets_for_change_password.dart';
-part 'change_password_ref_x.dart';
 
 /// 🔐 [ChangePasswordPage] — Screen that allows the user to update their password.
 //
@@ -48,22 +47,85 @@ final class ChangePasswordPage extends HookConsumerWidget {
             child: ListView(
               shrinkWrap: true,
               children: [
+                //
                 const _ChangePasswordInfo(),
-                const SizedBox(height: AppSpacing.xxxm),
-
                 _PasswordField(focus: focus),
-                const SizedBox(height: AppSpacing.m),
-
                 _ConfirmPasswordField(focus: focus),
-                const SizedBox(height: AppSpacing.xxxl),
-
                 const _ChangePasswordSubmitButton(),
+                //
               ],
             ).withPaddingHorizontal(AppSpacing.l),
           ),
         ),
       ),
     );
+  }
+
+  //
+}
+
+////
+
+////
+
+/// 🛡️ [PasswordChangeRefX] — handles side-effects for Change Password flow.
+/// Handles success, error, and reauth-required cases.
+//
+extension PasswordChangeRefX on WidgetRef {
+  ///---------------------------------------------
+  //
+  /// Encapsulates success, error, and retry handling.
+  ///   - ✅ On success: shows success snackbar and navigates home.
+  ///   - ❌ On failure: shows localized error.
+  ///   - 🔄 On "requires-recent-login" error: triggers reauthentication flow and retries on success.
+  void listenToPasswordChange(BuildContext context) {
+    final showSnackbar = context.showUserSnackbar;
+
+    listen<AsyncValue<void>>(changePasswordProvider, (prev, next) async {
+      next.whenOrNull(
+        // ✅ On success
+        data: (_) async {
+          showSnackbar(message: LocaleKeys.reauth_password_updated.tr());
+
+          if (context.mounted) {
+            context.goTo(RoutesNames.home);
+          }
+        },
+
+        /// ❌ On error
+        error: (e, st) async {
+          final failure =
+              e is Failure
+                  ? e
+                  : UnknownFailure(
+                    message: 'Unexpected error during password change',
+                  );
+
+          /// 🔄 Special: requires recent login
+          if (failure.code == 'requires-recent-login') {
+            final result = await context.pushTo<String>(const SignInPage());
+            if (result == 'success') {
+              showSnackbar(message: LocaleKeys.change_password_success.tr());
+              await read(changePasswordProvider.notifier).retryAfterReauth();
+            }
+          } else {
+            context.showError(failure.toUIEntity());
+          }
+        },
+        //
+      );
+    });
+  }
+
+  ////
+
+  /// 📤 Submits the password change request (when the form is valid)
+  Future<void> submitChangePassword() async {
+    final form = watch(changePasswordFormProvider);
+    if (!form.isValid) return;
+
+    final notifier = read(changePasswordProvider.notifier);
+    await notifier.changePassword(form.password.value);
   }
 
   //

@@ -9,7 +9,7 @@ part 'change_password_form_provider.g.dart';
 //
 @riverpod
 final class ChangePasswordForm extends _$ChangePasswordForm {
-  ///------------------------------------------------
+  ///----------------------------------------------------
 
   /// 🧱 Initializes the form with pure input values
   @override

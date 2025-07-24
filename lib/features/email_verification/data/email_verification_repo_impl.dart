@@ -1,7 +1,7 @@
 import '../../../core/base_modules/errors_handling/utils/failure_handling.dart';
 import '../../../core/utils_shared/type_definitions.dart';
-import '../domain/i_repo.dart';
-import 'i_remote_database.dart';
+import '../domain/repo_contract.dart';
+import 'remote_database_contract.dart';
 
 /// 🧩 [IUserValidationRepoImpl] — Repo for email verification, applies error mapping and delegates to [IUserValidationRemoteDataSource]
 //

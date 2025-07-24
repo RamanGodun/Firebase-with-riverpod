@@ -1,5 +1,5 @@
 import '../../../core/utils_shared/auth_user_utils.dart';
-import 'i_remote_database.dart';
+import 'remote_database_contract.dart';
 
 /// 🛠️ [IUserValidationRemoteDataSourceImpl] — Firebase-powered implementation
 /// 🚫 No failure mapping — pure infrastructure logic

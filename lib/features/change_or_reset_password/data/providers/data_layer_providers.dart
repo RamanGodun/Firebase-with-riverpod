@@ -1,18 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../domain/i_repo.dart';
-import 'i_remote_database.dart';
-import 'remote_database_impl.dart';
-import 'repo_impl.dart';
+import '../../domain/repo_contract.dart';
+import '../password_actions_repo_impl.dart';
+import '../remote_database_contract.dart';
+import '../remote_database_impl.dart';
 
 part 'data_layer_providers.g.dart';
 
-/// 🧩 [passwordRemoteDataSourceProvider] — provides implementation of [IPasswordRemoteDataSource]
+/// 🧩 [passwordRemoteDataSourceProvider] — provides implementation of [IPasswordRemoteDatabase]
 /// ✅ Low-level data access for password-related Firebase actions
 //
 @riverpod
-IPasswordRemoteDataSource passwordRemoteDataSource(Ref ref) =>
-    PasswordRemoteDataSourceImpl();
+IPasswordRemoteDatabase passwordRemoteDataSource(Ref ref) =>
+    PasswordRemoteDatabaseImpl();
 
 /// 🧩 [passwordRepoProvider] — provides implementation of [IPasswordRepo]
 /// 🧼 Adds failure mapping on top of remote data source

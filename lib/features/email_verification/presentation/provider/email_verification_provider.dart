@@ -4,8 +4,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/utils_shared/safe_async_state.dart';
 import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
-import '../../domain/use_case.dart';
-import '../../domain/use_case_provider.dart';
+import '../../domain/email_verification_use_case.dart';
+import '../../domain/providers/use_case_provider.dart';
 
 part 'email_verification_provider.g.dart';
 
@@ -20,16 +20,16 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   Timer? _timer;
   static const _maxPollingDuration = Duration(minutes: 2);
   final Stopwatch _stopwatch = Stopwatch();
-  late final EmailVerificationUseCase _useCase;
+  late final EmailVerificationUseCase _emailVerificationUseCase;
 
   /// 🧱 Initializes verification logic
   @override
   FutureOr<void> build() {
-    _useCase = ref.read(emailVerificationUseCaseProvider);
+    _emailVerificationUseCase = ref.read(emailVerificationUseCaseProvider);
     initSafe();
     debugPrint('VerificationNotifier: build() called...');
 
-    unawaited(_useCase.sendVerificationEmail());
+    unawaited(_emailVerificationUseCase.sendVerificationEmail());
     _startPolling();
 
     ref.onDispose(() => _timer?.cancel());
@@ -61,19 +61,17 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
     debugPrint(
       'EmailVerificationNotifier: checking email verification status...',
     );
-    final result = await _useCase.checkIfEmailVerified();
+    final result = await _emailVerificationUseCase.checkIfEmailVerified();
     result.fold((_) => null, (isVerified) async {
       if (isVerified) {
         _timer?.cancel();
 
-        await _useCase.reloadUser();
+        await _emailVerificationUseCase.reloadUser();
 
         final refreshed = FirebaseConstants.fbAuth.currentUser;
         debugPrint(
           '🔁 After reload: emailVerified=${refreshed?.emailVerified}',
         );
-
-        // ref.read(authStateStreamProvider).trigger();
 
         state = const AsyncData(null);
       }

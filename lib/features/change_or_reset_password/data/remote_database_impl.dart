@@ -1,13 +1,14 @@
 import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../core/utils_shared/auth_user_utils.dart';
-import 'i_remote_database.dart';
+import 'remote_database_contract.dart';
 
-/// 🧩 [PasswordRemoteDataSourceImpl] — Firebase-based implementation of [IPasswordRemoteDataSource]
+/// 🧩 [PasswordRemoteDatabaseImpl] — Firebase-based implementation of [IPasswordRemoteDatabase]
 /// ✅ Handles actual communication with [FirebaseAuth]
 //
-final class PasswordRemoteDataSourceImpl implements IPasswordRemoteDataSource {
+final class PasswordRemoteDatabaseImpl implements IPasswordRemoteDatabase {
   ///-----------------------------------------------------------------------
   //
+
   @override
   Future<void> changePassword(String newPassword) async {
     final user = AuthUserUtils.currentUserOrThrow;
