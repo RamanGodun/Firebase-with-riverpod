@@ -1,4 +1,4 @@
-part of '_signup_page.dart';
+part of 'sign_up__page.dart';
 
 /// 🧾 [_SignupHeader] — logo and welcome message
 //

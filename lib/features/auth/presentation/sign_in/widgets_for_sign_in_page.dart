@@ -36,7 +36,8 @@ final class _SignInHeader extends StatelessWidget {
 /// 🧩 [_SignInEmailInputField] — email and password fields
 //
 final class _SignInEmailInputField extends ConsumerWidget {
-  ///-----------------------------------------------
+  ///--------------------------------------------------
+  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInEmailInputField(this.focus);
 
@@ -63,7 +64,8 @@ final class _SignInEmailInputField extends ConsumerWidget {
 /// 🧩 [_SignInPasswordInputField] — password input field with visibility toggle
 //
 final class _SignInPasswordInputField extends ConsumerWidget {
-  ///-------------------------------------------------
+  ///------------------------------------------------------
+  //
   final ({FocusNode email, FocusNode password}) focus;
   const _SignInPasswordInputField(this.focus);
 
@@ -95,7 +97,7 @@ final class _SignInPasswordInputField extends ConsumerWidget {
 /// 🔘 [_SigninSubmitButton] — submit button for the sign-in form
 //
 final class _SigninSubmitButton extends ConsumerWidget {
-  ///-------------------------------------------
+  ///------------------------------------------------
   const _SigninSubmitButton();
 
   @override
@@ -125,7 +127,7 @@ final class _SigninSubmitButton extends ConsumerWidget {
 /// 🔁 [_SigninFooter] — sign up & reset password actions
 //
 final class _SigninFooter extends StatelessWidget {
-  ///---------------------------------------
+  ///-------------------------------------------
   const _SigninFooter();
 
   @override

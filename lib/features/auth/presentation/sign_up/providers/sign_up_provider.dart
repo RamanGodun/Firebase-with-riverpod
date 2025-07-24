@@ -9,7 +9,7 @@ part 'sign_up_provider.g.dart';
 //
 @Riverpod(keepAlive: false)
 final class Signup extends _$Signup with SafeAsyncState<void> {
-  ///-------------------------------------------------
+  ///------------------------------------------------------
 
   /// 🧱 Initializes safe lifecycle mechanism
   @override

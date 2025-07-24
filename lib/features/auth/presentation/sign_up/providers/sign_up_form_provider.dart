@@ -9,7 +9,7 @@ part 'sign_up_form_provider.g.dart';
 //
 @riverpod
 final class SignUpForm extends _$SignUpForm {
-  ///--------------------------------
+  ///------------------------------------
 
   /// Initializes the form state with default (pure) values.
   @override

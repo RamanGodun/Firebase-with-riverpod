@@ -39,4 +39,3 @@ final class SignIn extends _$SignIn with SafeAsyncState<void> {
 
   //
 }
-

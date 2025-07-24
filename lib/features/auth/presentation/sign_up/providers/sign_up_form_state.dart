@@ -6,7 +6,7 @@ import '../../../../../core/base_modules/form_fields/input_validation/validation
 /// Tracks each input field and overall form validity.
 //
 final class SignUpFormState extends Equatable {
-  /// --------------------------------
+  /// --------------------------------------
   //
   final NameInputValidation name;
   final EmailInputValidation email;

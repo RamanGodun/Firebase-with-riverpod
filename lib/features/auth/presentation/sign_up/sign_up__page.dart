@@ -2,7 +2,6 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/f
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
-import 'package:firebase_with_riverpod/features/auth/presentation/sign_up/sign_up_submit_x.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
@@ -19,7 +18,7 @@ import 'providers/sign_up_form_provider.dart';
 import 'providers/sign_up_provider.dart';
 
 part 'widgets_for_sign_up_page.dart';
-part 'input_fields.dart';
+part 'sign_up_input_fields.dart';
 
 /// 🔐 [SignUpPage] — screen that allows user to register a new account.
 //
@@ -82,6 +81,27 @@ final class SignUpPage extends HookConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+
+  //
+}
+
+////
+////
+
+/// 📩 Handles form validation and submission to [signupProvider].
+//
+extension SignUpRefX on WidgetRef {
+  ///-------------------------------
+  //
+  /// 📩 Triggers sign-up logic based on current form state
+  void submit() {
+    final form = read(signUpFormProvider);
+    read(signupProvider.notifier).signup(
+      name: form.name.value,
+      email: form.email.value,
+      password: form.password.value,
     );
   }
 

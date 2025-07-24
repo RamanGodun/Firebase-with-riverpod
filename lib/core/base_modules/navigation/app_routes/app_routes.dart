@@ -3,7 +3,7 @@ import '../../../../features/profile/presentation/profile_page.dart';
 import '../../../../features/change_or_reset_password/presentation/change_password/change_password_page.dart';
 import '../../../../features/change_or_reset_password/presentation/reset_password/reset_password_page.dart';
 import '../../../../features/auth/presentation/sign_in/sign_in_page.dart';
-import '../../../../features/auth/presentation/sign_up/_signup_page.dart';
+import '../../../../features/auth/presentation/sign_up/sign_up__page.dart';
 import '../../../../features/email_verification/presentation/email_verification_page.dart';
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
 import '../../../shared_presentation_layer/pages_shared/home_page.dart';

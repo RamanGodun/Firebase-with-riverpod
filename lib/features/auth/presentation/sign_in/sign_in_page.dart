@@ -27,7 +27,6 @@ part 'widgets_for_sign_in_page.dart';
 final class SignInPage extends HookConsumerWidget {
   ///-------------------------------------------
   const SignInPage({super.key});
-  //
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,6 +75,9 @@ final class SignInPage extends HookConsumerWidget {
 
   //
 }
+
+////
+////
 
 /// 📩 Handles form validation and submission to [signinProvider].
 //
