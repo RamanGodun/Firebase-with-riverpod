@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart';
-import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/ui_constants/_app_constants.dart';

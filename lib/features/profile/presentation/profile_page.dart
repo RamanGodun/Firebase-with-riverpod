@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart'
     show CachedNetworkImage;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
-import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/shared_presentation_layer/widgets_shared/loaders/loader.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';

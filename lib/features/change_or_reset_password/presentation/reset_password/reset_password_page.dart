@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart'
     show LocaleKeys;
-import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,6 @@ import '../../../../core/base_modules/errors_handling/failures/failure_entity.da
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 
 part 'widgets_for_reset_password_page.dart';
-part 'reset_password_ref_x.dart';
 
 /// 🔐 [ResetPasswordPage] — screen that allows user to request password reset
 /// 📩 Sends reset link to user's email using [ResetPasswordProvider]
@@ -84,20 +83,10 @@ extension ResetPasswordRefX on WidgetRef {
         // ✅ On success
         data: (_) {
           showSnackbar(message: LocaleKeys.reset_password_success.tr());
-          if (context.mounted) {
-            context.goTo(RoutesNames.signIn);
-          }
+          context.goIfMounted(RoutesNames.signIn);
         },
         // ❌ On error
-        error: (e, _) {
-          final failure =
-              e is Failure
-                  ? e
-                  : UnknownFailure(
-                    message: 'Unexpected error during password reset',
-                  );
-          context.showError(failure.toUIEntity());
-        },
+        error: (error, _) => context.showError((error as Failure).toUIEntity()),
       );
     });
   }

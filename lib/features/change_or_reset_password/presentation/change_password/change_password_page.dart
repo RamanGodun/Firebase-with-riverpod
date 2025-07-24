@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart';
-import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
@@ -83,13 +83,11 @@ extension PasswordChangeRefX on WidgetRef {
 
     listen<AsyncValue<void>>(changePasswordProvider, (prev, next) async {
       next.whenOrNull(
+        // loading: (_) => const AppLoader(),
         // ✅ On success
         data: (_) async {
           showSnackbar(message: LocaleKeys.reauth_password_updated.tr());
-
-          if (context.mounted) {
-            context.goTo(RoutesNames.home);
-          }
+          context.goIfMounted(RoutesNames.home);
         },
 
         /// ❌ On error
