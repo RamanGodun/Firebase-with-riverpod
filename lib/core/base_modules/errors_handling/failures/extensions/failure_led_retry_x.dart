@@ -1,4 +1,4 @@
-import '../failure_model.dart';
+import '../failure_entity.dart';
 
 /// 🧠 [FailureRetryX] — extension that defines whether [Failure] is retryable
 /// ✅ Used by UI logic to decide if "Retry" should be shown to the user

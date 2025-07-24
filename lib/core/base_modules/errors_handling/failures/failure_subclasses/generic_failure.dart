@@ -1,4 +1,4 @@
-part of '../failure_model.dart';
+part of '../failure_entity.dart';
 
 /// ⚙️ [GenericFailure] — system/platform issues (plugin missing, etc.)
 //

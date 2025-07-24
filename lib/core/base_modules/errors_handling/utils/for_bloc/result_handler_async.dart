@@ -1,7 +1,7 @@
 import 'dart:async' show FutureOr;
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/observers/loggers/failure_logger_x.dart';
 import '../../either/either_extensions/__eithers_facade.dart';
-import '../../failures/failure_model.dart';
+import '../../failures/failure_entity.dart';
 
 /// 🧩 [ResultHandlerAsync<T>] — async wrapper around `Either<Failure, T>`
 /// ✅ Provides clean async result handling with chainable syntax.

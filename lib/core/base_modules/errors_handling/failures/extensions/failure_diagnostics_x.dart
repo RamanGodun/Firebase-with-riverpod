@@ -1,5 +1,5 @@
 import '../../enums/error_plugins.dart';
-import '../failure_model.dart';
+import '../failure_entity.dart';
 
 /// 🧭 [FailureDiagnosticsX] — Diagnostic utilities for `Failure`
 /// ✅ Includes type checkers, casting, logging helpers, and fallback-safe metadata access.

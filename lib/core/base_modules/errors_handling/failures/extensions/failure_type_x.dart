@@ -1,4 +1,4 @@
-import '../failure_model.dart';
+import '../failure_entity.dart';
 
 /// 🧭 [FailureTypeX] — Semantic helpers for `Failure` type branching
 /// ✅ Replaces `is SomeFailure` with readable intent

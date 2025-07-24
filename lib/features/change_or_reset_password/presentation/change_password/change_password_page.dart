@@ -9,7 +9,7 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
-import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
 import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
 import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
 import '../../../auth/presentation/sign_in/sign_in_page.dart';

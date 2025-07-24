@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart' show debugPrint;
 import '../../utils/observers/loggers/errors_log_util.dart';
 import '../../utils/for_bloc/result_handler_async.dart';
 import '../either.dart';
-import '../../failures/failure_model.dart';
+import '../../failures/failure_entity.dart';
 
 /// 🧩 [ResultFutureX<T>] — Async sugar for `Future<Either<Failure, T>>`
 /// ✅ Unified access to async chaining, fallback and message handling

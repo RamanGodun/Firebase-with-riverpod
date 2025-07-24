@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/either/either_extensions/either_getters_x.dart';
-import '../../errors_handling/failures/failure_model.dart';
+import '../../errors_handling/failures/failure_entity.dart';
 import '../../errors_handling/either/either.dart';
 
 /// 🚦 [ResultNavigationExt] — Provides `.redirectIfSuccess()` for sync and async results

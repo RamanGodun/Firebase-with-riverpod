@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../localization/app_localizer.dart';
 import '../../utils/observers/loggers/errors_log_util.dart';
 import '../../enums/error_plugins.dart';
-import '../failure_model.dart';
+import '../failure_entity.dart';
 import '../../utils/for_bloc/consumable.dart';
 import '../failure_ui_model.dart';
 

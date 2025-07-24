@@ -8,7 +8,7 @@ import '../../../localization/app_localizer.dart';
 import '../../../localization/generated/locale_keys.g.dart';
 import '../../../overlays/core/enums_for_overlay_module.dart';
 import '../../../overlays/utils/overlay_utils.dart';
-import '../../failures/failure_model.dart';
+import '../../failures/failure_entity.dart';
 
 /// 🧩 [ContextAsyncValueX] — extension for showing [Failure]s from [AsyncValue]
 //

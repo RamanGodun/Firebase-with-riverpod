@@ -1,4 +1,4 @@
-part of '../failure_model.dart';
+part of '../failure_entity.dart';
 
 /// ⏱️ [TimeoutFailure] — request took too long or didn't complete in time
 /// ✅ Useful for detecting and retrying slow network / API conditions

@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/failure_to_either_x.dart';
 import '../either/either.dart';
-import '../failures/failure_model.dart';
+import '../failures/failure_entity.dart';
 import 'exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import 'observers/loggers/errors_log_util.dart';
 

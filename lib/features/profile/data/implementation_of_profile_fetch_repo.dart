@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/failure_handling.dart';
 import 'package:firebase_with_riverpod/core/shared_data_layer/user_data_transfer_objects/user_dto_x.dart';
-import '../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../core/base_modules/errors_handling/failures/failure_entity.dart';
 import '../../../core/shared_data_layer/user_data_transfer_objects/_user_dto.dart';
 import '../../../core/shared_data_layer/user_data_transfer_objects/user_dto_factories_x.dart';
 import '../../../core/utils_shared/cash_manager/cache_manager.dart';

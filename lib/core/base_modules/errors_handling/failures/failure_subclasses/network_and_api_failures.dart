@@ -1,4 +1,4 @@
-part of '../failure_model.dart';
+part of '../failure_entity.dart';
 
 /// 📡 [NetworkFailure] — connectivity issues (no connection / timeout)
 //

@@ -20,7 +20,7 @@ import 'providers/reset_password_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
-import '../../../../core/base_modules/errors_handling/failures/failure_model.dart';
+import '../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 
 part 'widgets_for_reset_password_page.dart';

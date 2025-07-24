@@ -2,8 +2,8 @@ import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/f
 import 'package:firebase_with_riverpod/core/shared_data_layer/user_data_transfer_objects/user_dto_x.dart';
 import '../../../../core/utils_shared/type_definitions.dart';
 import '../../../../core/shared_data_layer/user_data_transfer_objects/user_dto_factories_x.dart';
-import '../../domain/i_repo.dart';
-import '../i_remote_database.dart';
+import '../../domain/repo_contracts.dart';
+import '../remote_database_contract.dart';
 
 /// 🧩 [SignUpRepoImpl] — Repository for sign up feature.
 /// ✅ Handles mapping of errors and between primitives/DTO
@@ -11,7 +11,7 @@ import '../i_remote_database.dart';
 final class SignUpRepoImpl implements ISignUpRepo {
   ///---------------------------------------------
   //
-  final IAuthRemoteDataSource _remote;
+  final IAuthRemoteDatabase _remote;
   const SignUpRepoImpl(this._remote);
   //
 
