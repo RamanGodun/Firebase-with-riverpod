@@ -4,7 +4,7 @@ import 'change_password_form_state.dart';
 
 part 'change_password_form_provider.g.dart';
 
-/// 🧩 [ChangePasswordForm] — Manages the state of the change passford form using [StateNotifier].
+/// 🧩 [ChangePasswordForm] — Manages the state of the change password form using [StateNotifier].
 /// Handles input updates, validation, and visibility toggling for password field.
 //
 @riverpod

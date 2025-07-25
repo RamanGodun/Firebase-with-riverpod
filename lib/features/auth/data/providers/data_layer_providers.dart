@@ -13,7 +13,7 @@ part 'data_layer_providers.g.dart';
 /// 🧼 Dependency injection for Firebase Auth access
 //
 @riverpod
-IAuthRemoteDatabase authRemoteDataSource(Ref ref) => AuthRemoteDatabaseImpl();
+IAuthRemoteDatabase authRemoteDatabase(Ref ref) => AuthRemoteDatabaseImpl();
 
 ////
 
@@ -23,7 +23,7 @@ IAuthRemoteDatabase authRemoteDataSource(Ref ref) => AuthRemoteDatabaseImpl();
 //
 @Riverpod(keepAlive: false)
 ISignInRepo signInRepo(Ref ref) {
-  final remote = ref.watch(authRemoteDataSourceProvider);
+  final remote = ref.watch(authRemoteDatabaseProvider);
   return SignInRepoImpl(remote);
 }
 
@@ -35,7 +35,7 @@ ISignInRepo signInRepo(Ref ref) {
 //
 @riverpod
 ISignOutRepo signOutRepo(Ref ref) {
-  final remote = ref.watch(authRemoteDataSourceProvider);
+  final remote = ref.watch(authRemoteDatabaseProvider);
   return SignOutRepoImpl(remote);
 }
 
@@ -47,6 +47,6 @@ ISignOutRepo signOutRepo(Ref ref) {
 //
 @riverpod
 ISignUpRepo signUpRepo(Ref ref) {
-  final remote = ref.watch(authRemoteDataSourceProvider);
+  final remote = ref.watch(authRemoteDatabaseProvider);
   return SignUpRepoImpl(remote);
 }

@@ -1,38 +1,46 @@
-import 'package:flutter/foundation.dart' show debugPrint;
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../../core/utils_shared/safe_async_state.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
+import '../../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../domain/provider/use_cases_provider.dart';
 
-part 'change_password_provider.g.dart';
+// part 'change_password_provider.g.dart';
 
-/// 🧩 [changePasswordProvider] — async notifier that handles password update
-/// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates
-/// 🧼 Wraps logic in [AsyncValue.guard] for robust error handling
+/// 🧩 [changePasswordProvider] — Handles password update
 //
-@riverpod
-final class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
-  ///----------------------------------------------------------------
-  //
+final changePasswordProvider =
+    StateNotifierProvider<ChangePasswordNotifier, ChangePasswordState>(
+      (ref) => ChangePasswordNotifier(ref),
+    );
+
+////
+final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
+  final Ref ref;
   String? _pendingPassword;
 
-  /// 🧱 Initializes safe lifecycle tracking
-  @override
-  FutureOr<void> build() {
-    initSafe();
-  }
+  ChangePasswordNotifier(this.ref) : super(const ChangePasswordInitial());
 
   /// 🔁 Updates the user password via [ChangePasswordUseCase]
   /// Triggers `signInWithCredential` or fails with [Failure]
   Future<void> changePassword(String newPassword) async {
-    //
-    _pendingPassword = newPassword;
-    state = const AsyncLoading();
+    state = const ChangePasswordLoading();
 
-    state = await AsyncValue.guard(() async {
-      final useCase = ref.watch(passwordUseCasesProvider);
-      final result = await useCase.callChangePassword(newPassword);
-      return result.fold((f) => throw f, (_) => null);
-    });
+    final useCase = ref.read(passwordUseCasesProvider);
+    final result = await useCase.callChangePassword(newPassword);
+
+    result.fold(
+      (failure) {
+        if (failure.code == 'requires-recent-login') {
+          state = const ChangePasswordRequiresReauth();
+        } else {
+          state = ChangePasswordError(failure);
+        }
+      },
+      (_) =>
+          state = ChangePasswordSuccess(
+            LocaleKeys.reauth_password_updated.tr(),
+          ),
+    );
   }
 
   /// ♻️ Retries password update after `reauthentication`
@@ -40,17 +48,54 @@ final class ChangePassword extends _$ChangePassword with SafeAsyncState<void> {
   Future<void> retryAfterReauth() async {
     final pwd = _pendingPassword;
     if (pwd == null) return;
+    state = const ChangePasswordLoading();
 
-    _pendingPassword = null; // ❗
-    state = const AsyncLoading();
-    debugPrint('[ChangePassword] Retrying password change after reauth');
+    final useCase = ref.read(passwordUseCasesProvider);
+    final result = await useCase.callChangePassword(pwd);
 
-    state = await AsyncValue.guard(() async {
-      final useCase = ref.watch(passwordUseCasesProvider);
-      final result = await useCase.callChangePassword(pwd);
-      return result.fold((f) => throw f, (_) => null);
-    });
+    result.fold(
+      (failure) {
+        state = ChangePasswordError(failure);
+      },
+      (_) =>
+          state = ChangePasswordSuccess(
+            LocaleKeys.reauth_password_updated.tr(),
+          ),
+    );
   }
+}
 
-  //
+////
+
+sealed class ChangePasswordState {
+  const ChangePasswordState();
+}
+
+final class ChangePasswordInitial extends ChangePasswordState {
+  const ChangePasswordInitial();
+}
+
+final class ChangePasswordLoading extends ChangePasswordState {
+  const ChangePasswordLoading();
+}
+
+final class ChangePasswordSuccess extends ChangePasswordState {
+  final String message;
+  const ChangePasswordSuccess(this.message);
+}
+
+final class ChangePasswordRequiresReauth extends ChangePasswordState {
+  const ChangePasswordRequiresReauth();
+}
+
+final class ChangePasswordError extends ChangePasswordState {
+  final Failure failure;
+  const ChangePasswordError(this.failure);
+}
+
+extension ChangePasswordStateX on ChangePasswordState {
+  bool get isLoading => this is ChangePasswordLoading;
+  bool get isSuccess => this is ChangePasswordSuccess;
+  bool get isError => this is ChangePasswordError;
+  bool get isRequiresReauth => this is ChangePasswordRequiresReauth;
 }

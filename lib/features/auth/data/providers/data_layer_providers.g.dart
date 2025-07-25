@@ -6,32 +6,32 @@ part of 'data_layer_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authRemoteDataSourceHash() =>
-    r'fc4c60e2ce5358d4271b9b015b31dbbe61e6bb3c';
+String _$authRemoteDatabaseHash() =>
+    r'0a1ee8f7ee2e4d62bb3d5aac62ba46576eaf61e3';
 
-/// 🔌 [authRemoteDataSourceProvider] — provides instance of [AuthRemoteDataSourceImpl]
+/// 🔌 [authRemoteDataSourceProvider] — provides instance of [AuthRemoteDatabaseImpl]
 /// 🧼 Dependency injection for Firebase Auth access
 ///
-/// Copied from [authRemoteDataSource].
-@ProviderFor(authRemoteDataSource)
-final authRemoteDataSourceProvider =
-    AutoDisposeProvider<IAuthRemoteDataSource>.internal(
-      authRemoteDataSource,
-      name: r'authRemoteDataSourceProvider',
+/// Copied from [authRemoteDatabase].
+@ProviderFor(authRemoteDatabase)
+final authRemoteDatabaseProvider =
+    AutoDisposeProvider<IAuthRemoteDatabase>.internal(
+      authRemoteDatabase,
+      name: r'authRemoteDatabaseProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$authRemoteDataSourceHash,
+              : _$authRemoteDatabaseHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef AuthRemoteDataSourceRef = AutoDisposeProviderRef<IAuthRemoteDataSource>;
-String _$signInRepoHash() => r'cde27930b72ccf393d6f92d9eb6b316ddb2275de'; ////
+typedef AuthRemoteDatabaseRef = AutoDisposeProviderRef<IAuthRemoteDatabase>;
+String _$signInRepoHash() => r'117f3a17f3e7837901155515a6910c34d4aa7150'; ////
 ////
-/// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl], injects [IAuthRemoteDataSource] from [authRemoteDataSourceProvider]
+/// 🧩 [signInRepoProvider] — provides instance of [SignInRepoImpl], injects [IAuthRemoteDatabase] from [authRemoteDataSourceProvider]
 ///
 /// Copied from [signInRepo].
 @ProviderFor(signInRepo)
@@ -47,9 +47,9 @@ final signInRepoProvider = AutoDisposeProvider<ISignInRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SignInRepoRef = AutoDisposeProviderRef<ISignInRepo>;
-String _$signOutRepoHash() => r'cf896c3f1e1922465c8ed985225ec9921f6c0db4'; ////
+String _$signOutRepoHash() => r'd046e96785d2f3cc5926ef731a55340e5cf9cebc'; ////
 ////
-/// 🧩 [signOutRepoProvider] — provides instance of [SignOutRepoImpl], injects [IAuthRemoteDataSource]
+/// 🧩 [signOutRepoProvider] — provides instance of [SignOutRepoImpl], injects [IAuthRemoteDatabase]
 ///
 /// Copied from [signOutRepo].
 @ProviderFor(signOutRepo)
@@ -65,9 +65,9 @@ final signOutRepoProvider = AutoDisposeProvider<ISignOutRepo>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef SignOutRepoRef = AutoDisposeProviderRef<ISignOutRepo>;
-String _$signUpRepoHash() => r'ff23eb0867617380a347c03b8eacc2c35de190f3'; ////
+String _$signUpRepoHash() => r'd9f16483f051d722293a924734170361ab7a702a'; ////
 ////
-/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl], injects [IAuthRemoteDataSource]
+/// 🧩 [signUpRepoProvider] — provides instance of [SignUpRepoImpl], injects [IAuthRemoteDatabase]
 ///
 /// Copied from [signUpRepo].
 @ProviderFor(signUpRepo)

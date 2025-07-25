@@ -11,7 +11,7 @@ part 'data_layer_providers.g.dart';
 /// ✅ Low-level data access for password-related Firebase actions
 //
 @riverpod
-IPasswordRemoteDatabase passwordRemoteDataSource(Ref ref) =>
+IPasswordRemoteDatabase passwordRemoteDatabase(Ref ref) =>
     PasswordRemoteDatabaseImpl();
 
 /// 🧩 [passwordRepoProvider] — provides implementation of [IPasswordRepo]
@@ -20,4 +20,4 @@ IPasswordRemoteDatabase passwordRemoteDataSource(Ref ref) =>
 //
 @riverpod
 IPasswordRepo passwordRepo(Ref ref) =>
-    PasswordRepoImpl(ref.watch(passwordRemoteDataSourceProvider));
+    PasswordRepoImpl(ref.watch(passwordRemoteDatabaseProvider));

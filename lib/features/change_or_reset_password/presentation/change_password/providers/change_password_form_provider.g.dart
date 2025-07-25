@@ -9,7 +9,7 @@ part of 'change_password_form_provider.dart';
 String _$changePasswordFormHash() =>
     r'ad653ecfa111f43c1fad14641a21b23e83e07f73';
 
-/// 🧩 [ChangePasswordForm] — Manages the state of the change passford form using [StateNotifier].
+/// 🧩 [ChangePasswordForm] — Manages the state of the change password form using [StateNotifier].
 /// Handles input updates, validation, and visibility toggling for password field.
 ///
 /// Copied from [ChangePasswordForm].

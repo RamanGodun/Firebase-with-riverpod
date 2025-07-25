@@ -6,31 +6,31 @@ part of 'data_layer_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$passwordRemoteDataSourceHash() =>
-    r'45bde654f35d756198afa739a18f00b7a3caffb6';
+String _$passwordRemoteDatabaseHash() =>
+    r'66171cb14415dd20c6f7d93ccfc1fb62ed12047c';
 
-/// 🧩 [passwordRemoteDataSourceProvider] — provides implementation of [IPasswordRemoteDataSource]
+/// 🧩 [passwordRemoteDataSourceProvider] — provides implementation of [IPasswordRemoteDatabase]
 /// ✅ Low-level data access for password-related Firebase actions
 ///
-/// Copied from [passwordRemoteDataSource].
-@ProviderFor(passwordRemoteDataSource)
-final passwordRemoteDataSourceProvider =
-    AutoDisposeProvider<IPasswordRemoteDataSource>.internal(
-      passwordRemoteDataSource,
-      name: r'passwordRemoteDataSourceProvider',
+/// Copied from [passwordRemoteDatabase].
+@ProviderFor(passwordRemoteDatabase)
+final passwordRemoteDatabaseProvider =
+    AutoDisposeProvider<IPasswordRemoteDatabase>.internal(
+      passwordRemoteDatabase,
+      name: r'passwordRemoteDatabaseProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$passwordRemoteDataSourceHash,
+              : _$passwordRemoteDatabaseHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef PasswordRemoteDataSourceRef =
-    AutoDisposeProviderRef<IPasswordRemoteDataSource>;
-String _$passwordRepoHash() => r'6446de53a6a93c73e036841b609e1d1b5f80c260';
+typedef PasswordRemoteDatabaseRef =
+    AutoDisposeProviderRef<IPasswordRemoteDatabase>;
+String _$passwordRepoHash() => r'338ba4c9638bafeb73dc156b6376fa113f6e209e';
 
 /// 🧩 [passwordRepoProvider] — provides implementation of [IPasswordRepo]
 /// 🧼 Adds failure mapping on top of remote data source
