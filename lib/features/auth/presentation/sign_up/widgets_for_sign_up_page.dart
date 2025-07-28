@@ -74,7 +74,6 @@ final class _SignupFooter extends StatelessWidget {
 
         AppTextButton(
           onPressed: () => context.popView(),
-          // context.goTo(RoutesNames.signIn),
           label: LocaleKeys.buttons_sign_in,
         ),
       ],

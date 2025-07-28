@@ -1,27 +1,31 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
 import '../../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../domain/provider/use_cases_provider.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-// part 'change_password_provider.g.dart';
+part 'change_password_state.dart';
 
-/// 🧩 [changePasswordProvider] — Handles password update
+/// 🧩 [changePasswordProvider] — Manages the state and logic for password change flow.
+/// Handles password update process, error mapping, and reauthentication scenarios.
 //
 final changePasswordProvider =
     StateNotifierProvider<ChangePasswordNotifier, ChangePasswordState>(
       (ref) => ChangePasswordNotifier(ref),
     );
 
-////
+/// 🛡️ [ChangePasswordNotifier] — StateNotifier handling password change process.
+/// Updates state for loading, success, error, and reauth cases.
+//
 final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
   final Ref ref;
   String? _pendingPassword;
 
+  /// 🧱 Initializes with [ChangePasswordInitial] state
   ChangePasswordNotifier(this.ref) : super(const ChangePasswordInitial());
 
-  /// 🔁 Updates the user password via [ChangePasswordUseCase]
-  /// Triggers `signInWithCredential` or fails with [Failure]
+  /// 🔁 Attempts to update the user password via [ChangePasswordUseCase].
+  /// Emits [ChangePasswordLoading], then [ChangePasswordSuccess], [ChangePasswordError], or [ChangePasswordRequiresReauth].
   Future<void> changePassword(String newPassword) async {
     state = const ChangePasswordLoading();
 
@@ -43,8 +47,8 @@ final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
     );
   }
 
-  /// ♻️ Retries password update after `reauthentication`
-  /// Uses previously stored password to retry safely
+  /// ♻️ Retries password update after user reauthenticates.
+  /// Uses stored [_pendingPassword] for retry logic.
   Future<void> retryAfterReauth() async {
     final pwd = _pendingPassword;
     if (pwd == null) return;
@@ -63,39 +67,4 @@ final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
           ),
     );
   }
-}
-
-////
-
-sealed class ChangePasswordState {
-  const ChangePasswordState();
-}
-
-final class ChangePasswordInitial extends ChangePasswordState {
-  const ChangePasswordInitial();
-}
-
-final class ChangePasswordLoading extends ChangePasswordState {
-  const ChangePasswordLoading();
-}
-
-final class ChangePasswordSuccess extends ChangePasswordState {
-  final String message;
-  const ChangePasswordSuccess(this.message);
-}
-
-final class ChangePasswordRequiresReauth extends ChangePasswordState {
-  const ChangePasswordRequiresReauth();
-}
-
-final class ChangePasswordError extends ChangePasswordState {
-  final Failure failure;
-  const ChangePasswordError(this.failure);
-}
-
-extension ChangePasswordStateX on ChangePasswordState {
-  bool get isLoading => this is ChangePasswordLoading;
-  bool get isSuccess => this is ChangePasswordSuccess;
-  bool get isError => this is ChangePasswordError;
-  bool get isRequiresReauth => this is ChangePasswordRequiresReauth;
 }

@@ -1,4 +1,6 @@
-import '../../../core/utils_shared/auth_user_utils.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
+
+import '../../../core/utils_shared/user_auth/auth_user_utils.dart';
 import 'remote_database_contract.dart';
 
 /// 🛠️ [IUserValidationRemoteDataSourceImpl] — Firebase-powered implementation
@@ -11,7 +13,9 @@ final class IUserValidationRemoteDataSourceImpl
   @override
   Future<void> sendVerificationEmail() async {
     final user = AuthUserUtils.currentUserOrThrow;
+    debugPrint('Sending verification email to: ${user.email}');
     await user.sendEmailVerification();
+    debugPrint('Verification email sent!');
   }
 
   @override
