@@ -146,6 +146,7 @@ final class _SigninFooter extends StatelessWidget {
           label: LocaleKeys.buttons_sign_up,
         ),
         const SizedBox(height: AppSpacing.xl),
+
         AppTextButton(
           onPressed: () => context.goTo(RoutesNames.resetPassword),
           label: LocaleKeys.sign_in_forgot_password,

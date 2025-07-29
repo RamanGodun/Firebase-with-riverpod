@@ -1,10 +1,13 @@
 import 'package:firebase_with_riverpod/core/base_modules/animation/widget_animation_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
 import 'package:flutter/material.dart';
 import '../../../base_modules/localization/widgets/text_widget.dart';
+import '../../../base_modules/theme/ui_constants/_app_constants.dart';
 import '../loaders/loader.dart';
 
-/// ✅ [CustomFilledButton] — animated cross-platform button with Cupertino spinner and theming
+/// 🧩 [CustomFilledButton] — Animated filled button with loader/text switch.
+/// UI-only (no business logic), uses Hero for smooth transitions.
 //
 final class CustomFilledButton extends StatelessWidget {
   ///------------------------------------------
@@ -13,6 +16,7 @@ final class CustomFilledButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool isLoading;
   final bool isEnabled;
+  final bool? isValidated;
 
   const CustomFilledButton({
     super.key,
@@ -20,6 +24,7 @@ final class CustomFilledButton extends StatelessWidget {
     required this.onPressed,
     this.isLoading = false,
     this.isEnabled = true,
+    this.isValidated = true,
   });
 
   @override
@@ -27,40 +32,34 @@ final class CustomFilledButton extends StatelessWidget {
     //
     final colorScheme = context.colorScheme;
 
-    return SizedBox(
-      width: double.infinity,
-      child: Hero(
-        tag: 'filled_button',
+    return Hero(
+      tag: 'filled_button',
+      child: FilledButton(
+        // 🚀 Only enabled when form is valid and not loading
+        onPressed: isEnabled ? onPressed : null,
 
-        child: FilledButton(
-          /// ⚙️ Only enabled when not loading
-          onPressed: (isEnabled && !isLoading) ? onPressed : null,
-
-          child:
-              //
-              (isLoading
-                      ? AppLoader(
-                        size: 20,
-                        cupertinoRadius: 12,
-                        color: colorScheme.onSurface,
-                      )
-                      : TextWidget(
-                        label,
-                        TextType.titleMedium,
-                        fontWeight:
-                            !isEnabled ? FontWeight.w300 : FontWeight.w400,
-                        fontSize: 18,
-                        letterSpacing: 0.9,
-                        color:
-                            (isLoading || !isEnabled)
-                                ? colorScheme.inverseSurface
-                                : colorScheme.onPrimary,
-                      ))
-                  .withAnimatedSwitcherSize(),
-        ),
-      ),
+        // 🔁 Animated loader or text label
+        child:
+            (isLoading
+                    ? AppLoader(
+                      size: 20,
+                      cupertinoRadius: 12,
+                      color: colorScheme.onSurface,
+                    )
+                    : TextWidget(
+                      label,
+                      TextType.titleMedium,
+                      fontWeight:
+                          !isEnabled ? FontWeight.w300 : FontWeight.w400,
+                      fontSize: 18,
+                      letterSpacing: 0.9,
+                      color:
+                          (isLoading || !isEnabled)
+                              ? colorScheme.inverseSurface
+                              : colorScheme.onPrimary,
+                    ))
+                .withAnimatedSwitcherSize(),
+      ).withPaddingTop(AppSpacing.l),
     );
   }
-
-  //
 }

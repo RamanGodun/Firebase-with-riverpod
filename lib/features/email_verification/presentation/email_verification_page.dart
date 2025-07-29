@@ -34,18 +34,8 @@ final class VerifyEmailPage extends ConsumerWidget {
       emailVerificationNotifierProvider,
       context,
       ref: ref,
-      onRetry: () {
-        ref.invalidate(emailVerificationNotifierProvider);
-      },
+      onRetry: () => ref.invalidate(emailVerificationNotifierProvider),
     );
-    // ref.listenFailureWithAction<void>(
-    //   emailVerificationNotifierProvider,
-    //   context,
-    //   onConfirmed: () async {
-    //     await FirebaseConstants.fbAuth.signOut();
-    //     if (context.mounted) context.goNamed(RoutesNames.signIn);
-    //   },
-    // );
 
     // 🎯 Trigger the polling logic
     ref.read(emailVerificationNotifierProvider);
@@ -74,7 +64,7 @@ final class VerifyEmailPage extends ConsumerWidget {
                   ? const AppLoader()
                   : const VerifyEmailCancelButton(),
             ],
-          ).withPaddingHorizontal(AppSpacing.xl),
+          ).withPaddingSymmetric(h: AppSpacing.xl, v: AppSpacing.xxl),
         ),
       ),
     );

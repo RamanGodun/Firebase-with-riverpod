@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../utils_shared/user_auth/firebase_auth_providers.dart';
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
 import '../../overlays/overlays_dispatcher/overlay_navigation_observer.dart';
-import '../utils/routes_redirection_service.dart';
+import 'routes_redirection_service.dart';
 import '../app_routes/app_routes.dart';
 
 part 'router_factory.dart';

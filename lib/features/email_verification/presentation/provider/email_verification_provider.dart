@@ -39,7 +39,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   void _startPolling() {
     //
     _stopwatch.start();
-    _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (_) {
       if (_stopwatch.elapsed > _maxPollingDuration) {
         _timer?.cancel();
         debugPrint('Polling timed out after 2 minutes');
