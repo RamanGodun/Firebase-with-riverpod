@@ -10,7 +10,7 @@ part 'fallback_engine.dart';
 /// ✅ Provides core animation lifecycle and properties
 //
 sealed class AnimationEngine {
-  ///------------------------
+  ///----------------------
 
   /// 🎛️ Must initialize controllers & tweens with proper [TickerProvider]
   void initialize(TickerProvider vsync);

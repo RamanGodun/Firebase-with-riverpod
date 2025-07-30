@@ -1,6 +1,5 @@
 import 'package:formz/formz.dart';
 import 'package:validators/validators.dart';
-
 import '../../localization/generated/locale_keys.g.dart';
 
 part 'email_input.dart';

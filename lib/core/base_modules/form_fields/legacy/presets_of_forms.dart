@@ -2,8 +2,8 @@
 import 'form_fields_model.dart';
 
 /// 🧩 Field combinations for various forms
-
-class FormTemplates {
+//
+final class FormTemplates {
   ///---------------
 
   static const List<FormFieldType> signInFields = [

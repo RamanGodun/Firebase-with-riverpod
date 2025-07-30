@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 part 'form_state_model.dart';
 
 /// 📦 Model representing individual field state
-
+//
 @immutable
-class FieldModel extends Equatable {
-  ///------------------------------
-
+final class FieldModel extends Equatable {
+  ///----------------------------------
+  //
   final String value;
   final bool dirty;
   final String? error;

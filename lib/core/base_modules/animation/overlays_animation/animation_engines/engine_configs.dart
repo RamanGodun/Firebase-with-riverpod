@@ -4,7 +4,7 @@ import 'package:flutter/material.dart' show Curve, Offset;
 /// ✅ Used internally by [AndroidOverlayAnimationEngine] to unify animation logic
 //
 final class AndroidOverlayAnimationConfig {
-  ///-------------------------------------
+  ///-----------------------------------
   //
   final Duration duration;
   final Duration fastDuration;
@@ -34,7 +34,7 @@ final class AndroidOverlayAnimationConfig {
 /// ✅ Defines durations, curves, and scale parameters for each overlay type
 //
 final class IOSOverlayAnimationConfig {
-  ///---------------------------------
+  ///-------------------------------
   //
   final Duration duration;
   final Duration fastDuration;

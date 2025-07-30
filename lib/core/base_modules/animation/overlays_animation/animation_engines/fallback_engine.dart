@@ -6,7 +6,6 @@ part of '_animation_engine.dart';
 //
 final class FallbackAnimationEngine extends AnimationEngine {
   ///-------------------------------------------------------
-
   /// 🏗️ Constructor (no-op)
   FallbackAnimationEngine();
 

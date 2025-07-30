@@ -4,11 +4,11 @@ import '../../localization/init_localization.dart';
 
 /// 🧱 [AppTextField] — Reusable, styled text input field used across the app.
 /// Supports:
-/// - label & prefix icon
-/// - error display
-/// - focus control
-/// - submit action
-/// - obscured (e.g. password) mode
+///   - label & prefix icon
+///   - error display
+///   - focus control
+///   - submit action
+///   - obscured (e.g. password) mode
 //
 final class AppTextField extends StatelessWidget {
   ///------------------------------------------

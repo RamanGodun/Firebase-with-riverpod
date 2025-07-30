@@ -9,10 +9,10 @@ import 'form_fields_model.dart';
 import 'form_state_provider.dart';
 
 /// ✅ [AppFormField] — universal reactive form input field (Hooked + Riverpod powered)
-
-class AppFormField extends HookConsumerWidget {
+//
+final class AppFormField extends HookConsumerWidget {
   ///-----------------------------------------
-
+  //
   final FormFieldType type;
   final List<FormFieldType> fields;
   final bool showToggleVisibility;

@@ -1,11 +1,11 @@
 part of 'form_fields_model.dart';
 
 /// 🧾 Model representing the entire form state
-
+//
 @immutable
-class FormStateModel extends Equatable {
+final class FormStateModel extends Equatable {
   ///----------------------------------
-
+  //
   final Map<FormFieldType, FieldModel> fields;
   const FormStateModel(this.fields);
 

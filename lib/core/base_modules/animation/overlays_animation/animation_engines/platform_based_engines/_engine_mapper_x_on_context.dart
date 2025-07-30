@@ -6,12 +6,11 @@ import 'android_animation_engine.dart';
 
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
 
-/// 🎯 [OverlayAnimationEngineMapperX] — resolves the correct animation engine
-/// based on overlay category and platform.
-/// Clean, centralized switch logic for easy extendability.
+/// 🎯 [OverlayAnimationEngineMapperX] — resolves the animation engine,
+///     based on overlay category and platform.
 //
 extension OverlayAnimationEngineMapperX on BuildContext {
-  ///------------------------------------
+  ///-------------------------------------------------
   //
   AnimationEngine getEngine(OverlayCategory type) {
     return switch ((type, platform)) {

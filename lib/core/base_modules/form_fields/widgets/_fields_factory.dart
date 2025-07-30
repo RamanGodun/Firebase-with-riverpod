@@ -9,7 +9,7 @@ import 'app_text_field.dart';
 /// Ensures consistent look & feel across forms (SignUp/Login).
 //
 abstract final class InputFieldFactory {
-  //-------------------------
+  ///--------------------------------
   InputFieldFactory._();
 
   ///
