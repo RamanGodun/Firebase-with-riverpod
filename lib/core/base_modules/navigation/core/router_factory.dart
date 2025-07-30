@@ -8,7 +8,7 @@ GoRouter buildGoRouter(Ref ref, AsyncValue authState) {
   return GoRouter(
     //
     /// 👁️ Observers — navigation side-effects (e.g., dismissing overlays)
-    observers: [OverlayNavigatorObserver()],
+    observers: [OverlaysCleanerWithinNavigation()],
 
     /// 🐞 Enable verbose logging for GoRouter (only active in debug mode)
     debugLogDiagnostics: true,

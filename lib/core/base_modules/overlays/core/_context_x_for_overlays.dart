@@ -15,11 +15,10 @@ import 'enums_for_overlay_module.dart';
 //
 extension ContextXForOverlays on BuildContext {
   ///----------------------------------------
-
+  //
   /// 🔌 Lazily access the shared [IOverlayDispatcher] via DI container
   OverlayDispatcher get dispatcher => readDI(overlayDispatcherProvider);
-
-  ////
+  //
 
   /// 🧠 Handles displaying [FailureUIEntity] as banner/snackbar/dialog
   /// 📌 Uses [OverlayUIPresets] and [ShowAs] to configure appearance and behavior

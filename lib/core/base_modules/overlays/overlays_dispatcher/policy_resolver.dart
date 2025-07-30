@@ -48,7 +48,7 @@ final class OverlayPolicyResolver {
   static bool shouldWait(OverlayUIEntry entry) =>
       entry.strategy.policy == OverlayReplacePolicy.waitQueue;
 
-  ///
+  ////
 
   /// 📌 Maps a `bool` flag to corresponding [OverlayDismissPolicy].
   /// Returns [dismissible] if `true`, otherwise [persistent].

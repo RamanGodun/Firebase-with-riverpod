@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 final class TapThroughOverlayBarrier extends StatelessWidget {
   ///--------------------------------------------------------
   //
-  /// 🧩 The widget to display inside the overlay
+  // 🧩 The widget to display inside the overlay
   final Widget child;
   // 🫥 If `true`, allows taps to pass through the overlay
   final bool enablePassthrough;

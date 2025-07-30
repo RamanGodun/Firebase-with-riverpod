@@ -6,15 +6,13 @@ import '_overlay_dispatcher.dart';
 /// and syncs its activity with [overlayStatusProvider].
 //
 final overlayDispatcherProvider = Provider<OverlayDispatcher>((ref) {
-  ///----------------------------------------------------------------
-  //
   return OverlayDispatcher(
     onOverlayStateChanged: ref.read(overlayStatusProvider.notifier).update,
   );
-  //
 });
 
 ////
+
 ////
 
 /// 🧩 [overlayStatusProvider] — Manages current overlay visibility state.
@@ -22,17 +20,17 @@ final overlayDispatcherProvider = Provider<OverlayDispatcher>((ref) {
 //
 final overlayStatusProvider =
     StateNotifierProvider<OverlayStatusNotifier, bool>((ref) {
-      ///-----------------------------------------------------
-      //
       return OverlayStatusNotifier();
-      //
     });
 
 ////
+
 ////
 
 final class OverlayStatusNotifier extends StateNotifier<bool> {
+  ///------------------------------------------------------
   OverlayStatusNotifier() : super(false);
+  //
   void update(bool isActive) => state = isActive;
 }
 
@@ -43,14 +41,12 @@ final isVisible = ref.watch(overlayStatusProvider); // or ref.isOverlayActive
  */
 
 ////
+
 ////
 
 /// 🧠 [OverlayStatusX] — Extension for accessing overlay activity status from [BuildContext].
 /// ⚠️ Note: For read-only checks only. For reactive usage, prefer listening to [OverlayStatusCubit] via BlocBuilder.
 //
 extension OverlayStatusX on WidgetRef {
-  ///-----------------------------------
-  //
   bool get isOverlayActive => watch(overlayStatusProvider);
-  //
 }

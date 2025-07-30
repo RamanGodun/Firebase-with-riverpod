@@ -1,11 +1,11 @@
 part of '_overlay_entries_registry.dart';
 
 /// 🍞 [SnackbarOverlayEntry] — State-driven platform-aware snackbar
-/// - Used by [OverlayDispatcher] for automatic snackbar rendering
-/// - Encapsulates priority, dismiss policy, and visual props
-/// - Built via [AnimationHost] and animated per platform
-/// - Called by Dispatcher during overlay insertion
-
+///   - Used by [OverlayDispatcher] for automatic snackbar rendering
+///   - Encapsulates priority, dismiss policy, and visual props
+///   - Built via [AnimationHost] and animated per platform
+///   - Called by Dispatcher during overlay insertion
+//
 final class SnackbarOverlayEntry extends OverlayUIEntry {
   ///---------------------------------------------------
   //
