@@ -11,7 +11,6 @@ final class PlatformValidationUtil {
   ///📱 Check minimum platform support (e.g., Android SDK, IOS version)
   /// Throws [UnsupportedError] if platform version is below required.
   static Future<void> run() async {
-    //
     if (Platform.isAndroid) {
       final androidInfo = await DeviceInfoPlugin().androidInfo;
       if (androidInfo.version.sdkInt < PlatformConstants.minSdkVersion) {

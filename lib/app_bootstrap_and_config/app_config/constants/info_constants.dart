@@ -5,6 +5,7 @@ library;
 final class AppInfoConstants {
   ///----------------------
   AppInfoConstants._();
+  //
 
   /// 🧾 Application display name
   static const String appName = 'Firebase with Riverpod';

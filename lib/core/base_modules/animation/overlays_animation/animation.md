@@ -90,7 +90,7 @@ lib/
 
   ```dart
   IOSOverlayAnimationConfig(
-    duration: Duration(milliseconds: 700),
+    duration: AppDurations.ms600,
     opacityCurve: Curves.easeIn,
     scaleBegin: 0.85,
     ...

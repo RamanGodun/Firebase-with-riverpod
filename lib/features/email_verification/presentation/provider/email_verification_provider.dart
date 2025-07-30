@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../core/utils_shared/timing_control/timing_config.dart';
 import '../../../../core/utils_shared/safe_async_state.dart';
 import '../../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
 import '../../../../core/base_modules/errors_handling/failures/failure_entity.dart';
@@ -18,7 +19,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   ///-------------------------------------------------------------
 
   Timer? _timer;
-  static const _maxPollingDuration = Duration(minutes: 2);
+  static const _maxPollingDuration = AppDurations.min2;
   final Stopwatch _stopwatch = Stopwatch();
   late final EmailVerificationUseCase _emailVerificationUseCase;
 
@@ -39,7 +40,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   void _startPolling() {
     //
     _stopwatch.start();
-    _timer = Timer.periodic(const Duration(seconds: 3), (_) {
+    _timer = Timer.periodic(AppDurations.min2, (_) {
       if (_stopwatch.elapsed > _maxPollingDuration) {
         _timer?.cancel();
         debugPrint('Polling timed out after 2 minutes');

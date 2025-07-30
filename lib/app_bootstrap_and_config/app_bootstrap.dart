@@ -10,41 +10,9 @@ import 'platform_validation.dart';
 import 'di_container/di_config_sync.dart';
 import 'di_container/di_container.dart';
 
-/// 🏁 [IAppBootstrap] —  Abstract contract for app startup logic
-//
-sealed class IAppBootstrap {
-  ///------------------
-  //
-  /// 🚀 Main initialization: all services and dependencies
-  Future<void> initAllServices();
-  //
-  /// Initializes Flutter bindings and debug tools
-  Future<void> startUp();
-  //
-  /// Creates a global DI container accessible both outside and inside the widget tree.
-  Future<void> initGlobalDIContainer();
-  //
-  /// Initialize local storage
-  Future<void> initLocalStorage();
-  //
-  /// Initialize remote Database
-  Future<void> initRemoteDataBase();
+part 'bootstrap_interface.dart';
 
-  /// ? Why split initialization into several methods?
-  ///       Startup can be multi-phased:
-  ///         - **Minimal bootstrap** — For a custom splash/loader (e.g., show initial loader while others setup runs).
-  ///         -  **Full bootstrap** — For the complete initialization pipeline (all services/deps)
-  //
-  ///   This allows to display a loader/UI ASAP, while heavy initializations (services, Firebase, etc.) happen after.
-  //
-}
-
-////
-
-////
-
-/// 🧰 [AppBootstrap] — Production [IAppBootstrap] implementation for bootstrapping all critical services.
-/// ✅ All dependencies are injectable for testing/mocking, steps are separated for flexibility
+/// 🧰 [AppBootstrap] — Handles all critical bootstrapping (with injectable stacks for testing/mocks).
 //
 final class AppBootstrap extends IAppBootstrap {
   ///-------------------------------------
@@ -53,8 +21,7 @@ final class AppBootstrap extends IAppBootstrap {
   final IDIConfig _diConfiguration;
   final IRemoteDataBase _remoteDataBase;
 
-  /// Creates a fully-configurable startup handler.
-  /// All dependencies are injectable and default to production implementations if not provided.
+  /// Constructor allows the injection of custom/mock implementations.
   AppBootstrap({
     ILocalStorage? localStorageStack,
     IDIConfig? diConfiguration,
@@ -66,7 +33,7 @@ final class AppBootstrap extends IAppBootstrap {
   ////
   ////
 
-  /// Sequentially bootstraps all core app services
+  /// Main entrypoint: sequentially bootstraps all core app services before [runApp]
   @override
   Future<void> initAllServices() async {
     //
@@ -89,12 +56,13 @@ final class AppBootstrap extends IAppBootstrap {
     //
   }
 
-  /// Minimal setup required for the initial app loader (or skeleton/splash screen).
+  ////
+
   @override
   Future<void> startUp() async {
     //
     debugPrint('🟢 [Startup] Flutter bindings and platform checks...');
-    // Ensures Flutter bindings.
+    // Ensures Flutter bindings are ready before any further setup.
     WidgetsFlutterBinding.ensureInitialized();
     //
     /// Validates platform (min. OS versions, emulator restrictions, etc).
@@ -110,7 +78,6 @@ final class AppBootstrap extends IAppBootstrap {
 
   /// Set uo global DI container for using outside widget tree and for ProviderScope.parent,
   /// that ensures consistent of shared DI both in/out context
-  /// Should be initialized **once** before runApp.
   @override
   Future<void> initGlobalDIContainer() async {
     //

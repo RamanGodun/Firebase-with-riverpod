@@ -9,8 +9,6 @@ abstract interface class ILocalStorage {
   /// Initializes all local storage services
   Future<void> init();
   //
-  /// Initialize other storages (e.g., SharedPreferences, Isar, SecureStorage) here, if needed.
-  //
 }
 
 ////
@@ -29,6 +27,9 @@ final class LocalStorage implements ILocalStorage {
     await GetStorage.init();
     debugPrint('💾 GetStorage initialized!');
   }
+
+  /// Initialize other storages (e.g., SharedPreferences, Isar, SecureStorage) here, if needed.
+  //
 
   //
 }

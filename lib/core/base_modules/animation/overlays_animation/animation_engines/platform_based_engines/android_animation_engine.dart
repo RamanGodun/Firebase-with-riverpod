@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../utils_shared/timing_control/timing_config.dart';
 import '../../../../overlays/core/enums_for_overlay_module.dart';
 import '../_animation_engine.dart';
 import '../engine_configs.dart';
@@ -27,12 +28,11 @@ final class AndroidOverlayAnimationEngine extends BaseAnimationEngine {
 
   /// 🧠 Resolves preset animation configuration based on [ShowAs]
   static AndroidOverlayAnimationConfig _resolveConfig(ShowAs type) {
-    //
     return switch (type) {
       //
       ShowAs.banner => const AndroidOverlayAnimationConfig(
-        duration: Duration(milliseconds: 400),
-        fastDuration: Duration(milliseconds: 160),
+        duration: AppDurations.ms400,
+        fastDuration: AppDurations.ms150,
         opacityCurve: Curves.easeOut,
         scaleBegin: 0.98,
         scaleCurve: Curves.decelerate,
@@ -41,8 +41,8 @@ final class AndroidOverlayAnimationEngine extends BaseAnimationEngine {
       ),
 
       ShowAs.snackbar => const AndroidOverlayAnimationConfig(
-        duration: Duration(milliseconds: 450),
-        fastDuration: Duration(milliseconds: 160),
+        duration: AppDurations.ms400,
+        fastDuration: AppDurations.ms150,
         opacityCurve: Curves.easeInOut,
         scaleBegin: 0.96,
         scaleCurve: Curves.easeOut,
@@ -51,8 +51,8 @@ final class AndroidOverlayAnimationEngine extends BaseAnimationEngine {
       ),
 
       ShowAs.dialog || ShowAs.infoDialog => const AndroidOverlayAnimationConfig(
-        duration: Duration(milliseconds: 400),
-        fastDuration: Duration(milliseconds: 180),
+        duration: AppDurations.ms400,
+        fastDuration: AppDurations.ms150,
         opacityCurve: Curves.easeOut,
         scaleBegin: 0.95,
         scaleCurve: Curves.easeOut,

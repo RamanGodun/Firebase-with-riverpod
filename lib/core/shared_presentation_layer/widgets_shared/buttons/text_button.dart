@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
+import '../../../utils_shared/timing_control/timing_config.dart';
 import '../../../base_modules/localization/widgets/text_widget.dart';
 
 /// 🔘 [AppTextButton] — minimal, animated text-only button with underline option
@@ -53,12 +54,12 @@ final class AppTextButton extends StatelessWidget {
           visualDensity: VisualDensity.compact,
         ),
         child: AnimatedSize(
-          duration: const Duration(milliseconds: 250),
+          duration: AppDurations.ms250,
           curve: Curves.easeInOut,
           alignment: Alignment.center,
 
           child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 250),
+            duration: AppDurations.ms250,
             switchInCurve: Curves.easeOut,
             switchOutCurve: Curves.easeIn,
 

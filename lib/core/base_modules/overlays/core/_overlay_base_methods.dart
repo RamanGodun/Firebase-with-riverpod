@@ -2,6 +2,7 @@ import 'package:firebase_with_riverpod/core/base_modules/animation/overlays_anim
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
+import '../../../utils_shared/timing_control/timing_config.dart';
 import '../../animation/overlays_animation/animation_wrapper/animated_overlay_wrapper.dart';
 import '../overlays_dispatcher/_overlay_dispatcher.dart';
 import '../overlays_dispatcher/overlay_entries/_overlay_entries_registry.dart';
@@ -82,7 +83,7 @@ extension OverlayBaseMethods on BuildContext {
     OverlayUIPresets preset = const OverlayInfoUIPreset(),
     bool isError = false,
     bool isDismissible = true,
-    Duration autoDismissDuration = const Duration(seconds: 3),
+    Duration autoDismissDuration = AppDurations.sec3,
     OverlayPriority priority = OverlayPriority.normal,
   }) {
     //
@@ -126,7 +127,7 @@ extension OverlayBaseMethods on BuildContext {
     OverlayUIPresets preset = const OverlayInfoUIPreset(),
     bool isError = false,
     bool isDismissible = true,
-    Duration autoDismissDuration = const Duration(seconds: 3),
+    Duration autoDismissDuration = AppDurations.sec3,
     OverlayPriority priority = OverlayPriority.normal,
   }) {
     //

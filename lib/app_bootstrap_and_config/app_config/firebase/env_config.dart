@@ -1,17 +1,14 @@
 library;
 
 /// 🌐 [EnvConfig] — Environment-based configuration
-/// Supports `dev`, `staging`, and `prod` modes, use `.env` + `flutter_dotenv` for actual secrets.
-//
-/// ! 🔐 Never store real credentials here!
-/// This file enables:
-///       • Per-env API URLs
-///       • Feature toggles
-///       • Logging / debug switches
-///       • Static defaults in development
+/// Supports dev, staging, and prod modes via `flutter_dotenv`.
+/// ! Never store secrets directly here.
+/// Used for: API base URLs, Feature toggles, Logging flags
 //
 final class EnvConfig {
   ///-----------------
+  EnvConfig._();
+  //
 
   /// 🌍 Current environment (⚠️ change before release!)
   static const Environment currentEnv = Environment.dev;
@@ -36,7 +33,7 @@ final class EnvConfig {
   /// 🚀 Toggle for staging QA tools
   static bool get isStagingMode => currentEnv == Environment.staging;
 
-  /// 🔒 Production mode check
+  /// 🔐 Indicates if app is running in production
   static bool get isProduction => currentEnv == Environment.prod;
 
   //
@@ -45,12 +42,20 @@ final class EnvConfig {
 ////
 ////
 
+/// 🌐 [Environment] — Enum that defines app runtime modes.
+/// ✅ Used for switching configuration (API, Firebase, logging, etc.)
+/// ⚠️ Must match `.env.*` file naming convention.
+//
 enum Environment { dev, staging, prod }
 
 ////
 ////
 
+/// 🧩 [EnvFileName] — Extension to map each [Environment] to its corresponding `.env` file.
+/// ✅ Used to dynamically load environment-specific config via `flutter_dotenv`.
+//
 extension EnvFileName on Environment {
+  /// 📦 Returns the associated `.env` filename for this [Environment] variant.
   String get fileName => switch (this) {
     Environment.dev => '.env.dev',
     Environment.staging => '.env.staging',

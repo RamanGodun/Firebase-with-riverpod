@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../utils_shared/timing_control/timing_config.dart';
+
 /// 🚀 [AppTransitions] — Centralized transitions for GoRouter navigation
 //
 abstract final class AppTransitions {
@@ -11,7 +13,7 @@ abstract final class AppTransitions {
   static CustomTransitionPage<T> fade<T>(Widget child) {
     return CustomTransitionPage<T>(
       child: child,
-      transitionDuration: const Duration(milliseconds: 250),
+      transitionDuration: AppDurations.ms250,
       transitionsBuilder: (_, animation, _, child) {
         return FadeTransition(opacity: animation, child: child);
       },

@@ -60,7 +60,7 @@ abstract base class BaseAnimationEngine extends AnimationEngine {
   Duration get defaultDuration;
 
   /// ⏩ Duration for fast reverse
-  Duration get fastReverseDuration => const Duration(milliseconds: 150);
+  Duration get fastReverseDuration => AppDurations.ms150;
 
   /// 🧼 Disposes the animation controller
   // Releases internal resources and resets state

@@ -14,7 +14,7 @@ import 'app_bootstrap_and_config/di_container/di_container.dart';
 import 'core/base_modules/localization/app_localization.dart';
 import 'root_view_shell.dart';
 
-/// 🏁 Entry point of the application
+/// 🏁 Application entry point
 //
 Future<void> main() async {
   ///
@@ -22,7 +22,7 @@ Future<void> main() async {
     // ? Here can be plugged in custom dependencies (e.g.  "localStorage: IsarLocalStorage()," )
   );
 
-  /// 🚀 Runs all imperative startup logic (localization, Firebase, local storage, DI container, etc).
+  /// 🚀 Runs all startup logic (localization, Firebase, DI container, debug tools, local storage, etc).
   await appBootstrap.initAllServices();
 
   ////
@@ -40,24 +40,16 @@ Future<void> main() async {
 
 ////
 
-/// 🧩 [AppLocalizationShell] — Wraps the app shell with all localization config.
-///   ✅ Ensures the entire app tree is properly localized before rendering the root UI.
+/// 🌍✅ [AppLocalizationShell] — Ensures the entire app tree is properly localized before rendering the root UI.
 //
 final class AppLocalizationShell extends StatelessWidget {
-  ///--------------------------------------------------
+  ///----------------------------------------------
   const AppLocalizationShell({super.key});
 
   @override
   Widget build(BuildContext context) {
     //
-    /// Injects localization context into the widget tree.
-    /// Provides all supported locales and translation assets to [child].
+    /// Injects localization context into the widget tree (provides all supported locales and translation assets)
     return LocalizationWrapper.configure(const AppRootViewShell());
   }
 }
-
-/*
-
-flutter pub run build_runner build --delete-conflicting-outputs
-
- */
