@@ -8,7 +8,9 @@ import '../../../localization/widgets/text_widget.dart';
 import '../../app_theme_variants.dart';
 import '../../theme_provider/theme_config_provider.dart';
 
-class ThemePicker extends ConsumerWidget {
+/// 🌗 [ThemePicker] — Allows to pick the theme mode and shows overlay notification
+//
+final class ThemePicker extends ConsumerWidget {
   ///--------------------------------------
   const ThemePicker({super.key});
   //
@@ -59,7 +61,9 @@ class ThemePicker extends ConsumerWidget {
     );
   }
 
-  //
+  ////
+  ////
+
   /// 🏷️ Returns localized label for a given theme type
   String _themeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {

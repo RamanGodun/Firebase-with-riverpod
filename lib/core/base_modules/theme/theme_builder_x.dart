@@ -4,7 +4,7 @@ part of 'app_theme_variants.dart';
 ///   - Provides a factory method for building fully customized [ThemeData]
 ///   - Applies design tokens, color schemes, and app-specific constants
 ///   - Centralizes all visual details for each theme variant
-///
+//
 extension ThemeVariantX on ThemeVariantsEnum {
   ///--------------------------------------
   //

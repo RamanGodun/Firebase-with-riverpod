@@ -2,7 +2,7 @@ part of 'text_theme_factory.dart';
 
 /// 🔤 [AppFontFamily] — Enhanced enum for supported fonts
 /// 🧩 Can be extended to support Google Fonts in future
-// /
+//
 enum AppFontFamily {
   ///-------------
 

@@ -10,8 +10,8 @@ import '../../app_theme_variants.dart';
 import '../../theme_provider/theme_config_provider.dart';
 
 /// 🌗 [ThemeTogglerIcon] — toggles light/dark mode and shows overlay notification
-
-class ThemeTogglerIcon extends ConsumerWidget {
+//
+final class ThemeTogglerIcon extends ConsumerWidget {
   ///-----------------------------------------
   const ThemeTogglerIcon({super.key});
   //
