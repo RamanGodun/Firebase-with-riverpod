@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/failure_diagnostics_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
-import '../../failures/failure_entity.dart';
+import '../../failures/failure__entity.dart';
 import '../../utils/observers/loggers/errors_log_util.dart';
 import '__eithers_facade.dart';
 

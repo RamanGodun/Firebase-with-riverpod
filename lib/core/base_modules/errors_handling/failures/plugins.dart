@@ -4,8 +4,8 @@ part 'failure_key.dart';
 /// 🧭 Useful for analytics, diagnostics, and categorizing error origins.
 //
 enum ErrorPlugins {
-  ///------------
-
+  ///-----------
+  //
   httpClient,
   firebase,
   sqlite,

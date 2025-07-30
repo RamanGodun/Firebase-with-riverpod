@@ -1,6 +1,6 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/failure_to_either_x.dart';
 import '../either/either.dart';
-import '../failures/failure_entity.dart';
+import '../failures/failure__entity.dart';
 import 'exceptions_to_failures_mapper/_exceptions_to_failures_mapper.dart';
 import 'observers/loggers/errors_log_util.dart';
 
@@ -8,8 +8,8 @@ import 'observers/loggers/errors_log_util.dart';
 /// Provides a consistent method to wrap any async domain logic
 /// and convert errors into [Failure] types for safe functional error handling.
 //
-abstract class WrapWithErrorHandling {
-  /// ----------------------------
+abstract final class WrapWithErrorHandling {
+  /// -----------------------------------
   //
   /// Executes a given async operation and returns an [Either] type.
   /// On success: returns [Right] with the result.
