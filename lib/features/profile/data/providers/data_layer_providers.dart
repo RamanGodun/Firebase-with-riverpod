@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart'
     show CollectionReference, FirebaseFirestore;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/utils_shared/user_auth/firebase_auth_providers.dart';
+import '../../../../app_bootstrap_and_config/firebase_config/user_auth_provider/firebase_auth_providers.dart';
 import '../../domain/repo_contract.dart';
 import '../implementation_of_profile_fetch_repo.dart';
 import '../remote_database_contract.dart';

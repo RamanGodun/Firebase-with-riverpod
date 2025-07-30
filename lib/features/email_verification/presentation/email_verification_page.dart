@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation_layer/widgets_shared/loaders/loader.dart';
-import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/shared_presentation_layer/shared_widgets/loader.dart';
+import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
-import '../../../core/shared_presentation_layer/widgets_shared/buttons/text_button.dart';
+import '../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
+import '../../../core/shared_presentation_layer/shared_widgets/buttons/text_button.dart';
 import '../../../core/base_modules/localization/widgets/text_widget.dart';
 import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';

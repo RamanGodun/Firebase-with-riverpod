@@ -1,4 +1,4 @@
-part of '_general_extensions.dart';
+part of '_general_extensions_barrel.dart';
 
 /// 💲 [NumFormatX] — Extension for formatting numerical values (currency, percentages, etc.)
 /// ✅ Adds formatting helpers for display-friendly output

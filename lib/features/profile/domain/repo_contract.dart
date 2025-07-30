@@ -1,4 +1,4 @@
-import '../../../core/shared_domain_layer/entities/_user_entity.dart';
+import '../../../core/shared_domain_layer/shared_entities/_user_entity.dart';
 import '../../../core/utils_shared/type_definitions.dart';
 
 /// 📦 [IProfileRepo] — Contract for [FetchProfileUseCase] repo

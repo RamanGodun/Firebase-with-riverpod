@@ -3,12 +3,12 @@ import 'package:cached_network_image/cached_network_image.dart'
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
-import 'package:firebase_with_riverpod/core/shared_presentation_layer/widgets_shared/loaders/loader.dart';
-import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/shared_presentation_layer/shared_widgets/loader.dart';
+import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
+import '../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
 import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/localization/widgets/key_value_text_widget.dart';
 import '../../../core/base_modules/localization/widgets/text_widget.dart';
@@ -19,9 +19,9 @@ import '../../../core/base_modules/theme/widgets_and_utils/blur_wrapper.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/theme_toggle_widgets/theme_picker.dart';
 import '../../../core/utils_shared/spider/app_images.dart';
 import '../../auth/presentation/sign_out/sign_out_buttons.dart';
-import '../../../core/shared_domain_layer/entities/_user_entity.dart';
-import '../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
-import '../../../core/shared_presentation_layer/widgets_shared/app_bar.dart';
+import '../../../core/shared_domain_layer/shared_entities/_user_entity.dart';
+import '../../../core/shared_presentation_layer/shared_widgets/buttons/filled_button.dart';
+import '../../../core/shared_presentation_layer/shared_widgets/app_bar.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/theme_toggle_widgets/theme_toggler.dart';
 import 'providers/profile_provider.dart';
 

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show debugRepaintRainbowEnabled;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_strategy/url_strategy.dart' show setPathUrlStrategy;
-import '../core/base_modules/localization/app_localizer.dart';
+import '../../core/base_modules/localization/app_localizer.dart';
 import 'remote_db_init.dart';
 import 'local_storage_init.dart';
 import 'platform_validation.dart';
-import 'di_container/di_config_sync.dart';
-import 'di_container/di_container.dart';
+import '../di_container/di_config_sync.dart';
+import '../di_container/di_container.dart';
 
 part 'bootstrap_interface.dart';
 

@@ -1,4 +1,4 @@
-part of '_widget_x.dart';
+part of '_widget_x_barrel.dart';
 
 /// 🎯 [WidgetAlignX] — Easily align widgets in common positions
 //

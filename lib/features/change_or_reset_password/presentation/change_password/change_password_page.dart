@@ -5,12 +5,12 @@ import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/n
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/context_extensions/_context_extensions.dart';
-import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x.dart';
+import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
 import '../../../../core/base_modules/navigation/app_routes/app_routes.dart';
-import '../../../../core/shared_presentation_layer/widgets_shared/buttons/filled_button.dart';
+import '../../../../core/shared_presentation_layer/shared_widgets/buttons/filled_button.dart';
 import '../../../auth/presentation/sign_in/sign_in_page.dart';
 import '../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 import '../../../../core/base_modules/form_fields/utils/use_auth_focus_nodes.dart';

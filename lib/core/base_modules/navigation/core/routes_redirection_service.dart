@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +48,7 @@ abstract final class RoutesRedirectionService {
     // 📍 Route flags
     final isOnPublicPages = _publicRoutes.contains(currentPath);
     final isOnVerifyPage = currentPath == RoutesPaths.verifyEmail;
-    final isOnSplashPage = currentPath == RoutesPaths.splash;
+    // final isOnSplashPage = currentPath == RoutesPaths.splash;
 
     //
     // ⏳ Redirect to splash while loading
@@ -63,10 +64,27 @@ abstract final class RoutesRedirectionService {
     if (!isEmailVerified)
       return isOnVerifyPage ? null : RoutesPaths.verifyEmail;
 
+    // ✅ List of pages, that restricted to redirection
+    const Set<String> restrictedToRedirect = {
+      RoutesPaths.splash,
+      RoutesPaths.verifyEmail,
+      ..._publicRoutes,
+    };
+
     // ✅ Redirect to /home if already authenticated and on splash/public/verify
-    if ((isOnPublicPages || isOnSplashPage || isOnVerifyPage) &&
-        isEmailVerified)
+    final shouldRedirectHome =
+        restrictedToRedirect.contains(currentPath) &&
+        isAuthenticated &&
+        isEmailVerified;
+
+    if (shouldRedirectHome && currentPath != RoutesPaths.home) {
+      if (kDebugMode) {
+        debugPrint(
+          '[🔁 Redirect] currentPath: $currentPath | status: $authState | verified: $isEmailVerified',
+        );
+      }
       return RoutesPaths.home;
+    }
 
     // ➖ No redirect
     return null;

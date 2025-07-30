@@ -6,7 +6,7 @@ import '../../../core/shared_data_layer/user_data_transfer_objects/_user_dto.dar
 import '../../../core/shared_data_layer/user_data_transfer_objects/user_dto_factories_x.dart';
 import '../../../core/utils_shared/cash_manager/cache_manager.dart';
 import '../../../core/utils_shared/type_definitions.dart';
-import '../../../core/shared_domain_layer/entities/_user_entity.dart';
+import '../../../core/shared_domain_layer/shared_entities/_user_entity.dart';
 import '../domain/repo_contract.dart';
 import 'remote_database_contract.dart';
 

@@ -1,4 +1,4 @@
-part of '_widget_x.dart';
+part of '_widget_x_barrel.dart';
 
 /// 🟦 [BorderRadiusX] — Adds convenient border radius wrapping to widgets
 /// ✅ Wraps widget with [ClipRRect] and configurable corner radius

@@ -8,8 +8,8 @@ import 'package:meta/meta.dart' show immutable;
 //
 @immutable
 final class UserDTO with EquatableMixin {
-  //----------------------------------
-
+  ///---------------------------------
+  //
   final String id;
   final String name;
   final String email;
@@ -25,6 +25,7 @@ final class UserDTO with EquatableMixin {
     required this.point,
     required this.rank,
   });
+  //
 
   /// 🧪 Equatable props for value comparison
   @override

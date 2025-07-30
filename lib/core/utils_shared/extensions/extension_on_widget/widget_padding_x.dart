@@ -1,4 +1,4 @@
-part of '_widget_x.dart';
+part of '_widget_x_barrel.dart';
 
 /// 🧩 [WidgetPaddingX] — Fluent widget padding extension
 /// ✅ Simplifies padding application with expressive syntax

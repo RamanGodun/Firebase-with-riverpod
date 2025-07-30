@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../utils_shared/user_auth/firebase_auth_providers.dart';
+import '../../../../app_bootstrap_and_config/firebase_config/user_auth_provider/firebase_auth_providers.dart';
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
 import '../../overlays/overlays_dispatcher/overlay_navigation_observer.dart';
 import 'routes_redirection_service.dart';

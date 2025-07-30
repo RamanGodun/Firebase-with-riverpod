@@ -1,4 +1,4 @@
-import '../../../app_bootstrap_and_config/app_config/firebase/firebase_constants.dart';
+import '../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
 import 'remote_database_contract.dart';
 
 /// 🛠️ [AuthRemoteDatabaseImpl] — Firebase-powered remote data source.

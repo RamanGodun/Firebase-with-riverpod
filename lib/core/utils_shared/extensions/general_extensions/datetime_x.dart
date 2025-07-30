@@ -1,4 +1,4 @@
-part of '_general_extensions.dart';
+part of '_general_extensions_barrel.dart';
 
 /// 🕓 [DateTimeX] — Extension for formatting `DateTime` objects
 /// ✅ Provides common human-readable formats and ISO-friendly string output

@@ -1,4 +1,4 @@
-part of '_general_extensions.dart';
+part of '_general_extensions_barrel.dart';
 
 /// 🔤 [StringX] — Utility extensions for string formatting & casing
 //

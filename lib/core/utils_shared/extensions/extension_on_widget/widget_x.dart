@@ -1,4 +1,4 @@
-part of '_widget_x.dart';
+part of '_widget_x_barrel.dart';
 
 /// 👁️ [WidgetVisibilityX] — Hides widget conditionally (used for UI logic)
 //

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import '../../utils_shared/type_definitions.dart';
-import '../../shared_domain_layer/entities/_user_entity.dart';
+import '../../shared_domain_layer/shared_entities/_user_entity.dart';
 import '_user_dto.dart';
 
 /// 🔄 [UserDTOX] — Instance-level helpers for [UserDTO]

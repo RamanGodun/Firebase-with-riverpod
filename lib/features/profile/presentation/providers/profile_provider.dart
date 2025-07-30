@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../../../../core/shared_domain_layer/entities/_user_entity.dart';
+import '../../../../core/shared_domain_layer/shared_entities/_user_entity.dart';
 import '../../domain/providers/use_case_provider.dart';
 
 part 'profile_provider.g.dart';
