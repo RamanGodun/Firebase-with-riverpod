@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../localization/app_localizer.dart';
+import '../../../localization/init_localization.dart';
 import '../../../localization/generated/locale_keys.g.dart';
 import '../../../localization/widgets/text_widget.dart';
 import '../../app_theme_variants.dart';

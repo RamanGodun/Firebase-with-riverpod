@@ -4,7 +4,7 @@ import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_
 import 'package:flutter/material.dart' show BuildContext, VoidCallback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils_shared/type_definitions.dart';
-import '../../../localization/app_localizer.dart';
+import '../../../localization/init_localization.dart';
 import '../../../localization/generated/locale_keys.g.dart';
 import '../../../overlays/core/enums_for_overlay_module.dart';
 import '../../../overlays/utils/overlay_utils.dart';

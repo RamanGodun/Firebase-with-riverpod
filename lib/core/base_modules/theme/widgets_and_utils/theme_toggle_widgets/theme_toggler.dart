@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../ui_constants/_app_constants.dart';
-import '../../../localization/app_localizer.dart';
+import '../../../localization/init_localization.dart';
 import '../../app_theme_variants.dart';
 import '../../theme_provider/theme_config_provider.dart';
 

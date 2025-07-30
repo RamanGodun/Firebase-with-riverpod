@@ -6,7 +6,7 @@ import '../utils/overlays_cleaner_within_navigation.dart';
 import 'routes_redirection_service.dart';
 import '../app_routes/app_routes.dart';
 
-part 'router_factory.dart';
+part 'go_router_factory.dart';
 
 /// 🧩 [routerProvider] — Public-facing provider used in the widget tree.
 /// ✅ Supports `.select(...)` for optimized rebuilds.

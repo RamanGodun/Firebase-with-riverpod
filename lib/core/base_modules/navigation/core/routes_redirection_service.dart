@@ -48,11 +48,11 @@ abstract final class RoutesRedirectionService {
     // 📍 Route flags
     final isOnPublicPages = _publicRoutes.contains(currentPath);
     final isOnVerifyPage = currentPath == RoutesPaths.verifyEmail;
-    // final isOnSplashPage = currentPath == RoutesPaths.splash;
+    final isOnSplashPage = currentPath == RoutesPaths.splash;
 
     //
     // ⏳ Redirect to splash while loading
-    if (isLoading) return RoutesPaths.splash;
+    if (isLoading) return isOnSplashPage ? null : RoutesPaths.splash;
 
     // ❌ Error state → redirect to SignIn (optional logic)
     if (isAuthError) return RoutesPaths.signIn;

@@ -1,9 +1,10 @@
-part of 'go_router_provider.dart';
+part of 'provider_for_go_router.dart';
 
-/// 🧭🚦 Returns fully constructed [GoRouter] instance
+/// 🧭🚦[buildGoRouter] — GoRouter factory. Returns fully constructed [GoRouter] instance
+/// ✅ Declaratively creates router in dependence of actual [authState].
 //
-GoRouter buildGoRouter(Ref ref, AsyncValue authState) {
-  ///--------------------------
+GoRouter buildGoRouter(Ref ref) {
+  final authState = ref.watch(authStateStreamProvider);
 
   return GoRouter(
     //
@@ -13,7 +14,7 @@ GoRouter buildGoRouter(Ref ref, AsyncValue authState) {
     /// 🐞 Enable verbose logging for GoRouter (only active in debug mode)
     debugLogDiagnostics: true,
 
-    ///
+    ////
 
     /// ⏳ Initial route shown on app launch (Splash Screen)
     initialLocation: RoutesPaths.splash,
@@ -24,14 +25,10 @@ GoRouter buildGoRouter(Ref ref, AsyncValue authState) {
     /// ❌ Fallback UI for unknown/unmatched routes
     errorBuilder:
         (context, state) => PageNotFound(errorMessage: state.error.toString()),
-
-    /// 🔁 Triggers route evaluation when `authState` changes
-    // refreshListenable: ref.watch(authStateRefreshListenableProvider),
+    //
 
     /// 🧭 Global redirect handler — routes user depending on auth state
     redirect: (context, state) {
-      final authState = ref.watch(authStateStreamProvider);
-      // final authState = ref.read(authStateStreamProvider); // ? when using refreshListenable
       return RoutesRedirectionService.from(context, state, authState);
     },
   );

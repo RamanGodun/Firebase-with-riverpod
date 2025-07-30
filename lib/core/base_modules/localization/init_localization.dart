@@ -1,5 +1,5 @@
 import 'when_app_without_localization/fallback_keys.dart';
-import 'localization_logger.dart';
+import 'utils/localization_logger.dart';
 
 /// 🌍 [AppLocalizer] — Singleton for global translation resolution.
 ///   ✅ Centralizes all translation lookups for the app.

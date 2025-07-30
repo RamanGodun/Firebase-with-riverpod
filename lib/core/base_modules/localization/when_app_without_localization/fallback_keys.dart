@@ -4,9 +4,9 @@ import 'dart:collection' show UnmodifiableMapView;
 /// ✅ Used when localization module (EasyLocalization) is **not initialized**
 /// ✅ Acts as a mini key-value dictionary to resolve known [FailureKey]s
 /// ✅ Complements [AppLocalizer] in "headless" fallback mode
-
+//
 abstract final class LocalesFallbackMapper {
-  //---------------------------------------
+  ///------------------------------------
   LocalesFallbackMapper._();
   //
 
@@ -36,9 +36,9 @@ abstract final class LocalesFallbackMapper {
 
 /// 🧩 [FallbackKeysForErrors] — fallback keys when localization is not used.
 /// ✅ Serves as simple storage of UI fallback strings.
-
+//
 abstract final class FallbackKeysForErrors {
-  //---------------------------------------
+  ///------------------------------------
   const FallbackKeysForErrors._();
   //
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart' show GoRouter;
 import 'core/base_modules/localization/generated/locale_keys.g.dart';
-import 'core/base_modules/navigation/core/go_router_provider.dart';
+import 'core/base_modules/navigation/core/provider_for_go_router.dart';
 import 'core/base_modules/overlays/core/global_overlay_handler.dart';
 import 'core/base_modules/theme/theme_provider/theme_config_provider.dart';
 

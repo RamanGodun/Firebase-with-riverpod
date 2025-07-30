@@ -8,7 +8,7 @@
 ///           - ➡️ onTransition (only for BLoC)
 ///           - ❌ onError
 ///           - 🔴 onClose
-
+//
 final class AppBlocObserver extends BlocObserver {
   ///--------------------------------------------
   const AppBlocObserver();

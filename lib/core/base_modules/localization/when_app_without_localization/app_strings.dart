@@ -1,6 +1,7 @@
-/// 📄 [AppStrings] — centralized place for all static text constants
+/// * 📄 [AppStrings] — centralized place for all static text constants
+//
 abstract final class AppStrings {
-  //----------------------------
+  ///-------------------------
   const AppStrings._();
   //
 

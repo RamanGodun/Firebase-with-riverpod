@@ -11,7 +11,7 @@ abstract final class LocalizationWrapper {
   ///----------------------------------
   LocalizationWrapper._();
 
-  /// 🌐🌍SList of all supported locales in the app
+  /// 🌐🌍 Supported locales for the app
   static final supportedLocales = [
     const Locale('en'),
     const Locale('uk'),

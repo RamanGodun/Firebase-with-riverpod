@@ -3,7 +3,7 @@ import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:flutter/material.dart';
-import '../../theme/ui_constants/_app_constants.dart';
+import '../../../theme/ui_constants/_app_constants.dart';
 import 'language_option.dart';
 
 /// 🌐🌍 [LanguageToggleButton] — macOS-style drop-down with flag + native text
