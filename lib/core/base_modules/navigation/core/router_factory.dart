@@ -2,7 +2,7 @@ part of 'go_router_provider.dart';
 
 /// 🧭🚦 Returns fully constructed [GoRouter] instance
 //
-GoRouter buildGoRouter(Ref ref) {
+GoRouter buildGoRouter(Ref ref, AsyncValue authState) {
   ///--------------------------
 
   return GoRouter(

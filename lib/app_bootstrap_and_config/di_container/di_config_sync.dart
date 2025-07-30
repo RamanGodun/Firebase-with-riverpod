@@ -5,6 +5,7 @@ import '../../core/base_modules/navigation/core/go_router_provider.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/base_modules/theme/theme_provider/theme_config_provider.dart';
+import '../firebase_config/user_auth_provider/firebase_auth_providers.dart';
 
 /// 🔧 [DIConfig] — Abstract contract for DI (Dependency Injection) configuration.
 ///     Provides lists of provider overrides and observers for Riverpod setup.
@@ -53,7 +54,11 @@ final class DIConfiguration extends IDIConfig {
     ),
 
     /// 🧭 Routing provider (GoRouter)
-    goRouter.overrideWith((ref) => buildGoRouter(ref)),
+    goRouter.overrideWith((ref) {
+      // ✅ Ensures, that GoRouter rebuilds only in case of authState changes
+      final authState = ref.watch(authStateStreamProvider);
+      return buildGoRouter(ref, authState);
+    }),
 
     /// 📤 Overlay dispatcher for toasts/dialogs/etc.
     overlayDispatcherProvider.overrideWith(
