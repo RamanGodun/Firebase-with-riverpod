@@ -54,18 +54,18 @@ abstract final class RoutesRedirectionService {
     // ⏳ Redirect to splash while loading
     if (isLoading) return RoutesPaths.splash;
 
-    // 💥 Redirect to error page if auth error
+    // ❌ Error state → redirect to SignIn (optional logic)
     if (isAuthError) return RoutesPaths.signIn;
 
-    // 🚪 Redirect to SignIn page if unauthenticated and not on public page
+    // 🚪 Unauthenticated → allow only public routes
     if (!isAuthenticated) return isOnPublicPages ? null : RoutesPaths.signIn;
 
-    // 🧪 Redirect to /verifyEmail if not verified
+    // 🧪 Not verified → redirect to verify page
     if (!isEmailVerified)
       return isOnVerifyPage ? null : RoutesPaths.verifyEmail;
 
     // ✅ List of pages, that restricted to redirection
-    const Set<String> restrictedToRedirect = {
+    const restrictedToRedirect = {
       RoutesPaths.splash,
       RoutesPaths.verifyEmail,
       ..._publicRoutes,
@@ -77,6 +77,7 @@ abstract final class RoutesRedirectionService {
         isAuthenticated &&
         isEmailVerified;
 
+    // ✅ Prevent double redirect
     if (shouldRedirectHome && currentPath != RoutesPaths.home) {
       if (kDebugMode) {
         debugPrint(
@@ -84,6 +85,11 @@ abstract final class RoutesRedirectionService {
         );
       }
       return RoutesPaths.home;
+    }
+
+    // 🔁 Prevent redundant redirect
+    if (currentPath == RoutesPaths.home && isAuthenticated && isEmailVerified) {
+      return null;
     }
 
     // ➖ No redirect
