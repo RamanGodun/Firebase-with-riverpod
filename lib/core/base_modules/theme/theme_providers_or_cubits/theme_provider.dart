@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart';
-import '../_theme_preferences.dart';
-import '../app_theme_variants.dart';
+import '../module_core/app_theme_preferences.dart';
+import '../module_core/theme_variants.dart';
 import '../text_theme/text_theme_factory.dart';
 
 part 'theme_storage_provider.dart';

@@ -1,12 +1,12 @@
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
-import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/theme/widgets_and_utils/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../ui_constants/_app_constants.dart';
 import '../../../localization/init_localization.dart';
-import '../../app_theme_variants.dart';
+import '../../module_core/theme_variants.dart';
 import '../../theme_providers_or_cubits/theme_provider.dart';
 
 /// 🌗 [ThemeTogglerIcon] — toggles light/dark mode and shows overlay notification
@@ -48,7 +48,6 @@ final class ThemeTogglerIcon extends ConsumerWidget {
     );
   }
 }
-
 
 ////
 
