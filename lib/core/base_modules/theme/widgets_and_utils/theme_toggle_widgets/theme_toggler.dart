@@ -1,15 +1,17 @@
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/widgets_and_utils/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../../ui_constants/_app_constants.dart';
 import '../../../localization/core_of_module/init_localization.dart';
 import '../../module_core/theme_variants.dart';
 import '../../theme_providers_or_cubits/theme_provider.dart';
 
-/// 🌗 [ThemeTogglerIcon] — toggles light/dark mode and shows overlay notification
+/// 🌗 [ThemeTogglerIcon] — toggles between light and dark mode and shows overlay notification
+/// ✅ Supports both Riverpod and Cubit
+/// Just toggle comments the appropriate block below 👇
 //
 final class ThemeTogglerIcon extends ConsumerWidget {
   ///-----------------------------------------
@@ -19,7 +21,15 @@ final class ThemeTogglerIcon extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
+    /// * 🟢 For RIVERPOD apps — uncomment this block
     final wasDark = ref.watch(themeProvider).theme == ThemeVariantsEnum.dark;
+
+    /// * 🔴 For CUBIT/BLoC apps — uncomment this block
+    /*
+      final wasDark = context.select<AppThemeCubit, bool>(
+         (cubit) => cubit.state.theme.isDark);
+    */
+
     final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
     final iconColor = context.colorScheme.primary;
 
@@ -27,12 +37,8 @@ final class ThemeTogglerIcon extends ConsumerWidget {
       icon: Icon(icon, color: iconColor),
 
       onPressed: () {
-        //
-        final newTheme =
-            wasDark ? ThemeVariantsEnum.light : ThemeVariantsEnum.dark;
-
         /// 🕹️🔄 Toggles the theme between light and dark mode.
-        ref.read(themeProvider.notifier).setTheme(newTheme);
+        ref.read(themeProvider.notifier).toggleTheme();
 
         final msgKey =
             wasDark
@@ -45,64 +51,6 @@ final class ThemeTogglerIcon extends ConsumerWidget {
 
         //
       },
-    );
+    ).withPaddingRight(AppSpacing.xxxm);
   }
 }
-
-////
-
-////
-
-////
-
-/*
-
-! For app on Cubit/Bloc this widget will be as follows:
-
-
-/// 🌗 [ThemeTogglerIcon] — toggles between light and dark mode and shows localized message.
-//
-final class ThemeTogglerIcon extends StatelessWidget {
-  ///----------------------------------------------
-  const ThemeTogglerIcon({super.key});
-  //
-
-  @override
-  Widget build(BuildContext context) {
-    //
-    final wasDark = context.select<AppThemeCubit, bool>(
-      (cubit) => cubit.state.theme.isDark,
-    );
-
-    final icon = wasDark ? AppIcons.lightMode : AppIcons.darkMode;
-    final iconColor = context.colorScheme.primary;
-
-    return Padding(
-      padding: const EdgeInsets.only(right: 20),
-      child: IconButton(
-        icon: Icon(icon, color: iconColor),
-
-        onPressed: () {
-          /// 🕹️🔄 Toggles the theme between light and dark mode.
-          context.read<AppThemeCubit>().toggleTheme();
-
-          final msgKey =
-              wasDark
-                  ? LocaleKeys.theme_light_enabled
-                  : LocaleKeys.theme_dark_enabled;
-          final message = AppLocalizer.translateSafely(msgKey);
-
-          // 🌟 Show overlay with correct message and icon
-          context.showUserBanner(message: message, icon: icon);
-
-          //
-        },
-      ),
-    );
-  }
-}
-
-
-
-
- */

@@ -65,6 +65,16 @@ class ThemeConfigNotifier extends StateNotifier<ThemePreferences> {
     _storage.write(_themeKey, theme.name);
   }
 
+  /// 🌓 Toggles between light and dark themes
+  void toggleTheme() {
+    final isCurrentlyDark = state.theme.isDark;
+    // Light if dark, otherwise dark
+    final nextTheme =
+        isCurrentlyDark ? ThemeVariantsEnum.light : ThemeVariantsEnum.dark;
+    // Apply theme and persist
+    setTheme(nextTheme);
+  }
+
   /// 🔤 Update font only
   void setFont(AppFontFamily font) {
     //

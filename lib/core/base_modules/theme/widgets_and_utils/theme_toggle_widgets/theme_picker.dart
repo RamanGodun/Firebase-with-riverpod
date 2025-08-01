@@ -9,7 +9,9 @@ import '../../module_core/theme_variants.dart';
 import '../../theme_providers_or_cubits/theme_provider.dart';
 
 /// 🌗 [ThemePicker] — Allows to pick the theme mode and shows overlay notification
-//
+/// Use this widget in both Riverpod or Cubit/BLoC apps by toggling the relevant section.
+/// Only one block (Riverpod or Cubit) should be uncommented at a time.
+///
 final class ThemePicker extends ConsumerWidget {
   ///--------------------------------------
   const ThemePicker({super.key});
@@ -18,8 +20,16 @@ final class ThemePicker extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //
+    /// 🟢 RIVERPOD — Uncomment for apps using Riverpod
     final themeConfig = ref.watch(themeProvider);
     final themeNotifier = ref.read(themeProvider.notifier);
+
+    /// 🔴 RIVERPOD — Uncomment for apps using Cubit/BLoC
+    /*
+      final themeConfig = context.watch<AppThemeCubit>().state;
+      final themeNotifier = context.read<AppThemeCubit>();
+    */
+
     final locale = Localizations.localeOf(context);
 
     return DropdownButton<ThemeVariantsEnum>(
@@ -28,6 +38,7 @@ final class ThemePicker extends ConsumerWidget {
       icon: const Icon(Icons.arrow_drop_down),
       underline: const SizedBox(),
 
+      /// 🔄 When user picks a theme
       onChanged: (ThemeVariantsEnum? selected) {
         if (selected == null) return;
 
@@ -64,7 +75,7 @@ final class ThemePicker extends ConsumerWidget {
   ////
   ////
 
-  /// 🏷️ Returns localized label for a given theme type
+  /// 🏷️ Returns localized label for theme in dropdown
   String _themeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
       case ThemeVariantsEnum.light:
@@ -76,7 +87,7 @@ final class ThemePicker extends ConsumerWidget {
     }
   }
 
-  /// 🏷️ Returns localized label for a given theme type
+  /// 🏷️ Returns localized label for confirmation banner
   String _chosenThemeLabel(BuildContext context, ThemeVariantsEnum type) {
     switch (type) {
       case ThemeVariantsEnum.light:
@@ -90,98 +101,3 @@ final class ThemePicker extends ConsumerWidget {
 
   //
 }
-
-////
-
-////
-
-////
-
-/*
-
-! For app on Cubit/Bloc this widget will be as follows:
-
-/// 🌗 [ThemePicker] — Allows to pick the theme mode and shows overlay notification
-//
-final class ThemePicker extends StatelessWidget {
-  ///--------------------------------------
-  const ThemePicker({super.key});
-  //
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AppThemeCubit, ThemePreferences>(
-      builder: (context, state) {
-        return DropdownButton<ThemeVariantsEnum>(
-          key: ValueKey(Localizations.localeOf(context).languageCode),
-          value: state.theme,
-          icon: const Icon(Icons.arrow_drop_down),
-          underline: const SizedBox(),
-
-          // 🔄 On theme change
-          onChanged: (ThemeVariantsEnum? selected) {
-            if (selected == null) return;
-
-            // 🟢 Update theme
-            context.read<AppThemeCubit>().setTheme(selected);
-
-            // 🏷️ Get localized label
-            final label = _chosenThemeLabel(context, selected);
-
-            // 🌟 Show overlay
-            context.showUserBanner(message: label, icon: Icons.palette);
-          },
-
-          // 📃 Theme options
-          items:
-              ThemeVariantsEnum.values.map((type) {
-                return DropdownMenuItem<ThemeVariantsEnum>(
-                  value: type,
-                  child: Text(
-                    _themeLabel(context, type),
-                    style: Theme.of(context).textTheme.labelLarge,
-                  ),
-                );
-              }).toList(),
-        );
-      },
-    );
-  }
-
-  ////
-  ////
-
-  /// 🏷️ Returns localized label for a given theme type
-  String _themeLabel(BuildContext context, ThemeVariantsEnum type) {
-    switch (type) {
-      case ThemeVariantsEnum.light:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_light);
-      case ThemeVariantsEnum.dark:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_dark);
-      case ThemeVariantsEnum.amoled:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_amoled);
-    }
-  }
-
-  ////
-
-  /// 🏷️ Returns localized label for a given theme type
-  String _chosenThemeLabel(BuildContext context, ThemeVariantsEnum type) {
-    switch (type) {
-      case ThemeVariantsEnum.light:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_light_enabled);
-      case ThemeVariantsEnum.dark:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_dark_enabled);
-      case ThemeVariantsEnum.amoled:
-        return AppLocalizer.translateSafely(LocaleKeys.theme_amoled_enabled);
-    }
-  }
-
-  //
-}
-
-
-
-
-
- */
