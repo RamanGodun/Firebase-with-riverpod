@@ -1,4 +1,4 @@
-part of 'theme_config_provider.dart';
+part of 'theme_provider.dart';
 
 /// 🧩 [themeStorageProvider] — Provides the shared GetStorage instance
 //
