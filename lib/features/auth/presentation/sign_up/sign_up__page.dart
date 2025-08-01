@@ -1,5 +1,5 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/for_riverpod/show_dialog_when_error_x.dart';
-import 'package:firebase_with_riverpod/core/base_modules/navigation/extensions/navigation_x_on_context.dart';
+import 'package:firebase_with_riverpod/core/base_modules/navigation/utils/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';
 import 'package:flutter/material.dart';

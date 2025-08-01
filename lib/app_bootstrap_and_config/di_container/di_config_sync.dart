@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_storage/get_storage.dart' show GetStorage;
 import '../../core/base_modules/logging/for_riverpod/riverpod_observer.dart';
-import '../../core/base_modules/navigation/core/provider_for_go_router.dart';
+import '../../core/base_modules/navigation/module_core/provider_for_go_router.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/_overlay_dispatcher.dart';
 import '../../core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import '../../core/base_modules/theme/theme_providers_or_cubits/theme_provider.dart';

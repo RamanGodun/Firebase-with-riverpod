@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../app_routes/app_routes.dart';
+import '../routes/app_routes.dart';
 
 /// 🧭🚦 [RoutesRedirectionService] — centralized redirect logic for GoRouter
 /// 🔐 Dynamically handles redirection based on Firebase auth state:

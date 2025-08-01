@@ -4,7 +4,7 @@ import '../../../../app_bootstrap_and_config/firebase_config/user_auth_provider/
 import '../../../shared_presentation_layer/pages_shared/page_not_found.dart';
 import '../utils/overlays_cleaner_within_navigation.dart';
 import 'routes_redirection_service.dart';
-import '../app_routes/app_routes.dart';
+import '../routes/app_routes.dart';
 
 part 'go_router_factory.dart';
 
