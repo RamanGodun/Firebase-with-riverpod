@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart' show GoRouter;
 import 'core/base_modules/localization/generated/locale_keys.g.dart';
 import 'core/base_modules/navigation/core/provider_for_go_router.dart';
 import 'core/base_modules/overlays/core/global_overlay_handler.dart';
-import 'core/base_modules/theme/theme_provider/theme_config_provider.dart';
+import 'core/base_modules/theme/theme_providers_or_cubits/theme_provider.dart';
 
 /// 🧩 [AppRootViewShell] — Combines both Theme and Router configuration
 /// ✅ Ensures minimal rebuilds using selective `ref.watch(...)`

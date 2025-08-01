@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/theme/widgets_and_utils/extensions/theme_x.dart';
 import '../../../utils_shared/timing_control/timing_config.dart';
 import '../../../base_modules/localization/widgets/text_widget.dart';
 

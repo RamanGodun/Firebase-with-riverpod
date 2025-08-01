@@ -1,5 +1,3 @@
-Ось фінальний варіант
-
 # Overlay & Widget Animation Module Guide
 
 *Last updated: 2025-07-31*
@@ -58,9 +56,11 @@ All future animation logic and features should be encapsulated here to ensure co
 * **Contract:** The animation engine contract is a sealed class defining the API that all animation engines must implement.
 * **Base engine:** `AnimationBaseEngine` provides shared animation lifecycle logic.
 * **Engine configs** — Centralizes animation parameters (duration, curves) by overlay/platform (for consistency and maintainability)
-* **Platform aware Engines:** Platform-specific engines (`IOSAnimationEngine`, `AndroidAnimationEngine`) extend the base and provide native-like transitions. Right engine calls declaratively via `BuildContext` extension `_engine_mapper_x_on_context.dart`.
+* **Platform aware Engines:** Platform-specific engines (`IOSAnimationEngine`, `AndroidAnimationEngine`) extend the base and provide native-like transitions. 
+Right engine calls declaratively via `BuildContext` extension `_engine_mapper_x_on_context.dart`.
 * **Fallback engine:** Ensures overlays always animate, even if a platform-specific engine is missing (to prevent errors if config fails).
-* **Incapsulated animation lifecycle** The full animation lifecycle of overlays animations (controller initialization, playing 0f entry animation, manually or by timeout reverse/dismissal, and disposes as needed) manages by `animation_wrapper/`
+* **Incapsulated animation lifecycle** The full animation lifecycle of overlays animations (controller initialization, playing 0f entry animation, 
+manually or by timeout reverse/dismissal, and disposes as needed) manages by `animation_wrapper/`
 * **Open for Extension:** To add new types/styles of animation, implement a new engine—existing code remains untouched (open/close principle).
 
 ---
@@ -68,15 +68,20 @@ All future animation logic and features should be encapsulated here to ensure co
 ### Overlay Animation FLOW (declarative)
 
   When an overlay (e.g., dialog, snackbar, banner) is triggered using a DSL method like `context.showSnackbar()`, the flow is:
-1. **Overlay Request**: The DSL method creates a platform-specific widget (e.g., `IOSAppDialog`, `AndroidSnackbar`) and wraps it in an `AnimatedOverlayWrapper`.
-2. **Engine Injection**: The wrapper injects the appropriate `AnimationEngine` using the engine mapper (`getEngine(OverlayCategory)`), selecting the best-fit for the platform and overlay type.
+1. **Overlay Request**: The DSL method creates a platform-specific widget (e.g., `IOSAppDialog`, `AndroidSnackbar`) 
+and wraps it in an `AnimatedOverlayWrapper`.
+2. **Engine Injection**: The wrapper injects the appropriate `AnimationEngine` using the engine mapper (`getEngine(OverlayCategory)`), 
+selecting the best-fit for the platform and overlay type.
 3. **Animation Lifecycle**: `AnimatedOverlayWrapper` manages the entire animation lifecycle .
-4. **Overlay Dispatcher**: Manages the overlay queue. On dismissal (manual or auto), it removes the entry, notifies listeners, and optionally triggers the next overlay.
+4. **Overlay Dispatcher**: Manages the overlay queue. On dismissal (manual or auto), it removes the entry, 
+notifies listeners, and optionally triggers the next overlay.
 
 
 ### Simplified Flow
 
-Overlay dispatcher coordinates all queue and lifecycle. When overlay triggered → `AnimatedOverlayWrapper` created, injects animation engine, that are selected via mapper based on overlay category & platform. All animation transitions (entry, reverse, dismiss) manages by engine.
+Overlay dispatcher coordinates all queue and lifecycle. When overlay triggered → `AnimatedOverlayWrapper` created, 
+injects animation engine, that are selected via mapper based on overlay category & platform. 
+All animation transitions (entry, reverse, dismiss) manages by engine.
 
 ------------------------------------------------------------------------------------------------------------------------
 
