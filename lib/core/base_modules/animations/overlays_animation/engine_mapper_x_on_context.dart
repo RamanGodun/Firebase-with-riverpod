@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import '../../../../overlays/core/enums_for_overlay_module.dart';
-import '../_animation_engine.dart';
-import 'ios_animation_engine.dart';
-import 'android_animation_engine.dart';
-
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
+import 'package:flutter/material.dart';
+import '../../overlays/core/enums_for_overlay_module.dart';
+import '../module_core/_animation_engine.dart';
+import 'overlays_animation_engines/ios_animation_engine.dart';
+import 'overlays_animation_engines/android_animation_engine.dart';
 
 /// 🎯 [OverlayAnimationEngineMapperX] — resolves the animation engine,
 ///     based on overlay category and platform.

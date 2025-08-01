@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../animation_engines/_animation_engine.dart';
+import '../../module_core/_animation_engine.dart';
 
 /// 🎞️ [AnimatedOverlayShell] — Universal animation shell for overlays
 /// - Wraps child with Slide (optional) + Fade + Scale transitions

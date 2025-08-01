@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../animation_engines/_animation_engine.dart';
+import '../../module_core/_animation_engine.dart';
 
 /// 🧱 [AnimatedOverlayWrapper] — Universal animation container for overlay widgets.
 ///    ✅ Safely initializes the animation engine with [TickerProvider].

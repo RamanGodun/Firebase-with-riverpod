@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../utils_shared/timing_control/timing_config.dart';
-import '../../../../overlays/core/enums_for_overlay_module.dart';
-import '../_animation_engine.dart';
-import '../engine_configs.dart';
+import '../../../../utils_shared/timing_control/timing_config.dart';
+import '../../../overlays/core/enums_for_overlay_module.dart';
+import '../../module_core/_animation_engine.dart';
+import '../../module_core/engine_configs.dart';
 
 /// 🍎 [IOSOverlayAnimationEngine] — shared animation engine for all iOS overlays
 /// ✅ Uses category-based configuration to generate platform-consistent animations

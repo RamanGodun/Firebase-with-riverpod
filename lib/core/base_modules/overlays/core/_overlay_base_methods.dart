@@ -1,9 +1,9 @@
-import 'package:firebase_with_riverpod/core/base_modules/animation/overlays_animation/animation_engines/platform_based_engines/_engine_mapper_x_on_context.dart';
+import 'package:firebase_with_riverpod/core/base_modules/animations/overlays_animation/engine_mapper_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
 import 'package:firebase_with_riverpod/core/base_modules/theme/extensions/theme_x.dart';
 import 'package:flutter/material.dart';
 import '../../../utils_shared/timing_control/timing_config.dart';
-import '../../animation/overlays_animation/animation_wrapper/animated_overlay_wrapper.dart';
+import '../../animations/overlays_animation/animation_wrapper/animated_overlay_wrapper.dart';
 import '../overlays_dispatcher/_overlay_dispatcher.dart';
 import '../overlays_dispatcher/overlay_entries/_overlay_entries_registry.dart';
 import 'enums_for_overlay_module.dart';
