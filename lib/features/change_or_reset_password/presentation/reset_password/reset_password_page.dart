@@ -8,7 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart' show useFocusNode;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart' show HookConsumerWidget;
 import '../../../../core/shared_presentation_layer/shared_widgets/buttons/text_button.dart';
-import '../../../../core/base_modules/localization/widgets/text_widget.dart';
+import '../../../../core/base_modules/localization/module_widgets/text_widget.dart';
 import '../../../../core/base_modules/navigation/routes/app_routes.dart';
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';

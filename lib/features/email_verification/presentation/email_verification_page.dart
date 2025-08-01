@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
 import '../../../core/shared_presentation_layer/shared_widgets/buttons/text_button.dart';
-import '../../../core/base_modules/localization/widgets/text_widget.dart';
+import '../../../core/base_modules/localization/module_widgets/text_widget.dart';
 import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../core/base_modules/theme/ui_constants/app_colors.dart';

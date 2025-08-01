@@ -12,7 +12,7 @@ import '../../../../core/base_modules/form_fields/input_validation/validation_en
 import '../../../../core/base_modules/form_fields/utils/use_auth_focus_nodes.dart';
 import '../../../../core/base_modules/form_fields/widgets/_fields_factory.dart';
 import '../../../../core/base_modules/form_fields/widgets/password_visibility_icon.dart';
-import '../../../../core/base_modules/localization/widgets/text_widget.dart';
+import '../../../../core/base_modules/localization/module_widgets/text_widget.dart';
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/shared_presentation_layer/shared_widgets/buttons/filled_button.dart';
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';

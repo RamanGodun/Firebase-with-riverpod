@@ -2,9 +2,9 @@ import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../localization/init_localization.dart';
+import '../../../localization/core_of_module/init_localization.dart';
 import '../../../localization/generated/locale_keys.g.dart';
-import '../../../localization/widgets/text_widget.dart';
+import '../../../localization/module_widgets/text_widget.dart';
 import '../../module_core/theme_variants.dart';
 import '../../theme_providers_or_cubits/theme_provider.dart';
 

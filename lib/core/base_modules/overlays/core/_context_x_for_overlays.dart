@@ -2,7 +2,7 @@ import 'package:firebase_with_riverpod/app_bootstrap_and_config/di_container/rea
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_overlay_base_methods.dart';
 import 'package:flutter/material.dart';
 import '../../errors_handling/failures/failure__ui_model.dart';
-import '../../localization/init_localization.dart';
+import '../../localization/core_of_module/init_localization.dart';
 import '../../localization/generated/locale_keys.g.dart';
 import '../overlays_dispatcher/_overlay_dispatcher.dart';
 import '../overlays_dispatcher/overlay_dispatcher_provider.dart'

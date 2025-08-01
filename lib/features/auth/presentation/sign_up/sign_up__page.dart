@@ -5,7 +5,7 @@ import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../../core/shared_presentation_layer/shared_widgets/buttons/text_button.dart';
-import '../../../../core/base_modules/localization/widgets/text_widget.dart';
+import '../../../../core/base_modules/localization/module_widgets/text_widget.dart';
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../../core/utils_shared/extensions/context_extensions/_context_extensions.dart';

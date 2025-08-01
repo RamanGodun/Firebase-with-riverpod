@@ -10,9 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
 import '../../../core/base_modules/localization/generated/locale_keys.g.dart';
-import '../../../core/base_modules/localization/widgets/key_value_text_widget.dart';
-import '../../../core/base_modules/localization/widgets/text_widget.dart';
-import '../../../core/base_modules/localization/widgets/language_toggle_button/toggle_button.dart';
+import '../../../core/shared_presentation_layer/shared_widgets/key_value_text_widget.dart';
+import '../../../core/base_modules/localization/module_widgets/text_widget.dart';
+import '../../../core/base_modules/localization/module_widgets/language_toggle_button/toggle_button.dart';
 import '../../../core/base_modules/navigation/routes/app_routes.dart';
 import '../../../core/base_modules/theme/ui_constants/_app_constants.dart';
 import '../../../core/base_modules/theme/widgets_and_utils/blur_wrapper.dart';
