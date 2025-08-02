@@ -46,4 +46,3 @@ final class FirestoreDocMissingFailure extends FirebaseFailure {
       );
   //
 }
-

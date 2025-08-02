@@ -99,5 +99,4 @@ extension FailureX on Failure {
   String get label => '\$safeCode — \$message';
 
   //
-
 }
