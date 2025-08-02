@@ -5,11 +5,11 @@ import '../utils/errors_observing/loggers/errors_log_util.dart';
 import 'failure_entity.dart';
 import 'failure_ui_entity.dart';
 
-/// ✅ [FailureToUIEntityX] — Maps [Failure] to [FailureUIEntity] 
+/// ✅ [FailureToUIEntityX] — Maps [Failure] to [FailureUIEntity]
 //
 extension FailureToUIEntityX on Failure {
   ///---------------------------------
-  // 
+  //
   /// From [Failure] to [FailureUIEntity] mapper
   FailureUIEntity toUIEntity() {
     //

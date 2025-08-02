@@ -18,9 +18,9 @@ import '../../../../core/base_modules/form_fields/widgets/_fields_factory.dart';
 import 'providers/reset_password_form_provider.dart';
 import 'providers/reset_password_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/failure_ui_mapper.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';
-import '../../../../core/base_modules/errors_handling/failures/failure__entity.dart';
+import '../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 
 part 'widgets_for_reset_password_page.dart';

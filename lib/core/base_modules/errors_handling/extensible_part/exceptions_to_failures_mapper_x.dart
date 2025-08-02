@@ -27,8 +27,7 @@ extension ExceptionToFailureX on Object {
     FirebaseException error => _handleFirebase(error),
 
     // 📄 Firestore-specific parsing issue
-    FormatException(:final message)
-        when message.contains('document') == true =>
+    FormatException(:final message) when message.contains('document') == true =>
       FirestoreDocMissingFailure(),
 
     // ⚙️ Native platform

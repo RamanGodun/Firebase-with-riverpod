@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/utils_shared/timing_control/timing_config.dart';
 import '../../../../core/utils_shared/riverpod_specific/safe_async_state.dart';
 import '../../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
-import '../../../../core/base_modules/errors_handling/failures/failure__entity.dart';
+import '../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../domain/email_verification_use_case.dart';
 import '../../domain/providers/use_case_provider.dart';
 

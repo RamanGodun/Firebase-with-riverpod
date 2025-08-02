@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/failures/extensions/to_ui_failure_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/failure_ui_mapper.dart';
 import 'package:firebase_with_riverpod/core/base_modules/localization/generated/locale_keys.g.dart';
 import 'package:firebase_with_riverpod/core/base_modules/navigation/utils/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';

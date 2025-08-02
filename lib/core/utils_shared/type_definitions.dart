@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../base_modules/errors_handling/either/either.dart';
-import '../base_modules/errors_handling/failures/failure__entity.dart';
+import '../base_modules/errors_handling/core_of_module/either.dart';
+import '../base_modules/errors_handling/core_of_module/failure_entity.dart';
 
 /// 🧩 [ResultFuture] — Represents async result with [Either<Failure, T>]
 typedef ResultFuture<T> = Future<Either<Failure, T>>;

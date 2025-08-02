@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../core/base_modules/errors_handling/failures/failure__entity.dart';
+import '../../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../domain/provider/use_cases_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
