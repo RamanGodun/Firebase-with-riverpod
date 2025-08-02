@@ -44,7 +44,7 @@ final class ApiFailure extends Failure {
   ApiFailure({required int super.statusCode, required super.message})
     : super._(
         code: 'API',
-        translationKey: FailureTranslationKeys.unknown.translationKey,
+        translationKey: FailureTranslationKeys.apiGenericError.translationKey,
       );
   //
 }

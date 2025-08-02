@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/_run_with_error_handling.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/_run_errors_handling.dart';
 import 'package:firebase_with_riverpod/core/shared_data_layer/user_data_transfer_objects/user_dto_x.dart';
 import '../../../core/utils_shared/timing_control/timing_config.dart';
 import '../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';

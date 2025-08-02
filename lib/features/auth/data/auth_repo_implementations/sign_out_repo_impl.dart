@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/_run_with_error_handling.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/_run_errors_handling.dart';
 import '../../../../core/utils_shared/type_definitions.dart';
 import '../../domain/repo_contracts.dart';
 import '../remote_database_contract.dart';

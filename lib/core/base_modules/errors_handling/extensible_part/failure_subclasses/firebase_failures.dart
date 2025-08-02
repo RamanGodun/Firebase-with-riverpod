@@ -47,21 +47,3 @@ final class FirestoreDocMissingFailure extends FirebaseFailure {
   //
 }
 
-////
-
-/// Failure, when email verification polling time is expired
-//
-final class EmailVerificationFailure extends Failure {
-  ///--------------------------------------------
-  //
-  EmailVerificationFailure.timeoutExceeded()
-    : super._(
-        message: 'Email verification polling timed out.',
-        translationKey:
-            FailureTranslationKeys.emailVerificationTimeout.translationKey,
-        code: 'EMAIL_VERIFICATION_TIMEOUT',
-        statusCode: FailureSource.useCase.code,
-      );
-
-  //
-}

@@ -1,7 +1,24 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/extensions_on_failure/failure_to_either_x.dart';
 import 'either.dart';
 import 'failure_entity.dart';
-import 'exceptions_to_failures_mapper.dart';
+import 'dart:async' show TimeoutException;
+import 'dart:convert' show JsonUnsupportedObjectError;
+import 'dart:io' show FileSystemException, HttpException, SocketException;
+import 'package:dio/dio.dart' show DioException, DioExceptionType;
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
+import 'package:firebase_core/firebase_core.dart' show FirebaseException;
+import 'package:flutter/services.dart'
+    show MissingPluginException, PlatformException;
+import '../utils/errors_observing/loggers/errors_log_util.dart';
+import '../extensible_part/failure_source.dart';
+import '../extensible_part/failure_translation_keys.dart';
+
+part '../extensible_part/exceptions_to_failures_mapping/_exceptions_to_failures_mapper_x.dart';
+part '../extensible_part/exceptions_to_failures_mapping/dio_cases.dart';
+part '../extensible_part/exceptions_to_failures_mapping/firebase_cases.dart';
+part '../extensible_part/exceptions_to_failures_mapping/network_cases.dart';
+part '../extensible_part/exceptions_to_failures_mapping/platform_cases.dart';
+part '../extensible_part/exceptions_to_failures_mapping/domain_cases.dart';
 
 /// [ResultFutureExtension] - Extension for async function types.
 /// Provides a declarative way to wrap any async operation
@@ -16,7 +33,14 @@ extension ResultFutureExtension<T> on Future<T> Function() {
       final result = await this();
       return Right(result);
     } catch (e, st) {
-      return ExceptionToFailureMapper.from(e, st).toLeft<T>();
+      // return ExceptionToFailureMapper.from(e, st).toLeft<T>();
+      // 🧼 Logging and mapping built-in here
+      ErrorsLogger.log(e, st);
+
+      ///🛡️ Ensures that [e] is domain-level [Failure], otherwise converts any caught raw exceptions into [Failure].
+      final failure = e is Failure ? e : e.mapToFailure(st);
+      return failure.toLeft<T>();
+      //
     }
   }
 }
@@ -26,10 +50,7 @@ extension ResultFutureExtension<T> on Future<T> Function() {
 ////
 
 /*
-
-
 ? Alternative
-
 
 /// [WrapWithErrorHandling] - Abstract base class for use case implementations.
 /// Provides a consistent method to wrap any async domain logic
@@ -53,7 +74,5 @@ abstract final class WrapWithErrorHandling {
     }
   }
 }
-
-
 
  */

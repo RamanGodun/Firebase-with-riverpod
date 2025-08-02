@@ -1,4 +1,4 @@
-part of '../../core_of_module/exceptions_to_failures_mapper.dart';
+part of '../../core_of_module/_run_errors_handling.dart';
 
 /// 🔥 [_handleFirebase] — maps [FirebaseException] to structured [Failure]s.
 /// ✅ Handles all major Firebase error codes with localization support.

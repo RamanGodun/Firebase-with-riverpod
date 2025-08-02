@@ -27,17 +27,15 @@ enum FailureTranslationKeys {
   firebaseUserNotFound, // 👤 Email not registered
   firebaseWeakPassword, // 🧵 Password is too simple
   firebaseWrongPassword, // 🔑 Valid email, wrong password
-
+  useCaseInvalidArgument, // 🧠 Invalid method input or domain rule violated
+  cacheError, // 💾 Cache/local storage failure
+  apiGenericError, // 🌐 Unexpected API failure
   // 📧 Email verification specific failure
   emailVerificationTimeout, // 🕓 Timeout during email polling
-
   // ⏱️ General app-level timeout
   timeout, // ⌛ Generic request timeout
-
-  //
   // 📦 Internal app/data format issues
   formatError, // 🧩 JSON parsing or data format error
-
   // ❓ Fallbacks or rare plugin-related issues
   unknown, // ❓ Unexpected or unclassified error
   missingPlugin; // 🧩 Platform plugin not available
@@ -68,11 +66,11 @@ enum FailureTranslationKeys {
     firebaseUserNotFound => 'failure.firebase.user_not_found',
     firebaseWeakPassword => 'failure.firebase.weak_password',
     firebaseWrongPassword => 'failure.firebase.wrong_password',
-
+    useCaseInvalidArgument => 'failure.use_case.invalid_argument',
+    cacheError => 'failure.cache.error',
+    apiGenericError => 'failure.api.generic',
     emailVerificationTimeout => 'failure.email_verification.timeout',
-
     timeout => 'failure.timeout',
-
     formatError => 'failure.format.error',
     unknown => 'failure.unknown',
     missingPlugin => 'failure.plugin.missing',

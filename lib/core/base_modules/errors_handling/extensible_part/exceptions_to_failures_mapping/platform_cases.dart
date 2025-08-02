@@ -1,4 +1,4 @@
-part of '../../core_of_module/exceptions_to_failures_mapper.dart';
+part of '../../core_of_module/_run_errors_handling.dart';
 
 /// ⚙️ [_handlePlatform] — maps [PlatformException] to [GenericFailure].
 /// ✅ Used for native platform channel errors.

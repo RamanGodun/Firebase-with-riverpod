@@ -1,4 +1,4 @@
-part of '../../core_of_module/exceptions_to_failures_mapper.dart';
+part of '../../core_of_module/_run_errors_handling.dart';
 
 /// 🌍 [_handleDio] — maps Dio-specific exceptions to [Failure]s.
 /// ✅ Covers timeouts, client/server HTTP errors, and unknown types.

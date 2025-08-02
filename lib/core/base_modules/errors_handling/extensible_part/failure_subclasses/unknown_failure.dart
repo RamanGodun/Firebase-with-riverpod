@@ -9,7 +9,8 @@ final class UnknownFailure extends Failure {
     required super.message,
     FailureTranslationKeys translationKey = FailureTranslationKeys.unknown,
   }) : super._(
-         statusCode: 'UNKNOWN',
+         statusCode: FailureSource.unknown.code,
+         code: 'UNKNOWN',
          translationKey: translationKey.translationKey,
        );
   //

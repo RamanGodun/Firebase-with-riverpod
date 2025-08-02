@@ -1,13 +1,13 @@
-part of '../core_of_module/exceptions_to_failures_mapper.dart';
+part of '../../core_of_module/_run_errors_handling.dart';
 
-/// 📦 [ExceptionToFailureX] — Extensible extension to map any exception to [Failure]
+/// 📦 [ExceptionToFailureX] — Extensible extension to map any raw exception to domain-level [Failure]
 /// ✅ Cleanly separates mapping logic from core mapper
 /// ✅ New handlers can be added without touching core
-/// ✅ Matches pattern from legacy [ExceptionToFailureMapper.from]
 //
 extension ExceptionToFailureX on Object {
-  /// 🛡️ Converts any error into domain-level [Failure].
-  Failure mapToFailure() => switch (this) {
+  //
+  Failure mapToFailure([StackTrace? stackTrace]) => switch (this) {
+    //
     // 🌐 No connection
     SocketException error => _handleSocket(error),
 

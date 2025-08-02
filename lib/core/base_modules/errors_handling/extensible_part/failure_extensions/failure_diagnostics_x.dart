@@ -6,14 +6,14 @@ import '../../core_of_module/failure_entity.dart';
 /// ✅ Used in conditional logic, logging, Crashlytics, result handlers, and UI mapping.
 //
 extension FailureX on Failure {
-  ///───────────────────────────
+  ///────────────────────────
+  //
   /// 🔍 SEMANTIC TYPE CHECKERS
   /// ✅ Replaces `is SomeFailure` with readable intent
   /// ✅ Improves clarity in conditional logic (UI/logic branching)
-  //
 
   /// ❌ True if failure is due to lack of network or timeout
-  bool get isNetwork => this is NetworkFailure;
+  bool get isNetwork => this is NetworkFailure || this is TimeoutFailure;
 
   /// 🔒 True if failure was caused by unauthorized access (401)
   bool get isUnauthorized => this is UnauthorizedFailure;
@@ -36,13 +36,22 @@ extension FailureX on Failure {
   /// 🧠 True if failure occurred in business/use-case logic
   bool get isUseCase => this is UseCaseFailure;
 
-  //
-  //───────────────────────────
+  /// ⏱ True if failure was due to timeout
+  bool get isTimeout => this is TimeoutFailure;
 
-  /// ─────────────────────────────────
+  /// 📩 True if failure is specific to email verification timeout
+  bool get isEmailVerification => this is EmailVerificationFailure;
+
+  /// 🧊 True if failure comes from Firestore document structure
+  bool get isFirestoreDocMissing => this is FirestoreDocMissingFailure;
+
+  /// 🔍 True if failure is due to missing current FirebaseUser
+  bool get isFirebaseUserMissing => this is FirebaseUserMissingFailure;
+
+  //
+
   /// 🔌 Source & Type Diagnostics
   /// ✅ Used in logs, analytics, crash reports
-  ///
 
   /// Returns plugin source identifier
   String get pluginSource => switch (this) {
@@ -52,6 +61,9 @@ extension FailureX on Failure {
     UseCaseFailure() => FailureSource.useCase.code,
     UnauthorizedFailure() => 'AUTH',
     CacheFailure() => 'CACHE',
+    NetworkFailure() => FailureSource.httpClient.code,
+    TimeoutFailure() => FailureSource.httpClient.code,
+    EmailVerificationFailure() => FailureSource.useCase.code,
     _ => FailureSource.unknown.code,
   };
 
@@ -71,7 +83,6 @@ extension FailureX on Failure {
   bool get isUnknownFailure => this is UnknownFailure;
 
   //
-  //───────────────────────────
 
   /// 🔁 Runtime Casting & Metadata
 
@@ -85,7 +96,8 @@ extension FailureX on Failure {
   String get safeStatus => statusCode?.toString() ?? 'NO_STATUS';
 
   /// Developer-friendly label combining code and message
-  String get label => '$safeCode — $message';
+  String get label => '\$safeCode — \$message';
 
   //
+
 }
