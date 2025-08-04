@@ -34,7 +34,7 @@ final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
 
     result.fold(
       (failure) {
-        if (failure.code == 'requires-recent-login') {
+        if (failure.type.code == 'requires-recent-login') {
           state = const ChangePasswordRequiresReauth();
         } else {
           state = ChangePasswordError(failure);

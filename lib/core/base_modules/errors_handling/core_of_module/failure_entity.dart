@@ -2,8 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart' show sealed;
 import 'failure_type.dart';
 
-part '../extensible_part/failure_factories_x.dart';
-
 /// 🧩 [Failure] — Domain-layer error representation.
 /// ✅ Encapsulates structured error data
 /// ✅ Used throughout layers (repo → use case → UI)
@@ -19,7 +17,7 @@ final class Failure extends Equatable {
   final int? statusCode;
 
   /// 🔒 Private constructor to ensure factory usage only
-  const Failure._({
+  const Failure({
     required this.type,
     @pragma('vm:entry-point') this.message,
     this.statusCode,

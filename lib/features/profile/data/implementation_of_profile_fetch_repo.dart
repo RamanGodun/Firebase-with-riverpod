@@ -1,7 +1,7 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/_run_errors_handling.dart';
 import 'package:firebase_with_riverpod/core/shared_data_layer/user_data_transfer_objects/user_dto_x.dart';
+import '../../../core/base_modules/errors_handling/extensible_part/failure_factory.dart';
 import '../../../core/utils_shared/timing_control/timing_config.dart';
-import '../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../../core/shared_data_layer/user_data_transfer_objects/_user_dto.dart';
 import '../../../core/shared_data_layer/user_data_transfer_objects/user_dto_factories_x.dart';
 import '../../../core/utils_shared/cash_manager/cache_manager.dart';
@@ -49,7 +49,8 @@ final class ProfileRepoImpl implements IProfileRepo {
   /// Fetches user profile from remote source
   Future<UserEntity> _fetchProfile(String uid) async {
     final data = await _remoteDatabase.fetchUserMap(uid);
-    if (data == null) throw FirebaseFailure(message: 'User not found');
+    if (data == null)
+      throw FailureFactory.firebaseUserNotFound(message: 'User not found!');
     final dto = UserDTOFactories.fromMap(data, id: uid);
     return dto.toEntity();
   }
@@ -73,12 +74,14 @@ final class ProfileRepoImpl implements IProfileRepo {
       () async {
         final authData = await _remoteDatabase.getCurrentUserAuthData();
         if (authData == null)
-          throw FirebaseFailure(message: 'No authorized user!');
-
+          throw FailureFactory.firebaseUserMissing(
+            message: 'No authorized user!',
+          );
+        //
         final dto = _buildUserDTO(authData, uid);
         await _remoteDatabase.createUserMap(dto.id, dto.toJsonMap());
-
-        // Remove from cache to force fresh fetch next time
+        //
+        /// Remove from cache to force fresh fetch next time
         _cacheManager.remove(uid);
       }.runWithErrorHandling();
 

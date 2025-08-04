@@ -11,7 +11,7 @@ extension FailureNavigationX on Failure {
   /// 📡 Navigates to login screen or callback when unauthorized (401)
   /// ⚠️ This is an example — replace [onUnauthorized] with actual implementation in your app
   Failure redirectIfUnauthorized(VoidCallback onUnauthorized) {
-    if (isUnauthorized) onUnauthorized();
+    if (isUnauthorizedFailure) onUnauthorized();
     return this;
   }
 }

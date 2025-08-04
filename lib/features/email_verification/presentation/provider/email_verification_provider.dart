@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../core/base_modules/errors_handling/extensible_part/failure_factory.dart';
 import '../../../../core/utils_shared/timing_control/timing_config.dart';
 import '../../../../core/utils_shared/riverpod_specific/safe_async_state.dart';
 import '../../../../app_bootstrap_and_config/firebase_config/firebase_constants.dart';
-import '../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../domain/email_verification_use_case.dart';
 import '../../domain/providers/use_case_provider.dart';
 
@@ -46,7 +46,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
         debugPrint('Polling timed out after 2 minutes');
 
         state = AsyncError(
-          EmailVerificationFailure.timeoutExceeded(),
+          FailureFactory.emailVerificationTimeout,
           StackTrace.current,
         );
 

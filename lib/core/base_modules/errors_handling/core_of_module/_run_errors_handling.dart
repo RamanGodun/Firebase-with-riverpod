@@ -1,17 +1,21 @@
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_failure/failure_to_either_x.dart';
+import '../extensible_part/failure_factory.dart';
 import 'either.dart';
 import 'failure_entity.dart';
 import 'dart:async' show TimeoutException;
 import 'dart:convert' show JsonUnsupportedObjectError;
 import 'dart:io' show FileSystemException, SocketException;
 import 'package:dio/dio.dart' show DioException, DioExceptionType;
-import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:firebase_core/firebase_core.dart' show FirebaseException;
 import 'package:flutter/services.dart'
     show MissingPluginException, PlatformException;
+import 'failure_type.dart';
 import 'utils/errors_observing/loggers/errors_log_util.dart';
 
-part '../extensible_part/_exceptions_to_failures_mapper_x.dart';
+part '../extensible_part/exceptions_to_failure_mapping/_exceptions_to_failures_mapper_x.dart';
+part '../extensible_part/exceptions_to_failure_mapping/firebase_exceptions_mapper.dart';
+part '../extensible_part/exceptions_to_failure_mapping/dio_exceptions_mapper.dart';
+
 
 /// [ResultFutureExtension] - Extension for async function types.
 /// Provides a declarative way to wrap any async operation

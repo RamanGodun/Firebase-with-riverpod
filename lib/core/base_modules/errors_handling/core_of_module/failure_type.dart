@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../localization/generated/locale_keys.g.dart';
+
 part '../extensible_part/failure_types/firebase.dart';
 part '../extensible_part/failure_types/network.dart';
 part '../extensible_part/failure_types/platform.dart';

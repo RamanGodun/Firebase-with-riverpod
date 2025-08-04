@@ -10,9 +10,9 @@ extension FailureIconX on FailureType {
     if (this is NetworkFailureType)
       return Icons.signal_wifi_connected_no_internet_4;
     if (this is NetworkTimeoutFailureType) return Icons.schedule;
-    if (this is FirebaseFailureType) return Icons.local_fire_department;
-    if (this is FirebaseUserMissingFailureType) return Icons.no_accounts;
-    if (this is FirestoreDocMissingFailureType) return Icons.insert_drive_file;
+    if (this is GenericFirebaseFT) return Icons.local_fire_department;
+    if (this is UserMissingFirebaseFT) return Icons.no_accounts;
+    if (this is DocMissingFirebaseFT) return Icons.insert_drive_file;
     if (this is UnauthorizedFailureType) return Icons.lock;
     if (this is CacheFailureType) return Icons.sd_storage;
     if (this is UseCaseFailureType) return Icons.settings;
@@ -26,15 +26,13 @@ extension FailureIconX on FailureType {
     if (this is SqliteFailureType) return Icons.storage;
     if (this is PlatformFailureType) return Icons.memory;
     if (this is UnknownFailureType) return Icons.error_outline;
-    if (this is FirebaseUserNotFoundFailureType)
-      return Icons.person_off_outlined;
     if (this is EmailAlreadyInUseFirebaseFT) return Icons.mark_email_read;
     if (this is UserNotFoundFirebaseFT) return Icons.person_search;
     if (this is UserDisabledFirebaseFT) return Icons.block;
     if (this is EmailAlreadyInUseFirebaseFT) return Icons.mail_lock;
     if (this is OperationNotAllowedFirebaseFT) return Icons.do_not_disturb_alt;
-    if (this is WeakPasswordFirebaseFT) return Icons.shield;
 
+    ///
     return Icons.error; // 🔒 Fallback UI icon
   }
 }

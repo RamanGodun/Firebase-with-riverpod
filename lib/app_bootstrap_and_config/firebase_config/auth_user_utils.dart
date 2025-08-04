@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart' show User;
+import '../../core/base_modules/errors_handling/extensible_part/failure_factory.dart';
 import 'firebase_constants.dart';
-import '../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 
 /// 🧩 [AuthUserUtils] — centralized utils for accessing current user
 /// 🛡️ Guarantees null-safe usage of FirebaseAuth.currentUser
@@ -12,7 +12,7 @@ abstract final class AuthUserUtils {
   /// 👤 Returns current user or throws [FirebaseUserMissingFailure]
   static User get currentUserOrThrow {
     final user = FirebaseConstants.fbAuth.currentUser;
-    if (user == null) throw FirebaseUserMissingFailure();
+    if (user == null) throw throw FailureFactory.firebaseUserMissing;
     return user;
   }
 

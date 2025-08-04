@@ -13,8 +13,6 @@ final class CacheFailureType extends FailureType {
     : super(code: 'CACHE', translationKey: 'failure.cache.error');
 }
 
-
-
 final class UnauthorizedFailureType extends FailureType {
   const UnauthorizedFailureType()
     : super(code: 'UNAUTHORIZED', translationKey: 'failure.auth.unauthorized');

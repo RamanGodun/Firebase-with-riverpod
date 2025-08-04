@@ -2,89 +2,9 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
-  static const languages_switched_to_pl = 'languages.switched_to_pl';
-  static const languages_switched_to_en = 'languages.switched_to_en';
-  static const languages_switched_to_ua = 'languages.switched_to_ua';
-  static const languages = 'languages';
-  static const buttons_ok = 'buttons.ok';
-  static const buttons_sign_in = 'buttons.sign_in';
-  static const buttons_sign_up = 'buttons.sign_up';
-  static const buttons_sign_out = 'buttons.sign_out';
-  static const buttons_submitting = 'buttons.submitting';
-  static const buttons_retry = 'buttons.retry';
-  static const buttons_redirect_to_sign_up = 'buttons.redirect_to_sign_up';
-  static const buttons_redirect_to_sign_in = 'buttons.redirect_to_sign_in';
-  static const buttons_cancel = 'buttons.cancel';
-  static const buttons_go_to_home = 'buttons.go_to_home';
-  static const buttons_reset_password = 'buttons.reset_password';
-  static const buttons_resend_email = 'buttons.resend_email';
-  static const buttons = 'buttons';
-  static const errors_page_not_found_title = 'errors.page_not_found_title';
-  static const errors_page_not_found_message = 'errors.page_not_found_message';
-  static const errors_error_dialog = 'errors.error_dialog';
-  static const errors_firebase_title = 'errors.firebase_title';
-  static const errors_firebase_message = 'errors.firebase_message';
-  static const errors_errors_general_title = 'errors.errors_general_title';
-  static const errors = 'errors';
-  static const failure_firebase_doc_missing = 'failure.firebase.doc_missing';
-  static const failure_firebase_wrong_password =
-      'failure.firebase.wrong_password';
-  static const failure_firebase_user_not_found =
-      'failure.firebase.user_not_found';
-  static const failure_firebase_invalid_credential =
-      'failure.firebase.invalid_credential';
-  static const failure_firebase_generic = 'failure.firebase.generic';
-  static const failure_firebase_email_in_use = 'failure.firebase.email_in_use';
-  static const failure_firebase_invalid_email =
-      'failure.firebase.invalid_email';
-  static const failure_firebase_missing_email =
-      'failure.firebase.missing_email';
-  static const failure_firebase_no_current_user =
-      'failure.firebase.no_current_user';
-  static const failure_firebase_operation_not_allowed =
-      'failure.firebase.operation_not_allowed';
-  static const failure_firebase_requires_recent_login =
-      'failure.firebase.requires_recent_login';
-  static const failure_firebase_too_many_requests =
-      'failure.firebase.too_many_requests';
-  static const failure_firebase_user_disabled =
-      'failure.firebase.user_disabled';
-  static const failure_firebase_weak_password =
-      'failure.firebase.weak_password';
-  static const failure_firebase_timeout = 'failure.firebase.timeout';
-  static const failure_firebase = 'failure.firebase';
-  static const failure_format_error = 'failure.format.error';
-  static const failure_format = 'failure.format';
-  static const failure_network_no_connection = 'failure.network.no_connection';
-  static const failure_network_timeout = 'failure.network.timeout';
-  static const failure_network = 'failure.network';
-  static const failure_auth_unauthorized = 'failure.auth.unauthorized';
-  static const failure_auth = 'failure.auth';
-  static const failure_email_verification_timeout =
-      'failure.email_verification.timeout';
-  static const failure_email_verification = 'failure.email_verification';
-  static const failure_plugin_missing = 'failure.plugin.missing';
-  static const failure_plugin = 'failure.plugin';
-  static const failure_unknown = 'failure.unknown';
-  static const failure = 'failure';
-  static const form_name = 'form.name';
-  static const form_name_is_empty = 'form.name_is_empty';
-  static const form_name_is_too_short = 'form.name_is_too_short';
-  static const form_email = 'form.email';
-  static const form_email_is_empty = 'form.email_is_empty';
-  static const form_email_is_invalid = 'form.email_is_invalid';
-  static const form_password = 'form.password';
-  static const form_password_required = 'form.password_required';
-  static const form_password_too_short = 'form.password_too_short';
-  static const form_confirm_password = 'form.confirm_password';
-  static const form_confirm_password_is_empty =
-      'form.confirm_password_is_empty';
-  static const form_confirm_password_mismatch =
-      'form.confirm_password_mismatch';
-  static const form = 'form';
   static const pages_home = 'pages.home';
   static const pages_home_message = 'pages.home_message';
   static const pages_profile = 'pages.profile';
@@ -138,6 +58,32 @@ abstract class LocaleKeys {
   static const verify_email_unknown = 'verify_email.unknown';
   static const verify_email_or = 'verify_email.or';
   static const verify_email = 'verify_email';
+  static const buttons_ok = 'buttons.ok';
+  static const buttons_sign_in = 'buttons.sign_in';
+  static const buttons_sign_up = 'buttons.sign_up';
+  static const buttons_sign_out = 'buttons.sign_out';
+  static const buttons_submitting = 'buttons.submitting';
+  static const buttons_retry = 'buttons.retry';
+  static const buttons_redirect_to_sign_up = 'buttons.redirect_to_sign_up';
+  static const buttons_redirect_to_sign_in = 'buttons.redirect_to_sign_in';
+  static const buttons_cancel = 'buttons.cancel';
+  static const buttons_go_to_home = 'buttons.go_to_home';
+  static const buttons_reset_password = 'buttons.reset_password';
+  static const buttons_resend_email = 'buttons.resend_email';
+  static const buttons = 'buttons';
+  static const form_name = 'form.name';
+  static const form_name_is_empty = 'form.name_is_empty';
+  static const form_name_is_too_short = 'form.name_is_too_short';
+  static const form_email = 'form.email';
+  static const form_email_is_empty = 'form.email_is_empty';
+  static const form_email_is_invalid = 'form.email_is_invalid';
+  static const form_password = 'form.password';
+  static const form_password_required = 'form.password_required';
+  static const form_password_too_short = 'form.password_too_short';
+  static const form_confirm_password = 'form.confirm_password';
+  static const form_confirm_password_is_empty = 'form.confirm_password_is_empty';
+  static const form_confirm_password_mismatch = 'form.confirm_password_mismatch';
+  static const form = 'form';
   static const theme_light_enabled = 'theme.light_enabled';
   static const theme_dark_enabled = 'theme.dark_enabled';
   static const theme_amoled_enabled = 'theme.amoled_enabled';
@@ -146,4 +92,37 @@ abstract class LocaleKeys {
   static const theme_amoled = 'theme.amoled';
   static const theme_choose_theme = 'theme.choose_theme';
   static const theme = 'theme';
+  static const languages_switched_to_pl = 'languages.switched_to_pl';
+  static const languages_switched_to_en = 'languages.switched_to_en';
+  static const languages_switched_to_ua = 'languages.switched_to_ua';
+  static const languages = 'languages';
+  static const errors_page_not_found_title = 'errors.page_not_found_title';
+  static const errors_page_not_found_message = 'errors.page_not_found_message';
+  static const errors_error_dialog = 'errors.error_dialog';
+  static const errors = 'errors';
+  static const failures_firebase_generic = 'failures.firebase.generic';
+  static const failures_firebase_unauthorized = 'failures.firebase.unauthorized';
+  static const failures_firebase_invalid_credential = 'failures.firebase.invalid_credential';
+  static const failures_firebase_account_exists_with_different_credential = 'failures.firebase.account_exists_with_different_credential';
+  static const failures_firebase_email_already_in_use = 'failures.firebase.email_already_in_use';
+  static const failures_firebase_email_verification_timeout = 'failures.firebase.email_verification_timeout';
+  static const failures_firebase_user_not_found = 'failures.firebase.user_not_found';
+  static const failures_firebase_no_current_user = 'failures.firebase.no_current_user';
+  static const failures_firebase_doc_missing = 'failures.firebase.doc_missing';
+  static const failures_firebase_user_disabled = 'failures.firebase.user_disabled';
+  static const failures_firebase_operation_not_allowed = 'failures.firebase.operation_not_allowed';
+  static const failures_firebase_requires_recent_login = 'failures.firebase.requires_recent_login';
+  static const failures_firebase_too_many_requests = 'failures.firebase.too_many_requests';
+  static const failures_firebase_timeout = 'failures.firebase.timeout';
+  static const failures_firebase = 'failures.firebase';
+  static const failures_format_error = 'failures.format.error';
+  static const failures_format = 'failures.format';
+  static const failures_network_no_connection = 'failures.network.no_connection';
+  static const failures_network_timeout = 'failures.network.timeout';
+  static const failures_network = 'failures.network';
+  static const failures_plugin_missing = 'failures.plugin.missing';
+  static const failures_plugin = 'failures.plugin';
+  static const failures_unknown = 'failures.unknown';
+  static const failures = 'failures';
+
 }
