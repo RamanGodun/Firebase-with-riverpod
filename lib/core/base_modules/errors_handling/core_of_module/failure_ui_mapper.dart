@@ -1,40 +1,36 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/extensible_part/failure_extensions/failure_diagnostics_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/extensible_part/failure_extensions/failure_icon_x.dart';
 import '../../localization/core_of_module/init_localization.dart';
-import '../utils/errors_observing/loggers/errors_log_util.dart';
+import '../../localization/utils/localization_logger.dart';
 import 'failure_entity.dart';
 import 'failure_ui_entity.dart';
 
-/// ✅ [FailureToUIEntityX] — Maps [Failure] to [FailureUIEntity]
+/// ✅ [FailureToUIEntityX] — Maps domain-level [Failure] to a presentational [FailureUIEntity]
+/// ✅ Provides safe localization fallback and diagnostics logging
+/// ✅ Ensures consistent UI rendering with localized text, error code, and icon
 //
 extension FailureToUIEntityX on Failure {
-  ///---------------------------------
-  //
-  /// From [Failure] to [FailureUIEntity] mapper
   FailureUIEntity toUIEntity() {
-    //
-    final resolvedText = switch ((
-      translationKey?.isNotEmpty,
-      message.isNotEmpty,
-    )) {
+    final hasTranslation = type.translationKey.isNotEmpty;
+    final hasMessage = message?.isNotEmpty == true;
+
+    final resolvedText = switch ((hasTranslation, hasMessage)) {
       (true, true) => AppLocalizer.translateSafely(
-        translationKey!,
+        type.translationKey,
         fallback: message,
       ),
-      (true, false) => AppLocalizer.translateSafely(translationKey!),
-      _ => message,
+      (true, false) => AppLocalizer.translateSafely(type.translationKey),
+      (false, true) => message!,
+      _ => type.code,
     };
-    //
-    if (translationKey != null && resolvedText == message) {
-      ErrorsLogger.failure(this, StackTrace.current);
+
+    if (hasTranslation && resolvedText == message) {
+      LocalizationLogger.fallbackUsed(type.translationKey, message!);
     }
-    //
+
     return FailureUIEntity(
       localizedMessage: resolvedText,
       formattedCode: safeCode,
-      icon: getIcon,
+      icon: type.icon,
     );
   }
-
-  //
 }

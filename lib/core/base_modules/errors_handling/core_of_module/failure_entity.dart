@@ -1,38 +1,33 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart' show sealed;
-import '../extensible_part/failure_source.dart';
-import '../extensible_part/failure_translation_keys.dart';
+import 'failure_type.dart';
 
-part '../extensible_part/failure_subclasses/firebase_failures.dart';
-part '../extensible_part/failure_subclasses/network_and_api_failures.dart';
-part '../extensible_part/failure_subclasses/usecases_failures.dart';
-part '../extensible_part/failure_subclasses/generic_failure.dart';
-part '../extensible_part/failure_subclasses/unknown_failure.dart';
-part '../extensible_part/failure_subclasses/time_out_failure.dart';
-part '../extensible_part/failure_subclasses/cache_failure.dart';
+part '../extensible_part/failure_factories_x.dart';
 
-/// 🔥 [Failure] — Domain abstraction for all app-level errors
-/// ✅ Used throughout Either: [Either<Failure, T>]
-/// ✅ Base class for all typed error cases in the domain layer
-//
+/// 🧩 [Failure] — Domain-layer error representation.
+/// ✅ Encapsulates structured error data
+/// ✅ Used throughout layers (repo → use case → UI)
+/// ✅ Supports localized display and diagnostics fallback
+///
 @sealed
-abstract class Failure extends Equatable {
-  ///-------------------------------------
-  //
-  final String message; //📝 Human-readable error
-  final String? translationKey; //🌐 Optional localization key
-  final dynamic statusCode; //🔢 Optional HTTP or plugin code
-  final String? code; //🔖 Short string identifier
+final class Failure extends Equatable {
+  // 🧩 Structured metadata (i18n key, code)
+  final FailureType type;
+  // 💬 Optional raw error message (e.g. Dio/Firebase message) for fallback when there is no localization in app
+  final String? message;
+  // 🔢 Optional HTTP or platform status code
+  final int? statusCode;
 
+  /// 🔒 Private constructor to ensure factory usage only
   const Failure._({
-    required this.message,
-    this.translationKey,
+    required this.type,
+    @pragma('vm:entry-point') this.message,
     this.statusCode,
-    this.code,
   });
 
   @override
-  List<Object?> get props => [message, translationKey, statusCode, code];
+  List<Object?> get props => [type, message, statusCode];
 
-  //
+  /// 🪪 For diagnostics — fallback code representation
+  String get safeCode => statusCode?.toString() ?? type.code;
 }

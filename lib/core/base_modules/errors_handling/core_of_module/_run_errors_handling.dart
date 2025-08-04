@@ -1,24 +1,17 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/utils/extensions_on_failure/failure_to_either_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_failure/failure_to_either_x.dart';
 import 'either.dart';
 import 'failure_entity.dart';
 import 'dart:async' show TimeoutException;
 import 'dart:convert' show JsonUnsupportedObjectError;
-import 'dart:io' show FileSystemException, HttpException, SocketException;
+import 'dart:io' show FileSystemException, SocketException;
 import 'package:dio/dio.dart' show DioException, DioExceptionType;
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:firebase_core/firebase_core.dart' show FirebaseException;
 import 'package:flutter/services.dart'
     show MissingPluginException, PlatformException;
-import '../utils/errors_observing/loggers/errors_log_util.dart';
-import '../extensible_part/failure_source.dart';
-import '../extensible_part/failure_translation_keys.dart';
+import 'utils/errors_observing/loggers/errors_log_util.dart';
 
-part '../extensible_part/exceptions_to_failures_mapping/_exceptions_to_failures_mapper_x.dart';
-part '../extensible_part/exceptions_to_failures_mapping/dio_cases.dart';
-part '../extensible_part/exceptions_to_failures_mapping/firebase_cases.dart';
-part '../extensible_part/exceptions_to_failures_mapping/network_cases.dart';
-part '../extensible_part/exceptions_to_failures_mapping/platform_cases.dart';
-part '../extensible_part/exceptions_to_failures_mapping/domain_cases.dart';
+part '../extensible_part/_exceptions_to_failures_mapper_x.dart';
 
 /// [ResultFutureExtension] - Extension for async function types.
 /// Provides a declarative way to wrap any async operation
