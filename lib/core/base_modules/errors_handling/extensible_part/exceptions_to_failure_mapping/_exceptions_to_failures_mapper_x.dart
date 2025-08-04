@@ -5,41 +5,85 @@ part of '../../core_of_module/_run_errors_handling.dart';
 /// ✅ Clean, centralized, consistent fallback logic
 //
 extension ExceptionToFailureX on Object {
+  ///
+  //
   Failure mapToFailure([StackTrace? stackTrace]) => switch (this) {
-    // 🌐 No connection
-    SocketException error => FailureFactory.network(message: error.message),
+    //
+    /// 🌐 No internet connection
+    SocketException error => Failure(
+      type: const NetworkFailureType(),
+      message: error.message,
+    ),
 
-    // ⏳ Timeout
-    TimeoutException _ => FailureFactory.timeout,
+    /// 🔢 JSON encoding/decoding error
+    JsonUnsupportedObjectError error => Failure(
+      type: const JsonErrorFailureType(),
+      message: error.toString(),
+    ),
 
-    // 🔌 Dio error handler
+    /// 🔌 Dio error handler
     DioException error => _mapDioError(error),
 
-    // 🔥 Firebase error code handling
+    /// 🔥 Firebase error code handling
     FirebaseException error =>
       _firebaseFailureMap[error.code]?.call(error.message) ??
-          Failure(type: const GenericFirebaseFT(), message: error.message),
+          () {
+            final failure = Failure(
+              type: const GenericFirebaseFailureType(),
+              message: error.message,
+            );
+            // Fallback's logging
+            failure.log(stackTrace);
+            return failure;
+          }(),
 
-    // 📄 Firestore-specific malformed data
-    FormatException(:final message) when message.contains('document') =>
-      FailureFactory.firestoreDocMissing,
+    /// 📄 Firestore-specific malformed data
+    FormatException error when error.message.contains('document') => Failure(
+      type: const DocMissingFirebaseFailureType(),
+      message: error.message,
+    ),
 
-    // ⚙️ Platform channel errors
-    PlatformException _ => FailureFactory.platform,
+    /// ⚙️ Platform channel errors
+    PlatformException error => Failure(
+      type: const FormatFailureType(),
+      message: error.message,
+    ),
 
-    // 🧩 Plugin missing
-    MissingPluginException _ => FailureFactory.missingPlugin,
+    /// 🧩 Plugin missing
+    MissingPluginException error => Failure(
+      type: const MissingPluginFailureType(),
+      message: error.toString(),
+    ),
 
-    // 🧾 Format parsing error
-    FormatException _ => FailureFactory.format,
+    /// 🧾 Format parsing error
+    FormatException error => Failure(
+      type: const FormatFailureType(),
+      message: error.message,
+    ),
 
-    // 🔢 JSON encoding/decoding error
-    JsonUnsupportedObjectError error => FailureFactory.json(error.cause),
+    /// 💾  Cache-related error local storage failure
+    FileSystemException error => Failure(
+      type: const CacheFailureType(),
+      message: error.message,
+    ),
 
-    // 💾 Local storage failure
-    FileSystemException _ => FailureFactory.cache,
+    /// ⏳ Timeout reached
+    TimeoutException error => Failure(
+      type: const NetworkTimeoutFailureType(),
+      message: error.message,
+    ),
+    //
 
-    // ❓ Unknown fallback
-    _ => FailureFactory.unknown,
+    /// ❓ Unknown fallback (use toString() if message absent)
+    _ => () {
+      final failure = Failure(
+        type: const UnknownFailureType(),
+        message: toString(),
+      );
+      failure.log(stackTrace);
+      return failure;
+    }(),
+
+    //
   };
 }

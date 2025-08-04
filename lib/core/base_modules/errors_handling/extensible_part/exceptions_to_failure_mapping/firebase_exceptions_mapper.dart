@@ -9,37 +9,65 @@ final _firebaseFailureMap = <String, Failure Function(String?)>{
   ///
   ///
   FirebaseCodes.invalidCredential:
-      (msg) => Failure(type: const InvalidCredentialFirebaseFT(), message: msg),
+      (msg) => Failure(
+        type: const InvalidCredentialFirebaseFailureType(),
+        message: msg,
+      ),
 
   ///
   FirebaseCodes.emailAlreadyInUse:
-      (msg) => Failure(type: const EmailAlreadyInUseFirebaseFT(), message: msg),
+      (msg) => Failure(
+        type: const EmailAlreadyInUseFirebaseFailureType(),
+        message: msg,
+      ),
+
+  ///
+  FirebaseCodes.accountExistsWithDifferentCredential:
+      (msg) => Failure(
+        type: const AccountExistsWithDifferentCredentialFirebaseFailureType(),
+        message: msg,
+      ),
+
+  ///
+  FirebaseCodes.userMissing:
+      (msg) =>
+          Failure(type: const UserMissingFirebaseFailureType(), message: msg),
 
   ///
   FirebaseCodes.operationNotAllowed:
-      (msg) =>
-          Failure(type: const OperationNotAllowedFirebaseFT(), message: msg),
+      (msg) => Failure(
+        type: const OperationNotAllowedFirebaseFailureType(),
+        message: msg,
+      ),
 
   ///
   FirebaseCodes.requiresRecentLogin:
-      (msg) =>
-          Failure(type: const RequiresRecentLoginFirebaseFT(), message: msg),
+      (msg) => Failure(
+        type: const RequiresRecentLoginFirebaseFailureType(),
+        message: msg,
+      ),
 
   ///
   FirebaseCodes.tooManyRequests:
-      (msg) => Failure(type: const TooManyRequestsFirebaseFT(), message: msg),
+      (msg) => Failure(
+        type: const TooManyRequestsFirebaseFailureType(),
+        message: msg,
+      ),
 
   ///
   FirebaseCodes.userDisabled:
-      (msg) => Failure(type: const UserDisabledFirebaseFT(), message: msg),
+      (msg) =>
+          Failure(type: const UserDisabledFirebaseFailureType(), message: msg),
 
   ///
   FirebaseCodes.userNotFound:
-      (msg) => Failure(type: const UserNotFoundFirebaseFT(), message: msg),
+      (msg) =>
+          Failure(type: const UserNotFoundFirebaseFailureType(), message: msg),
 
   ///
-  FirebaseCodes.networkRequestFailed:
-      (msg) => FailureFactory.network(message: msg),
+  FirebaseCodes.docMissing:
+      (msg) =>
+          Failure(type: const DocMissingFirebaseFailureType(), message: msg),
 
   //
 };
@@ -61,8 +89,11 @@ sealed class FirebaseCodes {
   static const requiresRecentLogin = 'requires-recent-login';
   static const tooManyRequests = 'too-many-requests';
   static const userDisabled = 'user-disabled';
+  static const accountExistsWithDifferentCredential =
+      'account-exists-with-different-credential';
+  static const userMissing = 'firebase-user-missing';
   static const userNotFound = 'user-not-found';
-  static const networkRequestFailed = 'network-request-failed';
+  static const docMissing = 'firestore-doc-missing';
 
   //
 }

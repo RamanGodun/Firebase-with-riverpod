@@ -129,14 +129,12 @@
     "switched_to_pl": "Język zmieniono na 🇵🇱 polski",
     "switched_to_en": "Język zmieniono na 🇬🇧 angielski",
     "switched_to_ua": "Język zmieniono na 🇺🇦 ukraiński"
-  }
+  },
 
 
 
 
 
-
-    ,
     "errors": {
       "page_not_found_title": "Strony nie znaleziono",
       "page_not_found_message": "Ups! Strona, której szukasz, nie istnieje.",
@@ -157,20 +155,25 @@
         "user_disabled": "Konto zostało dezaktywowane.",
         "operation_not_allowed": "Ta operacja nie jest dozwolona przez Firebase.",
         "requires_recent_login": "Aby wykonać tę operację, musisz się ponownie zalogować.",
-        "too_many_requests": "Zbyt wiele żądań. Spróbuj ponownie później.",
-        "timeout": "Limit czasu żądania został przekroczony. Spróbuj ponownie później."
+        "too_many_requests": "Zbyt wiele żądań. Spróbuj ponownie później." 
       },
-      "format": {
-        "error": "Odebrano nieprawidłowy format danych."
-      },
+
       "network": {
         "no_connection": "Brak połączenia z Internetem.",
         "timeout": "Limit czasu połączenia został przekroczony. Spróbuj ponownie później."
       },
-      "plugin": {
-        "missing": "Wykryto brakujący plugin. Skontaktuj się z pomocą techniczną."
+
+      "api": {
+        "generic": "API error occurred."
       },
+
+      "plugin_missing": "Wykryto brakujący plugin. Skontaktuj się z pomocą techniczną.",
+      "format_error": "Otrzymano nieprawidłowy format danych.",
+      "cache_error": "Wystąpił błąd pamięci podręcznej.",
+      "timeout": "Limit czasu żądania został przekroczony. Spróbuj ponownie później.", 
       "unknown": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie."
     }
+
+
 
 }

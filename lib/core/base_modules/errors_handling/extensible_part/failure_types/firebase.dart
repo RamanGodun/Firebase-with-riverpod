@@ -1,96 +1,140 @@
 part of '../../core_of_module/failure_type.dart';
 
-/// 🎯 [failure_type_firebase.dart] — Firebase-related FailureTypes
-/// 📦 Includes Auth & Firestore Firebase-related codes
-
-/// 🔥 Firebase Generic fallback
-final class GenericFirebaseFT extends FailureType {
-  const GenericFirebaseFT()
+/// 🔥 [GenericFirebaseFailureType] — Generic Firebase error fallback.
+/// 🚨 Used when we can’t classify the Firebase error.
+//
+final class GenericFirebaseFailureType extends FailureType {
+  const GenericFirebaseFailureType()
     : super(
-        code: 'FIREBASE',
+        code: FailureCodes.firebase,
         translationKey: LocaleKeys.failures_firebase_generic,
       );
 }
 
-/// 🔐 Firebase Auth Errors
-final class InvalidCredentialFirebaseFT extends FailureType {
-  const InvalidCredentialFirebaseFT()
+////
+
+/// 🔑 [InvalidCredentialFirebaseFailureType] — Wrong or invalid login credentials.
+/// 🔐 Happens often with OAuth/social logins.
+//
+final class InvalidCredentialFirebaseFailureType extends FailureType {
+  const InvalidCredentialFirebaseFailureType()
     : super(
-        code: 'INVALID_CREDENTIAL',
+        code: FailureCodes.invalidCredential,
         translationKey: LocaleKeys.failures_firebase_invalid_credential,
       );
 }
 
-final class AccountExistsWithDifferentCredentialFirebaseFT extends FailureType {
-  const AccountExistsWithDifferentCredentialFirebaseFT()
+////
+
+/// 🪪 [AccountExistsWithDifferentCredentialFirebaseFailureType] — Email already registered with another provider.
+/// 🪝 User must login using linked provider.
+//
+final class AccountExistsWithDifferentCredentialFirebaseFailureType
+    extends FailureType {
+  const AccountExistsWithDifferentCredentialFirebaseFailureType()
     : super(
-        code: 'ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL',
+        code: FailureCodes.accountExistsWithDifferentCredential,
         translationKey:
             LocaleKeys
                 .failures_firebase_account_exists_with_different_credential,
       );
 }
 
-final class EmailAlreadyInUseFirebaseFT extends FailureType {
-  const EmailAlreadyInUseFirebaseFT()
+////
+
+/// 📧 [EmailAlreadyInUseFirebaseFailureType] — Email address already in use.
+//
+final class EmailAlreadyInUseFirebaseFailureType extends FailureType {
+  const EmailAlreadyInUseFirebaseFailureType()
     : super(
-        code: 'EMAIL_ALREADY_IN_USE',
+        code: FailureCodes.emailAlreadyInUse,
         translationKey: LocaleKeys.failures_firebase_email_already_in_use,
       );
 }
 
-final class OperationNotAllowedFirebaseFT extends FailureType {
-  const OperationNotAllowedFirebaseFT()
+////
+
+/// 🛑 [OperationNotAllowedFirebaseFailureType] — Operation blocked by Firebase settings.
+//
+final class OperationNotAllowedFirebaseFailureType extends FailureType {
+  const OperationNotAllowedFirebaseFailureType()
     : super(
-        code: 'OPERATION_NOT_ALLOWED',
+        code: FailureCodes.operationNotAllowed,
         translationKey: LocaleKeys.failures_firebase_operation_not_allowed,
       );
 }
 
-final class UserDisabledFirebaseFT extends FailureType {
-  const UserDisabledFirebaseFT()
+////
+
+/// 🛡️ [UserDisabledFirebaseFailureType] — Account is disabled by admin.
+/// ⚠️ User needs to contact support.
+//
+final class UserDisabledFirebaseFailureType extends FailureType {
+  const UserDisabledFirebaseFailureType()
     : super(
-        code: 'USER_DISABLED',
+        code: FailureCodes.userDisabled,
         translationKey: LocaleKeys.failures_firebase_user_disabled,
       );
 }
 
-final class UserNotFoundFirebaseFT extends FailureType {
-  const UserNotFoundFirebaseFT()
+////
+
+/// ❓ [UserNotFoundFirebaseFailureType] — User does not exist in database.
+//
+final class UserNotFoundFirebaseFailureType extends FailureType {
+  const UserNotFoundFirebaseFailureType()
     : super(
-        code: 'USER_NOT_FOUND',
+        code: FailureCodes.userNotFound,
         translationKey: LocaleKeys.failures_firebase_user_not_found,
       );
 }
 
-final class RequiresRecentLoginFirebaseFT extends FailureType {
-  const RequiresRecentLoginFirebaseFT()
+////
+
+/// 🕐 [RequiresRecentLoginFirebaseFailureType] — Sensitive action, needs re-auth.
+//
+/// 🔁 Prompt user to re-login.
+final class RequiresRecentLoginFirebaseFailureType extends FailureType {
+  const RequiresRecentLoginFirebaseFailureType()
     : super(
-        code: 'REQUIRES_RECENT_LOGIN',
+        code: FailureCodes.requiresRecentLogin,
         translationKey: LocaleKeys.failures_firebase_requires_recent_login,
       );
 }
 
-final class UserMissingFirebaseFT extends FailureType {
-  const UserMissingFirebaseFT()
+////
+
+/// 🧑‍💻 [UserMissingFirebaseFailureType] — No current Firebase user signed in.
+//
+final class UserMissingFirebaseFailureType extends FailureType {
+  const UserMissingFirebaseFailureType()
     : super(
-        code: 'FIREBASE_USER_MISSING',
+        code: FailureCodes.firebaseUserMissing,
         translationKey: LocaleKeys.failures_firebase_no_current_user,
       );
 }
 
-final class DocMissingFirebaseFT extends FailureType {
-  const DocMissingFirebaseFT()
+////
+
+/// 🗂️ [DocMissingFirebaseFailureType] — User profile document not found in Firestore.
+//
+final class DocMissingFirebaseFailureType extends FailureType {
+  const DocMissingFirebaseFailureType()
     : super(
-        code: 'FIRESTORE_DOC_MISSING',
+        code: FailureCodes.firestoreDocMissing,
         translationKey: LocaleKeys.failures_firebase_doc_missing,
       );
 }
 
-final class TooManyRequestsFirebaseFT extends FailureType {
-  const TooManyRequestsFirebaseFT()
+////
+
+/// 🚦 [TooManyRequestsFirebaseFailureType] — User triggered Firebase rate limit.
+/// ⏳ Ask user to wait and try again.
+//
+final class TooManyRequestsFirebaseFailureType extends FailureType {
+  const TooManyRequestsFirebaseFailureType()
     : super(
-        code: 'TOO_MANY_REQUESTS',
+        code: FailureCodes.tooManyRequests,
         translationKey: LocaleKeys.failures_firebase_too_many_requests,
       );
 }

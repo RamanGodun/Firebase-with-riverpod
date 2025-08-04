@@ -6,6 +6,7 @@ import '../../core_of_module/failure_type.dart';
 //
 /// 🔁 [FailureRetryX] — evaluates if user should be offered retry
 /// ✅ Delegates to [FailureType.isRetryable]
+//
 extension FailureRetryX on Failure {
   bool get isRetryable => type.isRetryable;
 }
@@ -14,6 +15,7 @@ extension FailureRetryX on Failure {
 
 /// 🔁 [FailureTypeRetryX] — UI-level retryability metadata for [FailureType]
 /// ✅ Allows UI to decide if retry button should be shown
+//
 extension FailureTypeRetryX on FailureType {
   /// 🔁 True if the failure is transient and can be retried by user
   bool get isRetryable {

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../localization/generated/locale_keys.g.dart';
+import '../extensible_part/failure_types/_failure_codes.dart';
 
 part '../extensible_part/failure_types/firebase.dart';
 part '../extensible_part/failure_types/network.dart';
-part '../extensible_part/failure_types/platform.dart';
 part '../extensible_part/failure_types/misc.dart';
 
 /// 💡 [FailureType] — Centralized descriptor for domain failures

@@ -1,43 +1,63 @@
 part of '../../core_of_module/failure_type.dart';
 
-// 📦 [failure_type_misc.dart] — Generic, logic or application-level failures
-// ❓ Everything that doesn’t fall under specific system/platform source
+/// 💥 [UnknownFailureType] — For truly unexpected, unclassified errors.
+/// ❗️If you see this in production, something is wrong!
 //
 final class UnknownFailureType extends FailureType {
   const UnknownFailureType()
-    : super(code: 'UNKNOWN', translationKey: 'failure.unknown');
+    : super(
+        code: FailureCodes.unknown,
+        translationKey: LocaleKeys.failures_unknown,
+      );
 }
 
+////
+
+/// 💾 [CacheFailureType] — Something went wrong with app cache.
+/// 🚨 Usually recoverable after clearing storage.
+//
 final class CacheFailureType extends FailureType {
   const CacheFailureType()
-    : super(code: 'CACHE', translationKey: 'failure.cache.error');
-}
-
-final class UnauthorizedFailureType extends FailureType {
-  const UnauthorizedFailureType()
-    : super(code: 'UNAUTHORIZED', translationKey: 'failure.auth.unauthorized');
-}
-
-final class UseCaseFailureType extends FailureType {
-  const UseCaseFailureType()
     : super(
-        code: 'USE_CASE',
-        translationKey: 'failure.use_case.invalid_argument',
+        code: FailureCodes.cache,
+        translationKey: LocaleKeys.failures_cache_error,
       );
 }
 
-final class EmailVerificationFailureType extends FailureType {
-  const EmailVerificationFailureType()
-    : super(
-        code: 'EMAIL_VERIFICATION',
-        translationKey: 'failure.email_verification.timeout',
-      );
-}
+////
 
+/// 🕒 [EmailVerificationTimeoutFailureType] — Verification link expired or user didn't confirm in time.
+//
 final class EmailVerificationTimeoutFailureType extends FailureType {
   const EmailVerificationTimeoutFailureType()
     : super(
-        code: 'EMAIL_VERIFICATION_TIMEOUT',
-        translationKey: 'failure.email_verification.timeout',
+        code: FailureCodes.emailVerificationTimeout,
+        translationKey: LocaleKeys.failures_firebase_email_verification_timeout,
+      );
+}
+
+////
+
+/// 📄 [FormatFailureType] — Received malformed or unprocessable data.
+/// 🛑 Usually indicates backend/data contract mismatch.
+//
+final class FormatFailureType extends FailureType {
+  const FormatFailureType()
+    : super(
+        code: FailureCodes.formatError,
+        translationKey: LocaleKeys.failures_format_error,
+      );
+}
+
+////
+
+/// 🧩 [MissingPluginFailureType] — Required plugin not installed or linked.
+/// 🔧 Usually a dev/config issue.
+//
+final class MissingPluginFailureType extends FailureType {
+  const MissingPluginFailureType()
+    : super(
+        code: FailureCodes.missingPlugin,
+        translationKey: LocaleKeys.failures_plugin_missing,
       );
 }

@@ -2,7 +2,7 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const app_title = 'app.title';
   static const app = 'app';
   static const pages_home = 'pages.home';
@@ -81,10 +81,8 @@ abstract class LocaleKeys {
   static const form_password_required = 'form.password_required';
   static const form_password_too_short = 'form.password_too_short';
   static const form_confirm_password = 'form.confirm_password';
-  static const form_confirm_password_is_empty =
-      'form.confirm_password_is_empty';
-  static const form_confirm_password_mismatch =
-      'form.confirm_password_mismatch';
+  static const form_confirm_password_is_empty = 'form.confirm_password_is_empty';
+  static const form_confirm_password_mismatch = 'form.confirm_password_mismatch';
   static const form = 'form';
   static const theme_light_enabled = 'theme.light_enabled';
   static const theme_dark_enabled = 'theme.dark_enabled';
@@ -103,39 +101,29 @@ abstract class LocaleKeys {
   static const errors_error_dialog = 'errors.error_dialog';
   static const errors = 'errors';
   static const failures_firebase_generic = 'failures.firebase.generic';
-  static const failures_firebase_unauthorized =
-      'failures.firebase.unauthorized';
-  static const failures_firebase_invalid_credential =
-      'failures.firebase.invalid_credential';
-  static const failures_firebase_account_exists_with_different_credential =
-      'failures.firebase.account_exists_with_different_credential';
-  static const failures_firebase_email_already_in_use =
-      'failures.firebase.email_already_in_use';
-  static const failures_firebase_email_verification_timeout =
-      'failures.firebase.email_verification_timeout';
-  static const failures_firebase_user_not_found =
-      'failures.firebase.user_not_found';
-  static const failures_firebase_no_current_user =
-      'failures.firebase.no_current_user';
+  static const failures_firebase_unauthorized = 'failures.firebase.unauthorized';
+  static const failures_firebase_invalid_credential = 'failures.firebase.invalid_credential';
+  static const failures_firebase_account_exists_with_different_credential = 'failures.firebase.account_exists_with_different_credential';
+  static const failures_firebase_email_already_in_use = 'failures.firebase.email_already_in_use';
+  static const failures_firebase_email_verification_timeout = 'failures.firebase.email_verification_timeout';
+  static const failures_firebase_user_not_found = 'failures.firebase.user_not_found';
+  static const failures_firebase_no_current_user = 'failures.firebase.no_current_user';
   static const failures_firebase_doc_missing = 'failures.firebase.doc_missing';
-  static const failures_firebase_user_disabled =
-      'failures.firebase.user_disabled';
-  static const failures_firebase_operation_not_allowed =
-      'failures.firebase.operation_not_allowed';
-  static const failures_firebase_requires_recent_login =
-      'failures.firebase.requires_recent_login';
-  static const failures_firebase_too_many_requests =
-      'failures.firebase.too_many_requests';
-  static const failures_firebase_timeout = 'failures.firebase.timeout';
+  static const failures_firebase_user_disabled = 'failures.firebase.user_disabled';
+  static const failures_firebase_operation_not_allowed = 'failures.firebase.operation_not_allowed';
+  static const failures_firebase_requires_recent_login = 'failures.firebase.requires_recent_login';
+  static const failures_firebase_too_many_requests = 'failures.firebase.too_many_requests';
   static const failures_firebase = 'failures.firebase';
-  static const failures_format_error = 'failures.format.error';
-  static const failures_format = 'failures.format';
-  static const failures_network_no_connection =
-      'failures.network.no_connection';
+  static const failures_network_no_connection = 'failures.network.no_connection';
   static const failures_network_timeout = 'failures.network.timeout';
   static const failures_network = 'failures.network';
-  static const failures_plugin_missing = 'failures.plugin.missing';
-  static const failures_plugin = 'failures.plugin';
+  static const failures_api_generic = 'failures.api.generic';
+  static const failures_api = 'failures.api';
+  static const failures_plugin_missing = 'failures.plugin_missing';
+  static const failures_format_error = 'failures.format_error';
+  static const failures_cache_error = 'failures.cache_error';
+  static const failures_timeout = 'failures.timeout';
   static const failures_unknown = 'failures.unknown';
   static const failures = 'failures';
+
 }

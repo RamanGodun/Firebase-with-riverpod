@@ -1,5 +1,5 @@
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/errors_observing/loggers/failure_logger_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_failure/failure_to_either_x.dart';
-import '../extensible_part/failure_factory.dart';
 import 'either.dart';
 import 'failure_entity.dart';
 import 'dart:async' show TimeoutException;
