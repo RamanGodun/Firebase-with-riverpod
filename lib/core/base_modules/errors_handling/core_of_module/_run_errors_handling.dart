@@ -16,7 +16,6 @@ part '../extensible_part/exceptions_to_failure_mapping/_exceptions_to_failures_m
 part '../extensible_part/exceptions_to_failure_mapping/firebase_exceptions_mapper.dart';
 part '../extensible_part/exceptions_to_failure_mapping/dio_exceptions_mapper.dart';
 
-
 /// [ResultFutureExtension] - Extension for async function types.
 /// Provides a declarative way to wrap any async operation
 /// with failure mapping and functional error handling.

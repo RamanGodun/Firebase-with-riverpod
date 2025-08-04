@@ -80,9 +80,7 @@ extension ContextXForOverlays on BuildContext {
       case ShowAs.infoDialog:
         showAppDialog(
           isInfoDialog: true,
-          title: AppLocalizer.translateSafely(
-            LocaleKeys.errors_error_dialog,
-          ),
+          title: AppLocalizer.translateSafely(LocaleKeys.errors_error_dialog),
           content: model.localizedMessage,
           confirmText: AppLocalizer.translateSafely(LocaleKeys.buttons_ok),
           cancelText: AppLocalizer.translateSafely(LocaleKeys.buttons_cancel),
