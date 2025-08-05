@@ -46,4 +46,8 @@ extension ChangePasswordStateX on ChangePasswordState {
   bool get isSuccess => this is ChangePasswordSuccess;
   bool get isError => this is ChangePasswordError;
   bool get isRequiresReauth => this is ChangePasswordRequiresReauth;
+  bool get isRequiresRecentLogin =>
+      this is ChangePasswordError &&
+      (this as ChangePasswordError).failure.type
+          is RequiresRecentLoginFirebaseFailureType;
 }

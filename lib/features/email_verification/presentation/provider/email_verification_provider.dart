@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/errors_observing/loggers/failure_logger_x.dart';
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
@@ -20,7 +21,7 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   ///-------------------------------------------------------------
 
   Timer? _timer;
-  static const _maxPollingDuration = AppDurations.min2;
+  static const _maxPollingDuration = AppDurations.min1;
   final Stopwatch _stopwatch = Stopwatch();
   late final EmailVerificationUseCase _emailVerificationUseCase;
 
@@ -41,18 +42,18 @@ final class EmailVerificationNotifier extends _$EmailVerificationNotifier
   void _startPolling() {
     //
     _stopwatch.start();
-    _timer = Timer.periodic(AppDurations.min2, (_) {
+    _timer = Timer.periodic(AppDurations.sec3, (_) {
       if (_stopwatch.elapsed > _maxPollingDuration) {
         _timer?.cancel();
-        debugPrint('Polling timed out after 2 minutes');
+        debugPrint('Polling timed out after 1 minute');
 
-        state = AsyncError(
-          const Failure(
-            type: EmailVerificationTimeoutFailureType(),
-            message: 'Polling timed out after 2 minutes',
-          ),
-          StackTrace.current,
+        final timeoutFailure = const Failure(
+          type: EmailVerificationTimeoutFailureType(),
+          message: 'Polling timed out after 1 minute',
         );
+        timeoutFailure.log(StackTrace.current);
+
+        state = AsyncError(timeoutFailure, StackTrace.current);
 
         return;
       }

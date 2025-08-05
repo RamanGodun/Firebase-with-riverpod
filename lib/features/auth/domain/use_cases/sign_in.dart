@@ -1,3 +1,4 @@
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/errors_observing/result_loggers/result_logger_x.dart';
 import '../../../../../core/utils_shared/type_definitions.dart';
 import '../repo_contracts.dart';
 
@@ -11,6 +12,8 @@ final class SignInUseCase {
   //
   /// 🔐 Signs in with provided credentials
   ResultFuture<void> call({required String email, required String password}) =>
-      authRepo.signIn(email: email, password: password);
+      authRepo.signIn(email: email, password: password)
+        ..log()
+        ..logSuccess('SignInUseCase success');
   //
 }
