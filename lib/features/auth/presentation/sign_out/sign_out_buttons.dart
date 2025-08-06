@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/specific_for_riverpod/show_dialog_when_error_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/specific_for_riverpod/show_dialog_when_error_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/shared_presentation_layer/shared_widgets/buttons/text_button.dart';

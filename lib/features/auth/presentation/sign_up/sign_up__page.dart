@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/specific_for_riverpod/show_dialog_when_error_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/specific_for_riverpod/show_dialog_when_error_x.dart';
 import 'package:firebase_with_riverpod/core/base_modules/navigation/utils/extensions/navigation_x_on_context.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/overlays_dispatcher/overlay_dispatcher_provider.dart';
 import 'package:firebase_with_riverpod/core/utils_shared/extensions/extension_on_widget/_widget_x_barrel.dart';

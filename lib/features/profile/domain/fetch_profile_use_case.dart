@@ -1,5 +1,5 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_either/either_getters_x.dart';
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/errors_observing/loggers/failure_logger_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/extensions_on_either/either_getters_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/errors_observing/loggers/failure_logger_x.dart';
 import '../../../core/utils_shared/type_definitions.dart';
 import '../../../core/shared_domain_layer/shared_entities/_user_entity.dart';
 import 'repo_contract.dart';

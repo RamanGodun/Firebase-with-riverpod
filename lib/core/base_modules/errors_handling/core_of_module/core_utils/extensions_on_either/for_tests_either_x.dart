@@ -1,4 +1,4 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_either/either__facade.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/extensions_on_either/either__facade.dart';
 import '../../failure_entity.dart';
 
 /// 🧪 [ResultFutureTestX] — Fluent test helpers for async Either

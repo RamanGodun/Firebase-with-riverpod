@@ -1,7 +1,7 @@
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/extensions_on_either/either__facade.dart';
-import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/utils/errors_observing/loggers/failure_logger_x.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/extensions_on_either/either__facade.dart';
+import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/core_utils/errors_observing/loggers/failure_logger_x.dart';
 import 'package:flutter/material.dart';
-import '../../failure_entity.dart';
+import '../failure_entity.dart';
 
 /// 🧩 [ResultHandler<T>] — wrapper around `Either<Failure, T>`
 /// ✅ Chainable and readable result API for Cubits, Providers, UseCases.
