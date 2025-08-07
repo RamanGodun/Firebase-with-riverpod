@@ -79,7 +79,7 @@ extension FailureListenerRefX on WidgetRef {
           confirmText: AppLocalizer.translateSafely(LocaleKeys.buttons_retry),
         );
       }
-      // ❌ Otherwise — just show passive error info dialof
+      // ❌ Otherwise — just show passive error info dialog
       else {
         context.showError(failure.toUIEntity());
       }

@@ -10,23 +10,25 @@ sealed class FailureCodes {
   static const jsonError = 'JSON_ERROR';
   static const timeout = 'TIMEOUT';
 
-  // 🔥 Firebase/Firestore/Auth
+  // 🔥 Firebase/Firestore/Auth (OFFICIAL CODES!)
   static const firebase = 'FIREBASE';
-  static const firebaseUserMissing = 'FIREBASE_USER_MISSING';
-  static const firestoreDocMissing = 'FIRESTORE_DOC_MISSING';
+  static const firebaseUserMissing =
+      'user-missing'; // офіційний код: 'user-missing'
+  static const firestoreDocMissing =
+      'doc-missing'; // твій домен, або firestore internal
 
-  // Firebase/Auth-specific codes
-  static const invalidCredential = 'INVALID_CREDENTIAL';
+  // Firebase/Auth-specific codes (ALL in kebab-case as in SDK)
+  static const invalidCredential = 'invalid-credential';
   static const accountExistsWithDifferentCredential =
-      'ACCOUNT_EXISTS_WITH_DIFFERENT_CREDENTIAL';
-  static const emailAlreadyInUse = 'EMAIL_ALREADY_IN_USE';
-  static const operationNotAllowed = 'OPERATION_NOT_ALLOWED';
-  static const userDisabled = 'USER_DISABLED';
-  static const userNotFound = 'USER_NOT_FOUND';
-  static const requiresRecentLogin = 'REQUIRES_RECENT_LOGIN';
-  static const tooManyRequests = 'TOO_MANY_REQUESTS';
+      'account-exists-with-different-credential';
+  static const emailAlreadyInUse = 'email-already-in-use';
+  static const operationNotAllowed = 'operation-not-allowed';
+  static const userDisabled = 'user-disabled';
+  static const userNotFound = 'user-not-found';
+  static const requiresRecentLogin = 'requires-recent-login';
+  static const tooManyRequests = 'too-many-requests';
 
-  // 🕒 Email verification
+  // 🕒 Email verification (можеш лишити свої custom)
   static const emailVerificationTimeout = 'EMAIL_VERIFICATION_TIMEOUT';
   static const emailVerification = 'EMAIL_VERIFICATION';
 
