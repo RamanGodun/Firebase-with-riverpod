@@ -2,7 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/utils_shared/riverpod_specific/safe_async_state.dart';
 import '../../../domain/use_cases/use_cases_providers.dart';
 
-part 'signin_provider.g.dart';
+part 'sign_in__provider.g.dart';
 
 /// 🧩 [signinProvider] — async notifier that handles user sign-in
 /// 🧼 Uses [SafeAsyncState] to prevent post-dispose state updates

@@ -15,8 +15,8 @@ import '../../../../core/utils_shared/extensions/context_extensions/_context_ext
 import '../../../../core/shared_presentation_layer/shared_widgets/buttons/filled_button.dart';
 import '../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 import '../../../../core/base_modules/form_fields/widgets/_fields_factory.dart';
+import 'providers/reset_password__provider.dart';
 import 'providers/reset_password_form_provider.dart';
-import 'providers/reset_password_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_with_riverpod/core/base_modules/errors_handling/core_of_module/failure_ui_mapper.dart';
 import 'package:firebase_with_riverpod/core/base_modules/overlays/core/_context_x_for_overlays.dart';

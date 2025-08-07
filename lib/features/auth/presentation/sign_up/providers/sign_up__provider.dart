@@ -1,7 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../../core/utils_shared/riverpod_specific/safe_async_state.dart';
 import '../../../domain/use_cases/use_cases_providers.dart';
-part 'sign_up_provider.g.dart';
+
+part 'sign_up__provider.g.dart';
 
 /// 🧩 [signupProvider] — async notifier for user registration
 /// 🧼 Uses [SafeAsyncState] for lifecycle safety

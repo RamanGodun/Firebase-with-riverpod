@@ -1,11 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/base_modules/errors_handling/core_of_module/failure_entity.dart';
 import '../../../../../core/base_modules/errors_handling/core_of_module/failure_type.dart';
+// import '../../../../../core/base_modules/errors_handling/extensible_part/failure_types/_failure_codes.dart';
 import '../../../../../core/base_modules/localization/generated/locale_keys.g.dart';
 import '../../../domain/provider/use_cases_provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-part 'change_password_state.dart';
+part 'change_password__state.dart';
 
 /// 🧩 [changePasswordProvider] — Manages the state and logic for password change flow.
 /// Handles password update process, error mapping, and reauthentication scenarios.
@@ -35,7 +36,10 @@ final class ChangePasswordNotifier extends StateNotifier<ChangePasswordState> {
 
     result.fold(
       (failure) {
-        if (failure.type.code == 'requires-recent-login') {
+        // if (failure.type.code == FailureCodes.requiresRecentLogin
+        if (failure is RequiresRecentLoginFirebaseFailureType)
+        // 'requires-recent-login')
+        {
           state = const ChangePasswordRequiresReauth();
         } else {
           state = ChangePasswordError(failure);

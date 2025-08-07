@@ -1,4 +1,4 @@
-part of 'change_password_provider.dart';
+part of 'change_password__provider.dart';
 
 /// 🧾 [ChangePasswordState] — Sealed class describing all possible states for password change flow.
 //

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'reset_password_provider.dart';
+part of 'reset_password__provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

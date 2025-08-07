@@ -54,17 +54,18 @@ final class VerifyEmailPage extends ConsumerWidget {
               ),
             ],
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              //
-              const _VerifyEmailInfo(),
-              //
-              (asyncValue.isLoading)
-                  ? const AppLoader()
-                  : const VerifyEmailCancelButton(),
-            ],
-          ).withPaddingSymmetric(h: AppSpacing.xl, v: AppSpacing.xxl),
+
+          child: asyncValue.when(
+            //
+            loading: () => const AppLoader(),
+            error: (_, _) => const VerifyEmailCancelButton(),
+
+            data:
+                (_) => const Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [_VerifyEmailInfo(), VerifyEmailCancelButton()],
+                ).withPaddingSymmetric(h: AppSpacing.xl, v: AppSpacing.xxl),
+          ),
         ),
       ),
     );
