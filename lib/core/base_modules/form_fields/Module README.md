@@ -26,7 +26,7 @@ and provides consistent, reusable input fields with:
   ## 🚀 Quick Start
 -----------------------------------------------------------------------------------------------
 
-* Integrate module into your poject. No external dependencies on any state management package.
+* Integrate module into your project. No external dependencies on any state management package.
 * Centralized `InputFieldFactory.create(...)` builds unified UI across all forms
 
 Supports:
@@ -38,7 +38,6 @@ Supports:
 
 
   ### Basic usage of an email & password field
-
 ```dart
 Column(
   children: [
@@ -66,8 +65,7 @@ Column(
 );
 ```
 
-### Use pre-configured focus nodes with hooks (Flutter Hooks)
-
+  ### Use pre-configured focus nodes with hooks (Flutter Hooks)
 ```dart
 final focus = useSignInFocusNodes();
 
@@ -88,20 +86,18 @@ InputFieldFactory.create(
 
 
 
-
-
 -----------------------------------------------------------------------------------------------
-## 🧩🔧 State Management Integration
+  ## 🧩🔧 State Management Integration
 -----------------------------------------------------------------------------------------------
 
 This module is designed to be state-agnostic.
 Below are examples of how to use it with Riverpod and Cubit/BLoC-based apps.
 
 
-### 🔵 Riverpod Integration
+  ### 🔵 Riverpod Integration
 Riverpod apps typically use a `FormState` as `StateNotifier` and a `SubmitAction` as an `AsyncNotifier`.
 
-#### Form State Provider
+  **Form State Provider**
 ```dart
 @riverpod
 final class SignInForm extends _$SignInForm {
@@ -124,7 +120,7 @@ final class SignInForm extends _$SignInForm {
 }
 ```
 
-#### Form State Model
+  **Form State Model**
 ```dart
 final class SignInFormState extends Equatable {
   final EmailInputValidation email;
@@ -148,7 +144,7 @@ final class SignInFormState extends Equatable {
 }
 ```
 
-#### UI Integration
+  **UI Integration**
 ```dart
 final class _EmailField extends ConsumerWidget {
   @override
@@ -167,11 +163,9 @@ final class _EmailField extends ConsumerWidget {
 ```
 
 
+  ### 🟡 BLoC/Cubit Integration
 
-
-### 🟡 BLoC/Cubit Integration
-
-#### State Definition
+  **State Definition**
 ```dart
 final class SignInPageState extends Equatable {
   final EmailInputValidation email;
@@ -203,7 +197,7 @@ final class SignInPageState extends Equatable {
 }
 ```
 
-#### Cubit Implementation
+  **Cubit Implementation**
 ```dart
 final class SignInCubit extends Cubit<SignInPageState> {
   SignInCubit() : super(const SignInPageState());
@@ -224,7 +218,8 @@ final class SignInCubit extends Cubit<SignInPageState> {
 }
 ```
 
-#### UI Integration
+  **UI Integration**
+> 🟦 Use `BlocSelector` to keep widgets scoped and performant
 ```dart
 final class _EmailField extends StatelessWidget {
   @override
@@ -245,57 +240,6 @@ final class _EmailField extends StatelessWidget {
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
------------------------------------------------------------------------------------------------
-## 🔍 Advanced Usage / Extending of functionality 
------------------------------------------------------------------------------------------------
-
-### Custom Validation Rules
-
-```dart
-// Extending validation for specific requirements
-@override
-EmailValidationError? validator(String value) {
-  final trimmed = value.trim();
-  if (trimmed.isEmpty) return EmailValidationError.empty;
-  if (!isEmail(trimmed)) return EmailValidationError.invalid;
-  if (trimmed.contains('tempmail')) return EmailValidationError.blocked;
-  return null;
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
 -----------------------------------------------------------------------------------------------
   ## 🧩 Core Elements
 -----------------------------------------------------------------------------------------------
@@ -303,13 +247,12 @@ EmailValidationError? validator(String value) {
 The form fields module is built around a small number of core, composable components:
 
 
-
-    ### 1. `InputFieldFactory`
+   1. **`InputFieldFactory`**
 
 Centralized factory that is is the primary entry point for creating strongly-typed, themed and localized form fields. 
 > 💡 Use this factory instead of raw `TextField` widgets to ensure unified behavior and accessibility.
 
-   * Available (curently) Field Types:
+   * Available (currently) Field Types:
 ```dart
 enum InputFieldType {
   name,              // 👤 User display name
@@ -327,13 +270,7 @@ enum InputFieldType {
 
 
 
----
-
-
-
-
-
-  ### 2. `AppTextField`
+  2. **`AppTextField`**
 
   > 🎨 This widget ensures that all fields follow a uniform visual and behavioral standard across your app, includes:
 - Integrated localized label and icon
@@ -365,30 +302,21 @@ String _resolveLabel(String raw, String? fallback) {
 ```
 
 
+  3. **`FormzInput<T, E>`-based Validation**
 
-
----
-
-
-
-
-
-  ### 3. `FormzInput<T, E>`-based Validation
-
-  This module uses `FormzInput` subclasses to encapsulate validation logic for each field. Each validator ensures input is both syntactically and semantically correct.
+  This module uses `FormzInput` subclasses to encapsulate validation logic for each field. 
+Each validator ensures input is both syntactically and semantically correct.
 
 Each input field has a corresponding validator (e.g. `EmailInputValidation`). They expose:
 - `.errorKey` — localizable key for error message
-- `.uiErrorKey` — returns errorKey only if field is dirty and invalid, used in all widgets to conditionally render error messages without flashing on pure/untouched fields.
+- `.uiErrorKey` — returns errorKey only if field is dirty and invalid, used in all widgets 
+to conditionally render error messages without flashing on pure/untouched fields.
 
 This separation makes it easy to:
 - Keep logic and UI concerns separate
 - Avoid premature error display
 
-
-
   * Available Validators
-
 | Validator Class                  | Input Type       | Rules                                   |
 | -------------------------------- | ---------------- | ----------------------------------------|
 | `EmailInputValidation`           | Email            | Non-empty, valid email format           |
@@ -421,11 +349,7 @@ email.uiErrorKey   // Returns null if pure/valid, errorKey if invalid
 
 
 
-
-
-
-
-  ### 4. `FocusNode` Hooks
+  4. **`FocusNode` Hooks**
 
 This module includes pre-built focus node hooks using `flutter_hooks`. They simplify keyboard navigation and improve UX on forms.
 
@@ -445,29 +369,20 @@ Each hook memoizes the focus nodes and disposes them automatically.
 
 
 
-
-
-
-
-
-
-
-
-
-
 -----------------------------------------------------------------------------------------------
-## 📁 Module Structure
+  ## 📁 Module Structure
 -----------------------------------------------------------------------------------------------
 
 ```
 form_fields/
 │
 ├── input_validation/
+│   ├── currently_using_validators
+│   │   ├── email_input.dart               # EmailInputValidation (part of validation_enums)
+│   │   ├── name_input.dart                # PasswordInputValidation (part of validation_enums)
+│   │   ├── password__input.dart           # NameInputValidation (part of validation_enums)
+│   │   └── password_confirm.dart          # ConfirmPasswordInputValidation (part of validation_enums)
 │   ├── validation_enums.dart              # Main file with enums + validation classes
-│   ├── email_input.dart                   # EmailInputValidation (part of validation_enums)
-│   ├── password_input.dart                # PasswordInputValidation (part of validation_enums)
-│   ├── name_input.dart                    # NameInputValidation (part of validation_enums)
-│   ├── password_confirm.dart              # ConfirmPasswordInputValidation (part of validation_enums)
 │   └── x_on_forms_submission_status.dart  # FormzSubmissionStatus extensions
 │
 ├── widgets/
@@ -478,94 +393,66 @@ form_fields/
 │
 ├── utils/
 │   ├── use_auth_focus_nodes.dart          # Focus management hooks
+│   ├── focus_nodes_generator.dart         # Focus nodes generator
 │   └── _form_validation_service.dart      # Validation service (if needed)
 │
-└── README.md                              # This documentation
+└── Module README.md                             
 ```
 
 
 
-
-
-
-
-
-
-
 -----------------------------------------------------------------------------------------------
-## 🏗️ Architecture Overview
+  ## 🏗️ Architecture Overview
 -----------------------------------------------------------------------------------------------
 
-```mermaid
-graph TD
-    A[InputFieldFactory] -->|creates| B[AppTextField]
-    C[ValidationEnums] -->|provides| D[FormzInput Classes]
-    D --> E[EmailInputValidation]
-    D --> F[PasswordInputValidation]
-    D --> G[NameInputValidation]
-    D --> H[ConfirmPasswordInputValidation]
-    
-    I[Focus Management] --> J[useSignInFocusNodes]
-    I --> K[useSignUpFocusNodes]
-    
-    L[State Management] --> M[Riverpod Integration]
-    L --> N[BLoC/Cubit Integration]
-    
-    B --> O[Consistent UI Components]
-    D --> P[Type-Safe Validation]
-    I --> Q[Smooth UX Flow]
-```
-
+> 🧩 The architecture separates concerns cleanly between field rendering, focus, validation, state, and UX behavior
+It enables drop-in integration in any layer without coupling to UI frameworks.
 
 
 ```mermaid
 graph TD
     A[InputFieldFactory] --> B[AppTextField]
-    B --> C[TextField]
+    B --> C[TextField with InputDecoration]
     
-    A --> D[FocusNode Hooks]
-    D --> E[FocusNode Transitions]
+    A --> D[Focus Management Hooks]
+    D --> E[useSignInFocusNodes]
+    D --> F[useSignUpFocusNodes]
+    D --> G[useChangePasswordFocusNodes]
+    D --> H[useResetPasswordFocusNodes]
 
-    A --> F[Validation Classes (FormzInput)]
-    F --> G[EmailInputValidation]
-    F --> H[PasswordInputValidation]
-    F --> I[NameInputValidation]
-    F --> J[ConfirmPasswordInputValidation]
+    A --> I[Formz Validation Classes]
+    I --> J[EmailInputValidation]
+    I --> K[PasswordInputValidation]
+    I --> L[NameInputValidation]
+    I --> M[ConfirmPasswordInputValidation]
 
-    F --> K[uiErrorKey]
-    K --> L[Localized Error Messages]
+    I --> N[uiErrorKey Logic]
+    N --> O[Localized Error Messages]
 
-    A --> M[ObscureToggleIcon]
+    A --> P[Additional Widgets]
+    P --> Q[ObscureToggleIcon]
+    P --> R[AppKeys for Testing]
     
-    %% State managers
-    A --> N[Riverpod Integration]
-    A --> O[Cubit/BLoC Integration]
+    %% State Management Integration
+    A --> S[State Management Layer]
+    S --> T[Riverpod Providers]
+    S --> U[BLoC/Cubit States]
     
-    N --> P[StateNotifier/FormProvider]
-    O --> Q[Cubit/State]
+    T --> V[Form State Models]
+    U --> W[State Classes with Validation]
 
-    %% Universal target
-    A --> R[Reusable Forms]
-    R --> S[Sign In]
-    R --> T[Sign Up]
-    R --> U[Profile Update]
+    %% Final Applications
+    A --> X[Complete Form Solutions]
+    X --> Y[Sign In Forms]
+    X --> Z[Sign Up Forms]
+    X --> AA[Profile Update Forms]
+    X --> BB[Password Reset Forms]
 ```
-
-> 🧩 The architecture separates concerns cleanly between field rendering, focus, validation, state, and UX behavior. It enables drop-in integration in any layer without coupling to UI frameworks.
-
-
-
-
-
-
-
-
-
 
 
 
 -----------------------------------------------------------------------------------------------
-## 🎯 Best Practices
+  ## 🎯 Best Practices
 -----------------------------------------------------------------------------------------------
 
 ### ✅ Do
@@ -613,12 +500,8 @@ void emailChanged(String value) {
 
 
 
-
-
-
-
 -----------------------------------------------------------------------------------------------
-## 🔧 Troubleshooting
+  ## 🔧 Troubleshooting
 -----------------------------------------------------------------------------------------------
 ### Common Issues
 
@@ -644,83 +527,72 @@ void emailChanged(String value) {
 - Ensure localization keys (e.g. `form_email_is_invalid`) exist
 - Call `AppLocalizer.initialize()` early in your app
 
-
-### Debug Checkers
-
+### ❓ Need Custom Validation Rules
 ```dart
-// Enable debug logging for form validation
-void debugFormState(FormState state) {
-  debugPrint('📧 Email: ${state.email.value} (valid: ${state.email.isValid})');
-  debugPrint('🔒 Password: ${state.password.value} (valid: ${state.password.isValid})');
-  debugPrint('✅ Form valid: ${state.isValid}');
+// Extending validation for specific requirements
+@override
+EmailValidationError? validator(String value) {
+  final trimmed = value.trim();
+  if (trimmed.isEmpty) return EmailValidationError.empty;
+  if (!isEmail(trimmed)) return EmailValidationError.invalid;
+  if (trimmed.contains('tempmail')) return EmailValidationError.blocked;
+  return null;
 }
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 -----------------------------------------------------------------------------------------------
 ## 🧭 Summary
 -----------------------------------------------------------------------------------------------
 
-The `form_fields` module provides a scalable, reusable, and consistent foundation for building forms in Flutter apps.
+The **Form Fields Module** provides a scalable, enterprise-ready foundation for building consistent,
+type-safe forms in Flutter applications with clean architecture principles.
 
-✅ Unified form UX across all features  
-✅ Works with both Riverpod and Cubit/BLoC out of the box  
-✅ Declarative validation powered by `Formz`  
-✅ Localized errors and accessibility built-in  
-✅ Fully testable and clean-architecture compliant
-✅ Unified form UX across all features
-✅ Works with both Riverpod and Cubit/BLoC out of the box
-✅ Declarative validation powered by `Formz`
-✅ Localized errors and accessibility built-in
-✅ Fully testable and clean-architecture compliant
-- 🏗️ **Clean Architecture**: Proper separation of concerns across layers
-- 🔒 **Type Safety**: Compile-time validation error detection  
-- 🎨 **Consistent UI**: Unified design system for all form inputs
-- 🚀 **Developer Experience**: Minimal boilerplate with maximum flexibility
-- ⚡ **Performance**: Optimized rebuilds and validation cycles
-- 🧪 **Testability**: Easy unit, widget, and integration testing
+### 🏆 **Core Value Propositions**
+
+**🎨 Consistent UI Experience**
+- Unified design system across all form components
+- Built-in accessibility support for screen readers
+- Responsive layouts that adapt to different screen sizes
+- Smooth focus transitions and keyboard navigation
+
+**🔒 Type-Safe Validation**  
+- Compile-time validation error detection with Formz
+- Declarative validation rules with clear error states
+- Localization-ready error messages
+- Pure/dirty state management prevents premature error display
+
+**🚀 Developer Experience**
+- Factory pattern eliminates repetitive boilerplate code
+- Intuitive APIs with clear method signatures  
+- Centralized testing keys for reliable automation
+- Comprehensive documentation with real-world examples
+
+**🔄 State Management Flexibility**
+- Native Riverpod integration with optimized providers
+- Seamless BLoC/Cubit support with reactive state updates
+- Pure Dart validation logic works without any framework
+- Easy migration from existing form implementations
+
+### 🎯 **Perfect For**
+
+Whether you're building:
+- **Authentication flows** (sign in, sign up, password reset)
+- **Profile management** (user details, preferences) 
+- **Multi-step wizards** (onboarding, checkout processes)
+- **Settings forms** (account configuration, notifications)
+
+This module scales from simple single-field inputs to complex validation workflows while maintaining clean, maintainable code.
+
+### ✨ **Key Benefits**
+
+✅ **Unified form UX** across all application features  
+✅ **Drop-in compatibility** with Riverpod and BLoC/Cubit  
+✅ **Declarative validation** powered by battle-tested Formz  
+✅ **Localized errors** and accessibility built-in by design  
+✅ **Fully testable** and clean-architecture compliant  
+✅ **Performance optimized** with selective rebuilds and smart caching  
 
 
-
-
-
-
-### **BENEFITS**:
-
-* 🎨 Consistent UI
-- **Unified Design**: All fields share the same visual styling
-- **Accessibility**: Built-in support for screen readers and keyboard navigation
-- **Responsive**: Adapts to different screen sizes and orientations
-
-* 🔒 Type-Safe Validation
-- **Compile-time Safety**: Validation errors caught at build time
-- **Formz Integration**: Leverages proven validation patterns
-- **Localization Ready**: Error messages use translation keys
-
-* 🚀 Developer Experience  
-- **Minimal Boilerplate**: Factory pattern reduces repetitive code
-- **Clear APIs**: Intuitive method names and parameters
-- **Testing Support**: Centralized keys and predictable behavior
-
-* 🔄 State Management Agnostic
-- **Riverpod Support**: Optimized providers and state classes
-- **BLoC/Cubit Support**: Clean integration with bloc pattern
-- **Pure Dart**: Core validation works without any state management
-
-
-
-
-
-> 🧠 Whether you're building auth, profile, onboarding, or settings forms — this module simplifies your codebase and improves maintainability.
-
-Start integrating it today and write forms that feel native, robust, and easy to scale.
+> **Transform your form development experience!** 🚀  
+> Build robust, user-friendly forms with confidence and maintain them effortlessly as your application grows.
