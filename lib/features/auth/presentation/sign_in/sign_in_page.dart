@@ -10,7 +10,7 @@ import '../../../../core/base_modules/navigation/routes/app_routes.dart';
 import '../../../../core/base_modules/theme/ui_constants/app_colors.dart';
 import '../../../../core/base_modules/form_fields/input_validation/validation_enums.dart';
 import '../../../../core/base_modules/form_fields/utils/use_auth_focus_nodes.dart';
-import '../../../../core/base_modules/form_fields/widgets/_fields_factory.dart';
+import '../../../../core/base_modules/form_fields/_form_field_factory.dart';
 import '../../../../core/base_modules/form_fields/widgets/password_visibility_icon.dart';
 import '../../../../core/base_modules/localization/module_widgets/text_widget.dart';
 import '../../../../core/base_modules/localization/generated/locale_keys.g.dart';
