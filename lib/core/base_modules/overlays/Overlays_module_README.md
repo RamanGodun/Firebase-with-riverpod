@@ -1,19 +1,22 @@
 # 🎪 Overlays Module Guide
 
-*Last updated: 2025-08-08*
+_Last updated: 2025-08-08_
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.0+-blue.svg)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-3.0+-blue.svg)](https://dart.dev/)
 
-----------------------------------------------------------------
+---
+
 ## 🎯 OVERVIEW
-----------------------------------------------------------------
+
+---
 
 This module provides a **platform-adaptive, type-safe overlay system** for Flutter apps with Clean Architecture.
 It handles dialogs, banners, snackbars, and error feedback in a **declarative**, **conflict-aware** manner
 that works seamlessly with **Riverpod**, **Cubit**, and **BLoC**.
 
 🦾 **Key Benefits:**
+
 - 🤖 **Platform-adaptive:** iOS/Android native look & feel with unified behavior
 - ⚡ **Conflict resolution:** Smart queuing, priority-based replacement
 - 🎨 **Fully customizable:** Presets, animations, themes
@@ -21,14 +24,14 @@ that works seamlessly with **Riverpod**, **Cubit**, and **BLoC**.
 - 🎭 **Animation engine:** Smooth, configurable transitions
 - 📱 **Responsive:** Adapts to screen sizes and safe areas
 - ⚡ **Developer Experience:** Simple API with powerful customization
-- 🔒 **Type Safety:** Compile-time guarantees for overlay configuration  
+- 🔒 **Type Safety:** Compile-time guarantees for overlay configuration
 - 🧹 **Auto Lifecycle:** Smart cleanup prevents memory leaks
 - 🧹 **Auto-cleanup:** Dismisses overlays on navigation
 
-
 ### **Design Philosophy**
+
 - **Declarative over imperative:** Use context extensions instead of manual widget creation
-- **Platform-aware by default:** Automatically adapts to iOS/Android conventions  
+- **Platform-aware by default:** Automatically adapts to iOS/Android conventions
 - **Conflict resolution built-in:** Smart queuing prevents overlay chaos
 - **Performance first:** Minimal overhead with maximum functionality
 - **Clean architecture:** Separate concerns between presentation, logic, and styling
@@ -37,12 +40,14 @@ that works seamlessly with **Riverpod**, **Cubit**, and **BLoC**.
 - **Open/Closed**: Add new overlay types without touching Dispatcher logic
 - **Dependency Inversion**: Dispatcher accessed via `context.dispatcher` (DI)
 
+---
 
-----------------------------------------------------------------
 ## 🚀 Quick Start
-----------------------------------------------------------------
+
+---
 
 ### Basic Usage
+
 ```dart
 // Error handling
 context.showError(failureUIEntity, showAs: ShowAs.dialog);
@@ -64,6 +69,7 @@ context.showUserDialog(
 ### Integration with State Management
 
 #### With Riverpod:
+
 ```dart
 @riverpod
 Future<User> userProfile(UserProfileRef ref, String userId) async {
@@ -78,10 +84,10 @@ Future<User> userProfile(UserProfileRef ref, String userId) async {
 @override
 Widget build(BuildContext context, WidgetRef ref) {
   final userAsync = ref.watch(userProfileProvider(userId));
-  
+
   // 🎯 Auto-show errors as overlays
   ref.listenFailure(userProfileProvider(userId), context);
-  
+
   return userAsync.when(
     loading: () => const CircularProgressIndicator(),
     data: (user) => UserProfileView(user: user),
@@ -91,6 +97,7 @@ Widget build(BuildContext context, WidgetRef ref) {
 ```
 
 #### With Cubit/BLoC:
+
 ```dart
 // In Cubit
 Future<void> updateProfile(UserData data) async {
@@ -120,15 +127,16 @@ BlocListener<UserCubit, UserState>(
 )
 ```
 
+---
 
-
-----------------------------------------------------------------
 ## 📝 API Reference
-----------------------------------------------------------------
+
+---
 
 ### ✅ High-Level API (context extension)
 
 These methods wrap low-level `OverlayBaseMethods` with default priority, preset, and strategy.
+
 ```dart
 context.showError(...);
 context.showUserDialog(...);
@@ -149,29 +157,28 @@ context.dispatcher.enqueueRequest(context, overlayEntry)
 context.dispatcher.dismissCurrent(force: true, clearQueue: false)
 ```
 
+---
 
+## 🧩 Architecture & Core Concepts
 
-----------------------------------------------------------------
-  ## 🧩 Architecture & Core Concepts
-----------------------------------------------------------------
+---
 
-  ### Key Components
+### Key Components
 
-| Component             | Purpose                                                     |
-|-----------------------|-------------------------------------------------------------|
-| `ContextXForOverlays` | Main API: `context.showError()`, `context.showUserDialog()` |
-| `OverlayBaseMethods`  | Low-level base extension that builds actual UI entries      |
-| `OverlayDispatcher`   | Queue management, conflict resolution, lifecycle            |
-| `OverlayUIEntry`      | abstract descriptor of a queued overlay                     |
-| `OverlayUIPresets`    | Styling presets (Error, Success, Warning, etc.)             |
-| `PlatformMapper`      | Resolves iOS/Android specific widgets                       |
-| `AnimationEngine`     | Handles overlay entrance/exit animations                    |
-| `GlobalOverlayHandler`| Gesture handler to dismiss overlays and keyboard            |
-| `OverlaysCleanerWithinNavigation` |  Resets overlays on navigation events           |
+| Component                         | Purpose                                                     |
+| --------------------------------- | ----------------------------------------------------------- |
+| `ContextXForOverlays`             | Main API: `context.showError()`, `context.showUserDialog()` |
+| `OverlayBaseMethods`              | Low-level base extension that builds actual UI entries      |
+| `OverlayDispatcher`               | Queue management, conflict resolution, lifecycle            |
+| `OverlayUIEntry`                  | abstract descriptor of a queued overlay                     |
+| `OverlayUIPresets`                | Styling presets (Error, Success, Warning, etc.)             |
+| `PlatformMapper`                  | Resolves iOS/Android specific widgets                       |
+| `AnimationEngine`                 | Handles overlay entrance/exit animations                    |
+| `GlobalOverlayHandler`            | Gesture handler to dismiss overlays and keyboard            |
+| `OverlaysCleanerWithinNavigation` | Resets overlays on navigation events                        |
 
+### 🧠 Overlay Dispatcher Logic
 
-
-  ### 🧠 Overlay Dispatcher Logic
 - Holds **queue** of `OverlayQueueItem`
 - Checks if overlay is active
 - Applies conflict **replacement or wait policy**
@@ -179,8 +186,9 @@ context.dispatcher.dismissCurrent(force: true, clearQueue: false)
 - Applies debounce per `OverlayCategory`
 
   ### Priority System
+
 ```dart
-enum OverlayPriority { 
+enum OverlayPriority {
   userDriven,  // 🫱 User-initiated, can wait in queue
   normal,      // ⚡ Standard priority
   high,        // 🔥 Important, replaces lower priority
@@ -188,17 +196,18 @@ enum OverlayPriority {
 }
 ```
 
-  ### Conflict Resolution
-| Policy                 | Behavior                            |
-|------------------------|-------------------------------------|
-| `waitQueue`            | Wait for current overlay to finish  |
-| `forceReplace`         | Always replace current overlay      |
-| `forceIfSameCategory`  | Replace if same type (dialog/banner)|
-| `forceIfLowerPriority` | Replace if new has higher priority  |
-| `dropIfSameType`       | Ignore duplicate overlay types      |
+### Conflict Resolution
 
+| Policy                 | Behavior                             |
+| ---------------------- | ------------------------------------ |
+| `waitQueue`            | Wait for current overlay to finish   |
+| `forceReplace`         | Always replace current overlay       |
+| `forceIfSameCategory`  | Replace if same type (dialog/banner) |
+| `forceIfLowerPriority` | Replace if new has higher priority   |
+| `dropIfSameType`       | Ignore duplicate overlay types       |
 
-  ### Manual Control
+### Manual Control
+
 ```dart
 final dispatcher = context.dispatcher;
 // Check dismissibility
@@ -209,11 +218,12 @@ if (dispatcher.canBeDismissedExternally) {
 dispatcher.clearAll();
 ```
 
+### Global Overlays Handling integration
 
-  ### Global Overlays Handling intergration
 Attached in `AppMaterialAppRouter.builder`. On global tap:
-  - Hides keyboard
-  - Dismisses overlay if `OverlayDismissPolicy.dismissible`
+
+- Hides keyboard
+- Dismisses overlay if `OverlayDismissPolicy.dismissible`
 
 ```dart
  MaterialApp.router(
@@ -225,8 +235,8 @@ Attached in `AppMaterialAppRouter.builder`. On global tap:
 }
 ```
 
+### 🎛️ Tap-Through Mechanism
 
-  ### 🎛️ Tap-Through Mechanism
 Overlays support **tap-through UX** by default for banners/snackbars:
 
 ```dart
@@ -236,30 +246,30 @@ TapThroughOverlayBarrier(
   child: bannerWidget,
 )
 ```
+
 This allows user to **interact with widgets underneath** overlay (e.g., click a button behind banner).
 
+### 🛰️ Navigation-Aware Overlays
 
-
-  ### 🛰️ Navigation-Aware Overlays
-* `OverlayNavigatorObserver` listens to route changes
-* Auto-clears overlays via `dispatcher.clearAll()`
-* Prevents stale overlays after navigation
-
+- `OverlayNavigatorObserver` listens to route changes
+- Auto-clears overlays via `dispatcher.clearAll()`
+- Prevents stale overlays after navigation
 
   ### 📡 State Exposure
-Use these to disable buttons / prevent unwanted inputs when overlays are active.
 
-  * 1. **Reactive**
+  Use these to disable buttons / prevent unwanted inputs when overlays are active.
+
+  - 1. **Reactive**
+
 ```dart
 context.watch<OverlayStatusCubit>().state; // true if active
 ```
 
-  * 2. **Non-Reactive**
+- 2. **Non-Reactive**
+
 ```dart
 context.overlayStatus; // fast, cached read (extension)
 ```
-
-
 
 ### Overlay Flow
 
@@ -278,39 +288,42 @@ graph TD
     J --> I
 ```
 
+### 📦 Overlay Entry Lifecycle
 
+- 1. **Engine** (animations)
 
-  ### 📦 Overlay Entry Lifecycle
+* Chosen via `getEngine(OverlayCategory)`
+* Injected into platform widget
 
-  * 1. **Engine** (animations)
-- Chosen via `getEngine(OverlayCategory)`
-- Injected into platform widget
+  - 2. **Widget** (platform-aware)
 
-  * 2. **Widget** (platform-aware)
-- Built by `PlatformMapper`
-- Uses `Fade/Scale/SlideTransition`
-- Animated by injected `AnimationEngine`
+* Built by `PlatformMapper`
+* Uses `Fade/Scale/SlideTransition`
+* Animated by injected `AnimationEngine`
 
-  * 3. **Wrapper**
-- Wrapped in `AnimatedOverlayWrapper`
-- Controls entrance/exit lifecycle
-- Accepts `displayDuration`
+  - 3. **Wrapper**
 
-  * 4. **Entry**
-- Instantiated as `OverlayUIEntry` (e.g., `SnackbarOverlayEntry`)
-- Includes: `priority`, `policy`, `dismissPolicy`, `tapPassthrough`
+* Wrapped in `AnimatedOverlayWrapper`
+* Controls entrance/exit lifecycle
+* Accepts `displayDuration`
 
-  * 5. **Queue + Dispatcher**
-- Sent to `OverlayDispatcher.enqueueRequest(...)`
-- Strategy resolved via `OverlayPolicyResolver`
-- Inserted into overlay with `OverlayEntry`
-- Barrier is added via `TapThroughOverlayBarrier`
+  - 4. **Entry**
 
+* Instantiated as `OverlayUIEntry` (e.g., `SnackbarOverlayEntry`)
+* Includes: `priority`, `policy`, `dismissPolicy`, `tapPassthrough`
 
+  - 5. **Queue + Dispatcher**
 
-----------------------------------------------------------------
+* Sent to `OverlayDispatcher.enqueueRequest(...)`
+* Strategy resolved via `OverlayPolicyResolver`
+* Inserted into overlay with `OverlayEntry`
+* Barrier is added via `TapThroughOverlayBarrier`
+
+---
+
 ## 🎨 Customization
-----------------------------------------------------------------
+
+---
 
 ### Built-in Presets
 
@@ -318,7 +331,7 @@ graph TD
 // Error styling - Red with error icon
 const OverlayErrorUIPreset()
 
-// Success styling - Green with check icon  
+// Success styling - Green with check icon
 const OverlaySuccessUIPreset()
 
 // Warning styling - Orange with warning icon
@@ -353,18 +366,17 @@ context.showUserBanner(
 ### Custom Animations
 
 The module integrates with an animation engine that provides:
+
 - Fade + Scale transitions
 - Slide transitions (top/bottom)
 - Platform-specific curves
 - Configurable durations
 
+---
 
-
-
-
-----------------------------------------------------------------
 ## 📦 File Structure
-----------------------------------------------------------------
+
+---
 
 ```
 overlays/
@@ -405,11 +417,11 @@ overlays/
 └── Overlays_module_README.md                   # This documentation
 ```
 
+---
 
-
-----------------------------------------------------------------
 ## ❓ FAQ
-----------------------------------------------------------------
+
+---
 
 **Q: How do I customize the appearance of overlays?**
 A: Use the built-in presets or create custom ones with `.withOverride()`. You can customize colors, shapes, icons, padding, and duration.
@@ -435,40 +447,41 @@ A: Set `autoDismissDuration` in the preset or individual overlay methods. Use `D
 **Q: Can I customize animations?**
 A: Yes, the module integrates with an animation engine that allows custom transitions, durations, and curves.
 
+---
 
-
-
-----------------------------------------------------------------
 ## 🛠 Troubleshooting
-----------------------------------------------------------------
+
+---
 
 **Overlay not showing:**
+
 - Ensure context is mounted: `if (context.mounted) context.showError(...)`
 - Check if another overlay is blocking (use higher priority)
 - Verify preset configuration is valid
 
 **Overlay appears but looks wrong:**
+
 - Check platform-specific styling in theme
 - Ensure preset properties are correctly configured
 - Verify safe area constraints are respected
 
 **Animation glitches:**
+
 - Update to latest Flutter version
 - Check for conflicting animation libraries
 - Verify overlay is not being rebuilt during animation
 
 **Memory leaks:**
+
 - Overlays auto-dispose when dismissed
 - Use `context.dispatcher.clearAll()` when needed
 - Avoid storing strong references to overlay entries
 
+---
 
-
-
-
-----------------------------------------------------------------
 ## 💡 Best Practices
-----------------------------------------------------------------
+
+---
 
 ### ✅ Do
 
@@ -517,42 +530,35 @@ ScaffoldMessenger.of(context).showSnackBar(
 );
 ```
 
-
-
-
 ## ⚡ Performance Notes
 
 - Overlays use Flutter's Overlay widget for optimal performance
-- Animation engines are optimized for 60fps rendering  
+- Animation engines are optimized for 60fps rendering
 - Only one overlay renders at a time, minimizing resource usage
 - Platform-specific widgets reduce unnecessary abstraction overhead
 - Presets are memoized to prevent repeated style calculations
 
+---
 
-
-
-
-------
     📕 TO DO:
-	1.	Гарантований dismiss у діалогах (обгортка: спочатку dismiss, потім callback).
-	2.	Semantic dedup key в OverlayUIEntry + використання у showBanner/snackbar/dialog.
-	3.	Non-null dismissPolicy для всіх entries.
-	4.	Fail-safe у _tryProcessQueue (catch і ресет стану).
-	5.	A11y & haptics: live regions для повідомлень, focus trap у діалозі, легкі тактильні сигнали для high/critical.
-	6.	Єдність локалізації (AppLocalizer у всіх дефолтах).
+    1.	Гарантований dismiss у діалогах (обгортка: спочатку dismiss, потім callback).
+    2.	Semantic deduplication key в OverlayUIEntry + використання у showBanner/snackbar/dialog.
+    3.	Non-null dismissPolicy для всіх entries.
+    4.	Fail-safe у _tryProcessQueue (catch і reset стану).
+    5.	A11y & haptics: live regions для повідомлень, focus trap у діалозі, легкі тактильні сигнали для high/critical.
+    6.	Єдність локалізації (AppLocalizer у всіх дефолтах).
 
+---
 
-
-
-
-----------------------------------------------------------------
 ## 🏆 Final Notes
-----------------------------------------------------------------
+
+---
 
 This overlay system provides:
+
 - **Consistent UX** across platforms
 - **Declarative API** for clean code
-- **Smart conflict resolution** 
+- **Smart conflict resolution**
 - **Easy customization** with presets
 - **Seamless state management** integration
 
@@ -561,7 +567,6 @@ This overlay system provides:
 
 **Happy coding!** 🚀
 
+---
 
-
-----------------------------------------------------------------
-----------------------------------------------------------------
+---
