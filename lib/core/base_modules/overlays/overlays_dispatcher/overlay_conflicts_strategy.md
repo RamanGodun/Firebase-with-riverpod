@@ -1,6 +1,8 @@
 # 🧠 Overlay Conflict Resolution & Interaction Policy
 
-This document explains the **Overlay Conflict Strategy**, **Dismissal Policy**, and **Interaction Behavior** used in the current Flutter application. It reflects the latest implementation of the overlay system, built with centralized dispatching, animation engines, and debounced queuing.
+This document explains the **Overlay Conflict Strategy**, **Dismissal Policy**, and **Interaction Behavior** used
+ in the current Flutter application. It reflects the latest implementation of the overlay system, 
+built with centralized dispatching, animation engines, and debounced queuing.
 
 ---
 
@@ -101,7 +103,8 @@ Used consistently in Dialog/Banner/Snackbar APIs.
 
 ## 🫥 Tap-Through Barrier Support (`TapThroughOverlayBarrier`)
 
-All overlays are wrapped inside `TapThroughOverlayBarrier`, which allows or blocks user interaction with the UI beneath, based on `tapPassthroughEnabled`:
+All overlays are wrapped inside `TapThroughOverlayBarrier`, which allows or blocks user interaction 
+with the UI beneath, based on `tapPassthroughEnabled`:
 
 ```dart
 @override
@@ -114,7 +117,8 @@ bool get tapPassthroughEnabled => true; // for banners/snackbars
 | Snackbar  | ✅           | Non-blocking info        |
 | Dialog    | ❌           | Blocks interaction       |
 
-When `tapPassthroughEnabled = true`, interaction (e.g., button clicks) **is allowed through** the overlay layer. Otherwise, overlay acts as modal.
+When `tapPassthroughEnabled = true`, interaction (e.g., button clicks) **is allowed through** the overlay layer.
+Otherwise, overlay acts as modal.
 
 ---
 
@@ -168,4 +172,5 @@ This is especially useful for disabling buttons (e.g. `SignUp`) during transitio
 
 ## 🧪 Recommendation
 
-> This architecture supports high modularity, platform adaptation, animation decoupling, and consistent UX behavior. All new overlays must define a conflict strategy and be wrapped in `AnimatedOverlayWrapper` for lifecycle consistency.
+> This architecture supports high modularity, platform adaptation, animation decoupling, and consistent UX behavior.
+ All new overlays must define a conflict strategy and be wrapped in `AnimatedOverlayWrapper` for lifecycle consistency.

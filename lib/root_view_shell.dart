@@ -81,7 +81,7 @@ final class _AppRootView extends StatelessWidget {
       darkTheme: darkTheme,
       themeMode: themeMode,
 
-      // 🧩 Overlay system
+      // 🧩 Gesture handler to dismiss overlays and keyboard
       builder: (context, child) => GlobalOverlayHandler(child: child!),
     );
   }

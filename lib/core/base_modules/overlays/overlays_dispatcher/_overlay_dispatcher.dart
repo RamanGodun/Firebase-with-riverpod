@@ -5,7 +5,7 @@ import '../../../utils_shared/timing_control/timing_config.dart';
 import '../../../utils_shared/timing_control/debouncer.dart';
 import '../core/enums_for_overlay_module.dart';
 import 'overlay_entries/_overlay_entries_registry.dart';
-import 'overlay_logger.dart';
+import '../utils/overlay_logger.dart';
 import '../core/tap_through_overlay_barrier.dart';
 
 part 'policy_resolver.dart';
